@@ -14,6 +14,12 @@ public class App {
 
     static HttpClient client = HttpClient.newBuilder().proxy(ProxySelector.getDefault()).build();
 
+    /**
+     * 
+     * @param uri
+     * @return
+     * @throws Exception
+     */
     static HttpResponse<String> sendRequest(URI uri) throws Exception {
         HttpResponse<String> response;
         try {
@@ -25,6 +31,11 @@ public class App {
         }
     }
 
+    /**
+     * 
+     * @param uri
+     * @return
+     */
     static HttpRequest getRequest(URI uri) {
         return HttpRequest.newBuilder().uri(uri).header("x-rapidapi-host", "wordsapiv1.p.rapidapi.com")
                 .header("x-rapidapi-key", "9aa07eab5amsh819a29a74fb1a8bp14a516jsna22ffeb0ecfc")
@@ -32,9 +43,15 @@ public class App {
     }
 
     static URI getUri(String word, String _info) {
-        return URI.create("https://wordsapiv1.p.rapidapi.com/words/" + word + "/" + _info);
+        return URI.create("https://wordsapiv1.p.rapidapi.com/words/" + word + "/" + _info); // need to account for
+                                                                                            // spaces
     }
 
+    /**
+     * 
+     * @param word
+     * @return
+     */
     static JSONArray getSynonyms(String word) {
         JSONArray synonyms = new JSONArray();
         URI uri = getUri(word, "synonyms");
@@ -51,6 +68,11 @@ public class App {
         return synonyms;
     }
 
+    /***
+     * 
+     * @param word
+     * @return
+     */
     static JSONArray getRhymes(String word) {
         JSONArray rhymes = new JSONArray();
         URI uri = getUri(word, "rhymes");
@@ -68,55 +90,66 @@ public class App {
         return rhymes;
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
-
-        String flag = args[0]
-
+        String flag = args.length < 1 ? "default" : args[0];
+        String base;
+        String rhyme;
+        JSONArray j_synonyms;
+        JSONArray j_rhymes;
 
         switch (flag) {
-            case "demo": 
-        if (args.length != 3) {
-            System.err.println("Expecting exactly three arguments of form \"-demo <base word> <word to rhyme with>\"");
-            System.exit(-1);
-        }  
-                          String base = args[1];
-                    String rhyme = args[2];
-        JSONArray j_synonyms = getSynonyms(base);
-        JSONArray j_rhymes = getRhymes(rhyme);
+            case "-demo":
+                if (args.length != 3) {
+                    System.err.println(
+                            "Expecting exactly three arguments of form \"-demo <base word> <word to rhyme with>\"");
+                    System.exit(-1);
+                }
+                base = args[1];
+                rhyme = args[2];
+                j_synonyms = getSynonyms(base);
+                j_rhymes = getRhymes(rhyme);
 
-        List<String> synonyms = (List<String>) (List<?>) j_synonyms.toList();
-        List<String> rhymes = (List<String>) (List<?>) j_rhymes.toList();
-        List<String> rhyming_synonyms = synonyms.stream().filter(rhymes::contains).collect(Collectors.toList());
+                List<String> synonyms = (List<String>) (List<?>) j_synonyms.toList();
+                List<String> rhymes = (List<String>) (List<?>) j_rhymes.toList();
+                List<String> rhyming_synonyms = synonyms.stream().filter(rhymes::contains).collect(Collectors.toList());
 
-        int suggestion_count = rhyming_synonyms.size();
-        if (suggestion_count == 0) {
-            System.out.println("No suggestions found."); 
+                int suggestion_count = rhyming_synonyms.size();
+                if (suggestion_count == 0) {
+                    System.out.println("No suggestions found.");
 
-        } else {
-            System.out.println(String.format("Found %d suggestion%s:", suggestion_count, suggestion_count == 1 ? "" : "s"));
-            for (int i = 0; i < suggestion_count - 1; i++) {
-                System.out.print("\t" + rhyming_synonyms.get(i) + ", ");
-            }
-            System.out.println("\t" + rhyming_synonyms.get(suggestion_count - 1));
-        }        }
-        break; 
-        case "-rhyme": 
-        if (args.length != 2) {
-            System.err.println("Expecting exactly three arguments of form \"-rhyme <word to rhyme with>\"");
-            System.exit(-1);
-        }          String base = args[1]; 
-            JSONArray j_rhymes = getRhymes(base);
-            List<String> rhymes = (List<String>) (List<?>) j_rhymes.toList();
-            break; 
-        case: "-synonym": 
-        if (args.length != 2) {
-            System.err.println("Expecting exactly three arguments of form \"-synonym <word to get synonyms of>\"");
-            System.exit(-1);
-        }  
-        String base = args[1]; 
-        JSONArray j_synonyms = getSynonyms(base);
-        List<String> synonyms = (List<String>) (List<?>) j_synonyms.toList();
-        break; 
+                } else {
+                    System.out.println(String.format("Found %d suggestion%s:", suggestion_count,
+                            suggestion_count == 1 ? "" : "s"));
+                    for (int i = 0; i < suggestion_count - 1; i++) {
+                        System.out.print("\t" + rhyming_synonyms.get(i) + ", ");
+                    }
+                    System.out.println("\t" + rhyming_synonyms.get(suggestion_count - 1));
+                }
+                break;
+
+            case "-rhymes":
+                if (args.length != 2) {
+                    System.err.println("Expecting exactly two arguments of form \"-rhyme <word to rhyme with>\"");
+                    System.exit(-1);
+                }
+                base = args[1];
+                getRhymes(base);
+                break;
+
+            case "-synonyms":
+                if (args.length != 2) {
+                    System.err
+                            .println("Expecting exactly two arguments of form \"-synonym <word to get synonyms of>\"");
+                    System.exit(-1);
+                }
+                base = args[1];
+                getSynonyms(base);
+                break;
+
+            default:
+                System.err.println("Expecting one of \"-demo\", \"-rhymes\" or \"-synonyms\" as flag.");
+                break;
+        }
     }
 }
