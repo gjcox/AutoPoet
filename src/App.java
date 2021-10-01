@@ -69,14 +69,19 @@ public class App {
     }
 
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
-            System.err.println("Expecting exactly two arguments of form <base word> <word to rhyme with>");
+
+
+        String flag = args[0]
+
+
+        switch (flag) {
+            case "demo": 
+        if (args.length != 3) {
+            System.err.println("Expecting exactly three arguments of form \"-demo <base word> <word to rhyme with>\"");
             System.exit(-1);
-        }
-
-        String base = args[0];
-        String rhyme = args[1];
-
+        }  
+                          String base = args[1];
+                    String rhyme = args[2];
         JSONArray j_synonyms = getSynonyms(base);
         JSONArray j_rhymes = getRhymes(rhyme);
 
@@ -94,6 +99,24 @@ public class App {
                 System.out.print("\t" + rhyming_synonyms.get(i) + ", ");
             }
             System.out.println("\t" + rhyming_synonyms.get(suggestion_count - 1));
-        }
+        }        }
+        break; 
+        case "-rhyme": 
+        if (args.length != 2) {
+            System.err.println("Expecting exactly three arguments of form \"-rhyme <word to rhyme with>\"");
+            System.exit(-1);
+        }          String base = args[1]; 
+            JSONArray j_rhymes = getRhymes(base);
+            List<String> rhymes = (List<String>) (List<?>) j_rhymes.toList();
+            break; 
+        case: "-synonym": 
+        if (args.length != 2) {
+            System.err.println("Expecting exactly three arguments of form \"-synonym <word to get synonyms of>\"");
+            System.exit(-1);
+        }  
+        String base = args[1]; 
+        JSONArray j_synonyms = getSynonyms(base);
+        List<String> synonyms = (List<String>) (List<?>) j_synonyms.toList();
+        break; 
     }
 }
