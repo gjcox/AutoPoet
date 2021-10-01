@@ -94,7 +94,7 @@ public class App {
 
         String flag = args.length < 1 ? "default" : args[0];
         String base;
-        String rhyme;
+        String secondary;
         JSONArray j_synonyms;
         JSONArray j_rhymes;
 
@@ -106,9 +106,9 @@ public class App {
                     System.exit(-1);
                 }
                 base = args[1];
-                rhyme = args[2];
+                secondary = args[2];
                 j_synonyms = getSynonyms(base);
-                j_rhymes = getRhymes(rhyme);
+                j_rhymes = getRhymes(secondary);
 
                 List<String> synonyms = (List<String>) (List<?>) j_synonyms.toList();
                 List<String> rhymes = (List<String>) (List<?>) j_rhymes.toList();
