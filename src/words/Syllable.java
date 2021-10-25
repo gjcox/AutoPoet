@@ -10,6 +10,10 @@ public class Syllable {
         this.nucleus = new String(new char[] {nucleus}); 
     }
 
+    public Syllable(String nucleus) {
+        this.nucleus = nucleus; 
+    }
+
     public void setNucleus(String nucleus) {
         this.nucleus = nucleus;
     }

@@ -1,6 +1,7 @@
 package words;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class IPAHandler extends AbstractIPA {
@@ -11,31 +12,49 @@ public class IPAHandler extends AbstractIPA {
          * https://linguistics.stackexchange.com/questions/30933/how-to-split-ipa-
          * spelling-into-syllables
          */
-        ArrayList<Syllable> syllables = new ArrayList<>();
-        ArrayList<Integer> nuclei_indexes = new ArrayList<>();
-        ArrayList<Integer> onset_indexes = new ArrayList<>(); // the start of onsets; onset_indexes[i] should correspond
-                                                              // to nuclei_indexes[i]
+        ipa_word = ipa_word.replace("\'", ""); // remove emphasis character
+        LinkedList<Syllable> syllables = new LinkedList<>();
+        LinkedList<Integer> vowel_indexes = new LinkedList<>();
+        LinkedList<Integer> nucleus_indexes = new LinkedList<>();
+        LinkedList<Integer> onset_indexes = new LinkedList<>(); // the start of onsets; onset_indexes[i] should
+                                                                // correspond
+                                                                // to nuclei_indexes[i]
 
-        // need to account for the emphasis character
-        // need to account for dipthongs
         /* 1. locate all nuclei (vowels) */
         for (int i = 0; i < ipa_word.length(); i++) {
             char chr = ipa_word.charAt(i);
             if (isVowel(chr)) {
                 syllables.add(new Syllable(chr));
-                nuclei_indexes.add(i);
+                vowel_indexes.add(i);
+                nucleus_indexes.add(i);
                 onset_indexes.add(-1); // gets list to correct size with placeholder values
             }
         }
 
+        /* 1.5 check for dipthongs */
+        for (int i = 0; i < vowel_indexes.size() - 1; i++) {
+            if (vowel_indexes.get(i + 1) - vowel_indexes.get(i) == 1)
+            /* i.e. if two vowels are next to one another */
+            {
+                char vowel_1 = ipa_word.charAt(vowel_indexes.get(i));
+                char vowel_2 = ipa_word.charAt(vowel_indexes.get(i + 1));
+                String potential_dipthong = new String(new char[] { vowel_1, vowel_2 });
+
+                if (AbstractIPA.isDipthong(potential_dipthong)) {
+                    nucleus_indexes.remove(i + 1);
+                    syllables.remove(i + 1);
+                    syllables.get(i).setNucleus(potential_dipthong);
+                }
+            }
+        }
+
         /* 2. for each nucleus, work backward, adding sounds to the onset */
-        boolean trial_onset_valid = true;
-        String trial_onset = "";
-        String onset = "";
-        int onset_start;
-        for (int i = nuclei_indexes.size() - 1; i >= 0; i--) {
-            onset_start = nuclei_indexes.get(i) - 1;
-            while (trial_onset_valid) {
+        for (int i = nucleus_indexes.size() - 1; i >= 0; i--) {
+            boolean trial_onset_valid = true;
+            String trial_onset = "";
+            String onset = "";
+            int onset_start = nucleus_indexes.get(i) - 1;
+            while (trial_onset_valid && onset_start >= 0) {
                 trial_onset = ipa_word.charAt(onset_start) + trial_onset;
                 if (AbstractIPA.isValidOnset(trial_onset, syllables.get(i).getNucleus())) {
                     onset = trial_onset;
@@ -49,16 +68,35 @@ public class IPAHandler extends AbstractIPA {
         }
 
         /* 3. put remaining characters into codas */
-        for (int i = 0; i < nuclei_indexes.size(); i++) {
-            int end_of_coda = nuclei_indexes.get(i) + 1; 
-            StringBuilder coda = new StringBuilder(); 
+        for (int i = 0; i < nucleus_indexes.size() - 1; i++) {
+            /* for all but last nucleus, set the coda as any character between the nucleus and start of next onset */
+            int end_of_coda = nucleus_indexes.get(i) + syllables.get(i).getNucleus().length();
+            StringBuilder coda = new StringBuilder();
             while (end_of_coda < onset_indexes.get(i + 1)) {
-                coda.append(ipa_word.charAt(end_of_coda)); 
+                coda.append(ipa_word.charAt(end_of_coda++));
             }
             syllables.get(i).setCoda(coda.toString());
         }
+        /* for the last nucleus, set the coda as the characters between the nucleus and the end of the word */
+        syllables.getLast()
+                .setCoda(ipa_word.substring(nucleus_indexes.getLast() + syllables.getLast().getNucleus().length()));
 
         return syllables;
+    }
+
+    public static void main(String[] args) {
+        List<String> words = Arrays.asList("example", "mastery", "testing", "mistake", "sky", "cure"); 
+        List<String> ipa_words = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ", "mɪ'steɪk", "skaɪ", "kjʊr");
+
+        for (int i = 0; i < words.size(); i++) {
+            List<Syllable> syllables = getSyllables(ipa_words.get(i));
+            System.out.print(words.get(i) + ";" + ipa_words.get(i) + ": ");
+            for (Syllable syl : syllables) {
+                System.out.print(syl + ".");
+            }
+            System.out.println();
+        }
+
     }
 
 }

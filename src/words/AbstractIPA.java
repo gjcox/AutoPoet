@@ -5,12 +5,24 @@ import java.util.Arrays;
 public abstract class AbstractIPA {
 
     protected static final Character[] VOWELS = { 'i', 'y', 'ɨ', 'ʉ', 'ɯ', 'u', 'ɪ', 'ʏ', 'ʊ', 'e', 'ø', 'ɘ', 'ɵ', 'ɤ',
-            'o', 'ə', 'ɛ', 'œ', 'ɜ', 'ɞ', 'ʌ', 'ɔ', 'æ', 'ɐ', 'a', 'ɶ', 'ä', 'ɑ', };
+            'o', 'ə', 'ɛ', 'œ', 'ɜ', 'ɞ', 'ʌ', 'ɔ', 'æ', 'ɐ', 'a', 'ɶ', 'ä', 'ɑ' };
     /*
      * 'e̞', 'ø̞', 'ɤ̞', 'o̞', were considered invalid, but according to Wikipedia
      * are only found in regional accents of English so they are unlikely to feature
      * in WordsAPI
      */
+
+    protected static final String[] U_VARIANTS = { "u", "ʊ" }; // String to account for dipthongs in comparison
+                                                               // might not be an exhaustive list yet
+
+    protected static final String[] DIPTHONGS = {
+            /* from https://thesoundofenglish.org/diphthongs/ */
+            "ɪə", "ʊə", "eɪ", "əʊ", "ɔɪ", "aʊ", "ʌɪ", /* some charts also include eə */
+            /* WordsAPI uses "aɪ" where soundofenglish.org uses "ʌɪ" */
+            "aɪ",
+            /* WordsAPI uses "oʊ" where soundofenglish.org uses "əʊ" */
+            "oʊ" };
+
     protected static final Character[] CONSONANTS = { 'p', 'b', 't', 'd', 'ʈ', 'ɖ', 'c', 'ɟ', 'k', 'ɡ', 'q', 'ɢ', 'ʔ',
             'm', 'ɱ', 'n', 'ɳ', 'ɲ', 'ŋ', 'ɴ', 'ʙ', 'r', 'ʀ', 'ⱱ', 'ɾ', 'ɽ', 'ɸ', 'β', 'f', 'v', 'θ', 'ð', 's', 'z',
             'ʃ', 'ʒ', 'ʂ', 'ʐ', 'ç', 'ʝ', 'x', 'ɣ', 'χ', 'ʁ', 'ħ', 'ʕ', 'h', 'ɦ', 'ɬ', 'ɮ', 'ʋ', 'ɹ', 'ɻ', 'j', 'ɰ',
@@ -52,9 +64,14 @@ public abstract class AbstractIPA {
     protected static boolean isValidOnset(String onset, String nucleus) {
         boolean is_onset;
         is_onset = Arrays.asList(ONSETS).contains(onset);
-        if (!is_onset && nucleus.equals("u")) { // need to account for modified and reduced forms of 'u'
+        if (!is_onset && Arrays.asList(U_VARIANTS).contains(nucleus)) { // need to account for modified and reduced
+                                                                        // forms of 'u'
             is_onset = Arrays.asList(U_ONSETS).contains(onset);
         }
         return is_onset;
+    }
+
+    protected static boolean isDipthong(String vowel_pair) {
+        return Arrays.asList(DIPTHONGS).contains(vowel_pair);
     }
 }
