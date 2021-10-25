@@ -14,10 +14,18 @@ public class App {
 
     static HttpClient client = HttpClient.newBuilder().proxy(ProxySelector.getDefault()).build();
 
-    static HttpResponse<String> sendRequest(URI uri) throws Exception {
-        HttpResponse<String> response;
+    /**
+     * 
+     * @param uri
+     * @return
+     * @throws Exception
+     */
+    static JSONObject sendRequest(URI uri) throws Exception {
+        JSONObject response;
         try {
-            response = client.send(getRequest(uri), BodyHandlers.ofString());
+            HttpResponse<String> response_string = client.send(getRequest(uri), BodyHandlers.ofString());
+            response = new JSONObject(response_string.body());
+            // System.out.println(response);
             return response;
         } catch (Exception e) {
             System.err.println("Something went wrong: " + e.getMessage());
@@ -25,6 +33,11 @@ public class App {
         }
     }
 
+    /**
+     * 
+     * @param uri
+     * @return
+     */
     static HttpRequest getRequest(URI uri) {
         return HttpRequest.newBuilder().uri(uri).header("x-rapidapi-host", "wordsapiv1.p.rapidapi.com")
                 .header("x-rapidapi-key", "9aa07eab5amsh819a29a74fb1a8bp14a516jsna22ffeb0ecfc")
@@ -32,17 +45,35 @@ public class App {
     }
 
     static URI getUri(String word, String _info) {
-        return URI.create("https://wordsapiv1.p.rapidapi.com/words/" + word + "/" + _info);
+        word = word.replace(" ", "%20");
+        return URI.create("https://wordsapiv1.p.rapidapi.com/words/" + word + "/" + _info); // need to account for
+                                                                                            // spaces
     }
 
+    /**
+     * 
+     * @param word
+     * @return
+     */
     static JSONArray getSynonyms(String word) {
         JSONArray synonyms = new JSONArray();
-        URI uri = getUri(word, "synonyms");
+        String quality = "synonyms";
+        URI uri = getUri(word, quality);
         try {
-            HttpResponse<String> response = sendRequest(uri);
-            JSONObject jo = new JSONObject(response.body());
-            synonyms = (JSONArray) jo.get("synonyms");
-            System.out.println("Synonyms of \"" + word + "\":" + synonyms);
+            JSONObject jo = sendRequest(uri);
+
+            if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
+                word = word.substring(0, word.length() - 1);
+                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
+                        + word + "\".");
+                return getSynonyms(word);
+            } else if (((JSONArray) jo.get(quality)).isEmpty()) {
+                System.err.println("No " + quality + " found for \"" + word + "\".");
+            } else {
+                synonyms = (JSONArray) jo.get(quality);
+
+                System.out.println("Synonyms of \"" + word + "\":" + synonyms);
+            }
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -51,72 +82,215 @@ public class App {
         return synonyms;
     }
 
-    static JSONArray getRhymes(String word) {
-        JSONArray rhymes = new JSONArray();
-        URI uri = getUri(word, "rhymes");
+    static JSONArray getTypesOf(String word) {
+        JSONArray types = new JSONArray();
+        String quality = "hasTypes";
+        URI uri = getUri(word, quality);
         try {
-            HttpResponse<String> response = sendRequest(uri);
-            JSONObject jo = new JSONObject(response.body());
-            rhymes = (JSONArray) ((JSONObject) jo.get("rhymes")).get("all"); // might want to filter more than "all"
-                                                                             // someday
-            System.out.println("Rhymes of \"" + word + "\":" + rhymes);
+            JSONObject jo = sendRequest(uri);
+
+            if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
+                word = word.substring(0, word.length() - 1);
+                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
+                        + word + "\".");
+                return getSynonyms(word);
+            } else if (((JSONArray) jo.get(quality)).isEmpty()) {
+                System.err.println("No " + quality + " found for \"" + word + "\".");
+            } else {
+                types = (JSONArray) jo.get(quality);
+
+                System.out.println("Types of \"" + word + "\":" + types);
+            }
 
         } catch (Exception e) {
+            System.err.println(e.getMessage());
+            // just trying to make this work
+        }
+        return types;
+    }
+
+    static JSONArray getCommonType(String word) {
+        JSONArray common_type = new JSONArray(); // not strictly synonyms, rather having a common type
+        String quality = "typeOf";
+        URI uri = getUri(word, quality);
+        try {
+            JSONObject jo = sendRequest(uri);
+
+            if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
+                word = word.substring(0, word.length() - 1);
+                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
+                        + word + "\".");
+                return getCommonType(word);
+            } else if (((JSONArray) jo.get(quality)).isEmpty()) {
+                System.err.println("No " + quality + " found for \"" + word + "\".");
+            } else {
+                JSONArray types = (JSONArray) jo.get(quality);
+                System.out.println("\"" + word + "\" is a type of:" + types);
+
+                List<String> types_list = (List<String>) (List<?>) types.toList();
+                for (String type : types_list) {
+                    common_type.putAll(getTypesOf(type));
+                }
+
+                common_type = removeDuplicates(common_type); 
+
+                System.out.println("Words with common types as \"" + word + "\":" + common_type);
+            }
+
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            // just trying to make this work
+        }
+        return common_type;
+
+    }
+
+    /***
+     * 
+     * @param word
+     * @return
+     */
+    static JSONArray getRhymes(String word) {
+        JSONArray rhymes = new JSONArray();
+        String quality = "rhymes";
+        URI uri = getUri(word, quality);
+        try {
+            JSONObject jo = sendRequest(uri);
+
+            if (((JSONObject) jo.get(quality)).isEmpty() && word.endsWith("s")) {
+                word = word.substring(0, word.length() - 1);
+                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
+                        + word + "\".");
+                return getRhymes(word);
+            } else if (((JSONObject) jo.get(quality)).isEmpty()) {
+                System.err.println("No " + quality + " found for \"" + word + "\".");
+            } else {
+                rhymes = (JSONArray) ((JSONObject) jo.get(quality)).get("all"); // might want to filter more than "all"
+                                                                                // someday
+                System.out.println("Rhymes of \"" + word + "\":" + rhymes);
+            }
+
+        } catch (
+
+        Exception e) {
             System.err.println(e.getMessage());
             // just trying to make this work
         }
         return rhymes;
     }
 
-    public static void main(String[] args) throws Exception {
+    static JSONArray removeDuplicates(JSONArray array) {
+        List<Object> list = array.toList();
+        list = list.stream().distinct().collect(Collectors.toList()); 
+        return new JSONArray(list); 
+    }
 
+    public static void main(String[] args) {
 
-        String flag = args[0]
-
+        String flag = args.length < 1 ? "default" : args[0];
+        String primary_word;
+        String secondary_word;
+        List<String> primary_list;
+        List<String> secondary_list;
+        List<String> overlap_list;
+        int overlap_count;
+        JSONArray primary_array;
+        JSONArray secondary_array;
 
         switch (flag) {
-            case "demo": 
-        if (args.length != 3) {
-            System.err.println("Expecting exactly three arguments of form \"-demo <base word> <word to rhyme with>\"");
-            System.exit(-1);
-        }  
-                          String base = args[1];
-                    String rhyme = args[2];
-        JSONArray j_synonyms = getSynonyms(base);
-        JSONArray j_rhymes = getRhymes(rhyme);
+            case "-demo-1":
+                if (args.length != 3) {
+                    System.err.println("Expecting exactly three arguments of form \"" + flag
+                            + " <base word> <word to rhyme with>\"");
+                    System.exit(-1);
+                }
+                primary_word = args[1];
+                secondary_word = args[2];
+                primary_array = getSynonyms(primary_word);
+                secondary_array = getRhymes(secondary_word);
 
-        List<String> synonyms = (List<String>) (List<?>) j_synonyms.toList();
-        List<String> rhymes = (List<String>) (List<?>) j_rhymes.toList();
-        List<String> rhyming_synonyms = synonyms.stream().filter(rhymes::contains).collect(Collectors.toList());
+                primary_list = (List<String>) (List<?>) primary_array.toList();
+                secondary_list = (List<String>) (List<?>) secondary_array.toList();
+                overlap_list = primary_list.stream().filter(secondary_list::contains).distinct()
+                        .collect(Collectors.toList());
 
-        int suggestion_count = rhyming_synonyms.size();
-        if (suggestion_count == 0) {
-            System.out.println("No suggestions found."); 
+                overlap_count = overlap_list.size();
+                if (overlap_count == 0) {
+                    System.out.println("No suggestions found.");
 
-        } else {
-            System.out.println(String.format("Found %d suggestion%s:", suggestion_count, suggestion_count == 1 ? "" : "s"));
-            for (int i = 0; i < suggestion_count - 1; i++) {
-                System.out.print("\t" + rhyming_synonyms.get(i) + ", ");
-            }
-            System.out.println("\t" + rhyming_synonyms.get(suggestion_count - 1));
-        }        }
-        break; 
-        case "-rhyme": 
-        if (args.length != 2) {
-            System.err.println("Expecting exactly three arguments of form \"-rhyme <word to rhyme with>\"");
-            System.exit(-1);
-        }          String base = args[1]; 
-            JSONArray j_rhymes = getRhymes(base);
-            List<String> rhymes = (List<String>) (List<?>) j_rhymes.toList();
-            break; 
-        case: "-synonym": 
-        if (args.length != 2) {
-            System.err.println("Expecting exactly three arguments of form \"-synonym <word to get synonyms of>\"");
-            System.exit(-1);
-        }  
-        String base = args[1]; 
-        JSONArray j_synonyms = getSynonyms(base);
-        List<String> synonyms = (List<String>) (List<?>) j_synonyms.toList();
-        break; 
+                } else {
+                    System.out.println(
+                            String.format("Found %d suggestion%s:", overlap_count, overlap_count == 1 ? "" : "s"));
+                    for (int i = 0; i < overlap_count - 1; i++) {
+                        System.out.print("\t" + overlap_list.get(i) + ", ");
+                    }
+                    System.out.println("\t" + overlap_list.get(overlap_count - 1));
+                }
+                break;
+
+            case "-demo-2":
+                if (args.length != 3) {
+                    System.err.println("Expecting exactly three arguments of form \"" + flag
+                            + " <base word> <word to rhyme with>\"");
+                    System.exit(-1);
+                }
+                primary_word = args[1];
+                secondary_word = args[2];
+                primary_array = getCommonType(primary_word);
+                secondary_array = getRhymes(secondary_word);
+
+                primary_list = (List<String>) (List<?>) primary_array.toList();
+                secondary_list = (List<String>) (List<?>) secondary_array.toList();
+                overlap_list = primary_list.stream().filter(secondary_list::contains).distinct()
+                        .collect(Collectors.toList());
+
+                overlap_count = overlap_list.size();
+                if (overlap_count == 0) {
+                    System.out.println("No suggestions found.");
+
+                } else {
+                    System.out.println(
+                            String.format("Found %d suggestion%s:", overlap_count, overlap_count == 1 ? "" : "s"));
+                    for (int i = 0; i < overlap_count - 1; i++) {
+                        System.out.print("\t" + overlap_list.get(i) + ", ");
+                    }
+                    System.out.println("\t" + overlap_list.get(overlap_count - 1));
+                }
+                break;
+
+            case "-rhymes":
+                if (args.length != 2) {
+                    System.err.println("Expecting exactly two arguments of form \"" + flag + " <word to rhyme with>\"");
+                    System.exit(-1);
+                }
+                primary_word = args[1];
+                getRhymes(primary_word);
+                break;
+
+            case "-synonyms":
+                if (args.length != 2) {
+                    System.err.println(
+                            "Expecting exactly two arguments of form \"" + flag + " <word to get synonyms of>\"");
+                    System.exit(-1);
+                }
+                primary_word = args[1];
+                getSynonyms(primary_word);
+                break;
+
+            case "-common-type":
+                if (args.length != 2) {
+                    System.err.println(
+                            "Expecting exactly two arguments of form \"" + flag + " <word to get synonyms of>\"");
+                    System.exit(-1);
+                }
+                primary_word = args[1];
+                getCommonType(primary_word);
+                break;
+
+            default:
+                System.err.println(
+                        "Expecting one of \"-demo-1\", \"-demo-2\", \"-rhymes\", \"-synonyms\", \"-common-type\" as flag.");
+                break;
+        }
     }
 }
