@@ -12,6 +12,10 @@ import org.json.JSONObject;
 
 public class App {
 
+
+     /**
+      * Try looking for overlap between different categorisations of words 
+      */
     static HttpClient client = HttpClient.newBuilder().proxy(ProxySelector.getDefault()).build();
 
     /**
