@@ -1,3 +1,4 @@
+package words;
 public class RhymingScheme {
 
     private int line_count = 0; // need at least two lines for rhymes
@@ -10,26 +11,25 @@ public class RhymingScheme {
      * This would be encoded as {line_count = 4, scheme = [1,1,0,1]}
      */
 
-    /**
-     * Constructor for a rhyming scheme.
-     *
-     * @param line_count
-     * @param scheme
-     */
-    public RhymingScheme(int line_count, int[] scheme) {
+    public RhymingScheme(int line_count) {
+        this.line_count = line_count;
+        this.scheme = new int[line_count]; 
+    }
+    
+     public RhymingScheme(int line_count, int[] scheme) {
         this.line_count = line_count;
         this.scheme = scheme.clone(); // could save me a headache if I change scheme's data type
     }
 
-    public changeScheme(int index, int value) {
+    public void changeScheme(int index, int value) {
          this.scheme[index] = value; 
     }
 
-    public _lineCount() {
+    public int getLineCount() {
         return this.line_count; 
     }
 
-    public _scheme() {
+    public int[] getScheme() {
         return this.scheme; 
     }
 
