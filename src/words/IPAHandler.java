@@ -69,7 +69,10 @@ public class IPAHandler extends AbstractIPA {
 
         /* 3. put remaining characters into codas */
         for (int i = 0; i < nucleus_indexes.size() - 1; i++) {
-            /* for all but last nucleus, set the coda as any character between the nucleus and start of next onset */
+            /*
+             * for all but last nucleus, set the coda as any character between the nucleus
+             * and start of next onset
+             */
             int end_of_coda = nucleus_indexes.get(i) + syllables.get(i).getNucleus().length();
             StringBuilder coda = new StringBuilder();
             while (end_of_coda < onset_indexes.get(i + 1)) {
@@ -77,15 +80,33 @@ public class IPAHandler extends AbstractIPA {
             }
             syllables.get(i).setCoda(coda.toString());
         }
-        /* for the last nucleus, set the coda as the characters between the nucleus and the end of the word */
+        /*
+         * for the last nucleus, set the coda as the characters between the nucleus and
+         * the end of the word
+         */
         syllables.getLast()
                 .setCoda(ipa_word.substring(nucleus_indexes.getLast() + syllables.getLast().getNucleus().length()));
 
         return syllables;
     }
 
+    public static boolean checkRhyme(List<Syllable> word_1, List<Syllable> word_2, int syllables) {
+        if (syllables > word_1.size() || syllables > word_2.size()) {
+            throw new IndexOutOfBoundsException();
+        }
+        boolean rhymes = true;
+        for (int i = 0; i < syllables; i++) {
+            Syllable syllable_1 = word_1.get(word_1.size() - i);
+            Syllable syllable_2 = word_2.get(word_2.size() - i);
+            rhymes = syllable_1.equals(syllable_2);
+            if (!rhymes)
+                break;
+        }
+        return rhymes;
+    }
+
     public static void main(String[] args) {
-        List<String> words = Arrays.asList("example", "mastery", "testing", "mistake", "sky", "cure"); 
+        List<String> words = Arrays.asList("example", "mastery", "testing", "mistake", "sky", "cure");
         List<String> ipa_words = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ", "mɪ'steɪk", "skaɪ", "kjʊr");
 
         for (int i = 0; i < words.size(); i++) {
