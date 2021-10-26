@@ -9,8 +9,10 @@ import words.Syllable;
 public class Demos {
 
     private static void demoGetSyllables() {
-        List<String> words = Arrays.asList("example", "mastery", "testing", "mistake", "sky", "cure");
-        List<String> ipa_words = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ", "mɪ'steɪk", "skaɪ", "kjʊr");
+        List<String> words = Arrays.asList("example", "mastery", "testing", "mistake", "sky", "cure", "hideous",
+                "insidious", "attack", "aback");
+        List<String> ipa_words = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ", "mɪ'steɪk", "skaɪ", "kjʊr", "hɪdiəs",
+                "ɪn'sɪdiəs", "ə'tæk", "ə'bæk");
 
         for (int i = 0; i < words.size(); i++) {
             List<Syllable> syllables = IPAHandler.getSyllables(ipa_words.get(i));
@@ -54,7 +56,7 @@ public class Demos {
     }
 
     public static void main(String[] args) {
-        // demoGetSyllables();
+        demoGetSyllables();
         demoRhymes1();
         demoRhymes2();
     }
