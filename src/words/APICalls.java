@@ -1,4 +1,6 @@
 package words;
+
+import java.io.IOException;
 import java.net.ProxySelector;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -13,6 +15,8 @@ import org.json.JSONObject;
 
 /**
  * Handles interactions with WordsAPI
+ * ! Need to handle 404 errors as well as empty results 
+ * Should find a way to wrap the API handling further - lots of code duplication for handling error cases 
  */
 public class APICalls {
 
@@ -24,16 +28,19 @@ public class APICalls {
      * @return
      * @throws Exception
      */
-    static JSONObject sendRequest(URI uri) throws Exception {
+    static JSONObject sendRequest(URI uri) throws IOException, InterruptedException {
         JSONObject response;
         try {
             HttpResponse<String> response_string = client.send(getRequest(uri), BodyHandlers.ofString());
             response = new JSONObject(response_string.body());
             // System.out.println(response);
             return response;
-        } catch (Exception e) {
-            System.err.println("Something went wrong: " + e.getMessage());
-            throw e;
+        } catch (IOException ioe) {
+            System.err.println("Something went wrong: " + ioe.getMessage());
+            throw ioe;
+        } catch (InterruptedException ie) {
+            System.err.println("Something went wrong: " + ie.getMessage());
+            throw ie;
         }
     }
 
@@ -180,6 +187,33 @@ public class APICalls {
             // just trying to make this work
         }
         return rhymes;
+    }
+
+    static JSONObject getIPA(String word) {
+        JSONObject ipa = new JSONObject();
+        String quality = "pronunciation";
+        URI uri = getUri(word, quality);
+        try {
+            JSONObject jo = sendRequest(uri);
+            boolean removed_s = (jo.get("word").toString() + "s").equals(word); // need to add "z" to ipa 
+
+            if (!jo.optString("success").equals("") || ((JSONObject) jo.opt("pronunciation")).isEmpty()) {
+                return ipa; // no IPA found for the word
+            }
+
+            if (removed_s) {
+                // obviosuly not finished 
+            }
+
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            // just trying to make this work
+        } catch (InterruptedException ie) {
+            System.err.println(ie.getMessage());
+            return getIPA(word); // optimistically try again after an interruption
+            // could cause an infinite loop...
+        }
+        return ipa;
     }
 
     static JSONArray removeDuplicates(JSONArray array) {
