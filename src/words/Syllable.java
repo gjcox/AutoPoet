@@ -48,4 +48,7 @@ public class Syllable {
         return this.toString().hashCode(); 
     }
 
+    public boolean rhymes(Syllable other) {
+        return this.nucleus.equals(other.nucleus) && this.coda.equals(other.coda);
+    }
 }

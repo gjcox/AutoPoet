@@ -90,33 +90,48 @@ public class IPAHandler extends AbstractIPA {
         return syllables;
     }
 
+    /*
+     * From my own deduction, two syllables rhyme if they have matching nuclei and
+     * coda. For a multi-syllabic rhyme, the onset of all but the first syllable
+     * pair must also match, hence the syllables in the for loop are treated
+     * differently.
+     */
     public static boolean checkRhyme(List<Syllable> word_1, List<Syllable> word_2, int syllables) {
+
         if (syllables > word_1.size() || syllables > word_2.size()) {
             throw new IndexOutOfBoundsException();
         }
         boolean rhymes = true;
-        for (int i = 0; i < syllables; i++) {
+        for (int i = 1; i < syllables; i++) {
             Syllable syllable_1 = word_1.get(word_1.size() - i);
             Syllable syllable_2 = word_2.get(word_2.size() - i);
             rhymes = syllable_1.equals(syllable_2);
             if (!rhymes)
-                break;
+                return false;
         }
+
+        int i = syllables;
+        Syllable syllable_1 = word_1.get(word_1.size() - i);
+        Syllable syllable_2 = word_2.get(word_2.size() - i);
+        rhymes = syllable_1.rhymes(syllable_2);
+
         return rhymes;
     }
 
-    public static void main(String[] args) {
-        List<String> words = Arrays.asList("example", "mastery", "testing", "mistake", "sky", "cure");
-        List<String> ipa_words = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ", "mɪ'steɪk", "skaɪ", "kjʊr");
+    /**
+     * Checks if two words rhyme for as many syllables as possible (i.e. all
+     * syllables in the word with fewer syllables)
+     * 
+     * @param word_1
+     * @param word_2
+     * @return
+     */
+    public static boolean checkRhyme(List<Syllable> word_1, List<Syllable> word_2) {
+        int syllables = Math.min(word_1.size(), word_2.size());
+        return checkRhyme(word_1, word_2, syllables);
+    }
 
-        for (int i = 0; i < words.size(); i++) {
-            List<Syllable> syllables = getSyllables(ipa_words.get(i));
-            System.out.print(words.get(i) + ";" + ipa_words.get(i) + ": ");
-            for (Syllable syl : syllables) {
-                System.out.print(syl + ".");
-            }
-            System.out.println();
-        }
+    public static void main(String[] args) {
 
     }
 
