@@ -4,6 +4,8 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import org.json.JSONObject;
+
 public class Test {
     
     static void emptyLine() throws IOException {
@@ -15,12 +17,24 @@ public class Test {
         }
     }
 
+    static void testJSONObject() {
+        String object = "object";
+        JSONObject jo = new JSONObject().put(object, new JSONObject().put("string", "abc"));
+        JSONObject jo2 = new JSONObject().put(object, "abc");
+        System.out.println(jo.toString());
+        System.out.println(jo.get(object).getClass());
+        System.out.println(jo2.toString());
+        System.out.println(jo2.get(object).getClass());
+    }
+
     public static void main(String[] args) {
-        try {
+        /*try {
             emptyLine(); 
         } catch (IOException e) {
             System.err.println("File not found!");
-        }
+        }*/
+        testJSONObject(); 
+
     }
 
 }

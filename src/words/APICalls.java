@@ -7,6 +7,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,9 +15,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Handles interactions with WordsAPI
- * ! Need to handle 404 errors as well as empty results 
- * Should find a way to wrap the API handling further - lots of code duplication for handling error cases 
+ * Handles interactions with WordsAPI ! Need to handle 404 errors as well as
+ * empty results Should find a way to wrap the API handling further - lots of
+ * code duplication for handling error cases
  */
 public class APICalls {
 
@@ -189,20 +190,35 @@ public class APICalls {
         return rhymes;
     }
 
-    static JSONObject getIPA(String word) {
+    public static JSONObject getIPA(String word) {
         JSONObject ipa = new JSONObject();
         String quality = "pronunciation";
         URI uri = getUri(word, quality);
         try {
             JSONObject jo = sendRequest(uri);
-            boolean removed_s = (jo.get("word").toString() + "s").equals(word); // need to add "z" to ipa 
+            boolean removed_s = (jo.get("word").toString() + "s").equals(word); // need to add "z" to ipa
 
-            if (!jo.optString("success").equals("") || ((JSONObject) jo.opt("pronunciation")).isEmpty()) {
-                return ipa; // no IPA found for the word
+            if (!jo.optString("success").equals("")) {
+                return ipa; // WordsAPI didn't recognise the word
             }
 
-            if (removed_s) {
-                // obviosuly not finished 
+            Object pronunciation = jo.get(quality);
+            switch (pronunciation.getClass().toString()) {
+            case "class java.lang.String":
+                ipa.put("all", pronunciation);
+                break;
+            case "class org.json.JSONObject":
+                Iterator<String> keys = ((JSONObject) pronunciation).keys();
+                while (keys.hasNext()) {
+                    String key = keys.next();
+                    String value = removed_s ? ((JSONObject) pronunciation).getString(key) + "z"
+                            : ((JSONObject) pronunciation).getString(key);
+                    ipa.put(key, value);
+                }
+                break;
+            default:
+                // unexpected
+                break;
             }
 
         } catch (IOException e) {

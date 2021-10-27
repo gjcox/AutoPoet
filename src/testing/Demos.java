@@ -3,16 +3,20 @@ package testing;
 import java.util.Arrays;
 import java.util.List;
 
+import org.json.JSONObject;
+
+import words.APICalls;
 import words.IPAHandler;
 import words.Syllable;
+import words.Word;
 
 public class Demos {
 
     private static void demoGetSyllables() {
         List<String> words = Arrays.asList("example", "mastery", "testing", "mistake", "sky", "cure", "hideous",
-                "insidious", "attack", "aback");
+                "insidious", "attack", "aback", "wind", "wind");
         List<String> ipa_words = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ", "mɪ'steɪk", "skaɪ", "kjʊr", "hɪdiəs",
-                "ɪn'sɪdiəs", "ə'tæk", "ə'bæk");
+                "ɪn'sɪdiəs", "ə'tæk", "ə'bæk", "wɪnd", "waɪnd");
 
         for (int i = 0; i < words.size(); i++) {
             List<Syllable> syllables = IPAHandler.getSyllables(ipa_words.get(i));
@@ -55,9 +59,29 @@ public class Demos {
         }
     }
 
+    public static void getIPA() {
+        List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds");
+        for (String word : words) {
+            JSONObject ipa = APICalls.getIPA(word);
+            System.out.print(word + ": ");
+            System.out.println(ipa.toString());
+        }
+    }
+
+    public static void wordConstructor() {
+        List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds");
+        for (String word : words) {
+            Word word_object = new Word(word);
+            System.out.print(word + ": ");
+            System.out.println(word_object.toString());
+        }
+    }
+
     public static void main(String[] args) {
-        demoGetSyllables();
-        demoRhymes1();
-        demoRhymes2();
+        // demoGetSyllables();
+        // demoRhymes1();
+        // demoRhymes2();
+        // getIPA();
+        // wordConstructor();
     }
 }

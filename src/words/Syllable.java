@@ -1,5 +1,7 @@
 package words;
 
+import org.json.JSONObject;
+
 public class Syllable {
 
     private String nucleus;
@@ -50,5 +52,13 @@ public class Syllable {
 
     public boolean rhymes(Syllable other) {
         return this.nucleus.equals(other.nucleus) && this.coda.equals(other.coda);
+    }
+
+    public JSONObject toJsonObject() {
+        JSONObject jo = new JSONObject(); 
+        jo.put("onset", onset); 
+        jo.put("nucleus", nucleus); 
+        jo.put("coda", coda); 
+        return jo; 
     }
 }
