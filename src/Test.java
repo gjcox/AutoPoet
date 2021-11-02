@@ -33,7 +33,9 @@ public class Test {
         } catch (IOException e) {
             System.err.println("File not found!");
         }*/
-        testJSONObject(); 
+        JSONObject emphases = new JSONObject("{primary: 0, has_secondary: false, secondary: []}");
+        System.out.println(emphases.toString());
+        // testJSONObject(); 
 
     }
 
