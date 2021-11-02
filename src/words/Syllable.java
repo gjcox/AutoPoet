@@ -1,5 +1,7 @@
 package words;
 
+import java.util.Map;
+
 import org.json.JSONObject;
 
 public class Syllable {
@@ -20,6 +22,25 @@ public class Syllable {
         this.nucleus = nucleus;
         this.onset = onset;
         this.coda = coda;
+    }
+
+    public Syllable(Map<String, String> map) throws ClassCastException {
+        String o = "onset";
+        String n = "nucleus";
+        String c = "coda";
+
+        if (map.get(n) == null) {
+            throw new ClassCastException("Syllable must have a nucleus.");
+        } else {
+            this.nucleus = map.get(n);
+        }
+
+        if (map.get(o) != null) {
+            this.onset = map.get(o);
+        }
+        if (map.get(c) != null) {
+            this.coda = map.get(c);
+        }
     }
 
     public void setNucleus(String nucleus) {
@@ -47,7 +68,7 @@ public class Syllable {
     }
 
     public int hashCode() {
-        return this.toString().hashCode(); 
+        return this.toString().hashCode();
     }
 
     public boolean rhymes(Syllable other) {
@@ -55,10 +76,10 @@ public class Syllable {
     }
 
     public JSONObject toJsonObject() {
-        JSONObject jo = new JSONObject(); 
-        jo.put("onset", onset); 
-        jo.put("nucleus", nucleus); 
-        jo.put("coda", coda); 
-        return jo; 
+        JSONObject jo = new JSONObject();
+        jo.put("onset", onset);
+        jo.put("nucleus", nucleus);
+        jo.put("coda", coda);
+        return jo;
     }
 }
