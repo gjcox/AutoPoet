@@ -3,8 +3,10 @@ package testing;
 import java.util.Arrays;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import utils.Pair;
 import words.APICalls;
 import words.IPAHandler;
 import words.Syllable;
@@ -12,50 +14,42 @@ import words.Word;
 
 public class Demos {
 
+    private static List<String> plaintexts = Arrays.asList("example", "mastery", "testing", "mistake", "sky", "cure",
+            "hideous", "insidious", "attack", "aback", "wind", "wind", "hideous", "bilious");
+    private static List<String> ipas = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ", "mɪ'steɪk", "skaɪ", "kjʊr",
+            "hɪdiəs", "ɪn'sɪdiəs", "ə'tæk", "ə'bæk", "wɪnd", "waɪnd", "hɪdiəs", "'bɪljəs");
+
     private static void demoGetSyllables() {
-        List<String> words = Arrays.asList("example", "mastery", "testing", "mistake", "sky", "cure", "hideous",
-                "insidious", "attack", "aback", "wind", "wind");
-        List<String> ipa_words = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ", "mɪ'steɪk", "skaɪ", "kjʊr", "hɪdiəs",
-                "ɪn'sɪdiəs", "ə'tæk", "ə'bæk", "wɪnd", "waɪnd");
-
-        for (int i = 0; i < words.size(); i++) {
-            List<Syllable> syllables = IPAHandler.getSyllables(ipa_words.get(i));
-            System.out.print(words.get(i) + ";" + ipa_words.get(i) + ": ");
-            for (Syllable syl : syllables) {
-                System.out.print(syl + ".");
-            }
-            System.out.println();
+        for (int i = 0; i < plaintexts.size(); i++) {
+            demoGetSyllables(plaintexts.get(i), ipas.get(i));
         }
     }
 
-    private static void demoRhymes1() {
-        List<String> words_1 = Arrays.asList("test", "test", "attack");
-        List<String> ipa_words_1 = Arrays.asList("tɛst", "tɛst", "ə'tæk");
-        List<String> words_2 = Arrays.asList("guest", "human", "aback");
-        List<String> ipa_words_2 = Arrays.asList("ɡɛst", "'hjumən", "ə'bæk");
+    private static void demoGetSyllables(String word, String ipa) {
+        Pair<JSONArray, JSONObject> pair = IPAHandler.getSyllables(ipa);
+        JSONArray syllables = pair.one();
+        JSONObject emphasis = pair.two();
+        System.out.println(word + ";" + ipa + ": ");
+        System.out.println(syllables.toString());
+        System.out.println(emphasis.toString());
 
-        for (int i = 0; i < words_1.size(); i++) {
-            List<Syllable> syllables_1 = IPAHandler.getSyllables(ipa_words_1.get(i));
-            List<Syllable> syllables_2 = IPAHandler.getSyllables(ipa_words_2.get(i));
-            boolean rhymes = IPAHandler.checkRhyme(syllables_1, syllables_2, 1);
-            System.out.println(String.format("\"%s\" rhymes with \"%s\" for 1 syllable: %b", words_1.get(i),
-                    words_2.get(i), rhymes));
-        }
     }
 
-    private static void demoRhymes2() {
-        List<String> words_1 = Arrays.asList("hideous", "attack", "whim");
-        List<String> ipa_words_1 = Arrays.asList("hɪdiəs", "ə'tæk", "wɪm");
-        List<String> words_2 = Arrays.asList("insidious", "aback", "dim");
-        List<String> ipa_words_2 = Arrays.asList("ɪn'sɪdiəs", "ə'bæk", "dɪm");
+    private static void demoRhymes() {
+        List<String> words_1 = Arrays.asList("test", "test", "hideous", "attack", "whim", "painted", "painted",
+                "overstated", "zombie");
+        List<String> ipa_words_1 = Arrays.asList("tɛst", "tɛst", "hɪdiəs", "ə'tæk", "wɪm", "'peɪntɪd", "'peɪntɪd",
+                "'oʊvɝr,steɪtɪd", "'zɑmbi");
+        List<String> words_2 = Arrays.asList("guest", "human", "insidious", "aback", "dim", "acquainted", "understated",
+                "understated", "bee");
+        List<String> ipa_words_2 = Arrays.asList("ɡɛst", "'hjumən", "ɪn'sɪdiəs", "ə'bæk", "dɪm", "ə'kweɪntɪd",
+                "'ʌndɝr,steɪtɪd", "'ʌndɝr,steɪtɪd", "bi");
 
         for (int i = 0; i < words_1.size(); i++) {
-            List<Syllable> syllables_1 = IPAHandler.getSyllables(ipa_words_1.get(i));
-            List<Syllable> syllables_2 = IPAHandler.getSyllables(ipa_words_2.get(i));
-            boolean rhymes = IPAHandler.checkRhyme(syllables_1, syllables_2);
-            int syllables = Math.min(syllables_1.size(), syllables_2.size());
-            System.out.println(String.format("\"%s\" rhymes with \"%s\" for %d syllable%s: %b", words_1.get(i),
-                    words_2.get(i), syllables, syllables == 1 ? "" : "s", rhymes));
+            Word word_1 = new Word(words_1.get(i), ipa_words_1.get(i));
+            Word word_2 = new Word(words_2.get(i), ipa_words_2.get(i));
+            boolean rhymes = IPAHandler.checkRhyme(word_1, word_2);
+            System.out.println(String.format("\"%s\" rhymes with \"%s\": %b", words_1.get(i), words_2.get(i), rhymes));
         }
     }
 
@@ -69,7 +63,7 @@ public class Demos {
     }
 
     public static void wordConstructor() {
-        List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds");
+        List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds", "present");
         for (String word : words) {
             Word word_object = new Word(word);
             System.out.print(word + ": ");
@@ -78,9 +72,9 @@ public class Demos {
     }
 
     public static void main(String[] args) {
-        // demoGetSyllables();
-        // demoRhymes1();
-        // demoRhymes2();
+        // demoGetSyllables("acquainted", "ə'kweɪntɪd");
+        // demoGetSyllables("painted", "'peɪntɪd");
+        demoRhymes();
         // getIPA();
         // wordConstructor();
     }

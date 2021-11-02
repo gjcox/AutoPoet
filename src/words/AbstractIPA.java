@@ -49,7 +49,7 @@ public abstract class AbstractIPA {
             /* /s/ plus voiceless non-sibilant fricative plus approximant */
             "sfr", 
             /* others that I think were missing */
-            "w"
+            "w", "pr", "kw"
         };
 
     protected static final String[] U_ONSETS = {

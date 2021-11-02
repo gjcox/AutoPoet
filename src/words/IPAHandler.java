@@ -1,23 +1,38 @@
 package words;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import utils.Pair;
 
 public class IPAHandler extends AbstractIPA {
 
-    public static List<Syllable> getSyllables(String ipa_word) {
+    /**
+     * Compute the syllables of a word based on the IPA. Words can have a single
+     * primary stressed syllable (denoted with ') and zero or more secondary
+     * stressed syllables (denoted with ,).
+     * 
+     * @param ipa_word
+     * @return a Pair<> including the JSONArray of syllables and JSONObject of
+     *         stresses
+     */
+    public static Pair<JSONArray, JSONObject> getSyllables(String ipa_word) {
         /*
          * logic based on
          * https://linguistics.stackexchange.com/questions/30933/how-to-split-ipa-
          * spelling-into-syllables
          */
-        ipa_word = ipa_word.replace("\'", ""); // remove emphasis character
+        JSONObject emphasis = new JSONObject("{primary: 0, has_secondary: false, secondary: []}");
         LinkedList<Syllable> syllables = new LinkedList<>();
         LinkedList<Integer> vowel_indexes = new LinkedList<>();
         LinkedList<Integer> nucleus_indexes = new LinkedList<>();
         LinkedList<Integer> onset_indexes = new LinkedList<>(); // the start of onsets; onset_indexes[i] should
-                                                                // correspond
-                                                                // to nuclei_indexes[i]
+                                                                // correspond to nuclei_indexes[i]
 
         /* 1. locate all nuclei (vowels) */
         for (int i = 0; i < ipa_word.length(); i++) {
@@ -48,17 +63,30 @@ public class IPAHandler extends AbstractIPA {
         }
 
         /* 2. for each nucleus, work backward, adding sounds to the onset */
+        /* if the onset would include a ' or , update the emphases JSONObject */
         for (int i = nucleus_indexes.size() - 1; i >= 0; i--) {
             boolean trial_onset_valid = true;
             String trial_onset = "";
             String onset = "";
             int onset_start = nucleus_indexes.get(i) - 1;
             while (trial_onset_valid && onset_start >= 0) {
-                trial_onset = ipa_word.charAt(onset_start) + trial_onset;
+                char prev_char = ipa_word.charAt(onset_start);
+                trial_onset = prev_char + trial_onset;
                 if (AbstractIPA.isValidOnset(trial_onset, syllables.get(i).getNucleus())) {
                     onset = trial_onset;
                     onset_indexes.set(i, onset_start);
                     onset_start--;
+                } else if (prev_char == '\'') {
+                    /* primary stress */
+                    emphasis.put("primary", i);
+                    onset_indexes.set(i, onset_start); // prevents character being included in a coda
+                    trial_onset_valid = false;
+                } else if (prev_char == ',') {
+                    /* secondary stress */
+                    emphasis.put("has_secondary", true);
+                    ((JSONArray) emphasis.get("secondary")).put(i);
+                    onset_indexes.set(i, onset_start); // prevents character being included in a coda
+                    trial_onset_valid = false;
                 } else {
                     trial_onset_valid = false;
                 }
@@ -86,7 +114,12 @@ public class IPAHandler extends AbstractIPA {
         syllables.getLast()
                 .setCoda(ipa_word.substring(nucleus_indexes.getLast() + syllables.getLast().getNucleus().length()));
 
-        return syllables;
+        JSONArray ipa_syllables_arr = new JSONArray();
+        for (Syllable syllable : syllables) {
+            ipa_syllables_arr.put(syllable.toJsonObject());
+        }
+
+        return new Pair<>(ipa_syllables_arr, emphasis);
     }
 
     /*
@@ -94,11 +127,37 @@ public class IPAHandler extends AbstractIPA {
      * coda. For a multi-syllabic rhyme, the onset of all but the first syllable
      * pair must also match, hence the syllables in the for loop are treated
      * differently.
+     * 
+     * I should account for Abercrombie and Zombie (i.e. secondary emphasis)
      */
-    public static boolean checkRhyme(List<Syllable> word_1, List<Syllable> word_2, int syllables) {
+    /**
+     * 
+     * @param array_1
+     * @param array_2
+     * @param emphasis_position index of syllable to rhyme to ()
+     * @return
+     */
+    public static boolean checkRhyme(JSONArray array_1, JSONArray array_2, int syllables) {
 
-        if (syllables > word_1.size() || syllables > word_2.size()) {
-            throw new IndexOutOfBoundsException();
+        List<Object> list;
+
+        List<Syllable> word_1 = new LinkedList<>();
+        list = array_1.toList();
+        for (Object object : list) {
+            Map<String, String> map = (Map<String, String>) object;
+            word_1.add(new Syllable(map));
+        }
+
+        List<Syllable> word_2 = new LinkedList<>();
+        list = array_2.toList();
+        for (Object object : list) {
+            Map<String, String> map = (Map<String, String>) object;
+            word_2.add(new Syllable(map));
+        }
+
+        if (syllables > word_1.size() || syllables > word_2.size() || syllables < 1) {
+            throw new IndexOutOfBoundsException(String.format("Syllables: %d; word_1.size: %d; word_2.size: %d",
+                    syllables, word_1.size(), word_2.size()));
         }
         boolean rhymes = true;
         for (int i = 1; i < syllables; i++) {
@@ -118,20 +177,39 @@ public class IPAHandler extends AbstractIPA {
     }
 
     /**
-     * Checks if two words rhyme for as many syllables as possible (i.e. all
-     * syllables in the word with fewer syllables)
+     * Checks if two words rhyme up to and including the earlier primary stress.
      * 
      * @param word_1
      * @param word_2
-     * @return
+     * @return false if the shorter word is does not have enough syllables to
+     *         include the earlier stress, e.g. "poet" and "it"
      */
-    public static boolean checkRhyme(List<Syllable> word_1, List<Syllable> word_2) {
-        int syllables = Math.min(word_1.size(), word_2.size());
-        return checkRhyme(word_1, word_2, syllables);
-    }
+    public static boolean checkRhyme(Word word_1, Word word_2) {
+        JSONObject syl_object_1 = word_1.ipaSyllables();
+        JSONObject syl_object_2 = word_2.ipaSyllables();
 
-    public static void main(String[] args) {
+        Iterator<String> parts_of_speech_1 = syl_object_1.keys();
+        while (parts_of_speech_1.hasNext()) {
+            String part_of_speech_1 = parts_of_speech_1.next();
+            JSONArray syllables_1 = (JSONArray) syl_object_1.get(part_of_speech_1);
+            int rhyme_length_1 = word_1.rhymeLength(part_of_speech_1);
+            Iterator<String> parts_of_speech_2 = syl_object_2.keys();
+            while (parts_of_speech_2.hasNext()) {
+                String part_of_speech_2 = parts_of_speech_2.next();
+                JSONArray syllables_2 = (JSONArray) syl_object_2.get(part_of_speech_2);
+                int rhyme_length_2 = word_2.rhymeLength(part_of_speech_2);
 
+                int syllables = Math.max(rhyme_length_1, rhyme_length_2);
+
+                if (syllables > Math.min(syllables_1.length(), syllables_2.length())) {
+                    continue; // the shorter word is too short to form a rhyme
+                }
+
+                if (checkRhyme(syllables_1, syllables_2, syllables))
+                    return true;
+            }
+        }
+        return false;
     }
 
 }
