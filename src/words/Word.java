@@ -2,10 +2,12 @@ package words;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import utils.EmphasisKeys;
 import utils.Pair;
 
 public class Word {
@@ -98,14 +100,27 @@ public class Word {
         return this.ipa_emphasis;
     }
 
-    public int rhymeLength(String part_of_speech) {
+    public JSONObject rhymeLengths(String part_of_speech) {
+        JSONObject rhyme_lengths = EmphasisKeys.newEmphasisObject(); 
         int length = ((JSONArray) this.ipa_syllables.get(part_of_speech)).length();
-        JSONObject emphasis_object = (JSONObject) this.ipa_emphasis.get(part_of_speech); 
-        int emphasis_index = (int) emphasis_object.get("primary");
-        return length - emphasis_index; 
+        JSONObject emphasis_object = (JSONObject) this.ipa_emphasis.get(part_of_speech);
+
+        /* get number of syllables between primary emphasis and end of word */
+        int primary_index = (int) emphasis_object.get(EmphasisKeys.PRIMARY);
+        int primary_rhyme_length = length - primary_index;
+        rhyme_lengths.put(EmphasisKeys.PRIMARY, primary_rhyme_length);
+
+        /* get numbers of syllables between secondary emphases and end of word */
+        JSONArray secondaries = (JSONArray) emphasis_object.get(EmphasisKeys.SECONDARY);
+        List<Object> secondary_indexes = secondaries.toList();
+        for (Object index : secondary_indexes) {
+            int secondary_rhyme_length = length - (Integer) index;
+            ((JSONArray) rhyme_lengths.get(EmphasisKeys.SECONDARY)).put(secondary_rhyme_length);
+        }
+        return rhyme_lengths;
     }
 
     public String plaintext() {
-        return plaintext; 
+        return plaintext;
     }
 }
