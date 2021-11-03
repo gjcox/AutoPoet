@@ -51,7 +51,7 @@ public abstract class AbstractIPA {
             /* /s/ plus voiceless non-sibilant fricative plus approximant */
             "sfr",
             /* others that I think were missing */
-            "w", "pr", "kw" };
+            "w", "pr", "kw", "kr" };
 
     protected static final String[] U_ONSETS = {
             /* Consonant plus /j/ (before /uː/ or its modified/reduced forms) */
