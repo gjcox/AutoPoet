@@ -71,11 +71,23 @@ public class Demos {
         }
     }
 
+    public static void presentPresent() {
+        Word present = new Word("present"); 
+        Word resent = new Word("resent"); 
+        boolean rhymes = IPAHandler.checkRhyme(present, resent);
+        System.out.println(String.format("\"%s\" rhymes with \"%s\": %b", present.plaintext(), resent.plaintext(), rhymes));
+
+    }
+
+
     public static void main(String[] args) {
         // demoGetSyllables("acquainted", "ə'kweɪntɪd");
         // demoGetSyllables("painted", "'peɪntɪd");
-        demoRhymes();
+        // demoRhymes();
         // getIPA();
         // wordConstructor();
+        // presentPresent();
+        System.out.println(new Word("overstated"));
+        System.out.println(new Word("understated"));
     }
 }
