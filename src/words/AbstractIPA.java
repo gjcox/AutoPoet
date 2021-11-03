@@ -5,12 +5,14 @@ import java.util.Arrays;
 public abstract class AbstractIPA {
 
     protected static final Character[] VOWELS = { 'i', 'y', 'ɨ', 'ʉ', 'ɯ', 'u', 'ɪ', 'ʏ', 'ʊ', 'e', 'ø', 'ɘ', 'ɵ', 'ɤ',
-            'o', 'ə', 'ɛ', 'œ', 'ɜ', 'ɞ', 'ʌ', 'ɔ', 'æ', 'ɐ', 'a', 'ɶ', 'ä', 'ɑ' };
-    /*
-     * 'e̞', 'ø̞', 'ɤ̞', 'o̞', were considered invalid, but according to Wikipedia
-     * are only found in regional accents of English so they are unlikely to feature
-     * in WordsAPI
-     */
+            'o', 'ə', 'ɛ', 'œ', 'ɜ', 'ɞ', 'ʌ', 'ɔ', 'æ', 'ɐ', 'a', 'ɶ', 'ä', 'ɑ',
+            /* others that I think were missing */
+            'ɝ'
+            /*
+             * 'e̞', 'ø̞', 'ɤ̞', 'o̞', were considered invalid, but according to Wikipedia
+             * are only found in regional accents of English so they are unlikely to feature
+             * in WordsAPI
+             */ };
 
     protected static final String[] U_VARIANTS = { "u", "ʊ" }; // String to account for dipthongs in comparison
                                                                // might not be an exhaustive list yet
@@ -47,10 +49,9 @@ public abstract class AbstractIPA {
             /* /s/ plus voiceless stop plus approximant */
             "spl", "skl", "spr", "str", "skr", "skw", "smj", "spj", "stj", "skj",
             /* /s/ plus voiceless non-sibilant fricative plus approximant */
-            "sfr", 
+            "sfr",
             /* others that I think were missing */
-            "w", "pr", "kw"
-        };
+            "w", "pr", "kw" };
 
     protected static final String[] U_ONSETS = {
             /* Consonant plus /j/ (before /uː/ or its modified/reduced forms) */
