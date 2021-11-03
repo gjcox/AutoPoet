@@ -193,6 +193,7 @@ public class IPAHandler extends AbstractIPA {
             String part_of_speech_1 = parts_of_speech_1.next();
             JSONArray syllables_1 = (JSONArray) syl_object_1.get(part_of_speech_1);
             int rhyme_length_1 = word_1.rhymeLength(part_of_speech_1);
+            
             Iterator<String> parts_of_speech_2 = syl_object_2.keys();
             while (parts_of_speech_2.hasNext()) {
                 String part_of_speech_2 = parts_of_speech_2.next();
