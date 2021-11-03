@@ -104,4 +104,8 @@ public class Word {
         int emphasis_index = (int) emphasis_object.get("primary");
         return length - emphasis_index; 
     }
+
+    public String plaintext() {
+        return plaintext; 
+    }
 }
