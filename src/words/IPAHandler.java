@@ -145,6 +145,7 @@ public class IPAHandler extends AbstractIPA {
         List<Syllable> word_1 = new LinkedList<>();
         list = array_1.toList();
         for (Object object : list) {
+            @SuppressWarnings("unchecked")
             Map<String, String> map = (Map<String, String>) object;
             word_1.add(new Syllable(map));
         }
@@ -153,6 +154,7 @@ public class IPAHandler extends AbstractIPA {
         List<Syllable> word_2 = new LinkedList<>();
         list = array_2.toList();
         for (Object object : list) {
+            @SuppressWarnings("unchecked")
             Map<String, String> map = (Map<String, String>) object;
             word_2.add(new Syllable(map));
         }

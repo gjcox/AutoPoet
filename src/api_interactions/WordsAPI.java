@@ -1,4 +1,4 @@
-package words;
+package api_interactions;
 
 import java.io.IOException;
 import java.net.ProxySelector;
@@ -19,7 +19,7 @@ import org.json.JSONObject;
  * empty results Should find a way to wrap the API handling further - lots of
  * code duplication for handling error cases
  */
-public class APICalls {
+public class WordsAPI {
 
     static HttpClient client = HttpClient.newBuilder().proxy(ProxySelector.getDefault()).build();
 
@@ -138,6 +138,7 @@ public class APICalls {
                 JSONArray types = (JSONArray) jo.get(quality);
                 System.out.println("\"" + word + "\" is a type of:" + types);
 
+                @SuppressWarnings("unchecked")
                 List<String> types_list = (List<String>) (List<?>) types.toList();
                 for (String type : types_list) {
                     common_type.putAll(getTypesOf(type));

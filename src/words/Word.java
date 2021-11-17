@@ -7,6 +7,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import api_interactions.WordsAPI;
 import utils.EmphasisKeys;
 import utils.Pair;
 
@@ -46,7 +47,7 @@ public class Word {
 
     public Word(String plaintext) {
         this.plaintext = plaintext;
-        this.ipa = APICalls.getIPA(plaintext);
+        this.ipa = WordsAPI.getIPA(plaintext);
 
         Iterator<String> keys = ipa.keys();
         while (keys.hasNext()) {

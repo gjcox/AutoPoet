@@ -6,9 +6,9 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import api_interactions.WordsAPI;
 import utils.EmphasisKeys;
 import utils.Pair;
-import words.APICalls;
 import words.IPAHandler;
 import words.Word;
 
@@ -56,7 +56,7 @@ public class Demos {
     public static void getIPA() {
         List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds");
         for (String word : words) {
-            JSONObject ipa = APICalls.getIPA(word);
+            JSONObject ipa = WordsAPI.getIPA(word);
             System.out.print(word + ": ");
             System.out.println(ipa.toString());
         }
