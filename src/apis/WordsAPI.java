@@ -32,7 +32,7 @@ public class WordsAPI {
      * @throws IOException          if an I/O error occurs during sending/receiving.
      * @throws InterruptedException if the operation is interrupted.
      */
-    static JSONObject sendRequest(URI uri) throws IOException, InterruptedException {
+    private static JSONObject sendRequest(URI uri) throws IOException, InterruptedException {
         JSONObject response;
         try {
             HttpResponse<String> response_string = client.send(getRequest(uri), BodyHandlers.ofString());
@@ -55,7 +55,7 @@ public class WordsAPI {
      * @param uri a URI supplied by getUri().
      * @return the HttpRequest, complete with API key.
      */
-    static HttpRequest getRequest(URI uri) {
+    private static HttpRequest getRequest(URI uri) {
         return HttpRequest.newBuilder().uri(uri).header("x-rapidapi-host", "wordsapiv1.p.rapidapi.com")
                 .header("x-rapidapi-key", "9aa07eab5amsh819a29a74fb1a8bp14a516jsna22ffeb0ecfc")
                 .method("GET", HttpRequest.BodyPublishers.noBody()).build();
@@ -70,7 +70,7 @@ public class WordsAPI {
      * @return a formatted uri, with any spaces in the word replaced with %20 for
      *         HTTP use.
      */
-    static URI getUri(String word, String _info) {
+    private static URI getUri(String word, String _info) {
         word = word.replace(" ", "%20"); // remove spaces
         return URI.create("https://wordsapiv1.p.rapidapi.com/words/" + word + "/" + _info);
     }
@@ -81,7 +81,7 @@ public class WordsAPI {
      * @param word the plaintext word to get synonyms of.
      * @return a populated JSONArray if the request had results, else an empty one.
      */
-    static JSONArray getSynonyms(String word) {
+    public static JSONArray getSynonyms(String word) {
         JSONArray synonyms = new JSONArray();
         String quality = "synonyms";
         URI uri = getUri(word, quality);
@@ -115,7 +115,7 @@ public class WordsAPI {
      * @param word the plaintext word to get sub-types of.
      * @return a populated JSONArray if the request had results, else an empty one.
      */
-    static JSONArray getTypesOf(String word) {
+    public static JSONArray getTypesOf(String word) {
         JSONArray types = new JSONArray();
         String quality = "hasTypes";
         URI uri = getUri(word, quality);
@@ -149,7 +149,7 @@ public class WordsAPI {
      * @param word the plaintext word to get words with a common super-type.
      * @return a populated JSONArray if the request had results, else an empty one.
      */
-    static JSONArray getCommonType(String word) {
+    public static JSONArray getCommonType(String word) {
         JSONArray common_type = new JSONArray(); // not strictly synonyms, rather having a common type
         String quality = "typeOf";
         URI uri = getUri(word, quality);
@@ -193,7 +193,7 @@ public class WordsAPI {
      * @param word the plaintext word to get rhymes of.
      * @return a populated JSONArray if the request had results, else an empty one.
      */
-    static JSONArray getRhymes(String word) {
+    public static JSONArray getRhymes(String word) {
         JSONArray rhymes = new JSONArray();
         String quality = "rhymes";
         URI uri = getUri(word, quality);
