@@ -6,9 +6,9 @@ import org.json.JSONObject;
 
 public class Syllable {
 
-    private String nucleus;
-    private String onset = "";
-    private String coda = "";
+    private String nucleus; // the vowel sound of a syllable - either a single vowel or a dipthong
+    private String onset = ""; // the consonants preceding the vowel within the syllable
+    private String coda = ""; // the consonants after the vowel within the syllable
 
     public Syllable(char nucleus) {
         this.nucleus = new String(new char[] { nucleus });
@@ -24,22 +24,34 @@ public class Syllable {
         this.coda = coda;
     }
 
+    /**
+     * For converting from a JSONObject, the the intermediate step of a JSONArray
+     * containing the object being made into a List<Object>, which turns JSONObjects
+     * to Map<String,String>.
+     * 
+     * @param map a JSONObject encoded as a Map<String, String>.
+     * @throws ClassCastException if the Map does not have a "nucleus" key, or has a null value for it.
+     */
     public Syllable(Map<String, String> map) throws ClassCastException {
         String o = "onset";
         String n = "nucleus";
         String c = "coda";
 
-        if (map.get(n) == null) {
+        String onset_;
+        String nucleus_;
+        String coda_;
+
+        if ((nucleus_ = map.get(n)) == null) {
             throw new ClassCastException("Syllable must have a nucleus.");
         } else {
-            this.nucleus = map.get(n);
+            this.nucleus = nucleus_;
         }
 
-        if (map.get(o) != null) {
-            this.onset = map.get(o);
+        if ((onset_ = map.get(o)) != null) {
+            this.onset = onset_;
         }
-        if (map.get(c) != null) {
-            this.coda = map.get(c);
+        if ((coda_ = map.get(c)) != null) {
+            this.coda = coda_;
         }
     }
 

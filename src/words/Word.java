@@ -8,9 +8,21 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import api_interactions.WordsAPI;
-import utils.EmphasisKeys;
+import utils.JSONConstructors.Emphasis;
 import utils.Pair;
 
+/**
+ * The ipa object includes "part of speech" for the pronunciations, but WordsAPI
+ * doesn't document what the options are. Most words will just have an "all"
+ * value, but some have "all", "noun" and "verb". Seemingly "all" will just be
+ * the noun for some reason. Other parts of speech exist in English: pronouns,
+ * adjectives, adverbs, prepositions, conjunctions, articles/determiners, and
+ * interjections. Some words (e.g. "the", "ouch") have pronunciation data but it
+ * doesn't have a part of speech (e.g. for "the": "pronunciation":"ðʌ").
+ * 
+ * I can't think of an example of a word to test that has multiple parts of
+ * speech that are pronounced differently that aren't nouns and adjectives.
+ */
 public class Word {
 
     private String plaintext;
@@ -18,20 +30,6 @@ public class Word {
                                         /// / / / / / / / / / / / / / / "list":[0:"in", 1:"cred", 2:"i", 3:"ble"]} -
     private JSONObject ipa; // / / / / / / e.g. wind "ipa":{"all":"'prɛzənt", "noun":"'prɛzənt",
                             /// / / / / / / / / / / / / / / "verb":"prɪ'zɛnt"} -
-
-    /*
-     * The ipa object includes "part of speech" for the pronunciations, but WordsAPI
-     * doesn't document what the options are. Most words will just have an "all"
-     * value, but some have "all", "noun" and "verb". Seemingly "all" will just be
-     * the noun for some reason. Other parts of speech exist in English: pronouns,
-     * adjectives, adverbs, prepositions, conjunctions, articles/determiners, and
-     * interjections. Some words (e.g. "the", "ouch") have pronunciation data but it
-     * doesn't have a part of speech (e.g. for "the": "pronunciation":"ðʌ").
-     * 
-     * I can't think of an example of a word to test that has multiple parts of
-     * speech that are pronounced differently that aren't nouns and adjectives.
-     */
-
     private JSONObject ipa_syllables = new JSONObject(); // / e.g. present
                                                          // :{"all":[{"coda":"","nucleus":"ɛ","onset":"pr"},{"coda":"nt","nucleus":"ə","onset":"z"}],
                                                          // "noun":[{"coda":"","nucleus":"ɛ","onset":"pr"},{"coda":"nt","nucleus":"ə","onset":"z"}],
@@ -102,21 +100,21 @@ public class Word {
     }
 
     public JSONObject rhymeLengths(String part_of_speech) {
-        JSONObject rhyme_lengths = EmphasisKeys.newEmphasisObject(); 
+        JSONObject rhyme_lengths = Emphasis.newEmphasisObject();
         int length = ((JSONArray) this.ipa_syllables.get(part_of_speech)).length();
         JSONObject emphasis_object = (JSONObject) this.ipa_emphasis.get(part_of_speech);
 
         /* get number of syllables between primary emphasis and end of word */
-        int primary_index = (int) emphasis_object.get(EmphasisKeys.PRIMARY);
+        int primary_index = (int) emphasis_object.get(Emphasis.PRIMARY);
         int primary_rhyme_length = length - primary_index;
-        rhyme_lengths.put(EmphasisKeys.PRIMARY, primary_rhyme_length);
+        rhyme_lengths.put(Emphasis.PRIMARY, primary_rhyme_length);
 
         /* get numbers of syllables between secondary emphases and end of word */
-        JSONArray secondaries = (JSONArray) emphasis_object.get(EmphasisKeys.SECONDARY);
+        JSONArray secondaries = (JSONArray) emphasis_object.get(Emphasis.SECONDARY);
         List<Object> secondary_indexes = secondaries.toList();
         for (Object index : secondary_indexes) {
             int secondary_rhyme_length = length - (Integer) index;
-            ((JSONArray) rhyme_lengths.get(EmphasisKeys.SECONDARY)).put(secondary_rhyme_length);
+            ((JSONArray) rhyme_lengths.get(Emphasis.SECONDARY)).put(secondary_rhyme_length);
         }
         return rhyme_lengths;
     }

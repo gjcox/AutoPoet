@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import api_interactions.WordsAPI;
-import utils.EmphasisKeys;
+import utils.JSONConstructors.Emphasis;
 import utils.Pair;
 import words.IPAHandler;
 import words.Word;
@@ -88,13 +88,13 @@ public class Demos {
     }
 
     public static void newEmphasisObject() {
-        JSONObject object = EmphasisKeys.newEmphasisObject();
+        JSONObject object = Emphasis.newEmphasisObject();
         System.out.println(object);
-        object.put(EmphasisKeys.PRIMARY, 1);
+        object.put(Emphasis.PRIMARY, 1);
         System.out.println(object);
-        ((JSONArray) object.get(EmphasisKeys.SECONDARY)).put(2);
+        ((JSONArray) object.get(Emphasis.SECONDARY)).put(2);
         System.out.println(object);
-        ((JSONArray) object.get(EmphasisKeys.SECONDARY)).put(3);
+        ((JSONArray) object.get(Emphasis.SECONDARY)).put(3);
         System.out.println(object);
     }
 

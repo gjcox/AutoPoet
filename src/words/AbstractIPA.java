@@ -28,7 +28,7 @@ public abstract class AbstractIPA {
     protected static final Character[] CONSONANTS = { 'p', 'b', 't', 'd', 'ʈ', 'ɖ', 'c', 'ɟ', 'k', 'ɡ', 'q', 'ɢ', 'ʔ',
             'm', 'ɱ', 'n', 'ɳ', 'ɲ', 'ŋ', 'ɴ', 'ʙ', 'r', 'ʀ', 'ⱱ', 'ɾ', 'ɽ', 'ɸ', 'β', 'f', 'v', 'θ', 'ð', 's', 'z',
             'ʃ', 'ʒ', 'ʂ', 'ʐ', 'ç', 'ʝ', 'x', 'ɣ', 'χ', 'ʁ', 'ħ', 'ʕ', 'h', 'ɦ', 'ɬ', 'ɮ', 'ʋ', 'ɹ', 'ɻ', 'j', 'ɰ',
-            'l', 'ɭ', 'ʎ', 'ʟ' };
+            'l', 'ɭ', 'ʎ', 'ʟ' }; 
 
     protected static final String[] ONSETS = {
             /* from https://en.wikipedia.org/wiki/English_phonology#Syllable_structure */

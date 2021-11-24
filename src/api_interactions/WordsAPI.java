@@ -9,25 +9,28 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import utils.CollectionOperations;
+
 /**
- * Handles interactions with WordsAPI ! Need to handle 404 errors as well as
- * empty results Should find a way to wrap the API handling further - lots of
- * code duplication for handling error cases
+ * Handles interactions with WordsAPI TODO: Need to handle 404 errors as well as
+ * empty results TODO: Should find a way to wrap the API handling further - lots
+ * of code duplication for handling error cases
  */
 public class WordsAPI {
 
     static HttpClient client = HttpClient.newBuilder().proxy(ProxySelector.getDefault()).build();
 
     /**
+     * Attempts to send a request to WordsAPI.
      * 
-     * @param uri
-     * @return
-     * @throws Exception
+     * @param uri the request to send, which needs to include an API key.
+     * @return the body of the response, in the JSON format used by WordsAPI.
+     * @throws IOException          if an I/O error occurs during sending/receiving.
+     * @throws InterruptedException if the operation is interrupted.
      */
     static JSONObject sendRequest(URI uri) throws IOException, InterruptedException {
         JSONObject response;
@@ -46,9 +49,11 @@ public class WordsAPI {
     }
 
     /**
+     * Attaches the appropriate headers to a URI and converts it into an
+     * HttpRequest. Called within sendRequest().
      * 
-     * @param uri
-     * @return
+     * @param uri a URI supplied by getUri().
+     * @return the HttpRequest, complete with API key.
      */
     static HttpRequest getRequest(URI uri) {
         return HttpRequest.newBuilder().uri(uri).header("x-rapidapi-host", "wordsapiv1.p.rapidapi.com")
@@ -56,15 +61,25 @@ public class WordsAPI {
                 .method("GET", HttpRequest.BodyPublishers.noBody()).build();
     }
 
+    /**
+     * Creates a URI for a WordsAPI request.
+     * 
+     * @param word  the plaintext of the word to get data about.
+     * @param _info the type of data needed, corresponding to one from the API
+     *              https://rapidapi.com/dpventures/api/wordsapi/.
+     * @return a formatted uri, with any spaces in the word replaced with %20 for
+     *         HTTP use.
+     */
     static URI getUri(String word, String _info) {
         word = word.replace(" ", "%20"); // remove spaces
         return URI.create("https://wordsapiv1.p.rapidapi.com/words/" + word + "/" + _info);
     }
 
     /**
+     * Sends a request for the synonyms of a word.
      * 
-     * @param word
-     * @return
+     * @param word the plaintext word to get synonyms of.
+     * @return a populated JSONArray if the request had results, else an empty one.
      */
     static JSONArray getSynonyms(String word) {
         JSONArray synonyms = new JSONArray();
@@ -93,6 +108,13 @@ public class WordsAPI {
         return synonyms;
     }
 
+    /**
+     * Sends a request for the sub-types of a word (e.g. purple has types violet,
+     * lavender, mauve, reddish blue, reddish purple, royal purple).
+     * 
+     * @param word the plaintext word to get sub-types of.
+     * @return a populated JSONArray if the request had results, else an empty one.
+     */
     static JSONArray getTypesOf(String word) {
         JSONArray types = new JSONArray();
         String quality = "hasTypes";
@@ -120,6 +142,13 @@ public class WordsAPI {
         return types;
     }
 
+    /**
+     * Finds the words that have a common super-type as a given word (e.g. hat and
+     * cap have the common types headgear and headdress).
+     * 
+     * @param word the plaintext word to get words with a common super-type.
+     * @return a populated JSONArray if the request had results, else an empty one.
+     */
     static JSONArray getCommonType(String word) {
         JSONArray common_type = new JSONArray(); // not strictly synonyms, rather having a common type
         String quality = "typeOf";
@@ -144,7 +173,7 @@ public class WordsAPI {
                     common_type.putAll(getTypesOf(type));
                 }
 
-                common_type = removeDuplicates(common_type);
+                common_type = CollectionOperations.removeDuplicates(common_type);
 
                 System.out.println("Words with common types as \"" + word + "\":" + common_type);
             }
@@ -157,10 +186,12 @@ public class WordsAPI {
 
     }
 
-    /***
+    /**
+     * Sends a request for the rhymes of a word. Potentially redundant now that I
+     * have implemented rhyme recognition.
      * 
-     * @param word
-     * @return
+     * @param word the plaintext word to get rhymes of.
+     * @return a populated JSONArray if the request had results, else an empty one.
      */
     static JSONArray getRhymes(String word) {
         JSONArray rhymes = new JSONArray();
@@ -191,6 +222,12 @@ public class WordsAPI {
         return rhymes;
     }
 
+    /**
+     * Sends a request for the IPA information of a word.
+     * 
+     * @param word the plaintext word to get the IPA of.
+     * @return a populated JSONObject if the request had results, else an empty one.
+     */
     public static JSONObject getIPA(String word) {
         JSONObject ipa = new JSONObject();
         String quality = "pronunciation";
@@ -231,12 +268,6 @@ public class WordsAPI {
             // could cause an infinite loop...
         }
         return ipa;
-    }
-
-    static JSONArray removeDuplicates(JSONArray array) {
-        List<Object> list = array.toList();
-        list = list.stream().distinct().collect(Collectors.toList());
-        return new JSONArray(list);
     }
 
 }

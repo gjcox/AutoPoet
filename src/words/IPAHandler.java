@@ -8,7 +8,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import utils.EmphasisKeys;
+import utils.JSONConstructors.Emphasis;
 import utils.Pair;
 
 public class IPAHandler extends AbstractIPA {
@@ -28,7 +28,7 @@ public class IPAHandler extends AbstractIPA {
          * https://linguistics.stackexchange.com/questions/30933/how-to-split-ipa-
          * spelling-into-syllables
          */
-        JSONObject emphasis = EmphasisKeys.newEmphasisObject();
+        JSONObject emphasis = Emphasis.newEmphasisObject();
         LinkedList<Syllable> syllables = new LinkedList<>();
         LinkedList<Integer> vowel_indexes = new LinkedList<>();
         LinkedList<Integer> nucleus_indexes = new LinkedList<>();
@@ -79,12 +79,12 @@ public class IPAHandler extends AbstractIPA {
                     onset_start--;
                 } else if (prev_char == '\'') {
                     /* primary stress */
-                    emphasis.put(EmphasisKeys.PRIMARY, i);
+                    emphasis.put(Emphasis.PRIMARY, i);
                     onset_indexes.set(i, onset_start); // prevents character being included in a coda
                     trial_onset_valid = false;
                 } else if (prev_char == ',') {
                     /* secondary stress */
-                    ((JSONArray) emphasis.get(EmphasisKeys.SECONDARY)).put(i);
+                    ((JSONArray) emphasis.get(Emphasis.SECONDARY)).put(i);
                     onset_indexes.set(i, onset_start); // prevents character being included in a coda
                     trial_onset_valid = false;
                 } else {
@@ -128,14 +128,14 @@ public class IPAHandler extends AbstractIPA {
      * pair must also match, hence the syllables in the for loop are treated
      * differently.
      * 
-     * I should account for Abercrombie and Zombie (i.e. secondary emphasis)
      */
     /**
      * 
-     * @param array_1
-     * @param array_2
-     * @param emphasis_position index of syllable to rhyme to ()
-     * @return
+     * @param array_1   of IPA syllables in word 1.
+     * @param array_2   of IPA syllables in word 2.
+     * @param syllables the number of syllables to match against, starting at the
+     *                  end of the words.
+     * @return true if the two words rhyme to the given number of syllables.
      */
     public static boolean checkRhyme(JSONArray array_1, JSONArray array_2, int syllables) {
 
@@ -188,7 +188,8 @@ public class IPAHandler extends AbstractIPA {
     }
 
     /**
-     * Checks if two words rhyme.
+     * Checks if two words rhyme. Tries all pairs of pronunciants for the words and
+     * potential rhyme lengths.
      * 
      * @param word_1
      * @param word_2
@@ -215,7 +216,7 @@ public class IPAHandler extends AbstractIPA {
 
                 List<Integer> rhyme_lengths = getCommonRhymeLengths(rhyme_lengths_1, rhyme_lengths_2);
                 if (rhyme_lengths.isEmpty()) {
-                    continue; // the words don't a rhyme length
+                    continue; // the words don't share a rhyme length
                 }
 
                 /* test if any of common rhyme lengths produce a rhyme */
@@ -228,18 +229,27 @@ public class IPAHandler extends AbstractIPA {
         return false;
     }
 
+    /**
+     * Finds common rhyme lengths, defined as matching primary/primary emphases, and
+     * matching primary/secondary emphases. Here, "matching" emphases are the same
+     * number of syllables from the end of their respective word.
+     * 
+     * @param rhyme_lengths_1
+     * @param rhyme_lengths_2
+     * @return
+     */
     private static List<Integer> getCommonRhymeLengths(JSONObject rhyme_lengths_1, JSONObject rhyme_lengths_2) {
         List<Integer> common_rhyme_lengths = new LinkedList<>();
 
         /* match primary_1 to primary_2 */
-        Integer primary_1 = (Integer) rhyme_lengths_1.get(EmphasisKeys.PRIMARY);
-        Integer primary_2 = (Integer) rhyme_lengths_2.get(EmphasisKeys.PRIMARY);
+        Integer primary_1 = (Integer) rhyme_lengths_1.get(Emphasis.PRIMARY);
+        Integer primary_2 = (Integer) rhyme_lengths_2.get(Emphasis.PRIMARY);
         if (primary_1.equals(primary_2)) {
             common_rhyme_lengths.add(primary_1);
         }
 
         /* match primary_1 to secondary_2 */
-        List<Integer> secondaries_2 = EmphasisKeys.getSecondary(rhyme_lengths_2);
+        List<Integer> secondaries_2 = Emphasis.getSecondary(rhyme_lengths_2);
         for (Integer secondary_2 : secondaries_2) {
             if (primary_1.equals(secondary_2)) {
                 common_rhyme_lengths.add(primary_1);
@@ -247,7 +257,7 @@ public class IPAHandler extends AbstractIPA {
         }
 
         /* match secondary_1 to primary_2 */
-        List<Integer> secondaries_1 = EmphasisKeys.getSecondary(rhyme_lengths_1);
+        List<Integer> secondaries_1 = Emphasis.getSecondary(rhyme_lengths_1);
         for (Integer secondary_1 : secondaries_1) {
             if (primary_2.equals(secondary_1)) {
                 common_rhyme_lengths.add(primary_2);
