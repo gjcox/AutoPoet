@@ -1,13 +1,13 @@
 package words;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import api_interactions.WordsAPI;
+import apis.WordsAPI;
 import utils.JSONConstructors.Emphasis;
 import utils.Pair;
 
@@ -38,10 +38,10 @@ public class Word {
                                                         // "verb":{"secondary":[],"has_secondary":false,"primary":1},
                                                         // "noun":{"secondary":[],"has_secondary":false,"primary":0}}-
     private JSONArray synonym_arr; /// / / e.g. lovely [0:"adorable", 1:"endearing", 2:"cover girl", 3:"pin-up"]
-    private LinkedList<String> synonym_list;
+    private ArrayList<String> synonym_list;
     private JSONArray rhyme_arr; /// / / / e.g. stumble [0:"bumble", 1:"crumble", 2:"fumble", 3:"grumble",
                                  /// / / / / / / / / / / 4:"jumbal", 5:"jumble", ..., 11:"umbel"]
-    private LinkedList<String> rhyme_list;
+    private ArrayList<String> rhyme_list;
 
     public Word(String plaintext) {
         this.plaintext = plaintext;

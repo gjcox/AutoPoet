@@ -6,7 +6,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import api_interactions.WordsAPI;
+import apis.WordsAPI;
 import utils.JSONConstructors.Emphasis;
 import utils.Pair;
 import words.IPAHandler;

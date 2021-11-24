@@ -1,4 +1,4 @@
-package api_interactions;
+package apis;
 
 import java.io.IOException;
 import java.net.ProxySelector;
