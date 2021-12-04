@@ -8,6 +8,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import config.Configuration;
 import utils.JSONConstructors.Emphasis;
 import utils.Pair;
 
@@ -20,7 +21,7 @@ public class IPAHandler extends AbstractIPA {
      * 
      * @param ipa_word
      * @return a Pair<> including the JSONArray of syllables and JSONObject of
-     *         stresses
+     *         stresses.
      */
     public static Pair<JSONArray, JSONObject> getSyllables(String ipa_word) {
         /*
@@ -35,6 +36,12 @@ public class IPAHandler extends AbstractIPA {
         LinkedList<Integer> onset_indexes = new LinkedList<>(); // the start of onsets; onset_indexes[i] should
                                                                 // correspond to nuclei_indexes[i]
 
+        if (ipa_word.equals("")) {
+            Configuration.LOG.writeLog(
+                    String.format("getSyllables(%s) passed an empty string. Returning empty pair.", ipa_word));
+            return new Pair<>(new JSONArray(), new JSONObject());
+        }
+
         /* 1. locate all nuclei (vowels) */
         for (int i = 0; i < ipa_word.length(); i++) {
             char chr = ipa_word.charAt(i);
@@ -48,15 +55,17 @@ public class IPAHandler extends AbstractIPA {
 
         /* 1.5 check for dipthongs */
         for (int i = 0; i < vowel_indexes.size() - 1; i++) {
-            if (vowel_indexes.get(i + 1) - vowel_indexes.get(i) == 1)
-            /* i.e. if two vowels are next to one another */
+            int index1 = vowel_indexes.get(i);
+            int index2 = vowel_indexes.get(i + 1);
+            if (index2 - index1 == 1 && nucleus_indexes.contains(index1) && nucleus_indexes.contains(index2))
+            /* i.e. if two vowels are next to one another and not already in a dipthong */
             {
                 char vowel_1 = ipa_word.charAt(vowel_indexes.get(i));
                 char vowel_2 = ipa_word.charAt(vowel_indexes.get(i + 1));
                 String potential_dipthong = new String(new char[] { vowel_1, vowel_2 });
 
                 if (AbstractIPA.isDipthong(potential_dipthong)) {
-                    nucleus_indexes.remove(i + 1);
+                    nucleus_indexes.remove((Integer) index2);
                     syllables.remove(i + 1);
                     syllables.get(i).setNucleus(potential_dipthong);
                 }
@@ -119,7 +128,9 @@ public class IPAHandler extends AbstractIPA {
             ipa_syllables_arr.put(syllable.toJsonObject());
         }
 
-        return new Pair<>(ipa_syllables_arr, emphasis);
+        Pair<JSONArray, JSONObject> pair = new Pair<>(ipa_syllables_arr, emphasis);
+        Configuration.LOG.writeLog(String.format("getSyllables(%s) returning: ", pair.toString()));
+        return pair;
     }
 
     /*
