@@ -22,4 +22,8 @@ public class Pair<O, T> {
         return this.two;
     }
 
+    public String toString() {
+        return String.format("(%s,%s)", one, two); 
+    }
+
 }
