@@ -1,0 +1,105 @@
+  Part of speech            Example               WordsAPI name
+| nouns                   | freedom             | noun
+| pronouns                | you                 | pronoun
+| verbs                   | be                  | verb
+| adjectives              | hot                 | adjective
+| adverbs                 | softly              | adverb
+| prepositions            | into                | preposition
+| conjunctions            | and                 | conjunction
+| articles/determiners    | an / enough\these   | noun* / noun,adverb,adjective \ n/a
+| interjections           | whoops              | n/a
+
+*N.B. WordsAPI has [4 items 0:"a" 1:"" 2:"n" 3:"" ] for an's pronunciation 
+
+{
+    "rhymes":{
+        "all":"-aʊtʃ"
+    }       
+    "word":"ouch"
+    "pronunciation":"aʊʧ"
+    "frequency":4.34
+}
+
+{
+    "word":"freedom"
+    "results":[
+        0:{
+            "definition":"immunity from an obligation or duty"
+            "partOfSpeech":"noun"
+            "synonyms":[...]1 item
+            "typeOf":[...]2 items
+            "hasTypes":[...]5 items
+        }
+        1:{
+            "definition":"the condition of being free; the power to act or speak or think without externally imposed restraints"
+            "partOfSpeech":"noun"
+            "attribute":[...]2 items
+            "typeOf":[...]1 item
+            "hasTypes":[...]13 items
+        }   
+    ]
+    "syllables":{
+        "count":2
+        "list":[
+            0:"free"
+            1:"dom"
+        ]
+    }
+    "pronunciation":{
+        "all":"'fridəm"
+    }
+    "frequency":4.67
+}
+
+{
+    "word":"contract"
+    "results":[
+        0:{
+            "definition":"become smaller or draw together"
+            "partOfSpeech":"verb"
+            "synonyms":[...]1 item
+            "typeOf":[...]4 items
+            "hasTypes":[...]1 item
+            "antonyms":[...]1 item
+            "derivation":[...]1 item
+        }
+        1:{
+            "definition":"enter into a contractual arrangement"
+            "partOfSpeech":"verb"
+            "synonyms":[...]1 item
+            "typeOf":[...]2 items
+            "hasTypes":[...]9 items
+            "derivation":[...]1 item
+        }
+        2:{...}8 items
+        3:{...}5 items
+        4:{...}6 items
+        5:{...}5 items
+        6:{...}6 items
+        7:{...}5 items
+        8:{...}7 items
+        9:{...}7 items
+        10:{
+            "definition":"a binding agreement between two or more persons that is enforceable by law"
+            "partOfSpeech":"noun"
+            "hasCategories":[...]16 items
+            "typeOf":[...]1 item
+            "hasTypes":[...]42 items
+            "hasParts":[...]5 items
+            "derivation":[...]1 item
+        }
+        11:{...}6 items
+    ]
+    "syllables":{
+        "count":2
+        "list":[
+            0:"con"
+            1:"tract"
+        ]
+    }
+    "pronunciation":{
+        "noun":"'kɑntrækt"
+        "verb":"kɑn'trækt"
+    }
+    "frequency":4.56
+}
