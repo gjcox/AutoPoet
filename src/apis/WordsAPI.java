@@ -7,12 +7,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import config.Configuration;
 import utils.CollectionOperations;
 
 /**
@@ -23,6 +26,7 @@ import utils.CollectionOperations;
 public class WordsAPI {
 
     static HttpClient client = HttpClient.newBuilder().proxy(ProxySelector.getDefault()).build();
+    static HashMap<String, JSONObject> cache = new HashMap<>();
 
     /**
      * Attempts to send a request to WordsAPI.
@@ -35,15 +39,17 @@ public class WordsAPI {
     private static JSONObject sendRequest(URI uri) throws IOException, InterruptedException {
         JSONObject response;
         try {
-            HttpResponse<String> response_string = client.send(getRequest(uri), BodyHandlers.ofString());
+            HttpRequest request = getRequest(uri);
+            Configuration.LOG.writeLog("sendRequest() sending request: " + request.toString());
+            HttpResponse<String> response_string = client.send(request, BodyHandlers.ofString());
             response = new JSONObject(response_string.body());
-            // System.out.println(response);
+            Configuration.LOG.writeLog("sendRequest() received response: " + response);
             return response;
         } catch (IOException ioe) {
-            System.err.println("Something went wrong: " + ioe.getMessage());
+            Configuration.LOG.writeLog("sendRequest() something went wrong: " + ioe.getMessage());
             throw ioe;
         } catch (InterruptedException ie) {
-            System.err.println("Something went wrong: " + ie.getMessage());
+            Configuration.LOG.writeLog("sendRequest() something went wrong: " + ie.getMessage());
             throw ie;
         }
     }
@@ -79,7 +85,8 @@ public class WordsAPI {
      * Sends a request for the synonyms of a word.
      * 
      * @param word the plaintext word to get synonyms of.
-     * @return a populated JSONArray if the request had results, else an empty one.
+     * @return a populated JSONArray of plaintext words if the request had results,
+     *         else an empty one.
      */
     public static JSONArray getSynonyms(String word) {
         JSONArray synonyms = new JSONArray();
@@ -90,20 +97,19 @@ public class WordsAPI {
 
             if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
-                        + word + "\".");
+                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
+                        + " of \"" + word + "\".");
                 return getSynonyms(word);
             } else if (((JSONArray) jo.get(quality)).isEmpty()) {
-                System.err.println("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 synonyms = (JSONArray) jo.get(quality);
 
-                System.out.println("Synonyms of \"" + word + "\":" + synonyms);
+                Configuration.LOG.writeLog("Synonyms of \"" + word + "\":" + synonyms);
             }
 
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-            // just trying to make this work
+        } catch (IOException | JSONException | InterruptedException e) {
+            Configuration.LOG.writeLog(String.format("getSynonyms(%s) something went wrong: %s", word, e.getMessage()));
         }
         return synonyms;
     }
@@ -113,7 +119,8 @@ public class WordsAPI {
      * lavender, mauve, reddish blue, reddish purple, royal purple).
      * 
      * @param word the plaintext word to get sub-types of.
-     * @return a populated JSONArray if the request had results, else an empty one.
+     * @return a populated JSONArray of plaintext words if the request had results,
+     *         else an empty one.
      */
     public static JSONArray getTypesOf(String word) {
         JSONArray types = new JSONArray();
@@ -124,20 +131,19 @@ public class WordsAPI {
 
             if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
-                        + word + "\".");
+                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
+                        + " of \"" + word + "\".");
                 return getSynonyms(word);
             } else if (((JSONArray) jo.get(quality)).isEmpty()) {
-                System.err.println("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 types = (JSONArray) jo.get(quality);
 
-                System.out.println("Types of \"" + word + "\":" + types);
+                Configuration.LOG.writeLog("Types of \"" + word + "\":" + types);
             }
 
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-            // just trying to make this work
+        } catch (IOException | JSONException | InterruptedException e) {
+            Configuration.LOG.writeLog(String.format("getTypesOf(%s) something went wrong: %s", word, e.getMessage()));
         }
         return types;
     }
@@ -147,7 +153,8 @@ public class WordsAPI {
      * cap have the common types headgear and headdress).
      * 
      * @param word the plaintext word to get words with a common super-type.
-     * @return a populated JSONArray if the request had results, else an empty one.
+     * @return a populated JSONArray of plaintext words if the request had results,
+     *         else an empty one.
      */
     public static JSONArray getCommonType(String word) {
         JSONArray common_type = new JSONArray(); // not strictly synonyms, rather having a common type
@@ -158,14 +165,14 @@ public class WordsAPI {
 
             if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
-                        + word + "\".");
+                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
+                        + " of \"" + word + "\".");
                 return getCommonType(word);
             } else if (((JSONArray) jo.get(quality)).isEmpty()) {
-                System.err.println("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 JSONArray types = (JSONArray) jo.get(quality);
-                System.out.println("\"" + word + "\" is a type of:" + types);
+                Configuration.LOG.writeLog("\"" + word + "\" is a type of:" + types);
 
                 @SuppressWarnings("unchecked")
                 List<String> types_list = (List<String>) (List<?>) types.toList();
@@ -175,11 +182,12 @@ public class WordsAPI {
 
                 common_type = CollectionOperations.removeDuplicates(common_type);
 
-                System.out.println("Words with common types as \"" + word + "\":" + common_type);
+                Configuration.LOG.writeLog("Words with common types as \"" + word + "\":" + common_type);
             }
 
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+        } catch (IOException | JSONException | InterruptedException e) {
+            Configuration.LOG
+                    .writeLog(String.format("getCommonType(%s) something went wrong: %s", word, e.getMessage()));
             // just trying to make this work
         }
         return common_type;
@@ -191,7 +199,8 @@ public class WordsAPI {
      * have implemented rhyme recognition.
      * 
      * @param word the plaintext word to get rhymes of.
-     * @return a populated JSONArray if the request had results, else an empty one.
+     * @return a populated JSONArray of plaintext words if the request had results,
+     *         else an empty one.
      */
     public static JSONArray getRhymes(String word) {
         JSONArray rhymes = new JSONArray();
@@ -202,21 +211,19 @@ public class WordsAPI {
 
             if (((JSONObject) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
-                        + word + "\".");
+                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
+                        + " of \"" + word + "\".");
                 return getRhymes(word);
             } else if (((JSONObject) jo.get(quality)).isEmpty()) {
-                System.err.println("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 rhymes = (JSONArray) ((JSONObject) jo.get(quality)).get("all"); // might want to filter more than "all"
                                                                                 // someday
-                System.out.println("Rhymes of \"" + word + "\":" + rhymes);
+                Configuration.LOG.writeLog("Rhymes of \"" + word + "\":" + rhymes);
             }
 
-        } catch (
-
-        Exception e) {
-            System.err.println(e.getMessage());
+        } catch (IOException | JSONException | InterruptedException e) {
+            Configuration.LOG.writeLog(String.format("getRhymes(%s) something went wrong: %s", word, e.getMessage()));
             // just trying to make this work
         }
         return rhymes;
@@ -242,32 +249,72 @@ public class WordsAPI {
 
             Object pronunciation = jo.get(quality);
             switch (pronunciation.getClass().toString()) {
-            case "class java.lang.String":
-                ipa.put("all", pronunciation);
-                break;
-            case "class org.json.JSONObject":
-                Iterator<String> keys = ((JSONObject) pronunciation).keys();
-                while (keys.hasNext()) {
-                    String key = keys.next();
-                    String value = removed_s ? ((JSONObject) pronunciation).getString(key) + "z"
-                            : ((JSONObject) pronunciation).getString(key);
-                    ipa.put(key, value);
-                }
-                break;
-            default:
-                // unexpected
-                break;
+                case "class java.lang.String":
+                    ipa.put("all", pronunciation);
+                    break;
+                case "class org.json.JSONObject":
+                    Iterator<String> keys = ((JSONObject) pronunciation).keys();
+                    while (keys.hasNext()) {
+                        String key = keys.next();
+                        String value = removed_s ? ((JSONObject) pronunciation).getString(key) + "z"
+                                : ((JSONObject) pronunciation).getString(key);
+                        ipa.put(key, value);
+                    }
+                    break;
+                default:
+                    // unexpected
+                    break;
             }
 
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-            // just trying to make this work
+        } catch (IOException | JSONException e) {
+            Configuration.LOG.writeLog(String.format("getIPA(%s) something went wrong: %s", word, e.getMessage()));
+            ipa.put("all", "");
+
         } catch (InterruptedException ie) {
-            System.err.println(ie.getMessage());
+            Configuration.LOG.writeLog(String.format("getIPA(%s) something went wrong: %s", word, ie.getMessage()));
             return getIPA(word); // optimistically try again after an interruption
             // could cause an infinite loop...
         }
         return ipa;
+    }
+
+    public static JSONObject getWord(String plaintext, boolean isPlural) {
+        if (isPlural) {
+            return getWord(plaintext.substring(0, plaintext.length() - 1));
+        } else {
+            return getWord(plaintext);
+        }
+    }
+
+    /**
+     * TODO handle plurals, conjucation etc. 
+     * @param plaintext a plaintext word. 
+     * @return the JSONOject returned from WordsAPI, or {word:<plaintext>} if there was no result. 
+     */
+    public static JSONObject getWord(String plaintext) {
+        if (cache.containsKey(plaintext)) {
+            return cache.get(plaintext); 
+        }
+
+        JSONObject result = new JSONObject();
+        result.put("word", plaintext); 
+        URI uri = getUri(plaintext, "");
+        try {
+            result = sendRequest(uri);
+            Configuration.LOG.writeLog(String.format("getWord(%s) got response: %s", plaintext, result.toString()));
+
+            if (result.has("success") && result.getString("success").equals("false")) {
+                cache.put(plaintext, result); 
+                return result;
+            }
+
+        } catch (IOException | JSONException | InterruptedException e) {
+            Configuration.LOG
+                    .writeLog(String.format("getWord(%s) something went wrong: %s", plaintext, e.getMessage()));
+        }
+
+        cache.put(plaintext, result); 
+        return result;
     }
 
 }

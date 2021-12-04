@@ -7,10 +7,17 @@
 | prepositions            | into                | preposition
 | conjunctions            | and                 | conjunction
 | articles/determiners    | an / enough\these   | noun* / noun,adverb,adjective \ n/a
-| interjections           | whoops              | n/a
+| interjections           | whoops ouch         | n/a
 
 *N.B. WordsAPI has [4 items 0:"a" 1:"" 2:"n" 3:"" ] for an's pronunciation 
 
+# Notable due to being a fail message 
+{
+    "success":false
+    "message":"word not found"
+}
+
+# Notable due to having no "results" field 
 {
     "rhymes":{
         "all":"-aʊtʃ"
@@ -20,6 +27,50 @@
     "frequency":4.34
 }
 
+# Notable due to having "syllables" and "rhymes" keys but an empty "pronunciation" field
+{
+    "rhymes":{
+        "all":"-əlin"
+    }
+    "word":"bandoline"
+    "syllables":{
+        "count":3
+        "list":[
+            0:"ban"
+            1:"do"
+            2:"line"
+        ]
+    }
+    "pronunciation":{}0 items
+}
+
+# Notable for having only one result 
+{
+    "word":"suet"
+    "results":[
+        0:{
+            "definition":"hard fat around the kidneys and loins in beef and sheep"
+            "partOfSpeech":"noun"
+            "typeOf":[
+                0:"edible fat"
+            ]
+            "derivation":[
+                0:"suety"
+            ]
+        }
+    ]
+    "syllables":{
+       "count":2
+        "list":[
+            0:"su"
+            1:"et"
+        ]
+    }
+    "pronunciation":{...}1 item
+    "frequency":2.54
+}
+
+# Typical example
 {
     "word":"freedom"
     "results":[
@@ -51,6 +102,7 @@
     "frequency":4.67
 }
 
+# Typical example of a noun and verb word 
 {
     "word":"contract"
     "results":[
