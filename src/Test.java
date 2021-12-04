@@ -31,7 +31,7 @@ public class Test {
         /*try {
             emptyLine(); 
         } catch (IOException e) {
-            System.err.println("File not found!");
+            Configuration.LOG.writeLog("File not found!");
         }*/
         JSONObject emphases = new JSONObject("{primary: 0, has_secondary: false, secondary: []}");
         System.out.println(emphases.toString());

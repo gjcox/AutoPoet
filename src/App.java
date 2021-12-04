@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import config.Configuration;
+
 public class App {
 
 
@@ -32,7 +34,7 @@ public class App {
             // System.out.println(response);
             return response;
         } catch (Exception e) {
-            System.err.println("Something went wrong: " + e.getMessage());
+            Configuration.LOG.writeLog("Something went wrong: " + e.getMessage());
             throw e;
         }
     }
@@ -68,11 +70,11 @@ public class App {
 
             if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
+                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
                         + word + "\".");
                 return getSynonyms(word);
             } else if (((JSONArray) jo.get(quality)).isEmpty()) {
-                System.err.println("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 synonyms = (JSONArray) jo.get(quality);
 
@@ -80,7 +82,7 @@ public class App {
             }
 
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            Configuration.LOG.writeLog(e.getMessage());
             // just trying to make this work
         }
         return synonyms;
@@ -95,11 +97,11 @@ public class App {
 
             if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
+                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
                         + word + "\".");
                 return getSynonyms(word);
             } else if (((JSONArray) jo.get(quality)).isEmpty()) {
-                System.err.println("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 types = (JSONArray) jo.get(quality);
 
@@ -107,7 +109,7 @@ public class App {
             }
 
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            Configuration.LOG.writeLog(e.getMessage());
             // just trying to make this work
         }
         return types;
@@ -122,11 +124,11 @@ public class App {
 
             if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
+                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
                         + word + "\".");
                 return getCommonType(word);
             } else if (((JSONArray) jo.get(quality)).isEmpty()) {
-                System.err.println("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 JSONArray types = (JSONArray) jo.get(quality);
                 System.out.println("\"" + word + "\" is a type of:" + types);
@@ -142,7 +144,7 @@ public class App {
             }
 
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            Configuration.LOG.writeLog(e.getMessage());
             // just trying to make this work
         }
         return common_type;
@@ -163,11 +165,11 @@ public class App {
 
             if (((JSONObject) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                System.err.println("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
+                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality + " of \""
                         + word + "\".");
                 return getRhymes(word);
             } else if (((JSONObject) jo.get(quality)).isEmpty()) {
-                System.err.println("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 rhymes = (JSONArray) ((JSONObject) jo.get(quality)).get("all"); // might want to filter more than "all"
                                                                                 // someday
@@ -177,7 +179,7 @@ public class App {
         } catch (
 
         Exception e) {
-            System.err.println(e.getMessage());
+            Configuration.LOG.writeLog(e.getMessage());
             // just trying to make this work
         }
         return rhymes;
@@ -204,7 +206,7 @@ public class App {
         switch (flag) {
             case "-demo-1":
                 if (args.length != 3) {
-                    System.err.println("Expecting exactly three arguments of form \"" + flag
+                    Configuration.LOG.writeLog("Expecting exactly three arguments of form \"" + flag
                             + " <base word> <word to rhyme with>\"");
                     System.exit(-1);
                 }
@@ -234,7 +236,7 @@ public class App {
 
             case "-demo-2":
                 if (args.length != 3) {
-                    System.err.println("Expecting exactly three arguments of form \"" + flag
+                    Configuration.LOG.writeLog("Expecting exactly three arguments of form \"" + flag
                             + " <base word> <word to rhyme with>\"");
                     System.exit(-1);
                 }
@@ -264,7 +266,7 @@ public class App {
 
             case "-rhymes":
                 if (args.length != 2) {
-                    System.err.println("Expecting exactly two arguments of form \"" + flag + " <word to rhyme with>\"");
+                    Configuration.LOG.writeLog("Expecting exactly two arguments of form \"" + flag + " <word to rhyme with>\"");
                     System.exit(-1);
                 }
                 primary_word = args[1];
@@ -273,7 +275,7 @@ public class App {
 
             case "-synonyms":
                 if (args.length != 2) {
-                    System.err.println(
+                    Configuration.LOG.writeLog(
                             "Expecting exactly two arguments of form \"" + flag + " <word to get synonyms of>\"");
                     System.exit(-1);
                 }
@@ -283,7 +285,7 @@ public class App {
 
             case "-common-type":
                 if (args.length != 2) {
-                    System.err.println(
+                    Configuration.LOG.writeLog(
                             "Expecting exactly two arguments of form \"" + flag + " <word to get synonyms of>\"");
                     System.exit(-1);
                 }
@@ -292,7 +294,7 @@ public class App {
                 break;
 
             default:
-                System.err.println(
+                Configuration.LOG.writeLog(
                         "Expecting one of \"-demo-1\", \"-demo-2\", \"-rhymes\", \"-synonyms\", \"-common-type\" as flag.");
                 break;
         }
