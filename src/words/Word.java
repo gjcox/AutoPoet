@@ -2,6 +2,8 @@ package words;
 
 import java.util.ArrayList;
 
+import org.json.JSONObject;
+
 public class Word {
 
     public enum PartOfSpeech {
@@ -16,7 +18,7 @@ public class Word {
 
     private ArrayList<String> typeOf;
     private ArrayList<String> hasTypes;
-    private ArrayList<SuperWord> commonTyped; 
+    private ArrayList<SuperWord> commonTyped;
 
     private ArrayList<String> inCategory;
     private ArrayList<String> hasCategories;
@@ -33,20 +35,61 @@ public class Word {
     private ArrayList<String> memberOf; // not in use
     private ArrayList<String> hasMembers; // not in use
 
-    private ArrayList<String> usageOf; // not in use 
-    private ArrayList<String> hasUsages; // not in use 
+    private ArrayList<String> usageOf; // not in use
+    private ArrayList<String> hasUsages; // not in use
 
     private ArrayList<String> inRegion; // not in use
     private ArrayList<String> regionOf; // not in use
 
     private ArrayList<String> similarTo;
 
-    private ArrayList<String> attribute; // not in use 
-    private ArrayList<String> pertainsTo; // not in use 
+    private ArrayList<String> attribute; // not in use
+    private ArrayList<String> pertainsTo; // not in use
     private ArrayList<String> also; // not in use
     private ArrayList<String> entails; // not in use
     private ArrayList<String> derivation; // not in use
     private ArrayList<String> examples; // not in use
+
+    public Word(JSONObject resultObject) {
+        
+    }
+
+    private void setPartOfSpeech() {
+        /*
+         * switch (word.partOfSpeech()) {
+         * case PartOfSpeech.NOUN:
+         * addWord(nouns, word);
+         * break;
+         * case "pronoun":
+         * addWord(pronouns, word);
+         * break;
+         * case "verb":
+         * addWord(verbs, word);
+         * break;
+         * case "adjective":
+         * addWord(adjectives, word);
+         * break;
+         * case "adverb":
+         * addWord(adverbs, word);
+         * break;
+         * case "preposition":
+         * addWord(prepositions, word);
+         * break;
+         * case "conjunction":
+         * addWord(conjunctions, word);
+         * break;
+         * default:
+         * Configuration.LOG.writeLog(String.
+         * format("Unrecognised part of speech for %s: %s", this.plaintext,
+         * word.partOfSpeech()));
+         * break;
+         * }
+         */
+    }
+
+    public PartOfSpeech partOfSpeech() {
+        return partOfSpeech;
+    }
 
     /*
      * public JSONObject rhymeLengths(String part_of_speech) {

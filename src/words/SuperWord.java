@@ -6,8 +6,6 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import config.Configuration;
-
 public class SuperWord implements Comparable<SuperWord> {
 
     private String plaintext;
@@ -58,30 +56,26 @@ public class SuperWord implements Comparable<SuperWord> {
         for (Object result : results) {
             Word word = new Word((JSONObject) result);
             switch (word.partOfSpeech()) {
-                case "noun":
+                case NOUN:
                     addWord(nouns, word);
                     break;
-                case "pronoun":
+                case PRONOUN:
                     addWord(pronouns, word);
                     break;
-                case "verb":
+                case VERB:
                     addWord(verbs, word);
                     break;
-                case "adjective":
+                case ADJECTIVE:
                     addWord(adjectives, word);
                     break;
-                case "adverb":
+                case ADVERB:
                     addWord(adverbs, word);
                     break;
-                case "preposition":
+                case PREPOSITION:
                     addWord(prepositions, word);
                     break;
-                case "conjunction":
+                case CONJUCTION:
                     addWord(conjunctions, word);
-                    break;
-                default:
-                    Configuration.LOG.writeLog(String.format("Unrecognised part of speech for %s: %s", this.plaintext,
-                            word.partOfSpeech()));
                     break;
             }
         }
