@@ -23,13 +23,13 @@ import utils.Pair;
  * I can't think of an example of a word to test that has multiple parts of
  * speech that are pronounced differently that aren't nouns and adjectives.
  */
-public class Word {
+public class Word implements Comparable {
 
     private String plaintext;
-    private JSONObject plain_syllables; // e.g. incredible "syllables":{"count":4,
-                                        /// / / / / / / / / / / / / / / "list":[0:"in", 1:"cred", 2:"i", 3:"ble"]} -
-    private JSONObject ipa; // / / / / / / e.g. wind "ipa":{"all":"'prɛzənt", "noun":"'prɛzənt",
-                            /// / / / / / / / / / / / / / / "verb":"prɪ'zɛnt"} -
+    private JSONObject plain_syllables = new JSONObject(); // e.g. incredible "syllables":{"count":4,
+    /// / / / / / / / / / / / / / / "list":[0:"in", 1:"cred", 2:"i", 3:"ble"]} -
+    private JSONObject ipa = new JSONObject(); // / / / / / / e.g. wind "ipa":{"all":"'prɛzənt", "noun":"'prɛzənt",
+    /// / / / / / / / / / / / / / / "verb":"prɪ'zɛnt"} -
     private JSONObject ipa_syllables = new JSONObject(); // / e.g. present
                                                          // :{"all":[{"coda":"","nucleus":"ɛ","onset":"pr"},{"coda":"nt","nucleus":"ə","onset":"z"}],
                                                          // "noun":[{"coda":"","nucleus":"ɛ","onset":"pr"},{"coda":"nt","nucleus":"ə","onset":"z"}],
@@ -37,11 +37,8 @@ public class Word {
     private JSONObject ipa_emphasis = new JSONObject(); // e.g."ipa_emphasis":{"all":{"secondary":[],"has_secondary":false,"primary":0},
                                                         // "verb":{"secondary":[],"has_secondary":false,"primary":1},
                                                         // "noun":{"secondary":[],"has_secondary":false,"primary":0}}-
-    private JSONArray synonym_arr; /// / / e.g. lovely [0:"adorable", 1:"endearing", 2:"cover girl", 3:"pin-up"]
-    private ArrayList<String> synonym_list;
-    private JSONArray rhyme_arr; /// / / / e.g. stumble [0:"bumble", 1:"crumble", 2:"fumble", 3:"grumble",
-                                 /// / / / / / / / / / / 4:"jumbal", 5:"jumble", ..., 11:"umbel"]
-    private ArrayList<String> rhyme_list;
+    private ArrayList<Word> synonyms = new ArrayList<>();
+    private ArrayList<Word> common_types = new ArrayList<>();
 
     public Word(String plaintext) {
         this.plaintext = plaintext;
@@ -55,7 +52,6 @@ public class Word {
             this.ipa_syllables.put(key, ipa_syllables_.one());
             this.ipa_emphasis.put(key, ipa_syllables_.two());
         }
-
     }
 
     public Word(String plaintext, String ipa) {
@@ -72,22 +68,41 @@ public class Word {
         }
     }
 
-    public JSONObject toJsonObject() {
-        JSONObject jo = new JSONObject();
-        jo.put("plaintext", plaintext);
-        jo.put("plain_syllables", plain_syllables);
-        jo.put("ipa", ipa);
-        jo.put("ipa_syllables", ipa_syllables);
-        jo.put("ipa_emphasis", ipa_emphasis);
-        jo.put("synonym_arr", synonym_arr);
-        jo.put("synonym_list", synonym_list);
-        jo.put("rhyme_arr", rhyme_arr);
-        jo.put("rhyme_list", rhyme_list);
-        return jo;
+    /*
+     * public JSONObject toJsonObject() { JSONObject jo = new JSONObject();
+     * jo.put("plaintext", plaintext); jo.put("plain_syllables", plain_syllables);
+     * jo.put("ipa", ipa); jo.put("ipa_syllables", ipa_syllables);
+     * jo.put("ipa_emphasis", ipa_emphasis); jo.put("synonyms", synonyms);
+     * jo.put("common_types", common_types); return jo; }
+     * 
+     * public String toString() { return this.toJsonObject().toString(); }
+     */
+
+    private List<String> plaintextSynonyms() {
+        List<String> list = new ArrayList<>();
+        for (Word synonym : synonyms) {
+            list.add(synonym.plaintext);
+        }
+        return list;
+    }
+
+    private List<String> plaintextCommonTypes() {
+        List<String> list = new ArrayList<>();
+        for (Word common_type : common_types) {
+            list.add(common_type.plaintext);
+        }
+        return list;
     }
 
     public String toString() {
-        return this.toJsonObject().toString();
+        StringBuilder builder = new StringBuilder(String.format("plaintext:\"%s\"", plaintext));
+        builder.append(String.format(", plain_syllables:%s", plain_syllables.toString()));
+        builder.append(String.format(", ipa:%s", ipa.toString()));
+        builder.append(String.format(", ipa_syllables:%s", ipa_syllables.toString()));
+        builder.append(String.format(", ipa_emphasis:%s", ipa_emphasis.toString()));
+        builder.append(String.format(", synonyms:%s", plaintextSynonyms().toString()));
+        builder.append(String.format(", common_types:%s", plaintextCommonTypes().toString()));
+        return builder.toString();
     }
 
     /* Start of getters and setters */
@@ -119,7 +134,74 @@ public class Word {
         return rhyme_lengths;
     }
 
+    /**
+     * Queries WordsAPI for the list of synonyms of this word, creates a Word object
+     * from each (also queries WordsAPI), and adds them to this word's list of
+     * synonyms.
+     */
+    public void populateSynonyms() {
+        JSONArray synonyms_arr = apis.WordsAPI.getSynonyms(plaintext);
+
+        for (int i = 0; i < synonyms_arr.length(); i++) {
+            Word synonym = new Word(synonyms_arr.getString(i));
+            synonyms.add(synonym);
+        }
+        synonyms.sort(null);
+    }
+
+    /**
+     * Queries WordsAPI for the list of words with a type in common with this word,
+     * creates a Word object from each (also queries WordsAPI), and adds them to
+     * this word's list of such words.
+     */
+    public void populateCommonTypes() {
+        JSONArray common_types_arr = apis.WordsAPI.getCommonType(plaintext);
+
+        for (int i = 0; i < common_types_arr.length(); i++) {
+            Word common_type = new Word(common_types_arr.getString(i));
+            common_types.add(common_type);
+        }
+
+        common_types.sort(null);
+    }
+
     public String plaintext() {
         return plaintext;
+    }
+
+    /**
+     * I only want to order by plaintext, but equality should take more into
+     * account. Arguably I should build a custom Comparator rather than setting the
+     * default.
+     */
+    @Override
+    public int compareTo(Object anotherWord) {
+        if (anotherWord == null) {
+            throw new NullPointerException();
+        }
+        if (anotherWord.getClass().equals(this.getClass())) {
+            return plaintext.compareTo(((Word) anotherWord).plaintext);
+        } else {
+            throw new ClassCastException();
+        }
+    }
+
+    public List<Word> getSubsRhyme(Word wordToRhyme, boolean synonyms, boolean common_types) {
+        List<Word> substitutions = new ArrayList<>();
+        if (synonyms) {
+            for (Word synonym : this.synonyms) {
+                if (IPAHandler.checkRhyme(synonym, wordToRhyme)) {
+                    substitutions.add(synonym);
+                }
+            }
+        }
+        if (common_types) {
+            for (Word common_type : this.common_types) {
+                if (IPAHandler.checkRhyme(common_type, wordToRhyme)) {
+                    substitutions.add(common_type);
+                }
+            }
+        }
+        return substitutions;
     }
 }

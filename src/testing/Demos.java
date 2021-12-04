@@ -71,6 +71,17 @@ public class Demos {
         }
     }
 
+    public static void wordPopulator() {
+        List<String> words = Arrays.asList(/*"hideous", */"monsters"/*, "the", "wind", "winds", "present", "understated"*/);
+        for (String word : words) {
+            Word word_object = new Word(word);
+            word_object.populateSynonyms();
+            word_object.populateCommonTypes();
+            System.out.print(word + ": ");
+            System.out.println(word_object.toString());
+        }
+    }
+
     public static void presentPresent() {
         Word present = new Word("present");
         Word resent = new Word("resent");
@@ -99,8 +110,8 @@ public class Demos {
     }
 
     public static void abercrombieZombie() {
-        Word abercrombie = new Word("abercrombie"); 
-        Word zombie = new Word("zombie"); 
+        Word abercrombie = new Word("abercrombie");
+        Word zombie = new Word("zombie");
         System.out.println(abercrombie);
         System.out.println(zombie);
     }
@@ -108,12 +119,17 @@ public class Demos {
     public static void main(String[] args) {
         // demoGetSyllables("acquainted", "ə'kweɪntɪd");
         // demoGetSyllables("painted", "'peɪntɪd");
-        demoRhymes();
+        // demoRhymes();
         // getIPA();
         // wordConstructor();
+        // wordPopulator();
         // presentPresent();
         // rhymeLengths();
         // newEmphasisObject();
-        // abercrombieZombie(); 
+        // abercrombieZombie();
+        
+        Word word_object = new Word("devil");
+        System.out.print("devil" + ": ");
+        System.out.println(word_object.toString());
     }
 }
