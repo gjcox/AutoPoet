@@ -72,10 +72,8 @@ public class Pronunciation {
      */
     public void setIPA(JSONObject pronunciationObject) {
         Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis;
-        boolean needsAll = true; // prevent adding and "all" category if there are other categories
 
         if (pronunciationObject.has("noun")) {
-            needsAll = false; 
             this.noun = new SubPronunciation();
             this.noun.ipa = pronunciationObject.getString("noun");
             syllablesAndEmphasis = IPAHandler.getSyllables(this.noun.ipa);
@@ -84,7 +82,6 @@ public class Pronunciation {
         }
 
         if (pronunciationObject.has("pronoun")) {
-            needsAll = false; 
             this.pronoun = new SubPronunciation();
             this.pronoun.ipa = pronunciationObject.getString("pronoun");
             syllablesAndEmphasis = IPAHandler.getSyllables(this.pronoun.ipa);
@@ -93,7 +90,6 @@ public class Pronunciation {
         }
 
         if (pronunciationObject.has("verb")) {
-            needsAll = false; 
             this.verb = new SubPronunciation();
             this.verb.ipa = pronunciationObject.getString("verb");
             syllablesAndEmphasis = IPAHandler.getSyllables(this.verb.ipa);
@@ -102,7 +98,6 @@ public class Pronunciation {
         }
 
         if (pronunciationObject.has("adjective")) {
-            needsAll = false; 
             this.adjective = new SubPronunciation();
             this.adjective.ipa = pronunciationObject.getString("adjective");
             syllablesAndEmphasis = IPAHandler.getSyllables(this.adjective.ipa);
@@ -111,7 +106,6 @@ public class Pronunciation {
         }
 
         if (pronunciationObject.has("adverb")) {
-            needsAll = false; 
             this.adverb = new SubPronunciation();
             this.adverb.ipa = pronunciationObject.getString("adverb");
             syllablesAndEmphasis = IPAHandler.getSyllables(this.adverb.ipa);
@@ -120,7 +114,6 @@ public class Pronunciation {
         }
 
         if (pronunciationObject.has("preposition")) {
-            needsAll = false; 
             this.preposition = new SubPronunciation();
             this.preposition.ipa = pronunciationObject.getString("preposition");
             syllablesAndEmphasis = IPAHandler.getSyllables(this.preposition.ipa);
@@ -129,7 +122,6 @@ public class Pronunciation {
         }
 
         if (pronunciationObject.has("conjunction")) {
-            needsAll = false; 
             this.conjunction = new SubPronunciation();
             this.conjunction.ipa = pronunciationObject.getString("conjunction");
             syllablesAndEmphasis = IPAHandler.getSyllables(this.conjunction.ipa);
@@ -137,7 +129,9 @@ public class Pronunciation {
             this.conjunction.emphasis = syllablesAndEmphasis.two();
         }
 
-        if (needsAll && pronunciationObject.has("all")) {
+        if (pronunciationObject.has("all")) {
+            // "present" is a noun, verb and adjective, with pronunications for "noun",
+            // "verb" and "all": "all" is useful even when other fields are filled
             this.all = new SubPronunciation();
             this.all.ipa = pronunciationObject.getString("all");
             syllablesAndEmphasis = IPAHandler.getSyllables(this.all.ipa);
