@@ -40,16 +40,16 @@ public class WordsAPI {
         JSONObject response;
         try {
             HttpRequest request = getRequest(uri);
-            Configuration.LOG.writeLog("sendRequest() sending request: " + request.toString());
+            Configuration.LOG.writeTempLog("sendRequest() sending request: " + request.toString());
             HttpResponse<String> response_string = client.send(request, BodyHandlers.ofString());
             response = new JSONObject(response_string.body());
-            Configuration.LOG.writeLog("sendRequest() received response: " + response);
+            Configuration.LOG.writeTempLog("sendRequest() received response: " + response);
             return response;
         } catch (IOException ioe) {
-            Configuration.LOG.writeLog("sendRequest() something went wrong: " + ioe.getMessage());
+            Configuration.LOG.writeTempLog("sendRequest() something went wrong: " + ioe.getMessage());
             throw ioe;
         } catch (InterruptedException ie) {
-            Configuration.LOG.writeLog("sendRequest() something went wrong: " + ie.getMessage());
+            Configuration.LOG.writeTempLog("sendRequest() something went wrong: " + ie.getMessage());
             throw ie;
         }
     }
@@ -97,19 +97,19 @@ public class WordsAPI {
 
             if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
+                Configuration.LOG.writeTempLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
                         + " of \"" + word + "\".");
                 return getSynonyms(word);
             } else if (((JSONArray) jo.get(quality)).isEmpty()) {
-                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeTempLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 synonyms = (JSONArray) jo.get(quality);
 
-                Configuration.LOG.writeLog("Synonyms of \"" + word + "\":" + synonyms);
+                Configuration.LOG.writeTempLog("Synonyms of \"" + word + "\":" + synonyms);
             }
 
         } catch (IOException | JSONException | InterruptedException e) {
-            Configuration.LOG.writeLog(String.format("getSynonyms(%s) something went wrong: %s", word, e.getMessage()));
+            Configuration.LOG.writeTempLog(String.format("getSynonyms(%s) something went wrong: %s", word, e.getMessage()));
         }
         return synonyms;
     }
@@ -131,19 +131,19 @@ public class WordsAPI {
 
             if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
+                Configuration.LOG.writeTempLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
                         + " of \"" + word + "\".");
                 return getSynonyms(word);
             } else if (((JSONArray) jo.get(quality)).isEmpty()) {
-                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeTempLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 types = (JSONArray) jo.get(quality);
 
-                Configuration.LOG.writeLog("Types of \"" + word + "\":" + types);
+                Configuration.LOG.writeTempLog("Types of \"" + word + "\":" + types);
             }
 
         } catch (IOException | JSONException | InterruptedException e) {
-            Configuration.LOG.writeLog(String.format("getTypesOf(%s) something went wrong: %s", word, e.getMessage()));
+            Configuration.LOG.writeTempLog(String.format("getTypesOf(%s) something went wrong: %s", word, e.getMessage()));
         }
         return types;
     }
@@ -165,14 +165,14 @@ public class WordsAPI {
 
             if (((JSONArray) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
+                Configuration.LOG.writeTempLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
                         + " of \"" + word + "\".");
                 return getCommonType(word);
             } else if (((JSONArray) jo.get(quality)).isEmpty()) {
-                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeTempLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 JSONArray types = (JSONArray) jo.get(quality);
-                Configuration.LOG.writeLog("\"" + word + "\" is a type of:" + types);
+                Configuration.LOG.writeTempLog("\"" + word + "\" is a type of:" + types);
 
                 @SuppressWarnings("unchecked")
                 List<String> types_list = (List<String>) (List<?>) types.toList();
@@ -182,12 +182,12 @@ public class WordsAPI {
 
                 common_type = CollectionOperations.removeDuplicates(common_type);
 
-                Configuration.LOG.writeLog("Words with common types as \"" + word + "\":" + common_type);
+                Configuration.LOG.writeTempLog("Words with common types as \"" + word + "\":" + common_type);
             }
 
         } catch (IOException | JSONException | InterruptedException e) {
             Configuration.LOG
-                    .writeLog(String.format("getCommonType(%s) something went wrong: %s", word, e.getMessage()));
+                    .writeTempLog(String.format("getCommonType(%s) something went wrong: %s", word, e.getMessage()));
             // just trying to make this work
         }
         return common_type;
@@ -211,19 +211,19 @@ public class WordsAPI {
 
             if (((JSONObject) jo.get(quality)).isEmpty() && word.endsWith("s")) {
                 word = word.substring(0, word.length() - 1);
-                Configuration.LOG.writeLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
+                Configuration.LOG.writeTempLog("\"" + word + "s\" may be a plural. Attempting search for " + quality
                         + " of \"" + word + "\".");
                 return getRhymes(word);
             } else if (((JSONObject) jo.get(quality)).isEmpty()) {
-                Configuration.LOG.writeLog("No " + quality + " found for \"" + word + "\".");
+                Configuration.LOG.writeTempLog("No " + quality + " found for \"" + word + "\".");
             } else {
                 rhymes = (JSONArray) ((JSONObject) jo.get(quality)).get("all"); // might want to filter more than "all"
                                                                                 // someday
-                Configuration.LOG.writeLog("Rhymes of \"" + word + "\":" + rhymes);
+                Configuration.LOG.writeTempLog("Rhymes of \"" + word + "\":" + rhymes);
             }
 
         } catch (IOException | JSONException | InterruptedException e) {
-            Configuration.LOG.writeLog(String.format("getRhymes(%s) something went wrong: %s", word, e.getMessage()));
+            Configuration.LOG.writeTempLog(String.format("getRhymes(%s) something went wrong: %s", word, e.getMessage()));
             // just trying to make this work
         }
         return rhymes;
@@ -267,11 +267,11 @@ public class WordsAPI {
             }
 
         } catch (IOException | JSONException e) {
-            Configuration.LOG.writeLog(String.format("getIPA(%s) something went wrong: %s", word, e.getMessage()));
+            Configuration.LOG.writeTempLog(String.format("getIPA(%s) something went wrong: %s", word, e.getMessage()));
             ipa.put("all", "");
 
         } catch (InterruptedException ie) {
-            Configuration.LOG.writeLog(String.format("getIPA(%s) something went wrong: %s", word, ie.getMessage()));
+            Configuration.LOG.writeTempLog(String.format("getIPA(%s) something went wrong: %s", word, ie.getMessage()));
             return getIPA(word); // optimistically try again after an interruption
             // could cause an infinite loop...
         }
@@ -289,7 +289,7 @@ public class WordsAPI {
     /**
      * TODO handle plurals, conjucation etc. 
      * @param plaintext a plaintext word. 
-     * @return the JSONOject returned from WordsAPI, or {word:<plaintext>} if there was no result. 
+     * @return the JSONOject returned from WordsAPI, or {word:plaintext} if there was no result. 
      */
     public static JSONObject getWord(String plaintext) {
         if (cache.containsKey(plaintext)) {
@@ -301,7 +301,6 @@ public class WordsAPI {
         URI uri = getUri(plaintext, "");
         try {
             result = sendRequest(uri);
-            Configuration.LOG.writeLog(String.format("getWord(%s) got response: %s", plaintext, result.toString()));
 
             if (result.has("success") && result.getString("success").equals("false")) {
                 cache.put(plaintext, result); 
@@ -310,7 +309,7 @@ public class WordsAPI {
 
         } catch (IOException | JSONException | InterruptedException e) {
             Configuration.LOG
-                    .writeLog(String.format("getWord(%s) something went wrong: %s", plaintext, e.getMessage()));
+                    .writeTempLog(String.format("getWord(%s) something went wrong: %s", plaintext, e.getMessage()));
         }
 
         cache.put(plaintext, result); 
