@@ -12,7 +12,7 @@ For some reason the IPA characters are being a PIA and displaying as "?" in outp
 I continue to use VS Code, but the following compilation instructions *should* work on Linux: 
 
 Navigate to CS4099/ 
-Run the command $ javac src/*/*.java
+Run the command $ javac src/\*/\*.java
 Run the command $ java -cp src/ testing.Demos [ swc | swp | wc ]  
             OR  $ java -cp src/ testing.Demos [ swc | swp | wc ] *some_word*   
 
