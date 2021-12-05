@@ -159,6 +159,66 @@ public class Word {
         return partOfSpeech;
     }
 
+    public String toString() {
+        String divider = "\n\t";
+
+        StringBuilder stringBuilder = new StringBuilder("{");
+        if (definition != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("definition: " + definition);
+        }
+        if (partOfSpeech != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("partOfSpeech: " + partOfSpeech.toString());
+        }
+        if (synonyms != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("synonyms: " + synonyms.toString());
+        }
+        if (typeOf != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("typeOf: " + typeOf.toString());
+        }
+        if (hasTypes != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("hasTypes: " + hasTypes.toString());
+        }
+        if (commonlyTyped != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("commonlyTyped: " + commonlyTyped.toString());
+        }
+        if (inCategory != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("inCategory: " + inCategory.toString());
+        }
+        if (hasCategories != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("hasCategories: " + hasCategories.toString());
+        }
+        if (commonCategories != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("commonCategories: " + commonCategories.toString());
+        }
+        if (partOf != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("partOf: " + partOf.toString());
+        }
+        if (hasParts != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("hasParts: " + hasParts.toString());
+        }        
+        if (partOf != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("partOf: " + partOf.toString());
+        }
+        if (similarTo != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("similarTo: " + similarTo.toString());
+        }
+        stringBuilder.append("\n}");
+        return stringBuilder.toString();
+    }
+
     /*
      * public JSONObject rhymeLengths(String part_of_speech) {
      * JSONObject rhyme_lengths = Emphasis.newEmphasisObject();
