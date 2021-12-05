@@ -23,7 +23,7 @@ public class Pair<O, T> {
     }
 
     public String toString() {
-        return String.format("(%s,%s)", one, two); 
+        return String.format("(%s,%s)", one.toString(), two.toString()); 
     }
 
 }
