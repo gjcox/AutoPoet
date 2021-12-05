@@ -14,9 +14,6 @@ import apis.WordsAPI;
 import static utils.NullListOperations.addToNull;
 import static config.Configuration.LOG;
 
-/**
- * TODO toString method
- */
 public class SuperWord implements Comparable<SuperWord> {
 
     private static HashMap<String, SuperWord> cachePopulated = new HashMap<>();
@@ -159,6 +156,38 @@ public class SuperWord implements Comparable<SuperWord> {
         return plaintext;
     }
 
+    public ArrayList<Word> getNouns() {
+        return this.nouns;
+    }
+
+    public ArrayList<Word> getPronouns() {
+        return this.pronouns;
+    }
+
+    public ArrayList<Word> getVerbs() {
+        return this.verbs;
+    }
+
+    public ArrayList<Word> getAdjectives() {
+        return this.adjectives;
+    }
+
+    public ArrayList<Word> getAdverbs() {
+        return this.adverbs;
+    }
+
+    public ArrayList<Word> getPrepositions() {
+        return this.prepositions;
+    }
+
+    public ArrayList<Word> getConjuctions() {
+        return this.conjunctions;
+    }
+
+    public ArrayList<Word> getDefiniteArticles() {
+        return this.definiteArticles;
+    }
+
     public String toString() {
         String divider = "\n\t";
 
@@ -174,45 +203,99 @@ public class SuperWord implements Comparable<SuperWord> {
         }
         if (nouns != null) {
             stringBuilder.append(divider);
-            stringBuilder.append("nouns: " + nouns.toString());
+            stringBuilder.append("nouns: " + nouns.size());
         }
         if (pronouns != null) {
             stringBuilder.append(divider);
-            stringBuilder.append("pronouns: " + pronouns.toString());
+            stringBuilder.append("pronouns: " + pronouns.size());
         }
         if (verbs != null) {
             stringBuilder.append(divider);
-            stringBuilder.append("verbs: " + verbs.toString());
+            stringBuilder.append("verbs: " + verbs.size());
         }
         if (adjectives != null) {
             stringBuilder.append(divider);
-            stringBuilder.append("adjectives: " + adjectives.toString());
+            stringBuilder.append("adjectives: " + adjectives.size());
         }
         if (adverbs != null) {
             stringBuilder.append(divider);
-            stringBuilder.append("adverbs: " + adverbs.toString());
+            stringBuilder.append("adverbs: " + adverbs.size());
         }
         if (prepositions != null) {
             stringBuilder.append(divider);
-            stringBuilder.append("prepositions: " + prepositions.toString());
+            stringBuilder.append("prepositions: " + prepositions.size());
         }
         if (conjunctions != null) {
             stringBuilder.append(divider);
-            stringBuilder.append("conjunction: " + conjunctions.toString());
+            stringBuilder.append("conjunction: " + conjunctions.size());
         }
         if (definiteArticles != null) {
             stringBuilder.append(divider);
-            stringBuilder.append("definiteArticles: " + definiteArticles.toString());
+            stringBuilder.append("definiteArticles: " + definiteArticles.size());
         }
         if (unknowns != null) {
             stringBuilder.append(divider);
-            stringBuilder.append("unknowns: " + unknowns.toString());
+            stringBuilder.append("unknowns: " + unknowns.size());
         }
         if (populated) {
             stringBuilder.append("\n");
         }
         stringBuilder.append("}");
         return stringBuilder.toString();
+    }
+
+    /**
+     * Warning: this is a messy-looking string.
+     * 
+     * @return a String formatted for debugging.
+     */
+    public String getSubWords() {
+        String divider = "\n//////// ";
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(plaintext + ": {");
+        if (nouns != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("nouns\n" + nouns.toString());
+        }
+        if (pronouns != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("pronouns\n" + pronouns.toString());
+        }
+        if (verbs != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("verbs\n" + verbs.toString());
+        }
+        if (adjectives != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("adjectives\n" + adjectives.toString());
+        }
+        if (adverbs != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("adverbs\n" + adverbs.toString());
+        }
+        if (prepositions != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("prepositions\n" + prepositions.toString());
+        }
+        if (conjunctions != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("conjunction\n" + conjunctions.toString());
+        }
+        if (definiteArticles != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("definiteArticles\n" + definiteArticles.toString());
+        }
+        if (unknowns != null) {
+            stringBuilder.append(divider);
+            stringBuilder.append("unknowns\n" + unknowns.toString());
+        }
+        if (populated) {
+            stringBuilder.append("\n");
+        }
+        stringBuilder.append("}");
+        return stringBuilder.toString();
+
     }
 
     /**
