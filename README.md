@@ -1,4 +1,4 @@
-## Hello 
+# Hello 
 This is very much a WIP, especially since I recently began the process of doing more or less everything again from scratch.
 It's currently exam season, so most of my time is going to revision, but I work on this as a break here and there. 
 
