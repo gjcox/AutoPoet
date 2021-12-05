@@ -31,4 +31,16 @@ public class Emphasis {
         }
         this.secondary.add(syllableIndex);
     }
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{");
+        stringBuilder.append("primary: " + primary);
+        if (secondary != null) {
+            stringBuilder.append(", ");
+            stringBuilder.append("secondary: " + secondary.toString());
+        }
+        stringBuilder.append("}");
+        return stringBuilder.toString();
+    }
 }
