@@ -1,90 +1,158 @@
 package words;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-import org.json.JSONObject;
+import static config.Configuration.LOG;
 
 public class Word {
 
     public enum PartOfSpeech {
-        NOUN, PRONOUN, VERB, ADJECTIVE, ADVERB, PREPOSITION, CONJUCTION
+        NOUN, PRONOUN, VERB, ADJECTIVE, ADVERB, PREPOSITION, CONJUCTION, DEFINITE_ARTICLE, UNKNOWN
     }
 
     private String definition;
-    private PartOfSpeech partOfSpeech;
+    private PartOfSpeech partOfSpeech = PartOfSpeech.UNKNOWN;
 
     private ArrayList<SuperWord> synonyms;
     private ArrayList<SuperWord> antonyms; // not in use
 
-    private ArrayList<String> typeOf;
-    private ArrayList<String> hasTypes;
-    private ArrayList<SuperWord> commonTyped;
+    private ArrayList<SuperWord> typeOf;
+    private ArrayList<SuperWord> hasTypes;
+    private ArrayList<SuperWord> commonlyTyped;
 
-    private ArrayList<String> inCategory;
-    private ArrayList<String> hasCategories;
+    private ArrayList<SuperWord> inCategory;
+    private ArrayList<SuperWord> hasCategories;
+    private ArrayList<SuperWord> commonCategories;
 
-    private ArrayList<String> partOf;
-    private ArrayList<String> hasParts;
+    private ArrayList<SuperWord> partOf;
+    private ArrayList<SuperWord> hasParts;
 
-    private ArrayList<String> instanceOf; // not in use
-    private ArrayList<String> hasInstances; // not in use
+    private ArrayList<SuperWord> instanceOf; // not in use
+    private ArrayList<SuperWord> hasInstances; // not in use
 
-    private ArrayList<String> substanceOf; // not in use
-    private ArrayList<String> hasSubstances; // not in use
+    private ArrayList<SuperWord> substanceOf; // not in use
+    private ArrayList<SuperWord> hasSubstances; // not in use
 
-    private ArrayList<String> memberOf; // not in use
-    private ArrayList<String> hasMembers; // not in use
+    private ArrayList<SuperWord> memberOf; // not in use
+    private ArrayList<SuperWord> hasMembers; // not in use
 
-    private ArrayList<String> usageOf; // not in use
-    private ArrayList<String> hasUsages; // not in use
+    private ArrayList<SuperWord> usageOf; // not in use
+    private ArrayList<SuperWord> hasUsages; // not in use
 
-    private ArrayList<String> inRegion; // not in use
-    private ArrayList<String> regionOf; // not in use
+    private ArrayList<SuperWord> inRegion; // not in use
+    private ArrayList<SuperWord> regionOf; // not in use
 
-    private ArrayList<String> similarTo;
+    private ArrayList<SuperWord> similarTo;
 
-    private ArrayList<String> attribute; // not in use
-    private ArrayList<String> pertainsTo; // not in use
-    private ArrayList<String> also; // not in use
-    private ArrayList<String> entails; // not in use
-    private ArrayList<String> derivation; // not in use
-    private ArrayList<String> examples; // not in use
+    private ArrayList<SuperWord> attribute; // not in use
+    private ArrayList<SuperWord> pertainsTo; // not in use
+    private ArrayList<SuperWord> also; // not in use
+    private ArrayList<SuperWord> entails; // not in use
+    private ArrayList<SuperWord> derivation; // not in use
+    private ArrayList<SuperWord> examples; // not in use
 
-    public Word(JSONObject resultObject) {
-        
+    /**
+     * 
+     * @param plaintext    used to make log messages more readable.
+     * @param resultObject
+     */
+    @SuppressWarnings("unchecked")
+    public Word(String plaintext, Map<String, Object> resultObject) {
+        if (resultObject.containsKey("definition")) {
+            this.definition = (String) resultObject.get("definition");
+        }
+
+        if (resultObject.containsKey("partOfSpeech")) {
+            setPartOfSpeech((String) resultObject.get("partOfSpeech"), plaintext);
+        }
+
+        if (resultObject.containsKey("synonyms")) {
+            List<Object> synonymsList = (List<Object>) resultObject.get("synonyms");
+            synonyms = SuperWord.batchPlaceHolders(synonymsList);
+        }
+
+        if (resultObject.containsKey("typeOf")) {
+            List<Object> typeOfList = (List<Object>) resultObject.get("typeOf");
+            typeOf = SuperWord.batchPlaceHolders(typeOfList);
+        }
+
+        if (resultObject.containsKey("hasTypes")) {
+            List<Object> hasTypesList = (List<Object>) resultObject.get("hasTypes");
+            hasTypes = SuperWord.batchPlaceHolders(hasTypesList);
+        }
+
+        if (resultObject.containsKey("inCategory")) {
+            List<Object> inCategoryList = (List<Object>) resultObject.get("inCategory");
+            inCategory = SuperWord.batchPlaceHolders(inCategoryList);
+        }
+
+        if (resultObject.containsKey("hasCategories")) {
+            List<Object> hasCategoriesList = (List<Object>) resultObject.get("hasCategories");
+            hasCategories = SuperWord.batchPlaceHolders(hasCategoriesList);
+        }
+
+        if (resultObject.containsKey("partOf")) {
+            List<Object> partOfList = (List<Object>) resultObject.get("partOf");
+            partOf = SuperWord.batchPlaceHolders(partOfList);
+        }
+
+        if (resultObject.containsKey("hasParts")) {
+            List<Object> hasPartsList = (List<Object>) resultObject.get("hasParts");
+            hasParts = SuperWord.batchPlaceHolders(hasPartsList);
+        }
+
+        if (resultObject.containsKey("similarTo")) {
+            List<Object> similarToList = (List<Object>) resultObject.get("similarTo");
+            similarTo = SuperWord.batchPlaceHolders(similarToList);
+        }
     }
 
-    private void setPartOfSpeech() {
-        /*
-         * switch (word.partOfSpeech()) {
-         * case PartOfSpeech.NOUN:
-         * addWord(nouns, word);
-         * break;
-         * case "pronoun":
-         * addWord(pronouns, word);
-         * break;
-         * case "verb":
-         * addWord(verbs, word);
-         * break;
-         * case "adjective":
-         * addWord(adjectives, word);
-         * break;
-         * case "adverb":
-         * addWord(adverbs, word);
-         * break;
-         * case "preposition":
-         * addWord(prepositions, word);
-         * break;
-         * case "conjunction":
-         * addWord(conjunctions, word);
-         * break;
-         * default:
-         * Configuration.LOG.writeLog(String.
-         * format("Unrecognised part of speech for %s: %s", this.plaintext,
-         * word.partOfSpeech()));
-         * break;
-         * }
-         */
+    public void populateSynonyms() {
+        for (SuperWord synonym : synonyms) {
+            synonym.populate();
+        }
+    }
+
+    public void populateSimilarTo() {
+        for (SuperWord similarToElement : similarTo) {
+            similarToElement.populate();
+        }
+    }
+
+    private void setPartOfSpeech(String partOfSpeech, String plaintext) {
+        switch (partOfSpeech) {
+            case "noun":
+                this.partOfSpeech = PartOfSpeech.NOUN;
+                break;
+            case "pronoun":
+                this.partOfSpeech = PartOfSpeech.PRONOUN;
+                break;
+            case "verb":
+                this.partOfSpeech = PartOfSpeech.VERB;
+                break;
+            case "adjective":
+                this.partOfSpeech = PartOfSpeech.ADJECTIVE;
+                break;
+            case "adverb":
+                this.partOfSpeech = PartOfSpeech.ADVERB;
+                break;
+            case "preposition":
+                this.partOfSpeech = PartOfSpeech.PREPOSITION;
+                break;
+            case "conjunction":
+                this.partOfSpeech = PartOfSpeech.CONJUCTION;
+                break;
+            case "definite article":
+                this.partOfSpeech = PartOfSpeech.DEFINITE_ARTICLE; 
+                break;
+            default:
+                LOG.writePersistentLog(String.format("Unrecognised part of speech for \"%s\" with definition \"%s\": \"%s\"",
+                        plaintext, this.definition, partOfSpeech));
+                break;
+        }
+
     }
 
     public PartOfSpeech partOfSpeech() {
