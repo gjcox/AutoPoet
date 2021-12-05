@@ -7,33 +7,49 @@ import java.sql.Timestamp;
 
 public class LogWriter {
 
-    File log = new File("lib" + File.separator + "logs" + File.separator + "log.log");
-    FileWriter writer;
-    boolean logging;
+    private boolean tempLogging;
+    File tempLog = new File("lib" + File.separator + "logs" + File.separator + "log.log");
+    FileWriter tempWriter;
 
-    public LogWriter(boolean logging) {
-        this.logging = logging;
-        if (logging) {
+    File persistentLog = new File("lib" + File.separator + "logs" + File.separator + "persistent.log");
+    FileWriter persistentWriter;
+
+    public LogWriter(boolean tempLogging) {
+        this.tempLogging = tempLogging;
+        try {
+            if (tempLogging) {
+                tempWriter = new FileWriter(tempLog, false);
+            }
+            persistentWriter = new FileWriter(persistentLog, true);
+        } catch (IOException e) {
+            System.err.println(
+                    String.format("! LogWriter couldn't find %s or %s - logs will not be recorded",
+                            tempLog.toPath(), persistentLog.toPath()));
+            this.tempLogging = false;
+        }
+    }
+
+    public void writeTempLog(String string) {
+        if (tempLogging) {
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             try {
-                writer = new FileWriter(log, false);
+                tempWriter.write(String.format("%s\t %s\n", timestamp.toString(), string));
+                tempWriter.flush();
             } catch (IOException e) {
-                System.err.println(
-                        String.format("! LogWriter couldn't find %s - logs will not be recorded", log.toPath()));
-                this.logging = false;
+                System.err.println(String.format("! LogWriter failed to write %s to %s", string, tempLog.toPath()));
             }
         }
     }
 
-    public void writeLog(String string) {
-        if (logging) {
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            try {
-                writer.write(String.format("%s\t %s\n", timestamp.toString(), string));
-                writer.flush();
-            } catch (IOException e) {
-                System.err.println(String.format("! LogWriter failed to write %s to %s", string, log.toPath()));
-            }
+    public void writePersistentLog(String string) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        try {
+            persistentWriter.write(String.format("%s\t %s\n", timestamp.toString(), string));
+            persistentWriter.flush();
+        } catch (IOException e) {
+            System.err.println(String.format("! LogWriter failed to write %s to %s", string, persistentLog.toPath()));
         }
+
     }
 
 }
