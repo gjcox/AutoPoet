@@ -38,7 +38,7 @@ public class IPAHandler extends AbstractIPA {
                                                               // correspond to nuclei_indexes[i]
 
         if (ipaWord.equals("")) {
-            Configuration.LOG.writeLog(
+            Configuration.LOG.writeTempLog(
                     String.format("getSyllables(%s) passed an empty string. Returning empty pair.", ipaWord));
             return new Pair<>(syllables, emphasis);
         }
@@ -127,7 +127,7 @@ public class IPAHandler extends AbstractIPA {
         syllables.get(syllables.size() - 1).setCoda(ipaWord.substring(lastNucleusIndex + lastNucleusLength));
 
         Pair<ArrayList<Syllable>, Emphasis> pair = new Pair<>(syllables, emphasis);
-        Configuration.LOG.writeLog(String.format("getSyllables(%s) returning: ", pair.toString()));
+        Configuration.LOG.writeTempLog(String.format("getSyllables(%s) returning: ", pair.toString()));
         return pair;
     }
 
