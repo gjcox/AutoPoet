@@ -6,7 +6,7 @@ I'm yet to reimplement most of the IPA handling - I've got all new data structur
 
 Most of the getX() functions in apis.WordsAPI are now redundant, and will be deleted soon. 
 
-For some reason the IPA characters are being a PIA and displaying as "?" in outputs, where they previously didn't. The internal representations are still working because splitting IPA into syllables still works so I really don't know what the issue is. 
+For some reason the IPA characters are being a PIA and displaying as "?" in outputs, where they previously didn't. I know the internal representations are still working because splitting IPA into syllables still works so I really don't know what the issue is. 
 
 # Compilation 
 I continue to use VS Code, but the following compilation instructions *should* work on Linux: 
@@ -20,7 +20,7 @@ testing.Demos.superWordConstructor() and .superWordPopulator() (i.e. swc and swp
 testing.Demos.wordConstructor() (i.e. wc) shows the subwords in full, i.e. the functionality of Word. 
 Omitting the second argument will use predefined examples; including it will attempt to create a SuperWord from the passed argument. 
 
-N.B. words that WordsAPI doesn't recognise will still be marked as populated, despite nothing being added. This is to prevent repeated failed attempts at querying, but might change in future. 
+N.B. words that WordsAPI doesn't recognise will still be marked as populated for swp, despite nothing of value being added to them. This is to prevent repeated failed attempts at querying, but might change in future. 
 
 # Logs 
 lib/logs/log.log is temporary, and reflects the last run of the program (including when SuperWords were retrieved from a cache) so it's in the .gitignore.  
@@ -28,3 +28,4 @@ lib/logs/persistent.log is not temporary, and is for automatically recording une
 
 e.g. It revealed that "the" has partOfSpeech "definite article", which I wasn't previously aware was an option with the API (see WordsApiNotes.txt for the parts of speech I was expecting, as well as other fun/infuriating examples of reponses). 
 
+Please let me know if unexpected behvaiour occurs! 
