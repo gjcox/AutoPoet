@@ -44,6 +44,20 @@
     "pronunciation":{}0 items
 }
 
+# Notable for "pronunciation" being a string, not a JSON object 
+{
+    "rhymes":{1 item
+        "all":"-ə"
+    }
+    "word":"the"
+    "results":[
+        0:{...}
+        1:{...}
+    ]
+    "pronunciation":"ðʌ"
+    "frequency":7.48
+}
+
 # Notable for having only one result 
 {
     "word":"suet"
