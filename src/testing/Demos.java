@@ -71,7 +71,7 @@ public class Demos {
         }
     }
 
-    public static void wordConstructor() {
+    public static void superWordConstructor() {
         List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds", "present", "understated");
         for (String word : words) {
             SuperWord wordObject = SuperWord.getSuperWord(word);
@@ -79,7 +79,7 @@ public class Demos {
         }
     }
 
-    public static void wordPopulator() {
+    public static void superWordPopulator() {
         List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds", "present",
                 "understated");
         for (String word : words) {
@@ -89,21 +89,31 @@ public class Demos {
         }
     }
 
-    public static void presentPresent() {
+    public static void wordConstructor() {
         SuperWord present = SuperWord.getSuperWord("present");
-        SuperWord resent = SuperWord.getSuperWord("resent");
-        // boolean rhymes = IPAHandler.checkRhyme(present, resent);
-        // System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
-        // present.getPlaintext(), resent.getPlaintext(), rhymes));
-
+        present.populate();
+        System.out.println(present.getSubWords());
     }
 
-    public static void rhymeLengths() {
-        SuperWord understated = SuperWord.getSuperWord("understated");
-        System.out.println(understated);
-        // JSONObject rhyme_lengths = understated.rhymeLengths("all");
-        // System.out.println(rhyme_lengths);
-    }
+    /*
+     * public static void presentPresent() {
+     * SuperWord present = SuperWord.getSuperWord("present");
+     * SuperWord resent = SuperWord.getSuperWord("resent");
+     * boolean rhymes = IPAHandler.checkRhyme(present, resent);
+     * System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
+     * present.getPlaintext(), resent.getPlaintext(), rhymes));
+     * 
+     * }
+     */
+
+    /*
+     * public static void rhymeLengths() {
+     * SuperWord understated = SuperWord.getSuperWord("understated");
+     * System.out.println(understated);
+     * JSONObject rhyme_lengths = understated.rhymeLengths("all");
+     * System.out.println(rhyme_lengths);
+     * }
+     */
 
     public static void abercrombieZombie() {
         SuperWord abercrombie = SuperWord.getSuperWord("abercrombie");
@@ -113,15 +123,56 @@ public class Demos {
     }
 
     public static void main(String[] args) {
-        // demoGetSyllables("acquainted", "ə'kweɪntɪd");
-        // demoGetSyllables("painted", "'peɪntɪd");
-        // demoRhymes();
-        // getIPA();
-        // wordConstructor();
-        wordPopulator();
-        // presentPresent();
-        // rhymeLengths();
-        // newEmphasisObject();
-        // abercrombieZombie();
+        String usage = "java -cp src/ testing.Demos [ swc | swp | wc ]";
+
+        if (args.length < 1) {
+            /* for use within VS Code */
+            // superWordConstructor();
+            // superWordPopulator();
+            wordConstructor();
+            return;
+        }
+
+        if (args.length == 1) {
+            switch (args[0].toLowerCase()) {
+                case "swc":
+                    superWordConstructor();
+                    break;
+                case "swp":
+                    superWordPopulator();
+                    break;
+                case "wc":
+                    wordConstructor();
+                    break;
+                default:
+                    System.err.println(usage);
+            }
+            return;
+        }
+
+        if (args.length == 2) {
+            SuperWord superWord;
+            switch (args[0].toLowerCase()) {
+                case "swc":
+                    superWord = SuperWord.getSuperWord(args[1]);
+                    System.out.println(superWord.toString());
+                    break;
+                case "swp":
+                    superWord = SuperWord.getSuperWord(args[1]);
+                    superWord.populate();
+                    System.out.println(superWord.toString());
+                    break;
+                case "wc":
+                    superWord = SuperWord.getSuperWord(args[1]);
+                    superWord.populate();
+                    System.out.println(superWord.getSubWords());
+                    break;
+                default:
+                    System.err.println(usage);
+            }
+            return;
+        }
+
+        System.err.println(usage);
     }
 }
