@@ -11,10 +11,10 @@ For some reason the IPA characters are being a PIA and displaying as "?" in outp
 # Compilation 
 I continue to use VS Code, but the following compilation instructions *should* work on Linux: 
 
-Navigate to CS4099/ 
-Run the command $ javac src/\*/\*.java
-Run the command $ java -cp src/ testing.Demos [ swc | swp | wc ]  
-            OR  $ java -cp src/ testing.Demos [ swc | swp | wc ] *some_word*   
+Navigate to CS4099/ <br>
+Run the command $ javac src/\*/\*.java <br>
+Run the command $ java -cp src/ testing.Demos \[ swc | swp | wc \] 
+            OR  $ java -cp src/ testing.Demos \[ swc | swp | wc \] *some_word*   
 
 testing.Demos.superWordConstructor() and .superWordPopulator() (i.e. swc and swp) demonstrate the functionality of SuperWord, the latter of which involves WordsAPI. 
 testing.Demos.wordConstructor() (i.e. wc) shows the subwords in full, i.e. the functionality of Word. 
@@ -28,4 +28,4 @@ lib/logs/persistent.log is not temporary, and is for automatically recording une
 
 e.g. It revealed that "the" has partOfSpeech "definite article", which I wasn't previously aware was an option with the API (see WordsApiNotes.txt for the parts of speech I was expecting, as well as other fun/infuriating examples of reponses). 
 
-Please let me know if unexpected behvaiour occurs! 
+Please let me know if unexpected behaviour occurs! 
