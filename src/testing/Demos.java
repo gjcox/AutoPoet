@@ -128,8 +128,8 @@ public class Demos {
         if (args.length < 1) {
             /* for use within VS Code */
             // superWordConstructor();
-            // superWordPopulator();
-            wordConstructor();
+            superWordPopulator();
+            // wordConstructor();
             return;
         }
 
