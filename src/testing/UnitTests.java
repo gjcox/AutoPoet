@@ -1,12 +1,12 @@
 package testing;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+// import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+// import org.junit.jupiter.api.Test;
 
 import words.IPAHandler;
 import words.Syllable;
@@ -22,7 +22,7 @@ public class UnitTests {
     /**
      * Tests that words.IPAHandler.getSyllables() behaves as expected 
      */
-    @Test
+    // @Test
     /*public void testGetSyllable() {
         List<String> words = Arrays.asList("example", "mastery", "testing", "mistake", "sky", "cure");
         List<String> ipa_words = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ", "mɪ'steɪk", "skaɪ", "kjʊr");

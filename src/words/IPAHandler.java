@@ -196,7 +196,7 @@ public class IPAHandler extends AbstractIPA {
         return rhymes;
     }
 
-    /**
+     /**
      * Checks if two words rhyme. Tries all pairs of pronunciants for the words and
      * potential rhyme lengths.
      * 
@@ -205,19 +205,19 @@ public class IPAHandler extends AbstractIPA {
      * @return false if the shorter word is does not have enough syllables to
      *         include the earlier stress, e.g. "poet" and "it"
      */
-    public static boolean checkRhyme(Word word1, Word word2) {
+    /*public static boolean checkRhyme(Word word1, Word word2) {
         JSONObject sylObject1 = word1.ipaSyllables();
         JSONObject sylObject2 = word2.ipaSyllables();
 
         /* iterate over the parts of speech (verb, noun, all) associated with word 1 */
-        Iterator<String> partsOfSpeech1 = sylObject1.keys();
+    /*    Iterator<String> partsOfSpeech1 = sylObject1.keys();
         while (partsOfSpeech1.hasNext()) {
             String partOfSpeech1 = partsOfSpeech1.next();
             JSONArray syllables1 = (JSONArray) sylObject1.get(partOfSpeech1);
             JSONObject rhymeLengths1 = word1.rhymeLengths(partOfSpeech1);
 
             /* iterate over the parts of speech (verb, noun, all) associated with word 2 */
-            Iterator<String> partsOfSpeech2 = sylObject2.keys();
+    /*        Iterator<String> partsOfSpeech2 = sylObject2.keys();
             while (partsOfSpeech2.hasNext()) {
                 String partOfSpeech2 = partsOfSpeech2.next();
                 JSONArray syllables2 = (JSONArray) sylObject2.get(partOfSpeech2);
@@ -229,7 +229,7 @@ public class IPAHandler extends AbstractIPA {
                 }
 
                 /* test if any of common rhyme lengths produce a rhyme */
-                for (Integer syllables : rhymeLengths) {
+    /*            for (Integer syllables : rhymeLengths) {
                     if (checkRhyme(syllables1, syllables2, syllables))
                         return true;
                 }
@@ -247,18 +247,18 @@ public class IPAHandler extends AbstractIPA {
      * @param rhyme_lengths_2
      * @return
      */
-    private static List<Integer> getCommonRhymeLengths(JSONObject rhyme_lengths_1, JSONObject rhyme_lengths_2) {
+    /*private static List<Integer> getCommonRhymeLengths(JSONObject rhyme_lengths_1, JSONObject rhyme_lengths_2) {
         List<Integer> common_rhyme_lengths = new LinkedList<>();
 
         /* match primary_1 to primary_2 */
-        Integer primary_1 = (Integer) rhyme_lengths_1.get(Emphasis.PRIMARY);
+    /*    Integer primary_1 = (Integer) rhyme_lengths_1.get(Emphasis.PRIMARY);
         Integer primary_2 = (Integer) rhyme_lengths_2.get(Emphasis.PRIMARY);
         if (primary_1.equals(primary_2)) {
             common_rhyme_lengths.add(primary_1);
         }
 
         /* match primary_1 to secondary_2 */
-        List<Integer> secondaries_2 = Emphasis.getSecondary(rhyme_lengths_2);
+    /*    List<Integer> secondaries_2 = Emphasis.getSecondary(rhyme_lengths_2);
         for (Integer secondary_2 : secondaries_2) {
             if (primary_1.equals(secondary_2)) {
                 common_rhyme_lengths.add(primary_1);
@@ -266,7 +266,7 @@ public class IPAHandler extends AbstractIPA {
         }
 
         /* match secondary_1 to primary_2 */
-        List<Integer> secondaries_1 = Emphasis.getSecondary(rhyme_lengths_1);
+    /*    List<Integer> secondaries_1 = Emphasis.getSecondary(rhyme_lengths_1);
         for (Integer secondary_1 : secondaries_1) {
             if (primary_2.equals(secondary_1)) {
                 common_rhyme_lengths.add(primary_2);
@@ -274,6 +274,6 @@ public class IPAHandler extends AbstractIPA {
         }
 
         return common_rhyme_lengths;
-    }
+    }*/
 
 }
