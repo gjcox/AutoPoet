@@ -3,6 +3,7 @@ package utils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
 
 public class LogWriter {
@@ -18,9 +19,9 @@ public class LogWriter {
         this.tempLogging = tempLogging;
         try {
             if (tempLogging) {
-                tempWriter = new FileWriter(tempLog, false);
+                tempWriter = new FileWriter(tempLog, StandardCharsets.UTF_8, false);
             }
-            persistentWriter = new FileWriter(persistentLog, true);
+            persistentWriter = new FileWriter(persistentLog, StandardCharsets.UTF_8, true);
         } catch (IOException e) {
             System.err.println(
                     String.format("! LogWriter couldn't find %s or %s - logs will not be recorded",
