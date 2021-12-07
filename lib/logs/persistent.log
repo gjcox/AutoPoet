@@ -1,5 +1,9 @@
-2021-12-05 17:36:21.742	 WordsAPI responded with word "monster" when requesting "monsters".
-2021-12-05 17:36:21.98	 Syllables of "the" is missing
-2021-12-05 17:36:21.99	 Pronunciation of "the" is not a JSONObject: "�?"
-2021-12-05 17:36:22.529	 WordsAPI responded with word "wind" when requesting "winds".
-2021-12-05 17:36:23.106	 Pronunciation of "understated" is not a JSONObject: "'?nd?r,ste?t?d"
+2021-12-07 15:59:17.071	 WordsAPI responded with word "monster" when requesting "monsters".
+2021-12-07 15:59:17.277	 Syllables of "the" is missing
+2021-12-07 15:59:17.278	 Pronunciation of "the" is not a JSONObject: "ðʌ"
+2021-12-07 15:59:17.714	 WordsAPI responded with word "wind" when requesting "winds".
+2021-12-07 15:59:18.192	 Pronunciation of "understated" is not a JSONObject: "'ʌndɝr,steɪtɪd"
+2021-12-07 16:01:21.286	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2021-12-07 16:09:07.181	 Syllables of "heads" is missing
+2021-12-07 16:09:07.181	 Pronunciation of "heads" is not a JSONObject: "hɛdz"
+2021-12-07 16:15:26.712	 Pronunciation of "arrived" is not a JSONObject: "ɝr'aɪvd"
