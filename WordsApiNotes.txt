@@ -44,6 +44,25 @@
     "pronunciation":{}0 items
 }
 
+# Notable for "syllables"."list" being wrong 
+{
+    "word":"come along"
+    "results":[
+        0:{...}4 items
+        1:{...}5 items
+    ]
+    "syllables":{
+        "count":2
+        "list":[
+            0:"come a"
+            1:"long"
+        ]
+    }
+    "pronunciation":{
+        "all":"kəm_ə'lɔŋ"
+    }
+}
+
 # Notable for "pronunciation" being a string, not a JSON object 
 {
     "rhymes":{1 item
