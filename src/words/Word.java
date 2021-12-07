@@ -207,10 +207,6 @@ public class Word {
             stringBuilder.append(divider);
             stringBuilder.append("hasParts: " + hasParts.toString());
         }        
-        if (partOf != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("partOf: " + partOf.toString());
-        }
         if (similarTo != null) {
             stringBuilder.append(divider);
             stringBuilder.append("similarTo: " + similarTo.toString());
