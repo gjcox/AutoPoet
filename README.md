@@ -9,12 +9,12 @@ Most of the getX() functions in apis.WordsAPI are now redundant, and will be del
 For some reason the IPA characters are being a PIA and displaying as "?" in outputs, where they previously didn't. I know the internal representations are still working because splitting IPA into syllables still works so I really don't know what the issue is. 
 
 # Compilation 
-I continue to use VS Code, but the following compilation instructions *should* work on Linux: 
+I continue to use VS Code, but the following compilation instructions have been tested on Linux: 
 
 Navigate to CS4099/ <br>
-Run the command $ javac src/\*/\*.java <br>
-Run the command $ java -cp src/ testing.Demos \[ swc | swp | wc \] 
-            OR  $ java -cp src/ testing.Demos \[ swc | swp | wc \] *some_word*   
+Run the command $ javac -cp lib/json-20210307.jar:lib/junit-platform-console.standalone-1.8.1.jar  src/\*/\*.java <br>
+Run the command $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc \] 
+            OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc \] *some_word*   
 
 testing.Demos.superWordConstructor() and .superWordPopulator() (i.e. swc and swp) demonstrate the functionality of SuperWord, the latter of which involves WordsAPI. 
 testing.Demos.wordConstructor() (i.e. wc) shows the subwords in full, i.e. the functionality of Word. 
