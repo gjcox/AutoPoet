@@ -137,8 +137,7 @@ public class IPAHandler extends AbstractIPA {
      * From my own deduction, two syllables rhyme if they have matching nuclei and
      * coda. For a multi-syllabic rhyme, the onset of all but the first syllable
      * pair must also match, hence the syllables in the for loop are treated
-     * differently.
-     * 
+     * differently. 
      */
 
 }
