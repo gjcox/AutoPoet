@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 import apis.WordsAPI;
 import words.Pronunciation.SubPronunciation;
-import words.Word.PartOfSpeech;
+import words.SubWord.PartOfSpeech;
 
 import static utils.NullListOperations.addToNull;
 import static config.Configuration.LOG;
@@ -27,15 +27,15 @@ public class SuperWord implements Comparable<SuperWord> {
     private boolean populated = false; // true iff built from a WordsAPI query
     private Pronunciation pronunciation;
     private Set<PartOfSpeech> partsOfSpeech = new HashSet<>();
-    private ArrayList<Word> nouns;
-    private ArrayList<Word> pronouns;
-    private ArrayList<Word> verbs;
-    private ArrayList<Word> adjectives;
-    private ArrayList<Word> adverbs;
-    private ArrayList<Word> prepositions;
-    private ArrayList<Word> conjunctions;
-    private ArrayList<Word> definiteArticles;
-    private ArrayList<Word> unknowns;
+    private ArrayList<SubWord> nouns;
+    private ArrayList<SubWord> pronouns;
+    private ArrayList<SubWord> verbs;
+    private ArrayList<SubWord> adjectives;
+    private ArrayList<SubWord> adverbs;
+    private ArrayList<SubWord> prepositions;
+    private ArrayList<SubWord> conjunctions;
+    private ArrayList<SubWord> definiteArticles;
+    private ArrayList<SubWord> unknowns;
 
     /**
      * Attempts to get a cached word, before returning a new placeholder.
@@ -92,7 +92,8 @@ public class SuperWord implements Comparable<SuperWord> {
             JSONArray resultsArray = word.getJSONArray("results");
             this.setWords(resultsArray);
         } else {
-            this.partsOfSpeech.add(PartOfSpeech.UNKNOWN); 
+            LOG.writePersistentLog(String.format("Results of \"%s\" was missing", plaintext));
+            this.partsOfSpeech.add(PartOfSpeech.UNKNOWN);
         }
 
         populated = true;
@@ -126,8 +127,14 @@ public class SuperWord implements Comparable<SuperWord> {
     @SuppressWarnings("unchecked")
     private void setWords(JSONArray resultsArray) {
         List<Object> results = resultsArray.toList();
+
+        if (results.isEmpty()) {
+            LOG.writePersistentLog(String.format("Results of \"%s\" was an empty array", plaintext));
+            partsOfSpeech.add(PartOfSpeech.UNKNOWN);
+        }
+
         for (Object result : results) {
-            Word word = new Word(plaintext, (Map<String, Object>) result);
+            SubWord word = new SubWord(plaintext, (Map<String, Object>) result);
             partsOfSpeech.add(word.partOfSpeech());
             switch (word.partOfSpeech()) {
                 case NOUN:
@@ -165,35 +172,35 @@ public class SuperWord implements Comparable<SuperWord> {
         return plaintext;
     }
 
-    public ArrayList<Word> getNouns() {
+    public ArrayList<SubWord> getNouns() {
         return this.nouns;
     }
 
-    public ArrayList<Word> getPronouns() {
+    public ArrayList<SubWord> getPronouns() {
         return this.pronouns;
     }
 
-    public ArrayList<Word> getVerbs() {
+    public ArrayList<SubWord> getVerbs() {
         return this.verbs;
     }
 
-    public ArrayList<Word> getAdjectives() {
+    public ArrayList<SubWord> getAdjectives() {
         return this.adjectives;
     }
 
-    public ArrayList<Word> getAdverbs() {
+    public ArrayList<SubWord> getAdverbs() {
         return this.adverbs;
     }
 
-    public ArrayList<Word> getPrepositions() {
+    public ArrayList<SubWord> getPrepositions() {
         return this.prepositions;
     }
 
-    public ArrayList<Word> getConjuctions() {
+    public ArrayList<SubWord> getConjuctions() {
         return this.conjunctions;
     }
 
-    public ArrayList<Word> getDefiniteArticles() {
+    public ArrayList<SubWord> getDefiniteArticles() {
         return this.definiteArticles;
     }
 
@@ -209,6 +216,10 @@ public class SuperWord implements Comparable<SuperWord> {
         if (pronunciation != null) {
             stringBuilder.append(divider);
             stringBuilder.append("pronunciation: " + pronunciation.toString());
+        }
+        if (!partsOfSpeech.isEmpty()) {
+            stringBuilder.append(divider);
+            stringBuilder.append("partsOfSpeech: " + partsOfSpeech.toString());
         }
         if (nouns != null) {
             stringBuilder.append(divider);
@@ -257,7 +268,7 @@ public class SuperWord implements Comparable<SuperWord> {
         return this.pronunciation;
     }
 
-    public Pronunciation.SubPronunciation getSubPronunciation(Word.PartOfSpeech partOfSpeech) {
+    public Pronunciation.SubPronunciation getSubPronunciation(SubWord.PartOfSpeech partOfSpeech) {
         return this.pronunciation.getSubPronunciation(partOfSpeech);
     }
 
@@ -320,6 +331,8 @@ public class SuperWord implements Comparable<SuperWord> {
      * product evaluation) and returns true if any part of speech pairing produces a
      * rhyme.
      * 
+     * TODO return false if either word lacks pronunciation data
+     * 
      * @param other
      * @return
      */
@@ -345,6 +358,8 @@ public class SuperWord implements Comparable<SuperWord> {
      * Iterates over the parts of speech of both words (worst case is full cross
      * product evaluation) and returns true if any part of speech pairing produces a
      * rhyme.
+     * 
+     * TODO return false if either word lacks pronunciation data
      * 
      * @param other
      * @return
