@@ -1,13 +1,13 @@
-  Part of speech            Example               WordsAPI name
-| nouns                   | freedom             | noun
-| pronouns                | you                 | pronoun
-| verbs                   | be                  | verb
-| adjectives              | hot                 | adjective
-| adverbs                 | softly              | adverb
-| prepositions            | into                | preposition
-| conjunctions            | and                 | conjunction
-| articles/determiners    | an / enough\these   | noun* / noun,adverb,adjective \ n/a
-| interjections           | whoops ouch         | n/a
+  Part of speech            Example                       WordsAPI name
+| nouns                   | freedom                     | noun
+| pronouns                | you                         | pronoun
+| verbs                   | be                          | verb
+| adjectives              | hot                         | adjective
+| adverbs                 | softly                      | adverb
+| prepositions            | into                        | preposition
+| conjunctions            | and                         | conjunction
+| articles/determiners    | an / enough / these / the   | noun* / noun,adverb,adjective / na / definiteArticle
+| interjections           | whoops ouch                 | na
 
 *N.B. WordsAPI has [4 items 0:"a" 1:"" 2:"n" 3:"" ] for an's pronunciation 
 
@@ -17,7 +17,7 @@
     "message":"word not found"
 }
 
-# Notable due to having no "results" field 
+# Notable due to having no "results" field and no "syllables" field 
 {
     "rhymes":{
         "all":"-aʊtʃ"
@@ -25,6 +25,33 @@
     "word":"ouch"
     "pronunciation":"aʊʧ"
     "frequency":4.34
+}
+
+# Notable for having no "results" field 
+{
+    "word":"abercrombie"
+    "syllables":{
+        "count":4
+        "list":[...]4 items
+    }
+    "pronunciation":{
+        "all":"'æbər,krɑmbi"
+    }
+    "frequency":2.52
+}
+
+# Notable for having a non-null but empty "results" field 
+{
+    "word":"though"
+    "results":[]0 items
+    "syllables":{
+        "count":1
+        "list":[...]1 item
+    }
+    "pronunciation":{
+        "all":"ðoʊ"
+    }
+    "frequency":5.28
 }
 
 # Notable due to having "syllables" and "rhymes" keys but an empty "pronunciation" field
@@ -103,6 +130,37 @@
     "frequency":2.54
 }
 
+# Notable for having NULL partOfSpeech entries 
+{
+    "word":"human"
+    "results":[
+        0:{...}8 items
+        1:{...}7 items
+        2:{
+            "definition":"characteristic of humanity"
+            "partOfSpeech":NULL
+            "pertainsTo":[...]1 item
+            "derivation":[...]1 item
+            "examples":[...]1 item
+        }
+        3:{
+            "definition":"relating to a person"
+            "partOfSpeech":NULL
+            "pertainsTo":[...]1 item
+            "derivation":[...]2 items
+            "examples":[...]1 item
+        }
+    ]
+    "syllables":{
+        "count":2
+        "list":[...]2 items
+    }
+    "pronunciation":{
+        "all":"'hjumən"
+    }
+    "frequency":5.16
+}
+
 # Typical example
 {
     "word":"freedom"
@@ -135,49 +193,6 @@
     "frequency":4.67
 }
 
-# Notable for having NULL partOfSpeech entries 
-{
-    "word":"human"
-    "results":[
-        0:{...}8 items
-        1:{...}7 items
-        2:{
-            "definition":"characteristic of humanity"
-            "partOfSpeech":NULL
-            "pertainsTo":[...]1 item
-            "derivation":[...]1 item
-            "examples":[...]1 item
-        }
-        3:{
-            "definition":"relating to a person"
-            "partOfSpeech":NULL
-            "pertainsTo":[...]1 item
-            "derivation":[...]2 items
-            "examples":[...]1 item
-        }
-    ]
-    "syllables":{
-        "count":2
-        "list":[...]2 items
-    }
-    "pronunciation":{
-        "all":"'hjumən"
-    }
-    "frequency":5.16
-}
-
-# Notable for having no "results" field 
-{
-    "word":"abercrombie"
-    "syllables":{
-        "count":4
-        "list":[...]4 items
-    }
-    "pronunciation":{
-        "all":"'æbər,krɑmbi"
-    }
-    "frequency":2.52
-}
 
 # Typical example of a noun and verb word 
 {
