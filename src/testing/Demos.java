@@ -37,28 +37,17 @@ public class Demos {
     }
 
     private static void demoRhymes() {
-        List<String> words_1 = Arrays.asList("test", "test", "hideous", "attack", "whim", "painted", "painted",
+        List<String> words1 = Arrays.asList("test", "test", "hideous", "attack", "whim", "painted", "painted",
                 "overstated", "stated", "fated", "zombie", "zombie");
-        /*
-         * List<String> ipa_words_1 = Arrays.asList("tɛst", "tɛst", "hɪdiəs", "ə'tæk",
-         * "wɪm", "'peɪntɪd", "'peɪntɪd",
-         * "'oʊvɝr,steɪtɪd", "'steɪtɪd", "'feɪtɪd", "'zɑmbi", "'zɑmbi");
-         */
-        List<String> words_2 = Arrays.asList("guest", "human", "insidious", "aback", "dim", "acquainted", "understated",
+        List<String> words2 = Arrays.asList("guest", "human", "insidious", "aback", "dim", "acquainted", "understated",
                 "understated", "understated", "understated", "abercrombie", "bee");
-        /*
-         * List<String> ipa_words_2 = Arrays.asList("ɡɛst", "'hjumən", "ɪn'sɪdiəs",
-         * "ə'bæk", "dɪm", "ə'kweɪntɪd",
-         * "'ʌndɝr,steɪtɪd", "'ʌndɝr,steɪtɪd", "'ʌndɝr,steɪtɪd", "'ʌndɝr,steɪtɪd",
-         * "'æbər,krɑmbi", "bi");
-         */
 
-        for (int i = 0; i < words_1.size(); i++) {
-            SuperWord word_1 = SuperWord.getSuperWord(words_1.get(i));
-            SuperWord word_2 = SuperWord.getSuperWord(words_2.get(i));
-            // boolean rhymes = IPAHandler.checkRhyme(word_1, word_2);
-            // System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
-            // words_1.get(i), words_2.get(i), rhymes));
+        for (int i = 0; i < words1.size(); i++) {
+            SuperWord superword1 = SuperWord.getSuperWord(words1.get(i));
+            SuperWord superword2 = SuperWord.getSuperWord(words2.get(i));
+            boolean rhymes = superword1.rhymesWith(superword2);
+            System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
+                    words1.get(i), words2.get(i), rhymes));
         }
     }
 
@@ -106,30 +95,31 @@ public class Demos {
      * }
      */
 
-    /*
-     * public static void rhymeLengths() {
-     * SuperWord understated = SuperWord.getSuperWord("understated");
-     * System.out.println(understated);
-     * JSONObject rhyme_lengths = understated.rhymeLengths("all");
-     * System.out.println(rhyme_lengths);
-     * }
-     */
-
     public static void abercrombieZombie() {
         SuperWord abercrombie = SuperWord.getSuperWord("abercrombie");
+        abercrombie.populate();
         System.out.println(abercrombie);
+
         SuperWord zombie = SuperWord.getSuperWord("zombie");
+        zombie.populate();
         System.out.println(zombie);
+
+        boolean rhymes = abercrombie.rhymesWith(zombie);
+
+        System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
+                abercrombie.getPlaintext(), zombie.getPlaintext(), rhymes));
     }
 
     public static void main(String[] args) {
-        String usage = "java -cp src/ testing.Demos [ swc | swp | wc ]";
+        String usage = "java -cp src/ testing.Demos [ swc | swp | wc | rhyme ]";
 
         if (args.length < 1) {
             /* for use within VS Code */
             // superWordConstructor();
-            superWordPopulator();
+            // superWordPopulator();
             // wordConstructor();
+            demoRhymes();
+            // abercrombieZombie();
             return;
         }
 
@@ -143,6 +133,9 @@ public class Demos {
                     break;
                 case "wc":
                     wordConstructor();
+                    break;
+                case "rhyme":
+                    demoRhymes();
                     break;
                 default:
                     System.err.println(usage);
@@ -169,6 +162,25 @@ public class Demos {
                     break;
                 default:
                     System.err.println(usage);
+                    break;
+            }
+            return;
+        }
+
+        if (args.length == 3) {
+            SuperWord superWord1;
+            SuperWord superWord2;
+            switch (args[0].toLowerCase()) {
+                case "rhyme":
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    superWord2 = SuperWord.getSuperWord(args[2]);
+                    boolean rhymes = superWord1.rhymesWith(superWord2);
+                    System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
+                            superWord1.getPlaintext(), superWord2.getPlaintext(), rhymes));
+                    break;
+                default:
+                    System.err.println(usage);
+                    break;
             }
             return;
         }

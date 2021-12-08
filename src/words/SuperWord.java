@@ -2,14 +2,18 @@ package words;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import apis.WordsAPI;
+import words.Pronunciation.SubPronunciation;
+import words.Word.PartOfSpeech;
 
 import static utils.NullListOperations.addToNull;
 import static config.Configuration.LOG;
@@ -22,6 +26,7 @@ public class SuperWord implements Comparable<SuperWord> {
     private String plaintext;
     private boolean populated = false; // true iff built from a WordsAPI query
     private Pronunciation pronunciation;
+    private Set<PartOfSpeech> partsOfSpeech = new HashSet<>();
     private ArrayList<Word> nouns;
     private ArrayList<Word> pronouns;
     private ArrayList<Word> verbs;
@@ -52,7 +57,7 @@ public class SuperWord implements Comparable<SuperWord> {
 
     public void populate() {
         if (populated) {
-            LOG.writeTempLog(String.format("Attempted to repopulate \"%s\": ", plaintext, this.toString()));
+            LOG.writeTempLog(String.format("Attempted to repopulate \"%s\": %s", plaintext, this.toString()));
             return;
         }
 
@@ -86,10 +91,13 @@ public class SuperWord implements Comparable<SuperWord> {
         if (word.has("results")) {
             JSONArray resultsArray = word.getJSONArray("results");
             this.setWords(resultsArray);
+        } else {
+            this.partsOfSpeech.add(PartOfSpeech.UNKNOWN); 
         }
 
         populated = true;
         cachePopulated.put(this.plaintext, this);
+        LOG.writeTempLog(String.format("Populated and cached \"%s\": %s", plaintext, this.toString()));
     }
 
     /**
@@ -120,6 +128,7 @@ public class SuperWord implements Comparable<SuperWord> {
         List<Object> results = resultsArray.toList();
         for (Object result : results) {
             Word word = new Word(plaintext, (Map<String, Object>) result);
+            partsOfSpeech.add(word.partOfSpeech());
             switch (word.partOfSpeech()) {
                 case NOUN:
                     nouns = addToNull(nouns, word);
@@ -244,6 +253,14 @@ public class SuperWord implements Comparable<SuperWord> {
         return stringBuilder.toString();
     }
 
+    public Pronunciation getPronunciation() {
+        return this.pronunciation;
+    }
+
+    public Pronunciation.SubPronunciation getSubPronunciation(Word.PartOfSpeech partOfSpeech) {
+        return this.pronunciation.getSubPronunciation(partOfSpeech);
+    }
+
     /**
      * Warning: this is a messy-looking string.
      * 
@@ -296,6 +313,70 @@ public class SuperWord implements Comparable<SuperWord> {
         stringBuilder.append("}");
         return stringBuilder.toString();
 
+    }
+
+    /**
+     * Iterates over the parts of speech of both words (worst case is full cross
+     * product evaluation) and returns true if any part of speech pairing produces a
+     * rhyme.
+     * 
+     * @param other
+     * @return
+     */
+    public boolean rhymesWith(SuperWord other) {
+        if (!this.populated)
+            this.populate();
+        if (!other.populated)
+            other.populate();
+
+        for (PartOfSpeech pos1 : this.partsOfSpeech) {
+            SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
+            for (PartOfSpeech pos2 : other.partsOfSpeech) {
+                SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
+                if (subPronunciation1.rhymesWith(subPronunciation2)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Iterates over the parts of speech of both words (worst case is full cross
+     * product evaluation) and returns true if any part of speech pairing produces a
+     * rhyme.
+     * 
+     * @param other
+     * @return
+     */
+    public boolean rhymesWith(SuperWord other, PartOfSpeech pos1, PartOfSpeech pos2) {
+        if (!this.populated)
+            this.populate();
+        if (!other.populated)
+            other.populate();
+
+        if (pos1 != null && pos2 != null) {
+            SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
+            SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
+            return subPronunciation1.rhymesWith(subPronunciation2);
+        } else if (pos1 != null) {
+            SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
+            for (PartOfSpeech pos2b : other.partsOfSpeech) {
+                SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2b);
+                if (subPronunciation1.rhymesWith(subPronunciation2)) {
+                    return true;
+                }
+            }
+        } else {
+            SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
+            for (PartOfSpeech pos1b : this.partsOfSpeech) {
+                SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1b);
+                if (subPronunciation1.rhymesWith(subPronunciation2)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**

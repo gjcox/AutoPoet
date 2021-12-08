@@ -122,6 +122,9 @@ public class Word {
     }
 
     private void setPartOfSpeech(String partOfSpeech, String plaintext) {
+        if (partOfSpeech == null) {
+            partOfSpeech = "null";
+        }
         switch (partOfSpeech) {
             case "noun":
                 this.partOfSpeech = PartOfSpeech.NOUN;
@@ -145,11 +148,13 @@ public class Word {
                 this.partOfSpeech = PartOfSpeech.CONJUCTION;
                 break;
             case "definite article":
-                this.partOfSpeech = PartOfSpeech.DEFINITE_ARTICLE; 
+                this.partOfSpeech = PartOfSpeech.DEFINITE_ARTICLE;
                 break;
             default:
-                LOG.writePersistentLog(String.format("Unrecognised part of speech for \"%s\" with definition \"%s\": \"%s\"",
-                        plaintext, this.definition, partOfSpeech));
+                LOG.writePersistentLog(
+                        String.format("Unrecognised part of speech for \"%s\" with definition \"%s\": \"%s\"",
+                                plaintext, this.definition, partOfSpeech));
+                // partOfSpeech will be left as UNKNOWN
                 break;
         }
 
@@ -206,7 +211,7 @@ public class Word {
         if (hasParts != null) {
             stringBuilder.append(divider);
             stringBuilder.append("hasParts: " + hasParts.toString());
-        }        
+        }
         if (similarTo != null) {
             stringBuilder.append(divider);
             stringBuilder.append("similarTo: " + similarTo.toString());

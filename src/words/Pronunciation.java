@@ -7,6 +7,8 @@ import org.json.JSONObject;
 
 import utils.Pair;
 
+import static config.Configuration.LOG;
+
 /**
  * I could use a JSONObject instead of this class, which will have a lot of null
  * attributes. Provided they stay null the memory footprint should not be
@@ -17,7 +19,77 @@ public class Pronunciation {
     public class SubPronunciation {
         String ipa;
         ArrayList<Syllable> syllables;
+        ArrayList<Syllable> primaryRhyme;
+        ArrayList<ArrayList<Syllable>> secondaryRhymes;
         Emphasis emphasis;
+
+        ArrayList<Syllable> populateRhyme(int startingEmphasis) {
+            ArrayList<Syllable> rhyme = new ArrayList<>();
+            Syllable source = syllables.get(startingEmphasis);
+            Syllable start = new Syllable("", source.getNucleus(), source.getCoda());
+            rhyme.add(start);
+            for (int i = startingEmphasis + 1; i < syllables.size(); i++) {
+                rhyme.add(syllables.get(i));
+            }
+            return rhyme;
+        }
+
+        /**
+         * Not that this does not create copies of syllables aside from the stressed
+         * ones, so changing the syllables later could lead to unexpected behaviour. At
+         * present, not such changes occur.
+         */
+        void populateRhymes() {
+            /* primary rhyme */
+            this.primaryRhyme = populateRhyme(this.emphasis.getPrimary());
+
+            /* secondary rhymes */
+            if (this.emphasis.getSecondary() != null) {
+                for (Integer secondaryEmphasis : this.emphasis.getSecondary()) {
+                    this.secondaryRhymes = utils.NullListOperations.addToNull(this.secondaryRhymes,
+                            populateRhyme(secondaryEmphasis));
+                }
+            }
+        }
+
+        private boolean rhymeMatch(ArrayList<Syllable> rhyme1, ArrayList<Syllable> rhyme2) {
+            if (rhyme1.size() != rhyme2.size()) {
+                return false;
+            }
+            for (int i = 0; i < rhyme1.size(); i++) {
+                if (!rhyme1.get(i).rhymes(rhyme2.get(i))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        boolean rhymesWith(SubPronunciation other) {
+            /* primary to primary */
+            if (this.rhymeMatch(this.primaryRhyme, other.primaryRhyme)) {
+                return true;
+            }
+
+            /* primary to secondary */
+            if (other.secondaryRhymes != null) {
+                for (ArrayList<Syllable> secondary : other.secondaryRhymes) {
+                    if (this.rhymeMatch(this.primaryRhyme, secondary)) {
+                        return true;
+                    }
+                }
+            }
+
+            /* secondary to primary */
+            if (this.secondaryRhymes != null) {
+                for (ArrayList<Syllable> secondary : this.secondaryRhymes) {
+                    if (this.rhymeMatch(secondary, other.primaryRhyme)) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
 
         public String toString() {
             StringBuilder stringBuilder = new StringBuilder();
@@ -27,12 +99,18 @@ public class Pronunciation {
             stringBuilder.append("syllables: " + syllables.toString());
             stringBuilder.append(", ");
             stringBuilder.append("emphasis: " + emphasis.toString());
+            stringBuilder.append(", ");
+            stringBuilder.append("primary rhyme: " + primaryRhyme.toString());
+            if (this.secondaryRhymes != null) {
+                stringBuilder.append(", ");
+                stringBuilder.append("secondary rhymes: " + secondaryRhymes.toString());
+            }
             stringBuilder.append("}");
             return stringBuilder.toString();
         }
     }
 
-    private ArrayList<String> syllables = new ArrayList<>();
+    private ArrayList<String> plaintextSyllables = new ArrayList<>();
 
     private SubPronunciation noun;
     private SubPronunciation pronoun;
@@ -43,8 +121,8 @@ public class Pronunciation {
     private SubPronunciation conjunction;
     private SubPronunciation all;
 
-    public ArrayList<String> getSyllables() {
-        return syllables;
+    public ArrayList<String> getPlaintextSyllables() {
+        return plaintextSyllables;
     }
 
     /**
@@ -53,11 +131,11 @@ public class Pronunciation {
      */
     public void setSyllables(JSONObject syllablesObject) {
         if (syllablesObject.has("count") && syllablesObject.has("list")) {
-            this.syllables = new ArrayList<>();
+            this.plaintextSyllables = new ArrayList<>();
             JSONArray syllableArray = syllablesObject.getJSONArray("list");
 
             for (int i = 0; i < syllablesObject.getInt("count"); i++) {
-                this.syllables.add(syllableArray.getString(i));
+                this.plaintextSyllables.add(syllableArray.getString(i));
             }
         }
     }
@@ -79,6 +157,7 @@ public class Pronunciation {
             syllablesAndEmphasis = IPAHandler.getSyllables(this.noun.ipa);
             this.noun.syllables = syllablesAndEmphasis.one();
             this.noun.emphasis = syllablesAndEmphasis.two();
+            this.noun.populateRhymes();
         }
 
         if (pronunciationObject.has("pronoun")) {
@@ -87,6 +166,7 @@ public class Pronunciation {
             syllablesAndEmphasis = IPAHandler.getSyllables(this.pronoun.ipa);
             this.pronoun.syllables = syllablesAndEmphasis.one();
             this.pronoun.emphasis = syllablesAndEmphasis.two();
+            this.pronoun.populateRhymes();
         }
 
         if (pronunciationObject.has("verb")) {
@@ -95,6 +175,7 @@ public class Pronunciation {
             syllablesAndEmphasis = IPAHandler.getSyllables(this.verb.ipa);
             this.verb.syllables = syllablesAndEmphasis.one();
             this.verb.emphasis = syllablesAndEmphasis.two();
+            this.verb.populateRhymes();
         }
 
         if (pronunciationObject.has("adjective")) {
@@ -103,6 +184,7 @@ public class Pronunciation {
             syllablesAndEmphasis = IPAHandler.getSyllables(this.adjective.ipa);
             this.adjective.syllables = syllablesAndEmphasis.one();
             this.adjective.emphasis = syllablesAndEmphasis.two();
+            this.adjective.populateRhymes();
         }
 
         if (pronunciationObject.has("adverb")) {
@@ -111,6 +193,7 @@ public class Pronunciation {
             syllablesAndEmphasis = IPAHandler.getSyllables(this.adverb.ipa);
             this.adverb.syllables = syllablesAndEmphasis.one();
             this.adverb.emphasis = syllablesAndEmphasis.two();
+            this.adverb.populateRhymes();
         }
 
         if (pronunciationObject.has("preposition")) {
@@ -119,6 +202,7 @@ public class Pronunciation {
             syllablesAndEmphasis = IPAHandler.getSyllables(this.preposition.ipa);
             this.preposition.syllables = syllablesAndEmphasis.one();
             this.preposition.emphasis = syllablesAndEmphasis.two();
+            this.preposition.populateRhymes();
         }
 
         if (pronunciationObject.has("conjunction")) {
@@ -137,6 +221,7 @@ public class Pronunciation {
             syllablesAndEmphasis = IPAHandler.getSyllables(this.all.ipa);
             this.all.syllables = syllablesAndEmphasis.one();
             this.all.emphasis = syllablesAndEmphasis.two();
+            this.all.populateRhymes();
         }
 
     }
@@ -147,58 +232,57 @@ public class Pronunciation {
         Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = IPAHandler.getSyllables(this.all.ipa);
         this.all.syllables = syllablesAndEmphasis.one();
         this.all.emphasis = syllablesAndEmphasis.two();
+        this.all.populateRhymes();
     }
 
-    public SubPronunciation getNoun() {
-        if (this.all != null)
-            return this.all;
-        return this.noun;
-    }
-
-    public SubPronunciation getPronoun() {
-        if (this.all != null)
-            return this.all;
-        return this.pronoun;
-    }
-
-    public SubPronunciation getVerb() {
-        if (this.all != null)
-            return this.all;
-        return this.verb;
-    }
-
-    public SubPronunciation getAdjective() {
-        if (this.all != null)
-            return this.all;
-        return this.adjective;
-    }
-
-    public SubPronunciation getAdverb() {
-        if (this.all != null)
-            return this.all;
-        return this.adverb;
-    }
-
-    public SubPronunciation getPreposition() {
-        if (this.all != null)
-            return this.all;
-        return this.preposition;
-    }
-
-    public SubPronunciation getConjunction() {
-        if (this.all != null)
-            return this.all;
-        return this.conjunction;
-    }
-
-    public SubPronunciation getAll() {
-        return this.all;
+    public SubPronunciation getSubPronunciation(Word.PartOfSpeech partOfSpeech) {
+        SubPronunciation requested = this.all;
+        switch (partOfSpeech) {
+            case ADJECTIVE:
+                if (this.adjective != null)
+                    requested = adjective;
+                break;
+            case ADVERB:
+                if (this.adverb != null)
+                    requested = adverb;
+                break;
+            case CONJUCTION:
+                if (this.conjunction != null)
+                    requested = conjunction;
+                break;
+            case NOUN:
+                if (this.noun != null)
+                    requested = noun;
+                break;
+            case PREPOSITION:
+                if (this.preposition != null)
+                    requested = preposition;
+                break;
+            case PRONOUN:
+                if (this.pronoun != null)
+                    requested = pronoun;
+                break;
+            case VERB:
+                if (this.verb != null)
+                    requested = verb;
+                break;
+            case DEFINITE_ARTICLE:
+            case UNKNOWN:
+            default:
+                // leave request as all
+                break;
+        }
+        if (requested == null) {
+            LOG.writePersistentLog(String.format("No pronunciation of \"%s\" could be found for \"%s\"",
+                    this.plaintextSyllables.toString(), partOfSpeech));
+        }
+        return requested;
     }
 
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
-        stringBuilder.append("plaintext-syllables: " + syllables.toString());
+        stringBuilder.append("plaintext-syllables: " + plaintextSyllables.toString());
         if (noun != null) {
             stringBuilder.append(", ");
             stringBuilder.append("noun: " + noun.toString());
