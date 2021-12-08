@@ -6,7 +6,7 @@ import java.util.Map;
 
 import static config.Configuration.LOG;
 
-public class Word {
+public class SubWord {
 
     public enum PartOfSpeech {
         NOUN, PRONOUN, VERB, ADJECTIVE, ADVERB, PREPOSITION, CONJUCTION, DEFINITE_ARTICLE, UNKNOWN
@@ -59,7 +59,7 @@ public class Word {
      * @param resultObject
      */
     @SuppressWarnings("unchecked")
-    public Word(String plaintext, Map<String, Object> resultObject) {
+    public SubWord(String plaintext, Map<String, Object> resultObject) {
         if (resultObject.containsKey("definition")) {
             this.definition = (String) resultObject.get("definition");
         }
