@@ -2,8 +2,6 @@
 This is very much a WIP, especially since I recently began the process of doing more or less everything again from scratch.
 It's currently exam season, so most of my time is going to revision, but I work on this as a break here and there. 
 
-I'm yet to reimplement most of the IPA handling - I've got all new data structures to account for, but the logic is unchanged so it shouldn't take too long now that the basic implementations of SuperWord and Word are done.
-
 Most of the getX() functions in apis.WordsAPI are now redundant, and will be deleted soon. 
 
 For some reason the IPA characters are being a PIA and displaying as "?" in outputs, where they previously didn't. I know the internal representations are still working because splitting IPA into syllables still works so I really don't know what the issue is. 
