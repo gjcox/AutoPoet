@@ -235,7 +235,7 @@ public class Pronunciation {
         this.all.populateRhymes();
     }
 
-    public SubPronunciation getSubPronunciation(Word.PartOfSpeech partOfSpeech) {
+    public SubPronunciation getSubPronunciation(SubWord.PartOfSpeech partOfSpeech) {
         SubPronunciation requested = this.all;
         switch (partOfSpeech) {
             case ADJECTIVE:
