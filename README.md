@@ -13,12 +13,15 @@ I continue to use VS Code, but the following compilation instructions have been 
 
 Navigate to CS4099/ <br>
 Run the command $ javac -cp lib/json-20210307.jar:lib/junit-platform-console.standalone-1.8.1.jar  src/\*/\*.java <br>
-Run the command $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc \] 
-            OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc \] *some_word*   
+Run the command $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc | rhyme \] <br>
+            OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc \] *some_word*  <br>
+            OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos rhyme *word1* *word2*  <br>
 
-testing.Demos.superWordConstructor() and .superWordPopulator() (i.e. swc and swp) demonstrate the functionality of SuperWord, the latter of which involves WordsAPI. 
-testing.Demos.wordConstructor() (i.e. wc) shows the subwords in full, i.e. the functionality of Word. 
-Omitting the second argument will use predefined examples; including it will attempt to create a SuperWord from the passed argument. 
+
+testing.Demos.superWordConstructor() and .superWordPopulator() (i.e. swc and swp) demonstrate the functionality of SuperWord, the latter of which involves WordsAPI. <br>
+testing.Demos.wordConstructor() (i.e. wc) shows the subwords in full, i.e. the functionality of Word. <br>
+testing.Demos.demoRhymes() (i.e. rhyme) shows the rhyme recognition functionality. <br>
+Omitting the latter arguments will use predefined examples. 
 
 N.B. words that WordsAPI doesn't recognise will still be marked as populated for swp, despite nothing of value being added to them. This is to prevent repeated failed attempts at querying, but might change in future. 
 
