@@ -20,8 +20,7 @@ public class IPAHandler extends AbstractIPA {
      * stressed syllables (denoted with ,).
      * 
      * @param ipaWord
-     * @return a Pair<> including the JSONArray of syllables and JSONObject of
-     *         stresses.
+     * @return a Pair<> of an ArrayList of syllables and the emphases.
      */
     public static Pair<ArrayList<Syllable>, Emphasis> getSyllables(String ipaWord) {
         /*
@@ -129,7 +128,8 @@ public class IPAHandler extends AbstractIPA {
         syllables.get(syllables.size() - 1).setCoda(ipaWord.substring(lastNucleusIndex + lastNucleusLength));
 
         Pair<ArrayList<Syllable>, Emphasis> pair = new Pair<>(syllables, emphasis);
-        Configuration.LOG.writeTempLog(String.format("getSyllables(%s) returning: ", pair.toString()));
+        Configuration.LOG
+                .writeTempLog(String.format("getSyllables(\"%s\") returning: \"%s\"", ipaWord, pair.toString()));
         return pair;
     }
 
@@ -139,162 +139,6 @@ public class IPAHandler extends AbstractIPA {
      * pair must also match, hence the syllables in the for loop are treated
      * differently.
      * 
-     */
-    /**
-     * 
-     * @param array1    of IPA syllables in word 1.
-     * @param array2    of IPA syllables in word 2.
-     * @param syllables the number of syllables to match against, starting at the
-     *                  end of the words.
-     * @return true if the two words rhyme to the given number of syllables.
-     */
-    public static boolean checkRhyme(JSONArray array1, JSONArray array2, int syllables) {
-
-        List<Object> list;
-
-        /* convert first JSONArray of syllables to a List<Syllables> */
-        List<Syllable> word1 = new LinkedList<>();
-        list = array1.toList();
-        for (Object object : list) {
-            @SuppressWarnings("unchecked")
-            Map<String, String> map = (Map<String, String>) object;
-            word1.add(new Syllable(map));
-        }
-
-        /* convert second JSONArray of syllables to a List<Syllables> */
-        List<Syllable> word2 = new LinkedList<>();
-        list = array2.toList();
-        for (Object object : list) {
-            @SuppressWarnings("unchecked")
-            Map<String, String> map = (Map<String, String>) object;
-            word2.add(new Syllable(map));
-        }
-
-        /*
-         * check that both words are long enough to accomodate the desired rhyme length
-         * also check that the length is at least 1 syllable
-         */
-        if (syllables > word1.size() || syllables > word2.size() || syllables < 1) {
-            throw new IndexOutOfBoundsException(String.format("Syllables: %d; word1.size: %d; word2.size: %d",
-                    syllables, word1.size(), word2.size()));
-        }
-
-        /* check that syllables after the emphasis match exactly */
-        boolean rhymes = true;
-        for (int i = 1; i < syllables; i++) {
-            Syllable syllable1 = word1.get(word1.size() - i);
-            Syllable syllable2 = word2.get(word2.size() - i);
-            rhymes = syllable1.equals(syllable2);
-            if (!rhymes)
-                return false;
-        }
-
-        /* check that the emphasised vowels match */
-        int i = syllables;
-        Syllable syllable1 = word1.get(word1.size() - i);
-        Syllable syllable2 = word2.get(word2.size() - i);
-        rhymes = syllable1.rhymes(syllable2);
-
-        return rhymes;
-    }
-
-    /**
-     * Checks if two words rhyme. Tries all pairs of pronunciants for the words and
-     * potential rhyme lengths.
-     * 
-     * @param word1
-     * @param word2
-     * @return false if the shorter word is does not have enough syllables to
-     *         include the earlier stress, e.g. "poet" and "it"
-     */
-    /*
-     * public static boolean checkRhyme(Word word1, Word word2) {
-     * JSONObject sylObject1 = word1.ipaSyllables();
-     * JSONObject sylObject2 = word2.ipaSyllables();
-     * 
-     * /* iterate over the parts of speech (verb, noun, all) associated with word 1
-     */
-    /*
-     * Iterator<String> partsOfSpeech1 = sylObject1.keys();
-     * while (partsOfSpeech1.hasNext()) {
-     * String partOfSpeech1 = partsOfSpeech1.next();
-     * JSONArray syllables1 = (JSONArray) sylObject1.get(partOfSpeech1);
-     * JSONObject rhymeLengths1 = word1.rhymeLengths(partOfSpeech1);
-     * 
-     * /* iterate over the parts of speech (verb, noun, all) associated with word 2
-     */
-    /*
-     * Iterator<String> partsOfSpeech2 = sylObject2.keys();
-     * while (partsOfSpeech2.hasNext()) {
-     * String partOfSpeech2 = partsOfSpeech2.next();
-     * JSONArray syllables2 = (JSONArray) sylObject2.get(partOfSpeech2);
-     * JSONObject rhymeLengths2 = word2.rhymeLengths(partOfSpeech2);
-     * 
-     * List<Integer> rhymeLengths = getCommonRhymeLengths(rhymeLengths1,
-     * rhymeLengths2);
-     * if (rhymeLengths.isEmpty()) {
-     * continue; // the words don't share a rhyme length
-     * }
-     * 
-     * /* test if any of common rhyme lengths produce a rhyme
-     */
-    /*
-     * for (Integer syllables : rhymeLengths) {
-     * if (checkRhyme(syllables1, syllables2, syllables))
-     * return true;
-     * }
-     * }
-     * }
-     * return false;
-     * }
-     * 
-     * /**
-     * Finds common rhyme lengths, defined as matching primary/primary emphases, and
-     * matching primary/secondary emphases. Here, "matching" emphases are the same
-     * number of syllables from the end of their respective word.
-     * 
-     * @param rhyme_lengths_1
-     * 
-     * @param rhyme_lengths_2
-     * 
-     * @return
-     */
-    /*
-     * private static List<Integer> getCommonRhymeLengths(JSONObject
-     * rhyme_lengths_1, JSONObject rhyme_lengths_2) {
-     * List<Integer> common_rhyme_lengths = new LinkedList<>();
-     * 
-     * /* match primary_1 to primary_2
-     */
-    /*
-     * Integer primary_1 = (Integer) rhyme_lengths_1.get(Emphasis.PRIMARY);
-     * Integer primary_2 = (Integer) rhyme_lengths_2.get(Emphasis.PRIMARY);
-     * if (primary_1.equals(primary_2)) {
-     * common_rhyme_lengths.add(primary_1);
-     * }
-     * 
-     * /* match primary_1 to secondary_2
-     */
-    /*
-     * List<Integer> secondaries_2 = Emphasis.getSecondary(rhyme_lengths_2);
-     * for (Integer secondary_2 : secondaries_2) {
-     * if (primary_1.equals(secondary_2)) {
-     * common_rhyme_lengths.add(primary_1);
-     * }
-     * }
-     * 
-     * /* match secondary_1 to primary_2
-     */
-    /*
-     * List<Integer> secondaries_1 = Emphasis.getSecondary(rhyme_lengths_1);
-     * for (Integer secondary_1 : secondaries_1) {
-     * if (primary_2.equals(secondary_1)) {
-     * common_rhyme_lengths.add(primary_2);
-     * }
-     * }
-     * 
-     * return common_rhyme_lengths;
-     * }
      */
 
 }
