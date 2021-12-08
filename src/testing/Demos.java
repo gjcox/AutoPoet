@@ -84,17 +84,6 @@ public class Demos {
         System.out.println(present.getSubWords());
     }
 
-    /*
-     * public static void presentPresent() {
-     * SuperWord present = SuperWord.getSuperWord("present");
-     * SuperWord resent = SuperWord.getSuperWord("resent");
-     * boolean rhymes = IPAHandler.checkRhyme(present, resent);
-     * System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
-     * present.getPlaintext(), resent.getPlaintext(), rhymes));
-     * 
-     * }
-     */
-
     public static void abercrombieZombie() {
         SuperWord abercrombie = SuperWord.getSuperWord("abercrombie");
         abercrombie.populate();
