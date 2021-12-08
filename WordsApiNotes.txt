@@ -135,6 +135,50 @@
     "frequency":4.67
 }
 
+# Notable for having NULL partOfSpeech entries 
+{
+    "word":"human"
+    "results":[
+        0:{...}8 items
+        1:{...}7 items
+        2:{
+            "definition":"characteristic of humanity"
+            "partOfSpeech":NULL
+            "pertainsTo":[...]1 item
+            "derivation":[...]1 item
+            "examples":[...]1 item
+        }
+        3:{
+            "definition":"relating to a person"
+            "partOfSpeech":NULL
+            "pertainsTo":[...]1 item
+            "derivation":[...]2 items
+            "examples":[...]1 item
+        }
+    ]
+    "syllables":{
+        "count":2
+        "list":[...]2 items
+    }
+    "pronunciation":{
+        "all":"'hjumən"
+    }
+    "frequency":5.16
+}
+
+# Notable for having no "results" field 
+{
+    "word":"abercrombie"
+    "syllables":{
+        "count":4
+        "list":[...]4 items
+    }
+    "pronunciation":{
+        "all":"'æbər,krɑmbi"
+    }
+    "frequency":2.52
+}
+
 # Typical example of a noun and verb word 
 {
     "word":"contract"
