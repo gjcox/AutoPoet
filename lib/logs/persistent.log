@@ -31,3 +31,29 @@
 2021-12-10 18:01:29.388	 Pronunciation of "the" was not a JSONObject: "ðʌ"
 2021-12-10 18:01:29.401	 Rhymes of "the" was present: {"all":"-ə"}
 2021-12-10 18:01:29.401	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2021-12-10 23:04:26.963	 Syllables of "unusual person" was missing
+2021-12-10 23:04:27.005	 Pronunciation of "unusual person" was missing
+2021-12-10 23:04:27.206	 Unrecognised part of speech for "mutant" with definition "tending to undergo or resulting from mutation": "null"
+2021-12-10 23:04:28.141	 Syllables of "unpleasant person" was missing
+2021-12-10 23:04:28.142	 Pronunciation of "unpleasant person" was missing
+2021-12-10 23:04:28.346	 Syllables of "disagreeable person" was missing
+2021-12-10 23:04:28.346	 Pronunciation of "disagreeable person" was missing
+2021-12-10 23:04:28.613	 Syllables of "imaginary creature" was missing
+2021-12-10 23:04:28.614	 Pronunciation of "imaginary creature" was missing
+2021-12-10 23:04:28.82	 Syllables of "imaginary being" was missing
+2021-12-10 23:04:28.82	 Pronunciation of "imaginary being" was missing
+2021-12-10 23:11:28.251	 Syllables of "period of time" was missing
+2021-12-10 23:11:28.252	 Pronunciation of "period of time" was missing
+2021-12-10 23:11:28.466	 Syllables of "time period" was missing
+2021-12-10 23:11:28.467	 Pronunciation of "time period" was missing
+2021-12-10 23:11:28.972	 Pronunciation of "cards" was not a JSONObject: "kɑrdz"
+2021-12-10 23:11:29.178	 Syllables of "card game" was missing
+2021-12-10 23:18:08.356	 Syllables of "hung" was missing
+2021-12-10 23:18:08.356	 Pronunciation of "hung" was not a JSONObject: "hʌŋ"
+2021-12-10 23:18:08.366	 Rhymes of "hung" was present: {"all":"-əŋ"}
+2021-12-10 23:18:08.367	 Rhymes of "hung" had no recognised keys not found in pronunciation field
+2021-12-10 23:18:08.367	 Results of "hung" was missing
+2021-12-10 23:20:09.514	 Unrecognised part of speech for "won" with definition "not subject to defeat": "null"
+2021-12-10 23:26:51.613	 Unrecognised part of speech for "appear" with definition "present oneself formally, as before a (judicial) authority": "null"
+2021-12-10 23:28:11.395	 Syllables of "unpleasant woman" was missing
+2021-12-10 23:28:11.395	 Pronunciation of "unpleasant woman" was missing
