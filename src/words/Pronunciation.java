@@ -235,7 +235,7 @@ public class Pronunciation {
         this.all.populateRhymes();
     }
 
-    public SubPronunciation getSubPronunciation(SubWord.PartOfSpeech partOfSpeech) {
+    public SubPronunciation getSubPronunciation(String plaintext, SubWord.PartOfSpeech partOfSpeech) {
         SubPronunciation requested = this.all;
         switch (partOfSpeech) {
             case ADJECTIVE:
@@ -274,7 +274,7 @@ public class Pronunciation {
         }
         if (requested == null) {
             LOG.writePersistentLog(String.format("No pronunciation of \"%s\" could be found for \"%s\"",
-                    this.plaintextSyllables.toString(), partOfSpeech));
+                    plaintext, partOfSpeech));
         }
         return requested;
     }
