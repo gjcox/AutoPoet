@@ -17,7 +17,7 @@
     "message":"word not found"
 }
 
-# Notable due to having no "results" field and no "syllables" field 
+# Notable due to having no "results" field and no "syllables" field, but having a "rhymes" field and a non-object "pronunciation" field 
 {
     "rhymes":{
         "all":"-aʊtʃ"
@@ -71,7 +71,7 @@
     "pronunciation":{}0 items
 }
 
-# Notable for "syllables"."list" being wrong 
+# Notable for "syllables"."list" being wrong in a way that AutoPoet cannot reliably detect 
 {
     "word":"come along"
     "results":[
