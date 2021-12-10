@@ -45,7 +45,7 @@ public class Demos {
         for (int i = 0; i < words1.size(); i++) {
             SuperWord superword1 = SuperWord.getSuperWord(words1.get(i));
             SuperWord superword2 = SuperWord.getSuperWord(words2.get(i));
-            boolean rhymes = superword1.rhymesWith(superword2);
+            boolean rhymes = superword1.rhymesWithWrapper(superword2);
             System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
                     words1.get(i), words2.get(i), rhymes));
         }
@@ -93,7 +93,7 @@ public class Demos {
         zombie.populate();
         System.out.println(zombie);
 
-        boolean rhymes = abercrombie.rhymesWith(zombie);
+        boolean rhymes = abercrombie.rhymesWithWrapper(zombie);
 
         System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
                 abercrombie.getPlaintext(), zombie.getPlaintext(), rhymes));
@@ -163,7 +163,7 @@ public class Demos {
                 case "rhyme":
                     superWord1 = SuperWord.getSuperWord(args[1]);
                     superWord2 = SuperWord.getSuperWord(args[2]);
-                    boolean rhymes = superWord1.rhymesWith(superWord2);
+                    boolean rhymes = superWord1.rhymesWithWrapper(superWord2);
                     System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
                             superWord1.getPlaintext(), superWord2.getPlaintext(), rhymes));
                     break;
