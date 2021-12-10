@@ -14,10 +14,15 @@
 2021-12-08 12:27:30.132	 Syllables of "so" is missing
 2021-12-08 13:01:08.408	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
 2021-12-08 13:01:57.998	 WordsAPI responded with word "nick" when requesting "Nick".
-2021-12-08 15:41:59.215	 Syllables of "ouch" is missing
-2021-12-08 15:41:59.215	 Pronunciation of "ouch" is not a JSONObject: "aʊʧ"
 2021-12-08 15:51:39.821	 Syllables of "even so" is missing
 2021-12-10 16:29:36.056	 Syllables of "adwad" is missing
 2021-12-10 16:29:36.079	 Results of "adwad" was missing
-2021-12-10 16:32:19.104	 Syllables of "mapple" is missing
-2021-12-10 16:32:19.104	 Results of "mapple" was missing
+2021-12-10 16:50:36.107	 Results of "aback" was an empty array
+2021-12-10 16:50:37.637	 Syllables of "overstated" was missing
+2021-12-10 16:50:38.602	 Results of "abercrombie" was missing
+2021-12-10 17:09:26.305	 Syllables of "ouch" was missing
+2021-12-10 17:09:26.306	 Pronunciation of "ouch" is not a JSONObject: "aʊʧ"
+2021-12-10 17:09:26.317	 Results of "ouch" was missing
+2021-12-10 17:11:34.993	 Results of "though" was an empty array
+2021-12-10 17:18:14.397	 Pronunciation of "bandoline" had no recognised keys: {}
+2021-12-10 17:18:14.397	 Results of "bandoline" was missing
