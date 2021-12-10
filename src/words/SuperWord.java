@@ -92,7 +92,8 @@ public class SuperWord implements Comparable<SuperWord> {
         }
 
         if (word.has("rhymes")) {
-            LOG.writePersistentLog(String.format("Rhymes of \"%s\" was present: %s", plaintext,  word.get("rhymes").toString()));
+            LOG.writePersistentLog(
+                    String.format("Rhymes of \"%s\" was present: %s", plaintext, word.get("rhymes").toString()));
             try {
                 JSONObject rhymeObject = word.getJSONObject("rhymes");
                 this.pronunciation.setRhyme(this.plaintext, rhymeObject);
@@ -101,7 +102,7 @@ public class SuperWord implements Comparable<SuperWord> {
                         word.get("Rhymes").toString()));
                 this.pronunciation.setRhyme(this.plaintext, word.getString("Rhymes"));
             }
-        }  
+        }
 
         if (word.has("results")) {
             JSONArray resultsArray = word.getJSONArray("results");
@@ -292,7 +293,7 @@ public class SuperWord implements Comparable<SuperWord> {
      * 
      * @return a String formatted for debugging.
      */
-    public String getSubWords() {
+    public String getSubWordsString() {
         String divider = "\n//////// ";
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -387,11 +388,13 @@ public class SuperWord implements Comparable<SuperWord> {
     }
 
     /**
-     * Iterates over the parts of speech of both words (worst case is full cross
-     * product evaluation) and returns true if any part of speech pairing produces a
-     * rhyme.
+     * Uses specific parts of speech if arguments are not null. For null
+     * PartOfSpeech arguments, iterates over all parts of speech of corresponding
+     * word.
      * 
      * @param other
+     * @param pos1
+     * @param pos2
      * @return
      */
     public boolean rhymesWithWrapper(SuperWord other, PartOfSpeech pos1, PartOfSpeech pos2) {
@@ -400,7 +403,9 @@ public class SuperWord implements Comparable<SuperWord> {
         if (!other.populated)
             other.populate();
 
-        if (pos1 != null && pos2 != null) {
+        if (pos1 == null && pos2 == null) {
+            return rhymesWithWrapper(other);
+        } else if (pos1 != null && pos2 != null) {
             SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
             SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
             rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2);
