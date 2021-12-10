@@ -23,6 +23,9 @@ public class NullListOperations {
      * as Collection.addAll().
      */
     public static <T> ArrayList<T> addAllToNull(ArrayList<T> list, Collection<T> source) {
+        if (source == null) {
+            return list; 
+        }
         if (list == null) {
             list = new ArrayList<>();
         }
