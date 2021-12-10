@@ -153,6 +153,28 @@ public class Pronunciation {
         }
     }
 
+    private void setIPA(SubPronunciation subPronunciation, String ipa) {
+        Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = null;
+        subPronunciation = new SubPronunciation();
+        subPronunciation.ipa = ipa;
+        syllablesAndEmphasis = IPAHandler.getSyllables(this.noun.ipa);
+        subPronunciation.syllables = syllablesAndEmphasis.one();
+        subPronunciation.emphasis = syllablesAndEmphasis.two();
+        subPronunciation.populateRhymes();
+    }
+
+    private void setRhymes() {
+        /* placeholder */
+    }
+
+    public void setRhyme(String plaintext, JSONObject rhymesObject) {
+        /* placeholder */
+    }
+
+    public void setRhyme(String plaintext, String rhymesString) {
+        /* placeholder */
+    }
+
     /**
      * 
      * @param pronunciationObject JSONObject of the form {<part-of-speech>:<ipa>}
@@ -245,13 +267,17 @@ public class Pronunciation {
         }
     }
 
-    public void setIPA(String all) {
-        this.all = new SubPronunciation();
-        this.all.ipa = all;
-        Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = IPAHandler.getSyllables(this.all.ipa);
-        this.all.syllables = syllablesAndEmphasis.one();
-        this.all.emphasis = syllablesAndEmphasis.two();
-        this.all.populateRhymes();
+    public void setIPA(String plaintext, String all) {
+        if (all.equals("")) {
+            LOG.writePersistentLog(String.format("Pronunciation of \"%s\" was an empty string", plaintext));
+        } else {
+            this.all = new SubPronunciation();
+            this.all.ipa = all;
+            Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = IPAHandler.getSyllables(this.all.ipa);
+            this.all.syllables = syllablesAndEmphasis.one();
+            this.all.emphasis = syllablesAndEmphasis.two();
+            this.all.populateRhymes();
+        }
     }
 
     public SubPronunciation getSubPronunciation(String plaintext, SubWord.PartOfSpeech partOfSpeech) {
