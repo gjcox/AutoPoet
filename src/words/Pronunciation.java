@@ -3,6 +3,7 @@ package words;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import utils.Pair;
@@ -129,14 +130,26 @@ public class Pronunciation {
      * 
      * @param syllablesObject JSONObject of the form {"count":x, "list":[]}
      */
-    public void setSyllables(JSONObject syllablesObject) {
-        if (syllablesObject.has("count") && syllablesObject.has("list")) {
+    public void setSyllables(String plaintext, JSONObject syllablesObject) {
+        String count = "count";
+        String list = "list";
+        if (syllablesObject.has(count) && syllablesObject.has(list)) {
             this.plaintextSyllables = new ArrayList<>();
-            JSONArray syllableArray = syllablesObject.getJSONArray("list");
+            JSONArray syllableArray = syllablesObject.getJSONArray(list);
 
-            for (int i = 0; i < syllablesObject.getInt("count"); i++) {
-                this.plaintextSyllables.add(syllableArray.getString(i));
+            for (int i = 0; i < syllablesObject.getInt(count); i++) {
+                try {
+                    this.plaintextSyllables.add(syllableArray.getString(i));
+                } catch (JSONException e) {
+                    LOG.writePersistentLog(
+                            String.format("\"%s\"'s syllables count did not match the syllables array: %s",
+                                    plaintext, syllablesObject.toString()));
+                }
             }
+        } else {
+            LOG.writePersistentLog(
+                    String.format("\"%s\"'s syllables field did not have a count or list field: %s", plaintext,
+                            syllablesObject.toString()));
         }
     }
 
@@ -148,8 +161,8 @@ public class Pronunciation {
      *                            {"all":"'fridəm"}
      * 
      */
-    public void setIPA(JSONObject pronunciationObject) {
-        Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis;
+    public void setIPA(String plaintext, JSONObject pronunciationObject) {
+        Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = null;
 
         if (pronunciationObject.has("noun")) {
             this.noun = new SubPronunciation();
@@ -211,6 +224,7 @@ public class Pronunciation {
             syllablesAndEmphasis = IPAHandler.getSyllables(this.conjunction.ipa);
             this.conjunction.syllables = syllablesAndEmphasis.one();
             this.conjunction.emphasis = syllablesAndEmphasis.two();
+            this.conjunction.populateRhymes();
         }
 
         if (pronunciationObject.has("all")) {
@@ -224,6 +238,11 @@ public class Pronunciation {
             this.all.populateRhymes();
         }
 
+        if (syllablesAndEmphasis == null) {
+            /* i.e. pronunciation object had no (recognised) keys */
+            LOG.writePersistentLog(String.format("Pronunciation of \"%s\" had no recognised keys: %s", plaintext,
+                    pronunciationObject.toString()));
+        }
     }
 
     public void setIPA(String all) {
