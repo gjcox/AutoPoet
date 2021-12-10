@@ -16,6 +16,7 @@ import words.Pronunciation.SubPronunciation;
 import words.SubWord.PartOfSpeech;
 
 import static utils.NullListOperations.addToNull;
+import static utils.NullListOperations.addAllToNull;
 import static config.Configuration.LOG;
 
 public class SuperWord implements Comparable<SuperWord> {
@@ -220,7 +221,563 @@ public class SuperWord implements Comparable<SuperWord> {
         return this.definiteArticles;
     }
 
+    public Pronunciation getPronunciation() {
+        return this.pronunciation;
+    }
+
+    public Pronunciation.SubPronunciation getSubPronunciation(SubWord.PartOfSpeech partOfSpeech) {
+        return this.pronunciation.getSubPronunciation(plaintext, partOfSpeech);
+    }
+
+    /**
+     * TODO: remove duplicates; potentially score words based on duplicate count
+     * 
+     * @param pos
+     * @return
+     */
+    public ArrayList<SuperWord> getSynonyms(PartOfSpeech pos) {
+        if (!populated)
+            this.populate();
+
+        ArrayList<SuperWord> synonyms = null;
+        switch (pos) {
+            case ADJECTIVE:
+                if (adjectives != null) {
+                    for (SubWord subWord : adjectives) {
+                        synonyms = addAllToNull(synonyms, subWord.getSynonyms());
+                    }
+                }
+                break;
+            case ADVERB:
+                if (adverbs != null) {
+                    for (SubWord subWord : adverbs) {
+                        synonyms = addAllToNull(synonyms, subWord.getSynonyms());
+                    }
+                }
+                break;
+            case CONJUCTION:
+                if (conjunctions != null) {
+                    for (SubWord subWord : conjunctions) {
+                        synonyms = addAllToNull(synonyms, subWord.getSynonyms());
+                    }
+                }
+                break;
+            case DEFINITE_ARTICLE:
+                if (definiteArticles != null) {
+                    for (SubWord subWord : definiteArticles) {
+                        synonyms = addAllToNull(synonyms, subWord.getSynonyms());
+                    }
+                }
+                break;
+            case NOUN:
+                if (nouns != null) {
+                    for (SubWord subWord : nouns) {
+                        synonyms = addAllToNull(synonyms, subWord.getSynonyms());
+                    }
+                }
+                break;
+            case PREPOSITION:
+                if (prepositions != null) {
+                    for (SubWord subWord : prepositions) {
+                        synonyms = addAllToNull(synonyms, subWord.getSynonyms());
+                    }
+                }
+                break;
+            case PRONOUN:
+                if (pronouns != null) {
+                    for (SubWord subWord : pronouns) {
+                        synonyms = addAllToNull(synonyms, subWord.getSynonyms());
+                    }
+                }
+                break;
+            case UNKNOWN:
+                if (unknowns != null) {
+                    for (SubWord subWord : unknowns) {
+                        synonyms = addAllToNull(synonyms, subWord.getSynonyms());
+                    }
+                }
+                break;
+            case VERB:
+                if (verbs != null) {
+                    for (SubWord subWord : verbs) {
+                        synonyms = addAllToNull(synonyms, subWord.getSynonyms());
+                    }
+                }
+                break;
+        }
+        return synonyms;
+    }
+
+ /**
+     * TODO: remove duplicates; potentially score words based on duplicate count
+     * 
+     * @param pos
+     * @return
+     */
+    public ArrayList<SuperWord> getTypeOf(PartOfSpeech pos) {
+        if (!populated)
+            this.populate();
+
+        ArrayList<SuperWord> types = null;
+        switch (pos) {
+            case ADJECTIVE:
+                for (SubWord subWord : adjectives) {
+                    types = addAllToNull(types, subWord.getTypeOf());
+                }
+                break;
+            case ADVERB:
+                for (SubWord subWord : adverbs) {
+                    types = addAllToNull(types, subWord.getTypeOf());
+                }
+                break;
+            case CONJUCTION:
+                for (SubWord subWord : conjunctions) {
+                    types = addAllToNull(types, subWord.getTypeOf());
+                }
+                break;
+            case DEFINITE_ARTICLE:
+                for (SubWord subWord : definiteArticles) {
+                    types = addAllToNull(types, subWord.getTypeOf());
+                }
+                break;
+            case NOUN:
+                for (SubWord subWord : nouns) {
+                    types = addAllToNull(types, subWord.getTypeOf());
+                }
+                break;
+            case PREPOSITION:
+                for (SubWord subWord : prepositions) {
+                    types = addAllToNull(types, subWord.getTypeOf());
+                }
+                break;
+            case PRONOUN:
+                for (SubWord subWord : pronouns) {
+                    types = addAllToNull(types, subWord.getTypeOf());
+                }
+                break;
+            case UNKNOWN:
+                for (SubWord subWord : unknowns) {
+                    types = addAllToNull(types, subWord.getTypeOf());
+                }
+                break;
+            case VERB:
+                for (SubWord subWord : verbs) {
+                    types = addAllToNull(types, subWord.getTypeOf());
+                }
+                break;
+        }
+        return types;
+    }
+
+
+    /**
+     * TODO: remove duplicates; potentially score words based on duplicate count
+     * 
+     * @param pos
+     * @return
+     */
+    public ArrayList<SuperWord> getHasTypes(PartOfSpeech pos) {
+        if (!populated)
+            this.populate();
+
+        ArrayList<SuperWord> types = null;
+        switch (pos) {
+            case ADJECTIVE:
+                for (SubWord subWord : adjectives) {
+                    types = addAllToNull(types, subWord.getHasTypes());
+                }
+                break;
+            case ADVERB:
+                for (SubWord subWord : adverbs) {
+                    types = addAllToNull(types, subWord.getHasTypes());
+                }
+                break;
+            case CONJUCTION:
+                for (SubWord subWord : conjunctions) {
+                    types = addAllToNull(types, subWord.getHasTypes());
+                }
+                break;
+            case DEFINITE_ARTICLE:
+                for (SubWord subWord : definiteArticles) {
+                    types = addAllToNull(types, subWord.getHasTypes());
+                }
+                break;
+            case NOUN:
+                for (SubWord subWord : nouns) {
+                    types = addAllToNull(types, subWord.getHasTypes());
+                }
+                break;
+            case PREPOSITION:
+                for (SubWord subWord : prepositions) {
+                    types = addAllToNull(types, subWord.getHasTypes());
+                }
+                break;
+            case PRONOUN:
+                for (SubWord subWord : pronouns) {
+                    types = addAllToNull(types, subWord.getHasTypes());
+                }
+                break;
+            case UNKNOWN:
+                for (SubWord subWord : unknowns) {
+                    types = addAllToNull(types, subWord.getHasTypes());
+                }
+                break;
+            case VERB:
+                for (SubWord subWord : verbs) {
+                    types = addAllToNull(types, subWord.getHasTypes());
+                }
+                break;
+        }
+        return types;
+    }
+
+    /**
+     * TODO: remove duplicates; potentially score words based on duplicate count
+     * 
+     * @param pos
+     * @return
+     */
+    public ArrayList<SuperWord> getCommonlyTyped(PartOfSpeech pos) {
+        if (!populated)
+            this.populate();
+
+        ArrayList<SuperWord> commonlyTyped = null;
+        switch (pos) {
+            case ADJECTIVE:
+                for (SubWord subWord : adjectives) {
+                    commonlyTyped = addAllToNull(commonlyTyped, subWord.getCommonlyTyped());
+                }
+                break;
+            case ADVERB:
+                for (SubWord subWord : adverbs) {
+                    commonlyTyped = addAllToNull(commonlyTyped, subWord.getCommonlyTyped());
+                }
+                break;
+            case CONJUCTION:
+                for (SubWord subWord : conjunctions) {
+                    commonlyTyped = addAllToNull(commonlyTyped, subWord.getCommonlyTyped());
+                }
+                break;
+            case DEFINITE_ARTICLE:
+                for (SubWord subWord : definiteArticles) {
+                    commonlyTyped = addAllToNull(commonlyTyped, subWord.getCommonlyTyped());
+                }
+                break;
+            case NOUN:
+                for (SubWord subWord : nouns) {
+                    commonlyTyped = addAllToNull(commonlyTyped, subWord.getCommonlyTyped());
+                }
+                break;
+            case PREPOSITION:
+                for (SubWord subWord : prepositions) {
+                    commonlyTyped = addAllToNull(commonlyTyped, subWord.getCommonlyTyped());
+                }
+                break;
+            case PRONOUN:
+                for (SubWord subWord : pronouns) {
+                    commonlyTyped = addAllToNull(commonlyTyped, subWord.getCommonlyTyped());
+                }
+                break;
+            case UNKNOWN:
+                for (SubWord subWord : unknowns) {
+                    commonlyTyped = addAllToNull(commonlyTyped, subWord.getCommonlyTyped());
+                }
+                break;
+            case VERB:
+                for (SubWord subWord : verbs) {
+                    commonlyTyped = addAllToNull(commonlyTyped, subWord.getCommonlyTyped());
+                }
+                break;
+        }
+        return commonlyTyped;
+    }
+
+    public ArrayList<SuperWord> getHasCategories(PartOfSpeech pos) {
+        if (!populated)
+            this.populate();
+
+        ArrayList<SuperWord> categories = null;
+        switch (pos) {
+            case ADJECTIVE:
+                for (SubWord subWord : adjectives) {
+                    categories = addAllToNull(categories, subWord.getHasCategories());
+                }
+                break;
+            case ADVERB:
+                for (SubWord subWord : adverbs) {
+                    categories = addAllToNull(categories, subWord.getHasCategories());
+                }
+                break;
+            case CONJUCTION:
+                for (SubWord subWord : conjunctions) {
+                    categories = addAllToNull(categories, subWord.getHasCategories());
+                }
+                break;
+            case DEFINITE_ARTICLE:
+                for (SubWord subWord : definiteArticles) {
+                    categories = addAllToNull(categories, subWord.getHasCategories());
+                }
+                break;
+            case NOUN:
+                for (SubWord subWord : nouns) {
+                    categories = addAllToNull(categories, subWord.getHasCategories());
+                }
+                break;
+            case PREPOSITION:
+                for (SubWord subWord : prepositions) {
+                    categories = addAllToNull(categories, subWord.getHasCategories());
+                }
+                break;
+            case PRONOUN:
+                for (SubWord subWord : pronouns) {
+                    categories = addAllToNull(categories, subWord.getHasCategories());
+                }
+                break;
+            case UNKNOWN:
+                for (SubWord subWord : unknowns) {
+                    categories = addAllToNull(categories, subWord.getHasCategories());
+                }
+                break;
+            case VERB:
+                for (SubWord subWord : verbs) {
+                    categories = addAllToNull(categories, subWord.getHasCategories());
+                }
+                break;
+        }
+        return categories;
+    }
+
+    public ArrayList<SuperWord> getHasParts(PartOfSpeech pos) {
+        if (!populated)
+            this.populate();
+
+        ArrayList<SuperWord> hasParts = null;
+        switch (pos) {
+            case ADJECTIVE:
+                for (SubWord subWord : adjectives) {
+                    hasParts = addAllToNull(hasParts, subWord.getHasParts());
+                }
+                break;
+            case ADVERB:
+                for (SubWord subWord : adverbs) {
+                    hasParts = addAllToNull(hasParts, subWord.getHasParts());
+                }
+                break;
+            case CONJUCTION:
+                for (SubWord subWord : conjunctions) {
+                    hasParts = addAllToNull(hasParts, subWord.getHasParts());
+                }
+                break;
+            case DEFINITE_ARTICLE:
+                for (SubWord subWord : definiteArticles) {
+                    hasParts = addAllToNull(hasParts, subWord.getHasParts());
+                }
+                break;
+            case NOUN:
+                for (SubWord subWord : nouns) {
+                    hasParts = addAllToNull(hasParts, subWord.getHasParts());
+                }
+                break;
+            case PREPOSITION:
+                for (SubWord subWord : prepositions) {
+                    hasParts = addAllToNull(hasParts, subWord.getHasParts());
+                }
+                break;
+            case PRONOUN:
+                for (SubWord subWord : pronouns) {
+                    hasParts = addAllToNull(hasParts, subWord.getHasParts());
+                }
+                break;
+            case UNKNOWN:
+                for (SubWord subWord : unknowns) {
+                    hasParts = addAllToNull(hasParts, subWord.getHasParts());
+                }
+                break;
+            case VERB:
+                for (SubWord subWord : verbs) {
+                    hasParts = addAllToNull(hasParts, subWord.getHasParts());
+                }
+                break;
+        }
+        return hasParts;
+    }
+
+    public ArrayList<SuperWord> getPartOf(PartOfSpeech pos) {
+        if (!populated)
+            this.populate();
+
+        ArrayList<SuperWord> partOf = null;
+        switch (pos) {
+            case ADJECTIVE:
+                for (SubWord subWord : adjectives) {
+                    partOf = addAllToNull(partOf, subWord.getPartOf());
+                }
+                break;
+            case ADVERB:
+                for (SubWord subWord : adverbs) {
+                    partOf = addAllToNull(partOf, subWord.getPartOf());
+                }
+                break;
+            case CONJUCTION:
+                for (SubWord subWord : conjunctions) {
+                    partOf = addAllToNull(partOf, subWord.getPartOf());
+                }
+                break;
+            case DEFINITE_ARTICLE:
+                for (SubWord subWord : definiteArticles) {
+                    partOf = addAllToNull(partOf, subWord.getPartOf());
+                }
+                break;
+            case NOUN:
+                for (SubWord subWord : nouns) {
+                    partOf = addAllToNull(partOf, subWord.getPartOf());
+                }
+                break;
+            case PREPOSITION:
+                for (SubWord subWord : prepositions) {
+                    partOf = addAllToNull(partOf, subWord.getPartOf());
+                }
+                break;
+            case PRONOUN:
+                for (SubWord subWord : pronouns) {
+                    partOf = addAllToNull(partOf, subWord.getPartOf());
+                }
+                break;
+            case UNKNOWN:
+                for (SubWord subWord : unknowns) {
+                    partOf = addAllToNull(partOf, subWord.getPartOf());
+                }
+                break;
+            case VERB:
+                for (SubWord subWord : verbs) {
+                    partOf = addAllToNull(partOf, subWord.getPartOf());
+                }
+                break;
+        }
+        return partOf;
+    }
+
+    public ArrayList<SuperWord> getCommonCategories(PartOfSpeech pos) {
+        if (!populated)
+            this.populate();
+
+        ArrayList<SuperWord> commonCategories = null;
+        switch (pos) {
+            case ADJECTIVE:
+                for (SubWord subWord : adjectives) {
+                    commonCategories = addAllToNull(commonCategories, subWord.getCommonCategories());
+                }
+                break;
+            case ADVERB:
+                for (SubWord subWord : adverbs) {
+                    commonCategories = addAllToNull(commonCategories, subWord.getCommonCategories());
+                }
+                break;
+            case CONJUCTION:
+                for (SubWord subWord : conjunctions) {
+                    commonCategories = addAllToNull(commonCategories, subWord.getCommonCategories());
+                }
+                break;
+            case DEFINITE_ARTICLE:
+                for (SubWord subWord : definiteArticles) {
+                    commonCategories = addAllToNull(commonCategories, subWord.getCommonCategories());
+                }
+                break;
+            case NOUN:
+                for (SubWord subWord : nouns) {
+                    commonCategories = addAllToNull(commonCategories, subWord.getCommonCategories());
+                }
+                break;
+            case PREPOSITION:
+                for (SubWord subWord : prepositions) {
+                    commonCategories = addAllToNull(commonCategories, subWord.getCommonCategories());
+                }
+                break;
+            case PRONOUN:
+                for (SubWord subWord : pronouns) {
+                    commonCategories = addAllToNull(commonCategories, subWord.getCommonCategories());
+                }
+                break;
+            case UNKNOWN:
+                for (SubWord subWord : unknowns) {
+                    commonCategories = addAllToNull(commonCategories, subWord.getCommonCategories());
+                }
+                break;
+            case VERB:
+                for (SubWord subWord : verbs) {
+                    commonCategories = addAllToNull(commonCategories, subWord.getCommonCategories());
+                }
+                break;
+        }
+        return commonCategories;
+    }
+
+    /**
+     * TODO: remove duplicates; potentially score words based on duplicate count
+     * 
+     * @param pos
+     * @return
+     */
+    public ArrayList<SuperWord> getSimilarTo(PartOfSpeech pos) {
+        if (!populated)
+            this.populate();
+
+        ArrayList<SuperWord> similarTo = null;
+        switch (pos) {
+            case ADJECTIVE:
+                for (SubWord subWord : adjectives) {
+                    similarTo = addAllToNull(similarTo, subWord.getSimilarTo());
+                }
+                break;
+            case ADVERB:
+                for (SubWord subWord : adverbs) {
+                    similarTo = addAllToNull(similarTo, subWord.getSimilarTo());
+                }
+                break;
+            case CONJUCTION:
+                for (SubWord subWord : conjunctions) {
+                    similarTo = addAllToNull(similarTo, subWord.getSimilarTo());
+                }
+                break;
+            case DEFINITE_ARTICLE:
+                for (SubWord subWord : definiteArticles) {
+                    similarTo = addAllToNull(similarTo, subWord.getSimilarTo());
+                }
+                break;
+            case NOUN:
+                for (SubWord subWord : nouns) {
+                    similarTo = addAllToNull(similarTo, subWord.getSimilarTo());
+                }
+                break;
+            case PREPOSITION:
+                for (SubWord subWord : prepositions) {
+                    similarTo = addAllToNull(similarTo, subWord.getSimilarTo());
+                }
+                break;
+            case PRONOUN:
+                for (SubWord subWord : pronouns) {
+                    similarTo = addAllToNull(similarTo, subWord.getSimilarTo());
+                }
+                break;
+            case UNKNOWN:
+                for (SubWord subWord : unknowns) {
+                    similarTo = addAllToNull(similarTo, subWord.getSimilarTo());
+                }
+                break;
+            case VERB:
+                for (SubWord subWord : verbs) {
+                    similarTo = addAllToNull(similarTo, subWord.getSimilarTo());
+                }
+                break;
+        }
+        return similarTo;
+    }
+
     public String toString() {
+        return String.format("%s: {populated: %b}", this.plaintext, this.populated);
+    }
+
+    public String toFullString() {
         String divider = "\n\t";
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -280,20 +837,12 @@ public class SuperWord implements Comparable<SuperWord> {
         return stringBuilder.toString();
     }
 
-    public Pronunciation getPronunciation() {
-        return this.pronunciation;
-    }
-
-    public Pronunciation.SubPronunciation getSubPronunciation(SubWord.PartOfSpeech partOfSpeech) {
-        return this.pronunciation.getSubPronunciation(plaintext, partOfSpeech);
-    }
-
     /**
      * Warning: this is a messy-looking string.
      * 
      * @return a String formatted for debugging.
      */
-    public String getSubWordsString() {
+    public String subWordsString() {
         String divider = "\n//////// ";
 
         StringBuilder stringBuilder = new StringBuilder();

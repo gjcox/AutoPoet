@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import static config.Configuration.LOG;
+import static utils.NullListOperations.addAllToNull;
 
 public class SubWord {
 
@@ -21,10 +22,12 @@ public class SubWord {
     private ArrayList<SuperWord> typeOf;
     private ArrayList<SuperWord> hasTypes;
     private ArrayList<SuperWord> commonlyTyped;
+    private boolean setCommonlyTyped = false;
 
-    private ArrayList<SuperWord> inCategory;
+    private ArrayList<SuperWord> inCategory;   
     private ArrayList<SuperWord> hasCategories;
     private ArrayList<SuperWord> commonCategories;
+    private boolean setCommonCategories = false;
 
     private ArrayList<SuperWord> partOf;
     private ArrayList<SuperWord> hasParts;
@@ -115,10 +118,36 @@ public class SubWord {
         }
     }
 
+    public void populateTypeOf() {
+        for (SuperWord type : typeOf) {
+            type.populate();
+        }
+    }
+
     public void populateSimilarTo() {
         for (SuperWord similarToElement : similarTo) {
             similarToElement.populate();
         }
+    }
+
+    public void setCommonlyTyped() {
+        if (setCommonlyTyped || typeOf == null)
+            return;
+
+        for (SuperWord type : typeOf) {
+            commonlyTyped = addAllToNull(commonlyTyped, type.getHasTypes(this.partOfSpeech));
+        }
+        setCommonlyTyped = true;
+    }
+
+    public void setCommonCategories() {
+        if (setCommonCategories || inCategory == null)
+            return;
+            
+        for (SuperWord category : inCategory) {
+            commonlyTyped = addAllToNull(commonlyTyped, category.getHasCategories(this.partOfSpeech));
+        }
+        setCommonCategories = true;
     }
 
     private void setPartOfSpeech(String partOfSpeech, String plaintext) {
@@ -162,6 +191,45 @@ public class SubWord {
 
     public PartOfSpeech partOfSpeech() {
         return partOfSpeech;
+    }
+
+    public ArrayList<SuperWord> getSynonyms() {
+        return synonyms;
+    }
+
+    public ArrayList<SuperWord> getTypeOf() {
+        return typeOf;
+    }
+    public ArrayList<SuperWord> getHasTypes() {
+        return hasTypes;
+    }
+
+    public ArrayList<SuperWord> getCommonlyTyped() {
+        if (!setCommonlyTyped)
+            setCommonlyTyped();
+        return commonlyTyped;
+    }
+    
+    public ArrayList<SuperWord> getHasCategories() {
+        return hasCategories;
+    }
+
+    public ArrayList<SuperWord> getCommonCategories() {
+        if (!setCommonCategories)
+            setCommonCategories();
+        return commonCategories;
+    }
+
+    public ArrayList<SuperWord> getPartOf() {
+        return partOf;
+    }
+
+    public ArrayList<SuperWord> getHasParts() {
+        return hasParts;
+    }
+
+    public ArrayList<SuperWord> getSimilarTo() {
+        return similarTo;
     }
 
     public String toString() {
@@ -220,53 +288,4 @@ public class SubWord {
         return stringBuilder.toString();
     }
 
-    /*
-     * public JSONObject rhymeLengths(String part_of_speech) {
-     * JSONObject rhyme_lengths = Emphasis.newEmphasisObject();
-     * int length = ((JSONArray) this.ipa_syllables.get(part_of_speech)).length();
-     * JSONObject emphasis_object = (JSONObject)
-     * this.ipa_emphasis.get(part_of_speech);
-     * 
-     * /* get number of syllables between primary emphasis and end of word
-     */
-    /*
-     * int primary_index = (int) emphasis_object.get(Emphasis.PRIMARY);
-     * int primary_rhyme_length = length - primary_index;
-     * rhyme_lengths.put(Emphasis.PRIMARY, primary_rhyme_length);
-     * 
-     * /* get numbers of syllables between secondary emphases and end of word
-     */
-    /*
-     * JSONArray secondaries = (JSONArray) emphasis_object.get(Emphasis.SECONDARY);
-     * List<Object> secondary_indexes = secondaries.toList();
-     * for (Object index : secondary_indexes) {
-     * int secondary_rhyme_length = length - (Integer) index;
-     * ((JSONArray)
-     * rhyme_lengths.get(Emphasis.SECONDARY)).put(secondary_rhyme_length);
-     * }
-     * return rhyme_lengths;
-     * }
-     * 
-     * 
-     * 
-     * public List<Word> getSubsRhyme(Word wordToRhyme, boolean synonyms, boolean
-     * common_types) {
-     * List<Word> substitutions = new ArrayList<>();
-     * if (synonyms) {
-     * for (Word synonym : this.synonyms) {
-     * if (IPAHandler.checkRhyme(synonym, wordToRhyme)) {
-     * substitutions.add(synonym);
-     * }
-     * }
-     * }
-     * if (common_types) {
-     * for (Word common_type : this.common_types) {
-     * if (IPAHandler.checkRhyme(common_type, wordToRhyme)) {
-     * substitutions.add(common_type);
-     * }
-     * }
-     * }
-     * return substitutions;
-     * }
-     */
 }

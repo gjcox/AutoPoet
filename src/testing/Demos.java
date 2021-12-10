@@ -12,6 +12,7 @@ import words.Emphasis;
 import words.IPAHandler;
 import words.SuperWord;
 import words.Syllable;
+import words.SubWord.PartOfSpeech;
 
 public class Demos {
 
@@ -64,7 +65,7 @@ public class Demos {
         List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds", "present", "understated");
         for (String word : words) {
             SuperWord wordObject = SuperWord.getSuperWord(word);
-            System.out.println(wordObject.toString());
+            System.out.println(wordObject.toFullString());
         }
     }
 
@@ -74,14 +75,14 @@ public class Demos {
         for (String word : words) {
             SuperWord wordObject = SuperWord.getSuperWord(word);
             wordObject.populate();
-            System.out.println(wordObject.toString());
+            System.out.println(wordObject.toFullString());
         }
     }
 
     public static void wordConstructor() {
         SuperWord present = SuperWord.getSuperWord("present");
         present.populate();
-        System.out.println(present.getSubWordsString());
+        System.out.println(present.subWordsString());
     }
 
     public static void abercrombieZombie() {
@@ -99,16 +100,48 @@ public class Demos {
                 abercrombie.getPlaintext(), zombie.getPlaintext(), rhymes));
     }
 
+    public static void demoSynonyms() {
+        SuperWord present = SuperWord.getSuperWord("present");
+        System.out.println(String.format("Synonyms of \"%s\" (NOUN): %s", present.getPlaintext(),
+                present.getSynonyms(PartOfSpeech.NOUN)));
+    }
+
+    private static PartOfSpeech parsePoS(String pos) {
+        switch (pos.toLowerCase()) {
+            case "noun":
+                return PartOfSpeech.NOUN;
+            case "pronoun":
+                return PartOfSpeech.PRONOUN;
+            case "verb":
+                return PartOfSpeech.VERB;
+            case "adjective":
+                return PartOfSpeech.ADJECTIVE;
+            case "adverb":
+                return PartOfSpeech.ADVERB;
+            case "preposition":
+                return PartOfSpeech.PREPOSITION;
+            case "conjunction":
+                return PartOfSpeech.CONJUCTION;
+            case "definite article":
+                return PartOfSpeech.DEFINITE_ARTICLE;
+            default:
+                return PartOfSpeech.UNKNOWN;
+        }
+    }
+
     public static void main(String[] args) {
-        String usage = "java -cp src/ testing.Demos [ swc | swp | wc | rhyme ]";
+        String usage = "java -cp src/ testing.Demos [ swc | swp | wc ] <word>" +
+                "\njava -cp src/ testing.Demos [ rhyme ] <word1> <word2>" +
+                "\njava -cp src/ testing.Demos [ synonyms | typeOf | hasTypes | commonlyTyped ] <word> <part of speech>";
 
         if (args.length < 1) {
             /* for use within VS Code */
             // superWordConstructor();
             // superWordPopulator();
             // wordConstructor();
-            demoRhymes();
+            // demoRhymes();
             // abercrombieZombie();
+            demoSynonyms();
             return;
         }
 
@@ -137,17 +170,17 @@ public class Demos {
             switch (args[0].toLowerCase()) {
                 case "swc":
                     superWord = SuperWord.getSuperWord(args[1]);
-                    System.out.println(superWord.toString());
+                    System.out.println(superWord.toFullString());
                     break;
                 case "swp":
                     superWord = SuperWord.getSuperWord(args[1]);
                     superWord.populate();
-                    System.out.println(superWord.toString());
+                    System.out.println(superWord.toFullString());
                     break;
                 case "wc":
                     superWord = SuperWord.getSuperWord(args[1]);
                     superWord.populate();
-                    System.out.println(superWord.getSubWordsString());
+                    System.out.println(superWord.subWordsString());
                     break;
                 default:
                     System.err.println(usage);
@@ -159,6 +192,7 @@ public class Demos {
         if (args.length == 3) {
             SuperWord superWord1;
             SuperWord superWord2;
+            PartOfSpeech pos;
             switch (args[0].toLowerCase()) {
                 case "rhyme":
                     superWord1 = SuperWord.getSuperWord(args[1]);
@@ -166,6 +200,31 @@ public class Demos {
                     boolean rhymes = superWord1.rhymesWithWrapper(superWord2);
                     System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
                             superWord1.getPlaintext(), superWord2.getPlaintext(), rhymes));
+                    break;
+                case "synonyms":
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos = parsePoS(args[2]);
+                    System.out.println(String.format("Synonyms of \"%s\" (%s): %s", superWord1.getPlaintext(), pos,
+                            superWord1.getSynonyms(pos)));
+                    break;
+                case "typeof":
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos = parsePoS(args[2]);
+                    System.out.println(String.format("\"%s\" (%s) is a type of: %s", superWord1.getPlaintext(), pos,
+                            superWord1.getTypeOf(pos)));
+                    break;
+                case "hastypes":
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos = parsePoS(args[2]);
+                    System.out.println(String.format("\"%s\" (%s) has types: %s", superWord1.getPlaintext(), pos,
+                            superWord1.getHasTypes(pos)));
+                    break;
+                case "commonlytyped":
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos = parsePoS(args[2]);
+                    System.out.println(
+                            String.format("Words of the same type as \"%s\" (%s): %s", superWord1.getPlaintext(), pos,
+                                    superWord1.getCommonlyTyped(pos)));
                     break;
                 default:
                     System.err.println(usage);
