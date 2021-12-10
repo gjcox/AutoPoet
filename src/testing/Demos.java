@@ -81,7 +81,7 @@ public class Demos {
     public static void wordConstructor() {
         SuperWord present = SuperWord.getSuperWord("present");
         present.populate();
-        System.out.println(present.getSubWords());
+        System.out.println(present.getSubWordsString());
     }
 
     public static void abercrombieZombie() {
@@ -147,7 +147,7 @@ public class Demos {
                 case "wc":
                     superWord = SuperWord.getSuperWord(args[1]);
                     superWord.populate();
-                    System.out.println(superWord.getSubWords());
+                    System.out.println(superWord.getSubWordsString());
                     break;
                 default:
                     System.err.println(usage);
