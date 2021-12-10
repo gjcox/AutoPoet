@@ -68,24 +68,27 @@ public class SuperWord implements Comparable<SuperWord> {
                     word.getString("word"), plaintext));
         }
 
-        this.pronunciation = new Pronunciation();
+        if (word.has("syllables") || word.has("pronunciation"))
+            this.pronunciation = new Pronunciation();
 
         if (word.has("syllables")) {
             JSONObject syllablesObject = word.getJSONObject("syllables");
-            this.pronunciation.setSyllables(syllablesObject);
+            this.pronunciation.setSyllables(this.plaintext, syllablesObject);
         } else {
-            LOG.writePersistentLog(String.format("Syllables of \"%s\" is missing", plaintext));
+            LOG.writePersistentLog(String.format("Syllables of \"%s\" was missing", plaintext));
         }
 
         if (word.has("pronunciation")) {
             try {
                 JSONObject pronunciationObject = word.getJSONObject("pronunciation");
-                this.pronunciation.setIPA(pronunciationObject);
+                this.pronunciation.setIPA(this.plaintext, pronunciationObject);
             } catch (JSONException e) {
-                LOG.writePersistentLog(String.format("Pronunciation of \"%s\" is not a JSONObject: \"%s\"", plaintext,
+                LOG.writePersistentLog(String.format("Pronunciation of \"%s\" was not a JSONObject: \"%s\"", plaintext,
                         word.get("pronunciation").toString()));
                 this.pronunciation.setIPA(word.getString("pronunciation"));
             }
+        } else {
+            LOG.writePersistentLog(String.format("Pronunciation of \"%s\" was missing", plaintext));
         }
 
         if (word.has("results")) {
@@ -269,7 +272,7 @@ public class SuperWord implements Comparable<SuperWord> {
     }
 
     public Pronunciation.SubPronunciation getSubPronunciation(SubWord.PartOfSpeech partOfSpeech) {
-        return this.pronunciation.getSubPronunciation(partOfSpeech);
+        return this.pronunciation.getSubPronunciation(plaintext, partOfSpeech);
     }
 
     /**
@@ -326,27 +329,44 @@ public class SuperWord implements Comparable<SuperWord> {
 
     }
 
+    private boolean rhmyesWith(String plaintext1, PartOfSpeech pos1, SubPronunciation subPronunciation1,
+            String plaintext2, PartOfSpeech pos2, SubPronunciation subPronunciation2) {
+        if (subPronunciation1 == null) {
+            LOG.writePersistentLog(String.format("\"%s\" did not have a pronunciation for %s to rhyme against",
+                    plaintext1, pos1));
+            return false;
+        }
+        if (subPronunciation2 == null) {
+            LOG.writePersistentLog(String.format("\"%s\" did not have a pronunciation for %s to rhyme against",
+                    plaintext2, pos2));
+            return false;
+        }
+        return subPronunciation1.rhymesWith(subPronunciation2);
+    }
+
     /**
      * Iterates over the parts of speech of both words (worst case is full cross
      * product evaluation) and returns true if any part of speech pairing produces a
      * rhyme.
      * 
-     * TODO return false if either word lacks pronunciation data
-     * 
      * @param other
      * @return
      */
-    public boolean rhymesWith(SuperWord other) {
+    public boolean rhymesWithWrapper(SuperWord other) {
         if (!this.populated)
             this.populate();
         if (!other.populated)
             other.populate();
 
+        if (this.pronunciation == null || other.pronunciation == null) {
+            return false;
+        }
+
         for (PartOfSpeech pos1 : this.partsOfSpeech) {
             SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
             for (PartOfSpeech pos2 : other.partsOfSpeech) {
                 SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
-                if (subPronunciation1.rhymesWith(subPronunciation2)) {
+                if (rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2)) {
                     return true;
                 }
             }
@@ -359,12 +379,10 @@ public class SuperWord implements Comparable<SuperWord> {
      * product evaluation) and returns true if any part of speech pairing produces a
      * rhyme.
      * 
-     * TODO return false if either word lacks pronunciation data
-     * 
      * @param other
      * @return
      */
-    public boolean rhymesWith(SuperWord other, PartOfSpeech pos1, PartOfSpeech pos2) {
+    public boolean rhymesWithWrapper(SuperWord other, PartOfSpeech pos1, PartOfSpeech pos2) {
         if (!this.populated)
             this.populate();
         if (!other.populated)
@@ -373,12 +391,12 @@ public class SuperWord implements Comparable<SuperWord> {
         if (pos1 != null && pos2 != null) {
             SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
             SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
-            return subPronunciation1.rhymesWith(subPronunciation2);
+            rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2);
         } else if (pos1 != null) {
             SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
             for (PartOfSpeech pos2b : other.partsOfSpeech) {
                 SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2b);
-                if (subPronunciation1.rhymesWith(subPronunciation2)) {
+                if (rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2)) {
                     return true;
                 }
             }
@@ -386,7 +404,7 @@ public class SuperWord implements Comparable<SuperWord> {
             SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
             for (PartOfSpeech pos1b : this.partsOfSpeech) {
                 SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1b);
-                if (subPronunciation1.rhymesWith(subPronunciation2)) {
+                if (rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2)) {
                     return true;
                 }
             }
