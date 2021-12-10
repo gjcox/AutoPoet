@@ -1,6 +1,4 @@
 2021-12-07 15:59:17.071	 WordsAPI responded with word "monster" when requesting "monsters".
-2021-12-07 15:59:17.277	 Syllables of "the" is missing
-2021-12-07 15:59:17.278	 Pronunciation of "the" is not a JSONObject: "ðʌ"
 2021-12-07 15:59:17.714	 WordsAPI responded with word "wind" when requesting "winds".
 2021-12-07 15:59:18.192	 Pronunciation of "understated" is not a JSONObject: "'ʌndɝr,steɪtɪd"
 2021-12-07 16:01:21.286	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
@@ -20,9 +18,16 @@
 2021-12-10 16:50:36.107	 Results of "aback" was an empty array
 2021-12-10 16:50:37.637	 Syllables of "overstated" was missing
 2021-12-10 16:50:38.602	 Results of "abercrombie" was missing
-2021-12-10 17:09:26.305	 Syllables of "ouch" was missing
-2021-12-10 17:09:26.306	 Pronunciation of "ouch" is not a JSONObject: "aʊʧ"
-2021-12-10 17:09:26.317	 Results of "ouch" was missing
 2021-12-10 17:11:34.993	 Results of "though" was an empty array
-2021-12-10 17:18:14.397	 Pronunciation of "bandoline" had no recognised keys: {}
-2021-12-10 17:18:14.397	 Results of "bandoline" was missing
+2021-12-10 17:58:33.313	 Pronunciation of "bandoline" had no recognised keys: {}
+2021-12-10 17:58:33.314	 Rhymes of "bandoline" was present: {"all":"-əlin"}
+2021-12-10 17:58:33.324	 Results of "bandoline" was missing
+2021-12-10 17:59:27.686	 Syllables of "ouch" was missing
+2021-12-10 17:59:27.686	 Pronunciation of "ouch" was not a JSONObject: "aʊʧ"
+2021-12-10 17:59:27.696	 Rhymes of "ouch" was present: {"all":"-aʊtʃ"}
+2021-12-10 17:59:27.697	 Rhymes of "ouch" had no recognised keys not found in pronunciation field
+2021-12-10 17:59:27.697	 Results of "ouch" was missing
+2021-12-10 18:01:29.388	 Syllables of "the" was missing
+2021-12-10 18:01:29.388	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2021-12-10 18:01:29.401	 Rhymes of "the" was present: {"all":"-ə"}
+2021-12-10 18:01:29.401	 Rhymes of "the" had no recognised keys not found in pronunciation field

@@ -85,11 +85,23 @@ public class SuperWord implements Comparable<SuperWord> {
             } catch (JSONException e) {
                 LOG.writePersistentLog(String.format("Pronunciation of \"%s\" was not a JSONObject: \"%s\"", plaintext,
                         word.get("pronunciation").toString()));
-                this.pronunciation.setIPA(word.getString("pronunciation"));
+                this.pronunciation.setIPA(this.plaintext, word.getString("pronunciation"));
             }
         } else {
             LOG.writePersistentLog(String.format("Pronunciation of \"%s\" was missing", plaintext));
         }
+
+        if (word.has("rhymes")) {
+            LOG.writePersistentLog(String.format("Rhymes of \"%s\" was present: %s", plaintext,  word.get("rhymes").toString()));
+            try {
+                JSONObject rhymeObject = word.getJSONObject("rhymes");
+                this.pronunciation.setRhyme(this.plaintext, rhymeObject);
+            } catch (JSONException e) {
+                LOG.writePersistentLog(String.format("Rhymes of \"%s\" was not a JSONObject: \"%s\"", plaintext,
+                        word.get("Rhymes").toString()));
+                this.pronunciation.setRhyme(this.plaintext, word.getString("Rhymes"));
+            }
+        }  
 
         if (word.has("results")) {
             JSONArray resultsArray = word.getJSONArray("results");

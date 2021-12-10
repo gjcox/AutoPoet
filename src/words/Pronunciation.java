@@ -153,29 +153,75 @@ public class Pronunciation {
         }
     }
 
-    private void setIPA(SubPronunciation subPronunciation, String ipa) {
-        Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = null;
-        subPronunciation = new SubPronunciation();
-        subPronunciation.ipa = ipa;
-        syllablesAndEmphasis = IPAHandler.getSyllables(this.noun.ipa);
-        subPronunciation.syllables = syllablesAndEmphasis.one();
-        subPronunciation.emphasis = syllablesAndEmphasis.two();
-        subPronunciation.populateRhymes();
-    }
-
-    private void setRhymes() {
-        /* placeholder */
-    }
-
     public void setRhyme(String plaintext, JSONObject rhymesObject) {
-        /* placeholder */
+        JSONObject filteredRhymesObject = new JSONObject(); 
+        boolean empty = true;
+
+        /* strings are of form "-aʊtʃ" */
+        if (rhymesObject.has("noun") && this.noun == null) {
+            String original = rhymesObject.getString("noun");
+            filteredRhymesObject.put("noun", original.replaceFirst("-", "'"));
+            empty = false;
+        }
+
+        if (rhymesObject.has("pronoun") && this.pronoun == null) {
+            String original = rhymesObject.getString("pronoun");
+            filteredRhymesObject.put("pronoun", original.replaceFirst("-", "'"));
+            empty = false;
+        }
+
+        if (rhymesObject.has("verb") && this.verb == null) {
+            String original = rhymesObject.getString("verb");
+            filteredRhymesObject.put("verb", original.replaceFirst("-", "'"));
+            empty = false;
+        }
+
+        if (rhymesObject.has("adjective") && this.adjective == null) {
+            String original = rhymesObject.getString("adjective");
+            filteredRhymesObject.put("adjective", original.replaceFirst("-", "'"));
+            empty = false;
+        }
+
+        if (rhymesObject.has("adverb") && this.adverb == null) {
+            String original = rhymesObject.getString("adverb");
+            filteredRhymesObject.put("adverb", original.replaceFirst("-", "'"));
+            empty = false;
+        }
+
+        if (rhymesObject.has("preposition") && this.preposition == null) {
+            String original = rhymesObject.getString("preposition");
+            filteredRhymesObject.put("preposition", original.replaceFirst("-", "'"));
+            empty = false;
+        }
+
+        if (rhymesObject.has("conjunction") && this.conjunction == null) {
+            String original = rhymesObject.getString("conjunction");
+            filteredRhymesObject.put("conjunction", original.replaceFirst("-", "'"));
+            empty = false;
+        }
+
+        if (rhymesObject.has("all") && this.all == null) {
+            String original = rhymesObject.getString("all");
+            filteredRhymesObject.put("all", original.replaceFirst("-", "'"));
+            empty = false;
+        }
+
+        if (empty) {
+            /* i.e. pronunciation object had no (recognised) keys */
+            LOG.writePersistentLog(String.format(
+                    "Rhymes of \"%s\" had no recognised keys not found in pronunciation field", plaintext));
+        } else {
+            this.setIPA(plaintext, filteredRhymesObject);
+        }
     }
 
     public void setRhyme(String plaintext, String rhymesString) {
-        /* placeholder */
+        this.setIPA(plaintext, rhymesString.replaceFirst("-", "'"));
     }
 
     /**
+     * I did try implementing this with less code repetition, but passing the
+     * subpronunciations by reference was messy and prone to failure.
      * 
      * @param pronunciationObject JSONObject of the form {<part-of-speech>:<ipa>}
      *                            e.g.
