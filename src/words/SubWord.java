@@ -27,6 +27,7 @@ public class SubWord {
     private PartOfSpeech partOfSpeech = PartOfSpeech.UNKNOWN;
 
     private ArrayList<SuperWord> synonyms;
+    
     private ArrayList<SuperWord> typeOf;
     private ArrayList<SuperWord> hasTypes;
     private ArrayList<SuperWord> commonlyTyped;
