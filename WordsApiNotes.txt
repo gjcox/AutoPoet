@@ -161,6 +161,75 @@
     "frequency":5.16
 }
 
+# Notable for having a "result"."verbGroup" field, which interestingly has \
+  partial but not complete overlap with the "result"."synonyms" field
+
+{
+    "word":"die"
+    "results":[
+        0:{...}4 items
+        1:{
+            "definition":"pass from physical life and lose all bodily attributes and functions necessary to sustain life"
+            "partOfSpeech":"verb"
+            "synonyms":[
+                0:"buy the farm"
+                1:"cash in one's chips"
+                2:"choke"
+                3:"conk"
+                4:"croak"
+                5:"decease"
+                6:"drop dead"
+                7:"exit"
+                8:"expire"
+                9:"give-up the ghost"
+                10:"go"
+                11:"kick the bucket"
+                12:"pass"
+                13:"pass away"
+                14:"perish"
+                15:"pop off"
+                16:"snuff it"
+            ]
+            "typeOf":[...]2 items
+            "hasTypes":[...]13 items
+            "verbGroup":[
+                0:"fail"
+                1:"break"
+                2:"break down"
+                3:"conk out"
+                4:"give out"
+                5:"give way"
+                6:"go"
+                7:"go bad"
+            ]
+            "antonyms":[...]1 item
+            "also":[...]3 items
+            "derivation":[...]1 item
+            "examples":[...]1 item
+        }
+        2:{...}4 items
+        3:{...}7 items
+        4:{...}5 items
+        5:{...}3 items
+        6:{...}4 items
+        7:{...}4 items
+        8:{...}5 items
+        9:{...}4 items
+        10:{...}3 items
+        11:{...}6 items
+        12:{...}4 items
+        13:{...}4 items
+    ]
+    "syllables":{
+        "count":1
+        "list":[...]1 item
+    }
+    "pronunciation":{
+        "all":"di"
+    }
+    "frequency":5.54
+}
+
 # Typical example
 {
     "word":"freedom"
