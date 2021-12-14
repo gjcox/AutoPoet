@@ -1,8 +1,11 @@
 package words;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static config.Configuration.LOG;
 import static utils.NullListOperations.addAllToNull;
@@ -13,18 +16,25 @@ public class SubWord {
         NOUN, PRONOUN, VERB, ADJECTIVE, ADVERB, PREPOSITION, CONJUCTION, DEFINITE_ARTICLE, UNKNOWN
     }
 
+    Set<String> knownFieldSet = new HashSet<>(
+            Arrays.asList("synonyms", "antonyms", "verbGroup", "typeOf", "hasTypes", "inCategory", "hasCategories",
+                    "partOf", "hasParts", "instanceOf", "hasInstances", "substanceOf", "hasSubstances", "memberOf",
+                    "hasMembers", "usageOf", "hasUsages", "inRegion", "regionOf", "similarTo", "attribute",
+                    "pertainsTo", "also", "entails", "derivation", "examples"));
+
     private String definition;
     private PartOfSpeech partOfSpeech = PartOfSpeech.UNKNOWN;
 
     private ArrayList<SuperWord> synonyms;
     private ArrayList<SuperWord> antonyms; // not in use
+    private ArrayList<SuperWord> verbGroup; // not in use
 
     private ArrayList<SuperWord> typeOf;
     private ArrayList<SuperWord> hasTypes;
     private ArrayList<SuperWord> commonlyTyped;
     private boolean setCommonlyTyped = false;
 
-    private ArrayList<SuperWord> inCategory;   
+    private ArrayList<SuperWord> inCategory;
     private ArrayList<SuperWord> hasCategories;
     private ArrayList<SuperWord> commonCategories;
     private boolean setCommonCategories = false;
@@ -63,6 +73,14 @@ public class SubWord {
      */
     @SuppressWarnings("unchecked")
     public SubWord(String plaintext, Map<String, Object> resultObject) {
+        Set<String> unrecognisedFields = new HashSet<>(knownFieldSet);
+        unrecognisedFields.removeAll(resultObject.keySet());
+        if (!unrecognisedFields.isEmpty()) {
+            LOG.writePersistentLog(
+                    String.format("Unrecognised field(s) for subword of \"%s\" with definition \"%s\": \"%s\"",
+                            plaintext, this.definition, unrecognisedFields.toString()));
+        }
+
         if (resultObject.containsKey("definition")) {
             this.definition = (String) resultObject.get("definition");
         }
@@ -143,7 +161,7 @@ public class SubWord {
     public void setCommonCategories() {
         if (setCommonCategories || inCategory == null)
             return;
-            
+
         for (SuperWord category : inCategory) {
             commonlyTyped = addAllToNull(commonlyTyped, category.getHasCategories(this.partOfSpeech));
         }
@@ -200,6 +218,7 @@ public class SubWord {
     public ArrayList<SuperWord> getTypeOf() {
         return typeOf;
     }
+
     public ArrayList<SuperWord> getHasTypes() {
         return hasTypes;
     }
@@ -209,7 +228,7 @@ public class SubWord {
             setCommonlyTyped();
         return commonlyTyped;
     }
-    
+
     public ArrayList<SuperWord> getHasCategories() {
         return hasCategories;
     }

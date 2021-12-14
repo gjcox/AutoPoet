@@ -1,6 +1,7 @@
 package words;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -23,6 +24,9 @@ public class SuperWord implements Comparable<SuperWord> {
 
     private static HashMap<String, SuperWord> cachePopulated = new HashMap<>();
     private static HashMap<String, SuperWord> cachePlaceholder = new HashMap<>();
+
+    Set<String> knownFieldSet = new HashSet<>(
+            Arrays.asList("word", "results", "syllables", "pronunciation", "frequency", "rhymes"));
 
     private String plaintext;
     private boolean populated = false; // true iff built from a WordsAPI query
@@ -63,6 +67,14 @@ public class SuperWord implements Comparable<SuperWord> {
         }
 
         JSONObject word = WordsAPI.getWord(plaintext);
+
+        Set<String> unrecognisedFields = new HashSet<>(knownFieldSet);
+        unrecognisedFields.removeAll(word.keySet());
+        if (!unrecognisedFields.isEmpty()) {
+            LOG.writePersistentLog(
+                    String.format("Unrecognised field(s) for superword \"%s\": \"%s\"",
+                            plaintext, unrecognisedFields.toString()));
+        }
 
         if (word.has("word") && !word.getString("word").equals(plaintext)) {
             LOG.writePersistentLog(String.format("WordsAPI responded with word \"%s\" when requesting \"%s\".",
@@ -308,7 +320,7 @@ public class SuperWord implements Comparable<SuperWord> {
         return synonyms;
     }
 
- /**
+    /**
      * TODO: remove duplicates; potentially score words based on duplicate count
      * 
      * @param pos
@@ -369,9 +381,12 @@ public class SuperWord implements Comparable<SuperWord> {
         return types;
     }
 
-
     /**
      * TODO: remove duplicates; potentially score words based on duplicate count
+     * TODO: implement getHasTypes(PartOfSpeech pos, includes SuperWord)
+     * Really typeOf() should correspond to a SubWord, but it doesn't, so I need to
+     * filter the other SubWords' types of the SuperWord out of the results.
+     * This relies on symmetry between typeOf() and hasTypes().
      * 
      * @param pos
      * @return
