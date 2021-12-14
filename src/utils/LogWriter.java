@@ -35,7 +35,6 @@ public class LogWriter {
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             try {
                 tempWriter.write(String.format("%s\t %s\n", timestamp.toString(), string));
-                tempWriter.flush();
             } catch (IOException e) {
                 System.err.println(String.format("! LogWriter failed to write %s to %s", string, tempLog.toPath()));
             }
@@ -46,11 +45,21 @@ public class LogWriter {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         try {
             persistentWriter.write(String.format("%s\t %s\n", timestamp.toString(), string));
-            persistentWriter.flush();
         } catch (IOException e) {
             System.err.println(String.format("! LogWriter failed to write %s to %s", string, persistentLog.toPath()));
         }
 
+    }
+
+    public void closeLogWriters() {
+        try {
+            persistentWriter.close();
+            if (tempLogging) {
+                tempWriter.close();
+            }
+        } catch (IOException e) {
+            System.err.println("! LogWriter failed to close FileWriters: " + e.getMessage());
+        }
     }
 
 }
