@@ -292,18 +292,17 @@ public class Demos {
 
             switch (args[0].toLowerCase()) {
                 case "rhyme":
-                superWord1 = SuperWord.getSuperWord(args[1]);
-                pos1 = parsePoS(args[2]);
-                superWord2 = SuperWord.getSuperWord(args[3]);
-                pos2 = parsePoS(args[4]);
-                System.out.println(
-                        String.format("\"%s\" (%s) rhymes with \"%s\" (%s): %s",
-                                superWord1.getPlaintext(), pos1,
-                                superWord2.getPlaintext(), pos2,
-                                superWord1.rhymesWithWrapper(superWord2, pos1, pos2)));
-                break;
-                                case "suggestions":
-                    // <word> <PoS1> <rhyme with> <Pos2>
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos1 = parsePoS(args[2]);
+                    superWord2 = SuperWord.getSuperWord(args[3]);
+                    pos2 = parsePoS(args[4]);
+                    System.out.println(
+                            String.format("\"%s\" (%s) rhymes with \"%s\" (%s): %s",
+                                    superWord1.getPlaintext(), pos1,
+                                    superWord2.getPlaintext(), pos2,
+                                    superWord1.rhymesWithWrapper(superWord2, pos1, pos2)));
+                    break;
+                case "suggestions":
                     superWord1 = SuperWord.getSuperWord(args[1]);
                     pos1 = parsePoS(args[2]);
                     superWord2 = SuperWord.getSuperWord(args[3]);
