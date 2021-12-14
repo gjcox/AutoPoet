@@ -13,6 +13,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import apis.WordsAPI;
+import utils.ParameterWrappers.FilterParameters;
+import utils.ParameterWrappers.SuggestionParameters;
 import words.Pronunciation.SubPronunciation;
 import words.SubWord.PartOfSpeech;
 
@@ -20,6 +22,7 @@ import static utils.NullListOperations.addToNull;
 import static utils.NullListOperations.addAllToNull;
 import static utils.NullListOperations.addAllToNullIfMatching;
 import static utils.NullListOperations.combineLists;
+import static utils.NullListOperations.combineListsPrioritiseDuplicates;
 import static config.Configuration.LOG;
 
 public class SuperWord implements Comparable<SuperWord> {
@@ -28,7 +31,8 @@ public class SuperWord implements Comparable<SuperWord> {
     private static HashMap<String, SuperWord> cachePlaceholder = new HashMap<>();
 
     private static Set<String> knownFields = new HashSet<>(
-            Arrays.asList("word", "results", "syllables", "pronunciation", "frequency", "rhymes"));
+            Arrays.asList("word", "results", "syllables", "pronunciation", "frequency", "rhymes", "success",
+                    "message"));
 
     private String plaintext;
     private boolean populated = false; // true iff built from a WordsAPI query
@@ -52,11 +56,9 @@ public class SuperWord implements Comparable<SuperWord> {
      */
     public static SuperWord getSuperWord(String plaintext) {
         if (cachePopulated.containsKey(plaintext)) {
-            LOG.writeTempLog(String.format("Retrieved populated superword for \"%s\" from cache.", plaintext));
             return cachePopulated.get(plaintext);
         }
         if (cachePlaceholder.containsKey(plaintext)) {
-            LOG.writeTempLog(String.format("Retrieved placeholder superword for \"%s\" from cache.", plaintext));
             return cachePlaceholder.get(plaintext);
         }
         return new SuperWord(plaintext);
@@ -222,7 +224,7 @@ public class SuperWord implements Comparable<SuperWord> {
             case UNKNOWN:
                 if (inclusiveUnknown) {
                     return combineLists(adjectives, adverbs, conjunctions, definiteArticles, nouns, prepositions,
-                                    pronouns, verbs, unknowns);
+                            pronouns, verbs, unknowns);
                 } else {
                     return unknowns;
                 }
@@ -240,6 +242,9 @@ public class SuperWord implements Comparable<SuperWord> {
     }
 
     public Pronunciation.SubPronunciation getSubPronunciation(SubWord.PartOfSpeech partOfSpeech) {
+        if (this.pronunciation == null) {
+            return null;
+        }
         return this.pronunciation.getSubPronunciation(plaintext, partOfSpeech);
     }
 
@@ -456,6 +461,53 @@ public class SuperWord implements Comparable<SuperWord> {
         return similarTo;
     }
 
+    private ArrayList<SuperWord> getSuggestions(PartOfSpeech pos, SuggestionParameters params) {
+        ArrayList<SuperWord> synonymsList = params.synonyms() ? this.getSynonyms(pos) : null;
+        ArrayList<SuperWord> commonlyTypedList = params.commonlyTyped() ? this.getCommonlyTyped(pos) : null;
+        ArrayList<SuperWord> commonCategoriesList = params.commonCategories() ? this.getCommonCategories(pos) : null;
+        ArrayList<SuperWord> partOfList = params.partOf() ? this.getPartOf(pos) : null;
+        ArrayList<SuperWord> hasPartsList = params.hasParts() ? this.getHasParts(pos) : null;
+        ArrayList<SuperWord> similarToList = params.similarTo() ? this.getSimilarTo(pos) : null;
+
+        ArrayList<SuperWord> combined = combineListsPrioritiseDuplicates(synonymsList, commonlyTypedList,
+                commonCategoriesList, partOfList, hasPartsList, similarToList);
+        LOG.writeTempLog(String.format("Combined suggestions for \"%s\" (%s) including %s: %s", plaintext, pos,
+                params.toString(), combined));
+        return combined;
+    }
+
+    /**
+     * 
+     * @param suggestions
+     * @param pos
+     * @param rhyme
+     * @param rhymeWith   can be null if rhyme == false.
+     * @param rhymePos    can be null if rhyme == false.
+     * @return
+     */
+    private static ArrayList<SuperWord> filterSuggestions(ArrayList<SuperWord> suggestions, PartOfSpeech pos,
+            FilterParameters params) {
+
+        if (suggestions == null) {
+            return null;
+        }
+
+        ArrayList<SuperWord> filtered = new ArrayList<>(suggestions);
+
+        for (SuperWord suggestion : suggestions) {
+            if (params.rhyme() && !suggestion.rhymesWithWrapper(params.rhymeWith(), pos, params.rhymePos())) {
+                filtered.remove(suggestion);
+            }
+        }
+        return filtered;
+    }
+
+    public ArrayList<SuperWord> getFilteredSuggestions(PartOfSpeech pos, SuggestionParameters suggestionParams,
+            FilterParameters filterParams) {
+        ArrayList<SuperWord> unfiltered = getSuggestions(pos, suggestionParams);
+        return filterSuggestions(unfiltered, pos, filterParams);
+    }
+
     public String toString() {
         return String.format("%s: {populated: %b}", this.plaintext, this.populated);
     }
@@ -574,16 +626,28 @@ public class SuperWord implements Comparable<SuperWord> {
 
     }
 
+    /**
+     * 
+     * @param plaintext1        for logging.
+     * @param pos1              for logging.
+     * @param subPronunciation1
+     * @param plaintext2        for logging.
+     * @param pos2              for logging.
+     * @param subPronunciation2
+     * @return
+     */
     private boolean rhmyesWith(String plaintext1, PartOfSpeech pos1, SubPronunciation subPronunciation1,
             String plaintext2, PartOfSpeech pos2, SubPronunciation subPronunciation2) {
         if (subPronunciation1 == null) {
-            LOG.writePersistentLog(String.format("\"%s\" did not have a pronunciation for %s to rhyme against",
-                    plaintext1, pos1));
+            LOG.writePersistentLog(
+                    String.format("\"%s\" (%s) did not have a pronunciation for \"%s\" (%s) to rhyme against",
+                            plaintext1, pos1, plaintext2, pos2));
             return false;
         }
         if (subPronunciation2 == null) {
-            LOG.writePersistentLog(String.format("\"%s\" did not have a pronunciation for %s to rhyme against",
-                    plaintext2, pos2));
+            LOG.writePersistentLog(
+                    String.format("\"%s\" (%s) did not have a pronunciation for \"%s\" (%s) to rhyme against",
+                            plaintext2, pos2, plaintext1, pos1));
             return false;
         }
         return subPronunciation1.rhymesWith(subPronunciation2);
@@ -640,7 +704,7 @@ public class SuperWord implements Comparable<SuperWord> {
         } else if (pos1 != null && pos2 != null) {
             SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
             SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
-            rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2);
+            return rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2);
         } else if (pos1 != null) {
             SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
             for (PartOfSpeech pos2b : other.partsOfSpeech) {

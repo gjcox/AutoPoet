@@ -2,7 +2,10 @@ package utils;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NullListOperations {
 
@@ -53,11 +56,52 @@ public class NullListOperations {
 
     @SafeVarargs
     public static <T> ArrayList<T> combineLists(List<T>... lists) {
-        ArrayList<T> combined = null; 
-        for (List<T> list: lists) {
-            combined = addAllToNull(combined, list); 
+        ArrayList<T> combined = null;
+        for (List<T> list : lists) {
+            combined = addAllToNull(combined, list);
         }
-        return combined; 
+        return combined;
+    }
+
+    static class SortByCount<T> implements Comparator<T> {
+
+        private Map<T, Integer> counts;
+
+        public SortByCount(Map<T, Integer> counts) {
+            this.counts = counts;
+        }
+
+        @Override
+        public int compare(T o1, T o2) {
+            return counts.get(o2) - counts.get(o1);
+        }
+
+    }
+
+    @SafeVarargs
+    public static <T> ArrayList<T> combineListsPrioritiseDuplicates(List<T>... lists) {
+        Map<T, Integer> counts = new HashMap<>();
+        ArrayList<T> combined = new ArrayList<>();
+        for (List<T> list : lists) {
+            if (list != null) {
+                for (T element : list) {
+                    Integer count;
+                    if ((count = counts.get(element)) != null) {
+                        counts.replace(element, count + 1);
+                    } else {
+                        counts.put(element, 1);
+                        combined.add(element);
+                    }
+                }
+            }
+        }
+
+        if (combined.isEmpty()) {
+            return null;
+        } else {
+            combined.sort(new SortByCount<>(counts));
+            return combined;
+        }
     }
 
     /**

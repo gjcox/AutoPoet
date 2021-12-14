@@ -8,11 +8,15 @@ import org.json.JSONObject;
 
 import apis.WordsAPI;
 import utils.Pair;
+import utils.ParameterWrappers.FilterParameters;
+import utils.ParameterWrappers.SuggestionParameters;
 import words.Emphasis;
 import words.IPAHandler;
 import words.SuperWord;
 import words.Syllable;
 import words.SubWord.PartOfSpeech;
+
+import static config.Configuration.LOG;
 
 public class Demos {
 
@@ -132,7 +136,10 @@ public class Demos {
     public static void main(String[] args) {
         String usage = "java -cp src/ testing.Demos [ swc | swp | wc ] <word>" +
                 "\njava -cp src/ testing.Demos [ rhyme ] <word1> <word2>" +
-                "\njava -cp src/ testing.Demos [ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo ] <word> <part of speech>";
+                "\njava -cp src/ testing.Demos [ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo ] <word> <part of speech (PoS)>"
+                +
+                "\njava -cp src/ testing.Demos rhyme <word1> <PoS1> <word2> <Pos2>" +
+                "\njava -cp src/ testing.Demos suggestions <word> <PoS1> <rhyme with> <Pos2>";
 
         if (args.length < 1) {
             /* for use within VS Code */
@@ -142,6 +149,7 @@ public class Demos {
             // demoRhymes();
             // abercrombieZombie();
             demoSynonyms();
+            LOG.closeLogWriters();
             return;
         }
 
@@ -162,6 +170,7 @@ public class Demos {
                 default:
                     System.err.println(usage);
             }
+            LOG.closeLogWriters();
             return;
         }
 
@@ -186,6 +195,7 @@ public class Demos {
                     System.err.println(usage);
                     break;
             }
+            LOG.closeLogWriters();
             return;
         }
 
@@ -268,9 +278,54 @@ public class Demos {
                     System.err.println(usage);
                     break;
             }
+            LOG.closeLogWriters();
+            return;
+        }
+
+        if (args.length == 5) {
+            SuperWord superWord1;
+            SuperWord superWord2;
+            PartOfSpeech pos1;
+            PartOfSpeech pos2;
+            SuggestionParameters suggestionParams;
+            FilterParameters filterParams;
+
+            switch (args[0].toLowerCase()) {
+                case "rhyme":
+                superWord1 = SuperWord.getSuperWord(args[1]);
+                pos1 = parsePoS(args[2]);
+                superWord2 = SuperWord.getSuperWord(args[3]);
+                pos2 = parsePoS(args[4]);
+                System.out.println(
+                        String.format("\"%s\" (%s) rhymes with \"%s\" (%s): %s",
+                                superWord1.getPlaintext(), pos1,
+                                superWord2.getPlaintext(), pos2,
+                                superWord1.rhymesWithWrapper(superWord2, pos1, pos2)));
+                break;
+                                case "suggestions":
+                    // <word> <PoS1> <rhyme with> <Pos2>
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos1 = parsePoS(args[2]);
+                    superWord2 = SuperWord.getSuperWord(args[3]);
+                    pos2 = parsePoS(args[4]);
+                    suggestionParams = new SuggestionParameters(true, true, true, true, true, true);
+                    filterParams = new FilterParameters(true, superWord2, pos2);
+                    System.out.println(
+                            String.format("Suggestions for \"%s\" (%s) that rhyme with \"%s\" (%s): %s",
+                                    superWord1.getPlaintext(), pos1,
+                                    superWord2.getPlaintext(), pos2,
+                                    superWord1.getFilteredSuggestions(pos1, suggestionParams, filterParams)));
+                    break;
+                default:
+                    System.err.println(usage);
+                    break;
+            }
+            LOG.closeLogWriters();
             return;
         }
 
         System.err.println(usage);
+        LOG.closeLogWriters();
+
     }
 }

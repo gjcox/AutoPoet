@@ -20,7 +20,7 @@ public class SubWord {
             Arrays.asList("partOfSpeech", "definition", "synonyms", "antonyms", "verbGroup", "typeOf", "hasTypes",
                     "inCategory", "hasCategories", "partOf", "hasParts", "instanceOf", "hasInstances", "substanceOf",
                     "hasSubstances", "memberOf", "hasMembers", "usageOf", "hasUsages", "inRegion", "regionOf",
-                    "similarTo", "attribute", "pertainsTo", "also", "entails", "derivation", "examples"));
+                    "similarTo", "attribute", "pertainsTo", "also", "entails", "derivation", "examples", "cause"));
 
     private SuperWord parent;
     private String definition;
