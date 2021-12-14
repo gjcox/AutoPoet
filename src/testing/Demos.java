@@ -132,7 +132,7 @@ public class Demos {
     public static void main(String[] args) {
         String usage = "java -cp src/ testing.Demos [ swc | swp | wc ] <word>" +
                 "\njava -cp src/ testing.Demos [ rhyme ] <word1> <word2>" +
-                "\njava -cp src/ testing.Demos [ synonyms | typeOf | hasTypes | commonlyTyped ] <word> <part of speech>";
+                "\njava -cp src/ testing.Demos [ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo ] <word> <part of speech>";
 
         if (args.length < 1) {
             /* for use within VS Code */
@@ -225,6 +225,44 @@ public class Demos {
                     System.out.println(
                             String.format("Words of the same type as \"%s\" (%s): %s", superWord1.getPlaintext(), pos,
                                     superWord1.getCommonlyTyped(pos)));
+                    break;
+                case "incategory":
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos = parsePoS(args[2]);
+                    System.out.println(String.format("\"%s\" (%s) is a category of: %s", superWord1.getPlaintext(), pos,
+                            superWord1.getInCategory(pos)));
+                    break;
+                case "hascategories":
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos = parsePoS(args[2]);
+                    System.out.println(String.format("\"%s\" (%s) has categories: %s", superWord1.getPlaintext(), pos,
+                            superWord1.getHasCategories(pos)));
+                    break;
+                case "commoncategories":
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos = parsePoS(args[2]);
+                    System.out.println(
+                            String.format("Words of the same category as \"%s\" (%s): %s", superWord1.getPlaintext(),
+                                    pos, superWord1.getCommonCategories(pos)));
+                    break;
+                case "partof":
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos = parsePoS(args[2]);
+                    System.out.println(String.format("\"%s\" (%s) is a part of: %s", superWord1.getPlaintext(), pos,
+                            superWord1.getPartOf(pos)));
+                    break;
+                case "hasparts":
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos = parsePoS(args[2]);
+                    System.out.println(String.format("\"%s\" (%s) has parts: %s", superWord1.getPlaintext(), pos,
+                            superWord1.getHasParts(pos)));
+                    break;
+                case "similarto":
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos = parsePoS(args[2]);
+                    System.out.println(
+                            String.format("\"%s\" (%s) is similar to: %s", superWord1.getPlaintext(), pos,
+                                    superWord1.getSimilarTo(pos)));
                     break;
                 default:
                     System.err.println(usage);

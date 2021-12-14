@@ -27,7 +27,7 @@ public class SubWord {
     private PartOfSpeech partOfSpeech = PartOfSpeech.UNKNOWN;
 
     private ArrayList<SuperWord> synonyms;
-    
+
     private ArrayList<SuperWord> typeOf;
     private ArrayList<SuperWord> hasTypes;
     private ArrayList<SuperWord> commonlyTyped;
@@ -142,7 +142,7 @@ public class SubWord {
             return;
 
         for (SuperWord category : inCategory) {
-            commonlyTyped = addAllToNull(commonlyTyped, category.getHasCategories(this.partOfSpeech));
+            commonCategories = addAllToNull(commonCategories, category.getHasCategories(this.partOfSpeech, parent));
         }
         setCommonCategories = true;
     }
@@ -206,6 +206,10 @@ public class SubWord {
         if (!setCommonlyTyped)
             setCommonlyTyped();
         return commonlyTyped;
+    }
+
+    public ArrayList<SuperWord> getInCategory() {
+        return inCategory;
     }
 
     public ArrayList<SuperWord> getHasCategories() {

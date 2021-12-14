@@ -51,6 +51,15 @@ public class NullListOperations {
         return list;
     }
 
+    @SafeVarargs
+    public static <T> ArrayList<T> combineLists(List<T>... lists) {
+        ArrayList<T> combined = null; 
+        for (List<T> list: lists) {
+            combined = addAllToNull(combined, list); 
+        }
+        return combined; 
+    }
+
     /**
      * Instantiates an empty ArrayList<T> iff the passed list is null. Then casts
      * contents of source and behaves as Collection.addAll().

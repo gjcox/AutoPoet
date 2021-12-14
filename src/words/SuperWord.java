@@ -19,6 +19,7 @@ import words.SubWord.PartOfSpeech;
 import static utils.NullListOperations.addToNull;
 import static utils.NullListOperations.addAllToNull;
 import static utils.NullListOperations.addAllToNullIfMatching;
+import static utils.NullListOperations.combineLists;
 import static config.Configuration.LOG;
 
 public class SuperWord implements Comparable<SuperWord> {
@@ -202,7 +203,7 @@ public class SuperWord implements Comparable<SuperWord> {
         return plaintext;
     }
 
-    public ArrayList<SubWord> getSubWords(PartOfSpeech pos) {
+    public ArrayList<SubWord> getSubWords(PartOfSpeech pos, boolean inclusiveUnknown) {
         switch (pos) {
             case ADJECTIVE:
                 return adjectives;
@@ -219,7 +220,12 @@ public class SuperWord implements Comparable<SuperWord> {
             case PRONOUN:
                 return pronouns;
             case UNKNOWN:
-                return unknowns;
+                if (inclusiveUnknown) {
+                    return combineLists(adjectives, adverbs, conjunctions, definiteArticles, nouns, prepositions,
+                                    pronouns, verbs, unknowns);
+                } else {
+                    return unknowns;
+                }
             case VERB:
                 return verbs;
             default:
@@ -248,7 +254,7 @@ public class SuperWord implements Comparable<SuperWord> {
             this.populate();
 
         ArrayList<SuperWord> synonyms = null;
-        ArrayList<SubWord> subWords = getSubWords(pos);
+        ArrayList<SubWord> subWords = getSubWords(pos, false);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
                 synonyms = addAllToNull(synonyms, subWord.getSynonyms());
@@ -268,7 +274,7 @@ public class SuperWord implements Comparable<SuperWord> {
             this.populate();
 
         ArrayList<SuperWord> typesOf = null;
-        ArrayList<SubWord> subWords = getSubWords(pos);
+        ArrayList<SubWord> subWords = getSubWords(pos, false);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
                 typesOf = addAllToNull(typesOf, subWord.getTypeOf());
@@ -288,7 +294,7 @@ public class SuperWord implements Comparable<SuperWord> {
             this.populate();
 
         ArrayList<SuperWord> types = null;
-        ArrayList<SubWord> subWords = getSubWords(pos);
+        ArrayList<SubWord> subWords = getSubWords(pos, false);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
                 types = addAllToNull(types, subWord.getHasTypes());
@@ -308,7 +314,7 @@ public class SuperWord implements Comparable<SuperWord> {
             this.populate();
 
         ArrayList<SuperWord> types = null;
-        ArrayList<SubWord> subWords = getSubWords(pos);
+        ArrayList<SubWord> subWords = getSubWords(pos, true);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
                 types = addAllToNullIfMatching(types, subWord.getHasTypes(), matching);
@@ -328,7 +334,7 @@ public class SuperWord implements Comparable<SuperWord> {
             this.populate();
 
         ArrayList<SuperWord> commonlyTyped = null;
-        ArrayList<SubWord> subWords = getSubWords(pos);
+        ArrayList<SubWord> subWords = getSubWords(pos, false);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
                 commonlyTyped = addAllToNull(commonlyTyped, subWord.getCommonlyTyped());
@@ -337,12 +343,26 @@ public class SuperWord implements Comparable<SuperWord> {
         return commonlyTyped;
     }
 
+    public ArrayList<SuperWord> getInCategory(PartOfSpeech pos) {
+        if (!populated)
+            this.populate();
+
+        ArrayList<SuperWord> categories = null;
+        ArrayList<SubWord> subWords = getSubWords(pos, false);
+        if (subWords != null) {
+            for (SubWord subWord : subWords) {
+                categories = addAllToNull(categories, subWord.getInCategory());
+            }
+        }
+        return categories;
+    }
+
     public ArrayList<SuperWord> getHasCategories(PartOfSpeech pos) {
         if (!populated)
             this.populate();
 
         ArrayList<SuperWord> categories = null;
-        ArrayList<SubWord> subWords = getSubWords(pos);
+        ArrayList<SubWord> subWords = getSubWords(pos, false);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
                 categories = addAllToNull(categories, subWord.getHasCategories());
@@ -356,7 +376,7 @@ public class SuperWord implements Comparable<SuperWord> {
             this.populate();
 
         ArrayList<SuperWord> categories = null;
-        ArrayList<SubWord> subWords = getSubWords(pos);
+        ArrayList<SubWord> subWords = getSubWords(pos, true);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
                 categories = addAllToNullIfMatching(categories, subWord.getHasCategories(), matching);
@@ -368,6 +388,8 @@ public class SuperWord implements Comparable<SuperWord> {
 
     /**
      * TODO: remove duplicates; potentially score words based on duplicate count
+     * TODO: account for UNKNOWN SubWords having categories with a different POS and
+     * vice versa
      * 
      * @param pos
      * @return
@@ -377,7 +399,7 @@ public class SuperWord implements Comparable<SuperWord> {
             this.populate();
 
         ArrayList<SuperWord> commonCategories = null;
-        ArrayList<SubWord> subWords = getSubWords(pos);
+        ArrayList<SubWord> subWords = getSubWords(pos, false);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
                 commonCategories = addAllToNull(commonCategories, subWord.getCommonCategories());
@@ -391,7 +413,7 @@ public class SuperWord implements Comparable<SuperWord> {
             this.populate();
 
         ArrayList<SuperWord> hasParts = null;
-        ArrayList<SubWord> subWords = getSubWords(pos);
+        ArrayList<SubWord> subWords = getSubWords(pos, false);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
                 hasParts = addAllToNull(hasParts, subWord.getHasParts());
@@ -405,7 +427,7 @@ public class SuperWord implements Comparable<SuperWord> {
             this.populate();
 
         ArrayList<SuperWord> partOf = null;
-        ArrayList<SubWord> subWords = getSubWords(pos);
+        ArrayList<SubWord> subWords = getSubWords(pos, false);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
                 partOf = addAllToNull(partOf, subWord.getPartOf());
@@ -425,7 +447,7 @@ public class SuperWord implements Comparable<SuperWord> {
             this.populate();
 
         ArrayList<SuperWord> similarTo = null;
-        ArrayList<SubWord> subWords = getSubWords(pos);
+        ArrayList<SubWord> subWords = getSubWords(pos, false);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
                 similarTo = addAllToNull(similarTo, subWord.getSimilarTo());
