@@ -18,19 +18,15 @@ public class SubWord {
 
     private static Set<String> knownFields = new HashSet<>(
             Arrays.asList("partOfSpeech", "definition", "synonyms", "antonyms", "verbGroup", "typeOf", "hasTypes",
-                    "inCategory", "hasCategories",
-                    "partOf", "hasParts", "instanceOf", "hasInstances", "substanceOf", "hasSubstances", "memberOf",
-                    "hasMembers", "usageOf", "hasUsages", "inRegion", "regionOf", "similarTo", "attribute",
-                    "pertainsTo", "also", "entails", "derivation", "examples"));
+                    "inCategory", "hasCategories", "partOf", "hasParts", "instanceOf", "hasInstances", "substanceOf",
+                    "hasSubstances", "memberOf", "hasMembers", "usageOf", "hasUsages", "inRegion", "regionOf",
+                    "similarTo", "attribute", "pertainsTo", "also", "entails", "derivation", "examples"));
 
     private SuperWord parent;
     private String definition;
     private PartOfSpeech partOfSpeech = PartOfSpeech.UNKNOWN;
 
     private ArrayList<SuperWord> synonyms;
-    private ArrayList<SuperWord> antonyms; // not in use
-    private ArrayList<SuperWord> verbGroup; // not in use
-
     private ArrayList<SuperWord> typeOf;
     private ArrayList<SuperWord> hasTypes;
     private ArrayList<SuperWord> commonlyTyped;
@@ -44,29 +40,7 @@ public class SubWord {
     private ArrayList<SuperWord> partOf;
     private ArrayList<SuperWord> hasParts;
 
-    private ArrayList<SuperWord> instanceOf; // not in use
-    private ArrayList<SuperWord> hasInstances; // not in use
-
-    private ArrayList<SuperWord> substanceOf; // not in use
-    private ArrayList<SuperWord> hasSubstances; // not in use
-
-    private ArrayList<SuperWord> memberOf; // not in use
-    private ArrayList<SuperWord> hasMembers; // not in use
-
-    private ArrayList<SuperWord> usageOf; // not in use
-    private ArrayList<SuperWord> hasUsages; // not in use
-
-    private ArrayList<SuperWord> inRegion; // not in use
-    private ArrayList<SuperWord> regionOf; // not in use
-
     private ArrayList<SuperWord> similarTo;
-
-    private ArrayList<SuperWord> attribute; // not in use
-    private ArrayList<SuperWord> pertainsTo; // not in use
-    private ArrayList<SuperWord> also; // not in use
-    private ArrayList<SuperWord> entails; // not in use
-    private ArrayList<SuperWord> derivation; // not in use
-    private ArrayList<SuperWord> examples; // not in use
 
     /**
      * 
