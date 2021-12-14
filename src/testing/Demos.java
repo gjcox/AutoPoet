@@ -56,15 +56,6 @@ public class Demos {
         }
     }
 
-    public static void getIPA() {
-        List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds");
-        for (String SuperWord : words) {
-            JSONObject ipa = WordsAPI.getIPA(SuperWord);
-            System.out.print(SuperWord + ": ");
-            System.out.println(ipa.toString());
-        }
-    }
-
     public static void superWordConstructor() {
         List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds", "present", "understated");
         for (String word : words) {
@@ -134,12 +125,12 @@ public class Demos {
     }
 
     public static void main(String[] args) {
-        String usage = "java -cp src/ testing.Demos [ swc | swp | wc ] <word>" +
-                "\njava -cp src/ testing.Demos [ rhyme ] <word1> <word2>" +
-                "\njava -cp src/ testing.Demos [ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo ] <word> <part of speech (PoS)>"
-                +
-                "\njava -cp src/ testing.Demos rhyme <word1> <PoS1> <word2> <Pos2>" +
-                "\njava -cp src/ testing.Demos suggestions <word> <PoS1> <rhyme with> <Pos2>";
+        String usage = "java -cp src/ testing.Demos [ swc | swp | wc | rhyme ]"
+                + "\njava -cp src/ testing.Demos [ swc | swp | wc ] <word>"
+                + "\njava -cp src/ testing.Demos [ rhyme ] <word1> <word2>"
+                + "\njava -cp src/ testing.Demos [ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo ] <word> <part of speech (PoS)>"
+                + "\njava -cp src/ testing.Demos rhyme <word1> <PoS1> <word2> <Pos2>"
+                + "\njava -cp src/ testing.Demos suggestions <word> <PoS1> <rhyme with> <Pos2>";
 
         if (args.length < 1) {
             /* for use within VS Code */
