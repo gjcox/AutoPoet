@@ -58,7 +58,7 @@ public class Pronunciation {
                 return false;
             }
             for (int i = 0; i < rhyme1.size(); i++) {
-                if (!rhyme1.get(i).rhymes(rhyme2.get(i))) {
+                if (!rhyme1.get(i).equals(rhyme2.get(i))) {
                     return false;
                 }
             }
