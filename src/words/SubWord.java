@@ -16,12 +16,14 @@ public class SubWord {
         NOUN, PRONOUN, VERB, ADJECTIVE, ADVERB, PREPOSITION, CONJUCTION, DEFINITE_ARTICLE, UNKNOWN
     }
 
-    Set<String> knownFieldSet = new HashSet<>(
-            Arrays.asList("synonyms", "antonyms", "verbGroup", "typeOf", "hasTypes", "inCategory", "hasCategories",
+    private static Set<String> knownFields = new HashSet<>(
+            Arrays.asList("partOfSpeech", "definition", "synonyms", "antonyms", "verbGroup", "typeOf", "hasTypes",
+                    "inCategory", "hasCategories",
                     "partOf", "hasParts", "instanceOf", "hasInstances", "substanceOf", "hasSubstances", "memberOf",
                     "hasMembers", "usageOf", "hasUsages", "inRegion", "regionOf", "similarTo", "attribute",
                     "pertainsTo", "also", "entails", "derivation", "examples"));
 
+    private SuperWord parent;
     private String definition;
     private PartOfSpeech partOfSpeech = PartOfSpeech.UNKNOWN;
 
@@ -72,21 +74,23 @@ public class SubWord {
      * @param resultObject
      */
     @SuppressWarnings("unchecked")
-    public SubWord(String plaintext, Map<String, Object> resultObject) {
-        Set<String> unrecognisedFields = new HashSet<>(knownFieldSet);
-        unrecognisedFields.removeAll(resultObject.keySet());
-        if (!unrecognisedFields.isEmpty()) {
-            LOG.writePersistentLog(
-                    String.format("Unrecognised field(s) for subword of \"%s\" with definition \"%s\": \"%s\"",
-                            plaintext, this.definition, unrecognisedFields.toString()));
-        }
+    public SubWord(SuperWord parent, Map<String, Object> resultObject) {
+        this.parent = parent;
 
         if (resultObject.containsKey("definition")) {
             this.definition = (String) resultObject.get("definition");
         }
 
+        Set<String> unrecognisedFields = new HashSet<>(resultObject.keySet());
+        unrecognisedFields.removeAll(knownFields);
+        if (!unrecognisedFields.isEmpty()) {
+            LOG.writePersistentLog(
+                    String.format("Unrecognised field(s) for subword of \"%s\" with definition \"%s\": \"%s\"",
+                            parent.getPlaintext(), this.definition, unrecognisedFields.toString()));
+        }
+
         if (resultObject.containsKey("partOfSpeech")) {
-            setPartOfSpeech((String) resultObject.get("partOfSpeech"), plaintext);
+            setPartOfSpeech((String) resultObject.get("partOfSpeech"));
         }
 
         if (resultObject.containsKey("synonyms")) {
@@ -153,7 +157,7 @@ public class SubWord {
             return;
 
         for (SuperWord type : typeOf) {
-            commonlyTyped = addAllToNull(commonlyTyped, type.getHasTypes(this.partOfSpeech));
+            commonlyTyped = addAllToNull(commonlyTyped, type.getHasTypes(this.partOfSpeech, parent));
         }
         setCommonlyTyped = true;
     }
@@ -168,7 +172,7 @@ public class SubWord {
         setCommonCategories = true;
     }
 
-    private void setPartOfSpeech(String partOfSpeech, String plaintext) {
+    private void setPartOfSpeech(String partOfSpeech) {
         if (partOfSpeech == null) {
             partOfSpeech = "null";
         }
@@ -200,7 +204,7 @@ public class SubWord {
             default:
                 LOG.writePersistentLog(
                         String.format("Unrecognised part of speech for \"%s\" with definition \"%s\": \"%s\"",
-                                plaintext, this.definition, partOfSpeech));
+                                parent.getPlaintext(), this.definition, partOfSpeech));
                 // partOfSpeech will be left as UNKNOWN
                 break;
         }

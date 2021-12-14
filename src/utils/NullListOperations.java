@@ -14,7 +14,7 @@ public class NullListOperations {
         if (list == null) {
             list = new ArrayList<>();
         }
-        list.add(element); 
+        list.add(element);
         return list;
     }
 
@@ -24,13 +24,31 @@ public class NullListOperations {
      */
     public static <T> ArrayList<T> addAllToNull(ArrayList<T> list, Collection<T> source) {
         if (source == null) {
-            return list; 
+            return list;
         }
         if (list == null) {
             list = new ArrayList<>();
         }
         list.addAll(source);
-        return list; 
+        return list;
+    }
+
+    /**
+     * Instantiates an empty ArrayList<T> iff the passed list is null. Then behaves
+     * as Collection.addAll().
+     */
+    public static <T> ArrayList<T> addAllToNullIfMatching(ArrayList<T> list, Collection<T> source, T matching) {
+        if (source == null) {
+            return list;
+        }
+        if (!source.contains(matching)) {
+            return list;
+        }
+        if (list == null) {
+            list = new ArrayList<>();
+        }
+        list.addAll(source);
+        return list;
     }
 
     /**
