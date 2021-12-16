@@ -19,6 +19,7 @@ Run the command $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp
             OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo \] *word* *part_of_speech_(PoS)*  <br>
             OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos rhyme *word1* *PoS1* *word2* *PoS2*  <br>
             OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos suggestions *word* *PoS1* *rhyme_with* *PoS2*  <br>
+            OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos poem *poem_file*  <br>
 
 <p>The recognised parts of speech are: 'noun', 'pronoun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction', 'definite article', and 'unknown'. The lattermost is to handle WordsAPI being unreliable.</p>
 <p>N.B. words that WordsAPI doesn't recognise will still be marked as populated for swp, despite nothing of value being added to them. This is to prevent repeated failed attempts at querying, but might change in future. </p>
