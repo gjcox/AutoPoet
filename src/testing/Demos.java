@@ -136,13 +136,13 @@ public class Demos {
     }
 
     public static void main(String[] args) {
-        String usage = "java -cp src/ testing.Demos [ swc | swp | wc | rhyme ]"
-                + "\njava -cp src/ testing.Demos [ swc | swp | wc ] <word>"
-                + "\njava -cp src/ testing.Demos [ rhyme ] <word1> <word2>"
-                + "\njava -cp src/ testing.Demos [ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo ] <word> <part of speech (PoS)>"
-                + "\njava -cp src/ testing.Demos rhyme <word1> <PoS1> <word2> <Pos2>"
-                + "\njava -cp src/ testing.Demos suggestions <word> <PoS1> <rhyme with> <Pos2>"
-                + "\njava -cp src/ testing.Demos poem <poem.txt>";
+        String usage = "java -cp lib/json-20210307.jar:src/ testing.Demos [ swc | swp | wc | rhyme ]"
+                + "\njava -cp lib/json-20210307.jar:src/ testing.Demos [ swc | swp | wc ] <word>"
+                + "\njava -cp lib/json-20210307.jar:src/ testing.Demos [ rhyme ] <word1> <word2>"
+                + "\njava -cp lib/json-20210307.jar:src/ testing.Demos [ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo ] <word> <part of speech (PoS)>"
+                + "\njava -cp lib/json-20210307.jar:src/ testing.Demos rhyme <word1> <PoS1> <word2> <Pos2>"
+                + "\njava -cp lib/json-20210307.jar:src/ testing.Demos suggestions <word> <PoS1> <rhyme with> <Pos2>"
+                + "\njava -cp lib/json-20210307.jar:src/ testing.Demos poem <poem.txt>";
 
         if (args.length < 1) {
             /* for use within VS Code */
