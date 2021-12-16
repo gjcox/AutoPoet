@@ -11,8 +11,7 @@ import static config.Configuration.LOG;
 
 public class Poem {
 
-    private int lineCount = 0; // don't count empty lines between stanzas
-                               // equal to the sum of the line counts of each stanza
+    private int lineCount = 0; 
     private ArrayList<Stanza> stanzas = new ArrayList<>();
     private String title = "poem";
     private BufferedReader fileReader;
