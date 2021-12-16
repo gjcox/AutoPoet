@@ -3546,3 +3546,8 @@
 2021-12-16 17:47:28.447	 Syllables of "Blitzen" was missing
 2021-12-16 17:47:28.447	 Pronunciation of "Blitzen" was missing
 2021-12-16 17:47:28.447	 Results of "Blitzen" was missing
+2021-12-16 23:14:19.623	 Syllables of "overstated" was missing
+2021-12-16 23:14:19.623	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2021-12-16 23:14:20.073	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2021-12-16 23:14:20.287	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2021-12-16 23:14:20.287	 Results of "sated" was missing
