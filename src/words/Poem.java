@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
+import static config.Configuration.LOG;
+
 public class Poem {
 
     private int lineCount = 0; // don't count empty lines between stanzas
@@ -18,7 +20,7 @@ public class Poem {
     public Poem(Path inputFile) throws IOException {
         this.title = inputFile.toString();
         if (title.contains(File.separator)) {
-            title = title.substring(title.lastIndexOf(File.separator) + 1); 
+            title = title.substring(title.lastIndexOf(File.separator) + 1);
         }
 
         fileReader = Files.newBufferedReader(inputFile); // relative to where program is executed
@@ -37,6 +39,7 @@ public class Poem {
                 /* if line empty */
                 /* end the current stanza */
                 in_stanza = false;
+                LOG.writeTempLog(String.format("End of stanza %d reached", stanzas.size()));
                 stanzas.get(stanzas.size() - 1).evaluateRhymingScheme();
                 stanzas.add(new Stanza());
 
@@ -44,6 +47,7 @@ public class Poem {
                 // ignore double empty line
             }
         }
+        LOG.writeTempLog(String.format("End of stanza %d reached", stanzas.size()));
         stanzas.get(stanzas.size() - 1).evaluateRhymingScheme();
 
     }

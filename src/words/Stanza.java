@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static config.Configuration.LOG;
+
 public class Stanza {
 
     private ArrayList<ArrayList<Token>> lines = new ArrayList<>();
@@ -90,5 +92,6 @@ public class Stanza {
         }
 
         this.actualScheme = scheme;
+        LOG.writeTempLog(String.format("Stanza rhyme scheme analysed"));
     }
 }
