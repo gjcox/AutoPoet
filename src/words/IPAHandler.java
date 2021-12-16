@@ -1,13 +1,6 @@
 package words;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import config.Configuration;
 import utils.Pair;
