@@ -1,7 +1,6 @@
 # Hello 
 To Do list (unordered): 
 <ul>
-            <li>Parse poems from text files</li>          
             <li>Make a GUI</li>
             <li>Recognise more poetic devices</li>
             <li>Improve suggestion filtering to do it in batches, so that the least likely suggestions don't waste user time</li>
