@@ -8,22 +8,15 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import utils.CollectionOperations;
-
 import static config.Configuration.LOG;
 
-
 /**
- * Handles interactions with WordsAPI TODO: Need to handle 404 errors as well as
- * empty results TODO: Should find a way to wrap the API handling further - lots
- * of code duplication for handling error cases
+ * Handles interactions with WordsAPI
+ * TODO: Need to handle 404 errors
  */
 public class WordsAPI {
 
@@ -45,13 +38,13 @@ public class WordsAPI {
             LOG.writeTempLog("sendRequest() sending request: " + request.toString());
             HttpResponse<String> response_string = client.send(request, BodyHandlers.ofString());
             response = new JSONObject(response_string.body());
-           LOG.writeTempLog("sendRequest() received response: " + response);
+            LOG.writeTempLog("sendRequest() received response: " + response);
             return response;
         } catch (IOException ioe) {
-           LOG.writeTempLog("sendRequest() something went wrong: " + ioe.getMessage());
+            LOG.writeTempLog("sendRequest() something went wrong: " + ioe.getMessage());
             throw ioe;
         } catch (InterruptedException ie) {
-           LOG.writeTempLog("sendRequest() something went wrong: " + ie.getMessage());
+            LOG.writeTempLog("sendRequest() something went wrong: " + ie.getMessage());
             throw ie;
         }
     }
@@ -115,8 +108,7 @@ public class WordsAPI {
             }
 
         } catch (IOException | JSONException | InterruptedException e) {
-           LOG
-                    .writeTempLog(String.format("getWord(%s) something went wrong: %s", plaintext, e.getMessage()));
+            LOG.writeTempLog(String.format("getWord(%s) something went wrong: %s", plaintext, e.getMessage()));
         }
 
         cache.put(plaintext, result);
