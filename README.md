@@ -5,6 +5,7 @@ To Do list (unordered):
             <li>Make a GUI</li>
             <li>Recognise more poetic devices</li>
             <li>Improve suggestion filtering to do it in batches, so that the least likely suggestions don't waste user time</li>
+            <li>Handle conjugated verbs and pluralised nouns</li>
 </ul>
 
 # Compilation 
@@ -15,9 +16,9 @@ Run the command $ javac -cp lib/json-20210307.jar:lib/junit-platform-console.sta
 Run the command $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc | rhyme \] <br>
             OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc \] *some_word*  <br>
             OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos rhyme *word1* *word2*  <br> 
-            OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo \] *word* *part_of_speech (PoS)*  <br>
-            OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos rhyme *word1* *PoS1* *word2* *Pos2*  <br>
-            OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos suggestions *word* *PoS1* *rhyme_with* *Pos2*  <br>
+            OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo \] *word* *part_of_speech_(PoS)*  <br>
+            OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos rhyme *word1* *PoS1* *word2* *PoS2*  <br>
+            OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos suggestions *word* *PoS1* *rhyme_with* *PoS2*  <br>
 
 <p>The recognised parts of speech are: 'noun', 'pronoun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction', 'definite article', and 'unknown'. The lattermost is to handle WordsAPI being unreliable.</p>
 <p>N.B. words that WordsAPI doesn't recognise will still be marked as populated for swp, despite nothing of value being added to them. This is to prevent repeated failed attempts at querying, but might change in future. </p>
