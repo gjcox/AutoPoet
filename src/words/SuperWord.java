@@ -243,12 +243,6 @@ public class SuperWord extends Token {
         return this.pronunciation.getSubPronunciation(plaintext, partOfSpeech);
     }
 
-    /**
-     * TODO: remove duplicates; potentially score words based on duplicate count
-     * 
-     * @param pos
-     * @return
-     */
     public ArrayList<SuperWord> getSynonyms(PartOfSpeech pos) {
         if (!populated)
             this.populate();
@@ -263,12 +257,6 @@ public class SuperWord extends Token {
         return synonyms;
     }
 
-    /**
-     * TODO: remove duplicates; potentially score words based on duplicate count
-     * 
-     * @param pos
-     * @return
-     */
     public ArrayList<SuperWord> getTypeOf(PartOfSpeech pos) {
         if (!populated)
             this.populate();
@@ -283,12 +271,6 @@ public class SuperWord extends Token {
         return typesOf;
     }
 
-    /**
-     * TODO: remove duplicates; potentially score words based on duplicate count
-     * 
-     * @param pos
-     * @return
-     */
     public ArrayList<SuperWord> getHasTypes(PartOfSpeech pos) {
         if (!populated)
             this.populate();
@@ -303,12 +285,6 @@ public class SuperWord extends Token {
         return types;
     }
 
-    /**
-     * TODO: remove duplicates; potentially score words based on duplicate count
-     * 
-     * @param pos
-     * @return
-     */
     public ArrayList<SuperWord> getHasTypes(PartOfSpeech pos, SuperWord matching) {
         if (!populated)
             this.populate();
@@ -323,12 +299,6 @@ public class SuperWord extends Token {
         return types;
     }
 
-    /**
-     * TODO: remove duplicates; potentially score words based on duplicate count
-     * 
-     * @param pos
-     * @return
-     */
     public ArrayList<SuperWord> getCommonlyTyped(PartOfSpeech pos) {
         if (!populated)
             this.populate();
@@ -386,14 +356,6 @@ public class SuperWord extends Token {
         return categories;
     }
 
-    /**
-     * TODO: remove duplicates; potentially score words based on duplicate count
-     * TODO: account for UNKNOWN SubWords having categories with a different POS and
-     * vice versa
-     * 
-     * @param pos
-     * @return
-     */
     public ArrayList<SuperWord> getCommonCategories(PartOfSpeech pos) {
         if (!populated)
             this.populate();
@@ -436,12 +398,6 @@ public class SuperWord extends Token {
         return partOf;
     }
 
-    /**
-     * TODO: remove duplicates; potentially score words based on duplicate count
-     * 
-     * @param pos
-     * @return
-     */
     public ArrayList<SuperWord> getSimilarTo(PartOfSpeech pos) {
         if (!populated)
             this.populate();
