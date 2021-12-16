@@ -25,7 +25,7 @@ import static utils.NullListOperations.combineLists;
 import static utils.NullListOperations.combineListsPrioritiseDuplicates;
 import static config.Configuration.LOG;
 
-public class SuperWord implements Comparable<SuperWord> {
+public class SuperWord extends Token {
 
     private static HashMap<String, SuperWord> cachePopulated = new HashMap<>();
     private static HashMap<String, SuperWord> cachePlaceholder = new HashMap<>();
@@ -34,7 +34,6 @@ public class SuperWord implements Comparable<SuperWord> {
             Arrays.asList("word", "results", "syllables", "pronunciation", "frequency", "rhymes", "success",
                     "message"));
 
-    private String plaintext;
     private boolean populated = false; // true iff built from a WordsAPI query
     private Pronunciation pronunciation;
     private Set<PartOfSpeech> partsOfSpeech = new HashSet<>();
@@ -199,10 +198,6 @@ public class SuperWord implements Comparable<SuperWord> {
                     break;
             }
         }
-    }
-
-    public String getPlaintext() {
-        return plaintext;
     }
 
     public ArrayList<SubWord> getSubWords(PartOfSpeech pos, boolean inclusiveUnknown) {
@@ -508,6 +503,7 @@ public class SuperWord implements Comparable<SuperWord> {
         return filterSuggestions(unfiltered, pos, filterParams);
     }
 
+    @Override
     public String toString() {
         return String.format("%s: {populated: %b}", this.plaintext, this.populated);
     }
@@ -636,7 +632,7 @@ public class SuperWord implements Comparable<SuperWord> {
      * @param subPronunciation2
      * @return
      */
-    private boolean rhmyesWith(String plaintext1, PartOfSpeech pos1, SubPronunciation subPronunciation1,
+    private static boolean rhmyesWith(String plaintext1, PartOfSpeech pos1, SubPronunciation subPronunciation1,
             String plaintext2, PartOfSpeech pos2, SubPronunciation subPronunciation2) {
         if (subPronunciation1 == null) {
             LOG.writePersistentLog(
@@ -725,16 +721,4 @@ public class SuperWord implements Comparable<SuperWord> {
         return false;
     }
 
-    /**
-     * I only want to order by plaintext, but equality should take more into
-     * account. Arguably I should build a custom Comparator rather than setting the
-     * default.
-     */
-    @Override
-    public int compareTo(SuperWord anotherWord) {
-        if (anotherWord == null) {
-            throw new NullPointerException();
-        }
-        return plaintext.compareTo((anotherWord).plaintext);
-    }
 }

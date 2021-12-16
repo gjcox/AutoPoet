@@ -1,16 +1,16 @@
 package testing;
 
-import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import words.IPAHandler;
-import words.Syllable;
+import exceptions.RhymingSchemeSizeException;
+import words.RhymingScheme;
 
 public class UnitTests {
 
@@ -79,6 +79,25 @@ public class UnitTests {
                 list5);
         assertEquals(8, combined.size());
         assertEquals(Arrays.asList("m", "n", "a", "b", "c", "x", "y", "z"), combined);
+    }
+
+    @Test
+    public void testRhymingSchemeException() {
+        assertThrows(RhymingSchemeSizeException.class, () -> {
+            new RhymingScheme(1, new int[] { 0, 0 });
+        });
+    }
+
+    
+    @Test
+    public void testRhymingSchemeString() {
+        RhymingScheme scheme = new RhymingScheme(0); 
+        try {
+            scheme = new RhymingScheme(4, new int[] { 0, 1, 26, 2 });
+        } catch (RhymingSchemeSizeException e) {
+            fail();  
+        }
+        assertEquals("#AZB", scheme.toString());
     }
 
     public static void main(String[] args) {

@@ -1,54 +1,94 @@
 package words;
-import java.util.LinkedList;
+
+import java.util.ArrayList;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Stanza {
 
-    private LinkedList<String> lines = new LinkedList<>();
-    private LinkedList<LinkedList<String>> lines_words = new LinkedList<>(); // doesn't include punctuation
-                                                                             // allows easy access of last word
-                                                                             // could be changed to use custom Word
-                                                                             // ... class with API data
-    private RhymingScheme scheme; // make rhyming scheme after line count is known
-
+    private ArrayList<ArrayList<Token>> lines = new ArrayList<>();
+    private RhymingScheme desiredScheme; // make rhyming scheme after line count is known
+    private RhymingScheme actualScheme; // make rhyming scheme after line count is known
     // an IPA line represenation could allow recognition of longer rhymes
 
     public void addLine(String line) {
-        /* add the plain string line */
-        this.lines.add(line);
-        this.lines_words.add(new LinkedList<>());
-
-        /* add the words-only version of the line */
-        String[] words = line.split(Pattern.compile("\\s").toString()); // split on whitespace
-        for (int i = 0; i < words.length; i++) {
-            lines_words.getLast().add(words[i].replaceAll("a-zA-Z-", "")); // remove all non-word characters
-                                                                           // except '-'
+        ArrayList<Token> parsedLine = new ArrayList<>();
+        String wordPattern = "(?<word>\\w+)";
+        String tokenPattern = "(?<token>\\W+)";
+        String masterPattern = String.format("%s|%s", wordPattern, tokenPattern);
+        Pattern pattern = Pattern.compile(masterPattern);
+        Matcher matcher = pattern.matcher(line);
+        while (matcher.find()) {
+            String token;
+            if ((token = matcher.group("word")) != null) {
+                parsedLine.add(SuperWord.getSuperWord(token));
+            } else if ((token = matcher.group("token")) != null) {
+                parsedLine.add(new Token(token));
+            } else {
+                System.err.println("A line had no words or other tokens.");
+            }
         }
-
-        /* building the phonetic line requires WordsAPI use */
+        lines.add(parsedLine);
     }
 
-    public int getLineCount() {
+    private SuperWord getLastWord(int lineNumber) {
+        ArrayList<Token> line = lines.get(lineNumber);
+        int index = line.size() - 1;
+        Token token = new Token();
+        boolean superword = false;
+        while (index >= 0 && !superword) {
+            token = line.get(index--);
+            superword = (token.getClass() == SuperWord.class);
+        }
+        return superword ? (SuperWord) token : null;
+    }
+
+    public int lineCount() {
         return this.lines.size();
     }
 
-    public String getString() {
-        StringBuilder builder = new StringBuilder(); 
-        for (String line : lines) {
-            builder.append(line);
-            builder.append("\n");  
-        }
-        return builder.toString(); 
+    public RhymingScheme getDesiredRhymeScheme() {
+        return this.desiredScheme;
     }
 
-    /**
-     * 
-     * @param syllables the number of syllables at the end of the line to match 
-     * @return
-     */
-    public RhymingScheme evaluateRhymingScheme(int syllables) {
-        RhymingScheme scheme_ = new RhymingScheme(this.getLineCount()); 
+    public RhymingScheme getActualRhymeScheme() {
+        return this.actualScheme;
+    }
 
-        return scheme_; 
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (ArrayList<Token> line : lines) {
+            for (Token token : line) {
+                builder.append(token.getPlaintext());
+            }
+            builder.append("\n");
+        }
+        return builder.toString();
+    }
+
+    public void evaluateRhymingScheme() {
+        RhymingScheme scheme = new RhymingScheme(this.lineCount());
+        for (int i = 0; i < this.lineCount() - 1; i++) {
+            SuperWord word1;
+            if (scheme.getValue(i) == 0 && (word1 = getLastWord(i)) != null) {
+                for (int j = i + 1; j < this.lineCount(); j++) {
+                    SuperWord word2;
+                    if (scheme.getValue(j) == 0 && (word2 = getLastWord(j)) != null && word1.rhymesWithWrapper(word2)) {
+                        switch (scheme.getValue(i)) {
+                            case 0:
+                                int rhymeValue = scheme.getNextValue();
+                                scheme.setValue(i, rhymeValue);
+                                scheme.setValue(j, rhymeValue);
+                                break;
+                            default:
+                                scheme.setValue(j, scheme.getValue(i));
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        this.actualScheme = scheme;
     }
 }

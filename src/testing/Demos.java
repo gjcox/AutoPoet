@@ -1,17 +1,18 @@
 package testing;
 
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.json.JSONObject;
-
-import apis.WordsAPI;
 import utils.Pair;
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionParameters;
 import words.Emphasis;
 import words.IPAHandler;
+import words.Poem;
 import words.SuperWord;
 import words.Syllable;
 import words.SubWord.PartOfSpeech;
@@ -101,6 +102,16 @@ public class Demos {
                 present.getSynonyms(PartOfSpeech.NOUN)));
     }
 
+    public static void demoPoemConstructor(String poemFile) {
+        try {
+            Path path = FileSystems.getDefault().getPath(poemFile);
+            Poem poem = new Poem(path);
+            System.out.println(poem.getString());
+        } catch (IOException e) {
+            System.err.println("Something went wrong: " + e.getMessage());
+        }
+    }
+
     private static PartOfSpeech parsePoS(String pos) {
         switch (pos.toLowerCase()) {
             case "noun":
@@ -130,7 +141,8 @@ public class Demos {
                 + "\njava -cp src/ testing.Demos [ rhyme ] <word1> <word2>"
                 + "\njava -cp src/ testing.Demos [ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo ] <word> <part of speech (PoS)>"
                 + "\njava -cp src/ testing.Demos rhyme <word1> <PoS1> <word2> <Pos2>"
-                + "\njava -cp src/ testing.Demos suggestions <word> <PoS1> <rhyme with> <Pos2>";
+                + "\njava -cp src/ testing.Demos suggestions <word> <PoS1> <rhyme with> <Pos2>"
+                + "\njava -cp src/ testing.Demos poem <poem.txt>";
 
         if (args.length < 1) {
             /* for use within VS Code */
@@ -139,7 +151,8 @@ public class Demos {
             // wordConstructor();
             // demoRhymes();
             // abercrombieZombie();
-            demoSynonyms();
+            // demoSynonyms();
+            demoPoemConstructor("temp.txt");
             LOG.closeLogWriters();
             return;
         }
@@ -182,6 +195,9 @@ public class Demos {
                     superWord.populate();
                     System.out.println(superWord.subWordsString());
                     break;
+                case "poem":
+                    demoPoemConstructor(args[1]);
+                    break; 
                 default:
                     System.err.println(usage);
                     break;
