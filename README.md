@@ -5,6 +5,7 @@ To Do list (unordered):
             <li>Recognise more poetic devices</li>
             <li>Improve suggestion filtering to do it in batches, so that the least likely suggestions don't waste user time</li>
             <li>Handle conjugated verbs and pluralised nouns</li>
+            <li>Handle compound words</li>
 </ul>
 
 # Compilation 
