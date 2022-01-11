@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anpnRoot" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
    <cursor>
       <Cursor fx:constant="S_RESIZE" />
    </cursor>
@@ -18,7 +31,11 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem fx:id="mntmOpen" mnemonicParsing="false" onAction="#openPoem" text="Open..." />
+              <MenuItem fx:id="mntmClose" mnemonicParsing="false" text="Close" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mntmSave" mnemonicParsing="false" text="Save" />
+                  <MenuItem fx:id="mntmSaveAs" mnemonicParsing="false" text="Save As..." />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -33,27 +50,248 @@
           </Menu>
         </menus>
       </MenuBar>
-      <SplitPane dividerPositions="0.45" layoutX="2.0" layoutY="27.0" prefHeight="775.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+      <SplitPane dividerPositions="0.5" layoutX="2.0" layoutY="27.0" prefHeight="775.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="300.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TabPane layoutY="-1.0" prefHeight="373.0" prefWidth="266.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <tabs>
-                      <Tab text="Poem 1">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                        </content>
-                      </Tab>
-                      <Tab text="Poem 2">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                        </content>
-                      </Tab>
-                    </tabs>
-                  </TabPane>
+                  <TitledPane fx:id="ttlpnPoem" animated="false" collapsible="false" prefHeight="773.0" prefWidth="572.0" styleClass="Heading 1" text="(poem title)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <TextArea fx:id="txtarPoem" disable="true" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
                </children>
             </AnchorPane>
-          <AnchorPane prefHeight="160.0" prefWidth="100.0" />
+          <AnchorPane>
+               <children>
+                  <GridPane layoutX="331.0" layoutY="240.0" prefHeight="773.0" prefWidth="636.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="415.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
+                      <RowConstraints maxHeight="-Infinity" vgrow="NEVER" />
+                      <RowConstraints maxHeight="-Infinity" vgrow="NEVER" />
+                      <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TitledPane alignment="TOP_LEFT" animated="false" collapsible="false" layoutX="10.0" layoutY="10.0" text="Poem">
+                           <content>
+                              <AnchorPane maxHeight="-Infinity" minHeight="-Infinity">
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                                 <children>
+                                    <GridPane layoutX="16.0" layoutY="-35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="350.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <FlowPane hgap="5.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <Label text="Lines:" />
+                                                <Label fx:id="lblPoemLineCount" text="(line count)" />
+                                             </children>
+                                          </FlowPane>
+                                          <FlowPane hgap="5.0">
+                                             <children>
+                                                <Label text="Stanzas:" />
+                                                <Label fx:id="lblPoemStanzaCount" text="(stanza count)" />
+                                             </children>
+                                          </FlowPane>
+                                          <ToggleButton fx:id="tgbtnDirectEdit" mnemonicParsing="false" onAction="#changePoemTextArea" text="Direct Edit Mode" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets />
+                                             </GridPane.margin>
+                                          </ToggleButton>
+                                          <Separator prefWidth="200.0" GridPane.rowIndex="2">
+                                             <padding>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </padding>
+                                          </Separator>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane alignment="TOP_LEFT" animated="false" collapsible="false" text="Current Stanza" GridPane.rowIndex="1">
+                          <content>
+                            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity">
+                                 <children>
+                                    <GridPane layoutX="362.0" layoutY="14.0" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="350.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity">
+                                             <children>
+                                                <Label text="Number:" />
+                                                <Label fx:id="lblStanzaNumber" text="(stanza number)" />
+                                             </children>
+                                          </FlowPane>
+                                          <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" GridPane.rowIndex="1">
+                                             <children>
+                                                <Label text="Lines:" />
+                                                <Label fx:id="lblStanzaLineCount" text="(line count)" />
+                                             </children>
+                                          </FlowPane>
+                                          <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="200.0" GridPane.rowIndex="2">
+                                             <children>
+                                                <Label text="Intended Rhyme Scheme:" />
+                                                <Label fx:id="lblIntRhymeScheme" text="(intended rhyme scheme)" />
+                                             </children>
+                                          </FlowPane>
+                                          <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="200.0" GridPane.rowIndex="3">
+                                             <children>
+                                                <Label text="Actual Rhyme Scheme:" />
+                                                <Label fx:id="lblActRhymeScheme" text="(actual rhyme scheme)" />
+                                             </children>
+                                          </FlowPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" prefWidth="569.0" text="Suggestion Parameters" GridPane.rowIndex="2">
+                          <content>
+                            <AnchorPane>
+                                 <children>
+                                    <GridPane layoutX="76.0" layoutY="-35.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <GridPane>
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label styleClass="Heading 2" text="Parts of Speech" />
+                                                <CheckBox fx:id="chbxNoun" disable="true" mnemonicParsing="false" text="noun" GridPane.rowIndex="1" />
+                                                <CheckBox fx:id="chbxPronoun" disable="true" mnemonicParsing="false" text="pronoun" GridPane.rowIndex="2" />
+                                                <CheckBox fx:id="chbxVerb" disable="true" mnemonicParsing="false" text="verb" GridPane.rowIndex="3" />
+                                                <CheckBox fx:id="chbxAdjective" disable="true" mnemonicParsing="false" text="adjective" GridPane.rowIndex="4" />
+                                                <CheckBox fx:id="chbxAdverb" disable="true" mnemonicParsing="false" text="adverb" GridPane.rowIndex="5" />
+                                                <CheckBox fx:id="chbxPreposition" disable="true" mnemonicParsing="false" text="preposition" GridPane.rowIndex="6" />
+                                                <CheckBox fx:id="chbxConjunction" disable="true" mnemonicParsing="false" text="conjunction" GridPane.rowIndex="7" />
+                                                <CheckBox fx:id="chbxDefiniteArticle" disable="true" mnemonicParsing="false" text="definite article" GridPane.rowIndex="8" />
+                                                <CheckBox fx:id="chbxUnknown" mnemonicParsing="false" onAction="#test" selected="true" text="unknown" GridPane.rowIndex="9" />
+                                             </children>
+                                          </GridPane>
+                                          <GridPane layoutX="10.0" layoutY="10.0" GridPane.columnIndex="1">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label styleClass="Heading 2" text="Suggestion Pool" />
+                                                <CheckBox fx:id="chbxSynonyms" mnemonicParsing="false" selected="true" text="synonyms" GridPane.rowIndex="1" />
+                                                <CheckBox fx:id="chbxCommonlyTyped" mnemonicParsing="false" text="commonly typed" GridPane.rowIndex="2" />
+                                                <CheckBox fx:id="chbxCommonlyCategorised" mnemonicParsing="false" text="commonly categorised" GridPane.rowIndex="3" />
+                                                <CheckBox fx:id="chbxPartOf" mnemonicParsing="false" text="part of" GridPane.rowIndex="4" />
+                                                <CheckBox fx:id="chbxHasParts" mnemonicParsing="false" text="has parts" GridPane.rowIndex="5" />
+                                                <CheckBox fx:id="chbxSimilarTo" mnemonicParsing="false" text="similar to" GridPane.rowIndex="6" />
+                                             </children>
+                                          </GridPane>
+                                          <GridPane layoutX="236.0" layoutY="10.0" prefHeight="170.0" prefWidth="125.0" GridPane.columnIndex="2">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label styleClass="Heading 2" text="Poetic Devices" />
+                                                <FlowPane hgap="5.0" GridPane.rowIndex="1">
+                                                   <children>
+                                                      <CheckBox fx:id="chbxRhymeWith" mnemonicParsing="false" onAction="#test" text="rhyme with" />
+                                                      <TextField fx:id="txtfldRhymeWith" onAction="#test" prefHeight="25.0" prefWidth="95.0">
+                                                         <tooltip>
+                                                            <Tooltip text="Choose which lines in the stanza to rhyme with, e.g. 1-2, 4. Leave blank to rhyme all lines." wrapText="true" />
+                                                         </tooltip>
+                                                      </TextField>
+                                                   </children>
+                                                </FlowPane>
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane alignment="TOP_LEFT" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" text="Suggestions" GridPane.rowIndex="3">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                                 <children>
+                                    <GridPane layoutX="217.0" layoutY="87.0" prefHeight="417.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Button fx:id="btnGetSuggestions" mnemonicParsing="false" text="Get Suggestions" GridPane.valignment="TOP" />
+                                          <FlowPane fx:id="flwpnSuggestions" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                     </children>
+                  </GridPane>
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>

@@ -27,7 +27,7 @@ public class Stanza {
             } else if ((token = matcher.group("token")) != null) {
                 parsedLine.add(new Token(token));
             } else {
-                System.err.println("A line had no words or other tokens.");
+                LOG.writeTempLog("A line had no words or other tokens.");
             }
         }
         lines.add(parsedLine);

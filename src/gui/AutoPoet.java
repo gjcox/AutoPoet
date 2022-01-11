@@ -9,12 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import static config.Configuration.LOG;
+
 public class AutoPoet extends Application {
 
     @Override
     public void start(Stage stage) {
         try {
-
             Parent root = FXMLLoader.load(getClass().getResource("AutoPoet.fxml"));
             Scene scene = new Scene(root);
 
@@ -22,6 +23,9 @@ public class AutoPoet extends Application {
             stage.getIcons().add(icon);
             stage.setTitle("AutoPoet");
 
+            stage.setOnCloseRequest(WindowEvent -> {
+                LOG.closeLogWriters();
+            });
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

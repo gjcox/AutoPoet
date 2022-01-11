@@ -49,6 +49,15 @@ public class Poem {
         LOG.writeTempLog(String.format("End of stanza %d reached", stanzas.size()));
         stanzas.get(stanzas.size() - 1).evaluateRhymingScheme();
 
+        LOG.writeTempLog(String.format("Read poem: %s", this.getString()));
+    }
+
+    public String getTitle() {
+        return this.title; 
+    }
+
+    public int getStanzaCount() {
+        return this.stanzas.size(); 
     }
 
     public int getLines() {
@@ -69,6 +78,16 @@ public class Poem {
             builder.append(String.format("%s- Current rhyme scheme: %s", divider, stanza.getActualRhymeScheme()));
             builder.append(divider);
             builder.append(stanza.toString());
+        }
+        return builder.toString();
+    }
+
+    public String toString() {
+        String divider = "\n";
+        StringBuilder builder = new StringBuilder();
+        for (Stanza stanza : stanzas) {
+            builder.append(stanza.toString());
+            builder.append(divider);
         }
         return builder.toString();
     }
