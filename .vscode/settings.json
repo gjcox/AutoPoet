@@ -1,7 +1,12 @@
 {
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar"
+        ],
+        "exclude": [
+            "d:\\Program Files (HDD)\\JavaFX\\javafx-sdk-17.0.1\\lib\\javafx.base.jar"
+        ]
+    }
 }
