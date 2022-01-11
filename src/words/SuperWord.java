@@ -436,7 +436,7 @@ public class SuperWord extends Token {
      * @param rhymePos    can be null if rhyme == false.
      * @return
      */
-    private static ArrayList<SuperWord> filterSuggestions(ArrayList<SuperWord> suggestions, PartOfSpeech pos,
+    private ArrayList<SuperWord> filterSuggestions(ArrayList<SuperWord> suggestions, PartOfSpeech pos,
             FilterParameters params) {
 
         if (suggestions == null) {
@@ -450,6 +450,8 @@ public class SuperWord extends Token {
                 filtered.remove(suggestion);
             }
         }
+        LOG.writeTempLog(String.format("Filtered suggestions for \"%s\" (%s) including %s: %s", plaintext, pos,
+        params.toString(), filtered));
         return filtered;
     }
 
