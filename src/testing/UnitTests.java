@@ -93,7 +93,7 @@ public class UnitTests {
     public void testRhymingSchemeString() {
         RhymingScheme scheme = new RhymingScheme(0); 
         try {
-            scheme = new RhymingScheme(4, new int[] { 0, 1, 26, 2 });
+            scheme = new RhymingScheme(4, new int[] { 0, 1, 26, 28 });
         } catch (RhymingSchemeSizeException e) {
             fail();  
         }
