@@ -85,6 +85,19 @@ public interface ParameterWrappers {
             this.rhymePos = pos;
         }
 
+        public String toString() {
+            StringBuilder builder = new StringBuilder("{");
+            if (rhyme) {
+                builder.append("rhyme:");
+                builder.append(String.format("\"%s\"", rhymeWith.getPlaintext()));
+                builder.append(String.format("(%s),", rhymePos));
+            }
+
+            builder.deleteCharAt(builder.lastIndexOf(",")); 
+            builder.append("}");
+            return builder.toString();
+        }
+
         public boolean rhyme() {
             return rhyme;
         }
