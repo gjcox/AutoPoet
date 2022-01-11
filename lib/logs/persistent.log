@@ -3551,3 +3551,332 @@
 2021-12-16 23:14:20.073	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
 2021-12-16 23:14:20.287	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
 2021-12-16 23:14:20.287	 Results of "sated" was missing
+2021-12-17 10:47:00.963	 Syllables of "jeweled headdress" was missing
+2021-12-17 10:47:00.963	 Pronunciation of "jeweled headdress" was missing
+2021-12-17 10:47:00.963	 "jeweled headdress" (NOUN) did not have a pronunciation for "clap" (VERB) to rhyme against
+2021-12-17 10:47:01.52	 Syllables of "jewelled headdress" was missing
+2021-12-17 10:47:01.52	 Pronunciation of "jewelled headdress" was missing
+2021-12-17 10:47:01.52	 "jewelled headdress" (NOUN) did not have a pronunciation for "clap" (VERB) to rhyme against
+2021-12-17 10:51:41.703	 Syllables of "jeweled headdress" was missing
+2021-12-17 10:51:41.703	 Pronunciation of "jeweled headdress" was missing
+2021-12-17 10:51:41.703	 "jeweled headdress" (NOUN) did not have a pronunciation for "clap" (VERB) to rhyme against
+2021-12-17 10:51:41.926	 Syllables of "jewelled headdress" was missing
+2021-12-17 10:51:41.926	 Pronunciation of "jewelled headdress" was missing
+2021-12-17 10:51:41.926	 "jewelled headdress" (NOUN) did not have a pronunciation for "clap" (VERB) to rhyme against
+2021-12-17 10:52:21.834	 Syllables of "jeweled headdress" was missing
+2021-12-17 10:52:21.834	 Pronunciation of "jeweled headdress" was missing
+2021-12-17 10:52:21.834	 "jeweled headdress" (NOUN) did not have a pronunciation for "clap" (VERB) to rhyme against
+2021-12-17 10:52:22.037	 Syllables of "jewelled headdress" was missing
+2021-12-17 10:52:22.037	 Pronunciation of "jewelled headdress" was missing
+2021-12-17 10:52:22.037	 "jewelled headdress" (NOUN) did not have a pronunciation for "clap" (VERB) to rhyme against
+2021-12-17 11:05:22.411	 Syllables of "overstated" was missing
+2021-12-17 11:05:22.412	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2021-12-17 11:05:22.974	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2021-12-17 11:05:23.189	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2021-12-17 11:05:23.189	 Results of "sated" was missing
+2021-12-17 11:24:33.48	 Results of "though" was an empty array
+2021-12-17 11:24:33.703	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2021-12-17 11:24:35.962	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2021-12-17 11:25:47.998	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2021-12-17 11:25:48.23	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2021-12-17 11:25:50.223	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2021-12-17 11:26:38.761	 Syllables of "overstated" was missing
+2021-12-17 11:26:38.762	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2021-12-17 11:26:39.238	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2021-12-17 11:26:39.46	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2021-12-17 11:26:39.461	 Results of "sated" was missing
+2021-12-17 11:28:46.927	 Syllables of "catch a wink" was missing
+2021-12-17 11:28:46.927	 Pronunciation of "catch a wink" was missing
+2021-12-17 11:28:47.859	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2021-12-17 11:32:14.05	 Pronunciation of "unnaturalised" was missing
+2021-12-17 11:32:14.051	 No pronunciation of "unnaturalised" could be found for "ADJECTIVE"
+2021-12-17 11:32:14.052	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "year" (NOUN) to rhyme against
+2021-12-17 11:32:14.256	 Pronunciation of "unnaturalized" was missing
+2021-12-17 11:32:14.256	 No pronunciation of "unnaturalized" could be found for "ADJECTIVE"
+2021-12-17 11:32:14.256	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "year" (NOUN) to rhyme against
+2021-12-17 11:32:14.681	 Syllables of "imported" was missing
+2021-12-17 11:32:14.681	 Pronunciation of "imported" was not a JSONObject: "ɪm'pɔrtɪd"
+2021-12-17 11:32:15.244	 Pronunciation of "naturalized" was not a JSONObject: "'nætʃɝrʌ,laɪzd"
+2021-12-17 11:32:15.57	 Syllables of "established" was missing
+2021-12-17 11:32:15.57	 Pronunciation of "established" was not a JSONObject: "ɪ'stæblɪʃt"
+2021-12-17 11:32:15.778	 Pronunciation of "nonnative" was not a JSONObject: "'nɑ'neɪtɪv"
+2021-12-17 11:32:15.779	 Unrecognised part of speech for "nonnative" with definition "not being or composed of aborigines": "null"
+2021-12-17 11:32:17.314	 Pronunciation of "fantastical" was missing
+2021-12-17 11:32:17.315	 No pronunciation of "fantastical" could be found for "ADJECTIVE"
+2021-12-17 11:32:17.315	 "fantastical" (ADJECTIVE) did not have a pronunciation for "year" (NOUN) to rhyme against
+2021-12-17 11:32:17.964	 Unrecognised part of speech for "gothic" with definition "characteristic of the style of type commonly used for printing German": "null"
+2021-12-17 11:32:17.964	 Unrecognised part of speech for "gothic" with definition "of or relating to the language of the ancient Goths": "null"
+2021-12-17 11:32:17.964	 Unrecognised part of speech for "gothic" with definition "of or relating to the Goths": "null"
+2021-12-17 11:32:18.587	 Syllables of "oddish" was missing
+2021-12-17 11:32:18.587	 Pronunciation of "oddish" was missing
+2021-12-17 11:32:18.587	 "oddish" (ADJECTIVE) did not have a pronunciation for "year" (NOUN) to rhyme against
+2021-12-17 11:32:20.041	 Unrecognised part of speech for "singular" with definition "composed of one member, set, or kind": "null"
+2021-12-17 11:32:20.041	 Unrecognised part of speech for "singular" with definition "grammatical number category referring to a single item or unit": "null"
+2021-12-17 11:33:58.448	 Syllables of "period of time" was missing
+2021-12-17 11:33:58.448	 Pronunciation of "period of time" was missing
+2021-12-17 11:33:58.67	 Syllables of "time period" was missing
+2021-12-17 11:33:58.67	 Pronunciation of "time period" was missing
+2021-12-17 11:33:59.574	 Syllables of "yr" was missing
+2021-12-17 11:33:59.574	 Pronunciation of "yr" was missing
+2021-12-17 11:33:59.575	 "yr" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:00.908	 Syllables of "time of year" was missing
+2021-12-17 11:34:00.908	 Pronunciation of "time of year" was missing
+2021-12-17 11:34:00.908	 "time of year" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:01.323	 Pronunciation of "bimillenary" was missing
+2021-12-17 11:34:01.323	 No pronunciation of "bimillenary" could be found for "NOUN"
+2021-12-17 11:34:01.323	 "bimillenary" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:02.437	 Syllables of "bronze age" was missing
+2021-12-17 11:34:02.438	 Pronunciation of "bronze age" was missing
+2021-12-17 11:34:02.438	 "bronze age" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:03.116	 Syllables of "calendar week" was missing
+2021-12-17 11:34:03.116	 Pronunciation of "calendar week" was missing
+2021-12-17 11:34:03.116	 "calendar week" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:03.334	 Syllables of "canicular days" was missing
+2021-12-17 11:34:03.536	 Syllables of "canicule" was missing
+2021-12-17 11:34:03.536	 Pronunciation of "canicule" was missing
+2021-12-17 11:34:03.536	 "canicule" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:04.286	 Syllables of "clotting time" was missing
+2021-12-17 11:34:04.286	 Pronunciation of "clotting time" was missing
+2021-12-17 11:34:04.286	 "clotting time" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:05.841	 Syllables of "dog days" was missing
+2021-12-17 11:34:06.495	 Syllables of "drouth" was missing
+2021-12-17 11:34:06.916	 Syllables of "duty tour" was missing
+2021-12-17 11:34:06.916	 Pronunciation of "duty tour" was missing
+2021-12-17 11:34:06.919	 "duty tour" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:07.131	 Syllables of "early days" was missing
+2021-12-17 11:34:07.131	 Pronunciation of "early days" was missing
+2021-12-17 11:34:07.132	 "early days" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:07.572	 Syllables of "elapsed time" was missing
+2021-12-17 11:34:07.572	 Pronunciation of "elapsed time" was missing
+2021-12-17 11:34:07.572	 "elapsed time" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:08.467	 Syllables of "two weeks" was missing
+2021-12-17 11:34:08.467	 Pronunciation of "two weeks" was missing
+2021-12-17 11:34:08.467	 "two weeks" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:08.669	 Syllables of "uptime" was missing
+2021-12-17 11:34:08.669	 Pronunciation of "uptime" was missing
+2021-12-17 11:34:08.669	 "uptime" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:09.33	 Unrecognised part of speech for "watch" with definition "observe or determine by looking": "null"
+2021-12-17 11:34:10.162	 Syllables of "work time" was missing
+2021-12-17 11:34:10.162	 Pronunciation of "work time" was missing
+2021-12-17 11:34:10.163	 "work time" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:10.369	 Syllables of "years" was missing
+2021-12-17 11:34:10.369	 Pronunciation of "years" was not a JSONObject: "jɪrz"
+2021-12-17 11:34:11.836	 Pronunciation of "extra time" was missing
+2021-12-17 11:34:11.836	 No pronunciation of "extra time" could be found for "NOUN"
+2021-12-17 11:34:11.837	 "extra time" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:12.269	 Syllables of "field day" was missing
+2021-12-17 11:34:14.291	 Syllables of "grace period" was missing
+2021-12-17 11:34:14.509	 Syllables of "great year" was missing
+2021-12-17 11:34:14.93	 Syllables of "half-life" was missing
+2021-12-17 11:34:15.149	 Syllables of "half life" was missing
+2021-12-17 11:34:16.657	 Pronunciation of "hours" was not a JSONObject: "'aʊɝrz"
+2021-12-17 11:34:17.487	 Pronunciation of "iron age" was missing
+2021-12-17 11:34:17.487	 No pronunciation of "iron age" could be found for "NOUN"
+2021-12-17 11:34:17.487	 "iron age" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:18.296	 Syllables of "life-time" was missing
+2021-12-17 11:34:18.296	 Pronunciation of "life-time" was missing
+2021-12-17 11:34:18.296	 "life-time" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:18.491	 Syllables of "lifespan" was missing
+2021-12-17 11:34:18.491	 Pronunciation of "lifespan" was not a JSONObject: "'laɪf,spæn"
+2021-12-17 11:34:18.889	 Syllables of "long haul" was missing
+2021-12-17 11:34:19.095	 Syllables of "long run" was missing
+2021-12-17 11:34:19.299	 Syllables of "long time" was missing
+2021-12-17 11:34:19.497	 Syllables of "lunar time period" was missing
+2021-12-17 11:34:19.497	 Pronunciation of "lunar time period" was missing
+2021-12-17 11:34:19.497	 "lunar time period" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:19.904	 Syllables of "mid-april" was missing
+2021-12-17 11:34:19.904	 Pronunciation of "mid-april" was missing
+2021-12-17 11:34:19.904	 "mid-april" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:20.104	 Syllables of "mid-august" was missing
+2021-12-17 11:34:20.104	 Pronunciation of "mid-august" was missing
+2021-12-17 11:34:20.104	 "mid-august" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:20.3	 Syllables of "mid-december" was missing
+2021-12-17 11:34:20.3	 Pronunciation of "mid-december" was missing
+2021-12-17 11:34:20.3	 "mid-december" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:20.495	 Syllables of "mid-february" was missing
+2021-12-17 11:34:20.495	 Pronunciation of "mid-february" was missing
+2021-12-17 11:34:20.495	 "mid-february" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:20.699	 Syllables of "mid-january" was missing
+2021-12-17 11:34:20.699	 Pronunciation of "mid-january" was missing
+2021-12-17 11:34:20.699	 "mid-january" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:20.897	 Syllables of "mid-july" was missing
+2021-12-17 11:34:20.897	 Pronunciation of "mid-july" was missing
+2021-12-17 11:34:20.897	 "mid-july" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:21.118	 Syllables of "mid-june" was missing
+2021-12-17 11:34:21.118	 Pronunciation of "mid-june" was missing
+2021-12-17 11:34:21.118	 "mid-june" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:21.338	 Syllables of "mid-march" was missing
+2021-12-17 11:34:21.338	 Pronunciation of "mid-march" was missing
+2021-12-17 11:34:21.338	 "mid-march" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:21.545	 Syllables of "mid-may" was missing
+2021-12-17 11:34:21.545	 Pronunciation of "mid-may" was missing
+2021-12-17 11:34:21.547	 "mid-may" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:21.751	 Syllables of "mid-november" was missing
+2021-12-17 11:34:21.751	 Pronunciation of "mid-november" was missing
+2021-12-17 11:34:21.751	 "mid-november" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:21.957	 Syllables of "mid-october" was missing
+2021-12-17 11:34:21.958	 Pronunciation of "mid-october" was missing
+2021-12-17 11:34:21.958	 "mid-october" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:22.177	 Syllables of "mid-september" was missing
+2021-12-17 11:34:22.177	 Pronunciation of "mid-september" was missing
+2021-12-17 11:34:22.177	 "mid-september" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:22.78	 Unrecognised part of speech for "millenary" with definition "of or relating to the doctrine of the millennium": "null"
+2021-12-17 11:34:22.78	 Unrecognised part of speech for "millenary" with definition "relating to or consisting of 1000": "null"
+2021-12-17 11:34:23.598	 Syllables of "morning time" was missing
+2021-12-17 11:34:26.652	 Syllables of "phase of the moon" was missing
+2021-12-17 11:34:26.652	 Pronunciation of "phase of the moon" was missing
+2021-12-17 11:34:26.652	 "phase of the moon" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:26.892	 Syllables of "platonic year" was missing
+2021-12-17 11:34:27.104	 Syllables of "prehistoric culture" was missing
+2021-12-17 11:34:27.105	 Pronunciation of "prehistoric culture" was missing
+2021-12-17 11:34:27.105	 "prehistoric culture" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:27.945	 Syllables of "prohibition era" was missing
+2021-12-17 11:34:27.945	 Pronunciation of "prohibition era" was missing
+2021-12-17 11:34:27.945	 "prohibition era" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:28.825	 Syllables of "quarter-century" was missing
+2021-12-17 11:34:28.825	 Pronunciation of "quarter-century" was missing
+2021-12-17 11:34:28.825	 "quarter-century" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:29.063	 Pronunciation of "question time" was missing
+2021-12-17 11:34:29.063	 No pronunciation of "question time" could be found for "NOUN"
+2021-12-17 11:34:29.063	 "question time" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:29.485	 Pronunciation of "rainy day" was missing
+2021-12-17 11:34:29.485	 No pronunciation of "rainy day" could be found for "NOUN"
+2021-12-17 11:34:29.485	 "rainy day" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:29.692	 Syllables of "real time" was missing
+2021-12-17 11:34:29.692	 Pronunciation of "real time" was missing
+2021-12-17 11:34:29.692	 "real time" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:29.897	 Syllables of "regulation time" was missing
+2021-12-17 11:34:29.897	 Pronunciation of "regulation time" was missing
+2021-12-17 11:34:29.898	 "regulation time" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:30.558	 Syllables of "running time" was missing
+2021-12-17 11:34:30.558	 Pronunciation of "running time" was missing
+2021-12-17 11:34:30.558	 "running time" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:30.75	 Pronunciation of "saint martin's summer" was missing
+2021-12-17 11:34:30.751	 No pronunciation of "saint martin's summer" could be found for "NOUN"
+2021-12-17 11:34:30.751	 "saint martin's summer" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:31.304	 Syllables of "school day" was missing
+2021-12-17 11:34:31.519	 Syllables of "schooltime" was missing
+2021-12-17 11:34:31.519	 Pronunciation of "schooltime" was not a JSONObject: "'skul,taɪm"
+2021-12-17 11:34:31.958	 Syllables of "shelf life" was missing
+2021-12-17 11:34:32.175	 Pronunciation of "silly season" was missing
+2021-12-17 11:34:32.175	 No pronunciation of "silly season" could be found for "NOUN"
+2021-12-17 11:34:32.175	 "silly season" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:32.369	 Pronunciation of "silver age" was missing
+2021-12-17 11:34:32.37	 No pronunciation of "silver age" could be found for "NOUN"
+2021-12-17 11:34:32.37	 "silver age" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:33.011	 Syllables of "study hall" was missing
+2021-12-17 11:34:33.424	 Syllables of "term of a contract" was missing
+2021-12-17 11:34:33.424	 Pronunciation of "term of a contract" was missing
+2021-12-17 11:34:33.424	 "term of a contract" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:33.631	 Syllables of "term of enlistment" was missing
+2021-12-17 11:34:33.631	 Pronunciation of "term of enlistment" was missing
+2021-12-17 11:34:33.631	 "term of enlistment" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:33.842	 Syllables of "test period" was missing
+2021-12-17 11:34:33.842	 Pronunciation of "test period" was missing
+2021-12-17 11:34:33.842	 "test period" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:34.469	 Syllables of "time frame" was missing
+2021-12-17 11:34:34.469	 Pronunciation of "time frame" was missing
+2021-12-17 11:34:34.47	 "time frame" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:34.67	 Syllables of "time limit" was missing
+2021-12-17 11:34:34.88	 Syllables of "time of life" was missing
+2021-12-17 11:34:34.88	 Pronunciation of "time of life" was missing
+2021-12-17 11:34:34.88	 "time of life" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:35.084	 Syllables of "time off" was missing
+2021-12-17 11:34:35.294	 Syllables of "times" was missing
+2021-12-17 11:34:35.703	 Syllables of "tour of duty" was missing
+2021-12-17 11:34:35.703	 Pronunciation of "tour of duty" was missing
+2021-12-17 11:34:35.703	 "tour of duty" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:35.904	 Syllables of "travel time" was missing
+2021-12-17 11:34:36.104	 Syllables of "trial period" was missing
+2021-12-17 11:34:36.104	 Pronunciation of "trial period" was missing
+2021-12-17 11:34:36.104	 "trial period" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:36.796	 Syllables of "wine tasting" was missing
+2021-12-17 11:34:36.796	 Pronunciation of "wine tasting" was missing
+2021-12-17 11:34:36.796	 "wine tasting" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:37.433	 Syllables of "eightsome" was missing
+2021-12-17 11:34:38.738	 Syllables of "mass meeting" was missing
+2021-12-17 11:34:38.738	 Pronunciation of "mass meeting" was missing
+2021-12-17 11:34:38.738	 "mass meeting" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:40.342	 Syllables of "social gathering" was missing
+2021-12-17 11:34:40.548	 Syllables of "social affair" was missing
+2021-12-17 11:34:41.001	 Syllables of "cast of characters" was missing
+2021-12-17 11:34:41.001	 Pronunciation of "cast of characters" was missing
+2021-12-17 11:34:41.001	 "cast of characters" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:41.898	 Syllables of "fivesome" was missing
+2021-12-17 11:34:41.898	 Pronunciation of "fivesome" was missing
+2021-12-17 11:34:41.899	 "fivesome" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:42.11	 Syllables of "sixsome" was missing
+2021-12-17 11:34:42.11	 Pronunciation of "sixsome" was missing
+2021-12-17 11:34:42.11	 "sixsome" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:42.342	 Pronunciation of "sextette" was missing
+2021-12-17 11:34:42.342	 No pronunciation of "sextette" could be found for "NOUN"
+2021-12-17 11:34:42.342	 "sextette" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:43.192	 Pronunciation of "octette" was missing
+2021-12-17 11:34:43.192	 No pronunciation of "octette" could be found for "NOUN"
+2021-12-17 11:34:43.192	 "octette" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:47.213	 Syllables of "sevensome" was missing
+2021-12-17 11:34:47.213	 Pronunciation of "sevensome" was missing
+2021-12-17 11:34:47.213	 "sevensome" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:49.348	 Syllables of "rap group" was missing
+2021-12-17 11:34:49.348	 Pronunciation of "rap group" was missing
+2021-12-17 11:34:49.348	 "rap group" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:49.536	 Syllables of "rave-up" was missing
+2021-12-17 11:34:49.536	 Pronunciation of "rave-up" was missing
+2021-12-17 11:34:49.537	 "rave-up" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:49.765	 Syllables of "group meeting" was missing
+2021-12-17 11:34:49.765	 Pronunciation of "group meeting" was missing
+2021-12-17 11:34:49.765	 "group meeting" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:34:50.858	 Pronunciation of "septette" was missing
+2021-12-17 11:34:50.859	 No pronunciation of "septette" could be found for "NOUN"
+2021-12-17 11:34:50.859	 "septette" (NOUN) did not have a pronunciation for "strange" (ADJECTIVE) to rhyme against
+2021-12-17 11:37:37.31	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2021-12-17 11:37:37.531	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2021-12-17 11:37:37.532	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2021-12-17 11:37:37.532	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2021-12-17 11:37:37.533	 Results of "beds" was missing
+2021-12-17 11:37:37.755	 Syllables of "heads" was missing
+2021-12-17 11:37:37.756	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2021-12-17 11:37:37.756	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2021-12-17 11:37:37.757	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2021-12-17 11:37:37.757	 Results of "heads" was missing
+2021-12-17 11:37:39.834	 Unrecognised part of speech for "appear" with definition "present oneself formally, as before a (judicial) authority": "null"
+2021-12-17 11:37:40.476	 WordsAPI responded with word "nick" when requesting "Nick".
+2021-12-17 11:37:40.69	 Pronunciation of "came" was not a JSONObject: "keɪm"
+2021-12-17 11:37:40.69	 Rhymes of "came" was present: {"all":"-eɪm"}
+2021-12-17 11:37:40.69	 Rhymes of "came" had no recognised keys not found in pronunciation field
+2021-12-17 11:37:40.69	 Results of "came" was missing
+2021-12-17 11:37:41.127	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2021-12-17 11:37:41.356	 Syllables of "Blitzen" was missing
+2021-12-17 11:37:41.356	 Pronunciation of "Blitzen" was missing
+2021-12-17 11:37:41.356	 Results of "Blitzen" was missing
+2021-12-17 11:38:52.94	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2021-12-17 11:38:53.65	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2021-12-17 11:38:53.889	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2021-12-17 11:38:53.89	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2021-12-17 11:38:53.89	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2021-12-17 11:38:53.891	 Results of "beds" was missing
+2021-12-17 11:38:54.109	 Syllables of "heads" was missing
+2021-12-17 11:38:54.11	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2021-12-17 11:38:54.112	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2021-12-17 11:38:54.112	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2021-12-17 11:38:54.112	 Results of "heads" was missing
+2021-12-17 11:38:56.572	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2021-12-17 11:38:56.785	 WordsAPI responded with word "nick" when requesting "Nick".
+2021-12-17 11:38:56.997	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2021-12-17 11:38:56.998	 Results of "arrived" was missing
+2021-12-17 11:38:57.411	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2021-12-17 11:38:57.618	 Syllables of "Blitzen" was missing
+2021-12-17 11:38:57.618	 Pronunciation of "Blitzen" was missing
+2021-12-17 11:38:57.618	 Results of "Blitzen" was missing
+2021-12-17 11:39:33.031	 Syllables of "jeweled headdress" was missing
+2021-12-17 11:39:33.031	 Pronunciation of "jeweled headdress" was missing
+2021-12-17 11:39:33.032	 "jeweled headdress" (NOUN) did not have a pronunciation for "nap" (NOUN) to rhyme against
+2021-12-17 11:39:33.227	 Syllables of "jewelled headdress" was missing
+2021-12-17 11:39:33.228	 Pronunciation of "jewelled headdress" was missing
+2021-12-17 11:39:33.228	 "jewelled headdress" (NOUN) did not have a pronunciation for "nap" (NOUN) to rhyme against
+2021-12-17 11:40:18.627	 Syllables of "at a lower place" was missing
+2021-12-17 11:40:18.627	 Pronunciation of "at a lower place" was missing
+2021-12-17 11:40:18.886	 "at a lower place" (ADVERB) did not have a pronunciation for "snow" (NOUN) to rhyme against
+2021-12-17 11:40:19.288	 Syllables of "to a lower place" was missing
+2021-12-17 11:40:19.288	 Pronunciation of "to a lower place" was missing
+2021-12-17 11:40:19.288	 "to a lower place" (ADVERB) did not have a pronunciation for "snow" (NOUN) to rhyme against
