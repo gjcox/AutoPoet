@@ -59,8 +59,11 @@
                      <content>
                         <StackPane>
                            <children>
-                              <TextArea fx:id="txtarPoem" disable="true" prefHeight="200.0" prefWidth="200.0" visible="false" />
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                              <TextArea fx:id="txtarPoem" prefHeight="200.0" prefWidth="200.0" visible="false">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor></TextArea>
+                              <AnchorPane fx:id="anpnPoem" prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <GridPane fx:id="grdpnPoem" prefHeight="737.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columnConstraints>
@@ -68,12 +71,13 @@
                                       </columnConstraints>
                                       <rowConstraints>
                                         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
-                                        <RowConstraints vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
                                           <FlowPane fx:id="flwpnLine0" maxHeight="-Infinity" minHeight="-Infinity" GridPane.valignment="TOP" />
-                                          <AnchorPane fx:id="anpnPoemBlank" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
                                     </GridPane>
                                  </children>
                               </AnchorPane>
@@ -172,7 +176,7 @@
                                           <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="200.0" GridPane.rowIndex="2">
                                              <children>
                                                 <Label text="Intended Rhyme Scheme:" />
-                                                <Label fx:id="lblIntRhymeScheme" text="(intended rhyme scheme)" />
+                                                <TextField fx:id="txtfldIntRhymeScheme" onAction="#updateIntendedRhymeScheme" promptText="e.g. AABB" />
                                              </children>
                                           </FlowPane>
                                           <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="200.0" GridPane.rowIndex="3">

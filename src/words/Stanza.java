@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import exceptions.RhymingSchemeSizeException;
+
 import static config.Configuration.LOG;
 
 public class Stanza {
@@ -59,6 +61,18 @@ public class Stanza {
 
     public ArrayList<ArrayList<Token>> getLines() {
         return this.lines;
+    }
+
+    public boolean setDesiredRhymeScheme(String rhymeScheme) {
+        try {
+            this.desiredScheme = new RhymingScheme(lines.size(), rhymeScheme.toCharArray());
+            return true;
+        } catch (RhymingSchemeSizeException e) {
+            LOG.writeTempLog("string");
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public String toString() {

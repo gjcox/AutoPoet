@@ -1,11 +1,15 @@
 package words;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import static config.Configuration.LOG;
 
@@ -23,6 +27,43 @@ public class Poem {
         }
 
         fileReader = Files.newBufferedReader(inputFile); // relative to where program is executed
+        stanzas.add(new Stanza());
+        String line = "";
+        boolean in_stanza = false; // to prevent counting double empty lines
+        while ((line = fileReader.readLine()) != null) {
+            if (!line.matches("\\s+") && !line.matches("")) {
+                /* if line not empty */
+                /* add a line to the current stanza */
+                in_stanza = true;
+                lineCount++;
+                stanzas.get(stanzas.size() - 1).addLine(line);
+
+            } else if (in_stanza) {
+                /* if line empty */
+                /* end the current stanza */
+                in_stanza = false;
+                LOG.writeTempLog(String.format("End of stanza %d reached", stanzas.size()));
+                stanzas.get(stanzas.size() - 1).evaluateRhymingScheme();
+                stanzas.add(new Stanza());
+
+            } else {
+                // ignore double empty line
+            }
+        }
+        LOG.writeTempLog(String.format("End of stanza %d reached", stanzas.size()));
+        stanzas.get(stanzas.size() - 1).evaluateRhymingScheme();
+
+        LOG.writeTempLog(String.format("Read poem: %s", this.getString()));
+    }
+
+    public Poem(String title, String poemString) throws IOException {
+        this.title = title;
+        if (title.contains(File.separator)) {
+            title = title.substring(title.lastIndexOf(File.separator) + 1);
+        }
+
+        InputStream stream = new ByteArrayInputStream((poemString.trim()).getBytes()); 
+        fileReader = new BufferedReader(new InputStreamReader(stream)); // relative to where program is executed
         stanzas.add(new Stanza());
         String line = "";
         boolean in_stanza = false; // to prevent counting double empty lines

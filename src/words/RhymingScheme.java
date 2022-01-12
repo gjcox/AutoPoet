@@ -36,6 +36,15 @@ public class RhymingScheme {
         this.scheme = scheme.clone(); // could save me a headache if I change scheme's data type
     }
 
+    public RhymingScheme(int lineCount, char[] scheme) throws RhymingSchemeSizeException {
+        if (scheme.length != lineCount) {
+            throw new RhymingSchemeSizeException(
+                    String.format("%s did not match line count %d", Arrays.toString(scheme), lineCount));
+        }
+        this.lineCount = lineCount;
+        this.scheme = convertChars(scheme); // could save me a headache if I change scheme's data type
+    }
+
     public void setValue(int index, int value) {
         this.scheme[index] = value;
     }
@@ -62,6 +71,18 @@ public class RhymingScheme {
         } else {
             return (char) ('A' + ((n - 1) % 26));
         }
+    }
+
+    private int[] convertChars(char[] chars) {
+        int[] ints = new int[chars.length];
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == '#') {
+                ints[i] = 0;
+            } else {
+                ints[i] = chars[i] - 'A' + 1;
+            }
+        }
+        return ints;
     }
 
     public String toString() {
