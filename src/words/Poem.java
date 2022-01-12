@@ -11,7 +11,7 @@ import static config.Configuration.LOG;
 
 public class Poem {
 
-    private int lineCount = 0; 
+    private int lineCount = 0;
     private ArrayList<Stanza> stanzas = new ArrayList<>();
     private String title = "poem";
     private BufferedReader fileReader;
@@ -53,14 +53,18 @@ public class Poem {
     }
 
     public String getTitle() {
-        return this.title; 
+        return this.title;
+    }
+
+    public ArrayList<Stanza> getStanzas() {
+        return this.stanzas;
     }
 
     public int getStanzaCount() {
-        return this.stanzas.size(); 
+        return this.stanzas.size();
     }
 
-    public int getLines() {
+    public int getLineCount() {
         return this.lineCount;
     }
 
@@ -91,4 +95,5 @@ public class Poem {
         }
         return builder.toString();
     }
+
 }

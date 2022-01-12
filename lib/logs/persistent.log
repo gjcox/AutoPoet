@@ -3910,3 +3910,52 @@
 2022-01-11 17:33:03.198	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
 2022-01-11 17:33:03.465	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
 2022-01-11 17:33:03.465	 Results of "sated" was missing
+2022-01-12 12:41:17.875	 Syllables of "overstated" was missing
+2022-01-12 12:41:17.876	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-01-12 12:41:18.308	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-01-12 12:41:18.513	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-01-12 12:41:18.514	 Results of "sated" was missing
+2022-01-12 12:42:35.456	 Syllables of "overstated" was missing
+2022-01-12 12:42:35.456	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-01-12 12:42:35.889	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-01-12 12:42:36.09	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-01-12 12:42:36.091	 Results of "sated" was missing
+2022-01-12 15:19:08.832	 Syllables of "overstated" was missing
+2022-01-12 15:19:08.832	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-01-12 15:19:09.396	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-01-12 15:19:09.631	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-01-12 15:19:09.632	 Results of "sated" was missing
+2022-01-12 15:25:19.129	 Results of "though" was an empty array
+2022-01-12 15:25:19.438	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-12 15:25:22.032	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-12 15:28:21.485	 Results of "though" was an empty array
+2022-01-12 15:28:21.713	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-12 15:28:23.998	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-12 15:30:40.661	 Results of "though" was an empty array
+2022-01-12 15:30:40.889	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-12 15:30:43.893	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-12 15:31:49.828	 Results of "though" was an empty array
+2022-01-12 15:31:50.071	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-12 15:31:53.004	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-12 15:32:57.162	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-12 15:32:57.389	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-12 15:32:59.355	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-12 15:34:16.104	 Results of "though" was an empty array
+2022-01-12 15:34:16.359	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-12 15:34:18.97	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-12 15:36:45.924	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-12 15:36:46.128	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-12 15:36:48.084	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-12 16:41:17.484	 Syllables of "overstated" was missing
+2022-01-12 16:41:17.485	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-01-12 16:41:17.93	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-01-12 16:41:18.129	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-01-12 16:41:18.13	 Results of "sated" was missing
+2022-01-12 16:43:35.484	 Results of "though" was an empty array
+2022-01-12 16:43:35.697	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-12 16:43:38.35	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-12 16:46:36.526	 Syllables of "overstated" was missing
+2022-01-12 16:46:36.526	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-01-12 16:46:36.94	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-01-12 16:46:37.203	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-01-12 16:46:37.204	 Results of "sated" was missing

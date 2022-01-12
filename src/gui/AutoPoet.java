@@ -26,6 +26,7 @@ public class AutoPoet extends Application {
             stage.setOnCloseRequest(WindowEvent -> {
                 LOG.closeLogWriters();
             });
+
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

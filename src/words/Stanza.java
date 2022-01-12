@@ -57,6 +57,10 @@ public class Stanza {
         return this.actualScheme;
     }
 
+    public ArrayList<ArrayList<Token>> getLines() {
+        return this.lines;
+    }
+
     public String toString() {
         StringBuilder builder = new StringBuilder();
         for (ArrayList<Token> line : lines) {
