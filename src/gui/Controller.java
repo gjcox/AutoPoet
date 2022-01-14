@@ -20,15 +20,15 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import words.Poem;
 import words.Stanza;
+import words.SubWord;
 import words.SuperWord;
 import words.Token;
+import words.SubWord.PartOfSpeech;
 
 import static config.Configuration.LOG;
 
@@ -55,8 +55,9 @@ public class Controller {
             this.clickable = clickable;
             if (clickable) {
                 this.setOnMouseClicked(ActionEvent -> {
-                    parentController.focusedToken = this; 
+                    parentController.focusedToken = this;
                     parentController.focusOnStanza(this.stanzaIndex);
+                    parentController.focusOnWord();
                 });
             }
         }
@@ -80,7 +81,7 @@ public class Controller {
     @FXML
     Label lblPoemStanzaCount, lblPoemLineCount, lblStanzaNumber, lblStanzaLineCount, lblActRhymeScheme;
     @FXML
-    TextField txtfldIntRhymeScheme; 
+    TextField txtfldIntRhymeScheme;
 
     // Suggestion parameters
     @FXML
@@ -129,23 +130,68 @@ public class Controller {
         lblActRhymeScheme.setText(focusedStanza.getActualRhymeScheme().toString());
     }
 
+    private CheckBox getPoSCheckBox(PartOfSpeech pos) {
+        switch (pos) {
+            case ADJECTIVE:
+                return chbxAdjective;
+            case ADVERB:
+                return chbxAdverb;
+            case CONJUCTION:
+                return chbxConjunction;
+            case DEFINITE_ARTICLE:
+                return chbxDefiniteArticle;
+            case NOUN:
+                return chbxNoun;
+            case PREPOSITION:
+                return chbxPreposition;
+            case PRONOUN:
+                return chbxPronoun;
+            case UNKNOWN:
+                return chbxUnknown;
+            case VERB:
+                return chbxVerb;
+            default:
+                LOG.writeTempLog(String.format(
+                        "getPoSCheckBox was passed an invalid PartOfSpeech \"%s\" and returned chbxUnknown", pos));
+                return chbxUnknown;
+        }
+    }
+
+    private void focusOnWord() {
+        SuperWord superword = (SuperWord) focusedToken.token;
+        CheckBox checkBox;
+        for (PartOfSpeech pos : PartOfSpeech.values()) {
+            checkBox = getPoSCheckBox(pos);
+            if (superword.getSubWords(pos, false) == null) {
+                checkBox.setSelected(false);
+                checkBox.setDisable(true);
+            } else {
+                checkBox.setSelected(true);
+                checkBox.setDisable(false);
+            }
+        }
+        checkBox = getPoSCheckBox(PartOfSpeech.UNKNOWN);        
+        checkBox.setSelected(true);
+        checkBox.setDisable(false);
+    }
+
     TextFormatter<String> rhymeSchemeFormatter = new TextFormatter<>(change -> {
         if (!change.isContentChange()) {
             return change;
         }
-    
+
         String text = change.getControlNewText();
-    
-        if (!text.matches("[A-Z#]*")) { 
+
+        if (!text.matches("[A-Z#]*")) {
             return null;
         }
-    
-    
+
         return change;
     });
-    
+
     public void updateIntendedRhymeScheme(ActionEvent e) {
-        if (!poem.getStanzas().get(focusedToken.stanzaIndex).setDesiredRhymeScheme(((TextField)e.getSource()).getText())) {
+        if (!poem.getStanzas().get(focusedToken.stanzaIndex)
+                .setDesiredRhymeScheme(((TextField) e.getSource()).getText())) {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setHeaderText("Could not parse rhyme scheme.");
             alert.setContentText(String.format(seeLog));

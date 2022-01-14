@@ -3959,3 +3959,66 @@
 2022-01-12 16:46:36.94	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
 2022-01-12 16:46:37.203	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
 2022-01-12 16:46:37.204	 Results of "sated" was missing
+2022-01-14 17:53:47.117	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 17:53:47.417	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-14 17:53:50.617	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 17:55:34.586	 Results of "though" was an empty array
+2022-01-14 17:59:49.615	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 17:59:49.885	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-14 17:59:52.185	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 18:01:27.478	 Pronunciation of "unnaturalised" was missing
+2022-01-14 18:01:27.478	 No pronunciation of "unnaturalised" could be found for "ADJECTIVE"
+2022-01-14 18:01:27.478	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "year" (NOUN) to rhyme against
+2022-01-14 18:01:27.697	 Pronunciation of "unnaturalized" was missing
+2022-01-14 18:01:27.697	 No pronunciation of "unnaturalized" could be found for "ADJECTIVE"
+2022-01-14 18:01:27.697	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "year" (NOUN) to rhyme against
+2022-01-14 18:01:28.167	 Syllables of "imported" was missing
+2022-01-14 18:01:28.167	 Pronunciation of "imported" was not a JSONObject: "ɪm'pɔrtɪd"
+2022-01-14 18:01:28.454	 Pronunciation of "naturalized" was not a JSONObject: "'nætʃɝrʌ,laɪzd"
+2022-01-14 18:01:28.673	 Syllables of "established" was missing
+2022-01-14 18:01:28.673	 Pronunciation of "established" was not a JSONObject: "ɪ'stæblɪʃt"
+2022-01-14 18:01:28.94	 Pronunciation of "nonnative" was not a JSONObject: "'nɑ'neɪtɪv"
+2022-01-14 18:01:28.94	 Unrecognised part of speech for "nonnative" with definition "not being or composed of aborigines": "null"
+2022-01-14 18:01:30.915	 Pronunciation of "fantastical" was missing
+2022-01-14 18:01:30.915	 No pronunciation of "fantastical" could be found for "ADJECTIVE"
+2022-01-14 18:01:30.915	 "fantastical" (ADJECTIVE) did not have a pronunciation for "year" (NOUN) to rhyme against
+2022-01-14 18:01:31.593	 Unrecognised part of speech for "gothic" with definition "characteristic of the style of type commonly used for printing German": "null"
+2022-01-14 18:01:31.593	 Unrecognised part of speech for "gothic" with definition "of or relating to the language of the ancient Goths": "null"
+2022-01-14 18:01:31.593	 Unrecognised part of speech for "gothic" with definition "of or relating to the Goths": "null"
+2022-01-14 18:01:32.298	 Syllables of "oddish" was missing
+2022-01-14 18:01:32.298	 Pronunciation of "oddish" was missing
+2022-01-14 18:01:32.298	 "oddish" (ADJECTIVE) did not have a pronunciation for "year" (NOUN) to rhyme against
+2022-01-14 18:01:34.325	 Unrecognised part of speech for "singular" with definition "composed of one member, set, or kind": "null"
+2022-01-14 18:01:34.325	 Unrecognised part of speech for "singular" with definition "grammatical number category referring to a single item or unit": "null"
+2022-01-14 19:21:44.83	 Results of "though" was an empty array
+2022-01-14 19:21:45.069	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 19:21:48.267	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 19:23:57.019	 Results of "though" was an empty array
+2022-01-14 19:23:57.253	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 19:23:59.863	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 19:24:09.112	 Syllables of "me" was missing
+2022-01-14 19:24:13.663	 WordsAPI responded with word "he" when requesting "He".
+2022-01-14 19:24:13.663	 Syllables of "He" was missing
+2022-01-14 19:24:26.14	 WordsAPI responded with word "promise" when requesting "promises".
+2022-01-14 19:24:28.865	 Syllables of "miles" was missing
+2022-01-14 19:24:28.865	 Pronunciation of "miles" was not a JSONObject: "maɪlz"
+2022-01-14 19:24:28.865	 Rhymes of "miles" was present: {"all":"-aɪlz"}
+2022-01-14 19:24:28.865	 Rhymes of "miles" had no recognised keys not found in pronunciation field
+2022-01-14 19:24:28.865	 Results of "miles" was missing
+2022-01-14 19:25:08.9	 WordsAPI responded with word "bell" when requesting "bells".
+2022-01-14 19:26:54.292	 Results of "though" was an empty array
+2022-01-14 19:26:54.525	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 19:26:56.919	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 19:27:03.23	 Syllables of "the" was missing
+2022-01-14 19:27:03.231	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-14 19:27:03.231	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-14 19:27:03.231	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-14 19:31:18.358	 Unrecognised part of speech for "watch" with definition "observe or determine by looking": "null"
+2022-01-14 19:31:19.981	 Syllables of "miles" was missing
+2022-01-14 19:31:19.981	 Pronunciation of "miles" was not a JSONObject: "maɪlz"
+2022-01-14 19:31:19.981	 Rhymes of "miles" was present: {"all":"-aɪlz"}
+2022-01-14 19:31:19.981	 Rhymes of "miles" had no recognised keys not found in pronunciation field
+2022-01-14 19:31:19.981	 Results of "miles" was missing
+2022-01-14 19:31:25.075	 Syllables of "go" was missing
+2022-01-14 19:31:25.076	 Unrecognised part of speech for "go" with definition "pass, fare, or elapse; of a certain state of affairs or action": "null"
+2022-01-14 19:31:27.17	 WordsAPI responded with word "promise" when requesting "promises".

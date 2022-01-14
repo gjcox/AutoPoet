@@ -200,7 +200,16 @@ public class SuperWord extends Token {
         }
     }
 
+    /**
+     * 
+     * @param pos
+     * @param inclusiveUnknown
+     * @return null if the SuperWord has no SubWords of that type. 
+     */
     public ArrayList<SubWord> getSubWords(PartOfSpeech pos, boolean inclusiveUnknown) {
+        if (!this.populated) {
+            this.populate(); 
+        }
         switch (pos) {
             case ADJECTIVE:
                 return adjectives;
