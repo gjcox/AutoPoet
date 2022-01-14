@@ -16,6 +16,29 @@ public class SubWord {
         NOUN, PRONOUN, VERB, ADJECTIVE, ADVERB, PREPOSITION, CONJUCTION, DEFINITE_ARTICLE, UNKNOWN
     }
 
+    public static PartOfSpeech parsePoS(String pos) {
+        switch (pos.toLowerCase()) {
+            case "noun":
+                return PartOfSpeech.NOUN;
+            case "pronoun":
+                return PartOfSpeech.PRONOUN;
+            case "verb":
+                return PartOfSpeech.VERB;
+            case "adjective":
+                return PartOfSpeech.ADJECTIVE;
+            case "adverb":
+                return PartOfSpeech.ADVERB;
+            case "preposition":
+                return PartOfSpeech.PREPOSITION;
+            case "conjunction":
+                return PartOfSpeech.CONJUCTION;
+            case "definite article":
+                return PartOfSpeech.DEFINITE_ARTICLE;
+            default:
+                return PartOfSpeech.UNKNOWN;
+        }
+    }
+
     private static Set<String> knownFields = new HashSet<>(
             Arrays.asList("partOfSpeech", "definition", "synonyms", "antonyms", "verbGroup", "typeOf", "hasTypes",
                     "inCategory", "hasCategories", "partOf", "hasParts", "instanceOf", "hasInstances", "substanceOf",

@@ -11,18 +11,21 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+import utils.ParameterWrappers.FilterParameters;
+import utils.ParameterWrappers.SuggestionParameters;
 import words.Poem;
 import words.Stanza;
 import words.SubWord;
@@ -85,8 +88,14 @@ public class Controller {
 
     // Suggestion parameters
     @FXML
-    CheckBox chbxNoun, chbxPronoun, chbxVerb, chbxAdjective, chbxAdverb, chbxPreposition, chbxConjunction,
-            chbxDefiniteArticle, chbxUnknown;
+    TitledPane ttlpnCurrentStanza, ttlpnSuggestionParameters, ttlpnSuggestions;
+    @FXML
+    RadioButton rdbtnNoun, rdbtnPronoun, rdbtnVerb, rdbtnAdjective, rdbtnAdverb, rdbtnPreposition, rdbtnConjunction,
+            rdbtnDefiniteArticle, rdbtnUnknown;
+    @FXML
+    ToggleGroup tglgrpPoS;
+    @FXML
+    CheckBox chbxInclUnknown;
     @FXML
     CheckBox chbxSynonyms, chbxCommonlyTyped, chbxCommonlyCategorised, chbxPartOf, chbxHasParts, chbxSimilarTo;
     @FXML
@@ -95,7 +104,9 @@ public class Controller {
     TextField txtfldRhymeWith;
 
     // Buttons
+    @FXML
     ToggleButton tgbtnDirectEdit;
+    @FXML
     Button btnGetSuggestions;
 
     @FXML
@@ -130,49 +141,58 @@ public class Controller {
         lblActRhymeScheme.setText(focusedStanza.getActualRhymeScheme().toString());
     }
 
-    private CheckBox getPoSCheckBox(PartOfSpeech pos) {
+    private RadioButton getPoSRadioButton(PartOfSpeech pos) {
         switch (pos) {
             case ADJECTIVE:
-                return chbxAdjective;
+                return rdbtnAdjective;
             case ADVERB:
-                return chbxAdverb;
+                return rdbtnAdverb;
             case CONJUCTION:
-                return chbxConjunction;
+                return rdbtnConjunction;
             case DEFINITE_ARTICLE:
-                return chbxDefiniteArticle;
+                return rdbtnDefiniteArticle;
             case NOUN:
-                return chbxNoun;
+                return rdbtnNoun;
             case PREPOSITION:
-                return chbxPreposition;
+                return rdbtnPreposition;
             case PRONOUN:
-                return chbxPronoun;
+                return rdbtnPronoun;
             case UNKNOWN:
-                return chbxUnknown;
+                return rdbtnUnknown;
             case VERB:
-                return chbxVerb;
+                return rdbtnVerb;
             default:
                 LOG.writeTempLog(String.format(
-                        "getPoSCheckBox was passed an invalid PartOfSpeech \"%s\" and returned chbxUnknown", pos));
-                return chbxUnknown;
+                        "getPoSCheckBox was passed an invalid PartOfSpeech \"%s\" and returned rdbtnUnknown", pos));
+                return rdbtnUnknown;
         }
+    }
+
+    private PartOfSpeech getRadioButtonPoS() throws NullPointerException {
+        RadioButton radioButton = (RadioButton) tglgrpPoS.getSelectedToggle();
+        System.out.println("Selected part of speech: " + radioButton); 
+        if (radioButton == null) {
+            throw new NullPointerException();
+        }
+        return SubWord.parsePoS(radioButton.getText());
     }
 
     private void focusOnWord() {
         SuperWord superword = (SuperWord) focusedToken.token;
-        CheckBox checkBox;
+        RadioButton radioButton;
+        boolean hasSubWords = false;
         for (PartOfSpeech pos : PartOfSpeech.values()) {
-            checkBox = getPoSCheckBox(pos);
+            radioButton = getPoSRadioButton(pos);
+            radioButton.setSelected(false);
             if (superword.getSubWords(pos, false) == null) {
-                checkBox.setSelected(false);
-                checkBox.setDisable(true);
+                radioButton.setDisable(true);
             } else {
-                checkBox.setSelected(true);
-                checkBox.setDisable(false);
+                radioButton.setDisable(false);
+                hasSubWords = true;
             }
         }
-        checkBox = getPoSCheckBox(PartOfSpeech.UNKNOWN);        
-        checkBox.setSelected(true);
-        checkBox.setDisable(false);
+        chbxInclUnknown.setSelected(true);
+        btnGetSuggestions.setDisable(!hasSubWords);
     }
 
     TextFormatter<String> rhymeSchemeFormatter = new TextFormatter<>(change -> {
@@ -266,12 +286,18 @@ public class Controller {
 
     public void changePoemTextArea() {
         // refresh poem content
-        if (txtarPoem.isDisabled()) {
+        if (!txtarPoem.isVisible()) {
             txtarPoem.setText(poem.toString());
+            ttlpnCurrentStanza.setDisable(true);
+            ttlpnSuggestionParameters.setDisable(true);
+            ttlpnSuggestions.setDisable(true);
         } else {
             try {
                 poem = new Poem(ttlpnPoem.getText(), txtarPoem.getText());
                 tokenizePoem();
+                ttlpnCurrentStanza.setDisable(false);
+                ttlpnSuggestionParameters.setDisable(false);
+                ttlpnSuggestions.setDisable(false);
             } catch (IOException e) {
                 LOG.writeTempLog(e.toString() + "\n" + Arrays.toString(e.getStackTrace()));
                 Alert alert = new Alert(AlertType.ERROR);
@@ -289,6 +315,35 @@ public class Controller {
 
         // (un)hide anchor pane
         anpnPoem.setVisible(!anpnPoem.isVisible());
+    }
+
+    private SuggestionParameters getSuggestionParams() {
+        return new SuggestionParameters(chbxSynonyms.isSelected(), chbxCommonlyTyped.isSelected(),
+                chbxCommonlyCategorised.isSelected(), chbxPartOf.isSelected(),
+                chbxHasParts.isSelected(), chbxSimilarTo.isSelected());
+    }
+
+    private FilterParameters getFilterParams() {
+        return new FilterParameters(chbxRhymeWith.isSelected(), SuperWord.getSuperWord(txtfldRhymeWith.getText()),
+                null);
+    }
+
+    public void getSuggestions() {
+        System.out.println("getSuggestions()");
+        SuperWord superWord = (SuperWord) focusedToken.token;
+        SuggestionParameters suggestionParams = getSuggestionParams();
+        FilterParameters filterParams = getFilterParams();
+        try {
+            ArrayList<SuperWord> suggestions = superWord.getFilteredSuggestions(getRadioButtonPoS(), suggestionParams,
+                    filterParams);
+            System.out.println(suggestions.toString());
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setContentText("Please select a part of speech to get suggestions.");
+            alert.show();
+        } catch (Exception e) {
+            LOG.writeTempLog(e.getMessage() + "\n" + e.getStackTrace());
+        }
     }
 
 }

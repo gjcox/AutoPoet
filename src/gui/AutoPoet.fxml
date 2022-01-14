@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
@@ -15,6 +16,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -146,7 +148,7 @@
                               </AnchorPane>
                            </content>
                         </TitledPane>
-                        <TitledPane alignment="TOP_LEFT" animated="false" collapsible="false" text="Current Stanza" GridPane.rowIndex="1">
+                        <TitledPane fx:id="ttlpnCurrentStanza" alignment="TOP_LEFT" animated="false" collapsible="false" text="Current Stanza" GridPane.rowIndex="1">
                           <content>
                             <AnchorPane maxHeight="-Infinity" minHeight="-Infinity">
                                  <children>
@@ -194,7 +196,7 @@
                               </AnchorPane>
                           </content>
                         </TitledPane>
-                        <TitledPane animated="false" collapsible="false" prefWidth="569.0" text="Suggestion Parameters" GridPane.rowIndex="2">
+                        <TitledPane fx:id="ttlpnSuggestionParameters" animated="false" collapsible="false" prefWidth="569.0" text="Suggestion Parameters" GridPane.rowIndex="2">
                           <content>
                             <AnchorPane>
                                  <children>
@@ -223,18 +225,30 @@
                                                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Label styleClass="Heading 2" text="Parts of Speech" />
-                                                <CheckBox fx:id="chbxNoun" disable="true" mnemonicParsing="false" text="noun" GridPane.rowIndex="1" />
-                                                <CheckBox fx:id="chbxPronoun" disable="true" mnemonicParsing="false" text="pronoun" GridPane.rowIndex="2" />
-                                                <CheckBox fx:id="chbxVerb" disable="true" mnemonicParsing="false" text="verb" GridPane.rowIndex="3" />
-                                                <CheckBox fx:id="chbxAdjective" disable="true" mnemonicParsing="false" text="adjective" GridPane.rowIndex="4" />
-                                                <CheckBox fx:id="chbxAdverb" disable="true" mnemonicParsing="false" text="adverb" GridPane.rowIndex="5" />
-                                                <CheckBox fx:id="chbxPreposition" disable="true" mnemonicParsing="false" text="preposition" GridPane.rowIndex="6" />
-                                                <CheckBox fx:id="chbxConjunction" disable="true" mnemonicParsing="false" text="conjunction" GridPane.rowIndex="7" />
-                                                <CheckBox fx:id="chbxDefiniteArticle" disable="true" mnemonicParsing="false" text="definite article" GridPane.rowIndex="8" />
-                                                <CheckBox fx:id="chbxUnknown" mnemonicParsing="false" onAction="#test" selected="true" text="unknown" GridPane.rowIndex="9" />
+                                                <Label styleClass="Heading 2" text="Part of Speech" />
+                                                <CheckBox fx:id="chbxInclUnknown" mnemonicParsing="false" onAction="#test" selected="true" text="include unknowns in results" GridPane.rowIndex="11" />
+                                                <RadioButton fx:id="rdbtnNoun" disable="true" mnemonicParsing="false" text="noun" GridPane.rowIndex="1">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="tglgrpPoS" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton fx:id="rdbtnPronoun" disable="true" mnemonicParsing="false" text="pronoun" toggleGroup="$tglgrpPoS" GridPane.rowIndex="2" />
+                                                <RadioButton fx:id="rdbtnVerb" disable="true" mnemonicParsing="false" text="verb" toggleGroup="$tglgrpPoS" GridPane.rowIndex="3" />
+                                                <RadioButton fx:id="rdbtnAdjective" disable="true" mnemonicParsing="false" text="adjective" toggleGroup="$tglgrpPoS" GridPane.rowIndex="4" />
+                                                <RadioButton fx:id="rdbtnAdverb" disable="true" mnemonicParsing="false" text="adverb" toggleGroup="$tglgrpPoS" GridPane.rowIndex="5" />
+                                                <RadioButton fx:id="rdbtnPreposition" disable="true" mnemonicParsing="false" text="preposition" toggleGroup="$tglgrpPoS" GridPane.rowIndex="6" />
+                                                <RadioButton fx:id="rdbtnConjunction" disable="true" mnemonicParsing="false" text="conjunction" toggleGroup="$tglgrpPoS" GridPane.rowIndex="7" />
+                                                <RadioButton fx:id="rdbtnDefiniteArticle" disable="true" mnemonicParsing="false" text="definite article" toggleGroup="$tglgrpPoS" GridPane.rowIndex="8" />
+                                                <RadioButton fx:id="rdbtnUnknown" disable="true" mnemonicParsing="false" text="unknown" toggleGroup="$tglgrpPoS" GridPane.rowIndex="9" />
+                                                <Separator prefWidth="200.0" GridPane.rowIndex="10">
+                                                   <padding>
+                                                      <Insets top="2.0" />
+                                                   </padding>
+                                                </Separator>
                                              </children>
                                           </GridPane>
                                           <GridPane layoutX="10.0" layoutY="10.0" GridPane.columnIndex="1">
@@ -272,7 +286,7 @@
                                                 <Label styleClass="Heading 2" text="Poetic Devices" />
                                                 <FlowPane hgap="5.0" GridPane.rowIndex="1">
                                                    <children>
-                                                      <CheckBox fx:id="chbxRhymeWith" mnemonicParsing="false" onAction="#test" text="rhyme with" />
+                                                      <CheckBox fx:id="chbxRhymeWith" mnemonicParsing="false" text="rhyme with" />
                                                       <TextField fx:id="txtfldRhymeWith" onAction="#test" prefHeight="25.0" prefWidth="95.0">
                                                          <tooltip>
                                                             <Tooltip text="Choose which lines in the stanza to rhyme with, e.g. 1-2, 4. Leave blank to rhyme all lines." wrapText="true" />
@@ -291,7 +305,7 @@
                               </AnchorPane>
                           </content>
                         </TitledPane>
-                        <TitledPane alignment="TOP_LEFT" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" text="Suggestions" GridPane.rowIndex="3">
+                        <TitledPane fx:id="ttlpnSuggestions" alignment="TOP_LEFT" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" text="Suggestions" GridPane.rowIndex="3">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <cursor>
@@ -307,7 +321,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Button fx:id="btnGetSuggestions" mnemonicParsing="false" text="Get Suggestions" GridPane.valignment="TOP" />
+                                          <Button fx:id="btnGetSuggestions" disable="true" mnemonicParsing="false" onAction="#getSuggestions" text="Get Suggestions" GridPane.valignment="TOP" />
                                           <FlowPane fx:id="flwpnSuggestions" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>

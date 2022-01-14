@@ -4022,3 +4022,89 @@
 2022-01-14 19:31:25.075	 Syllables of "go" was missing
 2022-01-14 19:31:25.076	 Unrecognised part of speech for "go" with definition "pass, fare, or elapse; of a certain state of affairs or action": "null"
 2022-01-14 19:31:27.17	 WordsAPI responded with word "promise" when requesting "promises".
+2022-01-14 19:39:52.061	 Results of "though" was an empty array
+2022-01-14 19:39:52.302	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 19:39:55.293	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 19:40:27.909	 Unrecognised part of speech for "think" with definition "be capable of conscious thought": "null"
+2022-01-14 19:53:08.793	 Results of "though" was an empty array
+2022-01-14 19:53:09.083	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 19:53:11.522	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 19:53:21.733	 Syllables of "the" was missing
+2022-01-14 19:53:21.734	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-14 19:53:21.734	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-14 19:53:21.735	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-14 19:55:45.711	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-14 19:55:46.446	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-14 19:55:46.678	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-14 19:55:46.679	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-14 19:55:46.679	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-14 19:55:46.679	 Results of "beds" was missing
+2022-01-14 19:55:46.927	 Syllables of "heads" was missing
+2022-01-14 19:55:46.927	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-14 19:55:46.928	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-14 19:55:46.928	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-14 19:55:46.928	 Results of "heads" was missing
+2022-01-14 19:55:50.055	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-14 19:55:50.632	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-14 19:55:50.938	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-14 19:55:50.939	 Results of "arrived" was missing
+2022-01-14 19:55:51.389	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-14 19:55:51.602	 Syllables of "Blitzen" was missing
+2022-01-14 19:55:51.602	 Pronunciation of "Blitzen" was missing
+2022-01-14 19:55:51.602	 Results of "Blitzen" was missing
+2022-01-14 20:02:14.072	 Results of "though" was an empty array
+2022-01-14 20:02:14.307	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 20:02:17.134	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 20:05:08.958	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 20:05:09.242	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-14 20:05:11.881	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 20:07:34.963	 Results of "though" was an empty array
+2022-01-14 20:07:35.182	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 20:07:37.636	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 20:09:28.59	 Syllables of "t" was missing
+2022-01-14 20:14:16.012	 Results of "though" was an empty array
+2022-01-14 20:14:16.259	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 20:14:19.294	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 20:15:25.349	 Results of "though" was an empty array
+2022-01-14 20:15:25.63	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 20:15:28.566	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 20:16:58.377	 Results of "though" was an empty array
+2022-01-14 20:16:58.612	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 20:17:01.418	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 20:17:38.158	 Syllables of "it" was missing
+2022-01-14 20:42:46.175	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 20:42:46.462	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-14 20:42:48.766	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 20:44:17.281	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 20:44:17.525	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-14 20:44:19.74	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 20:50:26.205	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 20:50:26.454	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-14 20:50:28.737	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-14 20:52:47.962	 Pronunciation of "unnaturalised" was missing
+2022-01-14 20:52:47.962	 No pronunciation of "unnaturalised" could be found for "ADJECTIVE"
+2022-01-14 20:52:47.962	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "year" (null) to rhyme against
+2022-01-14 20:52:48.193	 Pronunciation of "unnaturalized" was missing
+2022-01-14 20:52:48.193	 No pronunciation of "unnaturalized" could be found for "ADJECTIVE"
+2022-01-14 20:52:48.194	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "year" (null) to rhyme against
+2022-01-14 20:52:49.064	 Syllables of "imported" was missing
+2022-01-14 20:52:49.065	 Pronunciation of "imported" was not a JSONObject: "ɪm'pɔrtɪd"
+2022-01-14 20:52:49.369	 Pronunciation of "naturalized" was not a JSONObject: "'nætʃɝrʌ,laɪzd"
+2022-01-14 20:52:49.603	 Syllables of "established" was missing
+2022-01-14 20:52:49.603	 Pronunciation of "established" was not a JSONObject: "ɪ'stæblɪʃt"
+2022-01-14 20:52:49.85	 Pronunciation of "nonnative" was not a JSONObject: "'nɑ'neɪtɪv"
+2022-01-14 20:52:49.85	 Unrecognised part of speech for "nonnative" with definition "not being or composed of aborigines": "null"
+2022-01-14 20:52:51.892	 Pronunciation of "fantastical" was missing
+2022-01-14 20:52:51.893	 No pronunciation of "fantastical" could be found for "ADJECTIVE"
+2022-01-14 20:52:51.893	 "fantastical" (ADJECTIVE) did not have a pronunciation for "year" (null) to rhyme against
+2022-01-14 20:52:52.585	 Unrecognised part of speech for "gothic" with definition "characteristic of the style of type commonly used for printing German": "null"
+2022-01-14 20:52:52.585	 Unrecognised part of speech for "gothic" with definition "of or relating to the language of the ancient Goths": "null"
+2022-01-14 20:52:52.585	 Unrecognised part of speech for "gothic" with definition "of or relating to the Goths": "null"
+2022-01-14 20:52:53.331	 Syllables of "oddish" was missing
+2022-01-14 20:52:53.331	 Pronunciation of "oddish" was missing
+2022-01-14 20:52:53.331	 "oddish" (ADJECTIVE) did not have a pronunciation for "year" (null) to rhyme against
+2022-01-14 20:52:55.382	 Unrecognised part of speech for "singular" with definition "composed of one member, set, or kind": "null"
+2022-01-14 20:52:55.382	 Unrecognised part of speech for "singular" with definition "grammatical number category referring to a single item or unit": "null"
+2022-01-14 20:54:01.132	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-14 20:54:01.359	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-14 20:54:03.913	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
