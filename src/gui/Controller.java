@@ -5,9 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -22,11 +21,14 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionParameters;
 import words.Poem;
@@ -41,39 +43,6 @@ import static config.Configuration.LOG;
 public class Controller {
 
     private static final String SUGGESTION_CLASS = "suggestion";
-
-    private static class IndexedTokenLabel extends Label {
-        private static final String SELECTABLE_CLASS = "selectableToken";
-        private static final String SELECTED_CLASS = "selectedToken";
-        private Token token;
-        private int stanzaIndex;
-        private int lineIndex;
-        private int tokenIndex;
-        private PartOfSpeech pos;
-        private boolean inclUnknown = true;
-        private ArrayList<SuperWord> suggestions;
-
-        private IndexedTokenLabel(Controller parentController, Token token, int stanzaIndex, int lineIndex,
-                int tokenIndex,
-                boolean clickable) {
-            super();
-            this.setText(token.getPlaintext());
-            this.token = token;
-            this.stanzaIndex = stanzaIndex;
-            this.lineIndex = lineIndex;
-            this.tokenIndex = tokenIndex;
-            if (clickable) {
-                this.getStyleClass().add(SELECTABLE_CLASS);
-
-                this.setOnMouseClicked(ActionEvent -> {
-                    parentController.unfocusToken();
-                    parentController.focusedToken = this;
-                    parentController.focusOnStanza(this.stanzaIndex);
-                    parentController.focusOnWord();
-                });
-            }
-        }
-    }
 
     private Poem poem;
     private String seeLog = "See log for more information.";
@@ -125,6 +94,40 @@ public class Controller {
     @FXML
     public void initialize() {
         txtfldIntRhymeScheme.setTextFormatter(rhymeSchemeFormatter);
+
+    }
+
+    private static class IndexedTokenLabel extends Label {
+        private static final String SELECTABLE_CLASS = "selectableToken";
+        private static final String SELECTED_CLASS = "selectedToken";
+        private Token token;
+        private int stanzaIndex;
+        private int lineIndex;
+        private int tokenIndex;
+        private PartOfSpeech pos;
+        private boolean inclUnknown = true;
+        private ArrayList<SuperWord> suggestions;
+
+        private IndexedTokenLabel(Controller parentController, Token token, int stanzaIndex, int lineIndex,
+                int tokenIndex,
+                boolean clickable) {
+            super();
+            this.setText(token.getPlaintext());
+            this.token = token;
+            this.stanzaIndex = stanzaIndex;
+            this.lineIndex = lineIndex;
+            this.tokenIndex = tokenIndex;
+            if (clickable) {
+                this.getStyleClass().add(SELECTABLE_CLASS);
+
+                this.setOnMouseClicked(actionEvent -> {
+                    parentController.unfocusToken();
+                    parentController.focusedToken = this;
+                    parentController.focusOnStanza(this.stanzaIndex);
+                    parentController.focusOnWord();
+                });
+            }
+        }
     }
 
     public void test(ActionEvent e) {
@@ -218,7 +221,6 @@ public class Controller {
         }
 
         String text = change.getControlNewText();
-
         if (!text.matches("[A-Z#]*")) {
             return null;
         }
@@ -346,6 +348,24 @@ public class Controller {
                 null);
     }
 
+    private void makeSubstitution(SuperWord suggestion) {
+        poem.substituteWord(focusedToken.stanzaIndex, focusedToken.lineIndex, focusedToken.tokenIndex,
+                suggestion);
+
+        IndexedTokenLabel newTokenLabel = new IndexedTokenLabel(this, suggestion, focusedToken.stanzaIndex,
+                focusedToken.lineIndex, focusedToken.tokenIndex, true);
+        newTokenLabel.pos = focusedToken.pos; 
+
+        // replace old label in GUI
+        FlowPane guiLine = (FlowPane) focusedToken.getParent();
+        guiLine.getChildren().remove(focusedToken.tokenIndex);
+        guiLine.getChildren().add(focusedToken.tokenIndex, newTokenLabel);
+
+        // focus on new token by simulating it being clicked on 
+        Event.fireEvent(newTokenLabel, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
+                false, false, false, false, true, false, false, false, false, false, null));
+    }
+
     private void displaySuggestions() {
         boolean snapToPixel = true;
         boolean cache = false;
@@ -360,7 +380,9 @@ public class Controller {
                 label.getStyleClass().add(SUGGESTION_CLASS);
                 label.setSnapToPixel(snapToPixel);
                 label.setCache(cache);
-
+                label.setOnMouseClicked(actionEvent -> {
+                    makeSubstitution(suggestion);
+                });
                 flwpnSuggestions.getChildren().add(label);
             }
         } else {
@@ -384,8 +406,8 @@ public class Controller {
 
             focusedToken.suggestions = superWord.getFilteredSuggestions(focusedToken.pos, suggestionParams,
                     filterParams);
-            displaySuggestions();
 
+            displaySuggestions();
         }
     }
 

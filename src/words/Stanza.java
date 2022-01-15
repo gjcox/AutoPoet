@@ -35,6 +35,11 @@ public class Stanza {
         lines.add(parsedLine);
     }
 
+    /**
+     * 
+     * @param lineNumber
+     * @return the last SuperWord in a line; null if no SuperWords were found. 
+     */
     private SuperWord getLastWord(int lineNumber) {
         ArrayList<Token> line = lines.get(lineNumber);
         int index = line.size() - 1;
@@ -73,6 +78,17 @@ public class Stanza {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public void substituteWord(int lineIndex, int tokenIndex, SuperWord newWord) {
+        ArrayList<Token> line = lines.get(lineIndex);
+        SuperWord lastWord =  getLastWord(lineIndex); 
+        boolean updateRhymeScheme = lastWord != null && lastWord.equals(line.remove(tokenIndex));
+        line.add(tokenIndex, newWord);
+
+        if (updateRhymeScheme)
+            evaluateRhymingScheme();
+
     }
 
     public String toString() {

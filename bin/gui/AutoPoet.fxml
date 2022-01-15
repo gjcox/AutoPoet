@@ -324,7 +324,7 @@
                                       </rowConstraints>
                                        <children>
                                           <Button fx:id="btnGetSuggestions" disable="true" mnemonicParsing="false" onAction="#getSuggestions" text="Get Suggestions" GridPane.valignment="TOP" />
-                                          <ScrollPane fx:id="scrlpnSuggestions" cacheShape="false" fitToWidth="true" maxHeight="1.7976931348623157E308" GridPane.rowIndex="2">
+                                          <ScrollPane fx:id="scrlpnSuggestions" cacheShape="false" fitToWidth="true" focusTraversable="false" maxHeight="1.7976931348623157E308" GridPane.rowIndex="2">
                                              <content>
                                                 <FlowPane fx:id="flwpnSuggestions" hgap="5.0" prefWrapLength="0.0" vgap="5.0">
                                                    <padding>

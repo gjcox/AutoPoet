@@ -61,7 +61,7 @@ public class Poem {
             title = title.substring(title.lastIndexOf(File.separator) + 1);
         }
 
-        InputStream stream = new ByteArrayInputStream((poemString.trim()).getBytes()); 
+        InputStream stream = new ByteArrayInputStream((poemString.trim()).getBytes());
         fileReader = new BufferedReader(new InputStreamReader(stream)); // relative to where program is executed
         stanzas.add(new Stanza());
         String line = "";
@@ -106,6 +106,10 @@ public class Poem {
 
     public int getLineCount() {
         return this.lineCount;
+    }
+
+    public void substituteWord(int stanzaIndex, int lineIndex, int tokenIndex, SuperWord newWord) {
+        stanzas.get(stanzaIndex).substituteWord(lineIndex, tokenIndex, newWord);
     }
 
     public String getString() {
