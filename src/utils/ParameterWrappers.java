@@ -22,7 +22,6 @@ public interface ParameterWrappers {
             this.similarTo = similarTo;
         }
 
-
         public String toString() {
             StringBuilder builder = new StringBuilder("[");
             if (synonyms) {
@@ -44,7 +43,10 @@ public interface ParameterWrappers {
                 builder.append("similarTo,");
             }
 
-            builder.deleteCharAt(builder.lastIndexOf(",")); 
+            int commaIndex = builder.lastIndexOf(",");
+            if (commaIndex > -1) {
+                builder.deleteCharAt(commaIndex);
+            }
             builder.append("]");
             return builder.toString();
         }
@@ -93,7 +95,10 @@ public interface ParameterWrappers {
                 builder.append(String.format("(%s),", rhymePos));
             }
 
-            builder.deleteCharAt(builder.lastIndexOf(",")); 
+            int commaIndex = builder.lastIndexOf(",");
+            if (commaIndex > -1) {
+                builder.deleteCharAt(commaIndex);
+            }
             builder.append("}");
             return builder.toString();
         }

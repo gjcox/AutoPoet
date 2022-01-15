@@ -1,0 +1,22 @@
+.selectableToken:hover {
+    -fx-background-color: LightSkyBlue;
+}
+
+.selectedToken {
+    -fx-background-color: SkyBlue;
+}
+
+.suggestion {
+    -fx-background-radius: 5px;
+    -fx-background-color: PaleGreen;
+
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: SpringGreen;
+
+    -fx-padding: 0px 5px 0px 5px;
+}
+
+.suggestion:hover {
+    -fx-background-color: SpringGreen;
+}

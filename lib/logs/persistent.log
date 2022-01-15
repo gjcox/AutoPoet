@@ -4108,3 +4108,465 @@
 2022-01-14 20:54:01.132	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
 2022-01-14 20:54:01.359	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
 2022-01-14 20:54:03.913	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 12:22:57.015	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 12:22:57.224	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-15 12:22:59.41	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 12:36:49.909	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 12:36:50.132	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-15 12:36:54.509	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 12:39:54.367	 Results of "though" was an empty array
+2022-01-15 12:39:54.623	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 12:39:57.665	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 12:43:31.765	 Results of "though" was an empty array
+2022-01-15 12:43:32.012	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 12:43:34.468	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 12:45:02.264	 Results of "though" was an empty array
+2022-01-15 12:45:02.478	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 12:45:05.578	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 12:49:04.51	 Results of "though" was an empty array
+2022-01-15 12:49:04.776	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 12:49:07.316	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 12:51:00.358	 Results of "though" was an empty array
+2022-01-15 12:51:00.721	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 12:51:07.1	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 13:01:08.236	 Syllables of "" was missing
+2022-01-15 13:01:08.236	 Pronunciation of "" was missing
+2022-01-15 13:01:08.236	 Results of "" was missing
+2022-01-15 13:01:08.236	 "" (null) did not have a pronunciation for "approach" (VERB) to rhyme against
+2022-01-15 13:01:08.449	 Syllables of "come near" was missing
+2022-01-15 13:01:08.449	 "" (null) did not have a pronunciation for "come near" (VERB) to rhyme against
+2022-01-15 13:01:08.662	 Syllables of "come on" was missing
+2022-01-15 13:01:08.662	 Pronunciation of "come on" was missing
+2022-01-15 13:01:08.662	 "come on" (VERB) did not have a pronunciation for "" (null) to rhyme against
+2022-01-15 13:01:08.901	 Syllables of "draw close" was missing
+2022-01-15 13:01:08.901	 Pronunciation of "draw close" was missing
+2022-01-15 13:01:08.902	 "draw close" (VERB) did not have a pronunciation for "" (null) to rhyme against
+2022-01-15 13:01:09.152	 Syllables of "draw near" was missing
+2022-01-15 13:01:09.152	 "" (null) did not have a pronunciation for "draw near" (VERB) to rhyme against
+2022-01-15 13:01:09.375	 Syllables of "go up" was missing
+2022-01-15 13:01:09.375	 Pronunciation of "go up" was missing
+2022-01-15 13:01:09.375	 "go up" (VERB) did not have a pronunciation for "" (null) to rhyme against
+2022-01-15 13:01:28.906	 "come on" (VERB) did not have a pronunciation for "roach" (null) to rhyme against
+2022-01-15 13:01:28.906	 "come on" (VERB) did not have a pronunciation for "roach" (null) to rhyme against
+2022-01-15 13:01:28.906	 "draw close" (VERB) did not have a pronunciation for "roach" (null) to rhyme against
+2022-01-15 13:01:28.906	 "draw close" (VERB) did not have a pronunciation for "roach" (null) to rhyme against
+2022-01-15 13:01:28.906	 "go up" (VERB) did not have a pronunciation for "roach" (null) to rhyme against
+2022-01-15 13:01:28.906	 "go up" (VERB) did not have a pronunciation for "roach" (null) to rhyme against
+2022-01-15 13:25:33.101	 Results of "though" was an empty array
+2022-01-15 13:25:33.342	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 13:25:35.81	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 13:25:52.012	 WordsAPI responded with word "promise" when requesting "promises".
+2022-01-15 13:25:54.316	 WordsAPI responded with word "and" when requesting "And".
+2022-01-15 13:25:55.756	 WordsAPI responded with word "whose" when requesting "Whose".
+2022-01-15 13:25:55.756	 Syllables of "Whose" was missing
+2022-01-15 13:25:55.756	 Pronunciation of "Whose" was not a JSONObject: "huz"
+2022-01-15 13:25:55.757	 Rhymes of "Whose" was present: {"all":"-uz"}
+2022-01-15 13:25:55.757	 Rhymes of "Whose" had no recognised keys not found in pronunciation field
+2022-01-15 13:25:57.114	 Syllables of "these" was missing
+2022-01-15 13:25:57.114	 Pronunciation of "these" was not a JSONObject: "ðiz"
+2022-01-15 13:25:57.114	 Rhymes of "these" was present: {"all":"-iz"}
+2022-01-15 13:25:57.114	 Rhymes of "these" had no recognised keys not found in pronunciation field
+2022-01-15 13:25:57.115	 Results of "these" was missing
+2022-01-15 13:25:58.374	 Unrecognised part of speech for "think" with definition "be capable of conscious thought": "null"
+2022-01-15 13:25:59.161	 WordsAPI responded with word "i" when requesting "I".
+2022-01-15 13:25:59.161	 Syllables of "I" was missing
+2022-01-15 13:26:05.274	 Syllables of "s" was missing
+2022-01-15 14:10:02.837	 Syllables of "the" was missing
+2022-01-15 14:10:02.837	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-15 14:10:02.837	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-15 14:10:02.837	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-15 14:10:17.155	 Syllables of "with" was missing
+2022-01-15 14:10:17.155	 Pronunciation of "with" was not a JSONObject: "wɪð"
+2022-01-15 14:10:17.155	 Rhymes of "with" was present: {"all":"-ɪð"}
+2022-01-15 14:10:17.155	 Rhymes of "with" had no recognised keys not found in pronunciation field
+2022-01-15 14:10:17.711	 Syllables of "up" was missing
+2022-01-15 14:10:17.712	 Unrecognised part of speech for "up" with definition "to a higher intensity": "null"
+2022-01-15 14:10:17.712	 Unrecognised part of speech for "up" with definition "to a more central or a more northerly place": "null"
+2022-01-15 14:10:19.221	 Syllables of "his" was missing
+2022-01-15 14:10:19.221	 Pronunciation of "his" was not a JSONObject: "hɪz"
+2022-01-15 14:10:19.221	 Rhymes of "his" was present: {"all":"-ɪz"}
+2022-01-15 14:10:19.222	 Rhymes of "his" had no recognised keys not found in pronunciation field
+2022-01-15 14:10:19.222	 Results of "his" was missing
+2022-01-15 14:39:18.088	 Results of "though" was an empty array
+2022-01-15 14:39:18.314	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 14:39:20.793	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 14:41:46.349	 Results of "though" was an empty array
+2022-01-15 14:41:46.576	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 14:41:48.964	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 14:43:44.194	 Results of "though" was an empty array
+2022-01-15 14:43:44.424	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 14:43:47.233	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 14:47:39.313	 Results of "though" was an empty array
+2022-01-15 14:47:39.58	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 14:47:42.123	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 14:49:20.73	 Results of "though" was an empty array
+2022-01-15 14:49:21.047	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 14:49:23.576	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 14:53:40.091	 Results of "though" was an empty array
+2022-01-15 14:53:40.329	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 14:53:42.722	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:00:58.837	 Results of "though" was an empty array
+2022-01-15 15:00:59.08	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:01:02.45	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:10:06.579	 Results of "though" was an empty array
+2022-01-15 15:10:06.81	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:10:09.883	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:10:14.372	 Unrecognised part of speech for "think" with definition "be capable of conscious thought": "null"
+2022-01-15 15:11:21.768	 Syllables of "chess piece" was missing
+2022-01-15 15:11:21.768	 Pronunciation of "chess piece" was missing
+2022-01-15 15:11:22.047	 Syllables of "military personnel" was missing
+2022-01-15 15:11:22.047	 Pronunciation of "military personnel" was missing
+2022-01-15 15:11:22.257	 Syllables of "troops" was missing
+2022-01-15 15:11:22.257	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-15 15:11:23.216	 Syllables of "gymnastic apparatus" was missing
+2022-01-15 15:11:23.216	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-15 15:11:24.071	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-15 15:11:24.071	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-15 15:11:24.317	 Syllables of "equid" was missing
+2022-01-15 15:11:24.317	 Pronunciation of "equid" was missing
+2022-01-15 15:12:33.743	 Results of "though" was an empty array
+2022-01-15 15:12:33.959	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:12:36.384	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:14:05.669	 Results of "though" was an empty array
+2022-01-15 15:14:05.914	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:14:08.534	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:16:03.183	 Results of "though" was an empty array
+2022-01-15 15:16:03.456	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:16:05.752	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:16:18.994	 Syllables of "chess piece" was missing
+2022-01-15 15:16:18.994	 Pronunciation of "chess piece" was missing
+2022-01-15 15:16:19.236	 Syllables of "military personnel" was missing
+2022-01-15 15:16:19.236	 Pronunciation of "military personnel" was missing
+2022-01-15 15:16:19.468	 Syllables of "troops" was missing
+2022-01-15 15:16:19.469	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-15 15:16:20.379	 Syllables of "gymnastic apparatus" was missing
+2022-01-15 15:16:20.379	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-15 15:16:20.819	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-15 15:16:20.819	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-15 15:16:21.066	 Syllables of "equid" was missing
+2022-01-15 15:16:21.066	 Pronunciation of "equid" was missing
+2022-01-15 15:19:05.77	 Results of "though" was an empty array
+2022-01-15 15:19:06.055	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:19:08.771	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:19:18.105	 Syllables of "chess piece" was missing
+2022-01-15 15:19:18.106	 Pronunciation of "chess piece" was missing
+2022-01-15 15:19:18.359	 Syllables of "military personnel" was missing
+2022-01-15 15:19:18.359	 Pronunciation of "military personnel" was missing
+2022-01-15 15:19:18.683	 Syllables of "troops" was missing
+2022-01-15 15:19:18.683	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-15 15:19:19.724	 Syllables of "gymnastic apparatus" was missing
+2022-01-15 15:19:19.724	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-15 15:19:20.173	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-15 15:19:20.173	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-15 15:19:20.4	 Syllables of "equid" was missing
+2022-01-15 15:19:20.4	 Pronunciation of "equid" was missing
+2022-01-15 15:21:21.187	 Results of "though" was an empty array
+2022-01-15 15:21:21.442	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:21:24.177	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:21:35.087	 Syllables of "chess piece" was missing
+2022-01-15 15:21:35.088	 Pronunciation of "chess piece" was missing
+2022-01-15 15:21:35.288	 Syllables of "military personnel" was missing
+2022-01-15 15:21:35.289	 Pronunciation of "military personnel" was missing
+2022-01-15 15:21:35.548	 Syllables of "troops" was missing
+2022-01-15 15:21:35.548	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-15 15:21:36.501	 Syllables of "gymnastic apparatus" was missing
+2022-01-15 15:21:36.501	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-15 15:21:36.955	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-15 15:21:36.955	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-15 15:21:37.2	 Syllables of "equid" was missing
+2022-01-15 15:21:37.201	 Pronunciation of "equid" was missing
+2022-01-15 15:24:17.907	 Results of "though" was an empty array
+2022-01-15 15:24:18.154	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:24:20.536	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:24:31.42	 Syllables of "chess piece" was missing
+2022-01-15 15:24:31.42	 Pronunciation of "chess piece" was missing
+2022-01-15 15:24:31.705	 Syllables of "military personnel" was missing
+2022-01-15 15:24:31.706	 Pronunciation of "military personnel" was missing
+2022-01-15 15:24:31.969	 Syllables of "troops" was missing
+2022-01-15 15:24:31.97	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-15 15:24:32.974	 Syllables of "gymnastic apparatus" was missing
+2022-01-15 15:24:32.974	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-15 15:24:33.437	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-15 15:24:33.437	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-15 15:24:33.752	 Syllables of "equid" was missing
+2022-01-15 15:24:33.753	 Pronunciation of "equid" was missing
+2022-01-15 15:25:30.397	 Unrecognised part of speech for "singular" with definition "composed of one member, set, or kind": "null"
+2022-01-15 15:25:30.398	 Unrecognised part of speech for "singular" with definition "grammatical number category referring to a single item or unit": "null"
+2022-01-15 15:25:31.003	 Pronunciation of "homophile" was missing
+2022-01-15 15:25:31.003	 No pronunciation of "homophile" could be found for "ADJECTIVE"
+2022-01-15 15:25:31.004	 "homophile" (ADJECTIVE) did not have a pronunciation for "range" (null) to rhyme against
+2022-01-15 15:25:31.004	 "homophile" (ADJECTIVE) did not have a pronunciation for "range" (null) to rhyme against
+2022-01-15 15:25:36.286	 No pronunciation of "homophile" could be found for "ADJECTIVE"
+2022-01-15 15:25:36.286	 "homophile" (ADJECTIVE) did not have a pronunciation for "range" (null) to rhyme against
+2022-01-15 15:25:36.286	 "homophile" (ADJECTIVE) did not have a pronunciation for "range" (null) to rhyme against
+2022-01-15 15:25:49.377	 No pronunciation of "homophile" could be found for "ADJECTIVE"
+2022-01-15 15:25:49.377	 "homophile" (ADJECTIVE) did not have a pronunciation for "range" (null) to rhyme against
+2022-01-15 15:25:49.377	 "homophile" (ADJECTIVE) did not have a pronunciation for "range" (null) to rhyme against
+2022-01-15 15:31:23.815	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:31:24.058	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-15 15:31:26.564	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:33:30.845	 Results of "though" was an empty array
+2022-01-15 15:33:31.073	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:33:33.92	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:39:34.81	 Results of "though" was an empty array
+2022-01-15 15:39:35.046	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:39:37.421	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:40:52.288	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:40:52.771	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-15 15:40:55.275	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:41:16.068	 Syllables of "s" was missing
+2022-01-15 15:41:25.337	 WordsAPI responded with word "the" when requesting "The".
+2022-01-15 15:41:25.337	 Syllables of "The" was missing
+2022-01-15 15:41:25.337	 Pronunciation of "The" was not a JSONObject: "ðʌ"
+2022-01-15 15:41:25.337	 Rhymes of "The" was present: {"all":"-ə"}
+2022-01-15 15:41:25.337	 Rhymes of "The" had no recognised keys not found in pronunciation field
+2022-01-15 15:41:26.273	 WordsAPI responded with word "but" when requesting "But".
+2022-01-15 15:41:26.613	 WordsAPI responded with word "and" when requesting "And".
+2022-01-15 15:41:27.382	 Syllables of "miles" was missing
+2022-01-15 15:41:27.383	 Pronunciation of "miles" was not a JSONObject: "maɪlz"
+2022-01-15 15:41:27.383	 Rhymes of "miles" was present: {"all":"-aɪlz"}
+2022-01-15 15:41:27.383	 Rhymes of "miles" had no recognised keys not found in pronunciation field
+2022-01-15 15:41:27.384	 Results of "miles" was missing
+2022-01-15 15:44:43.192	 Results of "though" was an empty array
+2022-01-15 15:44:43.41	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:44:45.814	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:46:33.047	 Results of "though" was an empty array
+2022-01-15 15:46:33.354	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:46:35.688	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 15:47:31.604	 Syllables of "prison cell" was missing
+2022-01-15 15:47:31.605	 Pronunciation of "prison cell" was missing
+2022-01-15 15:47:31.851	 Syllables of "jail cell" was missing
+2022-01-15 15:47:31.851	 Pronunciation of "jail cell" was missing
+2022-01-15 15:53:07.81	 Syllables of "overstated" was missing
+2022-01-15 15:53:07.811	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-01-15 15:53:08.419	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-01-15 15:53:08.691	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-01-15 15:53:08.692	 Results of "sated" was missing
+2022-01-15 15:54:37.868	 Syllables of "overstated" was missing
+2022-01-15 15:54:37.868	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-01-15 15:54:39.011	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-01-15 15:54:39.289	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-01-15 15:54:39.291	 Results of "sated" was missing
+2022-01-15 15:54:43.541	 Syllables of "you" was missing
+2022-01-15 15:54:43.542	 Pronunciation of "you" was not a JSONObject: "ju"
+2022-01-15 15:54:43.542	 Rhymes of "you" was present: {"all":"-u"}
+2022-01-15 15:54:43.542	 Rhymes of "you" had no recognised keys not found in pronunciation field
+2022-01-15 15:58:23.979	 Syllables of "overstated" was missing
+2022-01-15 15:58:23.979	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-01-15 15:58:24.45	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-01-15 15:58:24.694	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-01-15 15:58:24.695	 Results of "sated" was missing
+2022-01-15 15:59:32.936	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 15:59:33.178	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-15 15:59:35.371	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 16:00:30.035	 Results of "though" was an empty array
+2022-01-15 16:00:30.329	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 16:00:32.824	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 16:02:14.199	 Results of "though" was an empty array
+2022-01-15 16:02:14.471	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 16:02:17.012	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 16:03:46.726	 Results of "though" was an empty array
+2022-01-15 16:03:46.995	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 16:03:49.717	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 16:05:31.374	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-15 16:05:35.216	 Syllables of "miles" was missing
+2022-01-15 16:05:35.216	 Pronunciation of "miles" was not a JSONObject: "maɪlz"
+2022-01-15 16:05:35.216	 Rhymes of "miles" was present: {"all":"-aɪlz"}
+2022-01-15 16:05:35.216	 Rhymes of "miles" had no recognised keys not found in pronunciation field
+2022-01-15 16:05:35.216	 Results of "miles" was missing
+2022-01-15 16:05:38.512	 WordsAPI responded with word "promise" when requesting "promises".
+2022-01-15 16:05:39.496	 Syllables of "go" was missing
+2022-01-15 16:05:39.497	 Unrecognised part of speech for "go" with definition "pass, fare, or elapse; of a certain state of affairs or action": "null"
+2022-01-15 16:05:42.677	 Syllables of "to" was missing
+2022-01-15 16:05:42.677	 Pronunciation of "to" was not a JSONObject: "tu"
+2022-01-15 16:05:42.677	 Rhymes of "to" was present: {"all":"-u"}
+2022-01-15 16:05:42.677	 Rhymes of "to" had no recognised keys not found in pronunciation field
+2022-01-15 16:05:44.393	 WordsAPI responded with word "my" when requesting "My".
+2022-01-15 16:05:44.393	 Syllables of "My" was missing
+2022-01-15 16:05:44.393	 Pronunciation of "My" was not a JSONObject: "maɪ"
+2022-01-15 16:05:44.394	 Rhymes of "My" was present: {"all":"-aɪ"}
+2022-01-15 16:05:44.394	 Rhymes of "My" had no recognised keys not found in pronunciation field
+2022-01-15 16:05:44.394	 Results of "My" was missing
+2022-01-15 16:05:45.78	 WordsAPI responded with word "the" when requesting "The".
+2022-01-15 16:05:45.78	 Syllables of "The" was missing
+2022-01-15 16:05:45.78	 Pronunciation of "The" was not a JSONObject: "ðʌ"
+2022-01-15 16:05:45.781	 Rhymes of "The" was present: {"all":"-ə"}
+2022-01-15 16:05:45.781	 Rhymes of "The" had no recognised keys not found in pronunciation field
+2022-01-15 16:05:48.714	 WordsAPI responded with word "whose" when requesting "Whose".
+2022-01-15 16:05:48.714	 Syllables of "Whose" was missing
+2022-01-15 16:05:48.714	 Pronunciation of "Whose" was not a JSONObject: "huz"
+2022-01-15 16:05:48.714	 Rhymes of "Whose" was present: {"all":"-uz"}
+2022-01-15 16:05:48.714	 Rhymes of "Whose" had no recognised keys not found in pronunciation field
+2022-01-15 16:05:52.685	 WordsAPI responded with word "his" when requesting "His".
+2022-01-15 16:05:52.685	 Syllables of "His" was missing
+2022-01-15 16:05:52.685	 Pronunciation of "His" was not a JSONObject: "hɪz"
+2022-01-15 16:05:52.685	 Rhymes of "His" was present: {"all":"-ɪz"}
+2022-01-15 16:05:52.685	 Rhymes of "His" had no recognised keys not found in pronunciation field
+2022-01-15 16:05:52.685	 Results of "His" was missing
+2022-01-15 16:05:54.772	 WordsAPI responded with word "he" when requesting "He".
+2022-01-15 16:05:54.772	 Syllables of "He" was missing
+2022-01-15 16:05:55.782	 WordsAPI responded with word "to" when requesting "To".
+2022-01-15 16:05:55.782	 Syllables of "To" was missing
+2022-01-15 16:05:55.782	 Pronunciation of "To" was not a JSONObject: "tu"
+2022-01-15 16:05:55.782	 Rhymes of "To" was present: {"all":"-u"}
+2022-01-15 16:05:55.782	 Rhymes of "To" had no recognised keys not found in pronunciation field
+2022-01-15 16:06:02.638	 Syllables of "without" was missing
+2022-01-15 16:06:02.638	 Pronunciation of "without" was not a JSONObject: "wɪ'θaʊt"
+2022-01-15 16:06:02.638	 Rhymes of "without" was present: {"all":"-aʊt"}
+2022-01-15 16:06:02.638	 Rhymes of "without" had no recognised keys not found in pronunciation field
+2022-01-15 16:06:33.333	 Syllables of "chess piece" was missing
+2022-01-15 16:06:33.333	 Pronunciation of "chess piece" was missing
+2022-01-15 16:06:33.572	 Syllables of "military personnel" was missing
+2022-01-15 16:06:33.572	 Pronunciation of "military personnel" was missing
+2022-01-15 16:06:33.845	 Syllables of "troops" was missing
+2022-01-15 16:06:33.845	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-15 16:06:35.539	 Syllables of "gymnastic apparatus" was missing
+2022-01-15 16:06:35.539	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-15 16:06:35.989	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-15 16:06:35.989	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-15 16:06:36.22	 Syllables of "equid" was missing
+2022-01-15 16:06:36.22	 Pronunciation of "equid" was missing
+2022-01-15 16:08:01.833	 Results of "though" was an empty array
+2022-01-15 16:08:02.089	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 16:08:04.562	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 16:08:11.472	 Syllables of "without" was missing
+2022-01-15 16:08:11.473	 Pronunciation of "without" was not a JSONObject: "wɪ'θaʊt"
+2022-01-15 16:08:11.473	 Rhymes of "without" was present: {"all":"-aʊt"}
+2022-01-15 16:08:11.473	 Rhymes of "without" had no recognised keys not found in pronunciation field
+2022-01-15 16:09:07.32	 Results of "though" was an empty array
+2022-01-15 16:09:07.69	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 16:09:10.28	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 16:09:38.415	 Syllables of "chess piece" was missing
+2022-01-15 16:09:38.415	 Pronunciation of "chess piece" was missing
+2022-01-15 16:09:38.722	 Syllables of "military personnel" was missing
+2022-01-15 16:09:38.722	 Pronunciation of "military personnel" was missing
+2022-01-15 16:09:39.042	 Syllables of "troops" was missing
+2022-01-15 16:09:39.043	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-15 16:09:40.895	 Syllables of "gymnastic apparatus" was missing
+2022-01-15 16:09:40.896	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-15 16:09:41.456	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-15 16:09:41.456	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-15 16:09:41.788	 Syllables of "equid" was missing
+2022-01-15 16:09:41.788	 Pronunciation of "equid" was missing
+2022-01-15 16:12:14.857	 Syllables of "chess game" was missing
+2022-01-15 16:12:14.857	 Pronunciation of "chess game" was missing
+2022-01-15 16:12:15.351	 Syllables of "war machine" was missing
+2022-01-15 16:12:15.602	 Syllables of "armed services" was missing
+2022-01-15 16:12:15.603	 Pronunciation of "armed services" was missing
+2022-01-15 16:12:15.844	 Pronunciation of "armed forces" was missing
+2022-01-15 16:12:16.08	 Unrecognised part of speech for "military" with definition "of or relating to the study of the principles of warfare": "null"
+2022-01-15 16:12:16.348	 Syllables of "military machine" was missing
+2022-01-15 16:12:16.348	 Pronunciation of "military machine" was missing
+2022-01-15 16:15:58.186	 Results of "though" was an empty array
+2022-01-15 16:15:58.44	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 16:16:00.755	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 16:18:03.112	 Results of "though" was an empty array
+2022-01-15 16:18:03.358	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 16:18:06.771	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 16:24:27.322	 Results of "though" was an empty array
+2022-01-15 16:24:27.6	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 16:24:30.401	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 16:24:36.325	 Syllables of "chess piece" was missing
+2022-01-15 16:24:36.325	 Pronunciation of "chess piece" was missing
+2022-01-15 16:24:36.601	 Syllables of "military personnel" was missing
+2022-01-15 16:24:36.601	 Pronunciation of "military personnel" was missing
+2022-01-15 16:24:36.818	 Syllables of "troops" was missing
+2022-01-15 16:24:36.819	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-15 16:24:37.822	 Syllables of "gymnastic apparatus" was missing
+2022-01-15 16:24:37.822	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-15 16:24:38.363	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-15 16:24:38.363	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-15 16:24:38.65	 Syllables of "equid" was missing
+2022-01-15 16:24:38.65	 Pronunciation of "equid" was missing
+2022-01-15 16:24:38.941	 Syllables of "chess game" was missing
+2022-01-15 16:24:38.941	 Pronunciation of "chess game" was missing
+2022-01-15 16:24:39.472	 Syllables of "war machine" was missing
+2022-01-15 16:24:39.712	 Syllables of "armed services" was missing
+2022-01-15 16:24:39.712	 Pronunciation of "armed services" was missing
+2022-01-15 16:24:39.933	 Pronunciation of "armed forces" was missing
+2022-01-15 16:24:40.172	 Unrecognised part of speech for "military" with definition "of or relating to the study of the principles of warfare": "null"
+2022-01-15 16:24:40.496	 Syllables of "military machine" was missing
+2022-01-15 16:24:40.496	 Pronunciation of "military machine" was missing
+2022-01-15 16:26:10.748	 Results of "though" was an empty array
+2022-01-15 16:26:10.973	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 16:26:14.384	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 16:26:26.747	 Syllables of "chess piece" was missing
+2022-01-15 16:26:26.747	 Pronunciation of "chess piece" was missing
+2022-01-15 16:26:26.989	 Syllables of "military personnel" was missing
+2022-01-15 16:26:26.989	 Pronunciation of "military personnel" was missing
+2022-01-15 16:26:27.219	 Syllables of "troops" was missing
+2022-01-15 16:26:27.219	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-15 16:26:28.548	 Syllables of "gymnastic apparatus" was missing
+2022-01-15 16:26:28.548	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-15 16:26:28.994	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-15 16:26:28.994	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-15 16:26:29.383	 Syllables of "equid" was missing
+2022-01-15 16:26:29.383	 Pronunciation of "equid" was missing
+2022-01-15 16:26:29.592	 Syllables of "chess game" was missing
+2022-01-15 16:26:29.592	 Pronunciation of "chess game" was missing
+2022-01-15 16:26:30.044	 Syllables of "war machine" was missing
+2022-01-15 16:26:30.274	 Syllables of "armed services" was missing
+2022-01-15 16:26:30.275	 Pronunciation of "armed services" was missing
+2022-01-15 16:26:30.545	 Pronunciation of "armed forces" was missing
+2022-01-15 16:26:30.78	 Unrecognised part of speech for "military" with definition "of or relating to the study of the principles of warfare": "null"
+2022-01-15 16:26:31.032	 Syllables of "military machine" was missing
+2022-01-15 16:26:31.032	 Pronunciation of "military machine" was missing
+2022-01-15 16:58:21.313	 Syllables of "overstated" was missing
+2022-01-15 16:58:21.314	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-01-15 16:58:21.82	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-01-15 16:58:22.043	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-01-15 16:58:22.043	 Results of "sated" was missing
+2022-01-15 16:58:27.723	 WordsAPI responded with word "and" when requesting "And".
+2022-01-15 16:59:44.062	 Results of "though" was an empty array
+2022-01-15 16:59:44.335	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-15 16:59:47.676	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-15 17:00:09.571	 Syllables of "chess piece" was missing
+2022-01-15 17:00:09.571	 Pronunciation of "chess piece" was missing
+2022-01-15 17:00:09.832	 Syllables of "military personnel" was missing
+2022-01-15 17:00:09.832	 Pronunciation of "military personnel" was missing
+2022-01-15 17:00:10.066	 Syllables of "troops" was missing
+2022-01-15 17:00:10.066	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-15 17:00:11.223	 Syllables of "gymnastic apparatus" was missing
+2022-01-15 17:00:11.223	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-15 17:00:11.727	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-15 17:00:11.727	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-15 17:00:11.965	 Syllables of "equid" was missing
+2022-01-15 17:00:11.965	 Pronunciation of "equid" was missing
+2022-01-15 17:00:12.262	 Syllables of "chess game" was missing
+2022-01-15 17:00:12.262	 Pronunciation of "chess game" was missing
+2022-01-15 17:00:12.768	 Syllables of "war machine" was missing
+2022-01-15 17:00:13.029	 Syllables of "armed services" was missing
+2022-01-15 17:00:13.029	 Pronunciation of "armed services" was missing
+2022-01-15 17:00:13.279	 Pronunciation of "armed forces" was missing
+2022-01-15 17:00:13.573	 Unrecognised part of speech for "military" with definition "of or relating to the study of the principles of warfare": "null"
+2022-01-15 17:00:13.842	 Syllables of "military machine" was missing
+2022-01-15 17:00:13.842	 Pronunciation of "military machine" was missing
+2022-01-15 17:00:52.856	 Syllables of "" was missing
+2022-01-15 17:00:52.856	 Pronunciation of "" was missing
+2022-01-15 17:00:52.857	 Results of "" was missing
+2022-01-15 17:00:52.857	 "" (null) did not have a pronunciation for "knight" (NOUN) to rhyme against
+2022-01-15 17:00:53.122	 "" (null) did not have a pronunciation for "cavalry" (NOUN) to rhyme against
+2022-01-15 17:00:53.386	 Syllables of "horse cavalry" was missing
+2022-01-15 17:00:53.386	 Pronunciation of "horse cavalry" was missing
+2022-01-15 17:00:53.386	 "horse cavalry" (NOUN) did not have a pronunciation for "" (null) to rhyme against
+2022-01-15 17:00:53.638	 "" (null) did not have a pronunciation for "buck" (NOUN) to rhyme against
+2022-01-15 17:00:53.93	 "" (null) did not have a pronunciation for "sawbuck" (NOUN) to rhyme against
+2022-01-15 17:00:54.253	 "" (null) did not have a pronunciation for "sawhorse" (NOUN) to rhyme against
+2022-01-15 17:00:54.709	 Syllables of "gymnastic horse" was missing
+2022-01-15 17:00:54.709	 Pronunciation of "gymnastic horse" was missing
+2022-01-15 17:00:54.709	 "gymnastic horse" (NOUN) did not have a pronunciation for "" (null) to rhyme against
+2022-01-15 17:00:54.984	 Syllables of "equus caballus" was missing
+2022-01-15 17:00:54.984	 Pronunciation of "equus caballus" was missing
+2022-01-15 17:00:54.984	 "equus caballus" (NOUN) did not have a pronunciation for "" (null) to rhyme against
+2022-01-15 17:00:57.848	 "" (null) did not have a pronunciation for "knight" (NOUN) to rhyme against
+2022-01-15 17:00:57.848	 "" (null) did not have a pronunciation for "cavalry" (NOUN) to rhyme against
+2022-01-15 17:00:57.848	 "horse cavalry" (NOUN) did not have a pronunciation for "" (null) to rhyme against
+2022-01-15 17:00:57.848	 "" (null) did not have a pronunciation for "buck" (NOUN) to rhyme against
+2022-01-15 17:00:57.848	 "" (null) did not have a pronunciation for "sawbuck" (NOUN) to rhyme against
+2022-01-15 17:00:57.848	 "" (null) did not have a pronunciation for "sawhorse" (NOUN) to rhyme against
+2022-01-15 17:00:57.848	 "gymnastic horse" (NOUN) did not have a pronunciation for "" (null) to rhyme against
+2022-01-15 17:00:57.849	 "equus caballus" (NOUN) did not have a pronunciation for "" (null) to rhyme against
+2022-01-15 17:01:40.065	 Syllables of "interlingual rendition" was missing
+2022-01-15 17:01:40.065	 Pronunciation of "interlingual rendition" was missing
+2022-01-15 17:01:40.837	 Syllables of "drinking glass" was missing
+2022-01-15 17:01:41.827	 Syllables of "race horse" was missing

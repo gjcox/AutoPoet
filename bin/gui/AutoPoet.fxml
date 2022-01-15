@@ -9,6 +9,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
@@ -132,7 +133,7 @@
                                                 <Label fx:id="lblPoemStanzaCount" text="(stanza count)" />
                                              </children>
                                           </FlowPane>
-                                          <ToggleButton fx:id="tgbtnDirectEdit" mnemonicParsing="false" onAction="#changePoemTextArea" text="Direct Edit Mode" GridPane.rowIndex="3">
+                                          <ToggleButton fx:id="tgbtnDirectEdit" disable="true" mnemonicParsing="false" onAction="#changePoemTextArea" text="Direct Edit Mode" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets />
                                              </GridPane.margin>
@@ -230,23 +231,23 @@
                                             </rowConstraints>
                                              <children>
                                                 <Label styleClass="Heading 2" text="Part of Speech" />
-                                                <CheckBox fx:id="chbxInclUnknown" mnemonicParsing="false" onAction="#test" selected="true" text="include unknowns in results" GridPane.rowIndex="11" />
-                                                <RadioButton fx:id="rdbtnNoun" disable="true" mnemonicParsing="false" text="noun" GridPane.rowIndex="1">
+                                                <CheckBox fx:id="chbxInclUnknown" mnemonicParsing="false" onAction="#test" selected="true" text="include unknowns in results" wrapText="true" GridPane.rowIndex="11" />
+                                                <RadioButton fx:id="rdbtnNoun" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="noun" GridPane.rowIndex="1">
                                                    <toggleGroup>
                                                       <ToggleGroup fx:id="tglgrpPoS" />
                                                    </toggleGroup>
                                                 </RadioButton>
-                                                <RadioButton fx:id="rdbtnPronoun" disable="true" mnemonicParsing="false" text="pronoun" toggleGroup="$tglgrpPoS" GridPane.rowIndex="2" />
-                                                <RadioButton fx:id="rdbtnVerb" disable="true" mnemonicParsing="false" text="verb" toggleGroup="$tglgrpPoS" GridPane.rowIndex="3" />
-                                                <RadioButton fx:id="rdbtnAdjective" disable="true" mnemonicParsing="false" text="adjective" toggleGroup="$tglgrpPoS" GridPane.rowIndex="4" />
-                                                <RadioButton fx:id="rdbtnAdverb" disable="true" mnemonicParsing="false" text="adverb" toggleGroup="$tglgrpPoS" GridPane.rowIndex="5" />
-                                                <RadioButton fx:id="rdbtnPreposition" disable="true" mnemonicParsing="false" text="preposition" toggleGroup="$tglgrpPoS" GridPane.rowIndex="6" />
-                                                <RadioButton fx:id="rdbtnConjunction" disable="true" mnemonicParsing="false" text="conjunction" toggleGroup="$tglgrpPoS" GridPane.rowIndex="7" />
-                                                <RadioButton fx:id="rdbtnDefiniteArticle" disable="true" mnemonicParsing="false" text="definite article" toggleGroup="$tglgrpPoS" GridPane.rowIndex="8" />
-                                                <RadioButton fx:id="rdbtnUnknown" disable="true" mnemonicParsing="false" text="unknown" toggleGroup="$tglgrpPoS" GridPane.rowIndex="9" />
+                                                <RadioButton fx:id="rdbtnPronoun" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="pronoun" toggleGroup="$tglgrpPoS" GridPane.rowIndex="2" />
+                                                <RadioButton fx:id="rdbtnVerb" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="verb" toggleGroup="$tglgrpPoS" GridPane.rowIndex="3" />
+                                                <RadioButton fx:id="rdbtnAdjective" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="adjective" toggleGroup="$tglgrpPoS" GridPane.rowIndex="4" />
+                                                <RadioButton fx:id="rdbtnAdverb" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="adverb" toggleGroup="$tglgrpPoS" GridPane.rowIndex="5" />
+                                                <RadioButton fx:id="rdbtnPreposition" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="preposition" toggleGroup="$tglgrpPoS" GridPane.rowIndex="6" />
+                                                <RadioButton fx:id="rdbtnConjunction" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="conjunction" toggleGroup="$tglgrpPoS" GridPane.rowIndex="7" />
+                                                <RadioButton fx:id="rdbtnDefiniteArticle" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="definite article" toggleGroup="$tglgrpPoS" GridPane.rowIndex="8" />
+                                                <RadioButton fx:id="rdbtnUnknown" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="unknown" toggleGroup="$tglgrpPoS" GridPane.rowIndex="9" />
                                                 <Separator prefWidth="200.0" GridPane.rowIndex="10">
                                                    <padding>
-                                                      <Insets top="2.0" />
+                                                      <Insets bottom="2.0" top="5.0" />
                                                    </padding>
                                                 </Separator>
                                              </children>
@@ -267,8 +268,8 @@
                                              <children>
                                                 <Label styleClass="Heading 2" text="Suggestion Pool" />
                                                 <CheckBox fx:id="chbxSynonyms" mnemonicParsing="false" selected="true" text="synonyms" GridPane.rowIndex="1" />
-                                                <CheckBox fx:id="chbxCommonlyTyped" mnemonicParsing="false" text="commonly typed" GridPane.rowIndex="2" />
-                                                <CheckBox fx:id="chbxCommonlyCategorised" mnemonicParsing="false" text="commonly categorised" GridPane.rowIndex="3" />
+                                                <CheckBox fx:id="chbxCommonlyTyped" mnemonicParsing="false" text="commonly typed" wrapText="true" GridPane.rowIndex="2" />
+                                                <CheckBox fx:id="chbxCommonlyCategorised" mnemonicParsing="false" text="commonly categorised" wrapText="true" GridPane.rowIndex="3" />
                                                 <CheckBox fx:id="chbxPartOf" mnemonicParsing="false" text="part of" GridPane.rowIndex="4" />
                                                 <CheckBox fx:id="chbxHasParts" mnemonicParsing="false" text="has parts" GridPane.rowIndex="5" />
                                                 <CheckBox fx:id="chbxSimilarTo" mnemonicParsing="false" text="similar to" GridPane.rowIndex="6" />
@@ -318,11 +319,25 @@
                                       </columnConstraints>
                                       <rowConstraints>
                                         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
                                           <Button fx:id="btnGetSuggestions" disable="true" mnemonicParsing="false" onAction="#getSuggestions" text="Get Suggestions" GridPane.valignment="TOP" />
-                                          <FlowPane fx:id="flwpnSuggestions" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <ScrollPane fx:id="scrlpnSuggestions" cacheShape="false" fitToWidth="true" maxHeight="1.7976931348623157E308" GridPane.rowIndex="2">
+                                             <content>
+                                                <FlowPane fx:id="flwpnSuggestions" hgap="5.0" prefWrapLength="0.0" vgap="5.0">
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                </FlowPane>
+                                             </content>
+                                          </ScrollPane>
+                                          <Separator prefWidth="200.0" GridPane.rowIndex="1">
+                                             <padding>
+                                                <Insets bottom="2.0" top="5.0" />
+                                             </padding>
+                                          </Separator>
                                        </children>
                                     </GridPane>
                                  </children>

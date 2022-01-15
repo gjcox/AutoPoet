@@ -204,11 +204,11 @@ public class SuperWord extends Token {
      * 
      * @param pos
      * @param inclusiveUnknown
-     * @return null if the SuperWord has no SubWords of that type. 
+     * @return null if the SuperWord has no SubWords of that type.
      */
     public ArrayList<SubWord> getSubWords(PartOfSpeech pos, boolean inclusiveUnknown) {
         if (!this.populated) {
-            this.populate(); 
+            this.populate();
         }
         switch (pos) {
             case ADJECTIVE:
@@ -431,6 +431,9 @@ public class SuperWord extends Token {
 
         ArrayList<SuperWord> combined = combineListsPrioritiseDuplicates(synonymsList, commonlyTypedList,
                 commonCategoriesList, partOfList, hasPartsList, similarToList);
+        if (combined != null) {
+            combined.remove(this); // prevent suggesting the original word
+        }
         LOG.writeTempLog(String.format("Combined suggestions for \"%s\" (%s) including %s: %s", plaintext, pos,
                 params.toString(), combined));
         return combined;
@@ -460,7 +463,7 @@ public class SuperWord extends Token {
             }
         }
         LOG.writeTempLog(String.format("Filtered suggestions for \"%s\" (%s) including %s: %s", plaintext, pos,
-        params.toString(), filtered));
+                params.toString(), filtered));
         return filtered;
     }
 

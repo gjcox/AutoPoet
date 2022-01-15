@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -12,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
@@ -37,27 +40,33 @@ import static config.Configuration.LOG;
 
 public class Controller {
 
+    private static final String SUGGESTION_CLASS = "suggestion";
+
     private static class IndexedTokenLabel extends Label {
-        private Controller parentController;
+        private static final String SELECTABLE_CLASS = "selectableToken";
+        private static final String SELECTED_CLASS = "selectedToken";
         private Token token;
         private int stanzaIndex;
         private int lineIndex;
         private int tokenIndex;
-        private boolean clickable;
+        private PartOfSpeech pos;
+        private boolean inclUnknown = true;
+        private ArrayList<SuperWord> suggestions;
 
         private IndexedTokenLabel(Controller parentController, Token token, int stanzaIndex, int lineIndex,
                 int tokenIndex,
                 boolean clickable) {
             super();
-            this.parentController = parentController;
             this.setText(token.getPlaintext());
             this.token = token;
             this.stanzaIndex = stanzaIndex;
             this.lineIndex = lineIndex;
             this.tokenIndex = tokenIndex;
-            this.clickable = clickable;
             if (clickable) {
+                this.getStyleClass().add(SELECTABLE_CLASS);
+
                 this.setOnMouseClicked(ActionEvent -> {
+                    parentController.unfocusToken();
                     parentController.focusedToken = this;
                     parentController.focusOnStanza(this.stanzaIndex);
                     parentController.focusOnWord();
@@ -71,6 +80,8 @@ public class Controller {
     private IndexedTokenLabel focusedToken;
 
     // Poem & stanza info
+    @FXML
+    ToggleButton tgbtnDirectEdit;
     @FXML
     AnchorPane anpnRoot, anpnPoem;
     @FXML
@@ -103,9 +114,11 @@ public class Controller {
     @FXML
     TextField txtfldRhymeWith;
 
-    // Buttons
+    // Suggestions
     @FXML
-    ToggleButton tgbtnDirectEdit;
+    ScrollPane scrlpnSuggestions;
+    @FXML
+    FlowPane flwpnSuggestions;
     @FXML
     Button btnGetSuggestions;
 
@@ -168,22 +181,25 @@ public class Controller {
         }
     }
 
-    private PartOfSpeech getRadioButtonPoS() throws NullPointerException {
-        RadioButton radioButton = (RadioButton) tglgrpPoS.getSelectedToggle();
-        System.out.println("Selected part of speech: " + radioButton); 
-        if (radioButton == null) {
-            throw new NullPointerException();
+    public void updatePartOfSpeech(ActionEvent e) {
+        focusedToken.pos = SubWord.parsePoS(((RadioButton) e.getSource()).getText());
+    }
+
+    private void unfocusToken() {
+        if (focusedToken != null) {
+            // remove highlight from previously selected word
+            focusedToken.getStyleClass().remove(IndexedTokenLabel.SELECTED_CLASS);
         }
-        return SubWord.parsePoS(radioButton.getText());
     }
 
     private void focusOnWord() {
+        focusedToken.getStyleClass().add(IndexedTokenLabel.SELECTED_CLASS);
         SuperWord superword = (SuperWord) focusedToken.token;
         RadioButton radioButton;
         boolean hasSubWords = false;
         for (PartOfSpeech pos : PartOfSpeech.values()) {
             radioButton = getPoSRadioButton(pos);
-            radioButton.setSelected(false);
+            radioButton.setSelected(focusedToken.pos != null && focusedToken.pos.equals(pos));
             if (superword.getSubWords(pos, false) == null) {
                 radioButton.setDisable(true);
             } else {
@@ -191,8 +207,9 @@ public class Controller {
                 hasSubWords = true;
             }
         }
-        chbxInclUnknown.setSelected(true);
+        chbxInclUnknown.setSelected(focusedToken.inclUnknown);
         btnGetSuggestions.setDisable(!hasSubWords);
+        displaySuggestions();
     }
 
     TextFormatter<String> rhymeSchemeFormatter = new TextFormatter<>(change -> {
@@ -270,6 +287,7 @@ public class Controller {
             lblPoemStanzaCount.setText(String.valueOf(poem.getStanzaCount()));
             lblPoemLineCount.setText(String.valueOf(poem.getLineCount()));
             tokenizePoem();
+            tgbtnDirectEdit.setDisable(false);
         } catch (IOException e) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText("Could not open file.");
@@ -328,21 +346,46 @@ public class Controller {
                 null);
     }
 
+    private void displaySuggestions() {
+        boolean snapToPixel = true;
+        boolean cache = false;
+        flwpnSuggestions.getChildren().clear();
+        flwpnSuggestions.setSnapToPixel(snapToPixel);
+        flwpnSuggestions.setCache(cache);
+        flwpnSuggestions.getParent().setCache(cache);
+
+        if (focusedToken.suggestions != null) {
+            for (SuperWord suggestion : focusedToken.suggestions) {
+                Label label = new Label(suggestion.getPlaintext());
+                label.getStyleClass().add(SUGGESTION_CLASS);
+                label.setSnapToPixel(snapToPixel);
+                label.setCache(cache);
+
+                flwpnSuggestions.getChildren().add(label);
+            }
+        } else {
+            Label noSuggestions = new Label("No suggestions.");
+            noSuggestions.setSnapToPixel(snapToPixel);
+            noSuggestions.setCache(cache);
+
+            flwpnSuggestions.getChildren().add(noSuggestions);
+        }
+    }
+
     public void getSuggestions() {
-        System.out.println("getSuggestions()");
-        SuperWord superWord = (SuperWord) focusedToken.token;
-        SuggestionParameters suggestionParams = getSuggestionParams();
-        FilterParameters filterParams = getFilterParams();
-        try {
-            ArrayList<SuperWord> suggestions = superWord.getFilteredSuggestions(getRadioButtonPoS(), suggestionParams,
-                    filterParams);
-            System.out.println(suggestions.toString());
-        } catch (NullPointerException e) {
+        if (focusedToken.pos == null) {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setContentText("Please select a part of speech to get suggestions.");
             alert.show();
-        } catch (Exception e) {
-            LOG.writeTempLog(e.getMessage() + "\n" + e.getStackTrace());
+        } else {
+            SuperWord superWord = (SuperWord) focusedToken.token;
+            SuggestionParameters suggestionParams = getSuggestionParams();
+            FilterParameters filterParams = getFilterParams();
+
+            focusedToken.suggestions = superWord.getFilteredSuggestions(focusedToken.pos, suggestionParams,
+                    filterParams);
+            displaySuggestions();
+
         }
     }
 

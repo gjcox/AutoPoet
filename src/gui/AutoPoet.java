@@ -22,6 +22,8 @@ public class AutoPoet extends Application {
             Image icon = new Image("gui" + File.separator + "st_andrews_cs_logo.png");
             stage.getIcons().add(icon);
             stage.setTitle("AutoPoet");
+            String css = this.getClass().getResource("stylesheet.css").toExternalForm();
+            scene.getStylesheets().add(css);
 
             stage.setOnCloseRequest(WindowEvent -> {
                 LOG.closeLogWriters();
