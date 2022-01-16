@@ -36,7 +36,7 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
                   <MenuItem fx:id="mntmOpen" mnemonicParsing="false" onAction="#openPoem" text="Open..." />
-              <MenuItem fx:id="mntmClose" mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="mntmClose" mnemonicParsing="false" onAction="#newPoem" text="New" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="mntmSave" mnemonicParsing="false" onAction="#savePoem" text="Save" />
                   <MenuItem fx:id="mntmSaveAs" mnemonicParsing="false" onAction="#savePoemAs" text="Save As..." />
@@ -66,24 +66,28 @@
                                  <cursor>
                                     <Cursor fx:constant="TEXT" />
                                  </cursor></TextArea>
-                              <AnchorPane fx:id="anpnPoem" prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <GridPane fx:id="grdpnPoem" prefHeight="737.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
-                                      </rowConstraints>
+                              <ScrollPane fx:id="scrlpnPoem" fitToWidth="true">
+                                 <content>
+                                    <AnchorPane fx:id="anpnPoem" prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <FlowPane fx:id="flwpnLine0" maxHeight="-Infinity" minHeight="-Infinity" GridPane.valignment="TOP" />
+                                          <GridPane fx:id="grdpnPoem" prefHeight="737.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
+                                            </rowConstraints>
+                                             <children>
+                                                <FlowPane fx:id="flwpnLine0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.valignment="TOP" />
+                                             </children>
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </GridPane>
                                        </children>
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                    </GridPane>
-                                 </children>
-                              </AnchorPane>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </StackPane>
                      </content>
@@ -133,7 +137,7 @@
                                                 <Label fx:id="lblPoemStanzaCount" text="(stanza count)" />
                                              </children>
                                           </FlowPane>
-                                          <ToggleButton fx:id="tgbtnDirectEdit" disable="true" mnemonicParsing="false" onAction="#changePoemTextArea" text="Direct Edit Mode" GridPane.rowIndex="3">
+                                          <ToggleButton fx:id="tgbtnDirectEdit" disable="true" mnemonicParsing="false" onAction="#toggleDirectEdit" text="Direct Edit Mode" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets />
                                              </GridPane.margin>
@@ -179,7 +183,10 @@
                                           <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="200.0" GridPane.rowIndex="2">
                                              <children>
                                                 <Label text="Intended Rhyme Scheme:" />
-                                                <TextField fx:id="txtfldIntRhymeScheme" onAction="#updateIntendedRhymeScheme" promptText="e.g. AABB" />
+                                                <TextField fx:id="txtfldIntRhymeScheme" onAction="#updateIntendedRhymeScheme" promptText="e.g. AABB">
+                                                   <tooltip>
+                                                      <Tooltip fx:id="tltpIntRhymeScheme" text="Must match length of stanza" />
+                                                   </tooltip></TextField>
                                              </children>
                                           </FlowPane>
                                           <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="200.0" GridPane.rowIndex="3">

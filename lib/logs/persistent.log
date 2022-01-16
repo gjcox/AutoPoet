@@ -4999,3 +4999,758 @@
 2022-01-16 13:39:39.271	 Pronunciation of "to a lower place" was missing
 2022-01-16 13:39:39.272	 "to a lower place" (ADVERB) did not have a pronunciation for "snow" (null) to rhyme against
 2022-01-16 13:39:39.272	 "to a lower place" (ADVERB) did not have a pronunciation for "snow" (null) to rhyme against
+2022-01-16 14:10:34.593	 Syllables of "hungover" was missing
+2022-01-16 14:10:34.593	 Pronunciation of "hungover" was missing
+2022-01-16 14:10:34.593	 Results of "hungover" was missing
+2022-01-16 14:10:34.849	 Unrecognised part of speech for "dry" with definition "lacking moisture or volatile components": "null"
+2022-01-16 14:10:34.849	 Unrecognised part of speech for "dry" with definition "opposed to or prohibiting the production and sale of alcoholic beverages": "null"
+2022-01-16 14:10:34.849	 Unrecognised part of speech for "dry" with definition "without a mucous or watery discharge": "null"
+2022-01-16 14:10:35.267	 Pronunciation of "caf" was missing
+2022-01-16 14:10:35.267	 Results of "caf" was missing
+2022-01-16 14:10:35.268	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:10:35.268	 "caf" (UNKNOWN) did not have a pronunciation for "family" (NOUN) to rhyme against
+2022-01-16 14:10:35.516	 Pronunciation of "caps" was not a JSONObject: "kæps"
+2022-01-16 14:10:35.516	 Results of "caps" was missing
+2022-01-16 14:10:36.198	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:10:36.198	 "caf" (UNKNOWN) did not have a pronunciation for "caps" (UNKNOWN) to rhyme against
+2022-01-16 14:10:36.198	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:10:36.199	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 14:10:36.422	 WordsAPI responded with word "patricia" when requesting "Patricia".
+2022-01-16 14:10:36.422	 Syllables of "Patricia" was missing
+2022-01-16 14:10:36.422	 Pronunciation of "Patricia" was not a JSONObject: "pʌ'trɪʃʌ"
+2022-01-16 14:10:36.423	 Rhymes of "Patricia" was present: {"all":"-ɪʃə"}
+2022-01-16 14:10:36.424	 Rhymes of "Patricia" had no recognised keys not found in pronunciation field
+2022-01-16 14:10:36.424	 Results of "Patricia" was missing
+2022-01-16 14:10:36.88	 Syllables of "me" was missing
+2022-01-16 14:10:37.096	 Syllables of "myself" was missing
+2022-01-16 14:10:37.096	 Pronunciation of "myself" was not a JSONObject: ",maɪ'sɛlf"
+2022-01-16 14:10:37.096	 Rhymes of "myself" was present: {"all":"-ɛlf"}
+2022-01-16 14:10:37.097	 Rhymes of "myself" had no recognised keys not found in pronunciation field
+2022-01-16 14:10:38.034	 Syllables of "says" was missing
+2022-01-16 14:10:38.034	 Pronunciation of "says" was not a JSONObject: "sɛz"
+2022-01-16 14:10:38.035	 Rhymes of "says" was present: {"all":"-ɛz"}
+2022-01-16 14:10:38.035	 Rhymes of "says" had no recognised keys not found in pronunciation field
+2022-01-16 14:10:38.035	 Results of "says" was missing
+2022-01-16 14:10:38.883	 Unrecognised part of speech for "less" with definition "comparative of little": "null"
+2022-01-16 14:10:39.113	 Syllables of "a" was missing
+2022-01-16 14:10:39.541	 Unrecognised part of speech for "big" with definition "on a grand scale": "null"
+2022-01-16 14:10:39.751	 Syllables of "the" was missing
+2022-01-16 14:10:39.751	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-16 14:10:39.751	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-16 14:10:39.751	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-16 14:10:40.845	 Pronunciation of "arvo" had no recognised keys: {}
+2022-01-16 14:10:40.845	 Rhymes of "arvo" was present: {"all":"-ɑrvoʊ"}
+2022-01-16 14:10:40.847	 Results of "arvo" was missing
+2022-01-16 14:10:41.281	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 14:10:41.737	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:10:41.737	 "caf" (UNKNOWN) did not have a pronunciation for "says" (UNKNOWN) to rhyme against
+2022-01-16 14:10:41.738	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:10:41.738	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 14:10:41.738	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:10:41.738	 "caf" (UNKNOWN) did not have a pronunciation for "meeting" (NOUN) to rhyme against
+2022-01-16 14:10:43.199	 Syllables of "got" was missing
+2022-01-16 14:10:43.2	 Pronunciation of "got" was not a JSONObject: "ɡɑt"
+2022-01-16 14:10:43.2	 Rhymes of "got" was present: {"all":"-ɑt"}
+2022-01-16 14:10:43.2	 Rhymes of "got" had no recognised keys not found in pronunciation field
+2022-01-16 14:10:43.2	 Results of "got" was missing
+2022-01-16 14:10:43.431	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 14:10:43.7	 WordsAPI responded with word "shit" when requesting "Shit".
+2022-01-16 14:10:43.915	 WordsAPI responded with word "eggs" when requesting "Eggs".
+2022-01-16 14:10:43.915	 Syllables of "Eggs" was missing
+2022-01-16 14:10:43.915	 Pronunciation of "Eggs" was not a JSONObject: "ɛɡz"
+2022-01-16 14:10:44.135	 WordsAPI responded with word "bacon" when requesting "Bacon".
+2022-01-16 14:10:44.666	 WordsAPI responded with word "bean" when requesting "beans".
+2022-01-16 14:10:44.885	 WordsAPI responded with word "sausage" when requesting "Sausage".
+2022-01-16 14:10:45.112	 WordsAPI responded with word "toast" when requesting "Toast".
+2022-01-16 14:10:45.323	 WordsAPI responded with word "regret" when requesting "Regret".
+2022-01-16 14:11:23.479	 Syllables of "hashed" was missing
+2022-01-16 14:11:23.479	 Pronunciation of "hashed" was missing
+2022-01-16 14:11:23.479	 Results of "hashed" was missing
+2022-01-16 14:16:27.148	 Syllables of "hungover" was missing
+2022-01-16 14:16:27.148	 Pronunciation of "hungover" was missing
+2022-01-16 14:16:27.148	 Results of "hungover" was missing
+2022-01-16 14:16:27.389	 Unrecognised part of speech for "dry" with definition "lacking moisture or volatile components": "null"
+2022-01-16 14:16:27.389	 Unrecognised part of speech for "dry" with definition "opposed to or prohibiting the production and sale of alcoholic beverages": "null"
+2022-01-16 14:16:27.389	 Unrecognised part of speech for "dry" with definition "without a mucous or watery discharge": "null"
+2022-01-16 14:16:27.841	 Pronunciation of "caf" was missing
+2022-01-16 14:16:27.841	 Results of "caf" was missing
+2022-01-16 14:16:27.842	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:16:27.842	 "caf" (UNKNOWN) did not have a pronunciation for "family" (NOUN) to rhyme against
+2022-01-16 14:16:28.071	 Pronunciation of "caps" was not a JSONObject: "kæps"
+2022-01-16 14:16:28.072	 Results of "caps" was missing
+2022-01-16 14:16:28.944	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:16:28.945	 "caf" (UNKNOWN) did not have a pronunciation for "caps" (UNKNOWN) to rhyme against
+2022-01-16 14:16:28.945	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:16:28.945	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 14:16:29.175	 WordsAPI responded with word "patricia" when requesting "Patricia".
+2022-01-16 14:16:29.175	 Syllables of "Patricia" was missing
+2022-01-16 14:16:29.175	 Pronunciation of "Patricia" was not a JSONObject: "pʌ'trɪʃʌ"
+2022-01-16 14:16:29.176	 Rhymes of "Patricia" was present: {"all":"-ɪʃə"}
+2022-01-16 14:16:29.177	 Rhymes of "Patricia" had no recognised keys not found in pronunciation field
+2022-01-16 14:16:29.177	 Results of "Patricia" was missing
+2022-01-16 14:16:29.628	 Syllables of "me" was missing
+2022-01-16 14:16:29.86	 Syllables of "myself" was missing
+2022-01-16 14:16:29.86	 Pronunciation of "myself" was not a JSONObject: ",maɪ'sɛlf"
+2022-01-16 14:16:29.861	 Rhymes of "myself" was present: {"all":"-ɛlf"}
+2022-01-16 14:16:29.862	 Rhymes of "myself" had no recognised keys not found in pronunciation field
+2022-01-16 14:16:30.811	 Syllables of "says" was missing
+2022-01-16 14:16:30.811	 Pronunciation of "says" was not a JSONObject: "sɛz"
+2022-01-16 14:16:30.811	 Rhymes of "says" was present: {"all":"-ɛz"}
+2022-01-16 14:16:30.811	 Rhymes of "says" had no recognised keys not found in pronunciation field
+2022-01-16 14:16:30.811	 Results of "says" was missing
+2022-01-16 14:16:32.531	 Unrecognised part of speech for "less" with definition "comparative of little": "null"
+2022-01-16 14:16:32.775	 Syllables of "a" was missing
+2022-01-16 14:16:33.214	 Unrecognised part of speech for "big" with definition "on a grand scale": "null"
+2022-01-16 14:16:33.462	 Syllables of "the" was missing
+2022-01-16 14:16:33.462	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-16 14:16:33.462	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-16 14:16:33.462	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-16 14:16:34.609	 Pronunciation of "arvo" had no recognised keys: {}
+2022-01-16 14:16:34.61	 Rhymes of "arvo" was present: {"all":"-ɑrvoʊ"}
+2022-01-16 14:16:34.61	 Results of "arvo" was missing
+2022-01-16 14:16:35.048	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 14:16:35.685	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:16:35.685	 "caf" (UNKNOWN) did not have a pronunciation for "says" (UNKNOWN) to rhyme against
+2022-01-16 14:16:35.685	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:16:35.685	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 14:16:35.686	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:16:35.686	 "caf" (UNKNOWN) did not have a pronunciation for "meeting" (NOUN) to rhyme against
+2022-01-16 14:16:37.494	 Syllables of "got" was missing
+2022-01-16 14:16:37.494	 Pronunciation of "got" was not a JSONObject: "ɡɑt"
+2022-01-16 14:16:37.495	 Rhymes of "got" was present: {"all":"-ɑt"}
+2022-01-16 14:16:37.495	 Rhymes of "got" had no recognised keys not found in pronunciation field
+2022-01-16 14:16:37.495	 Results of "got" was missing
+2022-01-16 14:16:37.7	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 14:16:37.946	 WordsAPI responded with word "shit" when requesting "Shit".
+2022-01-16 14:16:38.176	 WordsAPI responded with word "eggs" when requesting "Eggs".
+2022-01-16 14:16:38.176	 Syllables of "Eggs" was missing
+2022-01-16 14:16:38.176	 Pronunciation of "Eggs" was not a JSONObject: "ɛɡz"
+2022-01-16 14:16:38.4	 WordsAPI responded with word "bacon" when requesting "Bacon".
+2022-01-16 14:16:38.878	 WordsAPI responded with word "bean" when requesting "beans".
+2022-01-16 14:16:39.127	 WordsAPI responded with word "sausage" when requesting "Sausage".
+2022-01-16 14:16:39.343	 WordsAPI responded with word "toast" when requesting "Toast".
+2022-01-16 14:16:39.563	 WordsAPI responded with word "regret" when requesting "Regret".
+2022-01-16 14:18:22.207	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:18:22.207	 "caf" (UNKNOWN) did not have a pronunciation for "family" (NOUN) to rhyme against
+2022-01-16 14:18:22.207	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:18:22.207	 "caf" (UNKNOWN) did not have a pronunciation for "caps" (UNKNOWN) to rhyme against
+2022-01-16 14:18:22.207	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:18:22.207	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 14:18:22.21	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:18:22.21	 "caf" (UNKNOWN) did not have a pronunciation for "says" (UNKNOWN) to rhyme against
+2022-01-16 14:18:22.21	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:18:22.21	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 14:18:22.21	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 14:18:22.21	 "caf" (UNKNOWN) did not have a pronunciation for "meeting" (NOUN) to rhyme against
+2022-01-16 14:28:11.46	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 14:28:14.216	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-16 14:40:03.059	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 14:40:03.286	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-16 14:40:05.405	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-16 14:45:44.343	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 14:45:44.576	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-16 14:45:46.693	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-16 14:46:59.78	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 14:47:00.001	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-16 14:47:02.602	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-16 14:49:25.214	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 14:49:25.441	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-16 14:49:28.09	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-16 14:55:42.065	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 14:55:42.285	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-16 14:55:44.432	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-16 15:15:58.054	 Syllables of "hungover" was missing
+2022-01-16 15:15:58.054	 Pronunciation of "hungover" was missing
+2022-01-16 15:15:58.055	 Results of "hungover" was missing
+2022-01-16 15:15:58.304	 Unrecognised part of speech for "dry" with definition "lacking moisture or volatile components": "null"
+2022-01-16 15:15:58.304	 Unrecognised part of speech for "dry" with definition "opposed to or prohibiting the production and sale of alcoholic beverages": "null"
+2022-01-16 15:15:58.305	 Unrecognised part of speech for "dry" with definition "without a mucous or watery discharge": "null"
+2022-01-16 15:15:58.951	 Pronunciation of "caf" was missing
+2022-01-16 15:15:58.951	 Results of "caf" was missing
+2022-01-16 15:15:58.951	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:15:58.951	 "caf" (UNKNOWN) did not have a pronunciation for "family" (NOUN) to rhyme against
+2022-01-16 15:15:59.194	 Pronunciation of "caps" was not a JSONObject: "kæps"
+2022-01-16 15:15:59.194	 Results of "caps" was missing
+2022-01-16 15:15:59.831	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:15:59.832	 "caf" (UNKNOWN) did not have a pronunciation for "caps" (UNKNOWN) to rhyme against
+2022-01-16 15:15:59.832	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:15:59.832	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 15:16:00.063	 WordsAPI responded with word "patricia" when requesting "Patricia".
+2022-01-16 15:16:00.063	 Syllables of "Patricia" was missing
+2022-01-16 15:16:00.064	 Pronunciation of "Patricia" was not a JSONObject: "pʌ'trɪʃʌ"
+2022-01-16 15:16:00.064	 Rhymes of "Patricia" was present: {"all":"-ɪʃə"}
+2022-01-16 15:16:00.064	 Rhymes of "Patricia" had no recognised keys not found in pronunciation field
+2022-01-16 15:16:00.064	 Results of "Patricia" was missing
+2022-01-16 15:16:00.566	 Syllables of "me" was missing
+2022-01-16 15:16:00.788	 Syllables of "myself" was missing
+2022-01-16 15:16:00.788	 Pronunciation of "myself" was not a JSONObject: ",maɪ'sɛlf"
+2022-01-16 15:16:00.788	 Rhymes of "myself" was present: {"all":"-ɛlf"}
+2022-01-16 15:16:00.789	 Rhymes of "myself" had no recognised keys not found in pronunciation field
+2022-01-16 15:16:02.205	 Syllables of "says" was missing
+2022-01-16 15:16:02.205	 Pronunciation of "says" was not a JSONObject: "sɛz"
+2022-01-16 15:16:02.205	 Rhymes of "says" was present: {"all":"-ɛz"}
+2022-01-16 15:16:02.205	 Rhymes of "says" had no recognised keys not found in pronunciation field
+2022-01-16 15:16:02.205	 Results of "says" was missing
+2022-01-16 15:16:03.431	 Unrecognised part of speech for "less" with definition "comparative of little": "null"
+2022-01-16 15:16:03.706	 Syllables of "a" was missing
+2022-01-16 15:16:04.127	 Unrecognised part of speech for "big" with definition "on a grand scale": "null"
+2022-01-16 15:16:04.455	 Syllables of "the" was missing
+2022-01-16 15:16:04.455	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-16 15:16:04.456	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-16 15:16:04.456	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-16 15:16:05.98	 Pronunciation of "arvo" had no recognised keys: {}
+2022-01-16 15:16:05.98	 Rhymes of "arvo" was present: {"all":"-ɑrvoʊ"}
+2022-01-16 15:16:05.98	 Results of "arvo" was missing
+2022-01-16 15:16:06.464	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 15:16:06.943	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:16:06.943	 "caf" (UNKNOWN) did not have a pronunciation for "says" (UNKNOWN) to rhyme against
+2022-01-16 15:16:06.943	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:16:06.943	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 15:16:06.943	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:16:06.943	 "caf" (UNKNOWN) did not have a pronunciation for "meeting" (NOUN) to rhyme against
+2022-01-16 15:16:08.599	 Syllables of "got" was missing
+2022-01-16 15:16:08.599	 Pronunciation of "got" was not a JSONObject: "ɡɑt"
+2022-01-16 15:16:08.599	 Rhymes of "got" was present: {"all":"-ɑt"}
+2022-01-16 15:16:08.599	 Rhymes of "got" had no recognised keys not found in pronunciation field
+2022-01-16 15:16:08.599	 Results of "got" was missing
+2022-01-16 15:16:08.839	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 15:16:09.074	 WordsAPI responded with word "shit" when requesting "Shit".
+2022-01-16 15:16:09.308	 WordsAPI responded with word "eggs" when requesting "Eggs".
+2022-01-16 15:16:09.308	 Syllables of "Eggs" was missing
+2022-01-16 15:16:09.308	 Pronunciation of "Eggs" was not a JSONObject: "ɛɡz"
+2022-01-16 15:16:09.543	 WordsAPI responded with word "bacon" when requesting "Bacon".
+2022-01-16 15:16:09.995	 WordsAPI responded with word "bean" when requesting "beans".
+2022-01-16 15:16:10.204	 WordsAPI responded with word "sausage" when requesting "Sausage".
+2022-01-16 15:16:10.427	 WordsAPI responded with word "toast" when requesting "Toast".
+2022-01-16 15:16:10.705	 WordsAPI responded with word "regret" when requesting "Regret".
+2022-01-16 15:16:38.125	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-16 15:16:44.575	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:16:44.575	 "caf" (UNKNOWN) did not have a pronunciation for "family" (NOUN) to rhyme against
+2022-01-16 15:16:44.575	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:16:44.575	 "caf" (UNKNOWN) did not have a pronunciation for "caps" (UNKNOWN) to rhyme against
+2022-01-16 15:16:44.575	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:16:44.575	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 15:16:44.593	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:16:44.593	 "caf" (UNKNOWN) did not have a pronunciation for "says" (UNKNOWN) to rhyme against
+2022-01-16 15:16:44.593	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:16:44.593	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 15:16:44.593	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 15:16:44.593	 "caf" (UNKNOWN) did not have a pronunciation for "meeting" (NOUN) to rhyme against
+2022-01-16 15:18:41.513	 Syllables of "overstated" was missing
+2022-01-16 15:18:41.514	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-01-16 15:18:41.99	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-01-16 15:18:42.218	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-01-16 15:18:42.218	 Results of "sated" was missing
+2022-01-16 15:19:38.281	 WordsAPI responded with word "event" when requesting "events".
+2022-01-16 15:21:51.654	 Pronunciation of "been" was not a JSONObject: "bɪn"
+2022-01-16 15:21:51.654	 Rhymes of "been" was present: {"all":"-ɪn"}
+2022-01-16 15:21:51.654	 Rhymes of "been" had no recognised keys not found in pronunciation field
+2022-01-16 15:21:51.655	 Results of "been" was missing
+2022-01-16 16:23:51.291	 Syllables of "hungover" was missing
+2022-01-16 16:23:51.291	 Pronunciation of "hungover" was missing
+2022-01-16 16:23:51.291	 Results of "hungover" was missing
+2022-01-16 16:23:51.557	 Unrecognised part of speech for "dry" with definition "lacking moisture or volatile components": "null"
+2022-01-16 16:23:51.557	 Unrecognised part of speech for "dry" with definition "opposed to or prohibiting the production and sale of alcoholic beverages": "null"
+2022-01-16 16:23:51.558	 Unrecognised part of speech for "dry" with definition "without a mucous or watery discharge": "null"
+2022-01-16 16:23:52.023	 Pronunciation of "caf" was missing
+2022-01-16 16:23:52.023	 Results of "caf" was missing
+2022-01-16 16:23:52.024	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:23:52.024	 "caf" (UNKNOWN) did not have a pronunciation for "family" (NOUN) to rhyme against
+2022-01-16 16:23:52.255	 Pronunciation of "caps" was not a JSONObject: "kæps"
+2022-01-16 16:23:52.255	 Results of "caps" was missing
+2022-01-16 16:23:52.47	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:23:52.471	 "caf" (UNKNOWN) did not have a pronunciation for "caps" (UNKNOWN) to rhyme against
+2022-01-16 16:23:52.471	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:23:52.471	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 16:23:52.757	 WordsAPI responded with word "patricia" when requesting "Patricia".
+2022-01-16 16:23:52.757	 Syllables of "Patricia" was missing
+2022-01-16 16:23:52.758	 Pronunciation of "Patricia" was not a JSONObject: "pʌ'trɪʃʌ"
+2022-01-16 16:23:52.759	 Rhymes of "Patricia" was present: {"all":"-ɪʃə"}
+2022-01-16 16:23:52.759	 Rhymes of "Patricia" had no recognised keys not found in pronunciation field
+2022-01-16 16:23:52.759	 Results of "Patricia" was missing
+2022-01-16 16:23:53.676	 Syllables of "me" was missing
+2022-01-16 16:23:53.984	 Syllables of "myself" was missing
+2022-01-16 16:23:53.985	 Pronunciation of "myself" was not a JSONObject: ",maɪ'sɛlf"
+2022-01-16 16:23:53.986	 Rhymes of "myself" was present: {"all":"-ɛlf"}
+2022-01-16 16:23:53.986	 Rhymes of "myself" had no recognised keys not found in pronunciation field
+2022-01-16 16:23:55.455	 Syllables of "says" was missing
+2022-01-16 16:23:55.455	 Pronunciation of "says" was not a JSONObject: "sɛz"
+2022-01-16 16:23:55.457	 Rhymes of "says" was present: {"all":"-ɛz"}
+2022-01-16 16:23:55.458	 Rhymes of "says" had no recognised keys not found in pronunciation field
+2022-01-16 16:23:55.458	 Results of "says" was missing
+2022-01-16 16:23:56.545	 Unrecognised part of speech for "less" with definition "comparative of little": "null"
+2022-01-16 16:23:56.785	 Syllables of "a" was missing
+2022-01-16 16:23:57.283	 Unrecognised part of speech for "big" with definition "on a grand scale": "null"
+2022-01-16 16:23:57.921	 Syllables of "the" was missing
+2022-01-16 16:23:57.921	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-16 16:23:57.922	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-16 16:23:57.922	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-16 16:23:58.924	 Pronunciation of "arvo" had no recognised keys: {}
+2022-01-16 16:23:58.924	 Rhymes of "arvo" was present: {"all":"-ɑrvoʊ"}
+2022-01-16 16:23:58.925	 Results of "arvo" was missing
+2022-01-16 16:23:59.363	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 16:23:59.837	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:23:59.837	 "caf" (UNKNOWN) did not have a pronunciation for "says" (UNKNOWN) to rhyme against
+2022-01-16 16:23:59.837	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:23:59.837	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 16:23:59.837	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:23:59.837	 "caf" (UNKNOWN) did not have a pronunciation for "meeting" (NOUN) to rhyme against
+2022-01-16 16:24:01.927	 Syllables of "got" was missing
+2022-01-16 16:24:01.928	 Pronunciation of "got" was not a JSONObject: "ɡɑt"
+2022-01-16 16:24:01.928	 Rhymes of "got" was present: {"all":"-ɑt"}
+2022-01-16 16:24:01.929	 Rhymes of "got" had no recognised keys not found in pronunciation field
+2022-01-16 16:24:01.929	 Results of "got" was missing
+2022-01-16 16:24:02.161	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 16:24:02.419	 WordsAPI responded with word "shit" when requesting "Shit".
+2022-01-16 16:24:02.662	 WordsAPI responded with word "eggs" when requesting "Eggs".
+2022-01-16 16:24:02.662	 Syllables of "Eggs" was missing
+2022-01-16 16:24:02.663	 Pronunciation of "Eggs" was not a JSONObject: "ɛɡz"
+2022-01-16 16:24:02.903	 WordsAPI responded with word "bacon" when requesting "Bacon".
+2022-01-16 16:24:03.754	 WordsAPI responded with word "bean" when requesting "beans".
+2022-01-16 16:24:04.027	 WordsAPI responded with word "sausage" when requesting "Sausage".
+2022-01-16 16:24:04.247	 WordsAPI responded with word "toast" when requesting "Toast".
+2022-01-16 16:24:04.503	 WordsAPI responded with word "regret" when requesting "Regret".
+2022-01-16 16:24:17.85	 Syllables of "does" was missing
+2022-01-16 16:24:17.85	 Pronunciation of "does" was not a JSONObject: "dʌz"
+2022-01-16 16:24:17.85	 Rhymes of "does" was present: {"all":"-əz"}
+2022-01-16 16:24:17.851	 Rhymes of "does" had no recognised keys not found in pronunciation field
+2022-01-16 16:24:17.851	 Results of "does" was missing
+2022-01-16 16:24:20.035	 Syllables of "they" was missing
+2022-01-16 16:24:20.035	 Pronunciation of "they" was not a JSONObject: "ðeɪ"
+2022-01-16 16:24:20.035	 Rhymes of "they" was present: {"all":"-eɪ"}
+2022-01-16 16:24:20.035	 Rhymes of "they" had no recognised keys not found in pronunciation field
+2022-01-16 16:27:21.462	 Syllables of "hungover" was missing
+2022-01-16 16:27:21.462	 Pronunciation of "hungover" was missing
+2022-01-16 16:27:21.462	 Results of "hungover" was missing
+2022-01-16 16:27:21.699	 Unrecognised part of speech for "dry" with definition "lacking moisture or volatile components": "null"
+2022-01-16 16:27:21.699	 Unrecognised part of speech for "dry" with definition "opposed to or prohibiting the production and sale of alcoholic beverages": "null"
+2022-01-16 16:27:21.699	 Unrecognised part of speech for "dry" with definition "without a mucous or watery discharge": "null"
+2022-01-16 16:27:22.205	 Pronunciation of "caf" was missing
+2022-01-16 16:27:22.206	 Results of "caf" was missing
+2022-01-16 16:27:22.206	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:27:22.207	 "caf" (UNKNOWN) did not have a pronunciation for "family" (NOUN) to rhyme against
+2022-01-16 16:27:22.437	 Pronunciation of "caps" was not a JSONObject: "kæps"
+2022-01-16 16:27:22.438	 Results of "caps" was missing
+2022-01-16 16:27:22.681	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:27:22.681	 "caf" (UNKNOWN) did not have a pronunciation for "caps" (UNKNOWN) to rhyme against
+2022-01-16 16:27:22.681	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:27:22.682	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 16:27:22.927	 WordsAPI responded with word "patricia" when requesting "Patricia".
+2022-01-16 16:27:22.927	 Syllables of "Patricia" was missing
+2022-01-16 16:27:22.927	 Pronunciation of "Patricia" was not a JSONObject: "pʌ'trɪʃʌ"
+2022-01-16 16:27:22.928	 Rhymes of "Patricia" was present: {"all":"-ɪʃə"}
+2022-01-16 16:27:22.928	 Rhymes of "Patricia" had no recognised keys not found in pronunciation field
+2022-01-16 16:27:22.929	 Results of "Patricia" was missing
+2022-01-16 16:27:23.786	 Syllables of "me" was missing
+2022-01-16 16:27:24.023	 Syllables of "myself" was missing
+2022-01-16 16:27:24.024	 Pronunciation of "myself" was not a JSONObject: ",maɪ'sɛlf"
+2022-01-16 16:27:24.025	 Rhymes of "myself" was present: {"all":"-ɛlf"}
+2022-01-16 16:27:24.025	 Rhymes of "myself" had no recognised keys not found in pronunciation field
+2022-01-16 16:27:25.167	 Syllables of "says" was missing
+2022-01-16 16:27:25.167	 Pronunciation of "says" was not a JSONObject: "sɛz"
+2022-01-16 16:27:25.168	 Rhymes of "says" was present: {"all":"-ɛz"}
+2022-01-16 16:27:25.168	 Rhymes of "says" had no recognised keys not found in pronunciation field
+2022-01-16 16:27:25.168	 Results of "says" was missing
+2022-01-16 16:27:26.223	 Unrecognised part of speech for "less" with definition "comparative of little": "null"
+2022-01-16 16:27:26.52	 Syllables of "a" was missing
+2022-01-16 16:27:27.013	 Unrecognised part of speech for "big" with definition "on a grand scale": "null"
+2022-01-16 16:27:27.667	 Syllables of "the" was missing
+2022-01-16 16:27:27.667	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-16 16:27:27.667	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-16 16:27:27.668	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-16 16:27:29.046	 Pronunciation of "arvo" had no recognised keys: {}
+2022-01-16 16:27:29.047	 Rhymes of "arvo" was present: {"all":"-ɑrvoʊ"}
+2022-01-16 16:27:29.047	 Results of "arvo" was missing
+2022-01-16 16:27:29.577	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 16:27:30.116	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:27:30.116	 "caf" (UNKNOWN) did not have a pronunciation for "says" (UNKNOWN) to rhyme against
+2022-01-16 16:27:30.116	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:27:30.116	 "caf" (UNKNOWN) did not have a pronunciation for "day" (NOUN) to rhyme against
+2022-01-16 16:27:30.116	 No pronunciation of "caf" could be found for "UNKNOWN"
+2022-01-16 16:27:30.116	 "caf" (UNKNOWN) did not have a pronunciation for "meeting" (NOUN) to rhyme against
+2022-01-16 16:27:32.441	 Syllables of "got" was missing
+2022-01-16 16:27:32.441	 Pronunciation of "got" was not a JSONObject: "ɡɑt"
+2022-01-16 16:27:32.442	 Rhymes of "got" was present: {"all":"-ɑt"}
+2022-01-16 16:27:32.442	 Rhymes of "got" had no recognised keys not found in pronunciation field
+2022-01-16 16:27:32.442	 Results of "got" was missing
+2022-01-16 16:27:32.671	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 16:27:32.903	 WordsAPI responded with word "shit" when requesting "Shit".
+2022-01-16 16:27:33.131	 WordsAPI responded with word "eggs" when requesting "Eggs".
+2022-01-16 16:27:33.131	 Syllables of "Eggs" was missing
+2022-01-16 16:27:33.131	 Pronunciation of "Eggs" was not a JSONObject: "ɛɡz"
+2022-01-16 16:27:33.413	 WordsAPI responded with word "bacon" when requesting "Bacon".
+2022-01-16 16:27:33.839	 WordsAPI responded with word "bean" when requesting "beans".
+2022-01-16 16:27:34.074	 WordsAPI responded with word "sausage" when requesting "Sausage".
+2022-01-16 16:27:34.291	 WordsAPI responded with word "toast" when requesting "Toast".
+2022-01-16 16:27:34.88	 WordsAPI responded with word "regret" when requesting "Regret".
+2022-01-16 16:36:15.356	 Syllables of "hungover" was missing
+2022-01-16 16:36:15.356	 Pronunciation of "hungover" was missing
+2022-01-16 16:36:15.357	 Results of "hungover" was missing
+2022-01-16 16:36:15.62	 Unrecognised part of speech for "dry" with definition "lacking moisture or volatile components": "null"
+2022-01-16 16:36:15.62	 Unrecognised part of speech for "dry" with definition "opposed to or prohibiting the production and sale of alcoholic beverages": "null"
+2022-01-16 16:36:15.621	 Unrecognised part of speech for "dry" with definition "without a mucous or watery discharge": "null"
+2022-01-16 16:36:16.094	 Syllables of "café" was missing
+2022-01-16 16:36:16.094	 Pronunciation of "café" was missing
+2022-01-16 16:36:16.094	 Results of "café" was missing
+2022-01-16 16:36:16.31	 Pronunciation of "caps" was not a JSONObject: "kæps"
+2022-01-16 16:36:16.311	 Results of "caps" was missing
+2022-01-16 16:36:16.826	 WordsAPI responded with word "patricia" when requesting "Patricia".
+2022-01-16 16:36:16.826	 Syllables of "Patricia" was missing
+2022-01-16 16:36:16.827	 Pronunciation of "Patricia" was not a JSONObject: "pʌ'trɪʃʌ"
+2022-01-16 16:36:16.828	 Rhymes of "Patricia" was present: {"all":"-ɪʃə"}
+2022-01-16 16:36:16.828	 Rhymes of "Patricia" had no recognised keys not found in pronunciation field
+2022-01-16 16:36:16.828	 Results of "Patricia" was missing
+2022-01-16 16:36:17.665	 Syllables of "me" was missing
+2022-01-16 16:36:17.958	 Syllables of "myself" was missing
+2022-01-16 16:36:17.959	 Pronunciation of "myself" was not a JSONObject: ",maɪ'sɛlf"
+2022-01-16 16:36:17.959	 Rhymes of "myself" was present: {"all":"-ɛlf"}
+2022-01-16 16:36:17.959	 Rhymes of "myself" had no recognised keys not found in pronunciation field
+2022-01-16 16:36:19.289	 Syllables of "says" was missing
+2022-01-16 16:36:19.289	 Pronunciation of "says" was not a JSONObject: "sɛz"
+2022-01-16 16:36:19.29	 Rhymes of "says" was present: {"all":"-ɛz"}
+2022-01-16 16:36:19.29	 Rhymes of "says" had no recognised keys not found in pronunciation field
+2022-01-16 16:36:19.29	 Results of "says" was missing
+2022-01-16 16:36:20.276	 Unrecognised part of speech for "less" with definition "comparative of little": "null"
+2022-01-16 16:36:20.512	 Syllables of "a" was missing
+2022-01-16 16:36:21.007	 Unrecognised part of speech for "big" with definition "on a grand scale": "null"
+2022-01-16 16:36:21.252	 Syllables of "the" was missing
+2022-01-16 16:36:21.252	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-16 16:36:21.252	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-16 16:36:21.252	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-16 16:36:22.189	 Pronunciation of "arvo" had no recognised keys: {}
+2022-01-16 16:36:22.189	 Rhymes of "arvo" was present: {"all":"-ɑrvoʊ"}
+2022-01-16 16:36:22.19	 Results of "arvo" was missing
+2022-01-16 16:36:22.662	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 16:36:24.511	 Syllables of "got" was missing
+2022-01-16 16:36:24.511	 Pronunciation of "got" was not a JSONObject: "ɡɑt"
+2022-01-16 16:36:24.512	 Rhymes of "got" was present: {"all":"-ɑt"}
+2022-01-16 16:36:24.512	 Rhymes of "got" had no recognised keys not found in pronunciation field
+2022-01-16 16:36:24.512	 Results of "got" was missing
+2022-01-16 16:36:24.75	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 16:36:24.974	 WordsAPI responded with word "shit" when requesting "Shit".
+2022-01-16 16:36:25.248	 WordsAPI responded with word "eggs" when requesting "Eggs".
+2022-01-16 16:36:25.248	 Syllables of "Eggs" was missing
+2022-01-16 16:36:25.248	 Pronunciation of "Eggs" was not a JSONObject: "ɛɡz"
+2022-01-16 16:36:25.483	 WordsAPI responded with word "bacon" when requesting "Bacon".
+2022-01-16 16:36:26.362	 WordsAPI responded with word "bean" when requesting "beans".
+2022-01-16 16:36:26.603	 WordsAPI responded with word "sausage" when requesting "Sausage".
+2022-01-16 16:36:26.823	 WordsAPI responded with word "toast" when requesting "Toast".
+2022-01-16 16:36:27.06	 WordsAPI responded with word "regret" when requesting "Regret".
+2022-01-16 16:38:31.451	 Pronunciation of "bodied" was not a JSONObject: "'bɑdid"
+2022-01-16 16:39:26.653	 WordsAPI responded with word "able-bodied" when requesting "Able-bodied".
+2022-01-16 16:58:36.231	 Syllables of "hungover" was missing
+2022-01-16 16:58:36.231	 Pronunciation of "hungover" was missing
+2022-01-16 16:58:36.231	 Results of "hungover" was missing
+2022-01-16 16:58:36.5	 Unrecognised part of speech for "dry" with definition "lacking moisture or volatile components": "null"
+2022-01-16 16:58:36.501	 Unrecognised part of speech for "dry" with definition "opposed to or prohibiting the production and sale of alcoholic beverages": "null"
+2022-01-16 16:58:36.501	 Unrecognised part of speech for "dry" with definition "without a mucous or watery discharge": "null"
+2022-01-16 16:58:36.981	 Syllables of "cafe" was missing
+2022-01-16 16:58:37.235	 Pronunciation of "caps" was not a JSONObject: "kæps"
+2022-01-16 16:58:37.236	 Results of "caps" was missing
+2022-01-16 16:58:37.75	 WordsAPI responded with word "patricia" when requesting "Patricia".
+2022-01-16 16:58:37.75	 Syllables of "Patricia" was missing
+2022-01-16 16:58:37.75	 Pronunciation of "Patricia" was not a JSONObject: "pʌ'trɪʃʌ"
+2022-01-16 16:58:37.751	 Rhymes of "Patricia" was present: {"all":"-ɪʃə"}
+2022-01-16 16:58:37.751	 Rhymes of "Patricia" had no recognised keys not found in pronunciation field
+2022-01-16 16:58:37.751	 Results of "Patricia" was missing
+2022-01-16 16:58:38.594	 Syllables of "me" was missing
+2022-01-16 16:58:38.825	 Syllables of "myself" was missing
+2022-01-16 16:58:38.826	 Pronunciation of "myself" was not a JSONObject: ",maɪ'sɛlf"
+2022-01-16 16:58:38.827	 Rhymes of "myself" was present: {"all":"-ɛlf"}
+2022-01-16 16:58:38.827	 Rhymes of "myself" had no recognised keys not found in pronunciation field
+2022-01-16 16:58:40.233	 Syllables of "says" was missing
+2022-01-16 16:58:40.233	 Pronunciation of "says" was not a JSONObject: "sɛz"
+2022-01-16 16:58:40.234	 Rhymes of "says" was present: {"all":"-ɛz"}
+2022-01-16 16:58:40.234	 Rhymes of "says" had no recognised keys not found in pronunciation field
+2022-01-16 16:58:40.234	 Results of "says" was missing
+2022-01-16 16:58:41.132	 Unrecognised part of speech for "less" with definition "comparative of little": "null"
+2022-01-16 16:58:41.76	 Syllables of "a" was missing
+2022-01-16 16:58:42.283	 Unrecognised part of speech for "big" with definition "on a grand scale": "null"
+2022-01-16 16:58:43.004	 Syllables of "the" was missing
+2022-01-16 16:58:43.004	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-16 16:58:43.004	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-16 16:58:43.005	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-16 16:58:44.388	 Pronunciation of "arvo" had no recognised keys: {}
+2022-01-16 16:58:44.388	 Rhymes of "arvo" was present: {"all":"-ɑrvoʊ"}
+2022-01-16 16:58:44.388	 Results of "arvo" was missing
+2022-01-16 16:58:44.912	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 16:58:47.031	 Syllables of "got" was missing
+2022-01-16 16:58:47.031	 Pronunciation of "got" was not a JSONObject: "ɡɑt"
+2022-01-16 16:58:47.032	 Rhymes of "got" was present: {"all":"-ɑt"}
+2022-01-16 16:58:47.032	 Rhymes of "got" had no recognised keys not found in pronunciation field
+2022-01-16 16:58:47.032	 Results of "got" was missing
+2022-01-16 16:58:47.27	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 16:58:47.502	 WordsAPI responded with word "shit" when requesting "Shit".
+2022-01-16 16:58:47.715	 WordsAPI responded with word "eggs" when requesting "Eggs".
+2022-01-16 16:58:47.715	 Syllables of "Eggs" was missing
+2022-01-16 16:58:47.716	 Pronunciation of "Eggs" was not a JSONObject: "ɛɡz"
+2022-01-16 16:58:48.355	 WordsAPI responded with word "bacon" when requesting "Bacon".
+2022-01-16 16:58:48.853	 WordsAPI responded with word "bean" when requesting "beans".
+2022-01-16 16:58:49.087	 WordsAPI responded with word "sausage" when requesting "Sausage".
+2022-01-16 16:58:49.351	 WordsAPI responded with word "toast" when requesting "Toast".
+2022-01-16 16:58:49.583	 WordsAPI responded with word "regret" when requesting "Regret".
+2022-01-16 16:59:10.676	 Syllables of "boujee" was missing
+2022-01-16 16:59:10.676	 Pronunciation of "boujee" was missing
+2022-01-16 16:59:10.676	 Results of "boujee" was missing
+2022-01-16 16:59:32.474	 Syllables of "boujie" was missing
+2022-01-16 16:59:32.474	 Pronunciation of "boujie" was missing
+2022-01-16 16:59:32.474	 Results of "boujie" was missing
+2022-01-16 16:59:54.396	 Syllables of "bouji" was missing
+2022-01-16 16:59:54.396	 Pronunciation of "bouji" was missing
+2022-01-16 16:59:54.396	 Results of "bouji" was missing
+2022-01-16 17:04:59.175	 Pronunciation of "fucking" was not a JSONObject: "'fʌkɪŋ"
+2022-01-16 17:13:02.628	 WordsAPI responded with word "mother" when requesting "Mother".
+2022-01-16 17:13:06.202	 Syllables of "female parent" was missing
+2022-01-16 17:13:06.202	 Pronunciation of "female parent" was missing
+2022-01-16 17:38:27.549	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 17:38:27.783	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-16 17:38:30.392	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-16 17:38:45.809	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 17:38:46.733	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 17:38:47.043	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 17:38:47.043	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 17:38:47.044	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 17:38:47.044	 Results of "beds" was missing
+2022-01-16 17:38:47.34	 Syllables of "heads" was missing
+2022-01-16 17:38:47.34	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 17:38:47.341	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 17:38:47.342	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 17:38:47.342	 Results of "heads" was missing
+2022-01-16 17:38:50.331	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-16 17:38:50.555	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 17:38:50.783	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 17:38:50.783	 Results of "arrived" was missing
+2022-01-16 17:38:51.251	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 17:38:51.842	 Syllables of "Blitzen" was missing
+2022-01-16 17:38:51.842	 Pronunciation of "Blitzen" was missing
+2022-01-16 17:38:51.843	 Results of "Blitzen" was missing
+2022-01-16 17:39:21.932	 Syllables of "should" was missing
+2022-01-16 17:39:21.932	 Pronunciation of "should" was not a JSONObject: "ʃʊd"
+2022-01-16 17:39:21.932	 Rhymes of "should" was present: {"all":"-ʊd"}
+2022-01-16 17:39:21.932	 Rhymes of "should" had no recognised keys not found in pronunciation field
+2022-01-16 17:39:21.932	 Results of "should" was missing
+2022-01-16 17:51:46.4	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 17:51:47.143	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 17:51:47.405	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 17:51:47.406	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 17:51:47.406	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 17:51:47.406	 Results of "beds" was missing
+2022-01-16 17:51:47.694	 Syllables of "heads" was missing
+2022-01-16 17:51:47.695	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 17:51:47.696	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 17:51:47.696	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 17:51:47.696	 Results of "heads" was missing
+2022-01-16 17:51:50.76	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-16 17:51:50.981	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 17:51:51.239	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 17:51:51.239	 Results of "arrived" was missing
+2022-01-16 17:51:51.772	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 17:51:52.02	 Syllables of "Blitzen" was missing
+2022-01-16 17:51:52.021	 Pronunciation of "Blitzen" was missing
+2022-01-16 17:51:52.021	 Results of "Blitzen" was missing
+2022-01-16 17:53:29.351	 Syllables of "should" was missing
+2022-01-16 17:53:29.351	 Pronunciation of "should" was not a JSONObject: "ʃʊd"
+2022-01-16 17:53:29.352	 Rhymes of "should" was present: {"all":"-ʊd"}
+2022-01-16 17:53:29.352	 Rhymes of "should" had no recognised keys not found in pronunciation field
+2022-01-16 17:53:29.352	 Results of "should" was missing
+2022-01-16 17:53:33.623	 Syllables of "was" was missing
+2022-01-16 17:53:33.623	 Pronunciation of "was" was not a JSONObject: "wɑz"
+2022-01-16 17:53:33.623	 Rhymes of "was" was present: {"all":"-əz"}
+2022-01-16 17:53:33.623	 Rhymes of "was" had no recognised keys not found in pronunciation field
+2022-01-16 17:53:33.624	 Results of "was" was missing
+2022-01-16 17:54:00.848	 Syllables of "to" was missing
+2022-01-16 17:54:00.848	 Pronunciation of "to" was not a JSONObject: "tu"
+2022-01-16 17:54:00.848	 Rhymes of "to" was present: {"all":"-u"}
+2022-01-16 17:54:00.848	 Rhymes of "to" had no recognised keys not found in pronunciation field
+2022-01-16 17:54:03.873	 Syllables of "what" was missing
+2022-01-16 17:54:03.873	 Pronunciation of "what" was not a JSONObject: "wʌt"
+2022-01-16 17:54:03.874	 Rhymes of "what" was present: {"all":"-ət"}
+2022-01-16 17:54:03.874	 Rhymes of "what" had no recognised keys not found in pronunciation field
+2022-01-16 17:54:40.088	 WordsAPI responded with word "object" when requesting "objects".
+2022-01-16 17:54:40.719	 Syllables of "new-fallen" was missing
+2022-01-16 17:54:40.719	 Pronunciation of "new-fallen" was missing
+2022-01-16 17:54:40.719	 Results of "new-fallen" was missing
+2022-01-16 17:54:58.609	 Pronunciation of "eyes" was not a JSONObject: "aɪz"
+2022-01-16 17:58:43.953	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 17:58:44.697	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 17:58:44.928	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 17:58:44.929	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 17:58:44.929	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 17:58:44.93	 Results of "beds" was missing
+2022-01-16 17:58:45.216	 Syllables of "heads" was missing
+2022-01-16 17:58:45.217	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 17:58:45.217	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 17:58:45.218	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 17:58:45.218	 Results of "heads" was missing
+2022-01-16 17:58:48.55	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-16 17:58:49.14	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 17:58:49.762	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 17:58:49.762	 Results of "arrived" was missing
+2022-01-16 17:58:50.262	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 17:58:50.483	 Syllables of "Blitzen" was missing
+2022-01-16 17:58:50.483	 Pronunciation of "Blitzen" was missing
+2022-01-16 17:58:50.484	 Results of "Blitzen" was missing
+2022-01-16 17:58:53.192	 Syllables of "my" was missing
+2022-01-16 17:58:53.192	 Pronunciation of "my" was not a JSONObject: "maɪ"
+2022-01-16 17:58:53.192	 Rhymes of "my" was present: {"all":"-aɪ"}
+2022-01-16 17:58:53.192	 Rhymes of "my" had no recognised keys not found in pronunciation field
+2022-01-16 17:58:53.193	 Results of "my" was missing
+2022-01-16 17:59:06.544	 Syllables of "should" was missing
+2022-01-16 17:59:06.544	 Pronunciation of "should" was not a JSONObject: "ʃʊd"
+2022-01-16 17:59:06.544	 Rhymes of "should" was present: {"all":"-ʊd"}
+2022-01-16 17:59:06.544	 Rhymes of "should" had no recognised keys not found in pronunciation field
+2022-01-16 17:59:06.544	 Results of "should" was missing
+2022-01-16 17:59:15.867	 Pronunciation of "eyes" was not a JSONObject: "aɪz"
+2022-01-16 18:04:17.089	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 18:04:17.809	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 18:04:18.045	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 18:04:18.047	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 18:04:18.048	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 18:04:18.048	 Results of "beds" was missing
+2022-01-16 18:04:18.32	 Syllables of "heads" was missing
+2022-01-16 18:04:18.321	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 18:04:18.322	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 18:04:18.322	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 18:04:18.322	 Results of "heads" was missing
+2022-01-16 18:04:21.358	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-16 18:04:21.66	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 18:04:21.923	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 18:04:21.923	 Results of "arrived" was missing
+2022-01-16 18:04:22.5	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 18:04:22.795	 Syllables of "Blitzen" was missing
+2022-01-16 18:04:22.795	 Pronunciation of "Blitzen" was missing
+2022-01-16 18:04:22.795	 Results of "Blitzen" was missing
+2022-01-16 18:04:31.423	 Syllables of "should" was missing
+2022-01-16 18:04:31.423	 Pronunciation of "should" was not a JSONObject: "ʃʊd"
+2022-01-16 18:04:31.424	 Rhymes of "should" was present: {"all":"-ʊd"}
+2022-01-16 18:04:31.424	 Rhymes of "should" had no recognised keys not found in pronunciation field
+2022-01-16 18:04:31.424	 Results of "should" was missing
+2022-01-16 18:05:22.362	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 18:05:23.123	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 18:05:23.352	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 18:05:23.352	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 18:05:23.353	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 18:05:23.353	 Results of "beds" was missing
+2022-01-16 18:05:23.608	 Syllables of "heads" was missing
+2022-01-16 18:05:23.609	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 18:05:23.609	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 18:05:23.609	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 18:05:23.609	 Results of "heads" was missing
+2022-01-16 18:05:26.344	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-16 18:05:26.569	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 18:05:26.812	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 18:05:26.813	 Results of "arrived" was missing
+2022-01-16 18:05:27.317	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 18:05:27.57	 Syllables of "Blitzen" was missing
+2022-01-16 18:05:27.57	 Pronunciation of "Blitzen" was missing
+2022-01-16 18:05:27.57	 Results of "Blitzen" was missing
+2022-01-16 18:10:33.853	 Syllables of "overstated" was missing
+2022-01-16 18:10:33.854	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-01-16 18:10:34.398	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-01-16 18:10:34.617	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-01-16 18:10:34.618	 Results of "sated" was missing
+2022-01-16 18:10:39.321	 Pronunciation of "been" was not a JSONObject: "bɪn"
+2022-01-16 18:10:39.322	 Rhymes of "been" was present: {"all":"-ɪn"}
+2022-01-16 18:10:39.322	 Rhymes of "been" had no recognised keys not found in pronunciation field
+2022-01-16 18:10:39.323	 Results of "been" was missing
+2022-01-16 18:16:09.624	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 18:16:10.546	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 18:16:10.899	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 18:16:10.9	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 18:16:10.9	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 18:16:10.9	 Results of "beds" was missing
+2022-01-16 18:16:11.208	 Syllables of "heads" was missing
+2022-01-16 18:16:11.208	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 18:16:11.209	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 18:16:11.21	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 18:16:11.21	 Results of "heads" was missing
+2022-01-16 18:16:16.172	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-16 18:16:16.547	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 18:16:16.872	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 18:16:16.872	 Results of "arrived" was missing
+2022-01-16 18:16:17.671	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 18:16:17.937	 Syllables of "Blitzen" was missing
+2022-01-16 18:16:17.937	 Pronunciation of "Blitzen" was missing
+2022-01-16 18:16:17.937	 Results of "Blitzen" was missing
+2022-01-16 18:16:28.301	 WordsAPI responded with word "object" when requesting "objects".
+2022-01-16 18:16:44.154	 Syllables of "should" was missing
+2022-01-16 18:16:44.154	 Pronunciation of "should" was not a JSONObject: "ʃʊd"
+2022-01-16 18:16:44.154	 Rhymes of "should" was present: {"all":"-ʊd"}
+2022-01-16 18:16:44.155	 Rhymes of "should" had no recognised keys not found in pronunciation field
+2022-01-16 18:16:44.155	 Results of "should" was missing
+2022-01-16 18:18:47.979	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 18:18:48.844	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 18:18:49.121	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 18:18:49.123	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 18:18:49.123	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 18:18:49.124	 Results of "beds" was missing
+2022-01-16 18:18:49.362	 Syllables of "heads" was missing
+2022-01-16 18:18:49.362	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 18:18:49.363	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 18:18:49.363	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 18:18:49.364	 Results of "heads" was missing
+2022-01-16 18:18:52.689	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-16 18:18:52.948	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 18:18:53.207	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 18:18:53.208	 Results of "arrived" was missing
+2022-01-16 18:18:53.683	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 18:18:53.951	 Syllables of "Blitzen" was missing
+2022-01-16 18:18:53.951	 Pronunciation of "Blitzen" was missing
+2022-01-16 18:18:53.951	 Results of "Blitzen" was missing
+2022-01-16 18:19:19.181	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 18:19:20.318	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 18:19:20.584	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 18:19:20.585	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 18:19:20.586	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 18:19:20.586	 Results of "beds" was missing
+2022-01-16 18:19:20.808	 Syllables of "heads" was missing
+2022-01-16 18:19:20.808	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 18:19:20.809	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 18:19:20.809	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 18:19:20.809	 Results of "heads" was missing
+2022-01-16 18:19:23.763	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-16 18:19:23.994	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 18:19:24.223	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 18:19:24.223	 Results of "arrived" was missing
+2022-01-16 18:19:24.742	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 18:19:25.082	 Syllables of "Blitzen" was missing
+2022-01-16 18:19:25.082	 Pronunciation of "Blitzen" was missing
+2022-01-16 18:19:25.082	 Results of "Blitzen" was missing
+2022-01-16 18:19:33.775	 Syllables of "new-fallen" was missing
+2022-01-16 18:19:33.775	 Pronunciation of "new-fallen" was missing
+2022-01-16 18:19:33.775	 Results of "new-fallen" was missing
+2022-01-16 18:19:39.385	 Syllables of "should" was missing
+2022-01-16 18:19:39.386	 Pronunciation of "should" was not a JSONObject: "ʃʊd"
+2022-01-16 18:19:39.386	 Rhymes of "should" was present: {"all":"-ʊd"}
+2022-01-16 18:19:39.386	 Rhymes of "should" had no recognised keys not found in pronunciation field
+2022-01-16 18:19:39.387	 Results of "should" was missing
+2022-01-16 18:19:47.314	 WordsAPI responded with word "object" when requesting "objects".
+2022-01-16 18:19:57.03	 Syllables of "mid-day" was missing
+2022-01-16 18:19:57.03	 Pronunciation of "mid-day" was missing
+2022-01-16 18:19:57.03	 Results of "mid-day" was missing
+2022-01-16 18:20:20.625	 Syllables of "newfallen" was missing
+2022-01-16 18:20:20.625	 Pronunciation of "newfallen" was missing
+2022-01-16 18:20:20.625	 Results of "newfallen" was missing
+2022-01-16 18:20:52.013	 Syllables of "the" was missing
+2022-01-16 18:20:52.014	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-16 18:20:52.014	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-16 18:20:52.014	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-16 18:21:24.222	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 18:21:24.947	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 18:21:25.23	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 18:21:25.231	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 18:21:25.232	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 18:21:25.232	 Results of "beds" was missing
+2022-01-16 18:21:25.501	 Syllables of "heads" was missing
+2022-01-16 18:21:25.501	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 18:21:25.502	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 18:21:25.502	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 18:21:25.502	 Results of "heads" was missing
+2022-01-16 18:21:28.224	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-16 18:21:28.468	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 18:21:28.751	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 18:21:28.752	 Results of "arrived" was missing
+2022-01-16 18:21:29.305	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 18:21:29.611	 Syllables of "Blitzen" was missing
+2022-01-16 18:21:29.611	 Pronunciation of "Blitzen" was missing
+2022-01-16 18:21:29.611	 Results of "Blitzen" was missing

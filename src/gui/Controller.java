@@ -11,15 +11,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -28,7 +32,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+import javafx.stage.Window;
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionParameters;
 import words.Poem;
@@ -47,6 +51,7 @@ public class Controller {
 
     private Poem poem;
     private IndexedTokenLabel focusedToken;
+    private IndexedTokenLabel secondFocusedToken;
     private File poemFile;
 
     // Poem & stanza info
@@ -54,6 +59,8 @@ public class Controller {
     ToggleButton tgbtnDirectEdit;
     @FXML
     AnchorPane anpnRoot, anpnPoem;
+    @FXML
+    ScrollPane scrlpnPoem;
     @FXML
     TitledPane ttlpnPoem;
     @FXML
@@ -66,6 +73,8 @@ public class Controller {
     Label lblPoemStanzaCount, lblPoemLineCount, lblStanzaNumber, lblStanzaLineCount, lblActRhymeScheme;
     @FXML
     TextField txtfldIntRhymeScheme;
+    @FXML
+    Tooltip tltpIntRhymeScheme;
 
     // Suggestion parameters
     @FXML
@@ -96,11 +105,22 @@ public class Controller {
     public void initialize() {
         txtfldIntRhymeScheme.setTextFormatter(rhymeSchemeFormatter);
 
+        IndexedTokenLabel.mnitmJoinWords.setOnAction(actionEvent -> {
+            if (focusedToken == null || secondFocusedToken == null) {
+                Alert alert = getCleanAlert(AlertType.INFORMATION);
+                alert.setContentText("Two neighbouring words must be selected to join.");
+                alert.show();
+            }
+        });
     }
 
     private static class IndexedTokenLabel extends Label {
         private static final String SELECTABLE_CLASS = "selectableToken";
         private static final String SELECTED_CLASS = "selectedToken";
+
+        private static MenuItem mnitmJoinWords = new MenuItem("Join words");
+        private static ContextMenu cntxtmnLabel = new ContextMenu(mnitmJoinWords);
+
         private Token token;
         private int stanzaIndex;
         private int lineIndex;
@@ -109,9 +129,28 @@ public class Controller {
         private boolean inclUnknown = true;
         private ArrayList<SuperWord> suggestions;
 
+        /**
+         * 
+         * @param other a potential neighbouring word.
+         * @return true if two words are adjacent within a line and there is a single
+         *         whitespace character between them, otherwise false.
+         */
+        private boolean isNeighbour(IndexedTokenLabel other) {
+            if (other == null)
+                return false;
+            if (this.getParent().equals(other.getParent())
+                    && Math.abs(this.tokenIndex - other.tokenIndex) == 2) {
+
+                IndexedTokenLabel middleToken = (IndexedTokenLabel) ((FlowPane) this.getParent()).getChildren()
+                        .get(Math.min(this.tokenIndex, other.tokenIndex) + 1);
+                return middleToken.token.getPlaintext().equals(" ");
+            } else {
+                return false;
+            }
+        }
+
         private IndexedTokenLabel(Controller parentController, Token token, int stanzaIndex, int lineIndex,
-                int tokenIndex,
-                boolean clickable) {
+                int tokenIndex, boolean clickable) {
             super();
             this.setText(token.getPlaintext());
             this.token = token;
@@ -120,15 +159,43 @@ public class Controller {
             this.tokenIndex = tokenIndex;
             if (clickable) {
                 this.getStyleClass().add(SELECTABLE_CLASS);
+                this.setContextMenu(cntxtmnLabel);
 
                 this.setOnMouseClicked(actionEvent -> {
-                    parentController.unfocusToken();
-                    parentController.focusedToken = this;
-                    parentController.focusOnStanza(this.stanzaIndex);
-                    parentController.focusOnWord();
+                    if (actionEvent.isControlDown() && isNeighbour(parentController.focusedToken)) {
+                        // select a secondary word
+                        parentController.unhighlightWord(parentController.secondFocusedToken);
+                        parentController.secondFocusedToken = this;
+                        parentController.highlightWord(parentController.secondFocusedToken);
+
+                    } else if (actionEvent.getButton() == MouseButton.SECONDARY
+                            && parentController.secondFocusedToken != null
+                            && (this.equals(parentController.focusedToken)
+                                    || this.equals(parentController.secondFocusedToken))) {
+                        // context menu will be opened to allow joining words
+
+                    } else {
+                        // deselect previous word and focus on clicked word
+                        parentController.unhighlightWord(parentController.secondFocusedToken);
+                        parentController.secondFocusedToken = null;
+
+                        parentController.unhighlightWord(parentController.focusedToken);
+                        parentController.focusedToken = this;
+                        parentController.focusOnStanza(this.stanzaIndex);
+                        parentController.highlightWord(parentController.focusedToken);
+                        parentController.focusOnWord(parentController.focusedToken);
+                    }
                 });
             }
         }
+    }
+
+    private Alert getCleanAlert(AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
+        alert.initOwner(anpnRoot.getScene().getWindow());
+        return alert;
     }
 
     public void test(ActionEvent e) {
@@ -189,21 +256,26 @@ public class Controller {
         focusedToken.pos = SubWord.parsePoS(((RadioButton) e.getSource()).getText());
     }
 
-    private void unfocusToken() {
-        if (focusedToken != null) {
+    private void unhighlightWord(IndexedTokenLabel token) {
+        if (token != null) {
             // remove highlight from previously selected word
-            focusedToken.getStyleClass().remove(IndexedTokenLabel.SELECTED_CLASS);
+            token.getStyleClass().remove(IndexedTokenLabel.SELECTED_CLASS);
         }
     }
 
-    private void focusOnWord() {
-        focusedToken.getStyleClass().add(IndexedTokenLabel.SELECTED_CLASS);
-        SuperWord superword = (SuperWord) focusedToken.token;
+    private void highlightWord(IndexedTokenLabel token) {
+        if (token != null) {
+            token.getStyleClass().add(IndexedTokenLabel.SELECTED_CLASS);
+        }
+    }
+
+    private void focusOnWord(IndexedTokenLabel focusOnToken) {
+        SuperWord superword = (SuperWord) focusOnToken.token;
         RadioButton radioButton;
         boolean hasSubWords = false;
         for (PartOfSpeech pos : PartOfSpeech.values()) {
             radioButton = getPoSRadioButton(pos);
-            radioButton.setSelected(focusedToken.pos != null && focusedToken.pos.equals(pos));
+            radioButton.setSelected(focusOnToken.pos != null && focusOnToken.pos.equals(pos));
             if (superword.getSubWords(pos, false) == null) {
                 radioButton.setDisable(true);
             } else {
@@ -211,7 +283,7 @@ public class Controller {
                 hasSubWords = true;
             }
         }
-        chbxInclUnknown.setSelected(focusedToken.inclUnknown);
+        chbxInclUnknown.setSelected(focusOnToken.inclUnknown);
         btnGetSuggestions.setDisable(!hasSubWords);
         displaySuggestions();
     }
@@ -221,6 +293,7 @@ public class Controller {
             return change;
         }
 
+        change.setText(change.getText().toUpperCase());
         String text = change.getControlNewText();
         if (!text.matches("[A-Z#]*")) {
             return null;
@@ -232,10 +305,9 @@ public class Controller {
     public void updateIntendedRhymeScheme(ActionEvent e) {
         if (!poem.getStanzas().get(focusedToken.stanzaIndex)
                 .setDesiredRhymeScheme(((TextField) e.getSource()).getText())) {
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.setHeaderText("Could not parse rhyme scheme.");
-            alert.setContentText(String.format(SEE_LOG));
-            alert.show();
+            Window window = ((TextField) e.getSource()).getScene().getWindow();
+            tltpIntRhymeScheme.show(window);
+            tltpIntRhymeScheme.setAutoHide(true);
         }
     }
 
@@ -292,13 +364,14 @@ public class Controller {
             tokenizePoem();
             tgbtnDirectEdit.setDisable(false);
         } catch (IOException e) {
-            Alert alert = new Alert(AlertType.ERROR);
+            Alert alert = getCleanAlert(AlertType.ERROR);
             alert.setHeaderText("Could not open file.");
-            alert.setContentText(String.format("Failed to open %s.", poemFile.getName()));
+            alert.setContentText(String.format("Failed to open %s.\n%s", poemFile.getName(), SEE_LOG));
+            LOG.writeTempLog(e.toString() + "\n" + Arrays.toString(e.getStackTrace()));
             alert.show();
         } catch (Exception e) {
             LOG.writeTempLog(e.toString() + "\n" + Arrays.toString(e.getStackTrace()));
-            Alert alert = new Alert(AlertType.ERROR);
+            Alert alert = getCleanAlert(AlertType.ERROR);
             alert.setHeaderText("An unexpected error occured.");
             alert.setContentText(SEE_LOG);
             alert.show();
@@ -306,10 +379,15 @@ public class Controller {
     }
 
     public void savePoem() {
+        if (poemFile == null) {
+            savePoemAs();
+            return;
+        }
+
         try {
             poem.savePoem(poemFile);
         } catch (IOException e) {
-            Alert alert = new Alert(AlertType.ERROR);
+            Alert alert = getCleanAlert(AlertType.ERROR);
             alert.setHeaderText("Could not save poem.");
             alert.setContentText(String.format("Failed to write to %s.\n%s", poemFile.getName(), SEE_LOG));
             LOG.writeTempLog(e.toString() + "\n" + e.getStackTrace());
@@ -325,13 +403,37 @@ public class Controller {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Text", "*.txt"),
                 new FileChooser.ExtensionFilter("All Files", "*"));
+        fileChooser.setInitialFileName(poem.getTitle());
         poemFile = fileChooser.showSaveDialog(stage);
         if (poemFile == null) {
             return;
         }
-        poem.setTitle(poemFile.getName()); 
+        poem.setTitle(poemFile.getName());
         ttlpnPoem.setText(poem.getTitle());
         savePoem();
+    }
+
+    public void newPoem() {
+        TextInputDialog poemTitleDialog = new TextInputDialog();
+        poemTitleDialog.setTitle("Poem Title");
+        poemTitleDialog.setContentText("Enter poem title");
+        poemTitleDialog.showAndWait().ifPresent(title -> {
+            try {
+                poem = new Poem(title, "");
+                ttlpnPoem.setText(poem.getTitle());
+                tgbtnDirectEdit.setDisable(false);
+                if (!txtarPoem.isVisible()) {
+                    tgbtnDirectEdit.setSelected(true);
+                    toggleDirectEdit();
+                }
+            } catch (IOException e) {
+                Alert alert = getCleanAlert(AlertType.ERROR);
+                alert.setHeaderText("Could not create blank poem.");
+                alert.setContentText(SEE_LOG);
+                LOG.writeTempLog(e.toString() + "\n" + e.getStackTrace());
+                alert.show();
+            }
+        });
     }
 
     public void toggleDirectEdit() {
@@ -350,7 +452,7 @@ public class Controller {
                 ttlpnSuggestions.setDisable(false);
             } catch (IOException e) {
                 LOG.writeTempLog(e.toString() + "\n" + Arrays.toString(e.getStackTrace()));
-                Alert alert = new Alert(AlertType.ERROR);
+                Alert alert = getCleanAlert(AlertType.ERROR);
                 alert.setHeaderText("Could not parse directly edited text.");
                 alert.setContentText(String.format(SEE_LOG));
                 alert.show();
@@ -363,8 +465,8 @@ public class Controller {
         // (un)hide text area
         txtarPoem.setVisible(!txtarPoem.isVisible());
 
-        // (un)hide anchor pane
-        anpnPoem.setVisible(!anpnPoem.isVisible());
+        // (un)hide scroll pane
+        scrlpnPoem.setVisible(!scrlpnPoem.isVisible());
     }
 
     private SuggestionParameters getSuggestionParams() {
@@ -426,7 +528,7 @@ public class Controller {
 
     public void getSuggestions() {
         if (focusedToken.pos == null) {
-            Alert alert = new Alert(AlertType.INFORMATION);
+            Alert alert = getCleanAlert(AlertType.INFORMATION);
             alert.setContentText("Please select a part of speech to get suggestions.");
             alert.show();
         } else {
