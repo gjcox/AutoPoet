@@ -29,6 +29,7 @@ public class IPAHandler extends AbstractIPA {
         ArrayList<Integer> onsetIndexes = new ArrayList<>(); // the start of onsets; onset_indexes[i] should
                                                              // correspond to nuclei_indexes[i]
 
+        ipaWord = ipaWord.replaceAll("_", ""); // ignore spaces in IPA
         if (ipaWord.equals("")) {
             Configuration.LOG.writeTempLog(
                     String.format("getSyllables(%s) passed an empty string. Returning empty pair.", ipaWord));
@@ -74,19 +75,21 @@ public class IPAHandler extends AbstractIPA {
             String trialOnset = "";
             String onset = "";
             int onsetStart = nucleusIndexes.get(i) - 1;
+            boolean foundPrimary = false;
             while (trialOnsetIsValid && onsetStart >= 0) {
-                char prev_char = ipaWord.charAt(onsetStart);
-                trialOnset = prev_char + trialOnset;
+                char prevChar = ipaWord.charAt(onsetStart);
+                trialOnset = prevChar + trialOnset;
                 if (AbstractIPA.isValidOnset(trialOnset, syllables.get(i).getNucleus())) {
                     onset = trialOnset;
                     onsetIndexes.set(i, onsetStart);
                     onsetStart--;
-                } else if (prev_char == '\'') {
+                } else if (prevChar == '\'' && !foundPrimary) {
                     /* primary stress */
+                    foundPrimary = true;
                     emphasis.setPrimary(i);
                     onsetIndexes.set(i, onsetStart); // prevents character being included in a coda
                     trialOnsetIsValid = false;
-                } else if (prev_char == ',') {
+                } else if (prevChar == ',' || (prevChar == '\'' && foundPrimary)) {
                     /* secondary stress */
                     emphasis.addSecondary(i);
                     onsetIndexes.set(i, onsetStart); // prevents character being included in a coda
@@ -130,7 +133,7 @@ public class IPAHandler extends AbstractIPA {
      * From my own deduction, two syllables rhyme if they have matching nuclei and
      * coda. For a multi-syllabic rhyme, the onset of all but the first syllable
      * pair must also match, hence the syllables in the for loop are treated
-     * differently. 
+     * differently.
      */
 
 }

@@ -11,8 +11,8 @@ import static config.Configuration.LOG;
 public class Stanza {
 
     private ArrayList<ArrayList<Token>> lines = new ArrayList<>();
-    private RhymingScheme desiredScheme; 
-    private RhymingScheme actualScheme; 
+    private RhymingScheme desiredScheme;
+    private RhymingScheme actualScheme;
     // an IPA line represenation could allow recognition of longer rhymes
 
     public void addLine(String line) {
@@ -38,7 +38,7 @@ public class Stanza {
     /**
      * 
      * @param lineNumber
-     * @return the last SuperWord in a line; null if no SuperWords were found. 
+     * @return the last SuperWord in a line; null if no SuperWords were found.
      */
     private SuperWord getLastWord(int lineNumber) {
         ArrayList<Token> line = lines.get(lineNumber);
@@ -82,13 +82,65 @@ public class Stanza {
 
     public void substituteWord(int lineIndex, int tokenIndex, SuperWord newWord) {
         ArrayList<Token> line = lines.get(lineIndex);
-        SuperWord lastWord =  getLastWord(lineIndex); 
+        SuperWord lastWord = getLastWord(lineIndex);
         boolean updateRhymeScheme = lastWord != null && lastWord.equals(line.remove(tokenIndex));
         line.add(tokenIndex, newWord);
 
         if (updateRhymeScheme)
             evaluateRhymingScheme();
 
+    }
+
+    public boolean joinWords(int lineIndex, int tokenIndex1, int tokenIndex2) {
+        ArrayList<Token> line = lines.get(lineIndex);
+        SuperWord lastWord = getLastWord(lineIndex);
+        Token token1 = line.get(tokenIndex1);
+        Token token2 = line.get(tokenIndex2);
+        if (tokenIndex2 - tokenIndex1 == 2 // two words seperated by one other token
+                && token1.getClass().equals(SuperWord.class)
+                && token2.getClass().equals(SuperWord.class)) {
+
+            Token middleToken = line.get(tokenIndex1 + 1);
+            LOG.writeTempLog(String.format("Creating joined word %s",
+                    token1.getPlaintext() + middleToken.getPlaintext() + token2.getPlaintext()));
+            SuperWord combined = SuperWord
+                    .getSuperWord(token1.getPlaintext() + middleToken.getPlaintext() + token2.getPlaintext());
+            line.remove(tokenIndex1);
+            line.remove(tokenIndex1); // i.e. seperator
+            line.remove(tokenIndex1); // i.e. token 2
+            line.add(tokenIndex1, combined);
+
+            boolean updateRhymeScheme = lastWord != null && lastWord.equals(token2);
+            if (updateRhymeScheme)
+                evaluateRhymingScheme();
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean splitWord(int lineIndex, int tokenIndex, String seperator) {
+        ArrayList<Token> line = lines.get(lineIndex);
+        SuperWord lastWord = getLastWord(lineIndex);
+        String toSplit = line.get(tokenIndex).getPlaintext();
+        if (toSplit.indexOf(seperator) != -1) {
+
+            LOG.writeTempLog(String.format("Splitting word %s", toSplit));
+            SuperWord word1 = SuperWord.getSuperWord(toSplit.substring(0, toSplit.indexOf(seperator)));
+            SuperWord word2 = SuperWord.getSuperWord(toSplit.substring(toSplit.indexOf(seperator) + 1));
+            boolean updateRhymeScheme = lastWord != null && lastWord.equals(line.remove(tokenIndex));
+
+            line.add(tokenIndex, word2);
+            line.add(tokenIndex, new Token(seperator));
+            line.add(tokenIndex, word1);
+
+            if (updateRhymeScheme)
+                evaluateRhymingScheme();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String toString() {

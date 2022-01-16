@@ -70,13 +70,13 @@ public class Poem {
         }
 
         InputStream stream = new ByteArrayInputStream((poemString.trim()).getBytes());
-        fileReader = new BufferedReader(new InputStreamReader(stream)); 
-        
+        fileReader = new BufferedReader(new InputStreamReader(stream));
+
         fillPoem();
     }
 
     public void savePoem(File outputFile) throws IOException {
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(outputFile, StandardCharsets.UTF_8)); 
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(outputFile, StandardCharsets.UTF_8));
         fileWriter.write(this.toString());
         fileWriter.close();
     }
@@ -101,8 +101,16 @@ public class Poem {
         stanzas.get(stanzaIndex).substituteWord(lineIndex, tokenIndex, newWord);
     }
 
+    public boolean joinWords(int stanzaIndex, int lineIndex, int tokenIndex1, int tokenIndex2) {
+        return stanzas.get(stanzaIndex).joinWords(lineIndex, tokenIndex1, tokenIndex2);
+    }
+
+    public boolean splitWord(int stanzaIndex, int lineIndex, int tokenIndex, String seperator) {
+        return stanzas.get(stanzaIndex).splitWord(lineIndex, tokenIndex, seperator);
+    }
+
     public void setTitle(String newTitle) {
-        title = newTitle; 
+        title = newTitle;
         if (title.contains(File.separator)) {
             title = title.substring(title.lastIndexOf(File.separator) + 1);
         }

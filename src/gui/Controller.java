@@ -51,7 +51,7 @@ public class Controller {
 
     private Poem poem;
     private IndexedTokenLabel focusedToken;
-    private IndexedTokenLabel secondFocusedToken;
+    private IndexedTokenLabel secondFocusedToken; // the word after the focusedToken, or null
     private File poemFile;
 
     // Poem & stanza info
@@ -110,7 +110,17 @@ public class Controller {
                 Alert alert = getCleanAlert(AlertType.INFORMATION);
                 alert.setContentText("Two neighbouring words must be selected to join.");
                 alert.show();
+            } else {
+                joinWords();
             }
+        });
+
+        IndexedTokenLabel.mnitmSplitWord.setOnAction(actionEvent -> {
+            if (!splitWord(" ")) {
+                Alert alert = getCleanAlert(AlertType.INFORMATION);
+                alert.setContentText("Selected word could not be split.");
+                alert.show();
+            } 
         });
     }
 
@@ -119,7 +129,8 @@ public class Controller {
         private static final String SELECTED_CLASS = "selectedToken";
 
         private static MenuItem mnitmJoinWords = new MenuItem("Join words");
-        private static ContextMenu cntxtmnLabel = new ContextMenu(mnitmJoinWords);
+        private static MenuItem mnitmSplitWord = new MenuItem("Split word");
+        private static ContextMenu cntxtmnLabel = new ContextMenu(mnitmJoinWords, mnitmSplitWord);
 
         private Token token;
         private int stanzaIndex;
@@ -162,24 +173,31 @@ public class Controller {
                 this.setContextMenu(cntxtmnLabel);
 
                 this.setOnMouseClicked(actionEvent -> {
+                    parentController.unhighlightWord(parentController.focusedToken);
+                    parentController.unhighlightWord(parentController.secondFocusedToken);
+
                     if (actionEvent.isControlDown() && isNeighbour(parentController.focusedToken)) {
                         // select a secondary word
-                        parentController.unhighlightWord(parentController.secondFocusedToken);
-                        parentController.secondFocusedToken = this;
+                        if (this.tokenIndex > parentController.focusedToken.tokenIndex) {
+                            parentController.secondFocusedToken = this;
+                        } else {
+                            parentController.secondFocusedToken = parentController.focusedToken;
+                            parentController.focusedToken = this;
+                        }
                         parentController.highlightWord(parentController.secondFocusedToken);
+                        parentController.highlightWord(parentController.focusedToken);
 
                     } else if (actionEvent.getButton() == MouseButton.SECONDARY
                             && parentController.secondFocusedToken != null
                             && (this.equals(parentController.focusedToken)
                                     || this.equals(parentController.secondFocusedToken))) {
                         // context menu will be opened to allow joining words
-
+                        parentController.highlightWord(parentController.focusedToken);
+                        parentController.highlightWord(parentController.secondFocusedToken);
                     } else {
                         // deselect previous word and focus on clicked word
-                        parentController.unhighlightWord(parentController.secondFocusedToken);
                         parentController.secondFocusedToken = null;
 
-                        parentController.unhighlightWord(parentController.focusedToken);
                         parentController.focusedToken = this;
                         parentController.focusOnStanza(this.stanzaIndex);
                         parentController.highlightWord(parentController.focusedToken);
@@ -484,18 +502,73 @@ public class Controller {
         poem.substituteWord(focusedToken.stanzaIndex, focusedToken.lineIndex, focusedToken.tokenIndex,
                 suggestion);
 
-        IndexedTokenLabel newTokenLabel = new IndexedTokenLabel(this, suggestion, focusedToken.stanzaIndex,
+        IndexedTokenLabel newToken = new IndexedTokenLabel(this, suggestion, focusedToken.stanzaIndex,
                 focusedToken.lineIndex, focusedToken.tokenIndex, true);
-        newTokenLabel.pos = focusedToken.pos;
+        newToken.pos = focusedToken.pos;
 
         // replace old label in GUI
         FlowPane guiLine = (FlowPane) focusedToken.getParent();
         guiLine.getChildren().remove(focusedToken.tokenIndex);
-        guiLine.getChildren().add(focusedToken.tokenIndex, newTokenLabel);
+        guiLine.getChildren().add(focusedToken.tokenIndex, newToken);
 
         // focus on new token by simulating it being clicked on
-        Event.fireEvent(newTokenLabel, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
+        Event.fireEvent(newToken, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
                 false, false, false, false, true, false, false, false, false, false, null));
+    }
+
+    private void joinWords() {
+        if (poem.joinWords(focusedToken.stanzaIndex, focusedToken.lineIndex,
+                focusedToken.tokenIndex, secondFocusedToken.tokenIndex)) {
+
+            String joinedPlaintext = focusedToken.token.getPlaintext() + " " + secondFocusedToken.token.getPlaintext();
+            SuperWord joinedSuperWord = SuperWord.getSuperWord(joinedPlaintext);
+            IndexedTokenLabel newToken = new IndexedTokenLabel(this, joinedSuperWord, focusedToken.stanzaIndex,
+                    focusedToken.lineIndex, focusedToken.tokenIndex, true);
+
+            // replace old tokens in GUI
+            FlowPane guiLine = (FlowPane) focusedToken.getParent();
+            guiLine.getChildren().remove(focusedToken.tokenIndex);
+            guiLine.getChildren().remove(focusedToken.tokenIndex); // i.e. seperator
+            guiLine.getChildren().remove(focusedToken.tokenIndex); // i.e. secondFocusedToken
+            guiLine.getChildren().add(focusedToken.tokenIndex, newToken);
+
+            // focus on new token by simulating it being clicked on
+            Event.fireEvent(newToken, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
+                    false, false, false, false, true, false, false, false, false, false, null));
+        }
+    }
+
+    private boolean splitWord(String seperator) {
+        if (poem.splitWord(focusedToken.stanzaIndex, focusedToken.lineIndex,
+                focusedToken.tokenIndex, seperator)) {
+
+            String toSplit = focusedToken.token.getPlaintext();
+            int seperatorIndex = toSplit.indexOf(seperator); // won't be -1 if poem.splitWord returned true
+            SuperWord subWord1 = SuperWord.getSuperWord(toSplit.substring(0, seperatorIndex));
+            Token separatorToken = new Token(seperator);
+            SuperWord subWord2 = SuperWord.getSuperWord(toSplit.substring(seperatorIndex + 1));
+            IndexedTokenLabel token1 = new IndexedTokenLabel(this, subWord1, focusedToken.stanzaIndex,
+                    focusedToken.lineIndex, focusedToken.tokenIndex, true);
+            IndexedTokenLabel seperatorToken = new IndexedTokenLabel(this, separatorToken, focusedToken.stanzaIndex,
+                    focusedToken.lineIndex, focusedToken.tokenIndex + 1, false);
+            IndexedTokenLabel token2 = new IndexedTokenLabel(this, subWord2, focusedToken.stanzaIndex,
+                    focusedToken.lineIndex, focusedToken.tokenIndex + 2, true);
+
+            // replace old label in GUI
+            FlowPane guiLine = (FlowPane) focusedToken.getParent();
+            guiLine.getChildren().remove(focusedToken.tokenIndex);
+            guiLine.getChildren().add(focusedToken.tokenIndex, token2);
+            guiLine.getChildren().add(focusedToken.tokenIndex, seperatorToken);
+            guiLine.getChildren().add(focusedToken.tokenIndex, token1);
+
+            // focus on second subword by simulating it being clicked on
+            Event.fireEvent(token2, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
+                    false, false, false, false, true, false, false, false, false, false, null));
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     private void displaySuggestions() {

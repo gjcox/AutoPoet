@@ -5754,3 +5754,149 @@
 2022-01-16 18:21:29.611	 Syllables of "Blitzen" was missing
 2022-01-16 18:21:29.611	 Pronunciation of "Blitzen" was missing
 2022-01-16 18:21:29.611	 Results of "Blitzen" was missing
+2022-01-16 19:11:00.909	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 19:11:01.685	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 19:11:01.921	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 19:11:01.921	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 19:11:01.922	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 19:11:01.922	 Results of "beds" was missing
+2022-01-16 19:11:02.245	 Syllables of "heads" was missing
+2022-01-16 19:11:02.245	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 19:11:02.246	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 19:11:02.246	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 19:11:02.246	 Results of "heads" was missing
+2022-01-16 19:11:05.548	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-16 19:11:05.8	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 19:11:06.042	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 19:11:06.043	 Results of "arrived" was missing
+2022-01-16 19:11:06.574	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 19:11:06.84	 Syllables of "Blitzen" was missing
+2022-01-16 19:11:06.84	 Pronunciation of "Blitzen" was missing
+2022-01-16 19:11:06.84	 Results of "Blitzen" was missing
+2022-01-16 19:13:32.071	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 19:13:32.285	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 19:13:32.286	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 19:13:32.286	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 19:13:32.286	 Results of "beds" was missing
+2022-01-16 19:13:32.506	 Syllables of "heads" was missing
+2022-01-16 19:13:32.506	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 19:13:32.506	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 19:13:32.506	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 19:13:32.507	 Results of "heads" was missing
+2022-01-16 19:13:35.49	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 19:13:35.708	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 19:13:35.709	 Results of "arrived" was missing
+2022-01-16 19:13:36.238	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 19:13:36.445	 Syllables of "Blitzen" was missing
+2022-01-16 19:13:36.445	 Pronunciation of "Blitzen" was missing
+2022-01-16 19:13:36.445	 Results of "Blitzen" was missing
+2022-01-16 19:21:14.221	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 19:21:14.521	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 19:21:14.523	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 19:21:14.523	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 19:21:14.523	 Results of "beds" was missing
+2022-01-16 19:21:14.861	 Syllables of "heads" was missing
+2022-01-16 19:21:14.861	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 19:21:14.862	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 19:21:14.862	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 19:21:14.862	 Results of "heads" was missing
+2022-01-16 19:21:18.096	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 19:21:18.395	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 19:21:18.395	 Results of "arrived" was missing
+2022-01-16 19:21:19.271	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 19:21:19.501	 Syllables of "Blitzen" was missing
+2022-01-16 19:21:19.502	 Pronunciation of "Blitzen" was missing
+2022-01-16 19:21:19.502	 Results of "Blitzen" was missing
+2022-01-16 19:21:33.751	 Unrecognised part of speech for "appear" with definition "present oneself formally, as before a (judicial) authority": "null"
+2022-01-16 19:22:13.545	 Syllables of "come on" was missing
+2022-01-16 19:22:13.545	 Pronunciation of "come on" was missing
+2022-01-16 19:22:13.546	 "come on" (VERB) did not have a pronunciation for "reindeer" (null) to rhyme against
+2022-01-16 19:22:14.063	 Syllables of "get on" was missing
+2022-01-16 19:22:14.063	 Pronunciation of "get on" was missing
+2022-01-16 19:22:14.063	 "get on" (VERB) did not have a pronunciation for "reindeer" (null) to rhyme against
+2022-01-16 19:22:14.692	 Syllables of "shape up" was missing
+2022-01-16 19:22:14.692	 Pronunciation of "shape up" was missing
+2022-01-16 19:22:14.692	 "shape up" (VERB) did not have a pronunciation for "reindeer" (null) to rhyme against
+2022-01-16 19:22:21.837	 Syllables of "with" was missing
+2022-01-16 19:22:21.837	 Pronunciation of "with" was not a JSONObject: "wɪð"
+2022-01-16 19:22:21.838	 Rhymes of "with" was present: {"all":"-ɪð"}
+2022-01-16 19:22:21.838	 Rhymes of "with" had no recognised keys not found in pronunciation field
+2022-01-16 19:41:15.232	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 19:41:15.537	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 19:41:15.537	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 19:41:15.538	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 19:41:15.538	 Results of "beds" was missing
+2022-01-16 19:41:15.888	 Syllables of "heads" was missing
+2022-01-16 19:41:15.888	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 19:41:15.89	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 19:41:15.89	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 19:41:15.89	 Results of "heads" was missing
+2022-01-16 19:41:18.511	 Unrecognised part of speech for "appear" with definition "present oneself formally, as before a (judicial) authority": "null"
+2022-01-16 19:41:19.395	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 19:41:19.666	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 19:41:19.666	 Results of "arrived" was missing
+2022-01-16 19:41:20.555	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 19:41:20.836	 Syllables of "Blitzen" was missing
+2022-01-16 19:41:20.836	 Pronunciation of "Blitzen" was missing
+2022-01-16 19:41:20.837	 Results of "Blitzen" was missing
+2022-01-16 19:41:28.323	 Syllables of "a" was missing
+2022-01-16 19:51:04.31	 Syllables of "come on" was missing
+2022-01-16 19:51:04.31	 Pronunciation of "come on" was missing
+2022-01-16 19:51:08.121	 Syllables of "on" was missing
+2022-01-16 19:51:08.123	 Unrecognised part of speech for "on" with definition "(of events) planned or scheduled": "null"
+2022-01-16 19:51:38.212	 Results of "though" was an empty array
+2022-01-16 19:51:38.558	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 19:51:41.2	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-16 19:51:43.902	 WordsAPI responded with word "whose" when requesting "Whose".
+2022-01-16 19:51:43.902	 Syllables of "Whose" was missing
+2022-01-16 19:51:43.902	 Pronunciation of "Whose" was not a JSONObject: "huz"
+2022-01-16 19:51:43.902	 Rhymes of "Whose" was present: {"all":"-uz"}
+2022-01-16 19:51:43.903	 Rhymes of "Whose" had no recognised keys not found in pronunciation field
+2022-01-16 19:52:06.354	 Syllables of "these" was missing
+2022-01-16 19:52:06.354	 Pronunciation of "these" was not a JSONObject: "ðiz"
+2022-01-16 19:52:06.355	 Rhymes of "these" was present: {"all":"-iz"}
+2022-01-16 19:52:06.355	 Rhymes of "these" had no recognised keys not found in pronunciation field
+2022-01-16 19:52:06.355	 Results of "these" was missing
+2022-01-16 19:52:11.867	 Syllables of "area unit" was missing
+2022-01-16 19:52:11.867	 Pronunciation of "area unit" was missing
+2022-01-16 19:52:20.34	 WordsAPI responded with word "i" when requesting "I".
+2022-01-16 19:52:20.34	 Syllables of "I" was missing
+2022-01-16 19:52:23.635	 Syllables of "chemical element" was missing
+2022-01-16 19:52:24.625	 Syllables of "alphabetic character" was missing
+2022-01-16 19:52:24.625	 Pronunciation of "alphabetic character" was missing
+2022-01-16 19:52:24.865	 Syllables of "letter of the alphabet" was missing
+2022-01-16 19:52:24.865	 Pronunciation of "letter of the alphabet" was missing
+2022-01-16 19:52:28.537	 Syllables of "atomic number 53" was missing
+2022-01-16 19:52:28.537	 Pronunciation of "atomic number 53" was missing
+2022-01-16 19:52:29.557	 Unrecognised part of speech for "think" with definition "be capable of conscious thought": "null"
+2022-01-16 19:52:33.324	 Syllables of "pass judgment" was missing
+2022-01-16 19:52:38.29	 Syllables of "conceive of" was missing
+2022-01-16 19:52:38.29	 Pronunciation of "conceive of" was missing
+2022-01-16 19:52:53.38	 Syllables of "number 53" was missing
+2022-01-16 19:52:53.38	 Pronunciation of "number 53" was missing
+2022-01-16 19:52:53.38	 Results of "number 53" was missing
+2022-01-16 19:52:54.978	 Syllables of "53" was missing
+2022-01-16 19:52:54.978	 Pronunciation of "53" was missing
+2022-01-16 19:52:55.933	 Unrecognised part of speech for "atomic" with definition "of or relating to or comprising atoms": "null"
+2022-01-16 19:59:17.604	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-16 19:59:17.976	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-16 19:59:20.626	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-16 20:07:01.076	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-16 20:07:02.155	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-16 20:07:02.854	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-16 20:07:02.855	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-16 20:07:02.855	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-16 20:07:02.855	 Results of "beds" was missing
+2022-01-16 20:07:03.095	 Syllables of "heads" was missing
+2022-01-16 20:07:03.095	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-16 20:07:03.095	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-16 20:07:03.095	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-16 20:07:03.096	 Results of "heads" was missing
+2022-01-16 20:07:06.137	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-16 20:07:06.362	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-16 20:07:06.666	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-16 20:07:06.666	 Results of "arrived" was missing
+2022-01-16 20:07:07.175	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-16 20:07:07.814	 Syllables of "Blitzen" was missing
+2022-01-16 20:07:07.814	 Pronunciation of "Blitzen" was missing
+2022-01-16 20:07:07.815	 Results of "Blitzen" was missing
