@@ -17,8 +17,8 @@ public class Stanza {
 
     public void addLine(String line) {
         ArrayList<Token> parsedLine = new ArrayList<>();
-        String wordPattern = "(?<word>\\w+)";
-        String tokenPattern = "(?<token>\\W+)";
+        String wordPattern = "(?<word>[\\p{L}]+)";
+        String tokenPattern = "(?<token>[^\\p{L}]+)";
         String masterPattern = String.format("%s|%s", wordPattern, tokenPattern);
         Pattern pattern = Pattern.compile(masterPattern);
         Matcher matcher = pattern.matcher(line);
