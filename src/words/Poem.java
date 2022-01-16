@@ -1,8 +1,10 @@
 package words;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -19,13 +21,7 @@ public class Poem {
     private String title = "poem";
     private BufferedReader fileReader;
 
-    public Poem(Path inputFile) throws IOException {
-        this.title = inputFile.toString();
-        if (title.contains(File.separator)) {
-            title = title.substring(title.lastIndexOf(File.separator) + 1);
-        }
-
-        fileReader = Files.newBufferedReader(inputFile); // relative to where program is executed
+    private void fillPoem() throws IOException {
         stanzas.add(new Stanza());
         String line = "";
         boolean in_stanza = false; // to prevent counting double empty lines
@@ -55,6 +51,17 @@ public class Poem {
         LOG.writeTempLog(String.format("Read poem: %s", this.getString()));
     }
 
+    public Poem(Path inputFile) throws IOException {
+        this.title = inputFile.toString();
+        if (title.contains(File.separator)) {
+            title = title.substring(title.lastIndexOf(File.separator) + 1);
+        }
+
+        fileReader = Files.newBufferedReader(inputFile); // relative to where program is executed
+
+        fillPoem();
+    }
+
     public Poem(String title, String poemString) throws IOException {
         this.title = title;
         if (title.contains(File.separator)) {
@@ -62,34 +69,15 @@ public class Poem {
         }
 
         InputStream stream = new ByteArrayInputStream((poemString.trim()).getBytes());
-        fileReader = new BufferedReader(new InputStreamReader(stream)); // relative to where program is executed
-        stanzas.add(new Stanza());
-        String line = "";
-        boolean in_stanza = false; // to prevent counting double empty lines
-        while ((line = fileReader.readLine()) != null) {
-            if (!line.matches("\\s+") && !line.matches("")) {
-                /* if line not empty */
-                /* add a line to the current stanza */
-                in_stanza = true;
-                lineCount++;
-                stanzas.get(stanzas.size() - 1).addLine(line);
+        fileReader = new BufferedReader(new InputStreamReader(stream)); 
+        
+        fillPoem();
+    }
 
-            } else if (in_stanza) {
-                /* if line empty */
-                /* end the current stanza */
-                in_stanza = false;
-                LOG.writeTempLog(String.format("End of stanza %d reached", stanzas.size()));
-                stanzas.get(stanzas.size() - 1).evaluateRhymingScheme();
-                stanzas.add(new Stanza());
-
-            } else {
-                // ignore double empty line
-            }
-        }
-        LOG.writeTempLog(String.format("End of stanza %d reached", stanzas.size()));
-        stanzas.get(stanzas.size() - 1).evaluateRhymingScheme();
-
-        LOG.writeTempLog(String.format("Read poem: %s", this.getString()));
+    public void savePoem(File outputFile) throws IOException {
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(outputFile)); 
+        fileWriter.write(this.toString());
+        fileWriter.close();
     }
 
     public String getTitle() {
@@ -110,6 +98,13 @@ public class Poem {
 
     public void substituteWord(int stanzaIndex, int lineIndex, int tokenIndex, SuperWord newWord) {
         stanzas.get(stanzaIndex).substituteWord(lineIndex, tokenIndex, newWord);
+    }
+
+    public void setTitle(String newTitle) {
+        title = newTitle; 
+        if (title.contains(File.separator)) {
+            title = title.substring(title.lastIndexOf(File.separator) + 1);
+        }
     }
 
     public String getString() {

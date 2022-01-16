@@ -43,10 +43,11 @@ import static config.Configuration.LOG;
 public class Controller {
 
     private static final String SUGGESTION_CLASS = "suggestion";
+    private static final String SEE_LOG = "See log for more information.";
 
     private Poem poem;
-    private String seeLog = "See log for more information.";
     private IndexedTokenLabel focusedToken;
+    private File poemFile;
 
     // Poem & stanza info
     @FXML
@@ -233,7 +234,7 @@ public class Controller {
                 .setDesiredRhymeScheme(((TextField) e.getSource()).getText())) {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setHeaderText("Could not parse rhyme scheme.");
-            alert.setContentText(String.format(seeLog));
+            alert.setContentText(String.format(SEE_LOG));
             alert.show();
         }
     }
@@ -278,12 +279,12 @@ public class Controller {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Text", "*.txt"),
                 new FileChooser.ExtensionFilter("All Files", "*"));
-        File file = fileChooser.showOpenDialog(stage);
-        if (file == null) {
+        poemFile = fileChooser.showOpenDialog(stage);
+        if (poemFile == null) {
             return;
         }
         try {
-            poem = new Poem(file.toPath());
+            poem = new Poem(poemFile.toPath());
             ttlpnPoem.setText(poem.getTitle());
             txtarPoem.setText(poem.toString());
             lblPoemStanzaCount.setText(String.valueOf(poem.getStanzaCount()));
@@ -293,18 +294,47 @@ public class Controller {
         } catch (IOException e) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText("Could not open file.");
-            alert.setContentText(String.format("Failed to open %s.", file.getName()));
+            alert.setContentText(String.format("Failed to open %s.", poemFile.getName()));
             alert.show();
         } catch (Exception e) {
             LOG.writeTempLog(e.toString() + "\n" + Arrays.toString(e.getStackTrace()));
             Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText("An unexpected error occured.");
-            alert.setContentText(seeLog);
+            alert.setContentText(SEE_LOG);
             alert.show();
         }
     }
 
-    public void changePoemTextArea() {
+    public void savePoem() {
+        try {
+            poem.savePoem(poemFile);
+        } catch (IOException e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setHeaderText("Could not save poem.");
+            alert.setContentText(String.format("Failed to write to %s.\n%s", poemFile.getName(), SEE_LOG));
+            LOG.writeTempLog(e.toString() + "\n" + e.getStackTrace());
+            alert.show();
+        }
+    }
+
+    public void savePoemAs() {
+        Stage stage = (Stage) anpnRoot.getScene().getWindow();
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Poem As");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text", "*.txt"),
+                new FileChooser.ExtensionFilter("All Files", "*"));
+        poemFile = fileChooser.showSaveDialog(stage);
+        if (poemFile == null) {
+            return;
+        }
+        poem.setTitle(poemFile.getName()); 
+        ttlpnPoem.setText(poem.getTitle());
+        savePoem();
+    }
+
+    public void toggleDirectEdit() {
         // refresh poem content
         if (!txtarPoem.isVisible()) {
             txtarPoem.setText(poem.toString());
@@ -322,7 +352,7 @@ public class Controller {
                 LOG.writeTempLog(e.toString() + "\n" + Arrays.toString(e.getStackTrace()));
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("Could not parse directly edited text.");
-                alert.setContentText(String.format(seeLog));
+                alert.setContentText(String.format(SEE_LOG));
                 alert.show();
             }
         }
@@ -354,14 +384,14 @@ public class Controller {
 
         IndexedTokenLabel newTokenLabel = new IndexedTokenLabel(this, suggestion, focusedToken.stanzaIndex,
                 focusedToken.lineIndex, focusedToken.tokenIndex, true);
-        newTokenLabel.pos = focusedToken.pos; 
+        newTokenLabel.pos = focusedToken.pos;
 
         // replace old label in GUI
         FlowPane guiLine = (FlowPane) focusedToken.getParent();
         guiLine.getChildren().remove(focusedToken.tokenIndex);
         guiLine.getChildren().add(focusedToken.tokenIndex, newTokenLabel);
 
-        // focus on new token by simulating it being clicked on 
+        // focus on new token by simulating it being clicked on
         Event.fireEvent(newTokenLabel, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
                 false, false, false, false, true, false, false, false, false, false, null));
     }

@@ -38,8 +38,8 @@
                   <MenuItem fx:id="mntmOpen" mnemonicParsing="false" onAction="#openPoem" text="Open..." />
               <MenuItem fx:id="mntmClose" mnemonicParsing="false" text="Close" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mntmSave" mnemonicParsing="false" text="Save" />
-                  <MenuItem fx:id="mntmSaveAs" mnemonicParsing="false" text="Save As..." />
+                  <MenuItem fx:id="mntmSave" mnemonicParsing="false" onAction="#savePoem" text="Save" />
+                  <MenuItem fx:id="mntmSaveAs" mnemonicParsing="false" onAction="#savePoemAs" text="Save As..." />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
