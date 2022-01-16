@@ -222,6 +222,7 @@ public class Controller {
 
     private FlowPane getEmptyLine() {
         FlowPane guiLine = new FlowPane();
+        guiLine.setPrefWrapLength(Double.MAX_VALUE);
         return guiLine;
     }
 

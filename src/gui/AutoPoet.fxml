@@ -66,7 +66,7 @@
                                  <cursor>
                                     <Cursor fx:constant="TEXT" />
                                  </cursor></TextArea>
-                              <ScrollPane fx:id="scrlpnPoem" fitToWidth="true">
+                              <ScrollPane fx:id="scrlpnPoem" fitToHeight="true" fitToWidth="true">
                                  <content>
                                     <AnchorPane fx:id="anpnPoem" prefHeight="200.0" prefWidth="200.0">
                                        <children>
