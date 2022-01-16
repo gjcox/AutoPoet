@@ -1,5 +1,7 @@
 package words;
 
+import java.text.Normalizer;
+import java.text.Normalizer.Form;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -54,13 +56,15 @@ public class SuperWord extends Token {
      * @return
      */
     public static SuperWord getSuperWord(String plaintext) {
-        if (cachePopulated.containsKey(plaintext)) {
-            return cachePopulated.get(plaintext);
+        String cleanedPlaintext = Normalizer.normalize(plaintext, Form.NFD).replaceAll("\\p{M}", ""); 
+
+        if (cachePopulated.containsKey(cleanedPlaintext)) {
+            return cachePopulated.get(cleanedPlaintext);
         }
-        if (cachePlaceholder.containsKey(plaintext)) {
-            return cachePlaceholder.get(plaintext);
+        if (cachePlaceholder.containsKey(cleanedPlaintext)) {
+            return cachePlaceholder.get(cleanedPlaintext);
         }
-        return new SuperWord(plaintext);
+        return new SuperWord(cleanedPlaintext);
     }
 
     public void populate() {
