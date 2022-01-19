@@ -5900,3 +5900,1560 @@
 2022-01-16 20:07:07.814	 Syllables of "Blitzen" was missing
 2022-01-16 20:07:07.814	 Pronunciation of "Blitzen" was missing
 2022-01-16 20:07:07.815	 Results of "Blitzen" was missing
+2022-01-19 12:36:25.517	 Unrecognised part of speech for "light" with definition "not great in degree or quantity or number": "null"
+2022-01-19 12:37:54.372	 Syllables of "in effect" was missing
+2022-01-19 12:37:54.372	 Pronunciation of "in effect" was missing
+2022-01-19 12:37:54.373	 "in effect" (ADJECTIVE) did not have a pronunciation for "year" (null) to rhyme against
+2022-01-19 12:37:54.856	 Syllables of "in force" was missing
+2022-01-19 12:37:54.856	 Pronunciation of "in force" was missing
+2022-01-19 12:37:54.857	 "in force" (ADJECTIVE) did not have a pronunciation for "year" (null) to rhyme against
+2022-01-19 12:37:58.491	 Unrecognised part of speech for "well" with definition "favorably; with approval": "null"
+2022-01-19 12:37:58.491	 Unrecognised part of speech for "well" with definition "with skill or in a pleasing manner": "null"
+2022-01-19 12:37:58.492	 Unrecognised part of speech for "well" with definition "without unusual distress or resentment; with good humor": "null"
+2022-01-19 12:38:01.299	 Unrecognised part of speech for "right" with definition "toward or on the right; also used figuratively": "null"
+2022-01-19 12:38:08.293	 Syllables of "of" was missing
+2022-01-19 12:38:08.294	 Pronunciation of "of" was not a JSONObject: "ʌv"
+2022-01-19 12:38:08.294	 Rhymes of "of" was present: {"all":"-əv"}
+2022-01-19 12:38:08.294	 Rhymes of "of" had no recognised keys not found in pronunciation field
+2022-01-19 12:38:08.742	 Syllables of "the" was missing
+2022-01-19 12:38:08.742	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-19 12:38:08.743	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-19 12:38:08.743	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-19 12:38:26.062	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-19 12:38:26.459	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-01-19 12:38:29.48	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-19 12:39:22.788	 Syllables of "even so" was missing
+2022-01-19 12:39:22.788	 Pronunciation of "even so" was missing
+2022-01-19 12:39:35.984	 Syllables of "so" was missing
+2022-01-19 12:39:37.007	 Unrecognised part of speech for "even" with definition "divisible by two": "null"
+2022-01-19 12:39:43.129	 WordsAPI responded with word "i" when requesting "I".
+2022-01-19 12:39:43.13	 Syllables of "I" was missing
+2022-01-19 12:39:45.039	 Syllables of "I know" was missing
+2022-01-19 12:39:45.04	 Pronunciation of "I know" was missing
+2022-01-19 12:39:45.04	 Results of "I know" was missing
+2022-01-19 12:39:51.636	 Unrecognised part of speech for "think" with definition "be capable of conscious thought": "null"
+2022-01-19 12:39:55.287	 Syllables of "think I know" was missing
+2022-01-19 12:39:55.287	 Pronunciation of "think I know" was missing
+2022-01-19 12:39:55.287	 Results of "think I know" was missing
+2022-01-19 12:40:21.923	 Syllables of "plectrophenax nivalis" was missing
+2022-01-19 12:40:21.923	 Pronunciation of "plectrophenax nivalis" was missing
+2022-01-19 12:40:21.923	 "plectrophenax nivalis" (NOUN) did not have a pronunciation for "know" (null) to rhyme against
+2022-01-19 12:40:21.923	 "plectrophenax nivalis" (NOUN) did not have a pronunciation for "know" (null) to rhyme against
+2022-01-19 12:40:22.217	 Pronunciation of "snow bunting" was missing
+2022-01-19 12:40:22.217	 No pronunciation of "snow bunting" could be found for "NOUN"
+2022-01-19 12:40:22.217	 "snow bunting" (NOUN) did not have a pronunciation for "know" (null) to rhyme against
+2022-01-19 12:40:22.217	 "snow bunting" (NOUN) did not have a pronunciation for "know" (null) to rhyme against
+2022-01-19 12:41:49.236	 Pronunciation of "unnaturalised" was missing
+2022-01-19 12:41:49.237	 No pronunciation of "unnaturalised" could be found for "ADJECTIVE"
+2022-01-19 12:41:49.237	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:49.237	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:49.237	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:49.481	 Pronunciation of "unnaturalized" was missing
+2022-01-19 12:41:49.481	 No pronunciation of "unnaturalized" could be found for "ADJECTIVE"
+2022-01-19 12:41:49.481	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:49.481	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:49.481	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:50.008	 Syllables of "imported" was missing
+2022-01-19 12:41:50.008	 Pronunciation of "imported" was not a JSONObject: "ɪm'pɔrtɪd"
+2022-01-19 12:41:50.268	 Pronunciation of "naturalized" was not a JSONObject: "'nætʃɝrʌ,laɪzd"
+2022-01-19 12:41:50.535	 Syllables of "established" was missing
+2022-01-19 12:41:50.535	 Pronunciation of "established" was not a JSONObject: "ɪ'stæblɪʃt"
+2022-01-19 12:41:50.785	 Pronunciation of "nonnative" was not a JSONObject: "'nɑ'neɪtɪv"
+2022-01-19 12:41:50.785	 Unrecognised part of speech for "nonnative" with definition "not being or composed of aborigines": "null"
+2022-01-19 12:41:52.401	 Pronunciation of "fantastical" was missing
+2022-01-19 12:41:52.401	 No pronunciation of "fantastical" could be found for "ADJECTIVE"
+2022-01-19 12:41:52.401	 "fantastical" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:52.401	 "fantastical" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:52.401	 "fantastical" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:53.489	 Unrecognised part of speech for "gothic" with definition "characteristic of the style of type commonly used for printing German": "null"
+2022-01-19 12:41:53.489	 Unrecognised part of speech for "gothic" with definition "of or relating to the language of the ancient Goths": "null"
+2022-01-19 12:41:53.489	 Unrecognised part of speech for "gothic" with definition "of or relating to the Goths": "null"
+2022-01-19 12:41:54.115	 Syllables of "oddish" was missing
+2022-01-19 12:41:54.115	 Pronunciation of "oddish" was missing
+2022-01-19 12:41:54.115	 "oddish" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:54.115	 "oddish" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:54.115	 "oddish" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:41:55.762	 Unrecognised part of speech for "singular" with definition "composed of one member, set, or kind": "null"
+2022-01-19 12:41:55.762	 Unrecognised part of speech for "singular" with definition "grammatical number category referring to a single item or unit": "null"
+2022-01-19 12:42:00.427	 No pronunciation of "unnaturalised" could be found for "ADJECTIVE"
+2022-01-19 12:42:00.427	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:00.427	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:00.427	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:00.427	 No pronunciation of "unnaturalized" could be found for "ADJECTIVE"
+2022-01-19 12:42:00.427	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:00.427	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:00.428	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:00.428	 No pronunciation of "fantastical" could be found for "ADJECTIVE"
+2022-01-19 12:42:00.428	 "fantastical" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:00.428	 "fantastical" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:00.438	 "fantastical" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:00.438	 "oddish" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:00.438	 "oddish" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:00.438	 "oddish" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.104	 No pronunciation of "unnaturalised" could be found for "ADJECTIVE"
+2022-01-19 12:42:23.105	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.105	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.105	 "unnaturalised" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.105	 No pronunciation of "unnaturalized" could be found for "ADJECTIVE"
+2022-01-19 12:42:23.105	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.105	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.105	 "unnaturalized" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.105	 No pronunciation of "fantastical" could be found for "ADJECTIVE"
+2022-01-19 12:42:23.105	 "fantastical" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.105	 "fantastical" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.105	 "fantastical" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.105	 "oddish" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.105	 "oddish" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:42:23.105	 "oddish" (ADJECTIVE) did not have a pronunciation for "near" (null) to rhyme against
+2022-01-19 12:43:27.942	 Syllables of "erroneous belief" was missing
+2022-01-19 12:43:27.942	 Pronunciation of "erroneous belief" was missing
+2022-01-19 12:43:27.943	 "erroneous belief" (NOUN) did not have a pronunciation for "shake" (null) to rhyme against
+2022-01-19 12:43:27.943	 "erroneous belief" (NOUN) did not have a pronunciation for "shake" (null) to rhyme against
+2022-01-19 12:43:29.001	 Syllables of "computer error" was missing
+2022-01-19 12:43:29.001	 Pronunciation of "computer error" was missing
+2022-01-19 12:43:29.001	 "computer error" (NOUN) did not have a pronunciation for "shake" (null) to rhyme against
+2022-01-19 12:43:29.001	 "computer error" (NOUN) did not have a pronunciation for "shake" (null) to rhyme against
+2022-01-19 12:43:48.684	 Syllables of "catch a wink" was missing
+2022-01-19 12:43:48.684	 Pronunciation of "catch a wink" was missing
+2022-01-19 12:44:13.62	 Pronunciation of "forty winks" was missing
+2022-01-19 12:44:13.62	 No pronunciation of "forty winks" could be found for "NOUN"
+2022-01-19 12:44:13.621	 "forty winks" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:13.621	 "forty winks" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:13.621	 "forty winks" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:13.621	 "forty winks" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:13.87	 Syllables of "light sleep" was missing
+2022-01-19 12:44:14.78	 Syllables of "short sleep" was missing
+2022-01-19 12:44:14.78	 Pronunciation of "short sleep" was missing
+2022-01-19 12:44:14.78	 "short sleep" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:14.78	 "short sleep" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:14.78	 "short sleep" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:14.78	 "short sleep" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.056	 Pronunciation of "noctambulism" was missing
+2022-01-19 12:44:15.056	 No pronunciation of "noctambulism" could be found for "NOUN"
+2022-01-19 12:44:15.056	 "noctambulism" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.056	 "noctambulism" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.056	 "noctambulism" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.056	 "noctambulism" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.45	 Pronunciation of "noctambulation" was missing
+2022-01-19 12:44:15.45	 No pronunciation of "noctambulation" could be found for "NOUN"
+2022-01-19 12:44:15.45	 "noctambulation" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.45	 "noctambulation" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.45	 "noctambulation" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.45	 "noctambulation" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.716	 Syllables of "sleep talking" was missing
+2022-01-19 12:44:15.716	 Pronunciation of "sleep talking" was missing
+2022-01-19 12:44:15.716	 "sleep talking" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.716	 "sleep talking" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.716	 "sleep talking" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:15.716	 "sleep talking" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:16.004	 Syllables of "sleepwalking" was missing
+2022-01-19 12:44:16.004	 Pronunciation of "sleepwalking" was not a JSONObject: "'slip,wɔkɪŋ"
+2022-01-19 12:44:17.836	 Syllables of "somniloquism" was missing
+2022-01-19 12:44:17.836	 Pronunciation of "somniloquism" was missing
+2022-01-19 12:44:17.836	 "somniloquism" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:17.836	 "somniloquism" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:17.836	 "somniloquism" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:17.836	 "somniloquism" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:35.814	 Syllables of "zizz" was missing
+2022-01-19 12:44:35.814	 Pronunciation of "zizz" was missing
+2022-01-19 12:44:35.814	 "zizz" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:35.814	 "zizz" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:35.814	 "zizz" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:44:35.814	 "zizz" (NOUN) did not have a pronunciation for "deep" (null) to rhyme against
+2022-01-19 12:46:18.473	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-19 12:46:19.241	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-19 12:46:19.45	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-19 12:46:19.45	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-19 12:46:19.451	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-19 12:46:19.451	 Results of "beds" was missing
+2022-01-19 12:46:19.652	 Syllables of "heads" was missing
+2022-01-19 12:46:19.653	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-19 12:46:19.653	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-19 12:46:19.653	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-19 12:46:19.653	 Results of "heads" was missing
+2022-01-19 12:46:21.794	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-01-19 12:46:22.044	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-19 12:46:22.377	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-01-19 12:46:22.377	 Results of "arrived" was missing
+2022-01-19 12:46:22.888	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-19 12:46:23.103	 Syllables of "Blitzen" was missing
+2022-01-19 12:46:23.103	 Pronunciation of "Blitzen" was missing
+2022-01-19 12:46:23.103	 Results of "Blitzen" was missing
+2022-01-19 12:47:30.922	 WordsAPI responded with word "hammock" when requesting "hammocks".
+2022-01-19 12:49:56.967	 Syllables of "home base" was missing
+2022-01-19 12:49:57.413	 Syllables of "home plate" was missing
+2022-01-19 12:49:57.808	 Pronunciation of "nursing home" was missing
+2022-01-19 12:49:57.808	 No pronunciation of "nursing home" could be found for "NOUN"
+2022-01-19 12:49:57.808	 "nursing home" (NOUN) did not have a pronunciation for "louse" (null) to rhyme against
+2022-01-19 12:49:58.009	 Syllables of "rest home" was missing
+2022-01-19 12:49:59.175	 Syllables of "menage" was missing
+2022-01-19 12:50:00.53	 Syllables of "dwelling house" was missing
+2022-01-19 12:50:00.53	 Pronunciation of "dwelling house" was missing
+2022-01-19 12:50:00.53	 "dwelling house" (NOUN) did not have a pronunciation for "louse" (null) to rhyme against
+2022-01-19 12:56:58.055	 Syllables of "jeweled headdress" was missing
+2022-01-19 12:56:58.055	 Pronunciation of "jeweled headdress" was missing
+2022-01-19 12:56:58.055	 "jeweled headdress" (NOUN) did not have a pronunciation for "nap" (null) to rhyme against
+2022-01-19 12:56:58.055	 "jeweled headdress" (NOUN) did not have a pronunciation for "nap" (null) to rhyme against
+2022-01-19 12:56:58.266	 Syllables of "jewelled headdress" was missing
+2022-01-19 12:56:58.266	 Pronunciation of "jewelled headdress" was missing
+2022-01-19 12:56:58.266	 "jewelled headdress" (NOUN) did not have a pronunciation for "nap" (null) to rhyme against
+2022-01-19 12:56:58.266	 "jewelled headdress" (NOUN) did not have a pronunciation for "nap" (null) to rhyme against
+2022-01-19 12:57:15.692	 Pronunciation of "supplying" was not a JSONObject: "sʌ'plaɪɪŋ"
+2022-01-19 12:57:16.307	 Syllables of "mental object" was missing
+2022-01-19 12:57:16.307	 Pronunciation of "mental object" was missing
+2022-01-19 12:57:16.561	 Syllables of "cognitive content" was missing
+2022-01-19 12:57:16.561	 Pronunciation of "cognitive content" was missing
+2022-01-19 12:57:17.05	 Unrecognised part of speech for "military" with definition "of or relating to the study of the principles of warfare": "null"
+2022-01-19 12:57:17.293	 Syllables of "military machine" was missing
+2022-01-19 12:57:17.293	 Pronunciation of "military machine" was missing
+2022-01-19 12:57:17.568	 Syllables of "war machine" was missing
+2022-01-19 12:57:17.873	 Syllables of "armed services" was missing
+2022-01-19 12:57:17.873	 Pronunciation of "armed services" was missing
+2022-01-19 12:57:18.118	 Pronunciation of "armed forces" was missing
+2022-01-19 12:57:18.745	 Syllables of "military issue" was missing
+2022-01-19 12:57:18.745	 Pronunciation of "military issue" was missing
+2022-01-19 12:57:18.745	 "military issue" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:18.745	 "military issue" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:21.89	 Syllables of "food for thought" was missing
+2022-01-19 12:57:21.89	 Pronunciation of "food for thought" was missing
+2022-01-19 12:57:21.89	 "food for thought" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:21.89	 "food for thought" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:22.779	 Syllables of "heart and soul" was missing
+2022-01-19 12:57:22.779	 Pronunciation of "heart and soul" was missing
+2022-01-19 12:57:22.779	 "heart and soul" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:22.779	 "heart and soul" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:23.661	 Syllables of "intellectual nourishment" was missing
+2022-01-19 12:57:23.661	 Pronunciation of "intellectual nourishment" was missing
+2022-01-19 12:57:23.661	 "intellectual nourishment" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:23.661	 "intellectual nourishment" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:24.634	 Syllables of "internal representation" was missing
+2022-01-19 12:57:24.634	 Pronunciation of "internal representation" was missing
+2022-01-19 12:57:24.634	 "internal representation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:24.634	 "internal representation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:25.959	 Syllables of "knowledge base" was missing
+2022-01-19 12:57:25.959	 Pronunciation of "knowledge base" was missing
+2022-01-19 12:57:25.959	 "knowledge base" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:25.959	 "knowledge base" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:26.323	 Syllables of "knowledge domain" was missing
+2022-01-19 12:57:26.323	 Pronunciation of "knowledge domain" was missing
+2022-01-19 12:57:26.324	 "knowledge domain" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:26.324	 "knowledge domain" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:27.8	 Syllables of "mental representation" was missing
+2022-01-19 12:57:27.8	 Pronunciation of "mental representation" was missing
+2022-01-19 12:57:27.8	 "mental representation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:27.8	 "mental representation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:28.438	 Syllables of "metaknowledge" was missing
+2022-01-19 12:57:28.438	 Pronunciation of "metaknowledge" was missing
+2022-01-19 12:57:28.438	 "metaknowledge" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:28.438	 "metaknowledge" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:32.036	 Pronunciation of "thing-in-itself" was missing
+2022-01-19 12:57:32.036	 No pronunciation of "thing-in-itself" could be found for "NOUN"
+2022-01-19 12:57:32.036	 "thing-in-itself" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:32.036	 "thing-in-itself" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:33.07	 Syllables of "traditional knowledge" was missing
+2022-01-19 12:57:33.07	 Pronunciation of "traditional knowledge" was missing
+2022-01-19 12:57:33.07	 "traditional knowledge" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:33.07	 "traditional knowledge" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:33.956	 Pronunciation of "universe of discourse" was missing
+2022-01-19 12:57:33.957	 No pronunciation of "universe of discourse" could be found for "NOUN"
+2022-01-19 12:57:33.957	 "universe of discourse" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:33.957	 "universe of discourse" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:34.176	 Pronunciation of "unorthodoxy" was missing
+2022-01-19 12:57:34.176	 No pronunciation of "unorthodoxy" could be found for "NOUN"
+2022-01-19 12:57:34.176	 "unorthodoxy" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:34.176	 "unorthodoxy" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:35.387	 Syllables of "air force academy" was missing
+2022-01-19 12:57:35.387	 Pronunciation of "air force academy" was missing
+2022-01-19 12:57:35.387	 "air force academy" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:35.387	 "air force academy" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:37.122	 Syllables of "air unit" was missing
+2022-01-19 12:57:37.122	 Pronunciation of "air unit" was missing
+2022-01-19 12:57:37.122	 "air unit" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:37.122	 "air unit" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:37.329	 Syllables of "airforce" was missing
+2022-01-19 12:57:37.329	 Pronunciation of "airforce" was not a JSONObject: "'ɛrfɔrs"
+2022-01-19 12:57:37.763	 Syllables of "amphibious landing" was missing
+2022-01-19 12:57:37.763	 Pronunciation of "amphibious landing" was missing
+2022-01-19 12:57:37.763	 "amphibious landing" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:37.763	 "amphibious landing" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:38.052	 Syllables of "amphibious operation" was missing
+2022-01-19 12:57:38.052	 Pronunciation of "amphibious operation" was missing
+2022-01-19 12:57:38.052	 "amphibious operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:38.052	 "amphibious operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:38.399	 Syllables of "apc" was missing
+2022-01-19 12:57:38.399	 Pronunciation of "apc" was not a JSONObject: "'eɪ'pi'si"
+2022-01-19 12:57:38.886	 Syllables of "armed combat" was missing
+2022-01-19 12:57:38.886	 Pronunciation of "armed combat" was missing
+2022-01-19 12:57:38.886	 "armed combat" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:38.886	 "armed combat" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:39.102	 Syllables of "armed service" was missing
+2022-01-19 12:57:40.104	 Syllables of "armored car" was missing
+2022-01-19 12:57:40.383	 Syllables of "armored combat vehicle" was missing
+2022-01-19 12:57:40.383	 Pronunciation of "armored combat vehicle" was missing
+2022-01-19 12:57:40.383	 "armored combat vehicle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:40.383	 "armored combat vehicle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:41.328	 Syllables of "armored personnel carrier" was missing
+2022-01-19 12:57:41.328	 Pronunciation of "armored personnel carrier" was missing
+2022-01-19 12:57:41.328	 "armored personnel carrier" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:41.328	 "armored personnel carrier" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:43.727	 Pronunciation of "armoured car" was missing
+2022-01-19 12:57:43.727	 No pronunciation of "armoured car" could be found for "NOUN"
+2022-01-19 12:57:43.727	 "armoured car" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:43.727	 "armoured car" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:43.94	 Syllables of "armoured combat vehicle" was missing
+2022-01-19 12:57:43.94	 Pronunciation of "armoured combat vehicle" was missing
+2022-01-19 12:57:43.94	 "armoured combat vehicle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:43.94	 "armoured combat vehicle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:44.14	 Syllables of "armoured personnel carrier" was missing
+2022-01-19 12:57:44.14	 Pronunciation of "armoured personnel carrier" was missing
+2022-01-19 12:57:44.14	 "armoured personnel carrier" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:44.14	 "armoured personnel carrier" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:44.757	 Syllables of "army attache" was missing
+2022-01-19 12:57:44.757	 Pronunciation of "army attache" was missing
+2022-01-19 12:57:44.757	 "army attache" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:44.757	 "army attache" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:44.961	 Syllables of "army engineer" was missing
+2022-01-19 12:57:45.18	 Syllables of "army hut" was missing
+2022-01-19 12:57:45.18	 Pronunciation of "army hut" was missing
+2022-01-19 12:57:45.18	 "army hut" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:45.18	 "army hut" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:45.399	 Syllables of "army intelligence" was missing
+2022-01-19 12:57:45.399	 Pronunciation of "army intelligence" was missing
+2022-01-19 12:57:45.399	 "army intelligence" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:45.399	 "army intelligence" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:45.645	 Syllables of "army national guard" was missing
+2022-01-19 12:57:45.645	 Pronunciation of "army national guard" was missing
+2022-01-19 12:57:45.645	 "army national guard" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:45.645	 "army national guard" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:45.926	 Syllables of "army officer" was missing
+2022-01-19 12:57:45.926	 Pronunciation of "army officer" was missing
+2022-01-19 12:57:45.926	 "army officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:45.926	 "army officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:46.274	 Syllables of "army tank" was missing
+2022-01-19 12:57:46.274	 Pronunciation of "army tank" was missing
+2022-01-19 12:57:46.274	 "army tank" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:46.274	 "army tank" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:46.488	 Syllables of "army unit" was missing
+2022-01-19 12:57:46.488	 Pronunciation of "army unit" was missing
+2022-01-19 12:57:46.488	 "army unit" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:46.488	 "army unit" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:46.736	 Syllables of "arng" was missing
+2022-01-19 12:57:46.736	 Pronunciation of "arng" was missing
+2022-01-19 12:57:46.736	 "arng" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:46.736	 "arng" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:47.453	 Syllables of "artillery unit" was missing
+2022-01-19 12:57:47.453	 Pronunciation of "artillery unit" was missing
+2022-01-19 12:57:47.453	 "artillery unit" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:47.453	 "artillery unit" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:47.906	 Syllables of "assault gun" was missing
+2022-01-19 12:57:47.906	 Pronunciation of "assault gun" was missing
+2022-01-19 12:57:47.906	 "assault gun" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:47.906	 "assault gun" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:48.118	 Syllables of "assault rifle" was missing
+2022-01-19 12:57:48.118	 Pronunciation of "assault rifle" was missing
+2022-01-19 12:57:48.118	 "assault rifle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:48.118	 "assault rifle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:48.577	 Syllables of "attack aircraft" was missing
+2022-01-19 12:57:48.577	 Pronunciation of "attack aircraft" was missing
+2022-01-19 12:57:48.577	 "attack aircraft" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:48.577	 "attack aircraft" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:48.771	 Syllables of "attack submarine" was missing
+2022-01-19 12:57:48.771	 Pronunciation of "attack submarine" was missing
+2022-01-19 12:57:48.771	 "attack submarine" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:48.771	 "attack submarine" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:49.438	 Syllables of "b-52" was missing
+2022-01-19 12:57:49.438	 Pronunciation of "b-52" was missing
+2022-01-19 12:57:49.438	 "b-52" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:49.438	 "b-52" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:50.149	 Syllables of "base of operations" was missing
+2022-01-19 12:57:50.149	 Pronunciation of "base of operations" was missing
+2022-01-19 12:57:50.149	 "base of operations" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:50.15	 "base of operations" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:50.366	 Syllables of "basic training" was missing
+2022-01-19 12:57:50.366	 Pronunciation of "basic training" was missing
+2022-01-19 12:57:50.366	 "basic training" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:50.366	 "basic training" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:50.992	 Syllables of "battle damage" was missing
+2022-01-19 12:57:50.992	 Pronunciation of "battle damage" was missing
+2022-01-19 12:57:50.992	 "battle damage" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:50.992	 "battle damage" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:51.253	 Syllables of "battle dress" was missing
+2022-01-19 12:57:51.253	 Pronunciation of "battle dress" was missing
+2022-01-19 12:57:51.253	 "battle dress" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:51.253	 "battle dress" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:51.453	 Syllables of "battle line" was missing
+2022-01-19 12:57:51.661	 Syllables of "beleaguering" was missing
+2022-01-19 12:57:51.661	 Pronunciation of "beleaguering" was not a JSONObject: "bɪ'liɡɝrɪŋ"
+2022-01-19 12:57:51.86	 Pronunciation of "besieging" was not a JSONObject: "bɪ'sidʒɪŋ"
+2022-01-19 12:57:53.479	 Syllables of "boot camp" was missing
+2022-01-19 12:57:53.784	 Syllables of "brass hat" was missing
+2022-01-19 12:57:54.67	 Syllables of "call up" was missing
+2022-01-19 12:57:54.67	 Pronunciation of "call up" was missing
+2022-01-19 12:57:54.67	 "call up" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:54.67	 "call up" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:57.068	 Syllables of "chief of staff" was missing
+2022-01-19 12:57:57.068	 Pronunciation of "chief of staff" was missing
+2022-01-19 12:57:57.068	 "chief of staff" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:57.068	 "chief of staff" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:57.267	 Pronunciation of "chief petty officer" was missing
+2022-01-19 12:57:57.267	 No pronunciation of "chief petty officer" could be found for "NOUN"
+2022-01-19 12:57:57.267	 "chief petty officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:57.267	 "chief petty officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:57.472	 Syllables of "chow line" was missing
+2022-01-19 12:57:57.472	 Pronunciation of "chow line" was missing
+2022-01-19 12:57:57.472	 "chow line" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:57.472	 "chow line" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:57.705	 Syllables of "close-order drill" was missing
+2022-01-19 12:57:57.705	 Pronunciation of "close-order drill" was missing
+2022-01-19 12:57:57.705	 "close-order drill" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:57.705	 "close-order drill" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:57.909	 Syllables of "close order" was missing
+2022-01-19 12:57:57.909	 Pronunciation of "close order" was missing
+2022-01-19 12:57:57.909	 "close order" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:57.909	 "close order" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:58.356	 Syllables of "collateral damage" was missing
+2022-01-19 12:57:58.356	 Pronunciation of "collateral damage" was missing
+2022-01-19 12:57:58.356	 "collateral damage" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:58.356	 "collateral damage" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:58.795	 Syllables of "color bearer" was missing
+2022-01-19 12:57:58.795	 Pronunciation of "color bearer" was missing
+2022-01-19 12:57:58.795	 "color bearer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:58.795	 "color bearer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:59.402	 Syllables of "combat area" was missing
+2022-01-19 12:57:59.402	 Pronunciation of "combat area" was missing
+2022-01-19 12:57:59.402	 "combat area" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:59.402	 "combat area" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:59.611	 Syllables of "combat casualty" was missing
+2022-01-19 12:57:59.611	 Pronunciation of "combat casualty" was missing
+2022-01-19 12:57:59.611	 "combat casualty" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:59.611	 "combat casualty" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:59.82	 Syllables of "combat injury" was missing
+2022-01-19 12:57:59.82	 Pronunciation of "combat injury" was missing
+2022-01-19 12:57:59.82	 "combat injury" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:57:59.82	 "combat injury" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:00.025	 Syllables of "combat pilot" was missing
+2022-01-19 12:58:00.025	 Pronunciation of "combat pilot" was missing
+2022-01-19 12:58:00.025	 "combat pilot" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:00.025	 "combat pilot" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:00.236	 Syllables of "combat ship" was missing
+2022-01-19 12:58:00.236	 Pronunciation of "combat ship" was missing
+2022-01-19 12:58:00.236	 "combat ship" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:00.236	 "combat ship" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:00.447	 Syllables of "combat zone" was missing
+2022-01-19 12:58:00.447	 Pronunciation of "combat zone" was missing
+2022-01-19 12:58:00.447	 "combat zone" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:00.447	 "combat zone" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:00.688	 Syllables of "combined operation" was missing
+2022-01-19 12:58:00.688	 Pronunciation of "combined operation" was missing
+2022-01-19 12:58:00.688	 "combined operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:00.688	 "combined operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:02.199	 Pronunciation of "commanding officer" was missing
+2022-01-19 12:58:02.199	 No pronunciation of "commanding officer" could be found for "NOUN"
+2022-01-19 12:58:02.199	 "commanding officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:02.199	 "commanding officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:03.309	 Syllables of "commissioned military officer" was missing
+2022-01-19 12:58:03.309	 Pronunciation of "commissioned military officer" was missing
+2022-01-19 12:58:03.31	 "commissioned military officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:03.31	 "commissioned military officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:03.546	 Syllables of "commissioned naval officer" was missing
+2022-01-19 12:58:03.546	 Pronunciation of "commissioned naval officer" was missing
+2022-01-19 12:58:03.546	 "commissioned naval officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:03.546	 "commissioned naval officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:03.775	 Pronunciation of "commissioned officer" was missing
+2022-01-19 12:58:03.776	 No pronunciation of "commissioned officer" could be found for "NOUN"
+2022-01-19 12:58:03.776	 "commissioned officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:03.776	 "commissioned officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:04.564	 Syllables of "compassionate leave" was missing
+2022-01-19 12:58:04.564	 Pronunciation of "compassionate leave" was missing
+2022-01-19 12:58:04.564	 "compassionate leave" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:04.564	 "compassionate leave" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:09.584	 Pronunciation of "deactivation" was missing
+2022-01-19 12:58:09.584	 No pronunciation of "deactivation" could be found for "NOUN"
+2022-01-19 12:58:09.584	 "deactivation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:09.584	 "deactivation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:10.542	 Syllables of "defense contractor" was missing
+2022-01-19 12:58:10.542	 Pronunciation of "defense contractor" was missing
+2022-01-19 12:58:10.542	 "defense contractor" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:10.542	 "defense contractor" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:10.756	 Syllables of "defense intelligence agency" was missing
+2022-01-19 12:58:10.756	 Pronunciation of "defense intelligence agency" was missing
+2022-01-19 12:58:10.756	 "defense intelligence agency" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:10.756	 "defense intelligence agency" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:11.439	 Syllables of "defensive measure" was missing
+2022-01-19 12:58:11.439	 Pronunciation of "defensive measure" was missing
+2022-01-19 12:58:11.439	 "defensive measure" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:11.439	 "defensive measure" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:11.874	 Pronunciation of "deserter" was not a JSONObject: "'dɛzɝrtɝr"
+2022-01-19 12:58:12.088	 Syllables of "desk officer" was missing
+2022-01-19 12:58:12.088	 Pronunciation of "desk officer" was missing
+2022-01-19 12:58:12.088	 "desk officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:12.088	 "desk officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:12.499	 Syllables of "devil dog" was missing
+2022-01-19 12:58:14.045	 Pronunciation of "dress uniform" was missing
+2022-01-19 12:58:14.045	 No pronunciation of "dress uniform" could be found for "NOUN"
+2022-01-19 12:58:14.045	 "dress uniform" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:14.045	 "dress uniform" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:14.763	 Syllables of "drill instructor" was missing
+2022-01-19 12:58:14.988	 Syllables of "drill master" was missing
+2022-01-19 12:58:14.988	 Pronunciation of "drill master" was missing
+2022-01-19 12:58:14.988	 "drill master" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:14.988	 "drill master" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:15.221	 Syllables of "drop zone" was missing
+2022-01-19 12:58:15.221	 Pronunciation of "drop zone" was missing
+2022-01-19 12:58:15.221	 "drop zone" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:15.221	 "drop zone" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:15.42	 Syllables of "dropping zone" was missing
+2022-01-19 12:58:15.42	 Pronunciation of "dropping zone" was missing
+2022-01-19 12:58:15.42	 "dropping zone" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:15.42	 "dropping zone" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:15.838	 Pronunciation of "drumhead court-martial" was missing
+2022-01-19 12:58:15.838	 No pronunciation of "drumhead court-martial" could be found for "NOUN"
+2022-01-19 12:58:15.838	 "drumhead court-martial" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:15.838	 "drumhead court-martial" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:16.242	 Syllables of "electronic warfare" was missing
+2022-01-19 12:58:16.242	 Pronunciation of "electronic warfare" was missing
+2022-01-19 12:58:16.242	 "electronic warfare" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:16.242	 "electronic warfare" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:16.873	 Pronunciation of "encirclement" was not a JSONObject: "ɛn'sɝrkʌlmʌnt"
+2022-01-19 12:58:17.59	 Syllables of "enlisted officer" was missing
+2022-01-19 12:58:17.59	 Pronunciation of "enlisted officer" was missing
+2022-01-19 12:58:17.59	 "enlisted officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:17.59	 "enlisted officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:18.252	 Syllables of "equipment casualty" was missing
+2022-01-19 12:58:18.252	 Pronunciation of "equipment casualty" was missing
+2022-01-19 12:58:18.252	 "equipment casualty" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:18.252	 "equipment casualty" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:18.472	 Syllables of "ew" was missing
+2022-01-19 12:58:18.472	 Pronunciation of "ew" was missing
+2022-01-19 12:58:18.473	 "ew" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:18.473	 "ew" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:19.236	 Syllables of "extended order" was missing
+2022-01-19 12:58:19.44	 Syllables of "fallback" was missing
+2022-01-19 12:58:19.44	 Pronunciation of "fallback" was not a JSONObject: "'fɔl,bæk"
+2022-01-19 12:58:19.912	 Syllables of "fatigue duty" was missing
+2022-01-19 12:58:20.109	 Syllables of "fatigues" was missing
+2022-01-19 12:58:20.109	 Pronunciation of "fatigues" was not a JSONObject: "fʌ'tiɡz"
+2022-01-19 12:58:20.751	 Syllables of "field-grade officer" was missing
+2022-01-19 12:58:20.751	 Pronunciation of "field-grade officer" was missing
+2022-01-19 12:58:20.751	 "field-grade officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:20.751	 "field-grade officer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:20.963	 Syllables of "field day" was missing
+2022-01-19 12:58:21.407	 Syllables of "field hut" was missing
+2022-01-19 12:58:21.407	 Pronunciation of "field hut" was missing
+2022-01-19 12:58:21.407	 "field hut" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:21.407	 "field hut" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:21.82	 Syllables of "field of operations" was missing
+2022-01-19 12:58:21.82	 Pronunciation of "field of operations" was missing
+2022-01-19 12:58:21.82	 "field of operations" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:21.82	 "field of operations" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:22.761	 Syllables of "fighter aircraft" was missing
+2022-01-19 12:58:22.761	 Pronunciation of "fighter aircraft" was missing
+2022-01-19 12:58:22.761	 "fighter aircraft" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:22.761	 "fighter aircraft" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:22.997	 Syllables of "fighter pilot" was missing
+2022-01-19 12:58:23.209	 Syllables of "fire control radar" was missing
+2022-01-19 12:58:23.209	 Pronunciation of "fire control radar" was missing
+2022-01-19 12:58:23.209	 "fire control radar" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:23.209	 "fire control radar" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:23.418	 Syllables of "fire control system" was missing
+2022-01-19 12:58:23.418	 Pronunciation of "fire control system" was missing
+2022-01-19 12:58:23.418	 "fire control system" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:23.418	 "fire control system" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:24.573	 Syllables of "flag rank" was missing
+2022-01-19 12:58:25.17	 Syllables of "fly-by" was missing
+2022-01-19 12:58:25.17	 Pronunciation of "fly-by" was missing
+2022-01-19 12:58:25.17	 "fly-by" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:25.17	 "fly-by" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:25.584	 Syllables of "flypast" was missing
+2022-01-19 12:58:25.584	 Pronunciation of "flypast" was missing
+2022-01-19 12:58:25.584	 "flypast" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:25.584	 "flypast" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:25.797	 Syllables of "fo" was missing
+2022-01-19 12:58:27.386	 Unrecognised part of speech for "friendly" with definition "of or belonging to your own country's forces or those of an ally": "null"
+2022-01-19 12:58:27.587	 Syllables of "full-dress uniform" was missing
+2022-01-19 12:58:27.587	 Pronunciation of "full-dress uniform" was missing
+2022-01-19 12:58:27.587	 "full-dress uniform" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:27.587	 "full-dress uniform" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:27.802	 Syllables of "full general" was missing
+2022-01-19 12:58:27.802	 Pronunciation of "full general" was missing
+2022-01-19 12:58:27.802	 "full general" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:27.802	 "full general" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:28.226	 Syllables of "gas shell" was missing
+2022-01-19 12:58:29.006	 Syllables of "general headquarters" was missing
+2022-01-19 12:58:29.006	 Pronunciation of "general headquarters" was missing
+2022-01-19 12:58:29.006	 "general headquarters" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:29.006	 "general headquarters" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:31.107	 Pronunciation of "ghq" was missing
+2022-01-19 12:58:31.107	 No pronunciation of "ghq" could be found for "NOUN"
+2022-01-19 12:58:31.107	 "ghq" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:31.107	 "ghq" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:31.635	 Syllables of "grade insignia" was missing
+2022-01-19 12:58:31.944	 Syllables of "ground forces" was missing
+2022-01-19 12:58:31.944	 Pronunciation of "ground forces" was missing
+2022-01-19 12:58:31.944	 "ground forces" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:31.944	 "ground forces" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:32.813	 Syllables of "gun room" was missing
+2022-01-19 12:58:33.017	 Syllables of "half track" was missing
+2022-01-19 12:58:33.017	 Pronunciation of "half track" was missing
+2022-01-19 12:58:33.017	 "half track" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:33.017	 "half track" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:34.634	 Syllables of "headquarters staff" was missing
+2022-01-19 12:58:34.634	 Pronunciation of "headquarters staff" was missing
+2022-01-19 12:58:34.634	 "headquarters staff" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:34.634	 "headquarters staff" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:35.67	 Pronunciation of "holy joe" was missing
+2022-01-19 12:58:35.67	 No pronunciation of "holy joe" could be found for "NOUN"
+2022-01-19 12:58:35.67	 "holy joe" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:35.67	 "holy joe" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:36.022	 Syllables of "home guard" was missing
+2022-01-19 12:58:36.256	 Syllables of "home reserve" was missing
+2022-01-19 12:58:36.823	 Syllables of "horse cavalry" was missing
+2022-01-19 12:58:36.823	 Pronunciation of "horse cavalry" was missing
+2022-01-19 12:58:36.823	 "horse cavalry" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:36.823	 "horse cavalry" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:37.029	 Syllables of "hospital train" was missing
+2022-01-19 12:58:37.264	 Unrecognised part of speech for "hostile" with definition "not belonging to your own country's forces or those of an ally": "null"
+2022-01-19 12:58:37.468	 Syllables of "hostile expedition" was missing
+2022-01-19 12:58:37.974	 Syllables of "hq" was missing
+2022-01-19 12:58:37.974	 Pronunciation of "hq" was missing
+2022-01-19 12:58:37.974	 "hq" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:37.975	 "hq" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:38.806	 Pronunciation of "inactivation" was not a JSONObject: "ɪn,æktɪ'veɪʃʌn"
+2022-01-19 12:58:40.26	 Syllables of "insignia of rank" was missing
+2022-01-19 12:58:40.26	 Pronunciation of "insignia of rank" was missing
+2022-01-19 12:58:40.26	 "insignia of rank" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:40.26	 "insignia of rank" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:40.506	 Pronunciation of "inspector general" was missing
+2022-01-19 12:58:40.506	 No pronunciation of "inspector general" could be found for "NOUN"
+2022-01-19 12:58:40.506	 "inspector general" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:40.506	 "inspector general" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:40.912	 Syllables of "inter-service support" was missing
+2022-01-19 12:58:40.912	 Pronunciation of "inter-service support" was missing
+2022-01-19 12:58:40.912	 "inter-service support" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:40.912	 "inter-service support" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:41.131	 Syllables of "joint chiefs" was missing
+2022-01-19 12:58:41.131	 Pronunciation of "joint chiefs" was missing
+2022-01-19 12:58:41.131	 "joint chiefs" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:41.131	 "joint chiefs" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:41.539	 Syllables of "joint chiefs of staff" was missing
+2022-01-19 12:58:41.539	 Pronunciation of "joint chiefs of staff" was missing
+2022-01-19 12:58:41.539	 "joint chiefs of staff" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:41.539	 "joint chiefs of staff" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:41.909	 Pronunciation of "judge advocate" was missing
+2022-01-19 12:58:41.91	 No pronunciation of "judge advocate" could be found for "NOUN"
+2022-01-19 12:58:41.91	 "judge advocate" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:41.91	 "judge advocate" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:42.969	 Pronunciation of "judge advocate general" was missing
+2022-01-19 12:58:42.969	 No pronunciation of "judge advocate general" could be found for "NOUN"
+2022-01-19 12:58:42.969	 "judge advocate general" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:42.969	 "judge advocate general" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:43.745	 Syllables of "liberty chit" was missing
+2022-01-19 12:58:43.745	 Pronunciation of "liberty chit" was missing
+2022-01-19 12:58:43.745	 "liberty chit" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:43.745	 "liberty chit" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:45.018	 Syllables of "lieutenant jg" was missing
+2022-01-19 12:58:45.018	 Pronunciation of "lieutenant jg" was missing
+2022-01-19 12:58:45.018	 "lieutenant jg" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:45.018	 "lieutenant jg" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:45.25	 Syllables of "lieutenant junior grade" was missing
+2022-01-19 12:58:45.25	 Pronunciation of "lieutenant junior grade" was missing
+2022-01-19 12:58:45.25	 "lieutenant junior grade" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:45.25	 "lieutenant junior grade" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:45.504	 Syllables of "light colonel" was missing
+2022-01-19 12:58:45.78	 Syllables of "lights-out" was missing
+2022-01-19 12:58:45.78	 Pronunciation of "lights-out" was missing
+2022-01-19 12:58:45.78	 "lights-out" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:45.78	 "lights-out" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:47.14	 Pronunciation of "line of battle" was missing
+2022-01-19 12:58:47.14	 No pronunciation of "line of battle" could be found for "NOUN"
+2022-01-19 12:58:47.14	 "line of battle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:47.14	 "line of battle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:47.364	 Syllables of "logistic assessment" was missing
+2022-01-19 12:58:47.364	 Pronunciation of "logistic assessment" was missing
+2022-01-19 12:58:47.364	 "logistic assessment" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:47.364	 "logistic assessment" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:47.584	 Syllables of "logistic assistance" was missing
+2022-01-19 12:58:47.584	 Pronunciation of "logistic assistance" was missing
+2022-01-19 12:58:47.584	 "logistic assistance" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:47.584	 "logistic assistance" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:48.449	 Syllables of "logistic support" was missing
+2022-01-19 12:58:48.449	 Pronunciation of "logistic support" was missing
+2022-01-19 12:58:48.449	 "logistic support" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:48.449	 "logistic support" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:49.363	 Unrecognised part of speech for "major" with definition "greater in scope or effect": "null"
+2022-01-19 12:58:49.363	 Unrecognised part of speech for "major" with definition "of the field of academic study in which one concentrates or specializes": "null"
+2022-01-19 12:58:49.363	 Unrecognised part of speech for "major" with definition "of greater seriousness or danger": "null"
+2022-01-19 12:58:49.58	 Syllables of "major-general" was missing
+2022-01-19 12:58:49.58	 Pronunciation of "major-general" was missing
+2022-01-19 12:58:49.58	 "major-general" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:49.58	 "major-general" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:50.587	 Unrecognised part of speech for "manual" with definition "of or relating to the hands": "null"
+2022-01-19 12:58:50.776	 Syllables of "manual of arms" was missing
+2022-01-19 12:58:50.776	 Pronunciation of "manual of arms" was missing
+2022-01-19 12:58:50.776	 "manual of arms" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:50.776	 "manual of arms" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:51.216	 Unrecognised part of speech for "marine" with definition "of or relating to the sea": "null"
+2022-01-19 12:58:52.188	 Syllables of "marine engineer" was missing
+2022-01-19 12:58:52.425	 Syllables of "marines" was missing
+2022-01-19 12:58:52.425	 Pronunciation of "marines" was not a JSONObject: "mɝr'inz"
+2022-01-19 12:58:53.048	 Pronunciation of "martial law" was missing
+2022-01-19 12:58:53.048	 No pronunciation of "martial law" could be found for "NOUN"
+2022-01-19 12:58:53.048	 "martial law" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:53.048	 "martial law" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:53.851	 Syllables of "mechanized cavalry" was missing
+2022-01-19 12:58:53.851	 Pronunciation of "mechanized cavalry" was missing
+2022-01-19 12:58:53.851	 "mechanized cavalry" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:53.851	 "mechanized cavalry" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:54.353	 Syllables of "mess hall" was missing
+2022-01-19 12:58:54.799	 Syllables of "militainment" was missing
+2022-01-19 12:58:54.799	 Pronunciation of "militainment" was missing
+2022-01-19 12:58:54.799	 "militainment" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:54.799	 "militainment" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:55.256	 Syllables of "military action" was missing
+2022-01-19 12:58:55.256	 Pronunciation of "military action" was missing
+2022-01-19 12:58:55.256	 "military action" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:55.256	 "military action" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:55.496	 Syllables of "military adviser" was missing
+2022-01-19 12:58:55.496	 Pronunciation of "military adviser" was missing
+2022-01-19 12:58:55.496	 "military adviser" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:55.496	 "military adviser" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:55.713	 Syllables of "military advisor" was missing
+2022-01-19 12:58:55.713	 Pronunciation of "military advisor" was missing
+2022-01-19 12:58:55.713	 "military advisor" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:55.713	 "military advisor" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:55.964	 Syllables of "military blockade" was missing
+2022-01-19 12:58:55.964	 Pronunciation of "military blockade" was missing
+2022-01-19 12:58:55.964	 "military blockade" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:55.964	 "military blockade" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:56.172	 Syllables of "military campaign" was missing
+2022-01-19 12:58:56.386	 Syllables of "military capability" was missing
+2022-01-19 12:58:56.386	 Pronunciation of "military capability" was missing
+2022-01-19 12:58:56.386	 "military capability" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:56.386	 "military capability" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:56.611	 Syllables of "military censorship" was missing
+2022-01-19 12:58:56.611	 Pronunciation of "military censorship" was missing
+2022-01-19 12:58:56.612	 "military censorship" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:56.612	 "military censorship" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:56.819	 Syllables of "military ceremony" was missing
+2022-01-19 12:58:56.819	 Pronunciation of "military ceremony" was missing
+2022-01-19 12:58:56.819	 "military ceremony" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:56.819	 "military ceremony" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:57.032	 Syllables of "military chaplain" was missing
+2022-01-19 12:58:57.652	 Syllables of "military commission" was missing
+2022-01-19 12:58:57.652	 Pronunciation of "military commission" was missing
+2022-01-19 12:58:57.653	 "military commission" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:57.653	 "military commission" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:57.934	 Syllables of "military control" was missing
+2022-01-19 12:58:57.934	 Pronunciation of "military control" was missing
+2022-01-19 12:58:57.934	 "military control" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:57.934	 "military control" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:58.185	 Syllables of "military court" was missing
+2022-01-19 12:58:58.431	 Syllables of "military drill" was missing
+2022-01-19 12:58:58.431	 Pronunciation of "military drill" was missing
+2022-01-19 12:58:58.431	 "military drill" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:58.431	 "military drill" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:58.693	 Syllables of "military engineer" was missing
+2022-01-19 12:58:58.98	 Syllables of "military expedition" was missing
+2022-01-19 12:58:58.98	 Pronunciation of "military expedition" was missing
+2022-01-19 12:58:58.98	 "military expedition" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:58.98	 "military expedition" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:59.242	 Syllables of "military force" was missing
+2022-01-19 12:58:59.242	 Pronunciation of "military force" was missing
+2022-01-19 12:58:59.242	 "military force" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:59.242	 "military force" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:59.854	 Syllables of "military formation" was missing
+2022-01-19 12:58:59.854	 Pronunciation of "military formation" was missing
+2022-01-19 12:58:59.854	 "military formation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:58:59.854	 "military formation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:00.356	 Syllables of "military greeting" was missing
+2022-01-19 12:59:00.356	 Pronunciation of "military greeting" was missing
+2022-01-19 12:59:00.356	 "military greeting" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:00.356	 "military greeting" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:00.583	 Syllables of "military group" was missing
+2022-01-19 12:59:00.583	 Pronunciation of "military group" was missing
+2022-01-19 12:59:00.583	 "military group" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:00.583	 "military group" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:00.812	 Syllables of "military headquarters" was missing
+2022-01-19 12:59:00.812	 Pronunciation of "military headquarters" was missing
+2022-01-19 12:59:00.812	 "military headquarters" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:00.812	 "military headquarters" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:01.06	 Syllables of "military hospital" was missing
+2022-01-19 12:59:01.06	 Pronunciation of "military hospital" was missing
+2022-01-19 12:59:01.06	 "military hospital" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:01.06	 "military hospital" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:01.339	 Syllables of "military installation" was missing
+2022-01-19 12:59:01.339	 Pronunciation of "military installation" was missing
+2022-01-19 12:59:01.339	 "military installation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:01.339	 "military installation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:01.638	 Syllables of "military intelligence" was missing
+2022-01-19 12:59:02.186	 Syllables of "military leader" was missing
+2022-01-19 12:59:02.186	 Pronunciation of "military leader" was missing
+2022-01-19 12:59:02.186	 "military leader" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:02.186	 "military leader" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:02.447	 Syllables of "military man" was missing
+2022-01-19 12:59:02.707	 Syllables of "military mission" was missing
+2022-01-19 12:59:02.707	 Pronunciation of "military mission" was missing
+2022-01-19 12:59:02.708	 "military mission" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:02.708	 "military mission" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:02.967	 Syllables of "military officer" was missing
+2022-01-19 12:59:03.238	 Syllables of "military operation" was missing
+2022-01-19 12:59:03.238	 Pronunciation of "military operation" was missing
+2022-01-19 12:59:03.238	 "military operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:03.238	 "military operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:03.478	 Syllables of "military personnel" was missing
+2022-01-19 12:59:03.478	 Pronunciation of "military personnel" was missing
+2022-01-19 12:59:03.478	 "military personnel" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:03.478	 "military personnel" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:03.782	 Syllables of "military plane" was missing
+2022-01-19 12:59:03.782	 Pronunciation of "military plane" was missing
+2022-01-19 12:59:03.782	 "military plane" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:03.782	 "military plane" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:04.375	 Syllables of "military policeman" was missing
+2022-01-19 12:59:04.646	 Syllables of "military position" was missing
+2022-01-19 12:59:04.646	 Pronunciation of "military position" was missing
+2022-01-19 12:59:04.646	 "military position" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:04.646	 "military position" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:04.953	 Syllables of "military post" was missing
+2022-01-19 12:59:04.953	 Pronunciation of "military post" was missing
+2022-01-19 12:59:04.953	 "military post" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:04.953	 "military post" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:05.205	 Syllables of "military posture" was missing
+2022-01-19 12:59:05.205	 Pronunciation of "military posture" was missing
+2022-01-19 12:59:05.205	 "military posture" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:05.205	 "military posture" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:05.424	 Syllables of "military quarters" was missing
+2022-01-19 12:59:05.424	 Pronunciation of "military quarters" was missing
+2022-01-19 12:59:05.424	 "military quarters" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:05.424	 "military quarters" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:05.67	 Syllables of "military rank" was missing
+2022-01-19 12:59:05.67	 Pronunciation of "military rank" was missing
+2022-01-19 12:59:05.67	 "military rank" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:05.67	 "military rank" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:05.902	 Syllables of "military rating" was missing
+2022-01-19 12:59:05.902	 Pronunciation of "military rating" was missing
+2022-01-19 12:59:05.902	 "military rating" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:05.902	 "military rating" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:06.149	 Syllables of "military reserve" was missing
+2022-01-19 12:59:06.149	 Pronunciation of "military reserve" was missing
+2022-01-19 12:59:06.149	 "military reserve" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:06.149	 "military reserve" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:06.394	 Syllables of "military science" was missing
+2022-01-19 12:59:06.603	 Syllables of "military service" was missing
+2022-01-19 12:59:06.807	 Syllables of "military strength" was missing
+2022-01-19 12:59:06.807	 Pronunciation of "military strength" was missing
+2022-01-19 12:59:06.807	 "military strength" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:06.807	 "military strength" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:07.014	 Syllables of "military training" was missing
+2022-01-19 12:59:07.014	 Pronunciation of "military training" was missing
+2022-01-19 12:59:07.014	 "military training" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:07.014	 "military training" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:07.253	 Syllables of "military uniform" was missing
+2022-01-19 12:59:07.253	 Pronunciation of "military uniform" was missing
+2022-01-19 12:59:07.253	 "military uniform" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:07.253	 "military uniform" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:07.524	 Syllables of "military unit" was missing
+2022-01-19 12:59:07.727	 Syllables of "military vehicle" was missing
+2022-01-19 12:59:07.727	 Pronunciation of "military vehicle" was missing
+2022-01-19 12:59:07.727	 "military vehicle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:07.727	 "military vehicle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:07.917	 Syllables of "military volunteer" was missing
+2022-01-19 12:59:07.917	 Pronunciation of "military volunteer" was missing
+2022-01-19 12:59:07.917	 "military volunteer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:07.917	 "military volunteer" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:09.032	 Syllables of "mp" was missing
+2022-01-19 12:59:09.032	 Pronunciation of "mp" was missing
+2022-01-19 12:59:09.032	 "mp" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:09.032	 "mp" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:09.682	 Syllables of "muster call" was missing
+2022-01-19 12:59:09.682	 Pronunciation of "muster call" was missing
+2022-01-19 12:59:09.682	 "muster call" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:09.682	 "muster call" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:10.137	 Pronunciation of "national guard" was missing
+2022-01-19 12:59:10.138	 No pronunciation of "national guard" could be found for "NOUN"
+2022-01-19 12:59:10.138	 "national guard" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:10.138	 "national guard" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:10.575	 Syllables of "naval academy" was missing
+2022-01-19 12:59:10.78	 Syllables of "naval attache" was missing
+2022-01-19 12:59:10.78	 Pronunciation of "naval attache" was missing
+2022-01-19 12:59:10.78	 "naval attache" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:10.78	 "naval attache" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:10.979	 Syllables of "naval commander" was missing
+2022-01-19 12:59:10.979	 Pronunciation of "naval commander" was missing
+2022-01-19 12:59:10.979	 "naval commander" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:10.979	 "naval commander" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:11.204	 Syllables of "naval engineer" was missing
+2022-01-19 12:59:11.736	 Syllables of "naval forces" was missing
+2022-01-19 12:59:11.736	 Pronunciation of "naval forces" was missing
+2022-01-19 12:59:11.736	 "naval forces" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:11.736	 "naval forces" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:11.951	 Syllables of "naval installation" was missing
+2022-01-19 12:59:11.951	 Pronunciation of "naval installation" was missing
+2022-01-19 12:59:11.951	 "naval installation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:11.951	 "naval installation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:12.176	 Syllables of "naval officer" was missing
+2022-01-19 12:59:12.401	 Syllables of "naval shipyard" was missing
+2022-01-19 12:59:12.401	 Pronunciation of "naval shipyard" was missing
+2022-01-19 12:59:12.401	 "naval shipyard" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:12.401	 "naval shipyard" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:12.671	 Syllables of "naval unit" was missing
+2022-01-19 12:59:12.671	 Pronunciation of "naval unit" was missing
+2022-01-19 12:59:12.671	 "naval unit" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:12.671	 "naval unit" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:13.102	 Syllables of "navy seal" was missing
+2022-01-19 12:59:13.102	 Pronunciation of "navy seal" was missing
+2022-01-19 12:59:13.102	 "navy seal" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:13.102	 "navy seal" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:13.337	 Pronunciation of "navy yard" was missing
+2022-01-19 12:59:13.337	 No pronunciation of "navy yard" could be found for "NOUN"
+2022-01-19 12:59:13.337	 "navy yard" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:13.337	 "navy yard" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:13.963	 Syllables of "nuclear deterrence" was missing
+2022-01-19 12:59:13.963	 Pronunciation of "nuclear deterrence" was missing
+2022-01-19 12:59:13.963	 "nuclear deterrence" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:13.963	 "nuclear deterrence" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:15.26	 Syllables of "olive-drab uniform" was missing
+2022-01-19 12:59:15.26	 Pronunciation of "olive-drab uniform" was missing
+2022-01-19 12:59:15.26	 "olive-drab uniform" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:15.26	 "olive-drab uniform" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:17.284	 Syllables of "operational casualty" was missing
+2022-01-19 12:59:17.284	 Pronunciation of "operational casualty" was missing
+2022-01-19 12:59:17.284	 "operational casualty" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:17.284	 "operational casualty" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:17.498	 Syllables of "operational damage" was missing
+2022-01-19 12:59:17.498	 Pronunciation of "operational damage" was missing
+2022-01-19 12:59:17.498	 "operational damage" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:17.498	 "operational damage" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:19.953	 Syllables of "paygrade" was missing
+2022-01-19 12:59:19.953	 Pronunciation of "paygrade" was missing
+2022-01-19 12:59:19.953	 "paygrade" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:19.953	 "paygrade" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:20.29	 Syllables of "peacekeeper" was missing
+2022-01-19 12:59:20.29	 Pronunciation of "peacekeeper" was not a JSONObject: "'pis,kipɝr"
+2022-01-19 12:59:20.484	 Syllables of "peacekeeping" was missing
+2022-01-19 12:59:20.484	 Pronunciation of "peacekeeping" was not a JSONObject: "'pis,kipɪŋ"
+2022-01-19 12:59:20.484	 Unrecognised part of speech for "peacekeeping" with definition "of or relating to the preservation of peace between hostile groups by international military forces": "null"
+2022-01-19 12:59:20.705	 Syllables of "peacekeeping mission" was missing
+2022-01-19 12:59:20.705	 Pronunciation of "peacekeeping mission" was missing
+2022-01-19 12:59:20.705	 "peacekeeping mission" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:20.705	 "peacekeeping mission" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:20.973	 Syllables of "peacekeeping operation" was missing
+2022-01-19 12:59:20.973	 Pronunciation of "peacekeeping operation" was missing
+2022-01-19 12:59:20.973	 "peacekeeping operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:20.973	 "peacekeeping operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:21.61	 Syllables of "personnel carrier" was missing
+2022-01-19 12:59:21.61	 Pronunciation of "personnel carrier" was missing
+2022-01-19 12:59:21.61	 "personnel carrier" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:21.61	 "personnel carrier" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:21.911	 Syllables of "personnel casualty" was missing
+2022-01-19 12:59:21.911	 Pronunciation of "personnel casualty" was missing
+2022-01-19 12:59:21.911	 "personnel casualty" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:21.911	 "personnel casualty" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:24.296	 Syllables of "police action" was missing
+2022-01-19 12:59:25.376	 Syllables of "precision rifle" was missing
+2022-01-19 12:59:25.376	 Pronunciation of "precision rifle" was missing
+2022-01-19 12:59:25.376	 "precision rifle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:25.376	 "precision rifle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:28.547	 Syllables of "psychological operation" was missing
+2022-01-19 12:59:28.547	 Pronunciation of "psychological operation" was missing
+2022-01-19 12:59:28.547	 "psychological operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:28.547	 "psychological operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:28.769	 Syllables of "psyop" was missing
+2022-01-19 12:59:28.769	 Pronunciation of "psyop" was missing
+2022-01-19 12:59:28.769	 "psyop" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:28.769	 "psyop" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:29.127	 Syllables of "pullback" was missing
+2022-01-19 12:59:29.127	 Pronunciation of "pullback" was not a JSONObject: "'pʊl,bæk"
+2022-01-19 12:59:29.368	 Syllables of "pullout" was missing
+2022-01-19 12:59:29.368	 Pronunciation of "pullout" was not a JSONObject: "'pʊl,aʊt"
+2022-01-19 12:59:30.737	 Syllables of "rank and file" was missing
+2022-01-19 12:59:30.737	 Pronunciation of "rank and file" was missing
+2022-01-19 12:59:30.737	 "rank and file" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:30.737	 "rank and file" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:31.918	 Syllables of "reconnaissance plane" was missing
+2022-01-19 12:59:31.918	 Pronunciation of "reconnaissance plane" was missing
+2022-01-19 12:59:31.918	 "reconnaissance plane" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:31.918	 "reconnaissance plane" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:32.149	 Syllables of "reconnaissance vehicle" was missing
+2022-01-19 12:59:32.149	 Pronunciation of "reconnaissance vehicle" was missing
+2022-01-19 12:59:32.149	 "reconnaissance vehicle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:32.149	 "reconnaissance vehicle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:32.586	 Syllables of "reenforcement" was missing
+2022-01-19 12:59:32.586	 Pronunciation of "reenforcement" was missing
+2022-01-19 12:59:32.586	 "reenforcement" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:32.586	 "reenforcement" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:32.996	 Syllables of "regular army" was missing
+2022-01-19 12:59:33.622	 Syllables of "reserves" was missing
+2022-01-19 12:59:33.622	 Pronunciation of "reserves" was not a JSONObject: "rɪ'zɝrvz"
+2022-01-19 12:59:34.685	 Syllables of "rocket base" was missing
+2022-01-19 12:59:34.685	 Pronunciation of "rocket base" was missing
+2022-01-19 12:59:34.685	 "rocket base" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:34.685	 "rocket base" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:34.89	 Unrecognised part of speech for "salient" with definition "(of angles) pointing outward at an angle of less than 180 degrees": "null"
+2022-01-19 12:59:36.187	 Syllables of "scout car" was missing
+2022-01-19 12:59:36.884	 Syllables of "section eight" was missing
+2022-01-19 12:59:36.884	 Pronunciation of "section eight" was missing
+2022-01-19 12:59:36.884	 "section eight" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:36.884	 "section eight" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:37.295	 Pronunciation of "selective service" was missing
+2022-01-19 12:59:37.296	 No pronunciation of "selective service" could be found for "NOUN"
+2022-01-19 12:59:37.296	 "selective service" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:37.296	 "selective service" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:38.331	 Syllables of "shipboard soldier" was missing
+2022-01-19 12:59:38.331	 Pronunciation of "shipboard soldier" was missing
+2022-01-19 12:59:38.331	 "shipboard soldier" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:38.331	 "shipboard soldier" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:38.867	 Pronunciation of "shore patrol" was missing
+2022-01-19 12:59:38.867	 No pronunciation of "shore patrol" could be found for "NOUN"
+2022-01-19 12:59:38.867	 "shore patrol" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:38.867	 "shore patrol" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:39.084	 Syllables of "shore station" was missing
+2022-01-19 12:59:39.084	 Pronunciation of "shore station" was missing
+2022-01-19 12:59:39.084	 "shore station" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:39.084	 "shore station" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:39.318	 Syllables of "sick call" was missing
+2022-01-19 12:59:39.579	 Syllables of "sick parade" was missing
+2022-01-19 12:59:39.579	 Pronunciation of "sick parade" was missing
+2022-01-19 12:59:39.579	 "sick parade" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:39.579	 "sick parade" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:40.505	 Syllables of "simulated military operation" was missing
+2022-01-19 12:59:40.505	 Pronunciation of "simulated military operation" was missing
+2022-01-19 12:59:40.505	 "simulated military operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:40.505	 "simulated military operation" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:41.632	 Syllables of "smoke screen" was missing
+2022-01-19 12:59:41.916	 Syllables of "smokescreen" was missing
+2022-01-19 12:59:42.177	 Syllables of "sniper rifle" was missing
+2022-01-19 12:59:42.177	 Pronunciation of "sniper rifle" was missing
+2022-01-19 12:59:42.177	 "sniper rifle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:42.177	 "sniper rifle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:43.27	 Pronunciation of "spit and polish" was missing
+2022-01-19 12:59:43.27	 No pronunciation of "spit and polish" could be found for "NOUN"
+2022-01-19 12:59:43.27	 "spit and polish" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:43.27	 "spit and polish" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:43.522	 Syllables of "sprog" was missing
+2022-01-19 12:59:43.919	 Pronunciation of "square-bashing" was missing
+2022-01-19 12:59:43.919	 No pronunciation of "square-bashing" could be found for "NOUN"
+2022-01-19 12:59:43.919	 "square-bashing" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:43.919	 "square-bashing" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:44.609	 Syllables of "stand-down" was missing
+2022-01-19 12:59:45.042	 Syllables of "standdown" was missing
+2022-01-19 12:59:45.042	 Pronunciation of "standdown" was missing
+2022-01-19 12:59:45.042	 "standdown" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:45.042	 "standdown" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:45.282	 Pronunciation of "standing army" was missing
+2022-01-19 12:59:45.282	 No pronunciation of "standing army" could be found for "NOUN"
+2022-01-19 12:59:45.282	 "standing army" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:45.282	 "standing army" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:45.497	 Syllables of "strategic warning" was missing
+2022-01-19 12:59:45.497	 Pronunciation of "strategic warning" was missing
+2022-01-19 12:59:45.497	 "strategic warning" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:45.497	 "strategic warning" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:45.933	 Syllables of "strength" was missing
+2022-01-19 12:59:47.044	 Syllables of "stripes" was missing
+2022-01-19 12:59:47.044	 Pronunciation of "stripes" was not a JSONObject: "straɪps"
+2022-01-19 12:59:47.813	 Syllables of "supreme headquarters" was missing
+2022-01-19 12:59:47.813	 Pronunciation of "supreme headquarters" was missing
+2022-01-19 12:59:47.813	 "supreme headquarters" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:47.813	 "supreme headquarters" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:48.023	 Syllables of "tactical warning" was missing
+2022-01-19 12:59:48.023	 Pronunciation of "tactical warning" was missing
+2022-01-19 12:59:48.023	 "tactical warning" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:48.023	 "tactical warning" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:49.042	 Syllables of "task force" was missing
+2022-01-19 12:59:49.043	 Pronunciation of "task force" was missing
+2022-01-19 12:59:49.043	 "task force" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:49.043	 "task force" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:49.533	 Unrecognised part of speech for "territorial" with definition "of or relating to a territory": "null"
+2022-01-19 12:59:49.761	 Syllables of "territorial reserve" was missing
+2022-01-19 12:59:49.761	 Pronunciation of "territorial reserve" was missing
+2022-01-19 12:59:49.761	 "territorial reserve" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:49.761	 "territorial reserve" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:50.265	 Syllables of "theater of operations" was missing
+2022-01-19 12:59:50.265	 Pronunciation of "theater of operations" was missing
+2022-01-19 12:59:50.265	 "theater of operations" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:50.265	 "theater of operations" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:51.423	 Syllables of "theatre of operations" was missing
+2022-01-19 12:59:51.423	 Pronunciation of "theatre of operations" was missing
+2022-01-19 12:59:51.423	 "theatre of operations" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:51.423	 "theatre of operations" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:51.978	 Syllables of "absence without leave" was missing
+2022-01-19 12:59:51.978	 Pronunciation of "absence without leave" was missing
+2022-01-19 12:59:51.978	 "absence without leave" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:51.978	 "absence without leave" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:52.332	 Syllables of "trip wire" was missing
+2022-01-19 12:59:52.332	 Pronunciation of "trip wire" was missing
+2022-01-19 12:59:52.332	 "trip wire" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:52.332	 "trip wire" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:53.222	 Syllables of "troop movement" was missing
+2022-01-19 12:59:53.222	 Pronunciation of "troop movement" was missing
+2022-01-19 12:59:53.222	 "troop movement" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:53.222	 "troop movement" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:53.434	 Syllables of "troop transport" was missing
+2022-01-19 12:59:53.434	 Pronunciation of "troop transport" was missing
+2022-01-19 12:59:53.434	 "troop transport" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:53.434	 "troop transport" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:53.657	 Syllables of "troops" was missing
+2022-01-19 12:59:53.657	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-19 12:59:53.862	 Syllables of "u. s. army" was missing
+2022-01-19 12:59:53.862	 Pronunciation of "u. s. army" was missing
+2022-01-19 12:59:53.862	 "u. s. army" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:53.862	 "u. s. army" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:54.293	 Syllables of "unauthorized absence" was missing
+2022-01-19 12:59:54.293	 Pronunciation of "unauthorized absence" was missing
+2022-01-19 12:59:54.293	 "unauthorized absence" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:54.293	 "unauthorized absence" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:54.514	 Syllables of "undercover agent" was missing
+2022-01-19 12:59:54.514	 Pronunciation of "undercover agent" was missing
+2022-01-19 12:59:54.514	 "undercover agent" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:54.514	 "undercover agent" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:54.716	 Syllables of "united states army" was missing
+2022-01-19 12:59:54.716	 Pronunciation of "united states army" was missing
+2022-01-19 12:59:54.716	 "united states army" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:54.716	 "united states army" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:54.989	 Syllables of "united states army rangers" was missing
+2022-01-19 12:59:54.989	 Pronunciation of "united states army rangers" was missing
+2022-01-19 12:59:54.989	 "united states army rangers" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:54.989	 "united states army rangers" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:55.219	 Syllables of "united states military academy" was missing
+2022-01-19 12:59:55.219	 Pronunciation of "united states military academy" was missing
+2022-01-19 12:59:55.219	 "united states military academy" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:55.219	 "united states military academy" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:55.43	 Syllables of "us army" was missing
+2022-01-19 12:59:55.43	 Pronunciation of "us army" was missing
+2022-01-19 12:59:55.43	 "us army" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:55.43	 "us army" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:55.628	 Syllables of "us military academy" was missing
+2022-01-19 12:59:55.628	 Pronunciation of "us military academy" was missing
+2022-01-19 12:59:55.628	 "us military academy" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:55.628	 "us military academy" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:55.925	 Pronunciation of "usa" was not a JSONObject: "'ju'ɛ'seɪ"
+2022-01-19 12:59:56.545	 Syllables of "w.m.d." was missing
+2022-01-19 12:59:56.545	 Pronunciation of "w.m.d." was missing
+2022-01-19 12:59:56.545	 "w.m.d." (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:56.545	 "w.m.d." (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:56.732	 Syllables of "wake-up signal" was missing
+2022-01-19 12:59:56.732	 Pronunciation of "wake-up signal" was missing
+2022-01-19 12:59:56.732	 "wake-up signal" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:56.732	 "wake-up signal" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:57.141	 Syllables of "war game" was missing
+2022-01-19 12:59:57.345	 Syllables of "war vessel" was missing
+2022-01-19 12:59:57.561	 Syllables of "war zone" was missing
+2022-01-19 12:59:57.561	 Pronunciation of "war zone" was missing
+2022-01-19 12:59:57.561	 "war zone" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:57.561	 "war zone" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:58.194	 Syllables of "warning of attack" was missing
+2022-01-19 12:59:58.194	 Pronunciation of "warning of attack" was missing
+2022-01-19 12:59:58.194	 "warning of attack" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:58.194	 "warning of attack" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:58.42	 Syllables of "warning of war" was missing
+2022-01-19 12:59:58.42	 Pronunciation of "warning of war" was missing
+2022-01-19 12:59:58.42	 "warning of war" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:58.42	 "warning of war" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:59.257	 Syllables of "weapon of mass destruction" was missing
+2022-01-19 12:59:59.257	 Pronunciation of "weapon of mass destruction" was missing
+2022-01-19 12:59:59.257	 "weapon of mass destruction" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:59.257	 "weapon of mass destruction" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:59.453	 Syllables of "weapons carrier" was missing
+2022-01-19 12:59:59.453	 Pronunciation of "weapons carrier" was missing
+2022-01-19 12:59:59.453	 "weapons carrier" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:59.453	 "weapons carrier" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:59.661	 Syllables of "weapons platform" was missing
+2022-01-19 12:59:59.661	 Pronunciation of "weapons platform" was missing
+2022-01-19 12:59:59.661	 "weapons platform" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:59.661	 "weapons platform" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:59.872	 Syllables of "weekend warrior" was missing
+2022-01-19 12:59:59.872	 Pronunciation of "weekend warrior" was missing
+2022-01-19 12:59:59.872	 "weekend warrior" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 12:59:59.872	 "weekend warrior" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:00.093	 Syllables of "west point" was missing
+2022-01-19 13:00:00.093	 Pronunciation of "west point" was missing
+2022-01-19 13:00:00.093	 "west point" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:00.093	 "west point" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:00.547	 Syllables of "wmd" was missing
+2022-01-19 13:00:00.547	 Pronunciation of "wmd" was missing
+2022-01-19 13:00:00.547	 "wmd" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:00.547	 "wmd" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:03.802	 Syllables of "accoutered" was missing
+2022-01-19 13:00:03.802	 Pronunciation of "accoutered" was missing
+2022-01-19 13:00:03.802	 "accoutered" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:03.802	 "accoutered" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:04.016	 Syllables of "accoutred" was missing
+2022-01-19 13:00:04.016	 Pronunciation of "accoutred" was missing
+2022-01-19 13:00:04.016	 "accoutred" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:04.016	 "accoutred" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:04.25	 Pronunciation of "activated" was not a JSONObject: "'æktʌ,veɪtʌd"
+2022-01-19 13:00:05.462	 Syllables of "combat-ready" was missing
+2022-01-19 13:00:05.462	 Pronunciation of "combat-ready" was missing
+2022-01-19 13:00:05.462	 "combat-ready" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:05.462	 "combat-ready" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:06.257	 Pronunciation of "fighting" was not a JSONObject: "'faɪtɪŋ"
+2022-01-19 13:00:06.728	 Syllables of "transport ship" was missing
+2022-01-19 13:00:06.728	 Pronunciation of "transport ship" was missing
+2022-01-19 13:00:06.728	 "transport ship" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:06.728	 "transport ship" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:07.972	 Syllables of "aid station" was missing
+2022-01-19 13:00:08.409	 Syllables of "aide-de-camp" was missing
+2022-01-19 13:00:08.662	 Syllables of "air attache" was missing
+2022-01-19 13:00:08.662	 Pronunciation of "air attache" was missing
+2022-01-19 13:00:08.662	 "air attache" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:08.662	 "air attache" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:08.888	 Syllables of "air base" was missing
+2022-01-19 13:00:09.301	 Syllables of "air force" was missing
+2022-01-19 13:00:09.568	 Pronunciation of "nonoperational" was missing
+2022-01-19 13:00:09.568	 No pronunciation of "nonoperational" could be found for "NOUN"
+2022-01-19 13:00:09.568	 "nonoperational" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:09.568	 "nonoperational" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:09.918	 Unrecognised part of speech for "operational" with definition "pertaining to a process or series of actions for achieving a result": "null"
+2022-01-19 13:00:10.183	 Unrecognised part of speech for "regular" with definition "(of solids) having clear dimensions that can be measured; volume can be determined with a suitable geometric formula": "null"
+2022-01-19 13:00:10.669	 Pronunciation of "unarmored" was missing
+2022-01-19 13:00:10.669	 No pronunciation of "unarmored" could be found for "NOUN"
+2022-01-19 13:00:10.669	 "unarmored" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:10.669	 "unarmored" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:10.958	 Pronunciation of "unarmoured" was missing
+2022-01-19 13:00:10.958	 No pronunciation of "unarmoured" could be found for "NOUN"
+2022-01-19 13:00:10.958	 "unarmoured" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:10.958	 "unarmoured" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:11.516	 Pronunciation of "issuing" was not a JSONObject: "'ɪʃuɪŋ"
+2022-01-19 13:00:13.765	 Syllables of "seed stock" was missing
+2022-01-19 13:00:13.765	 Pronunciation of "seed stock" was missing
+2022-01-19 13:00:13.765	 "seed stock" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:13.765	 "seed stock" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:14.205	 Syllables of "care delivery" was missing
+2022-01-19 13:00:14.205	 Pronunciation of "care delivery" was missing
+2022-01-19 13:00:14.205	 "care delivery" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:14.205	 "care delivery" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:14.711	 Pronunciation of "fueling" was not a JSONObject: "'fjulɪŋ"
+2022-01-19 13:00:14.905	 Syllables of "health care delivery" was missing
+2022-01-19 13:00:14.905	 Pronunciation of "health care delivery" was missing
+2022-01-19 13:00:14.905	 "health care delivery" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:14.905	 "health care delivery" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:15.123	 Syllables of "healthcare delivery" was missing
+2022-01-19 13:00:15.123	 Pronunciation of "healthcare delivery" was missing
+2022-01-19 13:00:15.123	 "healthcare delivery" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:15.123	 "healthcare delivery" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:15.959	 Pronunciation of "refueling" was not a JSONObject: "ri'fjuʌlɪŋ"
+2022-01-19 13:00:19.955	 Syllables of "takings" was missing
+2022-01-19 13:00:19.955	 Pronunciation of "takings" was not a JSONObject: "'teɪkɪŋz"
+2022-01-19 13:00:21.641	 Syllables of "way out" was missing
+2022-01-19 13:00:23.623	 Syllables of "first cousin" was missing
+2022-01-19 13:00:23.861	 Syllables of "full cousin" was missing
+2022-01-19 13:00:24.704	 Syllables of "kinsperson" was missing
+2022-01-19 13:00:24.704	 Pronunciation of "kinsperson" was missing
+2022-01-19 13:00:24.704	 "kinsperson" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:24.704	 "kinsperson" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:25.125	 Syllables of "kissing cousin" was missing
+2022-01-19 13:00:25.125	 Pronunciation of "kissing cousin" was missing
+2022-01-19 13:00:25.125	 "kissing cousin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:25.125	 "kissing cousin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:26.063	 Syllables of "kissing kin" was missing
+2022-01-19 13:00:26.063	 Pronunciation of "kissing kin" was missing
+2022-01-19 13:00:26.063	 "kissing kin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:26.063	 "kissing kin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:26.542	 Syllables of "married person" was missing
+2022-01-19 13:00:26.542	 Pronunciation of "married person" was missing
+2022-01-19 13:00:26.542	 "married person" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:26.542	 "married person" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:27.095	 Syllables of "matrikin" was missing
+2022-01-19 13:00:27.095	 Pronunciation of "matrikin" was missing
+2022-01-19 13:00:27.095	 "matrikin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:27.095	 "matrikin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:27.358	 Syllables of "matrilineal kin" was missing
+2022-01-19 13:00:27.358	 Pronunciation of "matrilineal kin" was missing
+2022-01-19 13:00:27.358	 "matrilineal kin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:27.358	 "matrilineal kin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:27.573	 Syllables of "matrilineal sib" was missing
+2022-01-19 13:00:27.573	 Pronunciation of "matrilineal sib" was missing
+2022-01-19 13:00:27.573	 "matrilineal sib" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:27.573	 "matrilineal sib" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:28.015	 Syllables of "matrisib" was missing
+2022-01-19 13:00:28.015	 Pronunciation of "matrisib" was missing
+2022-01-19 13:00:28.015	 "matrisib" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:28.015	 "matrisib" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:28.231	 Syllables of "next of kin" was missing
+2022-01-19 13:00:28.231	 Pronunciation of "next of kin" was missing
+2022-01-19 13:00:28.231	 "next of kin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:28.231	 "next of kin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:28.7	 Pronunciation of "sibling" was not a JSONObject: "'sɪblɪŋ"
+2022-01-19 13:00:31.333	 Syllables of "blood relative" was missing
+2022-01-19 13:00:32.417	 Syllables of "relative-in-law" was missing
+2022-01-19 13:00:35.803	 Syllables of "patrikin" was missing
+2022-01-19 13:00:35.803	 Pronunciation of "patrikin" was missing
+2022-01-19 13:00:35.803	 "patrikin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:35.803	 "patrikin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:36.616	 Syllables of "patrilineal kin" was missing
+2022-01-19 13:00:36.616	 Pronunciation of "patrilineal kin" was missing
+2022-01-19 13:00:36.616	 "patrilineal kin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:36.616	 "patrilineal kin" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:36.853	 Syllables of "patrilineal sib" was missing
+2022-01-19 13:00:36.853	 Pronunciation of "patrilineal sib" was missing
+2022-01-19 13:00:36.853	 "patrilineal sib" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:36.853	 "patrilineal sib" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:37.084	 Syllables of "patrisib" was missing
+2022-01-19 13:00:37.084	 Pronunciation of "patrisib" was missing
+2022-01-19 13:00:37.084	 "patrisib" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:37.084	 "patrisib" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:40.127	 Syllables of "natural phenomenon" was missing
+2022-01-19 13:00:40.127	 Pronunciation of "natural phenomenon" was missing
+2022-01-19 13:00:40.127	 "natural phenomenon" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:40.127	 "natural phenomenon" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:41.133	 Syllables of "disposable income" was missing
+2022-01-19 13:00:41.326	 Syllables of "double dipping" was missing
+2022-01-19 13:00:41.326	 Pronunciation of "double dipping" was missing
+2022-01-19 13:00:41.326	 "double dipping" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:41.326	 "double dipping" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:41.751	 Syllables of "earnings before interest taxes depreciation and amortization" was missing
+2022-01-19 13:00:41.751	 Pronunciation of "earnings before interest taxes depreciation and amortization" was missing
+2022-01-19 13:00:41.751	 "earnings before interest taxes depreciation and amortization" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:41.751	 "earnings before interest taxes depreciation and amortization" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:42.904	 Syllables of "easy money" was missing
+2022-01-19 13:00:43.638	 Syllables of "ebitda" was missing
+2022-01-19 13:00:43.638	 Pronunciation of "ebitda" was missing
+2022-01-19 13:00:43.638	 "ebitda" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:43.638	 "ebitda" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:43.86	 Syllables of "government income" was missing
+2022-01-19 13:00:43.86	 Pronunciation of "government income" was missing
+2022-01-19 13:00:43.86	 "government income" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:43.86	 "government income" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:44.06	 Syllables of "government revenue" was missing
+2022-01-19 13:00:44.06	 Pronunciation of "government revenue" was missing
+2022-01-19 13:00:44.06	 "government revenue" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:44.06	 "government revenue" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:44.52	 Syllables of "gross revenue" was missing
+2022-01-19 13:00:44.52	 Pronunciation of "gross revenue" was missing
+2022-01-19 13:00:44.52	 "gross revenue" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:44.52	 "gross revenue" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:44.722	 Syllables of "gross sales" was missing
+2022-01-19 13:00:44.722	 Pronunciation of "gross sales" was missing
+2022-01-19 13:00:44.722	 "gross sales" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:44.722	 "gross sales" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:45.855	 Syllables of "net income" was missing
+2022-01-19 13:00:46.3	 Syllables of "net sales" was missing
+2022-01-19 13:00:46.3	 Pronunciation of "net sales" was missing
+2022-01-19 13:00:46.3	 "net sales" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:46.3	 "net sales" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:46.506	 Syllables of "per capita income" was missing
+2022-01-19 13:00:46.506	 Pronunciation of "per capita income" was missing
+2022-01-19 13:00:46.506	 "per capita income" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:46.506	 "per capita income" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:46.707	 Syllables of "personal income" was missing
+2022-01-19 13:00:46.707	 Pronunciation of "personal income" was missing
+2022-01-19 13:00:46.707	 "personal income" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:46.707	 "personal income" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:47.127	 Syllables of "profits" was missing
+2022-01-19 13:00:47.127	 Pronunciation of "profits" was not a JSONObject: "'prɑfɪts"
+2022-01-19 13:00:47.963	 Syllables of "rental income" was missing
+2022-01-19 13:00:47.963	 Pronunciation of "rental income" was missing
+2022-01-19 13:00:47.963	 "rental income" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:47.963	 "rental income" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:48.776	 Syllables of "unearned revenue" was missing
+2022-01-19 13:00:48.776	 Pronunciation of "unearned revenue" was missing
+2022-01-19 13:00:48.776	 "unearned revenue" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:48.776	 "unearned revenue" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:48.97	 Syllables of "cash flow" was missing
+2022-01-19 13:00:49.629	 Unrecognised part of speech for "serial" with definition "pertaining to or occurring in or producing a series": "null"
+2022-01-19 13:00:49.828	 Syllables of "serial publication" was missing
+2022-01-19 13:00:49.828	 Pronunciation of "serial publication" was missing
+2022-01-19 13:00:49.828	 "serial publication" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:49.828	 "serial publication" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:56.498	 Syllables of "neck opening" was missing
+2022-01-19 13:00:56.498	 Pronunciation of "neck opening" was missing
+2022-01-19 13:00:56.498	 "neck opening" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:56.498	 "neck opening" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:57.643	 Syllables of "pass-through" was missing
+2022-01-19 13:00:57.643	 Pronunciation of "pass-through" was missing
+2022-01-19 13:00:57.643	 "pass-through" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:57.643	 "pass-through" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:58.999	 Syllables of "gun muzzle" was missing
+2022-01-19 13:00:58.999	 Pronunciation of "gun muzzle" was missing
+2022-01-19 13:00:58.999	 "gun muzzle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:00:58.999	 "gun muzzle" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:01:00.535	 Syllables of "fly front" was missing
+2022-01-19 13:01:01.156	 Syllables of "rear of barrel" was missing
+2022-01-19 13:01:01.156	 Pronunciation of "rear of barrel" was missing
+2022-01-19 13:01:01.156	 "rear of barrel" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:01:01.156	 "rear of barrel" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:01:01.772	 Syllables of "rear of tube" was missing
+2022-01-19 13:01:01.772	 Pronunciation of "rear of tube" was missing
+2022-01-19 13:01:01.772	 "rear of tube" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:01:01.772	 "rear of tube" (NOUN) did not have a pronunciation for "clatter" (null) to rhyme against
+2022-01-19 13:01:08.05	 Syllables of "ground floor" was missing
+2022-01-19 13:01:09.384	 Pronunciation of "origination" was not a JSONObject: "ɝr,ɪdʒʌ'neɪʃʌn"
+2022-01-19 13:03:28.683	 Syllables of "flare pass" was missing
+2022-01-19 13:03:28.683	 Pronunciation of "flare pass" was missing
+2022-01-19 13:03:28.683	 "flare pass" (NOUN) did not have a pronunciation for "sash" (null) to rhyme against
+2022-01-19 13:03:32.341	 Syllables of "new-fallen" was missing
+2022-01-19 13:03:32.341	 Pronunciation of "new-fallen" was missing
+2022-01-19 13:03:32.341	 Results of "new-fallen" was missing
+2022-01-19 13:03:50.507	 Syllables of "at a lower place" was missing
+2022-01-19 13:03:50.507	 Pronunciation of "at a lower place" was missing
+2022-01-19 13:03:50.507	 "at a lower place" (ADVERB) did not have a pronunciation for "snow" (null) to rhyme against
+2022-01-19 13:03:50.507	 "at a lower place" (ADVERB) did not have a pronunciation for "snow" (null) to rhyme against
+2022-01-19 13:03:51.076	 Syllables of "to a lower place" was missing
+2022-01-19 13:03:51.076	 Pronunciation of "to a lower place" was missing
+2022-01-19 13:03:51.076	 "to a lower place" (ADVERB) did not have a pronunciation for "snow" (null) to rhyme against
+2022-01-19 13:03:51.076	 "to a lower place" (ADVERB) did not have a pronunciation for "snow" (null) to rhyme against
+2022-01-19 13:04:14.327	 Pronunciation of "eyes" was not a JSONObject: "aɪz"
+2022-01-19 13:04:19.249	 Syllables of "should" was missing
+2022-01-19 13:04:19.249	 Pronunciation of "should" was not a JSONObject: "ʃʊd"
+2022-01-19 13:04:19.25	 Rhymes of "should" was present: {"all":"-ʊd"}
+2022-01-19 13:04:19.25	 Rhymes of "should" had no recognised keys not found in pronunciation field
+2022-01-19 13:04:19.25	 Results of "should" was missing
+2022-01-19 13:06:58.204	 Unrecognised part of speech for "appear" with definition "present oneself formally, as before a (judicial) authority": "null"
+2022-01-19 13:06:58.608	 Syllables of "come on" was missing
+2022-01-19 13:06:58.608	 Pronunciation of "come on" was missing
+2022-01-19 13:06:58.608	 "come on" (VERB) did not have a pronunciation for "reindeer" (null) to rhyme against
+2022-01-19 13:06:59.425	 Syllables of "get on" was missing
+2022-01-19 13:06:59.425	 Pronunciation of "get on" was missing
+2022-01-19 13:06:59.425	 "get on" (VERB) did not have a pronunciation for "reindeer" (null) to rhyme against
+2022-01-19 13:06:59.936	 Syllables of "shape up" was missing
+2022-01-19 13:06:59.936	 Pronunciation of "shape up" was missing
+2022-01-19 13:06:59.936	 "shape up" (VERB) did not have a pronunciation for "reindeer" (null) to rhyme against
+2022-01-19 13:07:48.77	 Syllables of "with" was missing
+2022-01-19 13:07:48.77	 Pronunciation of "with" was not a JSONObject: "wɪð"
+2022-01-19 13:07:48.77	 Rhymes of "with" was present: {"all":"-ɪð"}
+2022-01-19 13:07:48.77	 Rhymes of "with" had no recognised keys not found in pronunciation field
+2022-01-19 13:08:27.385	 Pronunciation of "came" was not a JSONObject: "keɪm"
+2022-01-19 13:08:27.385	 Rhymes of "came" was present: {"all":"-eɪm"}
+2022-01-19 13:08:27.385	 Rhymes of "came" had no recognised keys not found in pronunciation field
+2022-01-19 13:08:27.385	 Results of "came" was missing
+2022-01-19 13:11:45.958	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-01-19 13:11:46.18	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-01-19 13:11:46.181	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-01-19 13:11:46.181	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-01-19 13:11:46.181	 Results of "beds" was missing
+2022-01-19 13:11:46.412	 Syllables of "heads" was missing
+2022-01-19 13:11:46.412	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-01-19 13:11:46.413	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-01-19 13:11:46.413	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-01-19 13:11:46.413	 Results of "heads" was missing
+2022-01-19 13:11:48.7	 Unrecognised part of speech for "appear" with definition "present oneself formally, as before a (judicial) authority": "null"
+2022-01-19 13:11:49.346	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-01-19 13:11:49.598	 Pronunciation of "came" was not a JSONObject: "keɪm"
+2022-01-19 13:11:49.598	 Rhymes of "came" was present: {"all":"-eɪm"}
+2022-01-19 13:11:49.598	 Rhymes of "came" had no recognised keys not found in pronunciation field
+2022-01-19 13:11:49.598	 Results of "came" was missing
+2022-01-19 13:11:50.039	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-01-19 13:11:50.255	 Syllables of "Blitzen" was missing
+2022-01-19 13:11:50.255	 Pronunciation of "Blitzen" was missing
+2022-01-19 13:11:50.255	 Results of "Blitzen" was missing
+2022-01-19 13:12:34.675	 Syllables of "chess piece" was missing
+2022-01-19 13:12:34.675	 Pronunciation of "chess piece" was missing
+2022-01-19 13:12:34.89	 Syllables of "military personnel" was missing
+2022-01-19 13:12:34.89	 Pronunciation of "military personnel" was missing
+2022-01-19 13:12:35.099	 Syllables of "troops" was missing
+2022-01-19 13:12:35.099	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-19 13:12:36.008	 Syllables of "gymnastic apparatus" was missing
+2022-01-19 13:12:36.008	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-19 13:12:36.453	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-19 13:12:36.453	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-19 13:12:36.694	 Syllables of "equid" was missing
+2022-01-19 13:12:36.694	 Pronunciation of "equid" was missing
+2022-01-19 13:12:36.966	 Syllables of "chess game" was missing
+2022-01-19 13:12:36.966	 Pronunciation of "chess game" was missing
+2022-01-19 13:12:37.403	 Syllables of "war machine" was missing
+2022-01-19 13:12:37.613	 Syllables of "armed services" was missing
+2022-01-19 13:12:37.613	 Pronunciation of "armed services" was missing
+2022-01-19 13:12:37.821	 Pronunciation of "armed forces" was missing
+2022-01-19 13:12:38.054	 Unrecognised part of speech for "military" with definition "of or relating to the study of the principles of warfare": "null"
+2022-01-19 13:12:38.264	 Syllables of "military machine" was missing
+2022-01-19 13:12:38.264	 Pronunciation of "military machine" was missing
+2022-01-19 13:14:51.688	 Results of "though" was an empty array
+2022-01-19 13:14:51.898	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-19 13:14:54.219	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-01-19 13:15:01.703	 Syllables of "chess piece" was missing
+2022-01-19 13:15:01.703	 Pronunciation of "chess piece" was missing
+2022-01-19 13:15:02.0	 Syllables of "military personnel" was missing
+2022-01-19 13:15:02.002	 Pronunciation of "military personnel" was missing
+2022-01-19 13:15:02.222	 Syllables of "troops" was missing
+2022-01-19 13:15:02.223	 Pronunciation of "troops" was not a JSONObject: "trups"
+2022-01-19 13:15:03.515	 Syllables of "gymnastic apparatus" was missing
+2022-01-19 13:15:03.516	 Pronunciation of "gymnastic apparatus" was missing
+2022-01-19 13:15:07.238	 Unrecognised part of speech for "equine" with definition "resembling a horse": "null"
+2022-01-19 13:15:07.239	 Unrecognised part of speech for "equine" with definition "of or belonging to the family Equidae": "null"
+2022-01-19 13:15:08.037	 Syllables of "equid" was missing
+2022-01-19 13:15:08.037	 Pronunciation of "equid" was missing
+2022-01-19 13:15:08.357	 Syllables of "chess game" was missing
+2022-01-19 13:15:08.357	 Pronunciation of "chess game" was missing
+2022-01-19 13:15:08.904	 Syllables of "war machine" was missing
+2022-01-19 13:15:09.304	 Syllables of "armed services" was missing
+2022-01-19 13:15:09.304	 Pronunciation of "armed services" was missing
+2022-01-19 13:15:09.507	 Pronunciation of "armed forces" was missing
+2022-01-19 13:15:09.715	 Unrecognised part of speech for "military" with definition "of or relating to the study of the principles of warfare": "null"
+2022-01-19 13:15:10.28	 Syllables of "military machine" was missing
+2022-01-19 13:15:10.28	 Pronunciation of "military machine" was missing
+2022-01-19 13:16:14.965	 Unrecognised part of speech for "friendly" with definition "of or belonging to your own country's forces or those of an ally": "null"
+2022-01-19 13:17:16.102	 WordsAPI responded with word "whose" when requesting "Whose".
+2022-01-19 13:17:16.102	 Syllables of "Whose" was missing
+2022-01-19 13:17:16.102	 Pronunciation of "Whose" was not a JSONObject: "huz"
+2022-01-19 13:17:16.102	 Rhymes of "Whose" was present: {"all":"-uz"}
+2022-01-19 13:17:16.102	 Rhymes of "Whose" had no recognised keys not found in pronunciation field
+2022-01-19 13:17:18.162	 Unrecognised part of speech for "think" with definition "be capable of conscious thought": "null"
+2022-01-19 13:17:21.267	 Syllables of "the" was missing
+2022-01-19 13:17:21.267	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-19 13:17:21.267	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-19 13:17:21.267	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-19 13:19:04.3	 WordsAPI responded with word "to" when requesting "To".
+2022-01-19 13:19:04.3	 Syllables of "To" was missing
+2022-01-19 13:19:04.3	 Pronunciation of "To" was not a JSONObject: "tu"
+2022-01-19 13:19:04.3	 Rhymes of "To" was present: {"all":"-u"}
+2022-01-19 13:19:04.3	 Rhymes of "To" had no recognised keys not found in pronunciation field
+2022-01-19 13:19:31.577	 Syllables of "me" was missing
+2022-01-19 13:21:01.932	 Syllables of "body of water" was missing
+2022-01-19 13:21:01.932	 Pronunciation of "body of water" was missing
+2022-01-19 13:22:28.068	 Syllables of "cobalt ultramarine" was missing
+2022-01-19 13:22:47.301	 WordsAPI responded with word "i" when requesting "I".
+2022-01-19 13:22:47.301	 Syllables of "I" was missing
+2022-01-19 13:22:54.701	 Syllables of "atomic number 53" was missing
+2022-01-19 13:22:54.701	 Pronunciation of "atomic number 53" was missing
+2022-01-19 13:23:40.45	 Syllables of "bonk" was missing
+2022-01-19 13:23:40.45	 Pronunciation of "bonk" was not a JSONObject: "bɑŋk"
+2022-01-19 14:39:35.86	 Syllables of "hungover" was missing
+2022-01-19 14:39:35.861	 Pronunciation of "hungover" was missing
+2022-01-19 14:39:35.861	 Results of "hungover" was missing
+2022-01-19 14:39:36.102	 Unrecognised part of speech for "dry" with definition "lacking moisture or volatile components": "null"
+2022-01-19 14:39:36.102	 Unrecognised part of speech for "dry" with definition "opposed to or prohibiting the production and sale of alcoholic beverages": "null"
+2022-01-19 14:39:36.103	 Unrecognised part of speech for "dry" with definition "without a mucous or watery discharge": "null"
+2022-01-19 14:39:36.573	 Syllables of "cafe" was missing
+2022-01-19 14:39:36.791	 Pronunciation of "caps" was not a JSONObject: "kæps"
+2022-01-19 14:39:36.791	 Results of "caps" was missing
+2022-01-19 14:39:37.25	 WordsAPI responded with word "patricia" when requesting "Patricia".
+2022-01-19 14:39:37.251	 Syllables of "Patricia" was missing
+2022-01-19 14:39:37.251	 Pronunciation of "Patricia" was not a JSONObject: "pʌ'trɪʃʌ"
+2022-01-19 14:39:37.252	 Rhymes of "Patricia" was present: {"all":"-ɪʃə"}
+2022-01-19 14:39:37.252	 Rhymes of "Patricia" had no recognised keys not found in pronunciation field
+2022-01-19 14:39:37.253	 Results of "Patricia" was missing
+2022-01-19 14:39:37.71	 Syllables of "me" was missing
+2022-01-19 14:39:37.973	 Syllables of "myself" was missing
+2022-01-19 14:39:37.973	 Pronunciation of "myself" was not a JSONObject: ",maɪ'sɛlf"
+2022-01-19 14:39:37.974	 Rhymes of "myself" was present: {"all":"-ɛlf"}
+2022-01-19 14:39:37.974	 Rhymes of "myself" had no recognised keys not found in pronunciation field
+2022-01-19 14:39:38.973	 Syllables of "says" was missing
+2022-01-19 14:39:38.973	 Pronunciation of "says" was not a JSONObject: "sɛz"
+2022-01-19 14:39:38.974	 Rhymes of "says" was present: {"all":"-ɛz"}
+2022-01-19 14:39:38.974	 Rhymes of "says" had no recognised keys not found in pronunciation field
+2022-01-19 14:39:38.974	 Results of "says" was missing
+2022-01-19 14:39:39.885	 Unrecognised part of speech for "less" with definition "comparative of little": "null"
+2022-01-19 14:39:40.145	 Syllables of "a" was missing
+2022-01-19 14:39:40.811	 Unrecognised part of speech for "big" with definition "on a grand scale": "null"
+2022-01-19 14:39:41.025	 Syllables of "the" was missing
+2022-01-19 14:39:41.025	 Pronunciation of "the" was not a JSONObject: "ðʌ"
+2022-01-19 14:39:41.025	 Rhymes of "the" was present: {"all":"-ə"}
+2022-01-19 14:39:41.025	 Rhymes of "the" had no recognised keys not found in pronunciation field
+2022-01-19 14:39:42.329	 Pronunciation of "arvo" had no recognised keys: {}
+2022-01-19 14:39:42.329	 Rhymes of "arvo" was present: {"all":"-ɑrvoʊ"}
+2022-01-19 14:39:42.33	 Results of "arvo" was missing
+2022-01-19 14:39:42.811	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-01-19 14:39:44.86	 Syllables of "got" was missing
+2022-01-19 14:39:44.861	 Pronunciation of "got" was not a JSONObject: "ɡɑt"
+2022-01-19 14:39:44.861	 Rhymes of "got" was present: {"all":"-ɑt"}
+2022-01-19 14:39:44.861	 Rhymes of "got" had no recognised keys not found in pronunciation field
+2022-01-19 14:39:44.861	 Results of "got" was missing
+2022-01-19 14:39:45.1	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-01-19 14:39:45.4	 WordsAPI responded with word "shit" when requesting "Shit".
+2022-01-19 14:39:45.626	 WordsAPI responded with word "eggs" when requesting "Eggs".
+2022-01-19 14:39:45.626	 Syllables of "Eggs" was missing
+2022-01-19 14:39:45.626	 Pronunciation of "Eggs" was not a JSONObject: "ɛɡz"
+2022-01-19 14:39:45.862	 WordsAPI responded with word "bacon" when requesting "Bacon".
+2022-01-19 14:39:46.299	 WordsAPI responded with word "bean" when requesting "beans".
+2022-01-19 14:39:46.507	 WordsAPI responded with word "sausage" when requesting "Sausage".
+2022-01-19 14:39:46.733	 WordsAPI responded with word "toast" when requesting "Toast".
+2022-01-19 14:39:46.965	 WordsAPI responded with word "regret" when requesting "Regret".

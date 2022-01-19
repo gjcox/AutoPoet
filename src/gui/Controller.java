@@ -434,11 +434,14 @@ public class Controller {
 
     public void newPoem() {
         TextInputDialog poemTitleDialog = new TextInputDialog();
+        poemTitleDialog.setHeaderText(null);
+        poemTitleDialog.setGraphic(null);
         poemTitleDialog.setTitle("Poem Title");
         poemTitleDialog.setContentText("Enter poem title");
         poemTitleDialog.showAndWait().ifPresent(title -> {
             try {
                 poem = new Poem(title, "");
+                poemFile = null; 
                 ttlpnPoem.setText(poem.getTitle());
                 tgbtnDirectEdit.setDisable(false);
                 if (!txtarPoem.isVisible()) {
