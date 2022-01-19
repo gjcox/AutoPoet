@@ -13,7 +13,9 @@ I continue to use VS Code, but the following compilation instructions have been 
 
 Navigate to CS4099/ <br>
 Run the command $ javac -cp lib/json-20210307.jar:lib/junit-platform-console.standalone-1.8.1.jar  src/\*/\*.java <br>
-Run the command $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc | rhyme \] <br>
+
+# Running the program 
+For terminal demos, the command $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc | rhyme \] <br>
             OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc \] *some_word*  <br>
             OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos rhyme *word1* *word2*  <br> 
             OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo \] *word* *part_of_speech_(PoS)*  <br>
@@ -24,6 +26,9 @@ Run the command $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp
 <p>The recognised parts of speech are: 'noun', 'pronoun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction', 'definite article', and 'unknown'. The lattermost is to handle WordsAPI being unreliable.</p>
 <p>N.B. words that WordsAPI doesn't recognise will still be marked as populated for swp, despite nothing of value being added to them. This is to prevent repeated failed attempts at querying, but might change in future. </p>
 <p>N.B. the suggestions command can take several minutes. </p>
+
+For the GUI, run the command $ java --module-path \"lib/javafx-sdk-17.0.1/lib\" --add-modules javafx.controls,javafx.fxml -cp lib/json-20210307.jar:src/ gui.AutoPoet 
+<p>N.B. I haven't actually tested that on a lab client yet; it may be necessary to add JavaFX libraries to the classpath argument.</p>
 
 # Logs 
 lib/logs/log.log is temporary, and reflects the last run of the program (including when SuperWords were retrieved from a cache) so it's in the .gitignore.  
