@@ -379,6 +379,8 @@ public class Controller {
         if (poem.joinWords(focusedToken.getStanzaIndex(), focusedToken.getLineIndex(),
                 focusedToken.getTokenIndex(), secondFocusedToken.getTokenIndex())) {
 
+            int insertionIndex = focusedToken.getTokenIndex();
+
             FlowPane guiLine = (FlowPane) focusedToken.getParent();
             IndexedTokenLabel middleToken = (IndexedTokenLabel) guiLine.getChildren()
                     .get(focusedToken.getTokenIndex() + 1);
@@ -386,13 +388,18 @@ public class Controller {
                     + secondFocusedToken.getToken().getPlaintext();
             SuperWord joinedSuperWord = SuperWord.getSuperWord(joinedPlaintext);
             IndexedTokenLabel newToken = new IndexedTokenLabel(this, joinedSuperWord, focusedToken.getStanzaIndex(),
-                    focusedToken.getLineIndex(), focusedToken.getTokenIndex(), true);
+                    focusedToken.getLineIndex(), insertionIndex, true);
 
             // replace old tokens in GUI
-            guiLine.getChildren().remove(focusedToken.getTokenIndex());
-            guiLine.getChildren().remove(focusedToken.getTokenIndex()); // i.e. seperator
-            guiLine.getChildren().remove(focusedToken.getTokenIndex()); // i.e. secondFocusedToken
-            guiLine.getChildren().add(focusedToken.getTokenIndex(), newToken);
+            guiLine.getChildren().remove(insertionIndex);
+            guiLine.getChildren().remove(insertionIndex); // i.e. seperator
+            guiLine.getChildren().remove(insertionIndex); // i.e. secondFocusedToken
+            guiLine.getChildren().add(insertionIndex, newToken);
+
+            // update tokenIndex of subsequent tokens in line
+            for (int i = insertionIndex + 1; i < guiLine.getChildren().size(); i++) {
+                ((IndexedTokenLabel) guiLine.getChildren().get(i)).incrementTokenIndex(-2);
+            }
 
             // focus on new token by simulating it being clicked on
             Event.fireEvent(newToken, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
@@ -404,25 +411,33 @@ public class Controller {
         if (poem.splitWord(focusedToken.getStanzaIndex(), focusedToken.getLineIndex(),
                 focusedToken.getTokenIndex(), seperator)) {
 
+            int insertionIndex = focusedToken.getTokenIndex();
+
             String toSplit = focusedToken.getToken().getPlaintext();
             int seperatorIndex = toSplit.indexOf(seperator); // won't be -1 if poem.splitWord returned true
             SuperWord subWord1 = SuperWord.getSuperWord(toSplit.substring(0, seperatorIndex));
             Token separatorToken = new Token(seperator);
             SuperWord subWord2 = SuperWord.getSuperWord(toSplit.substring(seperatorIndex + 1));
+
             IndexedTokenLabel token1 = new IndexedTokenLabel(this, subWord1, focusedToken.getStanzaIndex(),
-                    focusedToken.getLineIndex(), focusedToken.getTokenIndex(), true);
+                    focusedToken.getLineIndex(), insertionIndex, true);
             IndexedTokenLabel seperatorToken = new IndexedTokenLabel(this, separatorToken,
                     focusedToken.getStanzaIndex(),
-                    focusedToken.getLineIndex(), focusedToken.getTokenIndex() + 1, false);
+                    focusedToken.getLineIndex(), insertionIndex + 1, false);
             IndexedTokenLabel token2 = new IndexedTokenLabel(this, subWord2, focusedToken.getStanzaIndex(),
-                    focusedToken.getLineIndex(), focusedToken.getTokenIndex() + 2, true);
+                    focusedToken.getLineIndex(), insertionIndex + 2, true);
 
             // replace old label in GUI
             FlowPane guiLine = (FlowPane) focusedToken.getParent();
-            guiLine.getChildren().remove(focusedToken.getTokenIndex());
-            guiLine.getChildren().add(focusedToken.getTokenIndex(), token2);
-            guiLine.getChildren().add(focusedToken.getTokenIndex(), seperatorToken);
-            guiLine.getChildren().add(focusedToken.getTokenIndex(), token1);
+            guiLine.getChildren().remove(insertionIndex);
+            guiLine.getChildren().add(insertionIndex, token2);
+            guiLine.getChildren().add(insertionIndex, seperatorToken);
+            guiLine.getChildren().add(insertionIndex, token1);
+
+            // update tokenIndex of subsequent tokens in line
+            for (int i = insertionIndex + 3; i < guiLine.getChildren().size(); i++) {
+                ((IndexedTokenLabel) guiLine.getChildren().get(i)).incrementTokenIndex(2);
+            }
 
             // focus on second subword by simulating it being clicked on
             Event.fireEvent(token2, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,

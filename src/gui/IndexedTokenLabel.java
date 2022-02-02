@@ -80,6 +80,14 @@ public class IndexedTokenLabel extends Label {
         mnitmSplitOnHyphen.setOnAction(function);
     }
 
+    public void setTokenIndex(int newIndex) {
+        this.tokenIndex = newIndex;
+    }
+
+    public void incrementTokenIndex(int increment) {
+        this.tokenIndex += increment;
+    }
+
     public void setPos(PartOfSpeech pos) {
         this.pos = pos;
     }
@@ -160,31 +168,23 @@ public class IndexedTokenLabel extends Label {
     }
 
     private void onClick(MouseEvent event) {
-        unhighlightWord(controller.getFocusedToken());
-        unhighlightWord(controller.getSecondFocusedToken());
+        if (event.getButton().equals(MouseButton.PRIMARY)) {
+            unhighlightWord(controller.getFocusedToken());
+            unhighlightWord(controller.getSecondFocusedToken());
 
-        if (event.isControlDown()) {
-            selectNeighbour();
-            populateContextMenu();
+            if (event.isControlDown()) {
+                selectNeighbour();
+                populateContextMenu();
+            } else {
+                // deselect previous words and focus on clicked word
+                controller.setSecondFocusedToken(null);
 
-        } else if (event.getButton() == MouseButton.SECONDARY
-                && controller.getSecondFocusedToken() != null
-                && (this.equals(controller.getFocusedToken())
-                        || this.equals(controller.getSecondFocusedToken()))) {
-            // maintain highlighting
-            highlightWord(controller.getFocusedToken());
-            highlightWord(controller.getSecondFocusedToken());
-
-        } else {
-            // deselect previous words and focus on clicked word
-            controller.setSecondFocusedToken(null);
-
-            controller.setFocusedToken(this);
-            controller.focusOnStanza(this.stanzaIndex);
-            highlightWord(controller.getFocusedToken());
-            controller.focusOnWord(controller.getFocusedToken());
-            populateContextMenu();
-
+                controller.setFocusedToken(this);
+                controller.focusOnStanza(this.stanzaIndex);
+                highlightWord(controller.getFocusedToken());
+                controller.focusOnWord(controller.getFocusedToken());
+                populateContextMenu();
+            }
         }
     }
 
