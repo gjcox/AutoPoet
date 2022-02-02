@@ -1,11 +1,32 @@
 # Hello 
 To Do list (unordered): 
 <ul>
-            <li>Improve the GUI</li>
-            <li>Recognise more poetic devices</li>
-            <li>Improve suggestion filtering to do it in batches, so that the least likely suggestions don't waste user time</li>
-            <li>Handle conjugated verbs and pluralised nouns</li>
-            <li>Handle compound words better</li>
+    <li>Improve the GUI
+        <ul>
+            <li>Add "rhyme with scheme"</li>
+            <li>Add "I'm feeling lucky"</li>
+            <li>Reset stanza info/focused token on poem refresh</li>
+            <li>Set text field action when focus lost</li>
+        </ul>
+    </li>
+    <li>Recognise more poetic devices</li>
+        <ul>
+            <li>Half-rhyme</li>
+            <li>Alliteration</li>
+        </ul>
+    <li>Handle compound words better</li>
+        <ul>
+            <li>Add emphasis to monosyllabic words</li>
+        </ul>
+    </li>
+    <li>Add special case handling for pronunciation of words ending in s</li>
+</ul>
+
+Aspirational/low priority list: 
+<ul>
+    <li>Improve suggestion filtering to do it in batches, so that the least likely suggestions don't waste user time</li>
+    <li>Handle conjugated verbs and pluralised nouns</li>
+    <li>Add dictionary tab to GUI</li>
 </ul>
 
 # Compilation 
