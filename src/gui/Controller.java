@@ -33,8 +33,10 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionParameters;
+import utils.ParameterWrappers.SuggestionParameters.SuggestionPool;
 import words.Poem;
 import words.Stanza;
 import words.SubWord;
@@ -130,6 +132,7 @@ public class Controller {
                 alert.show();
             }
         });
+
     }
 
     private static class IndexedTokenLabel extends Label {
@@ -146,6 +149,7 @@ public class Controller {
         private int lineIndex;
         private int tokenIndex;
         private PartOfSpeech pos;
+        private SuggestionParameters pools = new SuggestionParameters();
         private boolean inclUnknown = true;
         private ArrayList<SuperWord> suggestions;
         private Controller controller;
@@ -314,8 +318,58 @@ public class Controller {
         }
     }
 
+    private CheckBox getSuggestionPoolCheckBox(SuggestionPool pool) {
+        switch (pool) {
+            case COMMONLY_TYPED:
+                return chbxCommonlyTyped;
+            case COMMON_CATEGORIES:
+                return chbxCommonlyCategorised;
+            case HAS_PARTS:
+                return chbxHasParts;
+            case PART_OF:
+                return chbxPartOf;
+            case SIMILAR_TO:
+                return chbxSimilarTo;
+            case SYNONYMS:
+                return chbxSynonyms;
+            default:
+                LOG.writeTempLog(String.format(
+                        "getSuggestionPoolCheckBox was passed an invalid SuggestionPool \"%s\" and returned null",
+                        pool));
+                return null;
+        }
+    }
+
+    /**
+     * Tied to the PoS radio buttons within the FXML file.
+     */
     public void updatePartOfSpeech(ActionEvent e) {
         focusedToken.pos = SubWord.parsePoS(((RadioButton) e.getSource()).getText());
+        enableSuggestionPoolBoxes();
+    }
+
+    public void enableSuggestionPoolBoxes() {
+        SuperWord superword = ((SuperWord) focusedToken.token);
+        for (SuggestionPool pool : SuggestionPool.values()) {
+            CheckBox checkBox = getSuggestionPoolCheckBox(pool);
+            if (checkBox != null) {
+                if (focusedToken.pos == null || !superword.validPool(pool, focusedToken.pos)) {
+                    checkBox.setDisable(true);
+                    checkBox.setSelected(false);
+                } else {
+                    checkBox.setDisable(false);
+                }
+            }
+        }
+    }
+
+    /**
+     * Tied to the suggestion pool checkboxes in the FXML file.
+     */
+    public void updateSuggestionPool(ActionEvent e) {
+        CheckBox source = (CheckBox) e.getSource();
+        SuggestionPool pool = SuggestionPool.fromString(source.getText());
+        focusedToken.pools.togglePool(pool, source.isSelected());
     }
 
     private void unhighlightWord(IndexedTokenLabel token) {
@@ -345,6 +399,15 @@ public class Controller {
                 hasSubWords = true;
             }
         }
+        CheckBox checkBox;
+        for (SuggestionPool pool : SuggestionPool.values()) {
+            checkBox = getSuggestionPoolCheckBox(pool);
+            if (checkBox != null) {
+                checkBox.setSelected(focusOnToken.pools.getIncludingPool(pool));
+            }
+        }
+        enableSuggestionPoolBoxes();
+
         chbxInclUnknown.setSelected(focusOnToken.inclUnknown);
         btnGetSuggestions.setDisable(!hasSubWords);
         displaySuggestions();
@@ -534,12 +597,6 @@ public class Controller {
         scrlpnPoem.setVisible(!scrlpnPoem.isVisible());
     }
 
-    private SuggestionParameters getSuggestionParams() {
-        return new SuggestionParameters(chbxSynonyms.isSelected(), chbxCommonlyTyped.isSelected(),
-                chbxCommonlyCategorised.isSelected(), chbxPartOf.isSelected(),
-                chbxHasParts.isSelected(), chbxSimilarTo.isSelected());
-    }
-
     private FilterParameters getFilterParams() {
         return new FilterParameters(chbxRhymeWith.isSelected(), SuperWord.getSuperWord(txtfldRhymeWith.getText()),
                 null);
@@ -653,9 +710,13 @@ public class Controller {
             Alert alert = getCleanAlert(AlertType.INFORMATION);
             alert.setContentText("Please select a part of speech to get suggestions.");
             alert.show();
+        } else if (focusedToken.pools.isEmpty()) {
+            Alert alert = getCleanAlert(AlertType.INFORMATION);
+            alert.setContentText("Please select at least one suggestion pool to get suggestions.");
+            alert.show();
         } else {
             SuperWord superWord = (SuperWord) focusedToken.token;
-            SuggestionParameters suggestionParams = getSuggestionParams();
+            SuggestionParameters suggestionParams = focusedToken.pools;
             FilterParameters filterParams = getFilterParams();
 
             focusedToken.suggestions = superWord.getFilteredSuggestions(focusedToken.pos, suggestionParams,

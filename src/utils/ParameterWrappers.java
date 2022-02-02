@@ -5,21 +5,43 @@ import words.SubWord.PartOfSpeech;
 
 public interface ParameterWrappers {
     public class SuggestionParameters {
-        boolean synonyms;
-        boolean commonlyTyped;
-        boolean commonCategories;
-        boolean partOf;
-        boolean hasParts;
-        boolean similarTo;
 
-        public SuggestionParameters(boolean synonyms, boolean commonlyTyped, boolean commonCategories, boolean partOf,
-                boolean hasParts, boolean similarTo) {
-            this.synonyms = synonyms;
-            this.commonlyTyped = commonlyTyped;
-            this.commonCategories = commonCategories;
-            this.partOf = partOf;
-            this.hasParts = hasParts;
-            this.similarTo = similarTo;
+        public enum SuggestionPool {
+            SYNONYMS("synonyms"),
+            HAS_TYPES("has types"),
+            TYPE_OF("type of"),
+            COMMONLY_TYPED("commonly typed"),
+            COMMON_CATEGORIES("commonly categorised"),
+            PART_OF("part of"),
+            HAS_PARTS("has parts"),
+            SIMILAR_TO("similar to");
+
+            private final String name;
+
+            private SuggestionPool(String name) {
+                this.name = name;
+            }
+
+            public static SuggestionPool fromString(String string) {
+                for (SuggestionPool pool : SuggestionPool.values()) {
+                    if (pool.name.equals(string))
+                        return pool;
+                }
+                return null;
+            }
+        }
+
+        boolean synonyms = false;
+        boolean hasTypes = false;
+        boolean typeOf = false;
+        boolean commonlyTyped = false;
+        boolean commonCategories = false;
+        boolean partOf = false;
+        boolean hasParts = false;
+        boolean similarTo = false;
+
+        public SuggestionParameters() {
+            // leave all as false
         }
 
         public String toString() {
@@ -49,6 +71,65 @@ public interface ParameterWrappers {
             }
             builder.append("]");
             return builder.toString();
+        }
+
+        public boolean getIncludingPool(SuggestionPool pool) {
+            switch (pool) {
+                case COMMONLY_TYPED:
+                    return commonlyTyped;
+                case COMMON_CATEGORIES:
+                    return commonCategories;
+                case HAS_PARTS:
+                    return hasParts;
+                case PART_OF:
+                    return partOf;
+                case SIMILAR_TO:
+                    return similarTo;
+                case SYNONYMS:
+                    return synonyms;
+                default:
+                    return false;
+            }
+        }
+
+        public void togglePool(SuggestionPool pool, boolean include) {
+            switch (pool) {
+                case COMMONLY_TYPED:
+                    commonlyTyped = include;
+                    break;
+                case COMMON_CATEGORIES:
+                    commonCategories = include;
+                    break;
+                case HAS_PARTS:
+                    hasParts = include;
+                    break;
+                case HAS_TYPES:
+                    hasTypes = include;
+                    break;
+                case PART_OF:
+                    partOf = include;
+                    break;
+                case SIMILAR_TO:
+                    similarTo = include;
+                    break;
+                case SYNONYMS:
+                    synonyms = include;
+                    break;
+                case TYPE_OF:
+                    typeOf = include;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public boolean isEmpty() {
+            for (SuggestionPool pool : SuggestionPool.values()) {
+                if (getIncludingPool(pool) == true) {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public boolean synonyms() {

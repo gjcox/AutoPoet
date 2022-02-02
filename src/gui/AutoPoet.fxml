@@ -274,12 +274,12 @@
                                              </rowConstraints>
                                              <children>
                                                 <Label styleClass="Heading 2" text="Suggestion Pool" />
-                                                <CheckBox fx:id="chbxSynonyms" mnemonicParsing="false" selected="true" text="synonyms" GridPane.rowIndex="1" />
-                                                <CheckBox fx:id="chbxCommonlyTyped" mnemonicParsing="false" text="commonly typed" wrapText="true" GridPane.rowIndex="2" />
-                                                <CheckBox fx:id="chbxCommonlyCategorised" mnemonicParsing="false" text="commonly categorised" wrapText="true" GridPane.rowIndex="3" />
-                                                <CheckBox fx:id="chbxPartOf" mnemonicParsing="false" text="part of" GridPane.rowIndex="4" />
-                                                <CheckBox fx:id="chbxHasParts" mnemonicParsing="false" text="has parts" GridPane.rowIndex="5" />
-                                                <CheckBox fx:id="chbxSimilarTo" mnemonicParsing="false" text="similar to" GridPane.rowIndex="6" />
+                                                <CheckBox fx:id="chbxSynonyms" disable="true" mnemonicParsing="false" onAction="#updateSuggestionPool" text="synonyms" GridPane.rowIndex="1" />
+                                                <CheckBox fx:id="chbxCommonlyTyped" disable="true" mnemonicParsing="false" onAction="#updateSuggestionPool" text="commonly typed" wrapText="true" GridPane.rowIndex="2" />
+                                                <CheckBox fx:id="chbxCommonlyCategorised" disable="true" mnemonicParsing="false" onAction="#updateSuggestionPool" text="commonly categorised" wrapText="true" GridPane.rowIndex="3" />
+                                                <CheckBox fx:id="chbxPartOf" disable="true" mnemonicParsing="false" onAction="#updateSuggestionPool" text="part of" GridPane.rowIndex="4" />
+                                                <CheckBox fx:id="chbxHasParts" disable="true" mnemonicParsing="false" onAction="#updateSuggestionPool" text="has parts" GridPane.rowIndex="5" />
+                                                <CheckBox fx:id="chbxSimilarTo" disable="true" mnemonicParsing="false" onAction="#updateSuggestionPool" text="similar to" GridPane.rowIndex="6" />
                                              </children>
                                           </GridPane>
                                           <GridPane layoutX="236.0" layoutY="10.0" prefHeight="170.0" prefWidth="125.0" GridPane.columnIndex="2">

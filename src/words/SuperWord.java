@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import apis.WordsAPI;
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionParameters;
+import utils.ParameterWrappers.SuggestionParameters.SuggestionPool;
 import words.Pronunciation.SubPronunciation;
 import words.SubWord.PartOfSpeech;
 
@@ -56,7 +57,7 @@ public class SuperWord extends Token {
      * @return
      */
     public static SuperWord getSuperWord(String plaintext) {
-        String cleanedPlaintext = Normalizer.normalize(plaintext, Form.NFD).replaceAll("\\p{M}", ""); 
+        String cleanedPlaintext = Normalizer.normalize(plaintext, Form.NFD).replaceAll("\\p{M}", "");
 
         if (cachePopulated.containsKey(cleanedPlaintext)) {
             return cachePopulated.get(cleanedPlaintext);
@@ -254,6 +255,47 @@ public class SuperWord extends Token {
             return null;
         }
         return this.pronunciation.getSubPronunciation(plaintext, partOfSpeech);
+    }
+
+    public boolean validPool(SuggestionPool pool, PartOfSpeech pos) {
+        switch (pool) {
+            case COMMONLY_TYPED:
+                return this.getTypeOf(pos) != null;
+            case COMMON_CATEGORIES:
+                return this.getInCategory(pos) != null;
+            case HAS_PARTS:
+            case PART_OF:
+            case SIMILAR_TO:
+            case SYNONYMS:
+            case HAS_TYPES:
+            case TYPE_OF:
+            default:
+                return getSuggestionPool(pool, pos) != null;
+        }
+
+    }
+
+    public ArrayList<SuperWord> getSuggestionPool(SuggestionPool pool, PartOfSpeech pos) {
+        switch (pool) {
+            case COMMONLY_TYPED:
+                return this.getCommonlyTyped(pos);
+            case COMMON_CATEGORIES:
+                return this.getCommonCategories(pos);
+            case HAS_PARTS:
+                return this.getHasParts(pos);
+            case PART_OF:
+                return this.getPartOf(pos);
+            case SIMILAR_TO:
+                return this.getSimilarTo(pos);
+            case SYNONYMS:
+                return this.getSynonyms(pos);
+            case HAS_TYPES:
+                return this.getHasTypes(pos);
+            case TYPE_OF:
+                return this.getTypeOf(pos);
+            default:
+                return null;
+        }
     }
 
     public ArrayList<SuperWord> getSynonyms(PartOfSpeech pos) {

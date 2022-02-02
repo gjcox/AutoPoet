@@ -152,7 +152,7 @@ public class Demos {
             // demoRhymes();
             // abercrombieZombie();
             // demoSynonyms();
-            demoPoemConstructor("temp.txt");
+            // demoPoemConstructor("temp.txt");
             LOG.closeLogWriters();
             return;
         }
@@ -314,7 +314,7 @@ public class Demos {
                     pos1 = parsePoS(args[2]);
                     superWord2 = SuperWord.getSuperWord(args[3]);
                     pos2 = parsePoS(args[4]);
-                    suggestionParams = new SuggestionParameters(true, true, true, true, true, true);
+                    suggestionParams = new SuggestionParameters();
                     filterParams = new FilterParameters(true, superWord2, pos2);
                     System.out.println(
                             String.format("Suggestions for \"%s\" (%s) that rhyme with \"%s\" (%s): %s",
