@@ -115,12 +115,20 @@ public class Controller {
             }
         });
 
-        IndexedTokenLabel.mnitmSplitWord.setOnAction(actionEvent -> {
+        IndexedTokenLabel.mnitmSplitOnSpace.setOnAction(actionEvent -> {
             if (!splitWord(" ")) {
                 Alert alert = getCleanAlert(AlertType.INFORMATION);
                 alert.setContentText("Selected word could not be split.");
                 alert.show();
-            } 
+            }
+        });
+
+        IndexedTokenLabel.mnitmSplitOnHyphen.setOnAction(actionEvent -> {
+            if (!splitWord("-")) {
+                Alert alert = getCleanAlert(AlertType.INFORMATION);
+                alert.setContentText("Selected word could not be split.");
+                alert.show();
+            }
         });
     }
 
@@ -129,8 +137,9 @@ public class Controller {
         private static final String SELECTED_CLASS = "selectedToken";
 
         private static MenuItem mnitmJoinWords = new MenuItem("Join words");
-        private static MenuItem mnitmSplitWord = new MenuItem("Split word");
-        private static ContextMenu cntxtmnLabel = new ContextMenu(mnitmJoinWords, mnitmSplitWord);
+        private static MenuItem mnitmSplitOnSpace = new MenuItem("Split on space");
+        private static MenuItem mnitmSplitOnHyphen = new MenuItem("Split on hypen");
+        private static ContextMenu cntxtmnLabel = new ContextMenu();
 
         private Token token;
         private int stanzaIndex;
@@ -139,12 +148,13 @@ public class Controller {
         private PartOfSpeech pos;
         private boolean inclUnknown = true;
         private ArrayList<SuperWord> suggestions;
+        private Controller controller;
 
         /**
          * 
          * @param other a potential neighbouring word.
          * @return true if two words are adjacent within a line and there is a single
-         *         whitespace character between them, otherwise false.
+         *         whitespace character or hyphen between them, otherwise false.
          */
         private boolean isNeighbour(IndexedTokenLabel other) {
             if (other == null)
@@ -154,9 +164,45 @@ public class Controller {
 
                 IndexedTokenLabel middleToken = (IndexedTokenLabel) ((FlowPane) this.getParent()).getChildren()
                         .get(Math.min(this.tokenIndex, other.tokenIndex) + 1);
-                return middleToken.token.getPlaintext().equals(" ");
+                return middleToken.token.getPlaintext().equals(" ") || middleToken.token.getPlaintext().equals("-");
             } else {
                 return false;
+            }
+        }
+
+        private void populateContextMenu() {
+            cntxtmnLabel.getItems().clear();
+            if (controller.secondFocusedToken != null) {
+                cntxtmnLabel.getItems().add(mnitmJoinWords);
+            } else {
+                if (controller.focusedToken.token.getPlaintext().contains(" ")) {
+                    cntxtmnLabel.getItems().add(mnitmSplitOnSpace);
+                }
+                if (controller.focusedToken.token.getPlaintext().contains("-")) {
+                    cntxtmnLabel.getItems().add(mnitmSplitOnHyphen);
+                }
+            }
+        }
+
+        private void selectNeighbour() {
+            if (isNeighbour(controller.focusedToken)) {
+                if (this.tokenIndex > controller.focusedToken.tokenIndex) {
+                    controller.secondFocusedToken = this;
+                } else {
+                    controller.secondFocusedToken = controller.focusedToken;
+                    controller.focusedToken = this;
+                }
+                controller.highlightWord(controller.secondFocusedToken);
+                controller.highlightWord(controller.focusedToken);
+            } else if (isNeighbour(controller.secondFocusedToken)) {
+                if (this.tokenIndex > controller.secondFocusedToken.tokenIndex) {
+                    controller.focusedToken = controller.secondFocusedToken;
+                    controller.secondFocusedToken = this;
+                } else {
+                    controller.focusedToken = this;
+                }
+                controller.highlightWord(controller.secondFocusedToken);
+                controller.highlightWord(controller.focusedToken);
             }
         }
 
@@ -168,40 +214,37 @@ public class Controller {
             this.stanzaIndex = stanzaIndex;
             this.lineIndex = lineIndex;
             this.tokenIndex = tokenIndex;
+            this.controller = parentController;
             if (clickable) {
                 this.getStyleClass().add(SELECTABLE_CLASS);
                 this.setContextMenu(cntxtmnLabel);
 
                 this.setOnMouseClicked(actionEvent -> {
-                    parentController.unhighlightWord(parentController.focusedToken);
-                    parentController.unhighlightWord(parentController.secondFocusedToken);
+                    controller.unhighlightWord(controller.focusedToken);
+                    controller.unhighlightWord(controller.secondFocusedToken);
 
-                    if (actionEvent.isControlDown() && isNeighbour(parentController.focusedToken)) {
-                        // select a secondary word
-                        if (this.tokenIndex > parentController.focusedToken.tokenIndex) {
-                            parentController.secondFocusedToken = this;
-                        } else {
-                            parentController.secondFocusedToken = parentController.focusedToken;
-                            parentController.focusedToken = this;
-                        }
-                        parentController.highlightWord(parentController.secondFocusedToken);
-                        parentController.highlightWord(parentController.focusedToken);
+                    if (actionEvent.isControlDown()) {
+                        selectNeighbour();
+                        populateContextMenu();
 
                     } else if (actionEvent.getButton() == MouseButton.SECONDARY
-                            && parentController.secondFocusedToken != null
-                            && (this.equals(parentController.focusedToken)
-                                    || this.equals(parentController.secondFocusedToken))) {
+                            && controller.secondFocusedToken != null
+                            && (this.equals(controller.focusedToken)
+                                    || this.equals(controller.secondFocusedToken))) {
                         // context menu will be opened to allow joining words
-                        parentController.highlightWord(parentController.focusedToken);
-                        parentController.highlightWord(parentController.secondFocusedToken);
+                        controller.highlightWord(controller.focusedToken);
+                        controller.highlightWord(controller.secondFocusedToken);
+
                     } else {
                         // deselect previous word and focus on clicked word
-                        parentController.secondFocusedToken = null;
+                        controller.secondFocusedToken = null;
 
-                        parentController.focusedToken = this;
-                        parentController.focusOnStanza(this.stanzaIndex);
-                        parentController.highlightWord(parentController.focusedToken);
-                        parentController.focusOnWord(parentController.focusedToken);
+                        controller.focusedToken = this;
+                        controller.focusOnStanza(this.stanzaIndex);
+                        controller.highlightWord(controller.focusedToken);
+                        controller.focusOnWord(controller.focusedToken);
+                        populateContextMenu();
+
                     }
                 });
             }
@@ -441,7 +484,7 @@ public class Controller {
         poemTitleDialog.showAndWait().ifPresent(title -> {
             try {
                 poem = new Poem(title, "");
-                poemFile = null; 
+                poemFile = null;
                 ttlpnPoem.setText(poem.getTitle());
                 tgbtnDirectEdit.setDisable(false);
                 if (!txtarPoem.isVisible()) {
@@ -524,13 +567,15 @@ public class Controller {
         if (poem.joinWords(focusedToken.stanzaIndex, focusedToken.lineIndex,
                 focusedToken.tokenIndex, secondFocusedToken.tokenIndex)) {
 
-            String joinedPlaintext = focusedToken.token.getPlaintext() + " " + secondFocusedToken.token.getPlaintext();
+            FlowPane guiLine = (FlowPane) focusedToken.getParent();
+            IndexedTokenLabel middleToken = (IndexedTokenLabel) guiLine.getChildren().get(focusedToken.tokenIndex + 1);
+            String joinedPlaintext = focusedToken.token.getPlaintext() + middleToken.token.getPlaintext()
+                    + secondFocusedToken.token.getPlaintext();
             SuperWord joinedSuperWord = SuperWord.getSuperWord(joinedPlaintext);
             IndexedTokenLabel newToken = new IndexedTokenLabel(this, joinedSuperWord, focusedToken.stanzaIndex,
                     focusedToken.lineIndex, focusedToken.tokenIndex, true);
 
             // replace old tokens in GUI
-            FlowPane guiLine = (FlowPane) focusedToken.getParent();
             guiLine.getChildren().remove(focusedToken.tokenIndex);
             guiLine.getChildren().remove(focusedToken.tokenIndex); // i.e. seperator
             guiLine.getChildren().remove(focusedToken.tokenIndex); // i.e. secondFocusedToken
