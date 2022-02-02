@@ -116,6 +116,13 @@ public class Poem {
         }
     }
 
+    public void setDefaultRhymeScheme(String rhymeScheme) {
+        RhymingScheme defaultRhymingScheme = new RhymingScheme(rhymeScheme.toCharArray()); 
+        for (Stanza stanza : stanzas) {
+            stanza.setDesiredRhymeSchemeFromDefault(defaultRhymingScheme);
+        }
+    }
+
     public String getString() {
         String divider = "\n";
         StringBuilder builder = new StringBuilder();

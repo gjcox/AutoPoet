@@ -121,8 +121,9 @@
                                       <rowConstraints>
                                         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                                         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
                                           <FlowPane hgap="5.0" GridPane.rowIndex="1">
@@ -137,16 +138,26 @@
                                                 <Label fx:id="lblPoemStanzaCount" text="(stanza count)" />
                                              </children>
                                           </FlowPane>
-                                          <ToggleButton fx:id="tgbtnDirectEdit" disable="true" mnemonicParsing="false" onAction="#toggleDirectEdit" text="Direct Edit Mode" GridPane.rowIndex="3">
+                                          <ToggleButton fx:id="tgbtnDirectEdit" disable="true" mnemonicParsing="false" onAction="#toggleDirectEdit" text="Direct Edit Mode" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets />
                                              </GridPane.margin>
                                           </ToggleButton>
-                                          <Separator prefWidth="200.0" GridPane.rowIndex="2">
+                                          <Separator prefWidth="200.0" GridPane.rowIndex="3">
                                              <padding>
                                                 <Insets bottom="5.0" top="5.0" />
                                              </padding>
                                           </Separator>
+                                          <FlowPane hgap="5.0" GridPane.rowIndex="2">
+                                             <children>
+                                                <Label text="Default Rhyme Scheme:" />
+                                                <TextField fx:id="txtfldDefaultRhymeScheme" onAction="#updateDefaultRhymeScheme" promptText="e.g. AABB">
+                                                   <tooltip>
+                                                      <Tooltip fx:id="tltpIntRhymeScheme1" text="Must match length of stanza" />
+                                                   </tooltip>
+                                                </TextField>
+                                             </children>
+                                          </FlowPane>
                                        </children>
                                     </GridPane>
                                  </children>

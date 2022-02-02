@@ -45,6 +45,11 @@ public class RhymingScheme {
         this.scheme = convertChars(scheme); // could save me a headache if I change scheme's data type
     }
 
+    public RhymingScheme(char[] scheme) {
+        this.lineCount = scheme.length;
+        this.scheme = convertChars(scheme); // could save me a headache if I change scheme's data type
+    }
+
     public void setValue(int index, int value) {
         this.scheme[index] = value;
     }

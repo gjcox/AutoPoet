@@ -69,13 +69,26 @@ public class Stanza {
     }
 
     public boolean setDesiredRhymeScheme(String rhymeScheme) {
+        if (rhymeScheme.equals("")) {
+            desiredScheme = null;
+            return true; 
+        }
         try {
             this.desiredScheme = new RhymingScheme(lines.size(), rhymeScheme.toCharArray());
             return true;
         } catch (RhymingSchemeSizeException e) {
-            LOG.writeTempLog("string");
+            LOG.writeTempLog(e.toString());
             return false;
         } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean setDesiredRhymeSchemeFromDefault(RhymingScheme rhymeScheme) {
+        if (desiredScheme == null && rhymeScheme.getLineCount() == lineCount()) {
+            desiredScheme = rhymeScheme;
+            return true;
+        } else {
             return false;
         }
     }

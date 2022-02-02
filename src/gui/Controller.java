@@ -1,5 +1,7 @@
 package gui;
 
+import static config.Configuration.LOG;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -23,7 +26,6 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -32,18 +34,15 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Poem;
 import words.Stanza;
 import words.SubWord;
+import words.SubWord.PartOfSpeech;
 import words.SuperWord;
 import words.Token;
-import words.SubWord.PartOfSpeech;
-
-import static config.Configuration.LOG;
 
 public class Controller {
 
@@ -73,7 +72,7 @@ public class Controller {
     @FXML
     Label lblPoemStanzaCount, lblPoemLineCount, lblStanzaNumber, lblStanzaLineCount, lblActRhymeScheme;
     @FXML
-    TextField txtfldIntRhymeScheme;
+    TextField txtfldDefaultRhymeScheme, txtfldIntRhymeScheme;
     @FXML
     Tooltip tltpIntRhymeScheme;
 
@@ -105,7 +104,8 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        txtfldIntRhymeScheme.setTextFormatter(rhymeSchemeFormatter);
+        txtfldDefaultRhymeScheme.setTextFormatter(getRhymeSchemeFormatter());
+        txtfldIntRhymeScheme.setTextFormatter(getRhymeSchemeFormatter());
 
         initSuggestionPoolCheckBoxes();
 
@@ -179,19 +179,22 @@ public class Controller {
      * Ensures that rhyme schemes are only made up of uppercase latin letters and
      * hashes.
      */
-    private TextFormatter<String> rhymeSchemeFormatter = new TextFormatter<>(change -> {
-        if (!change.isContentChange()) {
+    private TextFormatter<String> getRhymeSchemeFormatter() {
+        TextFormatter<String> formatter = new TextFormatter<>(change -> {
+            if (!change.isContentChange()) {
+                return change;
+            }
+
+            change.setText(change.getText().toUpperCase());
+            String text = change.getControlNewText();
+            if (!text.matches("[A-Z#]*")) {
+                return null;
+            }
+
             return change;
-        }
-
-        change.setText(change.getText().toUpperCase());
-        String text = change.getControlNewText();
-        if (!text.matches("[A-Z#]*")) {
-            return null;
-        }
-
-        return change;
-    });
+        });
+        return formatter;
+    }
 
     // getters
 
@@ -357,6 +360,20 @@ public class Controller {
         }
     }
 
+    public void updateDefaultRhymeScheme(ActionEvent e) {
+        updateDefaultRhymeScheme((TextField) e.getSource());
+    }
+
+    public void updateDefaultRhymeScheme(TextField field) {
+        poem.setDefaultRhymeScheme(field.getText());
+
+        // refocus on current token to update intended rhyme scheme
+        if (focusedToken != null) {
+            Event.fireEvent(focusedToken, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
+                    false, false, false, false, true, false, false, false, false, false, null));
+        }
+    }
+
     private void makeSubstitution(SuperWord suggestion) {
         poem.substituteWord(focusedToken.getStanzaIndex(), focusedToken.getLineIndex(), focusedToken.getTokenIndex(),
                 suggestion);
@@ -499,6 +516,7 @@ public class Controller {
             poem = new Poem(poemFile.toPath());
             ttlpnPoem.setText(poem.getTitle());
             txtarPoem.setText(poem.toString());
+            txtfldDefaultRhymeScheme.clear();
             lblPoemStanzaCount.setText(String.valueOf(poem.getStanzaCount()));
             lblPoemLineCount.setText(String.valueOf(poem.getLineCount()));
             tokenizePoem();
@@ -563,6 +581,7 @@ public class Controller {
             try {
                 poem = new Poem(title, "");
                 poemFile = null;
+                txtfldDefaultRhymeScheme.clear();
                 ttlpnPoem.setText(poem.getTitle());
                 tgbtnDirectEdit.setDisable(false);
                 if (!txtarPoem.isVisible()) {
@@ -590,8 +609,11 @@ public class Controller {
             ttlpnSuggestions.setDisable(true);
         } else {
             try {
+                focusedToken = null;
+                secondFocusedToken = null;
                 poem = new Poem(ttlpnPoem.getText(), txtarPoem.getText());
                 tokenizePoem();
+                updateDefaultRhymeScheme(txtfldDefaultRhymeScheme);
                 ttlpnCurrentStanza.setDisable(false);
                 ttlpnSuggestionParameters.setDisable(false);
                 ttlpnSuggestions.setDisable(false);
