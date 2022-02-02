@@ -73,7 +73,7 @@ public interface ParameterWrappers {
             return builder.toString();
         }
 
-        public boolean getIncludingPool(SuggestionPool pool) {
+        public boolean includes(SuggestionPool pool) {
             switch (pool) {
                 case COMMONLY_TYPED:
                     return commonlyTyped;
@@ -125,7 +125,7 @@ public interface ParameterWrappers {
 
         public boolean isEmpty() {
             for (SuggestionPool pool : SuggestionPool.values()) {
-                if (getIncludingPool(pool) == true) {
+                if (includes(pool)) {
                     return false;
                 }
             }

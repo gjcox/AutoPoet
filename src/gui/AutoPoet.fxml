@@ -238,7 +238,7 @@
                                             </rowConstraints>
                                              <children>
                                                 <Label styleClass="Heading 2" text="Part of Speech" />
-                                                <CheckBox fx:id="chbxInclUnknown" mnemonicParsing="false" onAction="#test" selected="true" text="include unknowns in results" wrapText="true" GridPane.rowIndex="11" />
+                                                <CheckBox fx:id="chbxInclUnknown" mnemonicParsing="false" selected="true" text="include unknowns in results" wrapText="true" GridPane.rowIndex="11" />
                                                 <RadioButton fx:id="rdbtnNoun" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="noun" GridPane.rowIndex="1">
                                                    <toggleGroup>
                                                       <ToggleGroup fx:id="tglgrpPoS" />
@@ -295,7 +295,7 @@
                                                 <FlowPane hgap="5.0" GridPane.rowIndex="1">
                                                    <children>
                                                       <CheckBox fx:id="chbxRhymeWith" mnemonicParsing="false" text="rhyme with" />
-                                                      <TextField fx:id="txtfldRhymeWith" onAction="#test" prefHeight="25.0" prefWidth="95.0">
+                                                      <TextField fx:id="txtfldRhymeWith" prefHeight="25.0" prefWidth="95.0">
                                                          <tooltip>
                                                             <Tooltip text="Choose which lines in the stanza to rhyme with, e.g. 1-2, 4. Leave blank to rhyme all lines." wrapText="true" />
                                                          </tooltip>

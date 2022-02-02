@@ -107,7 +107,7 @@ public class Controller {
     public void initialize() {
         txtfldIntRhymeScheme.setTextFormatter(rhymeSchemeFormatter);
 
-        IndexedTokenLabel.mnitmJoinWords.setOnAction(actionEvent -> {
+        IndexedTokenLabel.setJoinWordsAction(actionEvent -> {
             if (focusedToken == null || secondFocusedToken == null) {
                 Alert alert = getCleanAlert(AlertType.INFORMATION);
                 alert.setContentText("Two neighbouring words must be selected to join.");
@@ -117,7 +117,7 @@ public class Controller {
             }
         });
 
-        IndexedTokenLabel.mnitmSplitOnSpace.setOnAction(actionEvent -> {
+        IndexedTokenLabel.setSplitOnSpaceAction(actionEvent -> {
             if (!splitWord(" ")) {
                 Alert alert = getCleanAlert(AlertType.INFORMATION);
                 alert.setContentText("Selected word could not be split.");
@@ -125,7 +125,7 @@ public class Controller {
             }
         });
 
-        IndexedTokenLabel.mnitmSplitOnHyphen.setOnAction(actionEvent -> {
+        IndexedTokenLabel.setSplitOnHyphenAction(actionEvent -> {
             if (!splitWord("-")) {
                 Alert alert = getCleanAlert(AlertType.INFORMATION);
                 alert.setContentText("Selected word could not be split.");
@@ -135,125 +135,7 @@ public class Controller {
 
     }
 
-    private static class IndexedTokenLabel extends Label {
-        private static final String SELECTABLE_CLASS = "selectableToken";
-        private static final String SELECTED_CLASS = "selectedToken";
-
-        private static MenuItem mnitmJoinWords = new MenuItem("Join words");
-        private static MenuItem mnitmSplitOnSpace = new MenuItem("Split on space");
-        private static MenuItem mnitmSplitOnHyphen = new MenuItem("Split on hypen");
-        private static ContextMenu cntxtmnLabel = new ContextMenu();
-
-        private Token token;
-        private int stanzaIndex;
-        private int lineIndex;
-        private int tokenIndex;
-        private PartOfSpeech pos;
-        private SuggestionParameters pools = new SuggestionParameters();
-        private boolean inclUnknown = true;
-        private ArrayList<SuperWord> suggestions;
-        private Controller controller;
-
-        /**
-         * 
-         * @param other a potential neighbouring word.
-         * @return true if two words are adjacent within a line and there is a single
-         *         whitespace character or hyphen between them, otherwise false.
-         */
-        private boolean isNeighbour(IndexedTokenLabel other) {
-            if (other == null)
-                return false;
-            if (this.getParent().equals(other.getParent())
-                    && Math.abs(this.tokenIndex - other.tokenIndex) == 2) {
-
-                IndexedTokenLabel middleToken = (IndexedTokenLabel) ((FlowPane) this.getParent()).getChildren()
-                        .get(Math.min(this.tokenIndex, other.tokenIndex) + 1);
-                return middleToken.token.getPlaintext().equals(" ") || middleToken.token.getPlaintext().equals("-");
-            } else {
-                return false;
-            }
-        }
-
-        private void populateContextMenu() {
-            cntxtmnLabel.getItems().clear();
-            if (controller.secondFocusedToken != null) {
-                cntxtmnLabel.getItems().add(mnitmJoinWords);
-            } else {
-                if (controller.focusedToken.token.getPlaintext().contains(" ")) {
-                    cntxtmnLabel.getItems().add(mnitmSplitOnSpace);
-                }
-                if (controller.focusedToken.token.getPlaintext().contains("-")) {
-                    cntxtmnLabel.getItems().add(mnitmSplitOnHyphen);
-                }
-            }
-        }
-
-        private void selectNeighbour() {
-            if (isNeighbour(controller.focusedToken)) {
-                if (this.tokenIndex > controller.focusedToken.tokenIndex) {
-                    controller.secondFocusedToken = this;
-                } else {
-                    controller.secondFocusedToken = controller.focusedToken;
-                    controller.focusedToken = this;
-                }
-                controller.highlightWord(controller.secondFocusedToken);
-                controller.highlightWord(controller.focusedToken);
-            } else if (isNeighbour(controller.secondFocusedToken)) {
-                if (this.tokenIndex > controller.secondFocusedToken.tokenIndex) {
-                    controller.focusedToken = controller.secondFocusedToken;
-                    controller.secondFocusedToken = this;
-                } else {
-                    controller.focusedToken = this;
-                }
-                controller.highlightWord(controller.secondFocusedToken);
-                controller.highlightWord(controller.focusedToken);
-            }
-        }
-
-        private IndexedTokenLabel(Controller parentController, Token token, int stanzaIndex, int lineIndex,
-                int tokenIndex, boolean clickable) {
-            super();
-            this.setText(token.getPlaintext());
-            this.token = token;
-            this.stanzaIndex = stanzaIndex;
-            this.lineIndex = lineIndex;
-            this.tokenIndex = tokenIndex;
-            this.controller = parentController;
-            if (clickable) {
-                this.getStyleClass().add(SELECTABLE_CLASS);
-                this.setContextMenu(cntxtmnLabel);
-
-                this.setOnMouseClicked(actionEvent -> {
-                    controller.unhighlightWord(controller.focusedToken);
-                    controller.unhighlightWord(controller.secondFocusedToken);
-
-                    if (actionEvent.isControlDown()) {
-                        selectNeighbour();
-                        populateContextMenu();
-
-                    } else if (actionEvent.getButton() == MouseButton.SECONDARY
-                            && controller.secondFocusedToken != null
-                            && (this.equals(controller.focusedToken)
-                                    || this.equals(controller.secondFocusedToken))) {
-                        // context menu will be opened to allow joining words
-                        controller.highlightWord(controller.focusedToken);
-                        controller.highlightWord(controller.secondFocusedToken);
-
-                    } else {
-                        // deselect previous word and focus on clicked word
-                        controller.secondFocusedToken = null;
-
-                        controller.focusedToken = this;
-                        controller.focusOnStanza(this.stanzaIndex);
-                        controller.highlightWord(controller.focusedToken);
-                        controller.focusOnWord(controller.focusedToken);
-                        populateContextMenu();
-
-                    }
-                });
-            }
-        }
-    }
+    // element fabricators and utilities
 
     private Alert getCleanAlert(AlertType type) {
         Alert alert = new Alert(type);
@@ -261,10 +143,6 @@ public class Controller {
         alert.setGraphic(null);
         alert.initOwner(anpnRoot.getScene().getWindow());
         return alert;
-    }
-
-    public void test(ActionEvent e) {
-        System.out.println(String.format("%s had event %s", e.getSource(), e.getEventType()));
     }
 
     private FlowPane getEmptyLine() {
@@ -279,17 +157,45 @@ public class Controller {
         return guiLine;
     }
 
-    private void focusOnStanza(int stanzaIndex) {
-        lblStanzaNumber.setText(String.valueOf(stanzaIndex + 1));
-        Stanza focusedStanza = poem.getStanzas().get(stanzaIndex);
-        lblStanzaLineCount.setText(String.valueOf(focusedStanza.getLines().size()));
-        if (focusedStanza.getDesiredRhymeScheme() != null) {
-            txtfldIntRhymeScheme.setText(focusedStanza.getDesiredRhymeScheme().toString());
-        } else {
-            txtfldIntRhymeScheme.setText("");
+    /**
+     * Ensures that rhyme schemes are only made up of uppercase latin letters and
+     * hashes.
+     */
+    private TextFormatter<String> rhymeSchemeFormatter = new TextFormatter<>(change -> {
+        if (!change.isContentChange()) {
+            return change;
         }
-        lblActRhymeScheme.setText(focusedStanza.getActualRhymeScheme().toString());
+
+        change.setText(change.getText().toUpperCase());
+        String text = change.getControlNewText();
+        if (!text.matches("[A-Z#]*")) {
+            return null;
+        }
+
+        return change;
+    });
+
+    // getters
+
+    public IndexedTokenLabel getFocusedToken() {
+        return focusedToken;
     }
+
+    public IndexedTokenLabel getSecondFocusedToken() {
+        return secondFocusedToken;
+    }
+
+    // setters
+
+    public void setFocusedToken(IndexedTokenLabel token) {
+        this.focusedToken = token;
+    }
+
+    public void setSecondFocusedToken(IndexedTokenLabel token) {
+        this.secondFocusedToken = token;
+    }
+
+    // internal getters
 
     private RadioButton getPoSRadioButton(PartOfSpeech pos) {
         switch (pos) {
@@ -340,20 +246,48 @@ public class Controller {
         }
     }
 
+    private FilterParameters getFilterParams() {
+        return new FilterParameters(chbxRhymeWith.isSelected(), SuperWord.getSuperWord(txtfldRhymeWith.getText()),
+                null);
+    }
+
+    public void getSuggestions() {
+        if (focusedToken.getPos() == null) {
+            Alert alert = getCleanAlert(AlertType.INFORMATION);
+            alert.setContentText("Please select a part of speech to get suggestions.");
+            alert.show();
+        } else if (focusedToken.getPools().isEmpty()) {
+            Alert alert = getCleanAlert(AlertType.INFORMATION);
+            alert.setContentText("Please select at least one suggestion pool to get suggestions.");
+            alert.show();
+        } else {
+            SuperWord superWord = (SuperWord) focusedToken.getToken();
+            PartOfSpeech pos = focusedToken.getPos();
+            SuggestionParameters suggestionParams = focusedToken.getPools();
+            FilterParameters filterParams = getFilterParams();
+
+            focusedToken.setSuggestions(superWord.getFilteredSuggestions(pos, suggestionParams, filterParams));
+
+            displaySuggestions();
+        }
+    }
+
+    // per-token interactions
+
     /**
      * Tied to the PoS radio buttons within the FXML file.
      */
     public void updatePartOfSpeech(ActionEvent e) {
-        focusedToken.pos = SubWord.parsePoS(((RadioButton) e.getSource()).getText());
+        focusedToken.setPos(SubWord.parsePoS(((RadioButton) e.getSource()).getText()));
         enableSuggestionPoolBoxes();
     }
 
     public void enableSuggestionPoolBoxes() {
-        SuperWord superword = ((SuperWord) focusedToken.token);
+        SuperWord superword = ((SuperWord) focusedToken.getToken());
         for (SuggestionPool pool : SuggestionPool.values()) {
             CheckBox checkBox = getSuggestionPoolCheckBox(pool);
             if (checkBox != null) {
-                if (focusedToken.pos == null || !superword.validPool(pool, focusedToken.pos)) {
+                if (focusedToken.getPos() == null || !superword.validPool(pool, focusedToken.getPos())) {
                     checkBox.setDisable(true);
                     checkBox.setSelected(false);
                 } else {
@@ -369,29 +303,28 @@ public class Controller {
     public void updateSuggestionPool(ActionEvent e) {
         CheckBox source = (CheckBox) e.getSource();
         SuggestionPool pool = SuggestionPool.fromString(source.getText());
-        focusedToken.pools.togglePool(pool, source.isSelected());
+        focusedToken.getPools().togglePool(pool, source.isSelected());
     }
 
-    private void unhighlightWord(IndexedTokenLabel token) {
-        if (token != null) {
-            // remove highlight from previously selected word
-            token.getStyleClass().remove(IndexedTokenLabel.SELECTED_CLASS);
+    public void focusOnStanza(int stanzaIndex) {
+        lblStanzaNumber.setText(String.valueOf(stanzaIndex + 1));
+        Stanza focusedStanza = poem.getStanzas().get(stanzaIndex);
+        lblStanzaLineCount.setText(String.valueOf(focusedStanza.getLines().size()));
+        if (focusedStanza.getDesiredRhymeScheme() != null) {
+            txtfldIntRhymeScheme.setText(focusedStanza.getDesiredRhymeScheme().toString());
+        } else {
+            txtfldIntRhymeScheme.setText("");
         }
+        lblActRhymeScheme.setText(focusedStanza.getActualRhymeScheme().toString());
     }
 
-    private void highlightWord(IndexedTokenLabel token) {
-        if (token != null) {
-            token.getStyleClass().add(IndexedTokenLabel.SELECTED_CLASS);
-        }
-    }
-
-    private void focusOnWord(IndexedTokenLabel focusOnToken) {
-        SuperWord superword = (SuperWord) focusOnToken.token;
+    public void focusOnWord(IndexedTokenLabel focusOnToken) {
+        SuperWord superword = (SuperWord) focusOnToken.getToken();
         RadioButton radioButton;
         boolean hasSubWords = false;
         for (PartOfSpeech pos : PartOfSpeech.values()) {
             radioButton = getPoSRadioButton(pos);
-            radioButton.setSelected(focusOnToken.pos != null && focusOnToken.pos.equals(pos));
+            radioButton.setSelected(focusOnToken.getPos() != null && focusOnToken.getPos().equals(pos));
             if (superword.getSubWords(pos, false) == null) {
                 radioButton.setDisable(true);
             } else {
@@ -403,37 +336,102 @@ public class Controller {
         for (SuggestionPool pool : SuggestionPool.values()) {
             checkBox = getSuggestionPoolCheckBox(pool);
             if (checkBox != null) {
-                checkBox.setSelected(focusOnToken.pools.getIncludingPool(pool));
+                checkBox.setSelected(focusOnToken.getPools().includes(pool));
             }
         }
-        enableSuggestionPoolBoxes();
 
-        chbxInclUnknown.setSelected(focusOnToken.inclUnknown);
+        enableSuggestionPoolBoxes();
+        chbxInclUnknown.setSelected(focusOnToken.getInclUnknown());
         btnGetSuggestions.setDisable(!hasSubWords);
         displaySuggestions();
     }
 
-    TextFormatter<String> rhymeSchemeFormatter = new TextFormatter<>(change -> {
-        if (!change.isContentChange()) {
-            return change;
-        }
-
-        change.setText(change.getText().toUpperCase());
-        String text = change.getControlNewText();
-        if (!text.matches("[A-Z#]*")) {
-            return null;
-        }
-
-        return change;
-    });
+    // model (i.e. poem) interactions
 
     public void updateIntendedRhymeScheme(ActionEvent e) {
-        if (!poem.getStanzas().get(focusedToken.stanzaIndex)
+        if (!poem.getStanzas().get(focusedToken.getStanzaIndex())
                 .setDesiredRhymeScheme(((TextField) e.getSource()).getText())) {
             Window window = ((TextField) e.getSource()).getScene().getWindow();
             tltpIntRhymeScheme.show(window);
             tltpIntRhymeScheme.setAutoHide(true);
         }
+    }
+
+    private void makeSubstitution(SuperWord suggestion) {
+        poem.substituteWord(focusedToken.getStanzaIndex(), focusedToken.getLineIndex(), focusedToken.getTokenIndex(),
+                suggestion);
+
+        IndexedTokenLabel newToken = new IndexedTokenLabel(this, suggestion, focusedToken.getStanzaIndex(),
+                focusedToken.getLineIndex(), focusedToken.getTokenIndex(), true);
+        newToken.setPos(focusedToken.getPos());
+
+        // replace old label in GUI
+        FlowPane guiLine = (FlowPane) focusedToken.getParent();
+        guiLine.getChildren().remove(focusedToken.getTokenIndex());
+        guiLine.getChildren().add(focusedToken.getTokenIndex(), newToken);
+
+        // focus on new token by simulating it being clicked on
+        Event.fireEvent(newToken, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
+                false, false, false, false, true, false, false, false, false, false, null));
+    }
+
+    private void joinWords() {
+        if (poem.joinWords(focusedToken.getStanzaIndex(), focusedToken.getLineIndex(),
+                focusedToken.getTokenIndex(), secondFocusedToken.getTokenIndex())) {
+
+            FlowPane guiLine = (FlowPane) focusedToken.getParent();
+            IndexedTokenLabel middleToken = (IndexedTokenLabel) guiLine.getChildren()
+                    .get(focusedToken.getTokenIndex() + 1);
+            String joinedPlaintext = focusedToken.getToken().getPlaintext() + middleToken.getToken().getPlaintext()
+                    + secondFocusedToken.getToken().getPlaintext();
+            SuperWord joinedSuperWord = SuperWord.getSuperWord(joinedPlaintext);
+            IndexedTokenLabel newToken = new IndexedTokenLabel(this, joinedSuperWord, focusedToken.getStanzaIndex(),
+                    focusedToken.getLineIndex(), focusedToken.getTokenIndex(), true);
+
+            // replace old tokens in GUI
+            guiLine.getChildren().remove(focusedToken.getTokenIndex());
+            guiLine.getChildren().remove(focusedToken.getTokenIndex()); // i.e. seperator
+            guiLine.getChildren().remove(focusedToken.getTokenIndex()); // i.e. secondFocusedToken
+            guiLine.getChildren().add(focusedToken.getTokenIndex(), newToken);
+
+            // focus on new token by simulating it being clicked on
+            Event.fireEvent(newToken, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
+                    false, false, false, false, true, false, false, false, false, false, null));
+        }
+    }
+
+    private boolean splitWord(String seperator) {
+        if (poem.splitWord(focusedToken.getStanzaIndex(), focusedToken.getLineIndex(),
+                focusedToken.getTokenIndex(), seperator)) {
+
+            String toSplit = focusedToken.getToken().getPlaintext();
+            int seperatorIndex = toSplit.indexOf(seperator); // won't be -1 if poem.splitWord returned true
+            SuperWord subWord1 = SuperWord.getSuperWord(toSplit.substring(0, seperatorIndex));
+            Token separatorToken = new Token(seperator);
+            SuperWord subWord2 = SuperWord.getSuperWord(toSplit.substring(seperatorIndex + 1));
+            IndexedTokenLabel token1 = new IndexedTokenLabel(this, subWord1, focusedToken.getStanzaIndex(),
+                    focusedToken.getLineIndex(), focusedToken.getTokenIndex(), true);
+            IndexedTokenLabel seperatorToken = new IndexedTokenLabel(this, separatorToken,
+                    focusedToken.getStanzaIndex(),
+                    focusedToken.getLineIndex(), focusedToken.getTokenIndex() + 1, false);
+            IndexedTokenLabel token2 = new IndexedTokenLabel(this, subWord2, focusedToken.getStanzaIndex(),
+                    focusedToken.getLineIndex(), focusedToken.getTokenIndex() + 2, true);
+
+            // replace old label in GUI
+            FlowPane guiLine = (FlowPane) focusedToken.getParent();
+            guiLine.getChildren().remove(focusedToken.getTokenIndex());
+            guiLine.getChildren().add(focusedToken.getTokenIndex(), token2);
+            guiLine.getChildren().add(focusedToken.getTokenIndex(), seperatorToken);
+            guiLine.getChildren().add(focusedToken.getTokenIndex(), token1);
+
+            // focus on second subword by simulating it being clicked on
+            Event.fireEvent(token2, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
+                    false, false, false, false, true, false, false, false, false, false, null));
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     private void tokenizePoem() {
@@ -467,6 +465,8 @@ public class Controller {
             guiLine = addEmptyLine(++absLineIndex);
         }
     }
+
+    // file IO
 
     public void openPoem() {
         Stage stage = (Stage) anpnRoot.getScene().getWindow();
@@ -564,6 +564,8 @@ public class Controller {
         });
     }
 
+    // other
+
     public void toggleDirectEdit() {
         // refresh poem content
         if (!txtarPoem.isVisible()) {
@@ -597,86 +599,6 @@ public class Controller {
         scrlpnPoem.setVisible(!scrlpnPoem.isVisible());
     }
 
-    private FilterParameters getFilterParams() {
-        return new FilterParameters(chbxRhymeWith.isSelected(), SuperWord.getSuperWord(txtfldRhymeWith.getText()),
-                null);
-    }
-
-    private void makeSubstitution(SuperWord suggestion) {
-        poem.substituteWord(focusedToken.stanzaIndex, focusedToken.lineIndex, focusedToken.tokenIndex,
-                suggestion);
-
-        IndexedTokenLabel newToken = new IndexedTokenLabel(this, suggestion, focusedToken.stanzaIndex,
-                focusedToken.lineIndex, focusedToken.tokenIndex, true);
-        newToken.pos = focusedToken.pos;
-
-        // replace old label in GUI
-        FlowPane guiLine = (FlowPane) focusedToken.getParent();
-        guiLine.getChildren().remove(focusedToken.tokenIndex);
-        guiLine.getChildren().add(focusedToken.tokenIndex, newToken);
-
-        // focus on new token by simulating it being clicked on
-        Event.fireEvent(newToken, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
-                false, false, false, false, true, false, false, false, false, false, null));
-    }
-
-    private void joinWords() {
-        if (poem.joinWords(focusedToken.stanzaIndex, focusedToken.lineIndex,
-                focusedToken.tokenIndex, secondFocusedToken.tokenIndex)) {
-
-            FlowPane guiLine = (FlowPane) focusedToken.getParent();
-            IndexedTokenLabel middleToken = (IndexedTokenLabel) guiLine.getChildren().get(focusedToken.tokenIndex + 1);
-            String joinedPlaintext = focusedToken.token.getPlaintext() + middleToken.token.getPlaintext()
-                    + secondFocusedToken.token.getPlaintext();
-            SuperWord joinedSuperWord = SuperWord.getSuperWord(joinedPlaintext);
-            IndexedTokenLabel newToken = new IndexedTokenLabel(this, joinedSuperWord, focusedToken.stanzaIndex,
-                    focusedToken.lineIndex, focusedToken.tokenIndex, true);
-
-            // replace old tokens in GUI
-            guiLine.getChildren().remove(focusedToken.tokenIndex);
-            guiLine.getChildren().remove(focusedToken.tokenIndex); // i.e. seperator
-            guiLine.getChildren().remove(focusedToken.tokenIndex); // i.e. secondFocusedToken
-            guiLine.getChildren().add(focusedToken.tokenIndex, newToken);
-
-            // focus on new token by simulating it being clicked on
-            Event.fireEvent(newToken, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
-                    false, false, false, false, true, false, false, false, false, false, null));
-        }
-    }
-
-    private boolean splitWord(String seperator) {
-        if (poem.splitWord(focusedToken.stanzaIndex, focusedToken.lineIndex,
-                focusedToken.tokenIndex, seperator)) {
-
-            String toSplit = focusedToken.token.getPlaintext();
-            int seperatorIndex = toSplit.indexOf(seperator); // won't be -1 if poem.splitWord returned true
-            SuperWord subWord1 = SuperWord.getSuperWord(toSplit.substring(0, seperatorIndex));
-            Token separatorToken = new Token(seperator);
-            SuperWord subWord2 = SuperWord.getSuperWord(toSplit.substring(seperatorIndex + 1));
-            IndexedTokenLabel token1 = new IndexedTokenLabel(this, subWord1, focusedToken.stanzaIndex,
-                    focusedToken.lineIndex, focusedToken.tokenIndex, true);
-            IndexedTokenLabel seperatorToken = new IndexedTokenLabel(this, separatorToken, focusedToken.stanzaIndex,
-                    focusedToken.lineIndex, focusedToken.tokenIndex + 1, false);
-            IndexedTokenLabel token2 = new IndexedTokenLabel(this, subWord2, focusedToken.stanzaIndex,
-                    focusedToken.lineIndex, focusedToken.tokenIndex + 2, true);
-
-            // replace old label in GUI
-            FlowPane guiLine = (FlowPane) focusedToken.getParent();
-            guiLine.getChildren().remove(focusedToken.tokenIndex);
-            guiLine.getChildren().add(focusedToken.tokenIndex, token2);
-            guiLine.getChildren().add(focusedToken.tokenIndex, seperatorToken);
-            guiLine.getChildren().add(focusedToken.tokenIndex, token1);
-
-            // focus on second subword by simulating it being clicked on
-            Event.fireEvent(token2, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
-                    false, false, false, false, true, false, false, false, false, false, null));
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
     private void displaySuggestions() {
         boolean snapToPixel = true;
         boolean cache = false;
@@ -685,44 +607,21 @@ public class Controller {
         flwpnSuggestions.setCache(cache);
         flwpnSuggestions.getParent().setCache(cache);
 
-        if (focusedToken.suggestions != null) {
-            for (SuperWord suggestion : focusedToken.suggestions) {
+        if (focusedToken.getSuggestions() != null) {
+            for (SuperWord suggestion : focusedToken.getSuggestions()) {
                 Label label = new Label(suggestion.getPlaintext());
                 label.getStyleClass().add(SUGGESTION_CLASS);
                 label.setSnapToPixel(snapToPixel);
                 label.setCache(cache);
-                label.setOnMouseClicked(actionEvent -> {
-                    makeSubstitution(suggestion);
-                });
+                label.setOnMouseClicked(actionEvent -> makeSubstitution(suggestion));
                 flwpnSuggestions.getChildren().add(label);
             }
         } else {
-            Label noSuggestions = new Label("No suggestions.");
+            Label noSuggestions = new Label("No results.");
             noSuggestions.setSnapToPixel(snapToPixel);
             noSuggestions.setCache(cache);
 
             flwpnSuggestions.getChildren().add(noSuggestions);
-        }
-    }
-
-    public void getSuggestions() {
-        if (focusedToken.pos == null) {
-            Alert alert = getCleanAlert(AlertType.INFORMATION);
-            alert.setContentText("Please select a part of speech to get suggestions.");
-            alert.show();
-        } else if (focusedToken.pools.isEmpty()) {
-            Alert alert = getCleanAlert(AlertType.INFORMATION);
-            alert.setContentText("Please select at least one suggestion pool to get suggestions.");
-            alert.show();
-        } else {
-            SuperWord superWord = (SuperWord) focusedToken.token;
-            SuggestionParameters suggestionParams = focusedToken.pools;
-            FilterParameters filterParams = getFilterParams();
-
-            focusedToken.suggestions = superWord.getFilteredSuggestions(focusedToken.pos, suggestionParams,
-                    filterParams);
-
-            displaySuggestions();
         }
     }
 
