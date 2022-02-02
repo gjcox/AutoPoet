@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -33,8 +34,8 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import utils.ParameterWrappers.FilterParameters;
-import utils.ParameterWrappers.SuggestionParameters;
-import utils.ParameterWrappers.SuggestionParameters.SuggestionPool;
+import utils.ParameterWrappers.SuggestionPoolParameters;
+import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Poem;
 import words.Stanza;
 import words.SubWord;
@@ -87,7 +88,8 @@ public class Controller {
     @FXML
     CheckBox chbxInclUnknown;
     @FXML
-    CheckBox chbxSynonyms, chbxCommonlyTyped, chbxCommonlyCategorised, chbxPartOf, chbxHasParts, chbxSimilarTo;
+    GridPane grdPnSuggestionPools;
+    HashMap<String, CheckBox> suggestionPoolCheckBoxes = new HashMap<>();
     @FXML
     CheckBox chbxRhymeWith;
     @FXML
@@ -104,6 +106,8 @@ public class Controller {
     @FXML
     public void initialize() {
         txtfldIntRhymeScheme.setTextFormatter(rhymeSchemeFormatter);
+
+        initSuggestionPoolCheckBoxes();
 
         IndexedTokenLabel.setJoinWordsAction(actionEvent -> {
             if (focusedToken == null || secondFocusedToken == null) {
@@ -153,6 +157,22 @@ public class Controller {
         FlowPane guiLine = getEmptyLine();
         grdpnPoem.addRow(absLineIndex, guiLine);
         return guiLine;
+    }
+
+    private CheckBox getPoolCheckBox(SuggestionPool pool) {
+        CheckBox checkBox = new CheckBox(pool.getLabel());
+        checkBox.setOnAction(this::updateSuggestionPool);
+        checkBox.setDisable(true);
+        return checkBox;
+    }
+
+    private void initSuggestionPoolCheckBoxes() {
+        int row = 1; // row 0 is the list title
+        for (SuggestionPool pool : SuggestionPool.values()) {
+            CheckBox checkBox = getPoolCheckBox(pool);
+            grdPnSuggestionPools.addRow(row++, checkBox);
+            suggestionPoolCheckBoxes.put(pool.getLabel(), checkBox);
+        }
     }
 
     /**
@@ -223,25 +243,7 @@ public class Controller {
     }
 
     private CheckBox getSuggestionPoolCheckBox(SuggestionPool pool) {
-        switch (pool) {
-            case COMMONLY_TYPED:
-                return chbxCommonlyTyped;
-            case COMMON_CATEGORIES:
-                return chbxCommonlyCategorised;
-            case HAS_PARTS:
-                return chbxHasParts;
-            case PART_OF:
-                return chbxPartOf;
-            case SIMILAR_TO:
-                return chbxSimilarTo;
-            case SYNONYMS:
-                return chbxSynonyms;
-            default:
-                LOG.writeTempLog(String.format(
-                        "getSuggestionPoolCheckBox was passed an invalid SuggestionPool \"%s\" and returned null",
-                        pool));
-                return null;
-        }
+        return suggestionPoolCheckBoxes.get(pool.getLabel());
     }
 
     private FilterParameters getFilterParams() {
@@ -261,7 +263,7 @@ public class Controller {
         } else {
             SuperWord superWord = (SuperWord) focusedToken.getToken();
             PartOfSpeech pos = focusedToken.getPos();
-            SuggestionParameters suggestionParams = focusedToken.getPools();
+            SuggestionPoolParameters suggestionParams = focusedToken.getPools();
             FilterParameters filterParams = getFilterParams();
 
             focusedToken.setSuggestions(superWord.getFilteredSuggestions(pos, suggestionParams, filterParams));

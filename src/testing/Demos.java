@@ -9,7 +9,7 @@ import java.util.List;
 
 import utils.Pair;
 import utils.ParameterWrappers.FilterParameters;
-import utils.ParameterWrappers.SuggestionParameters;
+import utils.ParameterWrappers.SuggestionPoolParameters;
 import words.Emphasis;
 import words.IPAHandler;
 import words.Poem;
@@ -294,7 +294,7 @@ public class Demos {
             SuperWord superWord2;
             PartOfSpeech pos1;
             PartOfSpeech pos2;
-            SuggestionParameters suggestionParams;
+            SuggestionPoolParameters suggestionParams;
             FilterParameters filterParams;
 
             switch (args[0].toLowerCase()) {
@@ -314,7 +314,7 @@ public class Demos {
                     pos1 = parsePoS(args[2]);
                     superWord2 = SuperWord.getSuperWord(args[3]);
                     pos2 = parsePoS(args[4]);
-                    suggestionParams = new SuggestionParameters();
+                    suggestionParams = new SuggestionPoolParameters();
                     filterParams = new FilterParameters(true, superWord2, pos2);
                     System.out.println(
                             String.format("Suggestions for \"%s\" (%s) that rhyme with \"%s\" (%s): %s",

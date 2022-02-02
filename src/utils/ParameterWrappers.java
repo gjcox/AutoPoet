@@ -1,10 +1,12 @@
 package utils;
 
-import words.SuperWord;
+import java.util.EnumMap;
+
 import words.SubWord.PartOfSpeech;
+import words.SuperWord;
 
 public interface ParameterWrappers {
-    public class SuggestionParameters {
+    public class SuggestionPoolParameters {
 
         public enum SuggestionPool {
             SYNONYMS("synonyms"),
@@ -16,111 +18,39 @@ public interface ParameterWrappers {
             HAS_PARTS("has parts"),
             SIMILAR_TO("similar to");
 
-            private final String name;
+            private final String label;
 
-            private SuggestionPool(String name) {
-                this.name = name;
+            private SuggestionPool(String label) {
+                this.label = label;
             }
 
             public static SuggestionPool fromString(String string) {
                 for (SuggestionPool pool : SuggestionPool.values()) {
-                    if (pool.name.equals(string))
+                    if (pool.label.equals(string))
                         return pool;
                 }
                 return null;
             }
+
+            public String getLabel() {
+                return label;
+            }
         }
 
-        boolean synonyms = false;
-        boolean hasTypes = false;
-        boolean typeOf = false;
-        boolean commonlyTyped = false;
-        boolean commonCategories = false;
-        boolean partOf = false;
-        boolean hasParts = false;
-        boolean similarTo = false;
+        private EnumMap<SuggestionPool, Boolean> pools = new EnumMap<>(SuggestionPool.class);
 
-        public SuggestionParameters() {
-            // leave all as false
-        }
-
-        public String toString() {
-            StringBuilder builder = new StringBuilder("[");
-            if (synonyms) {
-                builder.append("synonyms,");
+        public SuggestionPoolParameters() {
+            for (SuggestionPool pool : SuggestionPool.values()) {
+                pools.put(pool, false);
             }
-            if (commonlyTyped) {
-                builder.append("commonlyTyped,");
-            }
-            if (commonCategories) {
-                builder.append("commonCategories,");
-            }
-            if (partOf) {
-                builder.append("partOf,");
-            }
-            if (hasParts) {
-                builder.append("hasParts,");
-            }
-            if (similarTo) {
-                builder.append("similarTo,");
-            }
-
-            int commaIndex = builder.lastIndexOf(",");
-            if (commaIndex > -1) {
-                builder.deleteCharAt(commaIndex);
-            }
-            builder.append("]");
-            return builder.toString();
         }
 
         public boolean includes(SuggestionPool pool) {
-            switch (pool) {
-                case COMMONLY_TYPED:
-                    return commonlyTyped;
-                case COMMON_CATEGORIES:
-                    return commonCategories;
-                case HAS_PARTS:
-                    return hasParts;
-                case PART_OF:
-                    return partOf;
-                case SIMILAR_TO:
-                    return similarTo;
-                case SYNONYMS:
-                    return synonyms;
-                default:
-                    return false;
-            }
+            return pools.get(pool).booleanValue();
         }
 
         public void togglePool(SuggestionPool pool, boolean include) {
-            switch (pool) {
-                case COMMONLY_TYPED:
-                    commonlyTyped = include;
-                    break;
-                case COMMON_CATEGORIES:
-                    commonCategories = include;
-                    break;
-                case HAS_PARTS:
-                    hasParts = include;
-                    break;
-                case HAS_TYPES:
-                    hasTypes = include;
-                    break;
-                case PART_OF:
-                    partOf = include;
-                    break;
-                case SIMILAR_TO:
-                    similarTo = include;
-                    break;
-                case SYNONYMS:
-                    synonyms = include;
-                    break;
-                case TYPE_OF:
-                    typeOf = include;
-                    break;
-                default:
-                    break;
-            }
+            pools.put(pool, include);
         }
 
         public boolean isEmpty() {
@@ -131,29 +61,22 @@ public interface ParameterWrappers {
             }
             return true;
         }
+        
+        public String toString() {
+            StringBuilder builder = new StringBuilder("[");
+            for (SuggestionPool pool : SuggestionPool.values()) {
+                if (pools.get(pool).booleanValue()) {
+                    builder.append(pool.name() + ",");
+                }
+            }
 
-        public boolean synonyms() {
-            return synonyms;
-        }
-
-        public boolean commonlyTyped() {
-            return commonlyTyped;
-        }
-
-        public boolean commonCategories() {
-            return commonCategories;
-        }
-
-        public boolean partOf() {
-            return partOf;
-        }
-
-        public boolean hasParts() {
-            return hasParts;
-        }
-
-        public boolean similarTo() {
-            return similarTo;
+            int commaIndex = builder.lastIndexOf(",");
+            if (commaIndex > -1) {
+                builder.deleteCharAt(commaIndex);
+            }
+            
+            builder.append("]");
+            return builder.toString();
         }
     }
 

@@ -7457,3 +7457,45 @@
 2022-01-19 14:39:46.507	 WordsAPI responded with word "sausage" when requesting "Sausage".
 2022-01-19 14:39:46.733	 WordsAPI responded with word "toast" when requesting "Toast".
 2022-01-19 14:39:46.965	 WordsAPI responded with word "regret" when requesting "Regret".
+2022-02-02 15:53:15.478	 Results of "though" was an empty array
+2022-02-02 15:53:15.731	 Unrecognised part of speech for "here" with definition "in or at this place; where the speaker or writer is": "null"
+2022-02-02 15:53:18.45	 Unrecognised part of speech for "deep" with definition "to a great distance": "null"
+2022-02-02 18:25:07.949	 Unrecognised part of speech for "home" with definition "relating to or being where one lives or where one's roots are": "null"
+2022-02-02 18:25:08.856	 Unrecognised part of speech for "there" with definition "in or at that place or location": "null"
+2022-02-02 18:25:09.161	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-02-02 18:25:09.162	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-02-02 18:25:09.162	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-02-02 18:25:09.164	 Results of "beds" was missing
+2022-02-02 18:25:09.446	 Syllables of "heads" was missing
+2022-02-02 18:25:09.447	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-02-02 18:25:09.448	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-02-02 18:25:09.448	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-02-02 18:25:09.448	 Results of "heads" was missing
+2022-02-02 18:25:12.686	 Unrecognised part of speech for "fast" with definition "(used of timepieces) indicating a time ahead of or later than the correct time": "null"
+2022-02-02 18:25:12.954	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-02-02 18:25:13.174	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-02-02 18:25:13.174	 Results of "arrived" was missing
+2022-02-02 18:25:13.73	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-02-02 18:25:13.99	 Syllables of "Blitzen" was missing
+2022-02-02 18:25:13.99	 Pronunciation of "Blitzen" was missing
+2022-02-02 18:25:13.99	 Results of "Blitzen" was missing
+2022-02-02 18:41:18.357	 Pronunciation of "mansion house" was missing
+2022-02-02 18:41:18.851	 Syllables of "chess piece" was missing
+2022-02-02 18:41:18.851	 Pronunciation of "chess piece" was missing
+2022-02-02 18:41:19.508	 Syllables of "chess move" was missing
+2022-02-02 18:41:19.508	 Pronunciation of "chess move" was missing
+2022-02-02 18:42:03.136	 Syllables of "charles martin hall" was missing
+2022-02-02 18:42:03.136	 Pronunciation of "charles martin hall" was missing
+2022-02-02 18:42:10.222	 Syllables of "martin hall" was missing
+2022-02-02 18:42:10.222	 Pronunciation of "martin hall" was missing
+2022-02-02 18:42:10.222	 Results of "martin hall" was missing
+2022-02-02 18:42:41.615	 Syllables of "tree swallow" was missing
+2022-02-02 18:44:53.94	 Pronunciation of "quarters" was not a JSONObject: "'kwɔrtɝrz"
+2022-02-02 18:44:54.349	 Syllables of "living quarters" was missing
+2022-02-02 18:44:54.349	 Pronunciation of "living quarters" was missing
+2022-02-02 18:45:18.616	 Syllables of "government building" was missing
+2022-02-02 18:45:18.616	 Pronunciation of "government building" was missing
+2022-02-02 18:45:30.656	 Syllables of "semidetached house" was missing
+2022-02-02 18:45:30.656	 Pronunciation of "semidetached house" was missing
+2022-02-02 18:45:41.32	 Syllables of "tree diagram" was missing
+2022-02-02 18:45:41.32	 Pronunciation of "tree diagram" was missing

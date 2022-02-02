@@ -78,8 +78,7 @@ public class NullListOperations {
 
     }
 
-    @SafeVarargs
-    public static <T> ArrayList<T> combineListsPrioritiseDuplicates(List<T>... lists) {
+    public static <T> ArrayList<T> combineListsPrioritiseDuplicates(ArrayList<ArrayList<T>> lists) {
         Map<T, Integer> counts = new HashMap<>();
         ArrayList<T> combined = new ArrayList<>();
         for (List<T> list : lists) {

@@ -10,7 +10,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import utils.ParameterWrappers.SuggestionParameters;
+import utils.ParameterWrappers.SuggestionPoolParameters;
 import words.SubWord.PartOfSpeech;
 import words.SuperWord;
 import words.Token;
@@ -29,7 +29,7 @@ public class IndexedTokenLabel extends Label {
     private int lineIndex;
     private int tokenIndex;
     private PartOfSpeech pos;
-    private SuggestionParameters pools = new SuggestionParameters();
+    private SuggestionPoolParameters pools = new SuggestionPoolParameters();
     private boolean inclUnknown = true;
     private ArrayList<SuperWord> suggestions;
     private Controller controller;
@@ -43,7 +43,7 @@ public class IndexedTokenLabel extends Label {
         return pos;
     }
 
-    public SuggestionParameters getPools() {
+    public SuggestionPoolParameters getPools() {
         return pools;
     }
 

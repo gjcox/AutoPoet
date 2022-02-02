@@ -16,8 +16,8 @@ import org.json.JSONObject;
 
 import apis.WordsAPI;
 import utils.ParameterWrappers.FilterParameters;
-import utils.ParameterWrappers.SuggestionParameters;
-import utils.ParameterWrappers.SuggestionParameters.SuggestionPool;
+import utils.ParameterWrappers.SuggestionPoolParameters;
+import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Pronunciation.SubPronunciation;
 import words.SubWord.PartOfSpeech;
 
@@ -467,21 +467,34 @@ public class SuperWord extends Token {
         return similarTo;
     }
 
-    private ArrayList<SuperWord> getSuggestions(PartOfSpeech pos, SuggestionParameters params) {
-        ArrayList<SuperWord> synonymsList = params.synonyms() ? this.getSynonyms(pos) : null;
-        ArrayList<SuperWord> commonlyTypedList = params.commonlyTyped() ? this.getCommonlyTyped(pos) : null;
-        ArrayList<SuperWord> commonCategoriesList = params.commonCategories() ? this.getCommonCategories(pos) : null;
-        ArrayList<SuperWord> partOfList = params.partOf() ? this.getPartOf(pos) : null;
-        ArrayList<SuperWord> hasPartsList = params.hasParts() ? this.getHasParts(pos) : null;
-        ArrayList<SuperWord> similarToList = params.similarTo() ? this.getSimilarTo(pos) : null;
+    private ArrayList<SuperWord> getSuggestions(PartOfSpeech pos, SuggestionPool pool) {
+        if (!populated)
+            this.populate();
 
-        ArrayList<SuperWord> combined = combineListsPrioritiseDuplicates(synonymsList, commonlyTypedList,
-                commonCategoriesList, partOfList, hasPartsList, similarToList);
+        ArrayList<SuperWord> suggestions = null;
+        ArrayList<SubWord> subWords = getSubWords(pos, false);
+        if (subWords != null) {
+            for (SubWord subWord : subWords) {
+                suggestions = addAllToNull(suggestions, subWord.getSuggestions(pool));
+            }
+        }
+        return suggestions;
+    }
+
+    private ArrayList<SuperWord> getAggregatedSuggestions(PartOfSpeech pos, SuggestionPoolParameters pools) {
+        ArrayList<ArrayList<SuperWord>> suggestions = new ArrayList<>();
+        for (SuggestionPool pool : SuggestionPool.values()) {
+            if (pools.includes(pool)) {
+                suggestions.add(this.getSuggestions(pos, pool));
+            }
+        }
+
+        ArrayList<SuperWord> combined = combineListsPrioritiseDuplicates(suggestions);
         if (combined != null) {
             combined.remove(this); // prevent suggesting the original word
         }
         LOG.writeTempLog(String.format("Combined suggestions for \"%s\" (%s) including %s: %s", plaintext, pos,
-                params.toString(), combined));
+                pools.toString(), combined));
         return combined;
     }
 
@@ -513,9 +526,9 @@ public class SuperWord extends Token {
         return filtered;
     }
 
-    public ArrayList<SuperWord> getFilteredSuggestions(PartOfSpeech pos, SuggestionParameters suggestionParams,
+    public ArrayList<SuperWord> getFilteredSuggestions(PartOfSpeech pos, SuggestionPoolParameters suggestionParams,
             FilterParameters filterParams) {
-        ArrayList<SuperWord> unfiltered = getSuggestions(pos, suggestionParams);
+        ArrayList<SuperWord> unfiltered = getAggregatedSuggestions(pos, suggestionParams);
         return filterSuggestions(unfiltered, pos, filterParams);
     }
 

@@ -1,14 +1,18 @@
 package words;
 
+import static config.Configuration.LOG;
+import static utils.NullListOperations.addAllToNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static config.Configuration.LOG;
-import static utils.NullListOperations.addAllToNull;
+import utils.ParameterWrappers;
+import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 
 public class SubWord {
 
@@ -209,8 +213,39 @@ public class SubWord {
 
     }
 
+    // getters
+
     public PartOfSpeech partOfSpeech() {
         return partOfSpeech;
+    }
+
+    /**
+     * 
+     * @param pool
+     * @return the corresponding list. Returns null if the SubWord has no
+     *         corresponding list, or if pool is not an expected value.
+     */
+    public ArrayList<SuperWord> getSuggestions(SuggestionPool pool) {
+        switch (pool) {
+            case COMMONLY_TYPED:
+                return getCommonlyTyped();
+            case COMMON_CATEGORIES:
+                return getCommonCategories();
+            case HAS_PARTS:
+                return getHasParts();
+            case HAS_TYPES:
+                return getHasTypes();
+            case PART_OF:
+                return getPartOf();
+            case SIMILAR_TO:
+                return getSimilarTo();
+            case SYNONYMS:
+                return getSynonyms();
+            case TYPE_OF:
+                return getTypeOf();
+            default:
+                return null;
+        }
     }
 
     public ArrayList<SuperWord> getSynonyms() {
@@ -256,6 +291,8 @@ public class SubWord {
     public ArrayList<SuperWord> getSimilarTo() {
         return similarTo;
     }
+
+    // other
 
     public String toString() {
         String divider = "\n\t";

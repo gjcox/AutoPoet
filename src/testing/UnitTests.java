@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -70,13 +71,13 @@ public class UnitTests {
 
     @Test
     public void testDuplicateSorting() {
-        List<String> list1 = Arrays.asList("a", "b", "m");
-        List<String> list2 = Arrays.asList("c", "n", "m");
-        List<String> list3 = Arrays.asList("n", "x", "m");
-        List<String> list4 = Arrays.asList("y", "z", "m");
-        List<String> list5 = null;
-        List<String> combined = utils.NullListOperations.combineListsPrioritiseDuplicates(list1, list2, list3, list4,
-                list5);
+        ArrayList<String> list1 = new ArrayList<>(Arrays.asList("a", "b", "m"));
+        ArrayList<String> list2 = new ArrayList<>(Arrays.asList("c", "n", "m"));
+        ArrayList<String> list3 = new ArrayList<>(Arrays.asList("n", "x", "m"));
+        ArrayList<String> list4 = new ArrayList<>(Arrays.asList("y", "z", "m"));
+        ArrayList<String> list5 = null;
+        ArrayList<ArrayList<String>> precombined = new ArrayList<>(Arrays.asList(list1, list2, list3, list4, list5));
+        List<String> combined = utils.NullListOperations.combineListsPrioritiseDuplicates(precombined);
         assertEquals(8, combined.size());
         assertEquals(Arrays.asList("m", "n", "a", "b", "c", "x", "y", "z"), combined);
     }
@@ -88,14 +89,13 @@ public class UnitTests {
         });
     }
 
-    
     @Test
     public void testRhymingSchemeString() {
-        RhymingScheme scheme = new RhymingScheme(0); 
+        RhymingScheme scheme = new RhymingScheme(0);
         try {
             scheme = new RhymingScheme(4, new int[] { 0, 1, 26, 28 });
         } catch (RhymingSchemeSizeException e) {
-            fail();  
+            fail();
         }
         assertEquals("#AZB", scheme.toString());
     }
