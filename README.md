@@ -1,11 +1,11 @@
 # Hello 
 To Do list (unordered): 
 <ul>
-            <li>Make a GUI</li>
+            <li>Improve the GUI</li>
             <li>Recognise more poetic devices</li>
             <li>Improve suggestion filtering to do it in batches, so that the least likely suggestions don't waste user time</li>
             <li>Handle conjugated verbs and pluralised nouns</li>
-            <li>Handle compound words</li>
+            <li>Handle compound words better</li>
 </ul>
 
 # Compilation 
