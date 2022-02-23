@@ -10,6 +10,7 @@ import java.util.List;
 import utils.Pair;
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters;
+import utils.ParameterWrappers.FilterParameters.Filter;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Emphasis;
 import words.IPAHandler;
@@ -52,7 +53,7 @@ public class Demos {
         for (int i = 0; i < words1.size(); i++) {
             SuperWord superword1 = SuperWord.getSuperWord(words1.get(i));
             SuperWord superword2 = SuperWord.getSuperWord(words2.get(i));
-            boolean rhymes = superword1.rhymesWithWrapper(superword2);
+            boolean rhymes = superword1.matchesWithWrapper(Filter.PERFECT_RHYME, superword2);
             System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
                     words1.get(i), words2.get(i), rhymes));
         }
@@ -91,7 +92,7 @@ public class Demos {
         zombie.populate();
         System.out.println(zombie);
 
-        boolean rhymes = abercrombie.rhymesWithWrapper(zombie);
+        boolean rhymes = abercrombie.matchesWithWrapper(Filter.PERFECT_RHYME, zombie);
 
         System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
                 abercrombie.getPlaintext(), zombie.getPlaintext(), rhymes));
@@ -128,7 +129,7 @@ public class Demos {
             // superWordPopulator();
             // wordConstructor();
             // demoRhymes();
-            // abercrombieZombie();
+            abercrombieZombie();
             // demoSynonyms();
             // demoPoemConstructor("temp.txt");
             LOG.closeLogWriters();
@@ -192,7 +193,7 @@ public class Demos {
                 case "rhyme":
                     superWord1 = SuperWord.getSuperWord(args[1]);
                     superWord2 = SuperWord.getSuperWord(args[2]);
-                    boolean rhymes = superWord1.rhymesWithWrapper(superWord2);
+                    boolean rhymes = superWord1.matchesWithWrapper(Filter.PERFECT_RHYME, superWord2);
                     System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
                             superWord1.getPlaintext(), superWord2.getPlaintext(), rhymes));
                     break;
@@ -230,7 +231,7 @@ public class Demos {
                             String.format("\"%s\" (%s) rhymes with \"%s\" (%s): %s",
                                     superWord1.getPlaintext(), pos1,
                                     superWord2.getPlaintext(), pos2,
-                                    superWord1.rhymesWithWrapper(superWord2, pos1, pos2)));
+                                    superWord1.rhymesWithWrapper(Filter.PERFECT_RHYME, superWord2, pos1, pos2)));
                     break;
                 case "suggestions":
                     superWord1 = SuperWord.getSuperWord(args[1]);
@@ -238,7 +239,9 @@ public class Demos {
                     superWord2 = SuperWord.getSuperWord(args[3]);
                     pos2 = PartOfSpeech.fromString(args[4]);
                     suggestionParams = new SuggestionPoolParameters();
-                    filterParams = new FilterParameters(true, superWord2, pos2);
+                    filterParams = new FilterParameters();
+                    filterParams.setFilter(Filter.PERFECT_RHYME, superWord2);
+                    filterParams.setMatchPoS(pos2);
                     System.out.println(
                             String.format("Suggestions for \"%s\" (%s) that rhyme with \"%s\" (%s): %s",
                                     superWord1.getPlaintext(), pos1,

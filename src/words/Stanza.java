@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import exceptions.RhymingSchemeSizeException;
+import utils.ParameterWrappers.FilterParameters.Filter;
 
 import static config.Configuration.LOG;
 
@@ -71,7 +72,7 @@ public class Stanza {
     public boolean setDesiredRhymeScheme(String rhymeScheme) {
         if (rhymeScheme.equals("")) {
             desiredScheme = null;
-            return true; 
+            return true;
         }
         try {
             this.desiredScheme = new RhymingScheme(lines.size(), rhymeScheme.toCharArray());
@@ -174,7 +175,8 @@ public class Stanza {
             if (scheme.getValue(i) == 0 && (word1 = getLastWord(i)) != null) {
                 for (int j = i + 1; j < this.lineCount(); j++) {
                     SuperWord word2;
-                    if (scheme.getValue(j) == 0 && (word2 = getLastWord(j)) != null && word1.rhymesWithWrapper(word2)) {
+                    if (scheme.getValue(j) == 0 && (word2 = getLastWord(j)) != null
+                            && word1.matchesWithWrapper(Filter.PERFECT_RHYME, word2)) {
                         switch (scheme.getValue(i)) {
                             case 0:
                                 int rhymeValue = scheme.getNextValue();

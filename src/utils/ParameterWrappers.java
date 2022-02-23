@@ -105,7 +105,7 @@ public interface ParameterWrappers {
 
     public class FilterParameters {
         public enum Filter {
-            RHYME("perfect rhyme", true),
+            PERFECT_RHYME("perfect rhyme", true),
             SYLLABIC_RHYME("syllabic rhyme", true), // only the last syllable
             IMPERFECT_RHYME("imperfect rhyme", true), // stressed syllable to unstressed syllable
             WEAK_RHYME("weak rhyme", true), // unstressed syllable to unstressed syllable
@@ -131,10 +131,18 @@ public interface ParameterWrappers {
 
         EnumMap<Filter, SuperWord> filters = new EnumMap<>(Filter.class);
         PartOfSpeech matchPoS = null; // if null, match all PoS
-        boolean inclusiveUnknown = false;
+        boolean inclusiveUnknown = false; // TODO implement effect of this in matchesWith()
 
         public void setFilter(Filter filter, SuperWord matchWith) {
             filters.put(filter, matchWith);
+        }
+
+        public void setMatchPoS(PartOfSpeech matchPoS) {
+            this.matchPoS = matchPoS; 
+        }
+
+        public void setInclusiveUnknown(boolean inclusiveUnknown) {
+            this.inclusiveUnknown = inclusiveUnknown; 
         }
 
         public void removeFilter(Filter filter) {

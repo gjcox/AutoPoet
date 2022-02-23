@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import apis.WordsAPI;
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters;
+import utils.ParameterWrappers.FilterParameters.Filter;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Pronunciation.SubPronunciation;
 import words.SubWord.PartOfSpeech;
@@ -121,6 +122,7 @@ public class SuperWord extends Token {
             JSONArray resultsArray = word.getJSONArray("results");
             this.setWords(resultsArray);
         } else {
+            partsOfSpeech.put(PartOfSpeech.UNKNOWN, null); // so that matchesWith has something to iterate over 
             LOG.writePersistentLog(String.format("Results of \"%s\" was missing", plaintext));
         }
 
@@ -266,10 +268,18 @@ public class SuperWord extends Token {
         ArrayList<SuperWord> filtered = new ArrayList<>(suggestions);
 
         for (SuperWord suggestion : suggestions) {
-            if (params.rhyme() && !suggestion.rhymesWithWrapper(params.rhymeWith(), pos, params.rhymePos())) {
-                filtered.remove(suggestion);
+            boolean matched = false;
+            SuperWord matchWith;
+            for (Filter filter : Filter.values()) {
+                if ((matchWith = params.getMatchWith(filter)) != null
+                        && suggestion.rhymesWithWrapper(filter, matchWith, pos, params.getMatchPoS())) {
+                    matched = true;
+                }
             }
+            if (!matched)
+                filtered.remove(suggestion);
         }
+
         LOG.writeTempLog(String.format("Filtered suggestions for \"%s\" (%s) including %s: %s", plaintext, pos,
                 params.toString(), filtered));
         return filtered;
@@ -346,21 +356,22 @@ public class SuperWord extends Token {
      * @param subPronunciation2
      * @return
      */
-    private static boolean rhmyesWith(String plaintext1, PartOfSpeech pos1, SubPronunciation subPronunciation1,
+    private static boolean matchesWith(Filter filter,
+            String plaintext1, PartOfSpeech pos1, SubPronunciation subPronunciation1,
             String plaintext2, PartOfSpeech pos2, SubPronunciation subPronunciation2) {
         if (subPronunciation1 == null) {
             LOG.writePersistentLog(
-                    String.format("\"%s\" (%s) did not have a pronunciation for \"%s\" (%s) to rhyme against",
+                    String.format("\"%s\" (%s) did not have a pronunciation for \"%s\" (%s) to match against",
                             plaintext1, pos1, plaintext2, pos2));
             return false;
         }
         if (subPronunciation2 == null) {
             LOG.writePersistentLog(
-                    String.format("\"%s\" (%s) did not have a pronunciation for \"%s\" (%s) to rhyme against",
+                    String.format("\"%s\" (%s) did not have a pronunciation for \"%s\" (%s) to match against",
                             plaintext2, pos2, plaintext1, pos1));
             return false;
         }
-        return subPronunciation1.rhymesWith(subPronunciation2);
+        return subPronunciation1.matchesWith(filter, subPronunciation2);
     }
 
     /**
@@ -368,10 +379,11 @@ public class SuperWord extends Token {
      * product evaluation) and returns true if any part of speech pairing produces a
      * rhyme.
      * 
-     * @param other
-     * @return
+     * @param filter the type of matching to perform (e.g. perfect rhyme).
+     * @param other  the word to match against.
+     * @return true if the two words match for any part of speech pair.
      */
-    public boolean rhymesWithWrapper(SuperWord other) {
+    public boolean matchesWithWrapper(Filter filter, SuperWord other) {
         if (!this.populated)
             this.populate();
         if (!other.populated)
@@ -385,7 +397,8 @@ public class SuperWord extends Token {
             SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
             for (PartOfSpeech pos2 : other.partsOfSpeech.keySet()) {
                 SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
-                if (rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2)) {
+                if (matchesWith(filter, this.plaintext, pos1, subPronunciation1, other.plaintext, pos2,
+                        subPronunciation2)) {
                     return true;
                 }
             }
@@ -398,28 +411,31 @@ public class SuperWord extends Token {
      * PartOfSpeech arguments, iterates over all parts of speech of corresponding
      * word.
      * 
-     * @param other
-     * @param pos1
-     * @param pos2
+     * @param filter the type of matching to perform (e.g. perfect rhyme).
+     * @param other  the word to match against.
+     * @param pos1   part of speech of this word.
+     * @param pos2   part of speech of the other word.
      * @return
      */
-    public boolean rhymesWithWrapper(SuperWord other, PartOfSpeech pos1, PartOfSpeech pos2) {
+    public boolean rhymesWithWrapper(Filter filter, SuperWord other, PartOfSpeech pos1, PartOfSpeech pos2) {
         if (!this.populated)
             this.populate();
         if (!other.populated)
             other.populate();
 
         if (pos1 == null && pos2 == null) {
-            return rhymesWithWrapper(other);
+            return matchesWithWrapper(filter, other);
         } else if (pos1 != null && pos2 != null) {
             SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
             SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
-            return rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2);
+            return matchesWith(filter, this.plaintext, pos1, subPronunciation1, other.plaintext, pos2,
+                    subPronunciation2);
         } else if (pos1 != null) {
             SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
             for (PartOfSpeech pos2b : other.partsOfSpeech.keySet()) {
                 SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2b);
-                if (rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2)) {
+                if (matchesWith(filter, this.plaintext, pos1, subPronunciation1, other.plaintext, pos2,
+                        subPronunciation2)) {
                     return true;
                 }
             }
@@ -427,7 +443,8 @@ public class SuperWord extends Token {
             SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
             for (PartOfSpeech pos1b : this.partsOfSpeech.keySet()) {
                 SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1b);
-                if (rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2)) {
+                if (matchesWith(filter, this.plaintext, pos1, subPronunciation1, other.plaintext, pos2,
+                        subPronunciation2)) {
                     return true;
                 }
             }
