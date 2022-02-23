@@ -13,8 +13,8 @@ public interface ParameterWrappers {
             HAS_TYPES("has types", "hasTypes", true),
             TYPE_OF("type of", "typeOf", true),
             COMMONLY_TYPED("commonly typed", null, false),
-            IN_CATEGORY("inCategory", "inCategory", true),
-            HAS_CATEGORIES("hasCategories", "hasCategories", true),
+            IN_CATEGORY("inCategory", "in category", true),
+            HAS_CATEGORIES("hasCategories", "has categories", true),
             COMMON_CATEGORIES("commonly categorised", null, false),
             PART_OF("part of", "partOf", true),
             HAS_PARTS("has parts", "hasParts", true),
@@ -104,22 +104,57 @@ public interface ParameterWrappers {
     }
 
     public class FilterParameters {
-        boolean rhyme;
-        SuperWord rhymeWith;
-        PartOfSpeech rhymePos;
+        public enum Filter {
+            RHYME("perfect rhyme", true),
+            SYLLABIC_RHYME("syllabic rhyme", true), // only the last syllable
+            IMPERFECT_RHYME("imperfect rhyme", true), // stressed syllable to unstressed syllable
+            WEAK_RHYME("weak rhyme", true), // unstressed syllable to unstressed syllable
+            FORCED_RHYME("forced rhyme", true), // stressed to stressed, similar sound but not exact match
+            ;
 
-        public FilterParameters(boolean rhyme, SuperWord rhymeWith, PartOfSpeech pos) {
-            this.rhyme = rhyme;
-            this.rhymeWith = rhymeWith;
-            this.rhymePos = pos;
+            private final String label;
+            private final boolean isRhyme;
+
+            private Filter(String label, boolean isRhyme) {
+                this.label = label;
+                this.isRhyme = isRhyme;
+            }
+
+            public String getLabel() {
+                return label;
+            }
+
+            public boolean isRhymeType() {
+                return isRhyme;
+            }
+        }
+
+        EnumMap<Filter, SuperWord> filters = new EnumMap<>(Filter.class);
+        PartOfSpeech matchPoS = null; // if null, match all PoS
+        boolean inclusiveUnknown = false;
+
+        public void setFilter(Filter filter, SuperWord matchWith) {
+            filters.put(filter, matchWith);
+        }
+
+        public void removeFilter(Filter filter) {
+            filters.remove(filter);
+        }
+
+        public SuperWord getMatchWith(Filter filter) {
+            return filters.get(filter);
+        }
+
+        public PartOfSpeech getMatchPoS() {
+            return matchPoS;
         }
 
         public String toString() {
             StringBuilder builder = new StringBuilder("{");
-            if (rhyme) {
-                builder.append("rhyme:");
-                builder.append(String.format("\"%s\"", rhymeWith.getPlaintext()));
-                builder.append(String.format("(%s),", rhymePos));
+            for (Filter filter : Filter.values()) {
+                if (filters.get(filter) != null) {
+                    builder.append(String.format("%s(%s), ", filter.name(), filters.get(filter)));
+                }
             }
 
             int commaIndex = builder.lastIndexOf(",");
@@ -128,18 +163,6 @@ public interface ParameterWrappers {
             }
             builder.append("}");
             return builder.toString();
-        }
-
-        public boolean rhyme() {
-            return rhyme;
-        }
-
-        public SuperWord rhymeWith() {
-            return rhymeWith;
-        }
-
-        public PartOfSpeech rhymePos() {
-            return rhymePos;
         }
     }
 }
