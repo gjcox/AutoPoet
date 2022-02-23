@@ -39,7 +39,6 @@ import utils.ParameterWrappers.SuggestionPoolParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Poem;
 import words.Stanza;
-import words.SubWord;
 import words.SubWord.PartOfSpeech;
 import words.SuperWord;
 import words.Token;
@@ -281,7 +280,7 @@ public class Controller {
      * Tied to the PoS radio buttons within the FXML file.
      */
     public void updatePartOfSpeech(ActionEvent e) {
-        focusedToken.setPos(SubWord.parsePoS(((RadioButton) e.getSource()).getText()));
+        focusedToken.setPos(PartOfSpeech.fromString(((RadioButton) e.getSource()).getText()));
         enableSuggestionPoolBoxes();
     }
 

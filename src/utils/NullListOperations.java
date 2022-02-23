@@ -55,7 +55,15 @@ public class NullListOperations {
     }
 
     @SafeVarargs
-    public static <T> ArrayList<T> combineLists(List<T>... lists) {
+    public static <T> ArrayList<T> combineListsVarags(List<T>... lists) {
+        ArrayList<T> combined = null;
+        for (List<T> list : lists) {
+            combined = addAllToNull(combined, list);
+        }
+        return combined;
+    }
+
+    public static <T> ArrayList<T> combineLists(Collection<ArrayList<T>> lists) {
         ArrayList<T> combined = null;
         for (List<T> list : lists) {
             combined = addAllToNull(combined, list);

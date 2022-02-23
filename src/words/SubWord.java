@@ -5,41 +5,58 @@ import static utils.NullListOperations.addAllToNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import utils.ParameterWrappers;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 
 public class SubWord {
 
     public enum PartOfSpeech {
-        NOUN, PRONOUN, VERB, ADJECTIVE, ADVERB, PREPOSITION, CONJUCTION, DEFINITE_ARTICLE, UNKNOWN
-    }
+        NOUN("noun"),
+        PRONOUN("pronoun"),
+        VERB("verb"),
+        ADJECTIVE("adjective"),
+        ADVERB("adverb"),
+        PREPOSITION("preposition"),
+        CONJUCTION("conjunction"),
+        DEFINITE_ARTICLE("definite article"),
+        UNKNOWN(null);
 
-    public static PartOfSpeech parsePoS(String pos) {
-        switch (pos.toLowerCase()) {
-            case "noun":
-                return PartOfSpeech.NOUN;
-            case "pronoun":
-                return PartOfSpeech.PRONOUN;
-            case "verb":
-                return PartOfSpeech.VERB;
-            case "adjective":
-                return PartOfSpeech.ADJECTIVE;
-            case "adverb":
-                return PartOfSpeech.ADVERB;
-            case "preposition":
-                return PartOfSpeech.PREPOSITION;
-            case "conjunction":
-                return PartOfSpeech.CONJUCTION;
-            case "definite article":
-                return PartOfSpeech.DEFINITE_ARTICLE;
-            default:
-                return PartOfSpeech.UNKNOWN;
+        private String apiString;
+
+        public String getApiString() {
+            return apiString;
+        }
+
+        private PartOfSpeech(String apiString) {
+            this.apiString = apiString;
+        }
+
+        public static PartOfSpeech fromString(String pos) {
+            switch (pos.toLowerCase()) {
+                case "noun":
+                    return PartOfSpeech.NOUN;
+                case "pronoun":
+                    return PartOfSpeech.PRONOUN;
+                case "verb":
+                    return PartOfSpeech.VERB;
+                case "adjective":
+                    return PartOfSpeech.ADJECTIVE;
+                case "adverb":
+                    return PartOfSpeech.ADVERB;
+                case "preposition":
+                    return PartOfSpeech.PREPOSITION;
+                case "conjunction":
+                    return PartOfSpeech.CONJUCTION;
+                case "definite article":
+                    return PartOfSpeech.DEFINITE_ARTICLE;
+                default:
+                    return PartOfSpeech.UNKNOWN;
+            }
         }
     }
 
@@ -52,23 +69,10 @@ public class SubWord {
     private SuperWord parent;
     private String definition;
     private PartOfSpeech partOfSpeech = PartOfSpeech.UNKNOWN;
+    private EnumMap<SuggestionPool, ArrayList<SuperWord>> suggestionPools = new EnumMap<>(SuggestionPool.class);
 
-    private ArrayList<SuperWord> synonyms;
-
-    private ArrayList<SuperWord> typeOf;
-    private ArrayList<SuperWord> hasTypes;
-    private ArrayList<SuperWord> commonlyTyped;
     private boolean setCommonlyTyped = false;
-
-    private ArrayList<SuperWord> inCategory;
-    private ArrayList<SuperWord> hasCategories;
-    private ArrayList<SuperWord> commonCategories;
     private boolean setCommonCategories = false;
-
-    private ArrayList<SuperWord> partOf;
-    private ArrayList<SuperWord> hasParts;
-
-    private ArrayList<SuperWord> similarTo;
 
     /**
      * 
@@ -95,82 +99,38 @@ public class SubWord {
             setPartOfSpeech((String) resultObject.get("partOfSpeech"));
         }
 
-        if (resultObject.containsKey("synonyms")) {
-            List<Object> synonymsList = (List<Object>) resultObject.get("synonyms");
-            synonyms = SuperWord.batchPlaceHolders(synonymsList);
+        for (SuggestionPool pool : SuggestionPool.values()) {
+            if (resultObject.containsKey(pool.getApiString())) {
+                List<Object> synonymsList = (List<Object>) resultObject.get(pool.getApiString());
+                suggestionPools.put(pool, SuperWord.batchPlaceHolders(synonymsList));
+            }
         }
 
-        if (resultObject.containsKey("typeOf")) {
-            List<Object> typeOfList = (List<Object>) resultObject.get("typeOf");
-            typeOf = SuperWord.batchPlaceHolders(typeOfList);
-        }
-
-        if (resultObject.containsKey("hasTypes")) {
-            List<Object> hasTypesList = (List<Object>) resultObject.get("hasTypes");
-            hasTypes = SuperWord.batchPlaceHolders(hasTypesList);
-        }
-
-        if (resultObject.containsKey("inCategory")) {
-            List<Object> inCategoryList = (List<Object>) resultObject.get("inCategory");
-            inCategory = SuperWord.batchPlaceHolders(inCategoryList);
-        }
-
-        if (resultObject.containsKey("hasCategories")) {
-            List<Object> hasCategoriesList = (List<Object>) resultObject.get("hasCategories");
-            hasCategories = SuperWord.batchPlaceHolders(hasCategoriesList);
-        }
-
-        if (resultObject.containsKey("partOf")) {
-            List<Object> partOfList = (List<Object>) resultObject.get("partOf");
-            partOf = SuperWord.batchPlaceHolders(partOfList);
-        }
-
-        if (resultObject.containsKey("hasParts")) {
-            List<Object> hasPartsList = (List<Object>) resultObject.get("hasParts");
-            hasParts = SuperWord.batchPlaceHolders(hasPartsList);
-        }
-
-        if (resultObject.containsKey("similarTo")) {
-            List<Object> similarToList = (List<Object>) resultObject.get("similarTo");
-            similarTo = SuperWord.batchPlaceHolders(similarToList);
-        }
-    }
-
-    public void populateSynonyms() {
-        for (SuperWord synonym : synonyms) {
-            synonym.populate();
-        }
-    }
-
-    public void populateTypeOf() {
-        for (SuperWord type : typeOf) {
-            type.populate();
-        }
-    }
-
-    public void populateSimilarTo() {
-        for (SuperWord similarToElement : similarTo) {
-            similarToElement.populate();
-        }
     }
 
     public void setCommonlyTyped() {
-        if (setCommonlyTyped || typeOf == null)
+        if (setCommonlyTyped || suggestionPools.get(SuggestionPool.TYPE_OF) == null)
             return;
 
-        for (SuperWord type : typeOf) {
-            commonlyTyped = addAllToNull(commonlyTyped, type.getHasTypes(this.partOfSpeech, parent));
+        ArrayList<SuperWord> commonlyTyped = new ArrayList<>();
+        for (SuperWord type : suggestionPools.get(SuggestionPool.TYPE_OF)) {
+            commonlyTyped = addAllToNull(commonlyTyped,
+                    type.getSuggestionPool(SuggestionPool.HAS_TYPES, this.partOfSpeech, false));
         }
+        suggestionPools.put(SuggestionPool.COMMONLY_TYPED, commonlyTyped);
         setCommonlyTyped = true;
     }
 
     public void setCommonCategories() {
-        if (setCommonCategories || inCategory == null)
+        if (setCommonCategories || suggestionPools.get(SuggestionPool.IN_CATEGORY) == null)
             return;
 
-        for (SuperWord category : inCategory) {
-            commonCategories = addAllToNull(commonCategories, category.getHasCategories(this.partOfSpeech, parent));
+        ArrayList<SuperWord> commonCategories = new ArrayList<>();
+        for (SuperWord category : suggestionPools.get(SuggestionPool.IN_CATEGORY)) {
+            commonCategories = addAllToNull(commonCategories,
+                    category.getSuggestionPool(SuggestionPool.HAS_CATEGORIES, this.partOfSpeech, false));
         }
+        suggestionPools.put(SuggestionPool.COMMON_CATEGORIES, commonCategories);
         setCommonCategories = true;
     }
 
@@ -178,39 +138,8 @@ public class SubWord {
         if (partOfSpeech == null) {
             partOfSpeech = "null";
         }
-        switch (partOfSpeech) {
-            case "noun":
-                this.partOfSpeech = PartOfSpeech.NOUN;
-                break;
-            case "pronoun":
-                this.partOfSpeech = PartOfSpeech.PRONOUN;
-                break;
-            case "verb":
-                this.partOfSpeech = PartOfSpeech.VERB;
-                break;
-            case "adjective":
-                this.partOfSpeech = PartOfSpeech.ADJECTIVE;
-                break;
-            case "adverb":
-                this.partOfSpeech = PartOfSpeech.ADVERB;
-                break;
-            case "preposition":
-                this.partOfSpeech = PartOfSpeech.PREPOSITION;
-                break;
-            case "conjunction":
-                this.partOfSpeech = PartOfSpeech.CONJUCTION;
-                break;
-            case "definite article":
-                this.partOfSpeech = PartOfSpeech.DEFINITE_ARTICLE;
-                break;
-            default:
-                LOG.writePersistentLog(
-                        String.format("Unrecognised part of speech for \"%s\" with definition \"%s\": \"%s\"",
-                                parent.getPlaintext(), this.definition, partOfSpeech));
-                // partOfSpeech will be left as UNKNOWN
-                break;
-        }
 
+        this.partOfSpeech = PartOfSpeech.fromString(partOfSpeech);
     }
 
     // getters
@@ -225,71 +154,19 @@ public class SubWord {
      * @return the corresponding list. Returns null if the SubWord has no
      *         corresponding list, or if pool is not an expected value.
      */
-    public ArrayList<SuperWord> getSuggestions(SuggestionPool pool) {
+    public ArrayList<SuperWord> getSuggestionPool(SuggestionPool pool) {
         switch (pool) {
             case COMMONLY_TYPED:
-                return getCommonlyTyped();
+                if (!setCommonlyTyped)
+                    setCommonlyTyped();
+                return suggestionPools.get(pool);
             case COMMON_CATEGORIES:
-                return getCommonCategories();
-            case HAS_PARTS:
-                return getHasParts();
-            case HAS_TYPES:
-                return getHasTypes();
-            case PART_OF:
-                return getPartOf();
-            case SIMILAR_TO:
-                return getSimilarTo();
-            case SYNONYMS:
-                return getSynonyms();
-            case TYPE_OF:
-                return getTypeOf();
+                if (!setCommonCategories)
+                    setCommonCategories();
+                return suggestionPools.get(pool);
             default:
-                return null;
+                return suggestionPools.get(pool);
         }
-    }
-
-    public ArrayList<SuperWord> getSynonyms() {
-        return synonyms;
-    }
-
-    public ArrayList<SuperWord> getTypeOf() {
-        return typeOf;
-    }
-
-    public ArrayList<SuperWord> getHasTypes() {
-        return hasTypes;
-    }
-
-    public ArrayList<SuperWord> getCommonlyTyped() {
-        if (!setCommonlyTyped)
-            setCommonlyTyped();
-        return commonlyTyped;
-    }
-
-    public ArrayList<SuperWord> getInCategory() {
-        return inCategory;
-    }
-
-    public ArrayList<SuperWord> getHasCategories() {
-        return hasCategories;
-    }
-
-    public ArrayList<SuperWord> getCommonCategories() {
-        if (!setCommonCategories)
-            setCommonCategories();
-        return commonCategories;
-    }
-
-    public ArrayList<SuperWord> getPartOf() {
-        return partOf;
-    }
-
-    public ArrayList<SuperWord> getHasParts() {
-        return hasParts;
-    }
-
-    public ArrayList<SuperWord> getSimilarTo() {
-        return similarTo;
     }
 
     // other
@@ -302,50 +179,19 @@ public class SubWord {
             stringBuilder.append(divider);
             stringBuilder.append("definition: " + definition);
         }
+
         if (partOfSpeech != null) {
             stringBuilder.append(divider);
             stringBuilder.append("partOfSpeech: " + partOfSpeech.toString());
         }
-        if (synonyms != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("synonyms: " + synonyms.toString());
+
+        for (SuggestionPool pool : SuggestionPool.values()) {
+            if (suggestionPools.get(pool) != null) {
+                stringBuilder.append(divider);
+                stringBuilder.append(String.format("%s: %s", pool.getLabel(), suggestionPools.get(pool)));
+            }
         }
-        if (typeOf != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("typeOf: " + typeOf.toString());
-        }
-        if (hasTypes != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("hasTypes: " + hasTypes.toString());
-        }
-        if (commonlyTyped != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("commonlyTyped: " + commonlyTyped.toString());
-        }
-        if (inCategory != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("inCategory: " + inCategory.toString());
-        }
-        if (hasCategories != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("hasCategories: " + hasCategories.toString());
-        }
-        if (commonCategories != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("commonCategories: " + commonCategories.toString());
-        }
-        if (partOf != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("partOf: " + partOf.toString());
-        }
-        if (hasParts != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("hasParts: " + hasParts.toString());
-        }
-        if (similarTo != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("similarTo: " + similarTo.toString());
-        }
+
         stringBuilder.append("\n}");
         return stringBuilder.toString();
     }

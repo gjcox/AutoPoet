@@ -4,6 +4,7 @@ import java.text.Normalizer;
 import java.text.Normalizer.Form;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -23,8 +24,8 @@ import words.SubWord.PartOfSpeech;
 
 import static utils.NullListOperations.addToNull;
 import static utils.NullListOperations.addAllToNull;
-import static utils.NullListOperations.addAllToNullIfMatching;
 import static utils.NullListOperations.combineLists;
+import static utils.NullListOperations.combineListsVarags;
 import static utils.NullListOperations.combineListsPrioritiseDuplicates;
 import static config.Configuration.LOG;
 
@@ -39,16 +40,7 @@ public class SuperWord extends Token {
 
     private boolean populated = false; // true iff built from a WordsAPI query
     private Pronunciation pronunciation;
-    private Set<PartOfSpeech> partsOfSpeech = new HashSet<>();
-    private ArrayList<SubWord> nouns;
-    private ArrayList<SubWord> pronouns;
-    private ArrayList<SubWord> verbs;
-    private ArrayList<SubWord> adjectives;
-    private ArrayList<SubWord> adverbs;
-    private ArrayList<SubWord> prepositions;
-    private ArrayList<SubWord> conjunctions;
-    private ArrayList<SubWord> definiteArticles;
-    private ArrayList<SubWord> unknowns;
+    private EnumMap<PartOfSpeech, ArrayList<SubWord>> partsOfSpeech = new EnumMap<>(PartOfSpeech.class);
 
     /**
      * Attempts to get a cached word, before returning a new placeholder.
@@ -130,7 +122,6 @@ public class SuperWord extends Token {
             this.setWords(resultsArray);
         } else {
             LOG.writePersistentLog(String.format("Results of \"%s\" was missing", plaintext));
-            this.partsOfSpeech.add(PartOfSpeech.UNKNOWN);
         }
 
         populated = true;
@@ -167,41 +158,13 @@ public class SuperWord extends Token {
 
         if (results.isEmpty()) {
             LOG.writePersistentLog(String.format("Results of \"%s\" was an empty array", plaintext));
-            partsOfSpeech.add(PartOfSpeech.UNKNOWN);
         }
 
         for (Object result : results) {
             SubWord word = new SubWord(this, (Map<String, Object>) result);
-            partsOfSpeech.add(word.partOfSpeech());
-            switch (word.partOfSpeech()) {
-                case NOUN:
-                    nouns = addToNull(nouns, word);
-                    break;
-                case PRONOUN:
-                    pronouns = addToNull(pronouns, word);
-                    break;
-                case VERB:
-                    verbs = addToNull(verbs, word);
-                    break;
-                case ADJECTIVE:
-                    adjectives = addToNull(adjectives, word);
-                    break;
-                case ADVERB:
-                    adverbs = addToNull(adverbs, word);
-                    break;
-                case PREPOSITION:
-                    prepositions = addToNull(prepositions, word);
-                    break;
-                case CONJUCTION:
-                    conjunctions = addToNull(conjunctions, word);
-                    break;
-                case DEFINITE_ARTICLE:
-                    definiteArticles = addToNull(definiteArticles, word);
-                    break;
-                case UNKNOWN:
-                    unknowns = addToNull(unknowns, word);
-                    break;
-            }
+            PartOfSpeech pos = word.partOfSpeech();
+            ArrayList<SubWord> subWords = partsOfSpeech.get(pos);
+            partsOfSpeech.put(word.partOfSpeech(), addToNull(subWords, word));
         }
     }
 
@@ -215,34 +178,12 @@ public class SuperWord extends Token {
         if (!this.populated) {
             this.populate();
         }
-        switch (pos) {
-            case ADJECTIVE:
-                return adjectives;
-            case ADVERB:
-                return adverbs;
-            case CONJUCTION:
-                return conjunctions;
-            case DEFINITE_ARTICLE:
-                return definiteArticles;
-            case NOUN:
-                return nouns;
-            case PREPOSITION:
-                return prepositions;
-            case PRONOUN:
-                return pronouns;
-            case UNKNOWN:
-                if (inclusiveUnknown) {
-                    return combineLists(adjectives, adverbs, conjunctions, definiteArticles, nouns, prepositions,
-                            pronouns, verbs, unknowns);
-                } else {
-                    return unknowns;
-                }
-            case VERB:
-                return verbs;
-            default:
-                LOG.writePersistentLog(
-                        String.format("Attempted to get subwords of \"s\" with invalid POS: \"%s\"", plaintext, pos));
-                return unknowns;
+        if (pos.equals(PartOfSpeech.UNKNOWN) && inclusiveUnknown) {
+            return combineLists(partsOfSpeech.values());
+        } else if (inclusiveUnknown) {
+            return combineListsVarags(partsOfSpeech.get(pos), partsOfSpeech.get(PartOfSpeech.UNKNOWN));
+        } else {
+            return partsOfSpeech.get(pos);
         }
     }
 
@@ -260,9 +201,9 @@ public class SuperWord extends Token {
     public boolean validPool(SuggestionPool pool, PartOfSpeech pos) {
         switch (pool) {
             case COMMONLY_TYPED:
-                return this.getTypeOf(pos) != null;
+                return getSuggestionPool(SuggestionPool.TYPE_OF, pos, false) != null;
             case COMMON_CATEGORIES:
-                return this.getInCategory(pos) != null;
+                return getSuggestionPool(SuggestionPool.IN_CATEGORY, pos, false) != null;
             case HAS_PARTS:
             case PART_OF:
             case SIMILAR_TO:
@@ -270,222 +211,30 @@ public class SuperWord extends Token {
             case HAS_TYPES:
             case TYPE_OF:
             default:
-                return getSuggestionPool(pool, pos) != null;
+                return getSuggestionPool(pool, pos, false) != null;
         }
 
     }
 
-    public ArrayList<SuperWord> getSuggestionPool(SuggestionPool pool, PartOfSpeech pos) {
-        switch (pool) {
-            case COMMONLY_TYPED:
-                return this.getCommonlyTyped(pos);
-            case COMMON_CATEGORIES:
-                return this.getCommonCategories(pos);
-            case HAS_PARTS:
-                return this.getHasParts(pos);
-            case PART_OF:
-                return this.getPartOf(pos);
-            case SIMILAR_TO:
-                return this.getSimilarTo(pos);
-            case SYNONYMS:
-                return this.getSynonyms(pos);
-            case HAS_TYPES:
-                return this.getHasTypes(pos);
-            case TYPE_OF:
-                return this.getTypeOf(pos);
-            default:
-                return null;
-        }
-    }
-
-    public ArrayList<SuperWord> getSynonyms(PartOfSpeech pos) {
+    public ArrayList<SuperWord> getSuggestionPool(SuggestionPool pool, PartOfSpeech pos, boolean inclusiveUnknown) {
         if (!populated)
             this.populate();
 
-        ArrayList<SuperWord> synonyms = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, false);
+        ArrayList<SuperWord> suggestionPool = null;
+        ArrayList<SubWord> subWords = getSubWords(pos, inclusiveUnknown);
         if (subWords != null) {
             for (SubWord subWord : subWords) {
-                synonyms = addAllToNull(synonyms, subWord.getSynonyms());
+                suggestionPool = addAllToNull(suggestionPool, subWord.getSuggestionPool(pool));
             }
         }
-        return synonyms;
+        return suggestionPool;
     }
 
-    public ArrayList<SuperWord> getTypeOf(PartOfSpeech pos) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> typesOf = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, false);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                typesOf = addAllToNull(typesOf, subWord.getTypeOf());
-            }
-        }
-        return typesOf;
-    }
-
-    public ArrayList<SuperWord> getHasTypes(PartOfSpeech pos) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> types = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, false);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                types = addAllToNull(types, subWord.getHasTypes());
-            }
-        }
-        return types;
-    }
-
-    public ArrayList<SuperWord> getHasTypes(PartOfSpeech pos, SuperWord matching) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> types = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, true);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                types = addAllToNullIfMatching(types, subWord.getHasTypes(), matching);
-            }
-        }
-        return types;
-    }
-
-    public ArrayList<SuperWord> getCommonlyTyped(PartOfSpeech pos) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> commonlyTyped = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, false);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                commonlyTyped = addAllToNull(commonlyTyped, subWord.getCommonlyTyped());
-            }
-        }
-        return commonlyTyped;
-    }
-
-    public ArrayList<SuperWord> getInCategory(PartOfSpeech pos) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> categories = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, false);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                categories = addAllToNull(categories, subWord.getInCategory());
-            }
-        }
-        return categories;
-    }
-
-    public ArrayList<SuperWord> getHasCategories(PartOfSpeech pos) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> categories = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, false);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                categories = addAllToNull(categories, subWord.getHasCategories());
-            }
-        }
-        return categories;
-    }
-
-    public ArrayList<SuperWord> getHasCategories(PartOfSpeech pos, SuperWord matching) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> categories = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, true);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                categories = addAllToNullIfMatching(categories, subWord.getHasCategories(), matching);
-            }
-        }
-
-        return categories;
-    }
-
-    public ArrayList<SuperWord> getCommonCategories(PartOfSpeech pos) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> commonCategories = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, false);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                commonCategories = addAllToNull(commonCategories, subWord.getCommonCategories());
-            }
-        }
-        return commonCategories;
-    }
-
-    public ArrayList<SuperWord> getHasParts(PartOfSpeech pos) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> hasParts = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, false);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                hasParts = addAllToNull(hasParts, subWord.getHasParts());
-            }
-        }
-        return hasParts;
-    }
-
-    public ArrayList<SuperWord> getPartOf(PartOfSpeech pos) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> partOf = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, false);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                partOf = addAllToNull(partOf, subWord.getPartOf());
-            }
-        }
-        return partOf;
-    }
-
-    public ArrayList<SuperWord> getSimilarTo(PartOfSpeech pos) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> similarTo = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, false);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                similarTo = addAllToNull(similarTo, subWord.getSimilarTo());
-            }
-        }
-        return similarTo;
-    }
-
-    private ArrayList<SuperWord> getSuggestions(PartOfSpeech pos, SuggestionPool pool) {
-        if (!populated)
-            this.populate();
-
-        ArrayList<SuperWord> suggestions = null;
-        ArrayList<SubWord> subWords = getSubWords(pos, false);
-        if (subWords != null) {
-            for (SubWord subWord : subWords) {
-                suggestions = addAllToNull(suggestions, subWord.getSuggestions(pool));
-            }
-        }
-        return suggestions;
-    }
-
-    private ArrayList<SuperWord> getAggregatedSuggestions(PartOfSpeech pos, SuggestionPoolParameters pools) {
+    private ArrayList<SuperWord> getAggregatedSuggestions(PartOfSpeech pos, SuggestionPoolParameters params) {
         ArrayList<ArrayList<SuperWord>> suggestions = new ArrayList<>();
         for (SuggestionPool pool : SuggestionPool.values()) {
-            if (pools.includes(pool)) {
-                suggestions.add(this.getSuggestions(pos, pool));
+            if (params.includes(pool)) {
+                suggestions.add(this.getSuggestionPool(pool, pos, params.hasInclusiveUnknown()));
             }
         }
 
@@ -494,7 +243,7 @@ public class SuperWord extends Token {
             combined.remove(this); // prevent suggesting the original word
         }
         LOG.writeTempLog(String.format("Combined suggestions for \"%s\" (%s) including %s: %s", plaintext, pos,
-                pools.toString(), combined));
+                params.toString(), combined));
         return combined;
     }
 
@@ -550,45 +299,11 @@ public class SuperWord extends Token {
             stringBuilder.append(divider);
             stringBuilder.append("pronunciation: " + pronunciation.toString());
         }
-        if (!partsOfSpeech.isEmpty()) {
-            stringBuilder.append(divider);
-            stringBuilder.append("partsOfSpeech: " + partsOfSpeech.toString());
-        }
-        if (nouns != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("nouns: " + nouns.size());
-        }
-        if (pronouns != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("pronouns: " + pronouns.size());
-        }
-        if (verbs != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("verbs: " + verbs.size());
-        }
-        if (adjectives != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("adjectives: " + adjectives.size());
-        }
-        if (adverbs != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("adverbs: " + adverbs.size());
-        }
-        if (prepositions != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("prepositions: " + prepositions.size());
-        }
-        if (conjunctions != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("conjunction: " + conjunctions.size());
-        }
-        if (definiteArticles != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("definiteArticles: " + definiteArticles.size());
-        }
-        if (unknowns != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("unknowns: " + unknowns.size());
+        for (PartOfSpeech pos : PartOfSpeech.values()) {
+            if (partsOfSpeech.get(pos) != null) {
+                stringBuilder.append(divider);
+                stringBuilder.append(String.format("%s: %d", pos.getApiString(), partsOfSpeech.get(pos).size()));
+            }
         }
         if (populated) {
             stringBuilder.append("\n");
@@ -607,41 +322,11 @@ public class SuperWord extends Token {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(plaintext + ": {");
-        if (nouns != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("nouns\n" + nouns.toString());
-        }
-        if (pronouns != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("pronouns\n" + pronouns.toString());
-        }
-        if (verbs != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("verbs\n" + verbs.toString());
-        }
-        if (adjectives != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("adjectives\n" + adjectives.toString());
-        }
-        if (adverbs != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("adverbs\n" + adverbs.toString());
-        }
-        if (prepositions != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("prepositions\n" + prepositions.toString());
-        }
-        if (conjunctions != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("conjunction\n" + conjunctions.toString());
-        }
-        if (definiteArticles != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("definiteArticles\n" + definiteArticles.toString());
-        }
-        if (unknowns != null) {
-            stringBuilder.append(divider);
-            stringBuilder.append("unknowns\n" + unknowns.toString());
+        for (PartOfSpeech pos : PartOfSpeech.values()) {
+            if (partsOfSpeech.get(pos) != null) {
+                stringBuilder.append(divider);
+                stringBuilder.append(String.format("%s\n%s", pos.getApiString(), partsOfSpeech.get(pos).toString()));
+            }
         }
         if (populated) {
             stringBuilder.append("\n");
@@ -696,9 +381,9 @@ public class SuperWord extends Token {
             return false;
         }
 
-        for (PartOfSpeech pos1 : this.partsOfSpeech) {
+        for (PartOfSpeech pos1 : partsOfSpeech.keySet()) {
             SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
-            for (PartOfSpeech pos2 : other.partsOfSpeech) {
+            for (PartOfSpeech pos2 : other.partsOfSpeech.keySet()) {
                 SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
                 if (rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2)) {
                     return true;
@@ -732,7 +417,7 @@ public class SuperWord extends Token {
             return rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2);
         } else if (pos1 != null) {
             SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1);
-            for (PartOfSpeech pos2b : other.partsOfSpeech) {
+            for (PartOfSpeech pos2b : other.partsOfSpeech.keySet()) {
                 SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2b);
                 if (rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2)) {
                     return true;
@@ -740,7 +425,7 @@ public class SuperWord extends Token {
             }
         } else {
             SubPronunciation subPronunciation2 = other.getSubPronunciation(pos2);
-            for (PartOfSpeech pos1b : this.partsOfSpeech) {
+            for (PartOfSpeech pos1b : this.partsOfSpeech.keySet()) {
                 SubPronunciation subPronunciation1 = this.getSubPronunciation(pos1b);
                 if (rhmyesWith(this.plaintext, pos1, subPronunciation1, other.plaintext, pos2, subPronunciation2)) {
                     return true;

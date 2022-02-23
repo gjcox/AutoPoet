@@ -10,6 +10,7 @@ import java.util.List;
 import utils.Pair;
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters;
+import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Emphasis;
 import words.IPAHandler;
 import words.Poem;
@@ -99,7 +100,7 @@ public class Demos {
     public static void demoSynonyms() {
         SuperWord present = SuperWord.getSuperWord("present");
         System.out.println(String.format("Synonyms of \"%s\" (NOUN): %s", present.getPlaintext(),
-                present.getSynonyms(PartOfSpeech.NOUN)));
+                present.getSuggestionPool(SuggestionPool.SYNONYMS, PartOfSpeech.NOUN, false)));
     }
 
     public static void demoPoemConstructor(String poemFile) {
@@ -109,29 +110,6 @@ public class Demos {
             System.out.println(poem.getString());
         } catch (IOException e) {
             System.err.println("Something went wrong: " + e.getMessage());
-        }
-    }
-
-    private static PartOfSpeech parsePoS(String pos) {
-        switch (pos.toLowerCase()) {
-            case "noun":
-                return PartOfSpeech.NOUN;
-            case "pronoun":
-                return PartOfSpeech.PRONOUN;
-            case "verb":
-                return PartOfSpeech.VERB;
-            case "adjective":
-                return PartOfSpeech.ADJECTIVE;
-            case "adverb":
-                return PartOfSpeech.ADVERB;
-            case "preposition":
-                return PartOfSpeech.PREPOSITION;
-            case "conjunction":
-                return PartOfSpeech.CONJUCTION;
-            case "definite article":
-                return PartOfSpeech.DEFINITE_ARTICLE;
-            default:
-                return PartOfSpeech.UNKNOWN;
         }
     }
 
@@ -197,7 +175,7 @@ public class Demos {
                     break;
                 case "poem":
                     demoPoemConstructor(args[1]);
-                    break; 
+                    break;
                 default:
                     System.err.println(usage);
                     break;
@@ -218,72 +196,17 @@ public class Demos {
                     System.out.println(String.format("\"%s\" rhymes with \"%s\": %b",
                             superWord1.getPlaintext(), superWord2.getPlaintext(), rhymes));
                     break;
-                case "synonyms":
-                    superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos = parsePoS(args[2]);
-                    System.out.println(String.format("Synonyms of \"%s\" (%s): %s", superWord1.getPlaintext(), pos,
-                            superWord1.getSynonyms(pos)));
-                    break;
-                case "typeof":
-                    superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos = parsePoS(args[2]);
-                    System.out.println(String.format("\"%s\" (%s) is a type of: %s", superWord1.getPlaintext(), pos,
-                            superWord1.getTypeOf(pos)));
-                    break;
-                case "hastypes":
-                    superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos = parsePoS(args[2]);
-                    System.out.println(String.format("\"%s\" (%s) has types: %s", superWord1.getPlaintext(), pos,
-                            superWord1.getHasTypes(pos)));
-                    break;
-                case "commonlytyped":
-                    superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos = parsePoS(args[2]);
-                    System.out.println(
-                            String.format("Words of the same type as \"%s\" (%s): %s", superWord1.getPlaintext(), pos,
-                                    superWord1.getCommonlyTyped(pos)));
-                    break;
-                case "incategory":
-                    superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos = parsePoS(args[2]);
-                    System.out.println(String.format("\"%s\" (%s) is a category of: %s", superWord1.getPlaintext(), pos,
-                            superWord1.getInCategory(pos)));
-                    break;
-                case "hascategories":
-                    superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos = parsePoS(args[2]);
-                    System.out.println(String.format("\"%s\" (%s) has categories: %s", superWord1.getPlaintext(), pos,
-                            superWord1.getHasCategories(pos)));
-                    break;
-                case "commoncategories":
-                    superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos = parsePoS(args[2]);
-                    System.out.println(
-                            String.format("Words of the same category as \"%s\" (%s): %s", superWord1.getPlaintext(),
-                                    pos, superWord1.getCommonCategories(pos)));
-                    break;
-                case "partof":
-                    superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos = parsePoS(args[2]);
-                    System.out.println(String.format("\"%s\" (%s) is a part of: %s", superWord1.getPlaintext(), pos,
-                            superWord1.getPartOf(pos)));
-                    break;
-                case "hasparts":
-                    superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos = parsePoS(args[2]);
-                    System.out.println(String.format("\"%s\" (%s) has parts: %s", superWord1.getPlaintext(), pos,
-                            superWord1.getHasParts(pos)));
-                    break;
-                case "similarto":
-                    superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos = parsePoS(args[2]);
-                    System.out.println(
-                            String.format("\"%s\" (%s) is similar to: %s", superWord1.getPlaintext(), pos,
-                                    superWord1.getSimilarTo(pos)));
-                    break;
                 default:
-                    System.err.println(usage);
-                    break;
+                    SuggestionPool pool = SuggestionPool.fromString(args[0]);
+                    superWord1 = SuperWord.getSuperWord(args[1]);
+                    pos = PartOfSpeech.fromString(args[2]);
+                    if (pool == null || pos == null) {
+                        System.err.println(usage);
+                    } else {
+                        System.out.println(String.format("\"%s\" (%s) %s: %s", superWord1.getPlaintext(), pos,
+                                pool.getLabel(), superWord1.getSuggestionPool(pool, pos, false)));
+                        break;
+                    }
             }
             LOG.closeLogWriters();
             return;
@@ -300,9 +223,9 @@ public class Demos {
             switch (args[0].toLowerCase()) {
                 case "rhyme":
                     superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos1 = parsePoS(args[2]);
+                    pos1 = PartOfSpeech.fromString(args[2]);
                     superWord2 = SuperWord.getSuperWord(args[3]);
-                    pos2 = parsePoS(args[4]);
+                    pos2 = PartOfSpeech.fromString(args[4]);
                     System.out.println(
                             String.format("\"%s\" (%s) rhymes with \"%s\" (%s): %s",
                                     superWord1.getPlaintext(), pos1,
@@ -311,9 +234,9 @@ public class Demos {
                     break;
                 case "suggestions":
                     superWord1 = SuperWord.getSuperWord(args[1]);
-                    pos1 = parsePoS(args[2]);
+                    pos1 = PartOfSpeech.fromString(args[2]);
                     superWord2 = SuperWord.getSuperWord(args[3]);
-                    pos2 = parsePoS(args[4]);
+                    pos2 = PartOfSpeech.fromString(args[4]);
                     suggestionParams = new SuggestionPoolParameters();
                     filterParams = new FilterParameters(true, superWord2, pos2);
                     System.out.println(
