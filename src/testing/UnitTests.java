@@ -1,6 +1,8 @@
 package testing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -11,7 +13,11 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import exceptions.RhymingSchemeSizeException;
+import utils.ParameterWrappers.FilterParameters.Filter;
 import words.RhymingScheme;
+import words.SuperWord;
+
+import static config.Configuration.LOG;
 
 public class UnitTests {
 
@@ -98,6 +104,66 @@ public class UnitTests {
             fail();
         }
         assertEquals("#AZB", scheme.toString());
+    }
+
+    @Test
+    public void testPerfectRhymeTrue() {
+        SuperWord word = SuperWord.getSuperWord("word");
+        SuperWord curd = SuperWord.getSuperWord("curd");
+        assertTrue(word.matchesWithWrapper(Filter.PERFECT_RHYME, curd));
+
+        SuperWord magic = SuperWord.getSuperWord("magic");
+        SuperWord tragic = SuperWord.getSuperWord("tragic");
+        assertTrue(magic.matchesWithWrapper(Filter.PERFECT_RHYME, tragic));
+
+        SuperWord abercrombie = SuperWord.getSuperWord("abercrombie");
+        SuperWord zombie = SuperWord.getSuperWord("zombie");
+        assertTrue(abercrombie.matchesWithWrapper(Filter.PERFECT_RHYME, zombie));
+    }
+
+    @Test
+    public void testPerfectRhymeFalse() {
+        SuperWord word = SuperWord.getSuperWord("word");
+        SuperWord worm = SuperWord.getSuperWord("worm");
+        assertFalse(word.matchesWithWrapper(Filter.PERFECT_RHYME, worm));
+
+        SuperWord understated = SuperWord.getSuperWord("understated");
+        SuperWord overstated = SuperWord.getSuperWord("overstated");
+        assertFalse(understated.matchesWithWrapper(Filter.PERFECT_RHYME, overstated));
+
+        SuperWord bee = SuperWord.getSuperWord("bee");
+        SuperWord zombie = SuperWord.getSuperWord("zombie");
+        assertFalse(bee.matchesWithWrapper(Filter.PERFECT_RHYME, zombie));
+    }
+
+
+    @Test
+    public void testSyllabicRhymeTrue() {
+        SuperWord fuddle = SuperWord.getSuperWord("fuddle");
+        SuperWord fiddle = SuperWord.getSuperWord("fiddle");
+        assertTrue(fuddle.matchesWithWrapper(Filter.SYLLABIC_RHYME, fiddle));
+       
+        SuperWord cleaver = SuperWord.getSuperWord("cleaver");
+        SuperWord silver = SuperWord.getSuperWord("silver");
+        assertTrue(cleaver.matchesWithWrapper(Filter.SYLLABIC_RHYME, silver));
+    }
+
+    @Test
+    public void testImperfectRhymeTrue() {
+        SuperWord bee = SuperWord.getSuperWord("bee");
+        SuperWord zombie = SuperWord.getSuperWord("zombie");
+        assertTrue(bee.matchesWithWrapper(Filter.IMPERFECT_RHYME, zombie));
+       
+        SuperWord understated = SuperWord.getSuperWord("understated");
+        SuperWord overstated = SuperWord.getSuperWord("overstated");
+        assertTrue(understated.matchesWithWrapper(Filter.IMPERFECT_RHYME, overstated));
+    }
+
+    @Test
+    public void testWeakRhymeTrue() {
+        SuperWord hammer = SuperWord.getSuperWord("hammer");
+        SuperWord carpenter = SuperWord.getSuperWord("carpenter");
+        assertTrue(hammer.matchesWithWrapper(Filter.IMPERFECT_RHYME, carpenter));
     }
 
     public static void main(String[] args) {
