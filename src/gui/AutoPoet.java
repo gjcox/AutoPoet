@@ -25,9 +25,7 @@ public class AutoPoet extends Application {
             String css = this.getClass().getResource("stylesheet.css").toExternalForm();
             scene.getStylesheets().add(css);
 
-            stage.setOnCloseRequest(WindowEvent -> {
-                LOG.closeLogWriters();
-            });
+            stage.setOnCloseRequest(WindowEvent -> LOG.closeLogWriters());
 
             stage.setScene(scene);
             stage.show();
