@@ -45,7 +45,7 @@ public class LogWriter {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         try {
             persistentWriter.write(String.format("%s\t %s\n", timestamp.toString(), string));
-        } catch (IOException e) {
+        } catch (NullPointerException | IOException e) {
             System.err.println(String.format("! LogWriter failed to write %s to %s", string, persistentLog.toPath()));
         }
 
