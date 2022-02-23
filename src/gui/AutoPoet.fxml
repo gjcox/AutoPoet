@@ -96,207 +96,66 @@
             </AnchorPane>
           <AnchorPane>
                <children>
-                  <GridPane layoutX="331.0" layoutY="240.0" prefHeight="773.0" prefWidth="636.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="415.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
-                      <RowConstraints maxHeight="-Infinity" vgrow="NEVER" />
-                      <RowConstraints maxHeight="-Infinity" vgrow="NEVER" />
-                      <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <TitledPane alignment="TOP_LEFT" animated="false" collapsible="false" layoutX="10.0" layoutY="10.0" text="Poem">
-                           <content>
-                              <AnchorPane maxHeight="-Infinity" minHeight="-Infinity">
-                                 <cursor>
-                                    <Cursor fx:constant="DEFAULT" />
-                                 </cursor>
-                                 <children>
-                                    <GridPane layoutX="16.0" layoutY="-35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="350.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                      </rowConstraints>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="415.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
+                            <RowConstraints minHeight="-Infinity" vgrow="ALWAYS" />
+                          </rowConstraints>
+                           <children>
+                              <TitledPane alignment="TOP_LEFT" animated="false" collapsible="false" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" minHeight="-Infinity" text="Poem">
+                                 <content>
+                                    <AnchorPane maxHeight="-Infinity" minHeight="-Infinity">
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
                                        <children>
-                                          <FlowPane hgap="5.0" GridPane.rowIndex="1">
-                                             <children>
-                                                <Label text="Lines:" />
-                                                <Label fx:id="lblPoemLineCount" text="(line count)" />
-                                             </children>
-                                          </FlowPane>
-                                          <FlowPane hgap="5.0">
-                                             <children>
-                                                <Label text="Stanzas:" />
-                                                <Label fx:id="lblPoemStanzaCount" text="(stanza count)" />
-                                             </children>
-                                          </FlowPane>
-                                          <ToggleButton fx:id="tgbtnDirectEdit" disable="true" mnemonicParsing="false" onAction="#toggleDirectEdit" text="Direct Edit Mode" GridPane.rowIndex="4">
-                                             <GridPane.margin>
-                                                <Insets />
-                                             </GridPane.margin>
-                                          </ToggleButton>
-                                          <Separator prefWidth="200.0" GridPane.rowIndex="3">
-                                             <padding>
-                                                <Insets bottom="5.0" top="5.0" />
-                                             </padding>
-                                          </Separator>
-                                          <FlowPane hgap="5.0" GridPane.rowIndex="2">
-                                             <children>
-                                                <Label text="Default Rhyme Scheme:" />
-                                                <TextField fx:id="txtfldDefaultRhymeScheme" onAction="#updateDefaultRhymeScheme" promptText="e.g. AABB">
-                                                   <tooltip>
-                                                      <Tooltip fx:id="tltpIntRhymeScheme1" text="Must match length of stanza" />
-                                                   </tooltip>
-                                                </TextField>
-                                             </children>
-                                          </FlowPane>
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </TitledPane>
-                        <TitledPane fx:id="ttlpnCurrentStanza" alignment="TOP_LEFT" animated="false" collapsible="false" text="Current Stanza" GridPane.rowIndex="1">
-                          <content>
-                            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity">
-                                 <children>
-                                    <GridPane layoutX="362.0" layoutY="14.0" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="350.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity">
-                                             <children>
-                                                <Label text="Number:" />
-                                                <Label fx:id="lblStanzaNumber" text="(stanza number)" />
-                                             </children>
-                                          </FlowPane>
-                                          <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" GridPane.rowIndex="1">
-                                             <children>
-                                                <Label text="Lines:" />
-                                                <Label fx:id="lblStanzaLineCount" text="(line count)" />
-                                             </children>
-                                          </FlowPane>
-                                          <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="200.0" GridPane.rowIndex="2">
-                                             <children>
-                                                <Label text="Intended Rhyme Scheme:" />
-                                                <TextField fx:id="txtfldIntRhymeScheme" onAction="#updateIntendedRhymeScheme" promptText="e.g. AABB">
-                                                   <tooltip>
-                                                      <Tooltip fx:id="tltpIntRhymeScheme" text="Must match length of stanza" />
-                                                   </tooltip></TextField>
-                                             </children>
-                                          </FlowPane>
-                                          <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="200.0" GridPane.rowIndex="3">
-                                             <children>
-                                                <Label text="Actual Rhyme Scheme:" />
-                                                <Label fx:id="lblActRhymeScheme" text="(actual rhyme scheme)" />
-                                             </children>
-                                          </FlowPane>
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                                 <cursor>
-                                    <Cursor fx:constant="DEFAULT" />
-                                 </cursor>
-                              </AnchorPane>
-                          </content>
-                        </TitledPane>
-                        <TitledPane fx:id="ttlpnSuggestionParameters" animated="false" collapsible="false" prefWidth="569.0" text="Suggestion Parameters" GridPane.rowIndex="2">
-                          <content>
-                            <AnchorPane>
-                                 <children>
-                                    <GridPane layoutX="76.0" layoutY="-35.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <GridPane>
+                                          <GridPane layoutX="16.0" layoutY="-35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="350.0" />
                                             </columnConstraints>
                                             <rowConstraints>
                                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Label styleClass="Heading 2" text="Part of Speech" />
-                                                <CheckBox fx:id="chbxInclUnknown" mnemonicParsing="false" selected="true" text="include unknowns in results" wrapText="true" GridPane.rowIndex="11" />
-                                                <RadioButton fx:id="rdbtnNoun" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="noun" GridPane.rowIndex="1">
-                                                   <toggleGroup>
-                                                      <ToggleGroup fx:id="tglgrpPoS" />
-                                                   </toggleGroup>
-                                                </RadioButton>
-                                                <RadioButton fx:id="rdbtnPronoun" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="pronoun" toggleGroup="$tglgrpPoS" GridPane.rowIndex="2" />
-                                                <RadioButton fx:id="rdbtnVerb" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="verb" toggleGroup="$tglgrpPoS" GridPane.rowIndex="3" />
-                                                <RadioButton fx:id="rdbtnAdjective" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="adjective" toggleGroup="$tglgrpPoS" GridPane.rowIndex="4" />
-                                                <RadioButton fx:id="rdbtnAdverb" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="adverb" toggleGroup="$tglgrpPoS" GridPane.rowIndex="5" />
-                                                <RadioButton fx:id="rdbtnPreposition" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="preposition" toggleGroup="$tglgrpPoS" GridPane.rowIndex="6" />
-                                                <RadioButton fx:id="rdbtnConjunction" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="conjunction" toggleGroup="$tglgrpPoS" GridPane.rowIndex="7" />
-                                                <RadioButton fx:id="rdbtnDefiniteArticle" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="definite article" toggleGroup="$tglgrpPoS" GridPane.rowIndex="8" />
-                                                <RadioButton fx:id="rdbtnUnknown" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="unknown" toggleGroup="$tglgrpPoS" GridPane.rowIndex="9" />
-                                                <Separator prefWidth="200.0" GridPane.rowIndex="10">
-                                                   <padding>
-                                                      <Insets bottom="2.0" top="5.0" />
-                                                   </padding>
-                                                </Separator>
-                                             </children>
-                                          </GridPane>
-                                          <GridPane fx:id="grdPnSuggestionPools" layoutX="10.0" layoutY="10.0" GridPane.columnIndex="1">
-                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                             </columnConstraints>
-                                             <rowConstraints>
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                             </rowConstraints>
-                                             <children>
-                                                <Label styleClass="Heading 2" text="Suggestion Pool" />
-                                             </children>
-                                          </GridPane>
-                                          <GridPane layoutX="236.0" layoutY="10.0" prefHeight="170.0" prefWidth="125.0" GridPane.columnIndex="2">
-                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                             </columnConstraints>
-                                             <rowConstraints>
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                             </rowConstraints>
-                                             <children>
-                                                <Label styleClass="Heading 2" text="Poetic Devices" />
                                                 <FlowPane hgap="5.0" GridPane.rowIndex="1">
                                                    <children>
-                                                      <CheckBox fx:id="chbxRhymeWith" mnemonicParsing="false" text="rhyme with" />
-                                                      <TextField fx:id="txtfldRhymeWith" prefHeight="25.0" prefWidth="95.0">
+                                                      <Label text="Lines:" />
+                                                      <Label fx:id="lblPoemLineCount" text="(line count)" />
+                                                   </children>
+                                                </FlowPane>
+                                                <FlowPane hgap="5.0">
+                                                   <children>
+                                                      <Label text="Stanzas:" />
+                                                      <Label fx:id="lblPoemStanzaCount" text="(stanza count)" />
+                                                   </children>
+                                                </FlowPane>
+                                                <ToggleButton fx:id="tgbtnDirectEdit" disable="true" mnemonicParsing="false" onAction="#toggleDirectEdit" text="Direct Edit Mode" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets />
+                                                   </GridPane.margin>
+                                                </ToggleButton>
+                                                <Separator prefWidth="200.0" GridPane.rowIndex="3">
+                                                   <padding>
+                                                      <Insets bottom="5.0" top="5.0" />
+                                                   </padding>
+                                                </Separator>
+                                                <FlowPane hgap="5.0" GridPane.rowIndex="2">
+                                                   <children>
+                                                      <Label text="Default Rhyme Scheme:" />
+                                                      <TextField fx:id="txtfldDefaultRhymeScheme" onAction="#updateDefaultRhymeScheme" promptText="e.g. AABB">
                                                          <tooltip>
-                                                            <Tooltip text="Choose which lines in the stanza to rhyme with, e.g. 1-2, 4. Leave blank to rhyme all lines." wrapText="true" />
+                                                            <Tooltip fx:id="tltpIntRhymeScheme1" text="Must match length of stanza" />
                                                          </tooltip>
                                                       </TextField>
                                                    </children>
@@ -304,54 +163,203 @@
                                              </children>
                                           </GridPane>
                                        </children>
-                                    </GridPane>
-                                 </children>
-                                 <cursor>
-                                    <Cursor fx:constant="DEFAULT" />
-                                 </cursor>
-                              </AnchorPane>
-                          </content>
-                        </TitledPane>
-                        <TitledPane fx:id="ttlpnSuggestions" alignment="TOP_LEFT" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" text="Suggestions" GridPane.rowIndex="3">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <cursor>
-                                    <Cursor fx:constant="DEFAULT" />
-                                 </cursor>
-                                 <children>
-                                    <GridPane layoutX="217.0" layoutY="87.0" prefHeight="417.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
+                                    </AnchorPane>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane fx:id="ttlpnCurrentStanza" alignment="TOP_LEFT" animated="false" collapsible="false" maxHeight="-Infinity" minHeight="-Infinity" text="Current Stanza" GridPane.rowIndex="1">
+                                <content>
+                                  <AnchorPane maxHeight="-Infinity" minHeight="-Infinity">
                                        <children>
-                                          <Button fx:id="btnGetSuggestions" disable="true" mnemonicParsing="false" onAction="#getSuggestions" text="Get Suggestions" GridPane.valignment="TOP" />
-                                          <ScrollPane fx:id="scrlpnSuggestions" cacheShape="false" fitToWidth="true" focusTraversable="false" maxHeight="1.7976931348623157E308" GridPane.rowIndex="2">
-                                             <content>
-                                                <FlowPane fx:id="flwpnSuggestions" hgap="5.0" prefWrapLength="0.0" vgap="5.0">
-                                                   <padding>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                   </padding>
+                                          <GridPane layoutX="362.0" layoutY="14.0" maxHeight="-Infinity" minHeight="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="350.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity">
+                                                   <children>
+                                                      <Label text="Number:" />
+                                                      <Label fx:id="lblStanzaNumber" text="(stanza number)" />
+                                                   </children>
                                                 </FlowPane>
-                                             </content>
-                                          </ScrollPane>
-                                          <Separator prefWidth="200.0" GridPane.rowIndex="1">
-                                             <padding>
-                                                <Insets bottom="2.0" top="5.0" />
-                                             </padding>
-                                          </Separator>
+                                                <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" GridPane.rowIndex="1">
+                                                   <children>
+                                                      <Label text="Lines:" />
+                                                      <Label fx:id="lblStanzaLineCount" text="(line count)" />
+                                                   </children>
+                                                </FlowPane>
+                                                <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" GridPane.rowIndex="2">
+                                                   <children>
+                                                      <Label text="Intended Rhyme Scheme:" />
+                                                      <TextField fx:id="txtfldIntRhymeScheme" onAction="#updateIntendedRhymeScheme" promptText="e.g. AABB">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="tltpIntRhymeScheme" text="Must match length of stanza" />
+                                                         </tooltip>
+                                                      </TextField>
+                                                   </children>
+                                                </FlowPane>
+                                                <FlowPane hgap="5.0" maxHeight="-Infinity" minHeight="-Infinity" GridPane.rowIndex="3">
+                                                   <children>
+                                                      <Label text="Actual Rhyme Scheme:" />
+                                                      <Label fx:id="lblActRhymeScheme" text="(actual rhyme scheme)" />
+                                                   </children>
+                                                </FlowPane>
+                                             </children>
+                                          </GridPane>
                                        </children>
-                                    </GridPane>
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                        </TitledPane>
-                     </children>
-                  </GridPane>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </AnchorPane>
+                                </content>
+                              </TitledPane>
+                              <TitledPane fx:id="ttlpnSuggestionParameters" animated="false" collapsible="false" text="Suggestion Parameters" GridPane.rowIndex="2">
+                                <content>
+                                  <AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity">
+                                       <children>
+                                          <GridPane layoutX="76.0" layoutY="-35.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="33.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="33.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="33.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.valignment="TOP">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="Heading 2" text="Part of Speech" />
+                                                      <CheckBox fx:id="chbxInclUnknown" mnemonicParsing="false" onAction="#updateIncludeUnknowns" selected="true" text="include unknowns in results" wrapText="true" GridPane.rowIndex="11" />
+                                                      <RadioButton fx:id="rdbtnNoun" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="noun" GridPane.rowIndex="1">
+                                                         <toggleGroup>
+                                                            <ToggleGroup fx:id="tglgrpPoS" />
+                                                         </toggleGroup>
+                                                      </RadioButton>
+                                                      <RadioButton fx:id="rdbtnPronoun" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="pronoun" toggleGroup="$tglgrpPoS" GridPane.rowIndex="2" />
+                                                      <RadioButton fx:id="rdbtnVerb" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="verb" toggleGroup="$tglgrpPoS" GridPane.rowIndex="3" />
+                                                      <RadioButton fx:id="rdbtnAdjective" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="adjective" toggleGroup="$tglgrpPoS" GridPane.rowIndex="4" />
+                                                      <RadioButton fx:id="rdbtnAdverb" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="adverb" toggleGroup="$tglgrpPoS" GridPane.rowIndex="5" />
+                                                      <RadioButton fx:id="rdbtnPreposition" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="preposition" toggleGroup="$tglgrpPoS" GridPane.rowIndex="6" />
+                                                      <RadioButton fx:id="rdbtnConjunction" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="conjunction" toggleGroup="$tglgrpPoS" GridPane.rowIndex="7" />
+                                                      <RadioButton fx:id="rdbtnDefiniteArticle" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="definite article" toggleGroup="$tglgrpPoS" GridPane.rowIndex="8" />
+                                                      <RadioButton fx:id="rdbtnUnknown" disable="true" mnemonicParsing="false" onAction="#updatePartOfSpeech" text="unknown" toggleGroup="$tglgrpPoS" GridPane.rowIndex="9" />
+                                                      <Separator prefWidth="200.0" GridPane.rowIndex="10">
+                                                         <padding>
+                                                            <Insets bottom="2.0" right="5.0" top="5.0" />
+                                                         </padding>
+                                                      </Separator>
+                                                   </children>
+                                                </GridPane>
+                                                <GridPane fx:id="grdPnSuggestionPools" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.valignment="TOP">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <Label styleClass="Heading 2" text="Suggestion Pool" />
+                                                   </children>
+                                                </GridPane>
+                                                <GridPane layoutX="236.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" GridPane.columnIndex="2" GridPane.valignment="TOP">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <Label styleClass="Heading 2" text="Poetic Devices" />
+                                                      <FlowPane hgap="5.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1">
+                                                         <children>
+                                                            <CheckBox fx:id="chbxRhymeWith" mnemonicParsing="false" text="rhyme with" />
+                                                            <TextField fx:id="txtfldRhymeWith" prefHeight="25.0" prefWidth="95.0">
+                                                               <tooltip>
+                                                                  <Tooltip text="Choose which lines in the stanza to rhyme with, e.g. 1-2, 4. Leave blank to rhyme all lines." wrapText="true" />
+                                                               </tooltip>
+                                                            </TextField>
+                                                         </children>
+                                                      </FlowPane>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </AnchorPane>
+                                </content>
+                              </TitledPane>
+                              <TitledPane fx:id="ttlpnSuggestions" alignment="TOP_LEFT" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" text="Suggestions" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                                <content>
+                                  <AnchorPane>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                       <children>
+                                          <GridPane layoutX="217.0" layoutY="87.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Button fx:id="btnGetSuggestions" disable="true" mnemonicParsing="false" onAction="#getSuggestions" text="Get Suggestions" GridPane.valignment="TOP" />
+                                                <Separator prefWidth="200.0" GridPane.rowIndex="1">
+                                                   <padding>
+                                                      <Insets bottom="2.0" top="5.0" />
+                                                   </padding>
+                                                </Separator>
+                                                <ScrollPane fx:id="scrlpnSuggestions" cacheShape="false" fitToHeight="true" fitToWidth="true" focusTraversable="false" maxHeight="1.7976931348623157E308" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                                   <content>
+                                                      <FlowPane fx:id="flwpnSuggestions" hgap="5.0" maxHeight="-Infinity" prefWrapLength="0.0" vgap="5.0">
+                                                         <padding>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </padding>
+                                                      </FlowPane>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </TitledPane>
+                           </children>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
                </children></AnchorPane>
         </items>
       </SplitPane>
