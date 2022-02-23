@@ -29,7 +29,7 @@ public class IndexedTokenLabel extends Label {
     private int lineIndex;
     private int tokenIndex;
     private PartOfSpeech pos;
-    private SuggestionPoolParameters pools = new SuggestionPoolParameters();
+    private SuggestionPoolParameters poolParams = new SuggestionPoolParameters();
     private boolean inclUnknown = true;
     private ArrayList<SuperWord> suggestions;
     private Controller controller;
@@ -43,8 +43,8 @@ public class IndexedTokenLabel extends Label {
         return pos;
     }
 
-    public SuggestionPoolParameters getPools() {
-        return pools;
+    public SuggestionPoolParameters getPoolParams() {
+        return poolParams;
     }
 
     public boolean getInclUnknown() {
