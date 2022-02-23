@@ -258,14 +258,14 @@ public class Controller {
             Alert alert = getCleanAlert(AlertType.INFORMATION);
             alert.setContentText("Please select a part of speech to get suggestions.");
             alert.show();
-        } else if (focusedToken.getPools().isEmpty()) {
+        } else if (focusedToken.getPoolParams().isEmpty()) {
             Alert alert = getCleanAlert(AlertType.INFORMATION);
             alert.setContentText("Please select at least one suggestion pool to get suggestions.");
             alert.show();
         } else {
             SuperWord superWord = (SuperWord) focusedToken.getToken();
             PartOfSpeech pos = focusedToken.getPos();
-            SuggestionPoolParameters suggestionParams = focusedToken.getPools();
+            SuggestionPoolParameters suggestionParams = focusedToken.getPoolParams();
             FilterParameters filterParams = getFilterParams();
 
             focusedToken.setSuggestions(superWord.getFilteredSuggestions(pos, suggestionParams, filterParams));
@@ -290,6 +290,7 @@ public class Controller {
             CheckBox checkBox = getSuggestionPoolCheckBox(pool);
             if (checkBox != null) {
                 if (focusedToken.getPos() == null || !superword.validPool(pool, focusedToken.getPos())) {
+                    focusedToken.getPoolParams().togglePool(pool, false);
                     checkBox.setDisable(true);
                     checkBox.setSelected(false);
                 } else {
@@ -305,7 +306,12 @@ public class Controller {
     public void updateSuggestionPool(ActionEvent e) {
         CheckBox source = (CheckBox) e.getSource();
         SuggestionPool pool = SuggestionPool.fromString(source.getText());
-        focusedToken.getPools().togglePool(pool, source.isSelected());
+        focusedToken.getPoolParams().togglePool(pool, source.isSelected());
+    }
+
+    public void updateIncludeUnknowns(ActionEvent e) {
+        CheckBox source = (CheckBox) e.getSource();
+        focusedToken.getPoolParams().setInclusiveUnknown(source.isSelected());
     }
 
     public void focusOnStanza(int stanzaIndex) {
@@ -338,7 +344,7 @@ public class Controller {
         for (SuggestionPool pool : SuggestionPool.values()) {
             checkBox = getSuggestionPoolCheckBox(pool);
             if (checkBox != null) {
-                checkBox.setSelected(focusOnToken.getPools().includes(pool));
+                checkBox.setSelected(focusOnToken.getPoolParams().includes(pool));
             }
         }
 
