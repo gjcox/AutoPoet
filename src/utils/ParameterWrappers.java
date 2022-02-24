@@ -10,11 +10,12 @@ public interface ParameterWrappers {
 
         public enum SuggestionPool {
             SYNONYMS("synonyms", "synonyms", true),
+            ANTONYMS("antonyms", "antonyms", true), 
             HAS_TYPES("has types", "hasTypes", true),
             TYPE_OF("type of", "typeOf", true),
             COMMONLY_TYPED("commonly typed", null, false),
-            IN_CATEGORY("inCategory", "in category", true),
-            HAS_CATEGORIES("hasCategories", "has categories", true),
+            IN_CATEGORY("in category", "inCategory", true),
+            HAS_CATEGORIES("has categories", "hasCategories", true),
             COMMON_CATEGORIES("commonly categorised", null, false),
             PART_OF("part of", "partOf", true),
             HAS_PARTS("has parts", "hasParts", true),
@@ -105,23 +106,29 @@ public interface ParameterWrappers {
 
     public class FilterParameters {
         public enum Filter {
-            PERFECT_RHYME("perfect rhyme", true),
-            SYLLABIC_RHYME("syllabic rhyme", true), // only the last syllable
-            IMPERFECT_RHYME("imperfect rhyme", true), // stressed syllable to unstressed syllable
-            WEAK_RHYME("weak rhyme", true), // unstressed syllable to unstressed syllable
-            FORCED_RHYME("forced rhyme", true), // stressed to stressed, similar sound but not exact match
+            PERFECT_RHYME("perfect rhyme", "Exact match from stressed syllables.", true),
+            SYLLABIC_RHYME("syllabic rhyme", "Exact match on the last syllables.", true),
+            IMPERFECT_RHYME("imperfect rhyme", "Exact match from a stressed syllable to an unstressed syllable.", true),
+            WEAK_RHYME("weak rhyme", "Exact match between unstressed syllables.", true),
+            FORCED_RHYME("forced rhyme", "Inexact match from stressed syllables. Not yet implemented.", true),
             ;
 
             private final String label;
+            private final String explanation;
             private final boolean isRhyme;
 
-            private Filter(String label, boolean isRhyme) {
+            private Filter(String label, String explanation, boolean isRhyme) {
                 this.label = label;
+                this.explanation = explanation;
                 this.isRhyme = isRhyme;
             }
 
             public String getLabel() {
                 return label;
+            }
+
+            public String getExplanation() {
+                return explanation;
             }
 
             public boolean isRhymeType() {
@@ -138,11 +145,11 @@ public interface ParameterWrappers {
         }
 
         public void setMatchPoS(PartOfSpeech matchPoS) {
-            this.matchPoS = matchPoS; 
+            this.matchPoS = matchPoS;
         }
 
         public void setInclusiveUnknown(boolean inclusiveUnknown) {
-            this.inclusiveUnknown = inclusiveUnknown; 
+            this.inclusiveUnknown = inclusiveUnknown;
         }
 
         public void removeFilter(Filter filter) {
