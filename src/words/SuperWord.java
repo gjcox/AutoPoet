@@ -122,7 +122,7 @@ public class SuperWord extends Token {
             JSONArray resultsArray = word.getJSONArray("results");
             this.setWords(resultsArray);
         } else {
-            partsOfSpeech.put(PartOfSpeech.UNKNOWN, null); // so that matchesWith has something to iterate over 
+            partsOfSpeech.put(PartOfSpeech.UNKNOWN, null); // so that matchesWith has something to iterate over
             LOG.writePersistentLog(String.format("Results of \"%s\" was missing", plaintext));
         }
 
@@ -256,27 +256,31 @@ public class SuperWord extends Token {
      * @param rhyme
      * @param rhymeWith   can be null if rhyme == false.
      * @param rhymePos    can be null if rhyme == false.
-     * @return
+     * @return empty list if there are no suggestions, or no suggestions that pass
+     *         at least one of the filters.
      */
     private ArrayList<SuperWord> filterSuggestions(ArrayList<SuperWord> suggestions, PartOfSpeech pos,
             FilterParameters params) {
 
         if (suggestions == null) {
-            return null;
+            return new ArrayList<>();
         }
 
         ArrayList<SuperWord> filtered = new ArrayList<>(suggestions);
 
         for (SuperWord suggestion : suggestions) {
             boolean matched = false;
+            boolean emptyFilter = true;
             SuperWord matchWith;
             for (Filter filter : Filter.values()) {
-                if ((matchWith = params.getMatchWith(filter)) != null
-                        && suggestion.rhymesWithWrapper(filter, matchWith, pos, params.getMatchPoS())) {
-                    matched = true;
+                if ((matchWith = params.getMatchWith(filter)) != null) {
+                    emptyFilter = false;
+                    if (suggestion.rhymesWithWrapper(filter, matchWith, pos, params.getMatchPoS())) {
+                        matched = true;
+                    }
                 }
             }
-            if (!matched)
+            if (!emptyFilter && !matched)
                 filtered.remove(suggestion);
         }
 
@@ -285,6 +289,13 @@ public class SuperWord extends Token {
         return filtered;
     }
 
+    /**
+     * 
+     * @param pos
+     * @param suggestionParams
+     * @param filterParams
+     * @return a list of filtered suggestions, which can be empty.
+     */
     public ArrayList<SuperWord> getFilteredSuggestions(PartOfSpeech pos, SuggestionPoolParameters suggestionParams,
             FilterParameters filterParams) {
         ArrayList<SuperWord> unfiltered = getAggregatedSuggestions(pos, suggestionParams);
