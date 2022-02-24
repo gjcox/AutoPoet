@@ -17,8 +17,6 @@ import utils.ParameterWrappers.FilterParameters.Filter;
 import words.RhymingScheme;
 import words.SuperWord;
 
-import static config.Configuration.LOG;
-
 public class UnitTests {
 
     /*
