@@ -7499,3 +7499,1032 @@
 2022-02-02 18:45:30.656	 Pronunciation of "semidetached house" was missing
 2022-02-02 18:45:41.32	 Syllables of "tree diagram" was missing
 2022-02-02 18:45:41.32	 Pronunciation of "tree diagram" was missing
+2022-02-23 13:28:10.835	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-02-23 14:51:00.351	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-02-23 14:56:42.495	 WordsAPI responded with word "snowflake" when requesting "snowflakes".
+2022-02-23 14:56:59.68	 Syllables of "go through" was missing
+2022-02-23 14:56:59.68	 Pronunciation of "go through" was missing
+2022-02-23 14:57:00.389	 Syllables of "severalize" was missing
+2022-02-23 14:57:00.389	 Pronunciation of "severalize" was missing
+2022-02-23 14:57:00.594	 Syllables of "secernate" was missing
+2022-02-23 14:57:00.594	 Pronunciation of "secernate" was missing
+2022-02-23 14:57:00.811	 Pronunciation of "secern" was missing
+2022-02-23 14:57:02.047	 Syllables of "severalise" was missing
+2022-02-23 14:57:02.047	 Pronunciation of "severalise" was missing
+2022-02-23 14:57:03.045	 Syllables of "agnise" was missing
+2022-02-23 14:57:03.045	 Pronunciation of "agnise" was missing
+2022-02-23 14:57:05.443	 Syllables of "call up" was missing
+2022-02-23 14:57:05.443	 Pronunciation of "call up" was missing
+2022-02-23 14:57:05.684	 Syllables of "call back" was missing
+2022-02-23 17:22:42.812	 Results of "abercrombie" was missing
+2022-02-23 17:23:02.418	 Results of "abercrombie" was missing
+2022-02-23 17:24:30.39	 Results of "aback" was an empty array
+2022-02-23 17:24:31.676	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-02-23 17:24:31.902	 Syllables of "overstated" was missing
+2022-02-23 17:24:31.902	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-02-23 17:24:32.797	 Results of "abercrombie" was missing
+2022-02-23 17:25:16.631	 Results of "abercrombie" was missing
+2022-02-23 17:26:55.172	 Results of "abercrombie" was missing
+2022-02-23 17:27:02.118	 Results of "abercrombie" was missing
+2022-02-23 17:27:51.601	 Results of "abercrombie" was missing
+2022-02-23 17:29:29.783	 Results of "abercrombie" was missing
+2022-02-23 17:30:09.906	 Results of "abercrombie" was missing
+2022-02-23 17:31:30.141	 Results of "abercrombie" was missing
+2022-02-23 17:32:00.378	 Results of "abercrombie" was missing
+2022-02-23 17:36:07.29	 Results of "abercrombie" was missing
+2022-02-23 18:10:29.842	 Results of "abercrombie" was missing
+2022-02-23 18:10:39.156	 Syllables of "piiter" was missing
+2022-02-23 18:10:39.157	 Pronunciation of "piiter" was missing
+2022-02-23 18:10:39.157	 Results of "piiter" was missing
+2022-02-23 18:10:44.373	 Syllables of "piter" was missing
+2022-02-23 18:10:44.373	 Pronunciation of "piter" was missing
+2022-02-23 18:10:44.373	 Results of "piter" was missing
+2022-02-23 18:10:48.653	 Syllables of "pitter" was missing
+2022-02-23 18:10:48.653	 Pronunciation of "pitter" was missing
+2022-02-23 18:10:48.653	 Results of "pitter" was missing
+2022-02-24 10:28:23.623	 Syllables of "overstated" was missing
+2022-02-24 10:28:23.624	 Pronunciation of "overstated" was not a JSONObject: "'oʊvɝr,steɪtɪd"
+2022-02-24 10:28:24.099	 Pronunciation of "understated" was not a JSONObject: "'ʌndɝr,steɪtɪd"
+2022-02-24 10:28:24.319	 Pronunciation of "sated" was not a JSONObject: "'seɪtɪd"
+2022-02-24 10:28:24.32	 Results of "sated" was missing
+2022-02-24 10:28:25.644	 Syllables of "you" was missing
+2022-02-24 10:28:25.644	 Pronunciation of "you" was not a JSONObject: "ju"
+2022-02-24 10:28:25.645	 Rhymes of "you" was present: {"all":"-u"}
+2022-02-24 10:28:25.645	 Rhymes of "you" had no recognised keys not found in pronunciation field
+2022-02-24 10:29:14.063	 Pronunciation of "enlarged" was not a JSONObject: "ɛn'lɑrdʒd"
+2022-02-24 10:29:14.275	 Pronunciation of "magnified" was not a JSONObject: "'mæɡnʌ,faɪd"
+2022-02-24 10:44:08.574	 Syllables of "beat out" was missing
+2022-02-24 10:45:24.061	 Pronunciation of "beds" was not a JSONObject: "bɛdz"
+2022-02-24 10:45:24.064	 Rhymes of "beds" was present: {"all":"-ɛdz"}
+2022-02-24 10:45:24.064	 Rhymes of "beds" had no recognised keys not found in pronunciation field
+2022-02-24 10:45:24.064	 Results of "beds" was missing
+2022-02-24 10:45:24.275	 Syllables of "heads" was missing
+2022-02-24 10:45:24.275	 Pronunciation of "heads" was not a JSONObject: "hɛdz"
+2022-02-24 10:45:24.276	 Rhymes of "heads" was present: {"all":"-ɛdz"}
+2022-02-24 10:45:24.276	 Rhymes of "heads" had no recognised keys not found in pronunciation field
+2022-02-24 10:45:24.277	 Results of "heads" was missing
+2022-02-24 10:45:27.019	 WordsAPI responded with word "nick" when requesting "Nick".
+2022-02-24 10:45:27.257	 Pronunciation of "arrived" was not a JSONObject: "ɝr'aɪvd"
+2022-02-24 10:45:27.257	 Results of "arrived" was missing
+2022-02-24 10:45:27.731	 WordsAPI responded with word "vixen" when requesting "Vixen".
+2022-02-24 10:45:27.984	 Syllables of "Blitzen" was missing
+2022-02-24 10:45:27.984	 Pronunciation of "Blitzen" was missing
+2022-02-24 10:45:27.984	 Results of "Blitzen" was missing
+2022-02-24 10:46:27.723	 Syllables of "jeweled headdress" was missing
+2022-02-24 10:46:27.723	 Pronunciation of "jeweled headdress" was missing
+2022-02-24 10:46:27.724	 "jeweled headdress" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:27.724	 "jeweled headdress" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:27.943	 Syllables of "jewelled headdress" was missing
+2022-02-24 10:46:27.943	 Pronunciation of "jewelled headdress" was missing
+2022-02-24 10:46:27.944	 "jewelled headdress" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:27.944	 "jewelled headdress" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:32.67	 Syllables of "minor role" was missing
+2022-02-24 10:46:33.507	 Pronunciation of "title role" was missing
+2022-02-24 10:46:33.507	 No pronunciation of "title role" could be found for "NOUN"
+2022-02-24 10:46:33.507	 "title role" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:33.507	 "title role" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:34.399	 Syllables of "bit part" was missing
+2022-02-24 10:46:34.624	 Syllables of "name part" was missing
+2022-02-24 10:46:34.825	 Syllables of "raison d'etre" was missing
+2022-02-24 10:46:37.66	 Syllables of "tranche" was missing
+2022-02-24 10:46:38.132	 Syllables of "profit sharing" was missing
+2022-02-24 10:46:38.132	 Pronunciation of "profit sharing" was missing
+2022-02-24 10:46:38.133	 "profit sharing" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:38.133	 "profit sharing" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:39.404	 Syllables of "body part" was missing
+2022-02-24 10:46:39.404	 Pronunciation of "body part" was missing
+2022-02-24 10:46:39.405	 "body part" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:39.405	 "body part" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:42.806	 Syllables of "fore edge" was missing
+2022-02-24 10:46:43.03	 Syllables of "foredge" was missing
+2022-02-24 10:46:43.03	 Pronunciation of "foredge" was missing
+2022-02-24 10:46:43.031	 "foredge" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:43.031	 "foredge" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:47.031	 Syllables of "widening" was missing
+2022-02-24 10:46:47.031	 Pronunciation of "widening" was not a JSONObject: "'waɪdʌnɪŋ"
+2022-02-24 10:46:47.851	 Syllables of "final period" was missing
+2022-02-24 10:46:47.851	 Pronunciation of "final period" was missing
+2022-02-24 10:46:47.852	 "final period" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:47.852	 "final period" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:48.963	 Syllables of "first period" was missing
+2022-02-24 10:46:48.963	 Pronunciation of "first period" was missing
+2022-02-24 10:46:48.964	 "first period" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:48.964	 "first period" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:50.296	 Syllables of "high point" was missing
+2022-02-24 10:46:50.509	 Syllables of "second period" was missing
+2022-02-24 10:46:50.509	 Pronunciation of "second period" was missing
+2022-02-24 10:46:50.509	 "second period" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:50.51	 "second period" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:52.663	 Syllables of "bass part" was missing
+2022-02-24 10:46:52.663	 Pronunciation of "bass part" was missing
+2022-02-24 10:46:52.663	 "bass part" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:52.663	 "bass part" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:53.297	 Syllables of "musical accompaniment" was missing
+2022-02-24 10:46:53.297	 Pronunciation of "musical accompaniment" was missing
+2022-02-24 10:46:53.297	 "musical accompaniment" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:53.297	 "musical accompaniment" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:53.521	 Syllables of "voice part" was missing
+2022-02-24 10:46:55.614	 Syllables of "the pits" was missing
+2022-02-24 10:46:55.614	 Pronunciation of "the pits" was missing
+2022-02-24 10:46:55.615	 "the pits" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:55.615	 "the pits" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:55.841	 Syllables of "star sign" was missing
+2022-02-24 10:46:55.841	 Pronunciation of "star sign" was missing
+2022-02-24 10:46:55.841	 "star sign" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:55.841	 "star sign" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:56.131	 Syllables of "snake pit" was missing
+2022-02-24 10:46:56.721	 Syllables of "sign of the zodiac" was missing
+2022-02-24 10:46:56.721	 Pronunciation of "sign of the zodiac" was missing
+2022-02-24 10:46:56.721	 "sign of the zodiac" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:56.721	 "sign of the zodiac" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:58.154	 Pronunciation of "promised land" was missing
+2022-02-24 10:46:58.154	 No pronunciation of "promised land" could be found for "NOUN"
+2022-02-24 10:46:58.154	 "promised land" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:58.154	 "promised land" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:58.46	 Syllables of "planetary house" was missing
+2022-02-24 10:46:58.46	 Pronunciation of "planetary house" was missing
+2022-02-24 10:46:58.46	 "planetary house" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:46:58.46	 "planetary house" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:00.302	 Syllables of "kuiper belt" was missing
+2022-02-24 10:47:00.302	 Pronunciation of "kuiper belt" was missing
+2022-02-24 10:47:00.302	 "kuiper belt" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:00.302	 "kuiper belt" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:00.786	 Syllables of "interstellar space" was missing
+2022-02-24 10:47:00.983	 Syllables of "interplanetary space" was missing
+2022-02-24 10:47:01.387	 Syllables of "intergalactic space" was missing
+2022-02-24 10:47:02.256	 Syllables of "hell on earth" was missing
+2022-02-24 10:47:02.256	 Pronunciation of "hell on earth" was missing
+2022-02-24 10:47:02.256	 "hell on earth" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:02.256	 "hell on earth" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:02.755	 Syllables of "heliosphere" was missing
+2022-02-24 10:47:02.755	 Pronunciation of "heliosphere" was missing
+2022-02-24 10:47:02.755	 "heliosphere" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:02.755	 "heliosphere" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:03.619	 Syllables of "edgeworth-kuiper belt" was missing
+2022-02-24 10:47:03.62	 Pronunciation of "edgeworth-kuiper belt" was missing
+2022-02-24 10:47:03.62	 "edgeworth-kuiper belt" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:03.62	 "edgeworth-kuiper belt" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:04.276	 Syllables of "depths" was missing
+2022-02-24 10:47:04.276	 Pronunciation of "depths" was not a JSONObject: "dɛpθs"
+2022-02-24 10:47:04.48	 Syllables of "deep space" was missing
+2022-02-24 10:47:05.132	 Syllables of "black hole" was missing
+2022-02-24 10:47:09.081	 Pronunciation of "subpart" was missing
+2022-02-24 10:47:09.081	 No pronunciation of "subpart" could be found for "NOUN"
+2022-02-24 10:47:09.081	 "subpart" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:09.081	 "subpart" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:09.81	 Syllables of "linguistic unit" was missing
+2022-02-24 10:47:09.81	 Pronunciation of "linguistic unit" was missing
+2022-02-24 10:47:09.81	 "linguistic unit" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:09.81	 "linguistic unit" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:10.011	 Syllables of "language unit" was missing
+2022-02-24 10:47:10.011	 Pronunciation of "language unit" was missing
+2022-02-24 10:47:10.011	 "language unit" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:10.011	 "language unit" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:10.418	 Syllables of "metric function" was missing
+2022-02-24 10:47:10.418	 Pronunciation of "metric function" was missing
+2022-02-24 10:47:10.418	 "metric function" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:10.418	 "metric function" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:11.459	 Syllables of "threshold function" was missing
+2022-02-24 10:47:11.459	 Pronunciation of "threshold function" was missing
+2022-02-24 10:47:11.46	 "threshold function" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:11.46	 "threshold function" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:11.672	 Syllables of "kronecker delta" was missing
+2022-02-24 10:47:12.59	 Pronunciation of "inverse function" was missing
+2022-02-24 10:47:12.59	 No pronunciation of "inverse function" could be found for "NOUN"
+2022-02-24 10:47:12.59	 "inverse function" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:12.59	 "inverse function" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:12.791	 Syllables of "exponential function" was missing
+2022-02-24 10:47:12.791	 Pronunciation of "exponential function" was missing
+2022-02-24 10:47:12.791	 "exponential function" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:12.791	 "exponential function" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:13.191	 Pronunciation of "trigonometric function" was missing
+2022-02-24 10:47:13.191	 No pronunciation of "trigonometric function" could be found for "NOUN"
+2022-02-24 10:47:13.191	 "trigonometric function" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:13.191	 "trigonometric function" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:14.151	 Syllables of "ceremonial occasion" was missing
+2022-02-24 10:47:14.151	 Pronunciation of "ceremonial occasion" was missing
+2022-02-24 10:47:14.151	 "ceremonial occasion" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:14.151	 "ceremonial occasion" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:14.584	 Syllables of "fundraiser" was missing
+2022-02-24 10:47:14.584	 Pronunciation of "fundraiser" was not a JSONObject: "'fʌn,dreɪzɝr"
+2022-02-24 10:47:15.319	 Syllables of "photo op" was missing
+2022-02-24 10:47:15.319	 Pronunciation of "photo op" was missing
+2022-02-24 10:47:15.319	 "photo op" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:15.319	 "photo op" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:15.853	 Syllables of "photo opportunity" was missing
+2022-02-24 10:47:15.853	 Pronunciation of "photo opportunity" was missing
+2022-02-24 10:47:15.853	 "photo opportunity" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:15.853	 "photo opportunity" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:16.129	 Syllables of "sleepover" was missing
+2022-02-24 10:47:16.129	 Pronunciation of "sleepover" was missing
+2022-02-24 10:47:16.129	 "sleepover" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:16.129	 "sleepover" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:16.419	 Syllables of "reusable routine" was missing
+2022-02-24 10:47:16.419	 Pronunciation of "reusable routine" was missing
+2022-02-24 10:47:16.419	 "reusable routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:16.419	 "reusable routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:16.622	 Syllables of "recursive routine" was missing
+2022-02-24 10:47:16.622	 Pronunciation of "recursive routine" was missing
+2022-02-24 10:47:16.622	 "recursive routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:16.622	 "recursive routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:16.852	 Syllables of "random number generator" was missing
+2022-02-24 10:47:16.852	 Pronunciation of "random number generator" was missing
+2022-02-24 10:47:16.852	 "random number generator" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:16.852	 "random number generator" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:17.054	 Syllables of "utility routine" was missing
+2022-02-24 10:47:17.054	 Pronunciation of "utility routine" was missing
+2022-02-24 10:47:17.054	 "utility routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:17.054	 "utility routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:17.291	 Syllables of "contingency procedure" was missing
+2022-02-24 10:47:17.291	 Pronunciation of "contingency procedure" was missing
+2022-02-24 10:47:17.291	 "contingency procedure" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:17.291	 "contingency procedure" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:17.533	 Syllables of "tracing routine" was missing
+2022-02-24 10:47:17.533	 Pronunciation of "tracing routine" was missing
+2022-02-24 10:47:17.533	 "tracing routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:17.533	 "tracing routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:17.758	 Syllables of "executive routine" was missing
+2022-02-24 10:47:17.758	 Pronunciation of "executive routine" was missing
+2022-02-24 10:47:17.758	 "executive routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:17.758	 "executive routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:17.974	 Syllables of "supervisory routine" was missing
+2022-02-24 10:47:17.974	 Pronunciation of "supervisory routine" was missing
+2022-02-24 10:47:17.975	 "supervisory routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:17.975	 "supervisory routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:18.167	 Syllables of "cataloged procedure" was missing
+2022-02-24 10:47:18.167	 Pronunciation of "cataloged procedure" was missing
+2022-02-24 10:47:18.167	 "cataloged procedure" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:18.167	 "cataloged procedure" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:18.358	 Syllables of "library routine" was missing
+2022-02-24 10:47:18.358	 Pronunciation of "library routine" was missing
+2022-02-24 10:47:18.358	 "library routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:18.358	 "library routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:18.542	 Syllables of "service routine" was missing
+2022-02-24 10:47:18.542	 Pronunciation of "service routine" was missing
+2022-02-24 10:47:18.543	 "service routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:18.543	 "service routine" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:18.75	 Syllables of "gender role" was missing
+2022-02-24 10:47:18.75	 Pronunciation of "gender role" was missing
+2022-02-24 10:47:18.751	 "gender role" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:18.751	 "gender role" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:19.243	 Pronunciation of "accountantship" was missing
+2022-02-24 10:47:19.243	 No pronunciation of "accountantship" could be found for "NOUN"
+2022-02-24 10:47:19.243	 "accountantship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:19.243	 "accountantship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:19.637	 Pronunciation of "ambassadorship" was not a JSONObject: "æm'bæsʌdɝr,ʃɪp"
+2022-02-24 10:47:19.857	 Pronunciation of "apostleship" was missing
+2022-02-24 10:47:19.857	 No pronunciation of "apostleship" could be found for "NOUN"
+2022-02-24 10:47:19.857	 "apostleship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:19.857	 "apostleship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:20.079	 Pronunciation of "apprenticeship" was not a JSONObject: "ʌ'prɛntʌs,ʃɪp"
+2022-02-24 10:47:20.293	 Syllables of "associateship" was missing
+2022-02-24 10:47:20.515	 Pronunciation of "attorneyship" was missing
+2022-02-24 10:47:20.515	 No pronunciation of "attorneyship" could be found for "NOUN"
+2022-02-24 10:47:20.515	 "attorneyship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:20.515	 "attorneyship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:20.721	 Pronunciation of "bailiffship" was missing
+2022-02-24 10:47:20.721	 No pronunciation of "bailiffship" could be found for "NOUN"
+2022-02-24 10:47:20.721	 "bailiffship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:20.721	 "bailiffship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:21.151	 Syllables of "bishopry" was missing
+2022-02-24 10:47:21.151	 Pronunciation of "bishopry" was missing
+2022-02-24 10:47:21.151	 "bishopry" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:21.151	 "bishopry" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:21.391	 Pronunciation of "cadetship" was missing
+2022-02-24 10:47:21.391	 No pronunciation of "cadetship" could be found for "NOUN"
+2022-02-24 10:47:21.391	 "cadetship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:21.391	 "cadetship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:22.512	 Pronunciation of "cardinalship" was missing
+2022-02-24 10:47:22.512	 No pronunciation of "cardinalship" could be found for "NOUN"
+2022-02-24 10:47:22.512	 "cardinalship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:22.512	 "cardinalship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:23.321	 Pronunciation of "chaplaincy" was missing
+2022-02-24 10:47:23.321	 No pronunciation of "chaplaincy" could be found for "NOUN"
+2022-02-24 10:47:23.321	 "chaplaincy" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:23.321	 "chaplaincy" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:23.515	 Pronunciation of "chaplainship" was missing
+2022-02-24 10:47:23.515	 No pronunciation of "chaplainship" could be found for "NOUN"
+2022-02-24 10:47:23.515	 "chaplainship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:23.515	 "chaplainship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:23.705	 Pronunciation of "chieftaincy" was missing
+2022-02-24 10:47:23.705	 No pronunciation of "chieftaincy" could be found for "NOUN"
+2022-02-24 10:47:23.705	 "chieftaincy" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:23.705	 "chieftaincy" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:23.937	 Pronunciation of "chieftainship" was missing
+2022-02-24 10:47:23.938	 No pronunciation of "chieftainship" could be found for "NOUN"
+2022-02-24 10:47:23.938	 "chieftainship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:23.938	 "chieftainship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:24.386	 Pronunciation of "commandership" was missing
+2022-02-24 10:47:24.386	 No pronunciation of "commandership" could be found for "NOUN"
+2022-02-24 10:47:24.386	 "commandership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:24.386	 "commandership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:24.942	 Pronunciation of "comptrollership" was missing
+2022-02-24 10:47:24.942	 No pronunciation of "comptrollership" could be found for "NOUN"
+2022-02-24 10:47:24.942	 "comptrollership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:24.942	 "comptrollership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:25.222	 Pronunciation of "consulship" was not a JSONObject: "'kɑnsʌl,ʃɪp"
+2022-02-24 10:47:25.475	 Pronunciation of "controllership" was missing
+2022-02-24 10:47:25.475	 No pronunciation of "controllership" could be found for "NOUN"
+2022-02-24 10:47:25.475	 "controllership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:25.475	 "controllership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:25.783	 Pronunciation of "councillorship" was missing
+2022-02-24 10:47:25.783	 No pronunciation of "councillorship" could be found for "NOUN"
+2022-02-24 10:47:25.783	 "councillorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:25.783	 "councillorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:26.056	 Pronunciation of "councilorship" was missing
+2022-02-24 10:47:26.056	 No pronunciation of "councilorship" could be found for "NOUN"
+2022-02-24 10:47:26.056	 "councilorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:26.056	 "councilorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:26.393	 Pronunciation of "counsellorship" was missing
+2022-02-24 10:47:26.393	 No pronunciation of "counsellorship" could be found for "NOUN"
+2022-02-24 10:47:26.393	 "counsellorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:26.393	 "counsellorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:26.612	 Pronunciation of "counselorship" was missing
+2022-02-24 10:47:26.612	 No pronunciation of "counselorship" could be found for "NOUN"
+2022-02-24 10:47:26.612	 "counselorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:26.612	 "counselorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:27.113	 Pronunciation of "curatorship" was missing
+2022-02-24 10:47:27.113	 No pronunciation of "curatorship" could be found for "NOUN"
+2022-02-24 10:47:27.113	 "curatorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:27.113	 "curatorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:27.329	 Pronunciation of "custodianship" was missing
+2022-02-24 10:47:27.329	 No pronunciation of "custodianship" could be found for "NOUN"
+2022-02-24 10:47:27.329	 "custodianship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:27.329	 "custodianship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:27.776	 Pronunciation of "deanship" was missing
+2022-02-24 10:47:27.776	 No pronunciation of "deanship" could be found for "NOUN"
+2022-02-24 10:47:27.776	 "deanship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:27.776	 "deanship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:27.995	 Pronunciation of "directorship" was not a JSONObject: "dɝr'ɛktɝr,ʃɪp"
+2022-02-24 10:47:28.221	 Pronunciation of "discipleship" was missing
+2022-02-24 10:47:28.221	 No pronunciation of "discipleship" could be found for "NOUN"
+2022-02-24 10:47:28.221	 "discipleship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:28.221	 "discipleship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:28.619	 Syllables of "eldership" was missing
+2022-02-24 10:47:28.619	 Pronunciation of "eldership" was missing
+2022-02-24 10:47:28.619	 "eldership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:28.619	 "eldership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:29.481	 Syllables of "feudal lordship" was missing
+2022-02-24 10:47:29.481	 Pronunciation of "feudal lordship" was missing
+2022-02-24 10:47:29.481	 "feudal lordship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:29.481	 "feudal lordship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:29.683	 Pronunciation of "foremanship" was missing
+2022-02-24 10:47:29.683	 No pronunciation of "foremanship" could be found for "NOUN"
+2022-02-24 10:47:29.683	 "foremanship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:29.683	 "foremanship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:30.834	 Syllables of "hot seat" was missing
+2022-02-24 10:47:31.263	 Pronunciation of "inspectorship" was missing
+2022-02-24 10:47:31.263	 No pronunciation of "inspectorship" could be found for "NOUN"
+2022-02-24 10:47:31.263	 "inspectorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:31.263	 "inspectorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:31.455	 Pronunciation of "instructorship" was missing
+2022-02-24 10:47:31.455	 No pronunciation of "instructorship" could be found for "NOUN"
+2022-02-24 10:47:31.455	 "instructorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:31.455	 "instructorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:31.679	 Pronunciation of "internship" was not a JSONObject: "'ɪntɝrn,ʃɪp"
+2022-02-24 10:47:31.885	 Pronunciation of "judgeship" was not a JSONObject: "'dʒʌdʒ,ʃɪp"
+2022-02-24 10:47:32.806	 Pronunciation of "legateship" was missing
+2022-02-24 10:47:32.806	 No pronunciation of "legateship" could be found for "NOUN"
+2022-02-24 10:47:32.806	 "legateship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:32.806	 "legateship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:33.293	 Pronunciation of "legislatorship" was missing
+2022-02-24 10:47:33.293	 No pronunciation of "legislatorship" could be found for "NOUN"
+2022-02-24 10:47:33.293	 "legislatorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:33.293	 "legislatorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:34.438	 Pronunciation of "managership" was missing
+2022-02-24 10:47:34.438	 No pronunciation of "managership" could be found for "NOUN"
+2022-02-24 10:47:34.438	 "managership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:34.438	 "managership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:34.825	 Syllables of "marshalship" was missing
+2022-02-24 10:47:34.825	 Pronunciation of "marshalship" was missing
+2022-02-24 10:47:34.825	 "marshalship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:34.825	 "marshalship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:35.432	 Syllables of "messiahship" was missing
+2022-02-24 10:47:35.432	 Pronunciation of "messiahship" was missing
+2022-02-24 10:47:35.432	 "messiahship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:35.432	 "messiahship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:35.644	 Pronunciation of "moderatorship" was missing
+2022-02-24 10:47:35.644	 No pronunciation of "moderatorship" could be found for "NOUN"
+2022-02-24 10:47:35.644	 "moderatorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:35.644	 "moderatorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:35.831	 Syllables of "overlordship" was missing
+2022-02-24 10:47:35.831	 Pronunciation of "overlordship" was missing
+2022-02-24 10:47:35.831	 "overlordship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:35.831	 "overlordship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:36.435	 Syllables of "peasanthood" was missing
+2022-02-24 10:47:36.435	 Pronunciation of "peasanthood" was missing
+2022-02-24 10:47:36.435	 "peasanthood" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:36.435	 "peasanthood" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:37.119	 Pronunciation of "precentorship" was missing
+2022-02-24 10:47:37.12	 No pronunciation of "precentorship" could be found for "NOUN"
+2022-02-24 10:47:37.12	 "precentorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:37.12	 "precentorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:37.383	 Pronunciation of "preceptorship" was missing
+2022-02-24 10:47:37.384	 No pronunciation of "preceptorship" could be found for "NOUN"
+2022-02-24 10:47:37.384	 "preceptorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:37.384	 "preceptorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:38.226	 Pronunciation of "premiership" was not a JSONObject: "prɛ'mɪr,ʃɪp"
+2022-02-24 10:47:38.637	 Syllables of "academicianship" was missing
+2022-02-24 10:47:38.638	 Pronunciation of "academicianship" was missing
+2022-02-24 10:47:38.638	 "academicianship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:38.638	 "academicianship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:39.058	 Pronunciation of "principalship" was missing
+2022-02-24 10:47:39.058	 No pronunciation of "principalship" could be found for "NOUN"
+2022-02-24 10:47:39.058	 "principalship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:39.058	 "principalship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:39.271	 Pronunciation of "priorship" was missing
+2022-02-24 10:47:39.271	 No pronunciation of "priorship" could be found for "NOUN"
+2022-02-24 10:47:39.271	 "priorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:39.271	 "priorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:39.728	 Pronunciation of "proconsulship" was missing
+2022-02-24 10:47:39.728	 No pronunciation of "proconsulship" could be found for "NOUN"
+2022-02-24 10:47:39.728	 "proconsulship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:39.728	 "proconsulship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:39.933	 Pronunciation of "proctorship" was missing
+2022-02-24 10:47:39.933	 No pronunciation of "proctorship" could be found for "NOUN"
+2022-02-24 10:47:39.933	 "proctorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:39.933	 "proctorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:40.331	 Pronunciation of "protectorship" was missing
+2022-02-24 10:47:40.331	 No pronunciation of "protectorship" could be found for "NOUN"
+2022-02-24 10:47:40.331	 "protectorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:40.331	 "protectorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:40.55	 Syllables of "public office" was missing
+2022-02-24 10:47:40.55	 Pronunciation of "public office" was missing
+2022-02-24 10:47:40.55	 "public office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:40.55	 "public office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:41.179	 Syllables of "rectorate" was missing
+2022-02-24 10:47:41.179	 Pronunciation of "rectorate" was missing
+2022-02-24 10:47:41.179	 "rectorate" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:41.179	 "rectorate" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:41.391	 Syllables of "rectorship" was missing
+2022-02-24 10:47:41.391	 Pronunciation of "rectorship" was missing
+2022-02-24 10:47:41.391	 "rectorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:41.391	 "rectorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:42.02	 Syllables of "rulership" was missing
+2022-02-24 10:47:42.02	 Pronunciation of "rulership" was missing
+2022-02-24 10:47:42.02	 "rulership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:42.02	 "rulership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:42.441	 Pronunciation of "secretaryship" was missing
+2022-02-24 10:47:42.442	 No pronunciation of "secretaryship" could be found for "NOUN"
+2022-02-24 10:47:42.442	 "secretaryship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:42.442	 "secretaryship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:43.3	 Pronunciation of "senatorship" was missing
+2022-02-24 10:47:43.3	 No pronunciation of "senatorship" could be found for "NOUN"
+2022-02-24 10:47:43.3	 "senatorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:43.3	 "senatorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:43.735	 Pronunciation of "solicitorship" was missing
+2022-02-24 10:47:43.735	 No pronunciation of "solicitorship" could be found for "NOUN"
+2022-02-24 10:47:43.735	 "solicitorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:43.735	 "solicitorship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:43.933	 Pronunciation of "speakership" was not a JSONObject: "'spikɝr,ʃɪp"
+2022-02-24 10:47:44.185	 Pronunciation of "stewardship" was not a JSONObject: "'stuɝrd,ʃɪp"
+2022-02-24 10:47:44.402	 Pronunciation of "studentship" was missing
+2022-02-24 10:47:44.402	 No pronunciation of "studentship" could be found for "NOUN"
+2022-02-24 10:47:44.402	 "studentship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:44.402	 "studentship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:44.604	 Pronunciation of "teachership" was missing
+2022-02-24 10:47:44.604	 No pronunciation of "teachership" could be found for "NOUN"
+2022-02-24 10:47:44.604	 "teachership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:44.604	 "teachership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:44.837	 Syllables of "thaneship" was missing
+2022-02-24 10:47:44.837	 Pronunciation of "thaneship" was missing
+2022-02-24 10:47:44.838	 "thaneship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:44.838	 "thaneship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:45.242	 Syllables of "treasurership" was missing
+2022-02-24 10:47:45.242	 Pronunciation of "treasurership" was missing
+2022-02-24 10:47:45.242	 "treasurership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:45.242	 "treasurership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:45.49	 Pronunciation of "tribuneship" was missing
+2022-02-24 10:47:45.49	 No pronunciation of "tribuneship" could be found for "NOUN"
+2022-02-24 10:47:45.49	 "tribuneship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:45.49	 "tribuneship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:46.107	 Syllables of "viceroyship" was missing
+2022-02-24 10:47:46.107	 Pronunciation of "viceroyship" was missing
+2022-02-24 10:47:46.107	 "viceroyship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:46.107	 "viceroyship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:46.305	 Syllables of "viziership" was missing
+2022-02-24 10:47:46.305	 Pronunciation of "viziership" was missing
+2022-02-24 10:47:46.305	 "viziership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:46.305	 "viziership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:46.522	 Pronunciation of "wardenship" was missing
+2022-02-24 10:47:46.522	 No pronunciation of "wardenship" could be found for "NOUN"
+2022-02-24 10:47:46.522	 "wardenship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:46.522	 "wardenship" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:46.719	 Pronunciation of "wardership" was missing
+2022-02-24 10:47:46.719	 No pronunciation of "wardership" could be found for "NOUN"
+2022-02-24 10:47:46.719	 "wardership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:46.719	 "wardership" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:47.134	 Syllables of "war power" was missing
+2022-02-24 10:47:47.134	 Pronunciation of "war power" was missing
+2022-02-24 10:47:47.135	 "war power" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:47.135	 "war power" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:47.355	 Syllables of "executive clemency" was missing
+2022-02-24 10:47:47.355	 Pronunciation of "executive clemency" was missing
+2022-02-24 10:47:47.355	 "executive clemency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:47.355	 "executive clemency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:47.754	 Syllables of "loan office" was missing
+2022-02-24 10:47:47.98	 Syllables of "main office" was missing
+2022-02-24 10:47:48.181	 Syllables of "life office" was missing
+2022-02-24 10:47:48.181	 Pronunciation of "life office" was missing
+2022-02-24 10:47:48.181	 "life office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:48.181	 "life office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:48.393	 Syllables of "shipping office" was missing
+2022-02-24 10:47:48.393	 Pronunciation of "shipping office" was missing
+2022-02-24 10:47:48.393	 "shipping office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:48.393	 "shipping office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:48.833	 Syllables of "home base" was missing
+2022-02-24 10:47:49.04	 Syllables of "ticket booth" was missing
+2022-02-24 10:47:49.253	 Syllables of "government office" was missing
+2022-02-24 10:47:49.253	 Pronunciation of "government office" was missing
+2022-02-24 10:47:49.253	 "government office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:49.253	 "government office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:49.489	 Syllables of "newsroom" was missing
+2022-02-24 10:47:49.489	 Pronunciation of "newsroom" was not a JSONObject: "'nuz,rum"
+2022-02-24 10:47:49.701	 Syllables of "countinghouse" was missing
+2022-02-24 10:47:49.896	 Syllables of "central office" was missing
+2022-02-24 10:47:50.105	 Syllables of "ticket office" was missing
+2022-02-24 10:47:50.566	 Syllables of "immigration and naturalization service" was missing
+2022-02-24 10:47:50.566	 Pronunciation of "immigration and naturalization service" was missing
+2022-02-24 10:47:50.566	 "immigration and naturalization service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:50.566	 "immigration and naturalization service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:50.787	 Syllables of "u. s. air force" was missing
+2022-02-24 10:47:50.787	 Pronunciation of "u. s. air force" was missing
+2022-02-24 10:47:50.787	 "u. s. air force" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:50.787	 "u. s. air force" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:50.982	 Syllables of "independent agency" was missing
+2022-02-24 10:47:50.982	 Pronunciation of "independent agency" was missing
+2022-02-24 10:47:50.982	 "independent agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:50.982	 "independent agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:51.213	 Syllables of "inr" was missing
+2022-02-24 10:47:51.213	 Pronunciation of "inr" was missing
+2022-02-24 10:47:51.213	 "inr" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:51.213	 "inr" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:51.449	 Pronunciation of "ins" was not a JSONObject: "ɪnz"
+2022-02-24 10:47:51.738	 Syllables of "u. s. army" was missing
+2022-02-24 10:47:51.738	 Pronunciation of "u. s. army" was missing
+2022-02-24 10:47:51.739	 "u. s. army" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:51.739	 "u. s. army" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:52.015	 Syllables of "u. s. coast guard" was missing
+2022-02-24 10:47:52.015	 Pronunciation of "u. s. coast guard" was missing
+2022-02-24 10:47:52.015	 "u. s. coast guard" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:52.015	 "u. s. coast guard" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:52.227	 Syllables of "internal revenue service" was missing
+2022-02-24 10:47:52.227	 Pronunciation of "internal revenue service" was missing
+2022-02-24 10:47:52.227	 "internal revenue service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:52.227	 "internal revenue service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:52.425	 Syllables of "irs" was missing
+2022-02-24 10:47:52.425	 Pronunciation of "irs" was missing
+2022-02-24 10:47:52.425	 "irs" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:52.425	 "irs" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:52.651	 Syllables of "advanced research and development activity" was missing
+2022-02-24 10:47:52.651	 Pronunciation of "advanced research and development activity" was missing
+2022-02-24 10:47:52.651	 "advanced research and development activity" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:52.651	 "advanced research and development activity" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:52.9	 Syllables of "united states air force" was missing
+2022-02-24 10:47:52.9	 Pronunciation of "united states air force" was missing
+2022-02-24 10:47:52.9	 "united states air force" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:52.9	 "united states air force" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:53.143	 Syllables of "united states army" was missing
+2022-02-24 10:47:53.143	 Pronunciation of "united states army" was missing
+2022-02-24 10:47:53.143	 "united states army" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:53.143	 "united states army" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:53.372	 Syllables of "defense technical information center" was missing
+2022-02-24 10:47:53.372	 Pronunciation of "defense technical information center" was missing
+2022-02-24 10:47:53.372	 "defense technical information center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:53.372	 "defense technical information center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:53.614	 Syllables of "tsa" was missing
+2022-02-24 10:47:53.614	 Pronunciation of "tsa" was missing
+2022-02-24 10:47:53.614	 "tsa" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:53.614	 "tsa" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:53.823	 Syllables of "occupational safety and health administration" was missing
+2022-02-24 10:47:53.823	 Pronunciation of "occupational safety and health administration" was missing
+2022-02-24 10:47:53.823	 "occupational safety and health administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:53.823	 "occupational safety and health administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:54.047	 Syllables of "office of intelligence support" was missing
+2022-02-24 10:47:54.047	 Pronunciation of "office of intelligence support" was missing
+2022-02-24 10:47:54.047	 "office of intelligence support" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:54.047	 "office of intelligence support" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:54.282	 Syllables of "office of naval intelligence" was missing
+2022-02-24 10:47:54.282	 Pronunciation of "office of naval intelligence" was missing
+2022-02-24 10:47:54.282	 "office of naval intelligence" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:54.282	 "office of naval intelligence" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:54.486	 Syllables of "ois" was missing
+2022-02-24 10:47:54.486	 Pronunciation of "ois" was missing
+2022-02-24 10:47:54.486	 "ois" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:54.486	 "ois" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:54.706	 Syllables of "comptroller of the currency" was missing
+2022-02-24 10:47:54.706	 Pronunciation of "comptroller of the currency" was missing
+2022-02-24 10:47:54.706	 "comptroller of the currency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:54.706	 "comptroller of the currency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:54.927	 Syllables of "oni" was missing
+2022-02-24 10:47:54.927	 Pronunciation of "oni" was missing
+2022-02-24 10:47:54.927	 "oni" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:54.927	 "oni" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:55.423	 Syllables of "osha" was missing
+2022-02-24 10:47:55.423	 Pronunciation of "osha" was not a JSONObject: "'oʊʃʌ"
+2022-02-24 10:47:55.637	 Syllables of "us coast guard" was missing
+2022-02-24 10:47:55.637	 Pronunciation of "us coast guard" was missing
+2022-02-24 10:47:55.637	 "us coast guard" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:55.637	 "us coast guard" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:55.881	 Syllables of "us fish and wildlife service" was missing
+2022-02-24 10:47:55.881	 Pronunciation of "us fish and wildlife service" was missing
+2022-02-24 10:47:55.881	 "us fish and wildlife service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:55.881	 "us fish and wildlife service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:56.089	 Syllables of "patent and trademark office database" was missing
+2022-02-24 10:47:56.089	 Pronunciation of "patent and trademark office database" was missing
+2022-02-24 10:47:56.089	 "patent and trademark office database" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:56.089	 "patent and trademark office database" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:56.287	 Syllables of "counterterrorist center" was missing
+2022-02-24 10:47:56.287	 Pronunciation of "counterterrorist center" was missing
+2022-02-24 10:47:56.287	 "counterterrorist center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:56.287	 "counterterrorist center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:56.532	 Syllables of "ctc" was missing
+2022-02-24 10:47:56.532	 Pronunciation of "ctc" was missing
+2022-02-24 10:47:56.532	 "ctc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:56.532	 "ctc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:57.018	 Syllables of "phs" was missing
+2022-02-24 10:47:57.018	 Pronunciation of "phs" was missing
+2022-02-24 10:47:57.018	 "phs" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:57.018	 "phs" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:57.261	 Syllables of "customs bureau" was missing
+2022-02-24 10:47:57.261	 Pronunciation of "customs bureau" was missing
+2022-02-24 10:47:57.261	 "customs bureau" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:57.261	 "customs bureau" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:57.477	 Syllables of "customs service" was missing
+2022-02-24 10:47:57.477	 Pronunciation of "customs service" was missing
+2022-02-24 10:47:57.477	 "customs service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:57.477	 "customs service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:57.73	 Syllables of "darpa" was missing
+2022-02-24 10:47:57.731	 Pronunciation of "darpa" was not a JSONObject: "'dɑrpʌ"
+2022-02-24 10:47:57.948	 Syllables of "defense advanced research projects agency" was missing
+2022-02-24 10:47:57.948	 Pronunciation of "defense advanced research projects agency" was missing
+2022-02-24 10:47:57.949	 "defense advanced research projects agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:57.949	 "defense advanced research projects agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:58.208	 Syllables of "defense information systems agency" was missing
+2022-02-24 10:47:58.208	 Pronunciation of "defense information systems agency" was missing
+2022-02-24 10:47:58.208	 "defense information systems agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:58.208	 "defense information systems agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:58.418	 Syllables of "defense logistics agency" was missing
+2022-02-24 10:47:58.418	 Pronunciation of "defense logistics agency" was missing
+2022-02-24 10:47:58.418	 "defense logistics agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:58.418	 "defense logistics agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:58.677	 Syllables of "defense reutilization and marketing service" was missing
+2022-02-24 10:47:58.677	 Pronunciation of "defense reutilization and marketing service" was missing
+2022-02-24 10:47:58.677	 "defense reutilization and marketing service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:58.677	 "defense reutilization and marketing service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:58.933	 Syllables of "department of defense laboratory system" was missing
+2022-02-24 10:47:58.933	 Pronunciation of "department of defense laboratory system" was missing
+2022-02-24 10:47:58.933	 "department of defense laboratory system" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:58.933	 "department of defense laboratory system" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:59.197	 Syllables of "department of energy intelligence" was missing
+2022-02-24 10:47:59.197	 Pronunciation of "department of energy intelligence" was missing
+2022-02-24 10:47:59.197	 "department of energy intelligence" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:59.197	 "department of energy intelligence" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:59.501	 Syllables of "disa" was missing
+2022-02-24 10:47:59.501	 Pronunciation of "disa" was not a JSONObject: "'dɪsʌ"
+2022-02-24 10:47:59.73	 Syllables of "doei" was missing
+2022-02-24 10:47:59.73	 Pronunciation of "doei" was missing
+2022-02-24 10:47:59.73	 "doei" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:59.73	 "doei" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:59.931	 Syllables of "drms" was missing
+2022-02-24 10:47:59.931	 Pronunciation of "drms" was missing
+2022-02-24 10:47:59.931	 "drms" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:47:59.931	 "drms" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:00.277	 Syllables of "ds" was missing
+2022-02-24 10:48:00.277	 Pronunciation of "ds" was missing
+2022-02-24 10:48:00.277	 "ds" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:00.277	 "ds" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:00.492	 Syllables of "dtic" was missing
+2022-02-24 10:48:00.492	 Pronunciation of "dtic" was missing
+2022-02-24 10:48:00.492	 "dtic" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:00.492	 "dtic" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:00.827	 Syllables of "us government printing office" was missing
+2022-02-24 10:48:00.827	 Pronunciation of "us government printing office" was missing
+2022-02-24 10:48:00.827	 "us government printing office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:00.827	 "us government printing office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:01.415	 Syllables of "us navy" was missing
+2022-02-24 10:48:01.415	 Pronunciation of "us navy" was missing
+2022-02-24 10:48:01.415	 "us navy" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:01.415	 "us navy" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:01.662	 Pronunciation of "usa" was not a JSONObject: "'ju'ɛ'seɪ"
+2022-02-24 10:48:01.9	 Syllables of "executive agency" was missing
+2022-02-24 10:48:01.9	 Pronunciation of "executive agency" was missing
+2022-02-24 10:48:01.9	 "executive agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:01.9	 "executive agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:02.098	 Syllables of "faa" was missing
+2022-02-24 10:48:02.098	 Pronunciation of "faa" was missing
+2022-02-24 10:48:02.098	 "faa" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:02.098	 "faa" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:02.303	 Syllables of "technology administration" was missing
+2022-02-24 10:48:02.303	 Pronunciation of "technology administration" was missing
+2022-02-24 10:48:02.303	 "technology administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:02.303	 "technology administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:02.498	 Syllables of "fda" was missing
+2022-02-24 10:48:02.498	 Pronunciation of "fda" was missing
+2022-02-24 10:48:02.498	 "fda" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:02.498	 "fda" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:02.699	 Syllables of "federal aviation administration" was missing
+2022-02-24 10:48:02.699	 Pronunciation of "federal aviation administration" was missing
+2022-02-24 10:48:02.699	 "federal aviation administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:02.699	 "federal aviation administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:02.909	 Syllables of "federal housing administration" was missing
+2022-02-24 10:48:02.909	 Pronunciation of "federal housing administration" was missing
+2022-02-24 10:48:02.909	 "federal housing administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:02.909	 "federal housing administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:03.169	 Pronunciation of "usaf" was missing
+2022-02-24 10:48:03.169	 No pronunciation of "usaf" could be found for "NOUN"
+2022-02-24 10:48:03.169	 "usaf" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:03.169	 "usaf" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:03.372	 Syllables of "fha" was missing
+2022-02-24 10:48:03.372	 Pronunciation of "fha" was missing
+2022-02-24 10:48:03.373	 "fha" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:03.373	 "fha" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:03.584	 Syllables of "financial management service" was missing
+2022-02-24 10:48:03.585	 Pronunciation of "financial management service" was missing
+2022-02-24 10:48:03.585	 "financial management service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:03.585	 "financial management service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:03.799	 Syllables of "food and drug administration" was missing
+2022-02-24 10:48:03.799	 Pronunciation of "food and drug administration" was missing
+2022-02-24 10:48:03.799	 "food and drug administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:03.799	 "food and drug administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:04.212	 Syllables of "fws" was missing
+2022-02-24 10:48:04.212	 Pronunciation of "fws" was missing
+2022-02-24 10:48:04.212	 "fws" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:04.212	 "fws" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:04.623	 Syllables of "transportation security administration" was missing
+2022-02-24 10:48:04.623	 Pronunciation of "transportation security administration" was missing
+2022-02-24 10:48:04.623	 "transportation security administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:04.623	 "transportation security administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:04.834	 Syllables of "government accounting office" was missing
+2022-02-24 10:48:04.834	 Pronunciation of "government accounting office" was missing
+2022-02-24 10:48:04.834	 "government accounting office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:04.834	 "government accounting office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:05.03	 Syllables of "government printing office" was missing
+2022-02-24 10:48:05.03	 Pronunciation of "government printing office" was missing
+2022-02-24 10:48:05.03	 "government printing office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:05.03	 "government printing office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:05.254	 Syllables of "uscb" was missing
+2022-02-24 10:48:05.254	 Pronunciation of "uscb" was missing
+2022-02-24 10:48:05.254	 "uscb" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:05.254	 "uscb" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:05.454	 Pronunciation of "gpo" was missing
+2022-02-24 10:48:05.454	 No pronunciation of "gpo" could be found for "NOUN"
+2022-02-24 10:48:05.454	 "gpo" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:05.454	 "gpo" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:05.652	 Pronunciation of "usn" was missing
+2022-02-24 10:48:05.652	 No pronunciation of "usn" could be found for "NOUN"
+2022-02-24 10:48:05.652	 "usn" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:05.652	 "usn" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:05.851	 Syllables of "lablink" was missing
+2022-02-24 10:48:05.851	 Pronunciation of "lablink" was missing
+2022-02-24 10:48:05.851	 "lablink" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:05.851	 "lablink" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:06.07	 Syllables of "law enforcement agency" was missing
+2022-02-24 10:48:06.07	 Pronunciation of "law enforcement agency" was missing
+2022-02-24 10:48:06.071	 "law enforcement agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:06.071	 "law enforcement agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:06.267	 Syllables of "united states border patrol" was missing
+2022-02-24 10:48:06.267	 Pronunciation of "united states border patrol" was missing
+2022-02-24 10:48:06.267	 "united states border patrol" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:06.267	 "united states border patrol" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:06.48	 Syllables of "united states coast guard" was missing
+2022-02-24 10:48:06.48	 Pronunciation of "united states coast guard" was missing
+2022-02-24 10:48:06.48	 "united states coast guard" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:06.48	 "united states coast guard" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:06.742	 Syllables of "united states fish and wildlife service" was missing
+2022-02-24 10:48:06.742	 Pronunciation of "united states fish and wildlife service" was missing
+2022-02-24 10:48:06.742	 "united states fish and wildlife service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:06.742	 "united states fish and wildlife service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:06.961	 Syllables of "united states government accounting office" was missing
+2022-02-24 10:48:06.961	 Pronunciation of "united states government accounting office" was missing
+2022-02-24 10:48:06.961	 "united states government accounting office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:06.961	 "united states government accounting office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:07.15	 Pronunciation of "local authority" was missing
+2022-02-24 10:48:07.15	 No pronunciation of "local authority" could be found for "NOUN"
+2022-02-24 10:48:07.15	 "local authority" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:07.15	 "local authority" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:07.342	 Syllables of "united states government printing office" was missing
+2022-02-24 10:48:07.342	 Pronunciation of "united states government printing office" was missing
+2022-02-24 10:48:07.342	 "united states government printing office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:07.342	 "united states government printing office" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:07.553	 Syllables of "united states navy" was missing
+2022-02-24 10:48:07.553	 Pronunciation of "united states navy" was missing
+2022-02-24 10:48:07.553	 "united states navy" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:07.553	 "united states navy" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:07.764	 Syllables of "united states public health service" was missing
+2022-02-24 10:48:07.764	 Pronunciation of "united states public health service" was missing
+2022-02-24 10:48:07.764	 "united states public health service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:07.764	 "united states public health service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:08.008	 Syllables of "marine corps intelligence activity" was missing
+2022-02-24 10:48:08.008	 Pronunciation of "marine corps intelligence activity" was missing
+2022-02-24 10:48:08.008	 "marine corps intelligence activity" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:08.008	 "marine corps intelligence activity" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:08.223	 Syllables of "us air force" was missing
+2022-02-24 10:48:08.223	 Pronunciation of "us air force" was missing
+2022-02-24 10:48:08.224	 "us air force" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:08.224	 "us air force" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:08.422	 Syllables of "us army" was missing
+2022-02-24 10:48:08.422	 Pronunciation of "us army" was missing
+2022-02-24 10:48:08.422	 "us army" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:08.422	 "us army" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:08.63	 Syllables of "mcia" was missing
+2022-02-24 10:48:08.63	 Pronunciation of "mcia" was missing
+2022-02-24 10:48:08.63	 "mcia" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:08.63	 "mcia" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:08.853	 Syllables of "us border patrol" was missing
+2022-02-24 10:48:08.853	 Pronunciation of "us border patrol" was missing
+2022-02-24 10:48:08.853	 "us border patrol" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:08.853	 "us border patrol" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:09.055	 Syllables of "national climatic data center" was missing
+2022-02-24 10:48:09.055	 Pronunciation of "national climatic data center" was missing
+2022-02-24 10:48:09.055	 "national climatic data center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:09.055	 "national climatic data center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:09.263	 Syllables of "national geospatial-intelligence agency" was missing
+2022-02-24 10:48:09.263	 Pronunciation of "national geospatial-intelligence agency" was missing
+2022-02-24 10:48:09.263	 "national geospatial-intelligence agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:09.263	 "national geospatial-intelligence agency" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:09.509	 Syllables of "national guard bureau" was missing
+2022-02-24 10:48:09.509	 Pronunciation of "national guard bureau" was missing
+2022-02-24 10:48:09.509	 "national guard bureau" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:09.509	 "national guard bureau" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:09.777	 Syllables of "national institute of standards and technology" was missing
+2022-02-24 10:48:09.777	 Pronunciation of "national institute of standards and technology" was missing
+2022-02-24 10:48:09.777	 "national institute of standards and technology" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:09.777	 "national institute of standards and technology" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:10.023	 Syllables of "national institutes of health" was missing
+2022-02-24 10:48:10.023	 Pronunciation of "national institutes of health" was missing
+2022-02-24 10:48:10.023	 "national institutes of health" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:10.023	 "national institutes of health" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:10.237	 Syllables of "national oceanic and atmospheric administration" was missing
+2022-02-24 10:48:10.237	 Pronunciation of "national oceanic and atmospheric administration" was missing
+2022-02-24 10:48:10.237	 "national oceanic and atmospheric administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:10.237	 "national oceanic and atmospheric administration" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:10.432	 Syllables of "national park service" was missing
+2022-02-24 10:48:10.432	 Pronunciation of "national park service" was missing
+2022-02-24 10:48:10.432	 "national park service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:10.432	 "national park service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:10.629	 Syllables of "national technical information service" was missing
+2022-02-24 10:48:10.629	 Pronunciation of "national technical information service" was missing
+2022-02-24 10:48:10.629	 "national technical information service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:10.629	 "national technical information service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:10.837	 Syllables of "national weather service" was missing
+2022-02-24 10:48:10.837	 Pronunciation of "national weather service" was missing
+2022-02-24 10:48:10.838	 "national weather service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:10.838	 "national weather service" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:11.061	 Syllables of "naval air warfare center weapons division" was missing
+2022-02-24 10:48:11.061	 Pronunciation of "naval air warfare center weapons division" was missing
+2022-02-24 10:48:11.061	 "naval air warfare center weapons division" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:11.061	 "naval air warfare center weapons division" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:11.314	 Syllables of "naval special warfare" was missing
+2022-02-24 10:48:11.314	 Pronunciation of "naval special warfare" was missing
+2022-02-24 10:48:11.314	 "naval special warfare" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:11.314	 "naval special warfare" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:11.513	 Syllables of "naval surface warfare center" was missing
+2022-02-24 10:48:11.513	 Pronunciation of "naval surface warfare center" was missing
+2022-02-24 10:48:11.513	 "naval surface warfare center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:11.513	 "naval surface warfare center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:11.733	 Syllables of "naval underwater warfare center" was missing
+2022-02-24 10:48:11.733	 Pronunciation of "naval underwater warfare center" was missing
+2022-02-24 10:48:11.733	 "naval underwater warfare center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:11.733	 "naval underwater warfare center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:12.188	 Syllables of "air force" was missing
+2022-02-24 10:48:12.484	 Syllables of "air force intelligence surveillance and reconnaissance" was missing
+2022-02-24 10:48:12.484	 Pronunciation of "air force intelligence surveillance and reconnaissance" was missing
+2022-02-24 10:48:12.484	 "air force intelligence surveillance and reconnaissance" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:12.484	 "air force intelligence surveillance and reconnaissance" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:12.824	 Syllables of "air force isr" was missing
+2022-02-24 10:48:12.824	 Pronunciation of "air force isr" was missing
+2022-02-24 10:48:12.824	 "air force isr" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:12.824	 "air force isr" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:13.28	 Syllables of "nawcwpns" was missing
+2022-02-24 10:48:13.28	 Pronunciation of "nawcwpns" was missing
+2022-02-24 10:48:13.28	 "nawcwpns" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:13.28	 "nawcwpns" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:13.481	 Syllables of "ncdc" was missing
+2022-02-24 10:48:13.481	 Pronunciation of "ncdc" was missing
+2022-02-24 10:48:13.481	 "ncdc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:13.481	 "ncdc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:13.692	 Syllables of "arda" was missing
+2022-02-24 10:48:13.692	 Pronunciation of "arda" was not a JSONObject: "'ɑrdʌ"
+2022-02-24 10:48:14.136	 Syllables of "army intelligence" was missing
+2022-02-24 10:48:14.136	 Pronunciation of "army intelligence" was missing
+2022-02-24 10:48:14.136	 "army intelligence" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:14.136	 "army intelligence" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:14.339	 Pronunciation of "nga" was missing
+2022-02-24 10:48:14.339	 No pronunciation of "nga" could be found for "NOUN"
+2022-02-24 10:48:14.339	 "nga" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:14.339	 "nga" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:14.55	 Syllables of "ngb" was missing
+2022-02-24 10:48:14.55	 Pronunciation of "ngb" was missing
+2022-02-24 10:48:14.55	 "ngb" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:14.55	 "ngb" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:14.769	 Syllables of "ballistic missile defense organization" was missing
+2022-02-24 10:48:14.769	 Pronunciation of "ballistic missile defense organization" was missing
+2022-02-24 10:48:14.769	 "ballistic missile defense organization" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:14.769	 "ballistic missile defense organization" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:14.965	 Syllables of "nih" was missing
+2022-02-24 10:48:14.965	 Pronunciation of "nih" was missing
+2022-02-24 10:48:14.965	 "nih" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:14.965	 "nih" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:15.156	 Syllables of "nist" was missing
+2022-02-24 10:48:15.156	 Pronunciation of "nist" was not a JSONObject: "nɪst"
+2022-02-24 10:48:15.359	 Syllables of "bja" was missing
+2022-02-24 10:48:15.359	 Pronunciation of "bja" was missing
+2022-02-24 10:48:15.359	 "bja" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:15.359	 "bja" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:15.605	 Syllables of "bjs" was missing
+2022-02-24 10:48:15.605	 Pronunciation of "bjs" was missing
+2022-02-24 10:48:15.605	 "bjs" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:15.605	 "bjs" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:15.847	 Syllables of "bmdo" was missing
+2022-02-24 10:48:15.847	 Pronunciation of "bmdo" was missing
+2022-02-24 10:48:15.847	 "bmdo" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:15.847	 "bmdo" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:16.073	 Syllables of "bureau of customs" was missing
+2022-02-24 10:48:16.073	 Pronunciation of "bureau of customs" was missing
+2022-02-24 10:48:16.073	 "bureau of customs" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:16.073	 "bureau of customs" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:16.268	 Syllables of "bureau of diplomatic security" was missing
+2022-02-24 10:48:16.268	 Pronunciation of "bureau of diplomatic security" was missing
+2022-02-24 10:48:16.268	 "bureau of diplomatic security" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:16.268	 "bureau of diplomatic security" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:16.482	 Syllables of "bureau of engraving and printing" was missing
+2022-02-24 10:48:16.482	 Pronunciation of "bureau of engraving and printing" was missing
+2022-02-24 10:48:16.482	 "bureau of engraving and printing" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:16.482	 "bureau of engraving and printing" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:16.682	 Syllables of "bureau of intelligence and research" was missing
+2022-02-24 10:48:16.682	 Pronunciation of "bureau of intelligence and research" was missing
+2022-02-24 10:48:16.682	 "bureau of intelligence and research" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:16.682	 "bureau of intelligence and research" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:16.905	 Syllables of "bureau of justice assistance" was missing
+2022-02-24 10:48:16.905	 Pronunciation of "bureau of justice assistance" was missing
+2022-02-24 10:48:16.905	 "bureau of justice assistance" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:16.905	 "bureau of justice assistance" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:17.097	 Syllables of "bureau of justice statistics" was missing
+2022-02-24 10:48:17.097	 Pronunciation of "bureau of justice statistics" was missing
+2022-02-24 10:48:17.097	 "bureau of justice statistics" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:17.097	 "bureau of justice statistics" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:17.305	 Syllables of "bureau of the census" was missing
+2022-02-24 10:48:17.305	 Pronunciation of "bureau of the census" was missing
+2022-02-24 10:48:17.305	 "bureau of the census" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:17.305	 "bureau of the census" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:17.515	 Syllables of "afisr" was missing
+2022-02-24 10:48:17.515	 Pronunciation of "afisr" was missing
+2022-02-24 10:48:17.515	 "afisr" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:17.515	 "afisr" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:17.761	 Syllables of "noaa" was missing
+2022-02-24 10:48:17.761	 Pronunciation of "noaa" was not a JSONObject: "'noʊʌ"
+2022-02-24 10:48:17.98	 Syllables of "nonproliferation center" was missing
+2022-02-24 10:48:17.98	 Pronunciation of "nonproliferation center" was missing
+2022-02-24 10:48:17.98	 "nonproliferation center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:17.98	 "nonproliferation center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:18.192	 Syllables of "npc" was missing
+2022-02-24 10:48:18.193	 Pronunciation of "npc" was missing
+2022-02-24 10:48:18.193	 "npc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:18.193	 "npc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:18.49	 Pronunciation of "nsw" was missing
+2022-02-24 10:48:18.49	 No pronunciation of "nsw" could be found for "NOUN"
+2022-02-24 10:48:18.49	 "nsw" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:18.49	 "nsw" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:18.757	 Syllables of "nswc" was missing
+2022-02-24 10:48:18.757	 Pronunciation of "nswc" was missing
+2022-02-24 10:48:18.757	 "nswc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:18.757	 "nswc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:19.344	 Syllables of "casualty care research center" was missing
+2022-02-24 10:48:19.344	 Pronunciation of "casualty care research center" was missing
+2022-02-24 10:48:19.344	 "casualty care research center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:19.344	 "casualty care research center" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:19.548	 Syllables of "ccrc" was missing
+2022-02-24 10:48:19.548	 Pronunciation of "ccrc" was missing
+2022-02-24 10:48:19.549	 "ccrc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:19.549	 "ccrc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:19.763	 Syllables of "cdc" was missing
+2022-02-24 10:48:19.763	 Pronunciation of "cdc" was missing
+2022-02-24 10:48:19.763	 "cdc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:19.763	 "cdc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:20.02	 Syllables of "census bureau" was missing
+2022-02-24 10:48:20.02	 Pronunciation of "census bureau" was missing
+2022-02-24 10:48:20.02	 "census bureau" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:20.02	 "census bureau" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:20.239	 Syllables of "center for disease control and prevention" was missing
+2022-02-24 10:48:20.239	 Pronunciation of "center for disease control and prevention" was missing
+2022-02-24 10:48:20.239	 "center for disease control and prevention" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:20.239	 "center for disease control and prevention" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:20.467	 Syllables of "ntis" was missing
+2022-02-24 10:48:20.467	 Pronunciation of "ntis" was missing
+2022-02-24 10:48:20.467	 "ntis" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:20.467	 "ntis" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:20.72	 Syllables of "nuwc" was missing
+2022-02-24 10:48:20.72	 Pronunciation of "nuwc" was missing
+2022-02-24 10:48:20.72	 "nuwc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:20.72	 "nuwc" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:21.378	 Syllables of "office of the dead" was missing
+2022-02-24 10:48:21.378	 Pronunciation of "office of the dead" was missing
+2022-02-24 10:48:21.378	 "office of the dead" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:21.378	 "office of the dead" (NOUN) did not have a pronunciation for "nap" (null) to match against
+2022-02-24 10:48:47.092	 Syllables of "takings" was missing
+2022-02-24 10:48:47.092	 Pronunciation of "takings" was not a JSONObject: "'teɪkɪŋz"
+2022-02-24 10:48:48.442	 Syllables of "way out" was missing
+2022-02-24 10:48:49.28	 Syllables of "military issue" was missing
+2022-02-24 10:48:49.28	 Pronunciation of "military issue" was missing
+2022-02-24 10:48:49.28	 "military issue" (NOUN) did not have a pronuncia
