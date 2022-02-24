@@ -284,26 +284,31 @@
                                                       <Label styleClass="Heading 2" text="Suggestion Pool" />
                                                    </children>
                                                 </GridPane>
-                                                <GridPane layoutX="236.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" GridPane.columnIndex="2" GridPane.valignment="TOP">
+                                                <GridPane fx:id="grdPnFilters" layoutX="236.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" GridPane.columnIndex="2" GridPane.valignment="TOP">
                                                    <columnConstraints>
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <Label styleClass="Heading 2" text="Poetic Devices" />
                                                       <FlowPane hgap="5.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1">
                                                          <children>
-                                                            <CheckBox fx:id="chbxRhymeWith" mnemonicParsing="false" text="rhyme with" />
-                                                            <TextField fx:id="txtfldRhymeWith" prefHeight="25.0" prefWidth="95.0">
+                                                            <TextField fx:id="txtfldRhymeWith" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="204.0" promptText="leave blank to match scheme">
                                                                <tooltip>
                                                                   <Tooltip text="Choose which lines in the stanza to rhyme with, e.g. 1-2, 4. Leave blank to rhyme all lines." wrapText="true" />
                                                                </tooltip>
                                                             </TextField>
                                                          </children>
                                                       </FlowPane>
+                                                      <Separator prefWidth="200.0" GridPane.rowIndex="2">
+                                                         <padding>
+                                                            <Insets bottom="2.0" top="5.0" />
+                                                         </padding>
+                                                      </Separator>
                                                    </children>
                                                 </GridPane>
                                              </children>

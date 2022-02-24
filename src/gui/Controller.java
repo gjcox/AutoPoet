@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.HashMap;
 
 import javafx.event.ActionEvent;
@@ -36,6 +37,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters;
+import utils.ParameterWrappers.FilterParameters.Filter;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Poem;
 import words.Stanza;
@@ -89,7 +91,8 @@ public class Controller {
     GridPane grdPnSuggestionPools;
     HashMap<String, CheckBox> suggestionPoolCheckBoxes = new HashMap<>();
     @FXML
-    CheckBox chbxRhymeWith;
+    GridPane grdPnFilters;
+    EnumMap<Filter, CheckBox> filterCheckBoxes = new EnumMap<>(Filter.class);
     @FXML
     TextField txtfldRhymeWith;
 
@@ -107,6 +110,7 @@ public class Controller {
         txtfldIntRhymeScheme.setTextFormatter(getRhymeSchemeFormatter());
 
         initSuggestionPoolCheckBoxes();
+        initFilterCheckBoxes();
 
         IndexedTokenLabel.setJoinWordsAction(actionEvent -> {
             if (focusedToken == null || secondFocusedToken == null) {
@@ -171,6 +175,23 @@ public class Controller {
             CheckBox checkBox = getPoolCheckBox(pool);
             grdPnSuggestionPools.addRow(row++, checkBox);
             suggestionPoolCheckBoxes.put(pool.getLabel(), checkBox);
+        }
+    }
+
+    private CheckBox getFilterCheckBox(Filter filter) {
+        CheckBox checkBox = new CheckBox(filter.getLabel());
+        checkBox.setTooltip(new Tooltip(filter.getExplanation()));
+        checkBox.setDisable(false);
+        return checkBox;
+    }
+
+    private void initFilterCheckBoxes() {
+        int row = 3; // row 0 is the list title, 1 is textfield, 2 is a seperator
+        for (Filter filter : Filter.values()) {
+            CheckBox checkBox = getFilterCheckBox(filter);
+            grdPnFilters.addRow(row++, checkBox);
+            checkBox.setDisable(filter.equals(Filter.FORCED_RHYME)); // not implemented yet
+            filterCheckBoxes.put(filter, checkBox);
         }
     }
 
@@ -248,9 +269,31 @@ public class Controller {
         return suggestionPoolCheckBoxes.get(pool.getLabel());
     }
 
+    private PartOfSpeech getMatchPoS() {
+        // TODO make this update when rhyming from scheme
+        return null;
+    }
+
+    private SuperWord getMatchWith() {
+        if (txtfldRhymeWith.getText().equals("")) {
+            // TODO return a word from the rhyme scheme
+            return null;
+        } else {
+            return SuperWord.getSuperWord(txtfldRhymeWith.getText());
+        }
+    }
+
     private FilterParameters getFilterParams() {
-        return new FilterParameters(chbxRhymeWith.isSelected(), SuperWord.getSuperWord(txtfldRhymeWith.getText()),
-                null);
+        SuperWord matchWith = getMatchWith();
+        FilterParameters params = new FilterParameters();
+        params.setMatchPoS(getMatchPoS());
+        params.setInclusiveUnknown(true); // TODO add a checkbox to get this value from
+        for (Filter filter : Filter.values()) {
+            if (filterCheckBoxes.get(filter).isSelected()) {
+                params.setFilter(filter, matchWith);
+            }
+        }
+        return params;
     }
 
     public void getSuggestions() {
@@ -649,7 +692,19 @@ public class Controller {
         flwpnSuggestions.setCache(cache);
         flwpnSuggestions.getParent().setCache(cache);
 
-        if (focusedToken.getSuggestions() != null) {
+        if (focusedToken.getSuggestions() == null) {
+            Label noSuggestions = new Label("");
+            noSuggestions.setSnapToPixel(snapToPixel);
+            noSuggestions.setCache(cache);
+
+            flwpnSuggestions.getChildren().add(noSuggestions);
+        } else if (focusedToken.getSuggestions().isEmpty()) {
+            Label noSuggestions = new Label("No results.");
+            noSuggestions.setSnapToPixel(snapToPixel);
+            noSuggestions.setCache(cache);
+
+            flwpnSuggestions.getChildren().add(noSuggestions);
+        } else {
             for (SuperWord suggestion : focusedToken.getSuggestions()) {
                 Label label = new Label(suggestion.getPlaintext());
                 label.getStyleClass().add(SUGGESTION_CLASS);
@@ -658,12 +713,6 @@ public class Controller {
                 label.setOnMouseClicked(actionEvent -> makeSubstitution(suggestion));
                 flwpnSuggestions.getChildren().add(label);
             }
-        } else {
-            Label noSuggestions = new Label("No results.");
-            noSuggestions.setSnapToPixel(snapToPixel);
-            noSuggestions.setCache(cache);
-
-            flwpnSuggestions.getChildren().add(noSuggestions);
         }
     }
 
