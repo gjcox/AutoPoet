@@ -121,11 +121,16 @@ public class Pronunciation {
             return false;
         }
 
-        /* Standard rhyme ignores the inital onset; should that be the case here? */
+        /*
+         * Standard rhyme ignores the inital onset; should that be the case here? I
+         * think no, otherwise there's too much overlap with weak rhyme.
+         */
         private boolean syllablicRhymesWith(SubPronunciation other) {
             /* last to last */
-            ArrayList<Syllable> thisLastSyllable = getRhymeList(syllables.size() - 1);
-            ArrayList<Syllable> otherLastSyllable = other.getRhymeList(other.syllables.size() - 1);
+            ArrayList<Syllable> thisLastSyllable = new ArrayList<>(
+                    this.syllables.subList(syllables.size() - 1, syllables.size()));
+            ArrayList<Syllable> otherLastSyllable = new ArrayList<>(
+                    other.syllables.subList(other.syllables.size() - 1, other.syllables.size()));
             return rhymeMatch(thisLastSyllable, otherLastSyllable);
         }
 
