@@ -3,7 +3,7 @@ To Do list (unordered):
 <ul>
     <li>Improve the GUI
         <ul>
-            <li>Add "rhyme with scheme"</li>
+            <li><s>Add "rhyme with scheme"</s></li>
             <li>Add "I'm feeling lucky"</li>
             <li>Reset stanza info/focused token on poem refresh</li>
             <li>Set text field action when focus lost</li>
