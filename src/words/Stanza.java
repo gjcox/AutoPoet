@@ -11,10 +11,15 @@ import static config.Configuration.LOG;
 
 public class Stanza {
 
+    private int startLine; // the index of the first line of the stanza
     private ArrayList<ArrayList<Token>> lines = new ArrayList<>();
     private RhymingScheme desiredScheme;
     private RhymingScheme actualScheme;
     // an IPA line represenation could allow recognition of longer rhymes
+
+    public Stanza(int startLine) {
+        this.startLine = startLine;
+    }
 
     public void addLine(String line) {
         ArrayList<Token> parsedLine = new ArrayList<>();
@@ -51,6 +56,10 @@ public class Stanza {
             superword = (token.getClass() == SuperWord.class);
         }
         return superword ? (SuperWord) token : null;
+    }
+
+    public int getStartLine() {
+        return this.startLine;
     }
 
     public int lineCount() {

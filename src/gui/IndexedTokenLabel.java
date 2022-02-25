@@ -67,6 +67,11 @@ public class IndexedTokenLabel extends Label {
         return suggestions;
     }
 
+    @Override
+    public String toString() {
+        return this.token.toString();
+    }
+
     // setters
     public static void setJoinWordsAction(EventHandler<ActionEvent> function) {
         mnitmJoinWords.setOnAction(function);

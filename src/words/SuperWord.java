@@ -260,7 +260,7 @@ public class SuperWord extends Token {
      *         at least one of the filters.
      */
     private ArrayList<SuperWord> filterSuggestions(ArrayList<SuperWord> suggestions, PartOfSpeech pos,
-            FilterParameters params) {
+            List<FilterParameters> paramsList) {
 
         if (suggestions == null) {
             return new ArrayList<>();
@@ -270,22 +270,27 @@ public class SuperWord extends Token {
 
         for (SuperWord suggestion : suggestions) {
             boolean matched = false;
-            boolean emptyFilter = true;
-            SuperWord matchWith;
-            for (Filter filter : Filter.values()) {
-                if ((matchWith = params.getMatchWith(filter)) != null) {
-                    emptyFilter = false;
-                    if (suggestion.rhymesWithWrapper(filter, matchWith, pos, params.getMatchPoS())) {
-                        matched = true;
+            boolean paramsAreEmpty = true;
+            for (FilterParameters params : paramsList) {
+                SuperWord matchWith;
+                for (Filter filter : Filter.values()) {
+                    if ((matchWith = params.getMatchWith(filter)) != null) {
+                        paramsAreEmpty = false;
+                        if (suggestion.rhymesWithWrapper(filter, matchWith, pos, params.getMatchPoS())) {
+                            matched = true;
+                            break;
+                        }
                     }
                 }
+                if (matched)
+                    break;
             }
-            if (!emptyFilter && !matched)
+            if (!paramsAreEmpty && !matched)
                 filtered.remove(suggestion);
         }
 
         LOG.writeTempLog(String.format("Filtered suggestions for \"%s\" (%s) including %s: %s", plaintext, pos,
-                params.toString(), filtered));
+                paramsList.toString(), filtered));
         return filtered;
     }
 
@@ -297,7 +302,7 @@ public class SuperWord extends Token {
      * @return a list of filtered suggestions, which can be empty.
      */
     public ArrayList<SuperWord> getFilteredSuggestions(PartOfSpeech pos, SuggestionPoolParameters suggestionParams,
-            FilterParameters filterParams) {
+            List<FilterParameters> filterParams) {
         ArrayList<SuperWord> unfiltered = getAggregatedSuggestions(pos, suggestionParams);
         return filterSuggestions(unfiltered, pos, filterParams);
     }

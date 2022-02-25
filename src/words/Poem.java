@@ -23,7 +23,7 @@ public class Poem {
     private BufferedReader fileReader;
 
     private void fillPoem() throws IOException {
-        stanzas.add(new Stanza());
+        stanzas.add(new Stanza(lineCount));
         String line = "";
         boolean in_stanza = false; // to prevent counting double empty lines
         while ((line = fileReader.readLine()) != null) {
@@ -40,7 +40,7 @@ public class Poem {
                 in_stanza = false;
                 LOG.writeTempLog(String.format("End of stanza %d reached", stanzas.size()));
                 stanzas.get(stanzas.size() - 1).evaluateRhymingScheme();
-                stanzas.add(new Stanza());
+                stanzas.add(new Stanza(lineCount + stanzas.size())); // + stanzas.size for lines between stanzas 
 
             } else {
                 // ignore double empty line

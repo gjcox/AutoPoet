@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.Flow;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -40,6 +42,7 @@ import utils.ParameterWrappers.SuggestionPoolParameters;
 import utils.ParameterWrappers.FilterParameters.Filter;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Poem;
+import words.RhymingScheme;
 import words.Stanza;
 import words.SubWord.PartOfSpeech;
 import words.SuperWord;
@@ -272,35 +275,88 @@ public class Controller {
         return suggestionPoolCheckBoxes.get(pool.getLabel());
     }
 
-    private PartOfSpeech getMatchPoS() {
-        if (txtfldRhymeWith.getText().equals("")) {
-            // TODO return a word from the rhyme scheme
-            return null;
-        } else {
-            return null;
+    /**
+     * Checks backwards from end of a line until a superword is found (so that
+     * commas etc. are ignored).
+     * 
+     * @param guiLine
+     * @return the last word token in a line.
+     */
+    private IndexedTokenLabel getLastToken(FlowPane guiLine) {
+        int index = guiLine.getChildren().size() - 1;
+        IndexedTokenLabel token = null;
+        boolean superword = false;
+        while (index >= 0 && !superword) {
+            token = (IndexedTokenLabel) guiLine.getChildren().get(index--);
+            superword = (token.getToken().getClass() == SuperWord.class);
         }
+        return superword ? (IndexedTokenLabel) token : null;
     }
 
-    private SuperWord getMatchWith() {
-        if (txtfldRhymeWith.getText().equals("")) {
-            // TODO return a word from the rhyme scheme
-            return null;
-        } else {
-            return SuperWord.getSuperWord(txtfldRhymeWith.getText());
-        }
-    }
+    private ArrayList<IndexedTokenLabel> getRhymesFromScheme() {
+        ArrayList<IndexedTokenLabel> rhymes = new ArrayList<>();
+        Stanza currentStanza = poem.getStanzas().get(focusedToken.getStanzaIndex());
+        RhymingScheme scheme = currentStanza.getDesiredRhymeScheme();
+        int schemeValue;
 
-    private FilterParameters getFilterParams() {
-        SuperWord matchWith = getMatchWith();
-        FilterParameters params = new FilterParameters();
-        params.setMatchPoS(getMatchPoS());
-        params.setInclusiveUnknown(chbxInclUnknown.isSelected());
-        for (Filter filter : Filter.values()) {
-            if (filterCheckBoxes.get(filter).isSelected()) {
-                params.setFilter(filter, matchWith);
+        if (scheme == null) {
+            Alert alert = getCleanAlert(AlertType.WARNING);
+            alert.setHeaderText("Could not filter suggestions.");
+            alert.setContentText("The current stanza does not have a set intended rhyme scheme.");
+            alert.show();
+            return rhymes;
+        } else if ((schemeValue = scheme.getValue(focusedToken.getLineIndex())) == '#') {
+            return rhymes;
+        } else {
+            for (int i = 0; i < currentStanza.lineCount(); i++) {
+                if (i == focusedToken.getLineIndex() || scheme.getValue(i) != schemeValue) {
+                    // skip current line
+                } else {
+                    FlowPane guiLine = (FlowPane) grdpnPoem.getChildren().get(currentStanza.getStartLine() + i);
+                    rhymes.add(getLastToken(guiLine));
+                }
             }
         }
-        return params;
+
+        return rhymes;
+    }
+
+    private List<FilterParameters> getFilterParams() {
+        List<FilterParameters> paramsList = new ArrayList<>();
+        if (txtfldRhymeWith.getText().equals("")) {
+            if (!focusedToken.equals(getLastToken((FlowPane) focusedToken.getParent()))) {
+                Alert alert = getCleanAlert(AlertType.WARNING);
+                alert.setHeaderText("Could not filter suggestions.");
+                alert.setContentText("Only the last word in a line can be matched against the intended rhyme scheme.");
+                alert.show();
+                return paramsList;
+            }
+            
+            for (IndexedTokenLabel matchWith : getRhymesFromScheme()) {
+                FilterParameters params = new FilterParameters();
+                params.setMatchPoS(matchWith.getPos());
+                params.setInclusiveUnknown(chbxInclUnknown.isSelected());
+                for (Filter filter : Filter.values()) {
+                    if (filterCheckBoxes.get(filter).isSelected()) {
+                        params.setFilter(filter, (SuperWord) matchWith.getToken());
+                    }
+                }
+                paramsList.add(params);
+            }
+        } else {
+            FilterParameters params = new FilterParameters();
+            SuperWord matchWith = SuperWord.getSuperWord(txtfldRhymeWith.getText());
+            params.setMatchPoS(null);
+            params.setInclusiveUnknown(chbxInclUnknown.isSelected());
+            for (Filter filter : Filter.values()) {
+                if (filterCheckBoxes.get(filter).isSelected()) {
+                    params.setFilter(filter, matchWith);
+                }
+            }
+            paramsList.add(params);
+        }
+
+        return paramsList;
     }
 
     public void getSuggestions() {
@@ -316,7 +372,7 @@ public class Controller {
             SuperWord superWord = (SuperWord) focusedToken.getToken();
             PartOfSpeech pos = focusedToken.getPos();
             SuggestionPoolParameters suggestionParams = focusedToken.getPoolParams();
-            FilterParameters filterParams = getFilterParams();
+            List<FilterParameters> filterParams = getFilterParams();
 
             focusedToken.setSuggestions(superWord.getFilteredSuggestions(pos, suggestionParams, filterParams));
 

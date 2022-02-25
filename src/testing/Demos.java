@@ -242,11 +242,13 @@ public class Demos {
                     filterParams = new FilterParameters();
                     filterParams.setFilter(Filter.PERFECT_RHYME, superWord2);
                     filterParams.setMatchPoS(pos2);
+                    List<FilterParameters> filterParamsList = new ArrayList<>();
+                    filterParamsList.add(filterParams);
                     System.out.println(
                             String.format("Suggestions for \"%s\" (%s) that rhyme with \"%s\" (%s): %s",
                                     superWord1.getPlaintext(), pos1,
                                     superWord2.getPlaintext(), pos2,
-                                    superWord1.getFilteredSuggestions(pos1, suggestionParams, filterParams)));
+                                    superWord1.getFilteredSuggestions(pos1, suggestionParams, filterParamsList)));
                     break;
                 default:
                     System.err.println(usage);
