@@ -107,12 +107,12 @@ public interface ParameterWrappers {
 
     public class FilterParameters {
         public enum Filter {
-            PERFECT_RHYME("perfect rhyme", "Exact match from stressed syllables.", true),
-            SYLLABIC_RHYME("syllabic rhyme", "Exact match on the last syllables.", true),
+            PERFECT_RHYME("perfect rhyme", "Exact match from stressed syllables, e.g. tragic/magic.", true),
+            SYLLABIC_RHYME("syllabic rhyme", "Exact match on the last syllables, e.g. fiddle/fuddle.", true),
             IMPERFECT_RHYME("imperfect rhyme",
-                    "Exact match from a stressed syllable to an unstressed syllable, or between two secondary stressed syllables.",
+                    "Exact match from a stressed syllable to an unstressed syllable, or between two secondary stressed syllables, e.g. zombie/bee.",
                     true),
-            WEAK_RHYME("weak rhyme", "Exact match between unstressed syllables.", true),
+            WEAK_RHYME("weak rhyme", "Exact match between unstressed syllables, e.g. dependent/sediment.", true),
             FORCED_RHYME("forced rhyme", "Inexact match from stressed syllables. Not yet implemented.", true),
             ;
 

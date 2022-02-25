@@ -180,7 +180,10 @@ public class Controller {
 
     private CheckBox getFilterCheckBox(Filter filter) {
         CheckBox checkBox = new CheckBox(filter.getLabel());
-        checkBox.setTooltip(new Tooltip(filter.getExplanation()));
+        Tooltip tooltip = new Tooltip(filter.getExplanation());
+        tooltip.setPrefWidth(220);
+        tooltip.setWrapText(true);
+        checkBox.setTooltip(tooltip);
         checkBox.setDisable(false);
         return checkBox;
     }
@@ -270,8 +273,12 @@ public class Controller {
     }
 
     private PartOfSpeech getMatchPoS() {
-        // TODO make this update when rhyming from scheme
-        return null;
+        if (txtfldRhymeWith.getText().equals("")) {
+            // TODO return a word from the rhyme scheme
+            return null;
+        } else {
+            return null;
+        }
     }
 
     private SuperWord getMatchWith() {
@@ -287,7 +294,7 @@ public class Controller {
         SuperWord matchWith = getMatchWith();
         FilterParameters params = new FilterParameters();
         params.setMatchPoS(getMatchPoS());
-        params.setInclusiveUnknown(true); // TODO add a checkbox to get this value from
+        params.setInclusiveUnknown(chbxInclUnknown.isSelected());
         for (Filter filter : Filter.values()) {
             if (filterCheckBoxes.get(filter).isSelected()) {
                 params.setFilter(filter, matchWith);
