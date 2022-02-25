@@ -161,7 +161,7 @@ public class UnitTests {
     public void testWeakRhymeTrue() {
         SuperWord hammer = SuperWord.getSuperWord("hammer");
         SuperWord carpenter = SuperWord.getSuperWord("carpenter");
-        assertTrue(hammer.matchesWithWrapper(Filter.IMPERFECT_RHYME, carpenter));
+        assertTrue(hammer.matchesWithWrapper(Filter.WEAK_RHYME, carpenter));
     }
 
     public static void main(String[] args) {

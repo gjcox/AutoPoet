@@ -10,7 +10,8 @@ public interface ParameterWrappers {
 
         public enum SuggestionPool {
             SYNONYMS("synonyms", "synonyms", true),
-            ANTONYMS("antonyms", "antonyms", true), 
+            ANTONYMS("antonyms", "antonyms", true),
+            SIMILAR_TO("similar to", "similarTo", true),
             HAS_TYPES("has types", "hasTypes", true),
             TYPE_OF("type of", "typeOf", true),
             COMMONLY_TYPED("commonly typed", null, false),
@@ -19,7 +20,7 @@ public interface ParameterWrappers {
             COMMON_CATEGORIES("commonly categorised", null, false),
             PART_OF("part of", "partOf", true),
             HAS_PARTS("has parts", "hasParts", true),
-            SIMILAR_TO("similar to", "similarTo", true);
+            ;
 
             private final String label;
             private final String apiString; // true if the field is an attribute of WordsAPI subwords
@@ -108,7 +109,9 @@ public interface ParameterWrappers {
         public enum Filter {
             PERFECT_RHYME("perfect rhyme", "Exact match from stressed syllables.", true),
             SYLLABIC_RHYME("syllabic rhyme", "Exact match on the last syllables.", true),
-            IMPERFECT_RHYME("imperfect rhyme", "Exact match from a stressed syllable to an unstressed syllable.", true),
+            IMPERFECT_RHYME("imperfect rhyme",
+                    "Exact match from a stressed syllable to an unstressed syllable, or between two secondary stressed syllables.",
+                    true),
             WEAK_RHYME("weak rhyme", "Exact match between unstressed syllables.", true),
             FORCED_RHYME("forced rhyme", "Inexact match from stressed syllables. Not yet implemented.", true),
             ;
