@@ -134,13 +134,12 @@ public class UnitTests {
         assertFalse(bee.matchesWithWrapper(Filter.PERFECT_RHYME, zombie));
     }
 
-
     @Test
     public void testSyllabicRhymeTrue() {
         SuperWord fuddle = SuperWord.getSuperWord("fuddle");
         SuperWord fiddle = SuperWord.getSuperWord("fiddle");
         assertTrue(fuddle.matchesWithWrapper(Filter.SYLLABIC_RHYME, fiddle));
-       
+
         SuperWord cleaver = SuperWord.getSuperWord("cleaver");
         SuperWord silver = SuperWord.getSuperWord("silver");
         assertTrue(cleaver.matchesWithWrapper(Filter.SYLLABIC_RHYME, silver));
@@ -151,7 +150,7 @@ public class UnitTests {
         SuperWord bee = SuperWord.getSuperWord("bee");
         SuperWord zombie = SuperWord.getSuperWord("zombie");
         assertTrue(bee.matchesWithWrapper(Filter.IMPERFECT_RHYME, zombie));
-       
+
         SuperWord understated = SuperWord.getSuperWord("understated");
         SuperWord overstated = SuperWord.getSuperWord("overstated");
         assertTrue(understated.matchesWithWrapper(Filter.IMPERFECT_RHYME, overstated));
@@ -162,6 +161,10 @@ public class UnitTests {
         SuperWord hammer = SuperWord.getSuperWord("hammer");
         SuperWord carpenter = SuperWord.getSuperWord("carpenter");
         assertTrue(hammer.matchesWithWrapper(Filter.WEAK_RHYME, carpenter));
+
+        SuperWord sediment = SuperWord.getSuperWord("sediment");
+        SuperWord dependent = SuperWord.getSuperWord("dependent");
+        assertTrue(sediment.matchesWithWrapper(Filter.WEAK_RHYME, dependent));
     }
 
     public static void main(String[] args) {
