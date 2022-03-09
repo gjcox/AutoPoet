@@ -4,18 +4,22 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 
 public class LogWriter {
 
     private boolean tempLogging;
-    File tempLog = new File("docs" + File.separator + "logs" + File.separator + "log.log");
-    FileWriter tempWriter;
+    private File tempLog = new File(
+            ".." + File.separator + "docs" + File.separator + "logs" + File.separator + "log.log");
+    private FileWriter tempWriter;
 
-    File persistentLog = new File("docs" + File.separator + "logs" + File.separator + "persistent.log");
-    FileWriter persistentWriter;
+    private File persistentLog = new File(
+            ".." + File.separator + "docs" + File.separator + "logs" + File.separator + "persistent.log");
+    private FileWriter persistentWriter;
 
     public LogWriter(boolean tempLogging) {
+
         this.tempLogging = tempLogging;
         try {
             if (tempLogging) {
@@ -26,6 +30,7 @@ public class LogWriter {
             System.err.println(
                     String.format("! LogWriter couldn't find %s or %s - logs will not be recorded",
                             tempLog.toPath(), persistentLog.toPath()));
+            System.err.println(e);
             this.tempLogging = false;
         }
     }
@@ -57,9 +62,14 @@ public class LogWriter {
             if (tempLogging) {
                 tempWriter.close();
             }
-        } catch (IOException e) {
+        } catch (NullPointerException | IOException e) {
             System.err.println("! LogWriter failed to close FileWriters: " + e.getMessage());
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("log.log: " + Paths.get("docs", "logs", "log.log").toFile().exists());
+        System.out.println("persistent.log: " + Paths.get("docs", "logs", "persistent.log").toFile().exists());
     }
 
 }
