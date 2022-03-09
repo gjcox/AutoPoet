@@ -330,7 +330,7 @@ public class Controller {
                 alert.show();
                 return paramsList;
             }
-            
+
             for (IndexedTokenLabel matchWith : getRhymesFromScheme()) {
                 FilterParameters params = new FilterParameters();
                 params.setMatchPoS(matchWith.getPos());
@@ -416,7 +416,12 @@ public class Controller {
 
     public void updateIncludeUnknowns(ActionEvent e) {
         CheckBox source = (CheckBox) e.getSource();
-        focusedToken.getPoolParams().setInclusiveUnknown(source.isSelected());
+        try {
+            focusedToken.getPoolParams().setInclusiveUnknown(source.isSelected());
+        } catch (NullPointerException npe) {
+            // checkbox used before poem loaded
+            // do nothing
+        }
     }
 
     public void focusOnStanza(int stanzaIndex) {
