@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.Flow;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -38,8 +37,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import utils.ParameterWrappers.FilterParameters;
-import utils.ParameterWrappers.SuggestionPoolParameters;
 import utils.ParameterWrappers.FilterParameters.Filter;
+import utils.ParameterWrappers.SuggestionPoolParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Poem;
 import words.RhymingScheme;

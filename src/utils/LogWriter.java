@@ -9,10 +9,10 @@ import java.sql.Timestamp;
 public class LogWriter {
 
     private boolean tempLogging;
-    File tempLog = new File("lib" + File.separator + "logs" + File.separator + "log.log");
+    File tempLog = new File("docs" + File.separator + "logs" + File.separator + "log.log");
     FileWriter tempWriter;
 
-    File persistentLog = new File("lib" + File.separator + "logs" + File.separator + "persistent.log");
+    File persistentLog = new File("docs" + File.separator + "logs" + File.separator + "persistent.log");
     FileWriter persistentWriter;
 
     public LogWriter(boolean tempLogging) {
