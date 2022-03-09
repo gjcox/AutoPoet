@@ -16,6 +16,7 @@ Write-Output MODULEPATH: $JAVAFX_DIR
 
 Remove-Item .\*\*.class
 
-javac --module-path $JAVAFX_DIR --add-modules javafx.media,javafx.fxml,javafx.controls -cp $CLASSPATH gui/AutoPoet.java gui/Controller.java
+javac -encoding UTF-8 --module-path $JAVAFX_DIR --add-modules javafx.media,javafx.fxml,javafx.controls -cp $CLASSPATH gui/Controller.java 
+javac -encoding UTF-8 --module-path $JAVAFX_DIR --add-modules javafx.media,javafx.fxml,javafx.controls -cp $CLASSPATH gui/AutoPoet.java 
 
 java --module-path $JAVAFX_DIR --add-modules javafx.media,javafx.fxml,javafx.controls -cp $CLASSPATH gui.AutoPoet
