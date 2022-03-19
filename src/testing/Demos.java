@@ -118,7 +118,7 @@ public class Demos {
         String usage = "java -cp lib/json-20210307.jar:src/ testing.Demos [ swc | swp | wc | rhyme ]"
                 + "\njava -cp lib/json-20210307.jar:src/ testing.Demos [ swc | swp | wc ] <word>"
                 + "\njava -cp lib/json-20210307.jar:src/ testing.Demos [ rhyme ] <word1> <word2>"
-                + "\njava -cp lib/json-20210307.jar:src/ testing.Demos [ synonyms | typeOf | hasTypes | commonlyTyped | inCategory | hasCategories | commonCategories | partOf | hasParts | similarTo ] <word> <part of speech (PoS)>"
+                + "\njava -cp lib/json-20210307.jar:src/ testing.Demos [ synonyms | typeOf | has types | commonly typed | in category | has categories | commonly categorised | part of | has parts | similar to ] <word> <part of speech (PoS)>"
                 + "\njava -cp lib/json-20210307.jar:src/ testing.Demos rhyme <word1> <PoS1> <word2> <Pos2>"
                 + "\njava -cp lib/json-20210307.jar:src/ testing.Demos suggestions <word> <PoS1> <rhyme with> <Pos2>"
                 + "\njava -cp lib/json-20210307.jar:src/ testing.Demos poem <poem.txt>";
