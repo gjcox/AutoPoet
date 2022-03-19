@@ -30,7 +30,7 @@ Aspirational/low priority list:
 </ul>
 
 # Compilation 
-I continue to use VS Code, but the following compilation instructions have been tested on Linux: 
+<s>I continue to use VS Code, but the following compilation instructions have been tested on Linux: 
 
 Navigate to CS4099/ <br>
 Run the command $ javac -cp lib/json-20210307.jar:lib/junit-platform-console.standalone-1.8.1.jar  src/\*/\*.java <br>
@@ -46,10 +46,9 @@ For terminal demos, the command $ java -cp lib/json-20210307.jar:src/ testing.De
 
 <p>The recognised parts of speech are: 'noun', 'pronoun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction', 'definite article', and 'unknown'. The lattermost is to handle WordsAPI being unreliable.</p>
 <p>N.B. words that WordsAPI doesn't recognise will still be marked as populated for swp, despite nothing of value being added to them. This is to prevent repeated failed attempts at querying, but might change in future. </p>
-<p>N.B. the suggestions command can take several minutes. </p>
+<p>N.B. the suggestions command can take several minutes. </p></s>
 
-For the GUI, run the command $ java --module-path \"lib/javafx-sdk-17.0.1/lib\" --add-modules javafx.controls,javafx.fxml -cp lib/json-20210307.jar:src/ gui.AutoPoet 
-<p>N.B. I haven't actually tested that on a lab client yet; it may be necessary to add JavaFX libraries to the classpath argument.</p>
+For the GUI, use the runAutoPoet.sh script from within src/. 
 
 # Logs 
 lib/logs/log.log is temporary, and reflects the last run of the program (including when SuperWords were retrieved from a cache) so it's in the .gitignore.  

@@ -13,8 +13,10 @@ JUNIT_DIR="$DIRM_L/junit-platform-console-standalone-1.8.1.jar"
 CLASSPATH=".:$CLASSPATH:$DIRM:$JSON_DIR:$JUNIT_DIR:"$DIRM"/gui"
 echo CLASSPATH: $CLASSPATH
 
-JAVAFX_DIR="$DIRM_L/javafx-sdk-17.0.1/lib/"
+JAVAFX_DIR="$DIRM_L/openjfx-17.0.2_linux-x64_bin-sdk/javafx-sdk-17.0.2/lib//"
 echo MODULEPATH: $JAVAFX_DIR
+
+rm */*.class
 
 echo "javac --module-source-path module-name="$JAVAFX_DIR"javafx.media -cp "$CLASSPATH" gui/AutoPoet.java -d "$DIRM""
 
