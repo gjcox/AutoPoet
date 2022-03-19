@@ -23,8 +23,8 @@ public class Pronunciation {
     public static class SubPronunciation {
         String ipa;
         ArrayList<Syllable> syllables;
-        ArrayList<Syllable> primaryRhyme;
-        ArrayList<ArrayList<Syllable>> secondaryRhymes;
+        ArrayList<Syllable> primaryRhymeSubstring;
+        ArrayList<ArrayList<Syllable>> secondaryRhymeSubstrings;
         Emphasis emphasis;
 
         /**
@@ -34,7 +34,7 @@ public class Pronunciation {
          * @return the syllables from @param startingEmphasis to the end of the word,
          *         inclusive.
          */
-        private ArrayList<Syllable> getRhymeList(int startingEmphasis) {
+        private ArrayList<Syllable> getRhymeSubstring(int startingEmphasis) {
             ArrayList<Syllable> rhyme = new ArrayList<>();
             Syllable source = syllables.get(startingEmphasis);
             Syllable start = new Syllable("", source.getNucleus(), source.getCoda());
@@ -52,13 +52,13 @@ public class Pronunciation {
          */
         private void populateRhymes() {
             /* primary rhyme */
-            this.primaryRhyme = getRhymeList(this.emphasis.getPrimary());
+            this.primaryRhymeSubstring = getRhymeSubstring(this.emphasis.getPrimary());
 
             /* secondary rhymes */
             if (this.emphasis.getSecondary() != null) {
                 for (Integer secondaryEmphasis : this.emphasis.getSecondary()) {
-                    this.secondaryRhymes = utils.NullListOperations.addToNull(this.secondaryRhymes,
-                            getRhymeList(secondaryEmphasis));
+                    this.secondaryRhymeSubstrings = utils.NullListOperations.addToNull(this.secondaryRhymeSubstrings,
+                            getRhymeSubstring(secondaryEmphasis));
                 }
             }
 
@@ -96,23 +96,23 @@ public class Pronunciation {
 
         private boolean rhymesWith(SubPronunciation other) {
             /* primary to primary */
-            if (rhymeMatch(this.primaryRhyme, other.primaryRhyme)) {
+            if (rhymeMatch(this.primaryRhymeSubstring, other.primaryRhymeSubstring)) {
                 return true;
             }
 
             /* primary to secondary */
-            if (other.secondaryRhymes != null) {
-                for (ArrayList<Syllable> secondary : other.secondaryRhymes) {
-                    if (rhymeMatch(this.primaryRhyme, secondary)) {
+            if (other.secondaryRhymeSubstrings != null) {
+                for (ArrayList<Syllable> secondary : other.secondaryRhymeSubstrings) {
+                    if (rhymeMatch(this.primaryRhymeSubstring, secondary)) {
                         return true;
                     }
                 }
             }
 
             /* secondary to primary */
-            if (this.secondaryRhymes != null) {
-                for (ArrayList<Syllable> secondary : this.secondaryRhymes) {
-                    if (rhymeMatch(secondary, other.primaryRhyme)) {
+            if (this.secondaryRhymeSubstrings != null) {
+                for (ArrayList<Syllable> secondary : this.secondaryRhymeSubstrings) {
+                    if (rhymeMatch(secondary, other.primaryRhymeSubstring)) {
                         return true;
                     }
                 }
@@ -143,16 +143,16 @@ public class Pronunciation {
                     continue;
                 }
 
-                ArrayList<Syllable> unstressed = other.getRhymeList(i);
+                ArrayList<Syllable> unstressed = other.getRhymeSubstring(i);
 
                 /* primary to unstressed */
-                if (rhymeMatch(this.primaryRhyme, unstressed)) {
+                if (rhymeMatch(this.primaryRhymeSubstring, unstressed)) {
                     return true;
                 }
 
                 /* secondary to unstressed */
-                if (this.secondaryRhymes != null) {
-                    for (ArrayList<Syllable> secondary : this.secondaryRhymes) {
+                if (this.secondaryRhymeSubstrings != null) {
+                    for (ArrayList<Syllable> secondary : this.secondaryRhymeSubstrings) {
                         if (rhymeMatch(secondary, unstressed)) {
                             return true;
                         }
@@ -167,16 +167,16 @@ public class Pronunciation {
                         || this.emphasis.getSecondary() != null && this.emphasis.getSecondary().contains(i)) {
                     continue;
                 }
-                ArrayList<Syllable> unstressed = this.getRhymeList(i);
+                ArrayList<Syllable> unstressed = this.getRhymeSubstring(i);
 
                 /* unstressed to primary */
-                if (rhymeMatch(other.primaryRhyme, unstressed)) {
+                if (rhymeMatch(other.primaryRhymeSubstring, unstressed)) {
                     return true;
                 }
 
                 /* unstressed to secondary */
-                if (other.secondaryRhymes != null) {
-                    for (ArrayList<Syllable> secondary : other.secondaryRhymes) {
+                if (other.secondaryRhymeSubstrings != null) {
+                    for (ArrayList<Syllable> secondary : other.secondaryRhymeSubstrings) {
                         if (rhymeMatch(secondary, unstressed)) {
                             return true;
                         }
@@ -185,9 +185,9 @@ public class Pronunciation {
             }
 
             /* secondary to secondary */
-            if (this.secondaryRhymes != null && other.secondaryRhymes != null) {
-                for (ArrayList<Syllable> secondary : this.secondaryRhymes) {
-                    for (ArrayList<Syllable> otherSecondary : other.secondaryRhymes)
+            if (this.secondaryRhymeSubstrings != null && other.secondaryRhymeSubstrings != null) {
+                for (ArrayList<Syllable> secondary : this.secondaryRhymeSubstrings) {
+                    for (ArrayList<Syllable> otherSecondary : other.secondaryRhymeSubstrings)
                         if (rhymeMatch(secondary, otherSecondary)) {
                             return true;
                         }
@@ -205,7 +205,7 @@ public class Pronunciation {
                         || this.emphasis.getSecondary() != null && this.emphasis.getSecondary().contains(i)) {
                     continue;
                 }
-                ArrayList<Syllable> thisUnstressed = this.getRhymeList(i);
+                ArrayList<Syllable> thisUnstressed = this.getRhymeSubstring(i);
 
                 for (int j = other.syllables.size() - 1; j >= 0; j--) {
                     // check that syllable is unstressed
@@ -213,7 +213,7 @@ public class Pronunciation {
                             || other.emphasis.getSecondary() != null && other.emphasis.getSecondary().contains(j)) {
                         continue;
                     }
-                    ArrayList<Syllable> otherUnstressed = other.getRhymeList(j);
+                    ArrayList<Syllable> otherUnstressed = other.getRhymeSubstring(j);
 
                     if (rhymeMatch(thisUnstressed, otherUnstressed)) {
                         return true;
@@ -245,10 +245,10 @@ public class Pronunciation {
             stringBuilder.append(", ");
             stringBuilder.append("emphasis: " + emphasis.toString());
             stringBuilder.append(", ");
-            stringBuilder.append("primary rhyme: " + primaryRhyme.toString());
-            if (this.secondaryRhymes != null) {
+            stringBuilder.append("primary rhyme: " + primaryRhymeSubstring.toString());
+            if (this.secondaryRhymeSubstrings != null) {
                 stringBuilder.append(", ");
-                stringBuilder.append("secondary rhymes: " + secondaryRhymes.toString());
+                stringBuilder.append("secondary rhymes: " + secondaryRhymeSubstrings.toString());
             }
             stringBuilder.append("}");
             return stringBuilder.toString();
