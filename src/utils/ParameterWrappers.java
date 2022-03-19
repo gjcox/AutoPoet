@@ -22,8 +22,8 @@ public interface ParameterWrappers {
             HAS_PARTS("has parts", "hasParts", true),
             ;
 
-            private final String label;
-            private final String apiString; // true if the field is an attribute of WordsAPI subwords
+            private final String label; // the label for use in a GUI etc 
+            private final String apiString; // the label used by WordsAPI
             private final boolean apiProperty; // true if the field is an attribute of WordsAPI subwords
 
             private SuggestionPool(String label, String apiString, boolean subWordProperty) {
