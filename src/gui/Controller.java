@@ -299,6 +299,7 @@ public class Controller {
         int schemeValue;
 
         if (scheme == null) {
+            // TODO only show this alert if a poetic device is selected 
             Alert alert = getCleanAlert(AlertType.WARNING);
             alert.setHeaderText("Could not filter suggestions.");
             alert.setContentText("The current stanza does not have a set intended rhyme scheme.");
