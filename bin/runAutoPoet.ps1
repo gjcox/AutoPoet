@@ -11,7 +11,7 @@ $JUNIT_DIR="$DIRM_L/junit-platform-console-standalone-1.8.1.jar"
 $CLASSPATH=".;$CLASSPATH;$DIRM;$JSON_DIR;$JUNIT_DIR;$DIRM/apis;$DIRM/config;$DIRM/exceptions;$DIRM/gui;$DIRM/testing;$DIRM/utils;$DIRM/words"
 Write-Output CLASSPATH: ${CLASSPATH}
 
-$JAVAFX_DIR="$DIRM_L/javafx-sdk-17.0.1/lib/"
+$JAVAFX_DIR="$DIRM_L/javafx-sdk-17.0.1_Windows/lib/"
 Write-Output MODULEPATH: $JAVAFX_DIR
 
 Remove-Item .\*\*.class
