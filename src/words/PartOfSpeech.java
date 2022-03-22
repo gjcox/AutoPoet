@@ -11,7 +11,7 @@ public enum PartOfSpeech {
     DEFINITE_ARTICLE("definite article"),
     UNKNOWN(null);
 
-    private String apiString;
+    private final String apiString;
 
     public String getApiString() {
         return apiString;
