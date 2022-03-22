@@ -30,8 +30,7 @@ public class UnitTests {
      */
     @Test
     public void testGetSyllable() {
-        List<String> words = Arrays.asList("example", "mastery", "testing",
-                "mistake", "sky", "cure", "even so");
+        // List<String> words = Arrays.asList("example", "mastery", "testing", "mistake", "sky", "cure", "even so");
         List<String> ipaWords = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ",
                 "mɪ'steɪk", "skaɪ", "kjʊr", "kəm_ə'lɔŋ");
         Pair<List<Syllable>, Emphasis> example = new Pair<>(new LinkedList<>(), new Emphasis());

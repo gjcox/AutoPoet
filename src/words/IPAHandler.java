@@ -76,12 +76,12 @@ public class IPAHandler extends AbstractIPA {
 
         /* 2. for each nucleus, work backward, adding sounds to the onset */
         /* if the onset would include a ' or , update the Emphasis object */
+        boolean foundPrimary = false;
         for (int i = nucleusIndexes.size() - 1; i >= 0; i--) {
             boolean trialOnsetIsValid = true;
             String trialOnset = "";
             String onset = "";
             int onsetStart = nucleusIndexes.get(i) - 1;
-            boolean foundPrimary = false;
             while (trialOnsetIsValid && onsetStart >= 0) {
                 char prevChar = ipaWord.charAt(onsetStart);
                 trialOnset = prevChar + trialOnset;
