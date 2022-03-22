@@ -7,6 +7,10 @@ import utils.Pair;
 
 public class IPAHandler extends AbstractIPA {
 
+    private static char primaryEmphasis = '\''; 
+    private static char secondaryEmphasis = ',';  
+    private static char space = '_'; 
+
     /**
      * Compute the syllables of a word based on the IPA. Words can have a single
      * primary stressed syllable (denoted with ') and zero or more secondary
@@ -29,7 +33,9 @@ public class IPAHandler extends AbstractIPA {
         ArrayList<Integer> onsetIndexes = new ArrayList<>(); // the start of onsets; onset_indexes[i] should
                                                              // correspond to nuclei_indexes[i]
 
-        ipaWord = ipaWord.replaceAll("_", ""); // ignore spaces in IPA
+        ipaWord = addMissingEmphasis(ipaWord); // if the IPA contains multiple words,
+        // add primary emphasis of monosyllabic words that are be missing
+
         if (ipaWord.equals("")) {
             Configuration.LOG.writeTempLog(
                     String.format("getSyllables(%s) passed an empty string. Returning empty pair.", ipaWord));
@@ -83,13 +89,13 @@ public class IPAHandler extends AbstractIPA {
                     onset = trialOnset;
                     onsetIndexes.set(i, onsetStart);
                     onsetStart--;
-                } else if (prevChar == '\'' && !foundPrimary) {
+                } else if (prevChar == primaryEmphasis && !foundPrimary) {
                     /* primary stress */
                     foundPrimary = true;
                     emphasis.setPrimary(i);
                     onsetIndexes.set(i, onsetStart); // prevents character being included in a coda
                     trialOnsetIsValid = false;
-                } else if (prevChar == ',' || (prevChar == '\'' && foundPrimary)) {
+                } else if (prevChar == secondaryEmphasis || (prevChar == primaryEmphasis && foundPrimary)) {
                     /* secondary stress */
                     emphasis.addSecondary(i);
                     onsetIndexes.set(i, onsetStart); // prevents character being included in a coda
@@ -129,11 +135,28 @@ public class IPAHandler extends AbstractIPA {
         return pair;
     }
 
-    /*
-     * From my own deduction, two syllables rhyme if they have matching nuclei and
-     * coda. For a multi-syllabic rhyme, the onset of all but the first syllable
-     * pair must also match, hence the syllables in the for loop are treated
-     * differently.
+    /**
+     * 
+     * @param ipa
+     * @return
      */
+    private static String addMissingEmphasis(String ipa) {
+        if (!ipa.contains(Character.toString(space))) {
+            return ipa;
+        }
+        String[] words = ipa.split(Character.toString(space));
+        StringBuilder corrected = new StringBuilder();
+        for (String word : words) {
+            if (!word.contains(Character.toString(primaryEmphasis))) {
+                // assume monosyllabic word
+                // add emphasis marker that would be implicit in a single word
+                word = primaryEmphasis + word;
+            }
+            corrected.append(word);
+        }
+
+        return corrected.toString();
+    }
+
 
 }
