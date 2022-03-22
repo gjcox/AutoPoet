@@ -10,8 +10,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+
 import utils.ParameterWrappers.SuggestionPoolParameters;
-import words.SubWord.PartOfSpeech;
+import words.PartOfSpeech;
 import words.SuperWord;
 import words.Token;
 

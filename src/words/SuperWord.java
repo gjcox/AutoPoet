@@ -21,7 +21,6 @@ import utils.ParameterWrappers.SuggestionPoolParameters;
 import utils.ParameterWrappers.FilterParameters.Filter;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Pronunciation.SubPronunciation;
-import words.SubWord.PartOfSpeech;
 
 import static utils.NullListOperations.addToNull;
 import static utils.NullListOperations.addAllToNull;
@@ -143,8 +142,8 @@ public class SuperWord extends Token {
 
     /**
      * 
-     * @param plaintexts JSONArrays are not typed, but must have String elements.
-     * @return
+     * @param plaintexts generically typed, but must have String elements.
+     * @return 
      */
     public static ArrayList<SuperWord> batchPlaceHolders(List<Object> plaintexts) {
         ArrayList<SuperWord> list = new ArrayList<>();
@@ -181,10 +180,13 @@ public class SuperWord extends Token {
             this.populate();
         }
         if (pos.equals(PartOfSpeech.UNKNOWN) && inclusiveUnknown) {
+            // if inclusively querying subwords with unknown PoS, return all subwords  
             return combineLists(partsOfSpeech.values());
         } else if (inclusiveUnknown) {
+            // combine subwords with unknown PoS, and desired PoS
             return combineListsVarags(partsOfSpeech.get(pos), partsOfSpeech.get(PartOfSpeech.UNKNOWN));
         } else {
+            // just return the subwords with desired PoS 
             return partsOfSpeech.get(pos);
         }
     }
@@ -193,7 +195,7 @@ public class SuperWord extends Token {
         return this.pronunciation;
     }
 
-    public Pronunciation.SubPronunciation getSubPronunciation(SubWord.PartOfSpeech partOfSpeech) {
+    public Pronunciation.SubPronunciation getSubPronunciation(PartOfSpeech partOfSpeech) {
         if (this.pronunciation == null) {
             return null;
         }

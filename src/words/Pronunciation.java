@@ -9,7 +9,6 @@ import org.json.JSONObject;
 
 import utils.Pair;
 import utils.ParameterWrappers.FilterParameters.Filter;
-import words.SubWord.PartOfSpeech;
 
 import static config.Configuration.LOG;
 

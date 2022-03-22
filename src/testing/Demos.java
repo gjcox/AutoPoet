@@ -14,10 +14,10 @@ import utils.ParameterWrappers.FilterParameters.Filter;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Emphasis;
 import words.IPAHandler;
+import words.PartOfSpeech;
 import words.Poem;
 import words.SuperWord;
 import words.Syllable;
-import words.SubWord.PartOfSpeech;
 
 import static config.Configuration.LOG;
 

@@ -36,14 +36,15 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.FilterParameters.Filter;
 import utils.ParameterWrappers.SuggestionPoolParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
+import words.PartOfSpeech;
 import words.Poem;
 import words.RhymingScheme;
 import words.Stanza;
-import words.SubWord.PartOfSpeech;
 import words.SuperWord;
 import words.Token;
 

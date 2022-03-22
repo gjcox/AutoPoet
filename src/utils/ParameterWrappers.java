@@ -2,7 +2,7 @@ package utils;
 
 import java.util.EnumMap;
 
-import words.SubWord.PartOfSpeech;
+import words.PartOfSpeech;
 import words.SuperWord;
 
 public interface ParameterWrappers {
