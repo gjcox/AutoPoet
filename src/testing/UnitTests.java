@@ -9,69 +9,75 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
 
 import exceptions.RhymingSchemeSizeException;
+import utils.Pair;
 import utils.ParameterWrappers.FilterParameters.Filter;
+import words.Emphasis;
+import words.IPAHandler;
 import words.RhymingScheme;
 import words.SuperWord;
+import words.Syllable;
 
 public class UnitTests {
 
-    /*
-     * Personally I tend to find unit test of questionable value, given that no
-     * class actually runs in isolation, but I will likely set some up in the
-     * fullness of time.
-     */
 
     /**
      * Tests that words.IPAHandler.getSyllables() behaves as expected
      */
-    // @Test
-    /*
-     * public void testGetSyllable() {
-     * List<String> words = Arrays.asList("example", "mastery", "testing",
-     * "mistake", "sky", "cure");
-     * List<String> ipa_words = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ",
-     * "mɪ'steɪk", "skaɪ", "kjʊr");
-     * List<Syllable> example = new LinkedList<>();
-     * example.add(new Syllable("", "ɪ", "ɡ"));
-     * example.add(new Syllable("z", "æ", "m"));
-     * example.add(new Syllable("p", "ə", "l"));
-     * List<Syllable> mastery = new LinkedList<>();
-     * mastery.add(new Syllable("m", "æ", ""));
-     * mastery.add(new Syllable("st", "ə", ""));
-     * mastery.add(new Syllable("r", "i", ""));
-     * List<Syllable> testing = new LinkedList<>();
-     * testing.add(new Syllable("t", "ɛ", ""));
-     * testing.add(new Syllable("st", "ɪ", "ŋ"));
-     * List<Syllable> mistake = new LinkedList<>();
-     * mistake.add(new Syllable("m", "ɪ", ""));
-     * mistake.add(new Syllable("st", "eɪ", "k"));
-     * List<Syllable> sky = new LinkedList<>();
-     * sky.add(new Syllable("sk", "aɪ", ""));
-     * List<Syllable> cure = new LinkedList<>();
-     * cure.add(new Syllable("kj", "ʊ", "r"));
-     * List<List<Syllable>> checks = new LinkedList<>();
-     * checks.add(example);
-     * checks.add(mastery);
-     * checks.add(testing);
-     * checks.add(mistake);
-     * checks.add(sky);
-     * checks.add(cure);
-     * 
-     * for (int i = 0; i < words.size(); i++) {
-     * List<Syllable> syllables = IPAHandler.getSyllables(ipa_words.get(i));
-     * List<Syllable> check = checks.get(i);
-     * for (int j = 0; j < syllables.size(); j++) {
-     * System.out.println(syllables.size());
-     * System.out.println(check.size());
-     * assertEquals(check.get(j), syllables.get(j));
-     * }
-     * }
-     * }
-     */
+    @Test
+    public void testGetSyllable() {
+        List<String> words = Arrays.asList("example", "mastery", "testing",
+                "mistake", "sky", "cure", "even so");
+        List<String> ipaWords = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ",
+                "mɪ'steɪk", "skaɪ", "kjʊr", "kəm_ə'lɔŋ");
+        Pair<List<Syllable>, Emphasis> example = new Pair<>(new LinkedList<>(), new Emphasis());
+        example.one().add(new Syllable("", "ɪ", "ɡ"));
+        example.one().add(new Syllable("z", "æ", "m"));
+        example.one().add(new Syllable("p", "ə", "l"));
+        example.two().setPrimary(1);
+        Pair<List<Syllable>, Emphasis> mastery = new Pair<>(new LinkedList<>(), new Emphasis());
+        mastery.one().add(new Syllable("m", "æ", ""));
+        mastery.one().add(new Syllable("st", "ə", ""));
+        mastery.one().add(new Syllable("r", "i", ""));
+        Pair<List<Syllable>, Emphasis> testing = new Pair<>(new LinkedList<>(), new Emphasis());
+        testing.one().add(new Syllable("t", "ɛ", ""));
+        testing.one().add(new Syllable("st", "ɪ", "ŋ"));
+        Pair<List<Syllable>, Emphasis> mistake = new Pair<>(new LinkedList<>(), new Emphasis());
+        mistake.one().add(new Syllable("m", "ɪ", ""));
+        mistake.one().add(new Syllable("st", "eɪ", "k"));
+        mistake.two().setPrimary(1); 
+        Pair<List<Syllable>, Emphasis> sky = new Pair<>(new LinkedList<>(), new Emphasis());
+        sky.one().add(new Syllable("sk", "aɪ", ""));
+        Pair<List<Syllable>, Emphasis> cure = new Pair<>(new LinkedList<>(), new Emphasis());
+        cure.one().add(new Syllable("kj", "ʊ", "r"));
+        Pair<List<Syllable>, Emphasis> come_along = new Pair<>(new LinkedList<>(), new Emphasis());
+        come_along.one().add(new Syllable("k", "ə", ""));
+        come_along.one().add(new Syllable("m", "ə", ""));
+        come_along.one().add(new Syllable("l", "ɔ", "ŋ"));
+        come_along.two().setPrimary(2);
+        come_along.two().addSecondary(0);
+        List<Pair<List<Syllable>, Emphasis>> checks = new LinkedList<>();
+        checks.add(example);
+        checks.add(mastery);
+        checks.add(testing);
+        checks.add(mistake);
+        checks.add(sky);
+        checks.add(cure);
+        checks.add(come_along);
+        
+        for (int i = 0; i < ipaWords.size(); i++) {
+            Pair<ArrayList<Syllable>, Emphasis> output = IPAHandler.getSyllables(ipaWords.get(i));
+            Pair<List<Syllable>, Emphasis> check = checks.get(i);
+            assertEquals(check.two(), output.two()); 
+            for (int j = 0; j < output.one().size(); j++) {
+                assertEquals(check.one().get(j), output.one().get(j));
+            }
+        }
+    }
 
     @Test
     public void testDuplicateSorting() {

@@ -143,7 +143,7 @@ public class SuperWord extends Token {
 
     /**
      * 
-     * @param plaintexts JSONArrays are not typed, but must be have String elements.
+     * @param plaintexts JSONArrays are not typed, but must have String elements.
      * @return
      */
     public static ArrayList<SuperWord> batchPlaceHolders(List<Object> plaintexts) {
