@@ -40,7 +40,7 @@ public class SuperWord extends Token {
 
     private boolean populated = false; // true iff built from a WordsAPI query
     private Pronunciation pronunciation;
-    private EnumMap<PartOfSpeech, ArrayList<SubWord>> partsOfSpeech = new EnumMap<>(PartOfSpeech.class);
+    private EnumMap<PartOfSpeech, ArrayList<SubWord>> partsOfSpeech = new EnumMap<>(PartOfSpeech.class); // SubWords, grouped by part of speech 
 
     /**
      * Attempts to get a cached word, before returning a new placeholder.

@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 public class Syllable {
 
-    private String nucleus; // the vowel sound of a syllable - either a single vowel or a dipthong
+    private String nucleus; // the vowel sound of a syllable - either a single vowel or a diphthong
     private String onset = ""; // the consonants preceding the vowel within the syllable
     private String coda = ""; // the consonants after the vowel within the syllable
 

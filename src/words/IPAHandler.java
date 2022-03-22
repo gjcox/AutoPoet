@@ -53,23 +53,23 @@ public class IPAHandler extends AbstractIPA {
             }
         }
 
-        /* 1.5 check for dipthongs */
-        int dipthongCount = 0; // number of dipthongs found
+        /* 1.5 check for diphthongs */
+        int diphthongCount = 0; // number of diphthongs found
         for (int i = 0; i < vowelIndexes.size() - 1; i++) {
             int index1 = vowelIndexes.get(i);
             int index2 = vowelIndexes.get(i + 1);
             if (index2 - index1 == 1 && nucleusIndexes.contains(index1) && nucleusIndexes.contains(index2))
-            /* i.e. if two vowels are next to one another and not already in a dipthong */
+            /* i.e. if two vowels are next to one another and not already in a diphthong */
             {
                 char vowel_1 = ipaWord.charAt(vowelIndexes.get(i));
                 char vowel_2 = ipaWord.charAt(vowelIndexes.get(i + 1));
-                String potential_dipthong = new String(new char[] { vowel_1, vowel_2 });
+                String potential_diphthong = new String(new char[] { vowel_1, vowel_2 });
 
-                if (AbstractIPA.isDipthong(potential_dipthong)) {
+                if (AbstractIPA.isDiphthong(potential_diphthong)) {
                     nucleusIndexes.remove((Integer) index2);
-                    syllables.remove(i + 1 - dipthongCount);
-                    syllables.get(i - dipthongCount).setNucleus(potential_dipthong);
-                    dipthongCount++;
+                    syllables.remove(i + 1 - diphthongCount);
+                    syllables.get(i - diphthongCount).setNucleus(potential_diphthong);
+                    diphthongCount++;
                 }
             }
         }

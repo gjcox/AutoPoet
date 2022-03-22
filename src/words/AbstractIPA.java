@@ -14,10 +14,10 @@ public abstract class AbstractIPA {
              * in WordsAPI
              */ };
 
-    protected static final String[] U_VARIANTS = { "u", "ʊ" }; // String to account for dipthongs in comparison
+    protected static final String[] U_VARIANTS = { "u", "ʊ" }; // String to account for diphthongs in comparison
                                                                // might not be an exhaustive list yet
 
-    protected static final String[] DIPTHONGS = {
+    protected static final String[] DIPHTHONGS = {
             /* from https://thesoundofenglish.org/diphthongs/ */
             "ɪə", "ʊə", "eɪ", "əʊ", "ɔɪ", "aʊ", "ʌɪ", /* some charts also include eə */
             /* WordsAPI uses "aɪ" where soundofenglish.org uses "ʌɪ" */
@@ -75,7 +75,7 @@ public abstract class AbstractIPA {
         return is_onset;
     }
 
-    protected static boolean isDipthong(String vowel_pair) {
-        return Arrays.asList(DIPTHONGS).contains(vowel_pair);
+    protected static boolean isDiphthong(String vowel_pair) {
+        return Arrays.asList(DIPHTHONGS).contains(vowel_pair);
     }
 }
