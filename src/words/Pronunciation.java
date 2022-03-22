@@ -255,7 +255,7 @@ public class Pronunciation {
         }
     }
 
-    private ArrayList<String> plaintextSyllables = new ArrayList<>();
+    private ArrayList<String> plaintextSyllables = new ArrayList<>(); // not in use 
 
     private EnumMap<PartOfSpeech, SubPronunciation> subPronunciations = new EnumMap<>(PartOfSpeech.class);
     private SubPronunciation all;
