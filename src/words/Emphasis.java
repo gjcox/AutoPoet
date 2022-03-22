@@ -2,10 +2,6 @@ package words;
 
 import java.util.ArrayList;
 
-/**
- * TODO account for 'words' that are actually more than one word, and therefore
- * have multiple primary emphases
- */
 public class Emphasis {
     private int primary = 0; // default value for monosyllabic words with no marked emphasis
     private ArrayList<Integer> secondary;

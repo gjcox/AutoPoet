@@ -16,7 +16,6 @@ import static config.Configuration.LOG;
 
 /**
  * Handles interactions with WordsAPI
- * TODO: Need to handle 404 errors
  */
 public class WordsAPI {
 
@@ -85,7 +84,6 @@ public class WordsAPI {
     }
 
     /**
-     * TODO handle plurals, conjucation etc.
      * 
      * @param plaintext a plaintext word.
      * @return the JSONOject returned from WordsAPI, or {word:plaintext} if there
