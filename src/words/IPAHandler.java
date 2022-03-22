@@ -75,7 +75,7 @@ public class IPAHandler extends AbstractIPA {
         }
 
         /* 2. for each nucleus, work backward, adding sounds to the onset */
-        /* if the onset would include a ' or , update the emphases JSONObject */
+        /* if the onset would include a ' or , update the Emphasis object */
         for (int i = nucleusIndexes.size() - 1; i >= 0; i--) {
             boolean trialOnsetIsValid = true;
             String trialOnset = "";

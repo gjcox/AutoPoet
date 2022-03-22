@@ -13,11 +13,6 @@ import words.SubWord.PartOfSpeech;
 
 import static config.Configuration.LOG;
 
-/**
- * I could use a JSONObject instead of this class, which will have a lot of null
- * attributes. Provided they stay null the memory footprint should not be
- * unreasonable.
- */
 public class Pronunciation {
 
     public static class SubPronunciation {
