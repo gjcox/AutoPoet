@@ -210,7 +210,13 @@ public class SuperWord extends Token {
     }
 
     public int getSyllableCount(PartOfSpeech pos) {
-        return this.getPronunciation().getSyllableCount(pos);
+        if (!this.populated) {
+            this.populate();
+        }
+        if (this.pronunciation == null) {
+            return -1;
+        }
+        return this.pronunciation.getSyllableCount(pos);
     }
 
     public boolean validPool(SuggestionPool pool, PartOfSpeech pos) {
@@ -281,6 +287,7 @@ public class SuperWord extends Token {
     private ArrayList<SuperWord> filterSuggestions(ArrayList<SuperWord> suggestions, PartOfSpeech thisPos,
             FilterParameters params) {
 
+
         if (suggestions == null) {
             return new ArrayList<>();
         }
@@ -288,35 +295,33 @@ public class SuperWord extends Token {
         ArrayList<SuperWord> filtered = new ArrayList<>(suggestions);
 
         for (SuperWord suggestion : suggestions) {
-            boolean matched = false;
-            boolean paramsAreEmpty = true;
+            boolean shouldRhyme = false;
+            boolean rhymes = false;
+            boolean syllableCountMatch = true; 
 
             // check that at least one rhyme subtype passes
             // ... for at least one corresponding matchWith
             for (RhymeType filter : RhymeType.values()) {
                 List<SuperWord> matchWithList;
                 if ((matchWithList = params.getMatchWith(filter)) != null) {
-                    paramsAreEmpty = false;
+                    shouldRhyme = true;
                     for (SuperWord matchWith : matchWithList) {
                         if (suggestion.rhymesWithWrapper(filter, matchWith, thisPos, params.getMatchPoS())) {
-                            matched = true;
+                            rhymes = true;
                             break;
                         }
                     }
                 }
-                if (matched)
+                if (rhymes)
                     break;
             }
 
             // check that syllable count matches (if required)
-            if (params.syllableCountFilter()) {
-                paramsAreEmpty = false;
-                if (getSyllableCount(thisPos) != suggestion.getSyllableCount(null)) {
-                    matched = false;
-                }
+            if (params.syllableCountFilter() && getSyllableCount(thisPos) != suggestion.getSyllableCount(null)) {
+                    syllableCountMatch = false;
             }
 
-            if (!paramsAreEmpty && !matched)
+            if (shouldRhyme && !rhymes || !syllableCountMatch)
                 filtered.remove(suggestion);
         }
 
