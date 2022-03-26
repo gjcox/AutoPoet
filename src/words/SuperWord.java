@@ -38,8 +38,12 @@ public class SuperWord extends Token {
             Arrays.asList("word", "results", "syllables", "pronunciation", "frequency", "rhymes", "success",
                     "message"));
 
-    private boolean populated = false; // true iff built from a WordsAPI query
+    // true iff built from a WordsAPI query
+    private boolean populated = false;
+    // constructed from IPA (if available)
     private Pronunciation pronunciation;
+    // a fallback for syllable count if no IPA
+    private ArrayList<String> plaintextSyllables = new ArrayList<>();
     // SubWords, grouped by part of speech
     private EnumMap<PartOfSpeech, ArrayList<SubWord>> partsOfSpeech = new EnumMap<>(PartOfSpeech.class);
 
@@ -82,17 +86,15 @@ public class SuperWord extends Token {
                     word.getString("word"), plaintext));
         }
 
-        if (word.has("syllables") || word.has("pronunciation"))
-            this.pronunciation = new Pronunciation();
-
         if (word.has("syllables")) {
             JSONObject syllablesObject = word.getJSONObject("syllables");
-            this.pronunciation.setSyllables(this.plaintext, syllablesObject);
+            this.setSyllables(this.plaintext, syllablesObject);
         } else {
             LOG.writePersistentLog(String.format("Syllables of \"%s\" was missing", plaintext));
         }
 
         if (word.has("pronunciation")) {
+            this.pronunciation = new Pronunciation();
             try {
                 JSONObject pronunciationObject = word.getJSONObject("pronunciation");
                 this.pronunciation.setIPA(this.plaintext, pronunciationObject);
@@ -172,6 +174,33 @@ public class SuperWord extends Token {
 
     /**
      * 
+     * @param syllablesObject JSONObject of the form {"count":x, "list":[]}
+     */
+    public void setSyllables(String plaintext, JSONObject syllablesObject) {
+        String count = "count";
+        String list = "list";
+        if (syllablesObject.has(count) && syllablesObject.has(list)) {
+            this.plaintextSyllables = new ArrayList<>();
+            JSONArray syllableArray = syllablesObject.getJSONArray(list);
+
+            for (int i = 0; i < syllablesObject.getInt(count); i++) {
+                try {
+                    this.plaintextSyllables.add(syllableArray.getString(i));
+                } catch (JSONException e) {
+                    LOG.writePersistentLog(
+                            String.format("\"%s\"'s syllables count did not match the syllables array: %s",
+                                    plaintext, syllablesObject.toString()));
+                }
+            }
+        } else {
+            LOG.writePersistentLog(
+                    String.format("\"%s\"'s syllables field did not have a count or list field: %s", plaintext,
+                            syllablesObject.toString()));
+        }
+    }
+
+    /**
+     * 
      * @param pos
      * @param inclusiveUnknown
      * @return null if the SuperWord has no SubWords of that type.
@@ -214,9 +243,13 @@ public class SuperWord extends Token {
             this.populate();
         }
         if (this.pronunciation == null) {
-            return -1;
+            return this.plaintextSyllables.size(); // fallback in case no IPA pronunciation data
         }
         return this.pronunciation.getSyllableCount(pos);
+    }
+
+    public ArrayList<String> getPlaintextSyllables() {
+        return plaintextSyllables;
     }
 
     public boolean validPool(SuggestionPool pool, PartOfSpeech pos) {
@@ -287,7 +320,6 @@ public class SuperWord extends Token {
     private ArrayList<SuperWord> filterSuggestions(ArrayList<SuperWord> suggestions, PartOfSpeech thisPos,
             FilterParameters params) {
 
-
         if (suggestions == null) {
             return new ArrayList<>();
         }
@@ -297,7 +329,7 @@ public class SuperWord extends Token {
         for (SuperWord suggestion : suggestions) {
             boolean shouldRhyme = false;
             boolean rhymes = false;
-            boolean syllableCountMatch = true; 
+            boolean syllableCountMatch = true;
 
             // check that at least one rhyme subtype passes
             // ... for at least one corresponding matchWith
@@ -318,7 +350,7 @@ public class SuperWord extends Token {
 
             // check that syllable count matches (if required)
             if (params.syllableCountFilter() && getSyllableCount(thisPos) != suggestion.getSyllableCount(null)) {
-                    syllableCountMatch = false;
+                syllableCountMatch = false;
             }
 
             if (shouldRhyme && !rhymes || !syllableCountMatch)
@@ -366,6 +398,7 @@ public class SuperWord extends Token {
             stringBuilder.append(divider);
         }
         stringBuilder.append("populated: " + populated);
+        stringBuilder.append("plaintext-syllables: " + plaintextSyllables.toString());
         if (pronunciation != null) {
             stringBuilder.append(divider);
             stringBuilder.append("pronunciation: " + pronunciation.toString());

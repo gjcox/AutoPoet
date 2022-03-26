@@ -13,6 +13,7 @@ import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -111,15 +112,15 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        txtfldDefaultRhymeScheme.setTextFormatter(getRhymeSchemeFormatter());
-        txtfldIntRhymeScheme.setTextFormatter(getRhymeSchemeFormatter());
+        txtfldDefaultRhymeScheme.setTextFormatter(buildRhymeSchemeFormatter());
+        txtfldIntRhymeScheme.setTextFormatter(buildRhymeSchemeFormatter());
 
         initSuggestionPoolCheckBoxes();
         initFilterCheckBoxes();
 
         IndexedTokenLabel.setJoinWordsAction(actionEvent -> {
             if (focusedToken == null || secondFocusedToken == null) {
-                Alert alert = getCleanAlert(AlertType.INFORMATION);
+                Alert alert = buildCleanAlert(AlertType.INFORMATION);
                 alert.setContentText("Two neighbouring words must be selected to join.");
                 alert.show();
             } else {
@@ -129,7 +130,7 @@ public class Controller {
 
         IndexedTokenLabel.setSplitOnSpaceAction(actionEvent -> {
             if (!splitWord(" ")) {
-                Alert alert = getCleanAlert(AlertType.INFORMATION);
+                Alert alert = buildCleanAlert(AlertType.INFORMATION);
                 alert.setContentText("Selected word could not be split.");
                 alert.show();
             }
@@ -137,7 +138,7 @@ public class Controller {
 
         IndexedTokenLabel.setSplitOnHyphenAction(actionEvent -> {
             if (!splitWord("-")) {
-                Alert alert = getCleanAlert(AlertType.INFORMATION);
+                Alert alert = buildCleanAlert(AlertType.INFORMATION);
                 alert.setContentText("Selected word could not be split.");
                 alert.show();
             }
@@ -147,7 +148,7 @@ public class Controller {
 
     // element fabricators and utilities
 
-    private Alert getCleanAlert(AlertType type) {
+    private Alert buildCleanAlert(AlertType type) {
         Alert alert = new Alert(type);
         alert.setHeaderText(null);
         alert.setGraphic(null);
@@ -155,19 +156,19 @@ public class Controller {
         return alert;
     }
 
-    private FlowPane getEmptyLine() {
+    private FlowPane buildEmptyLine() {
         FlowPane guiLine = new FlowPane();
         guiLine.setPrefWrapLength(Double.MAX_VALUE);
         return guiLine;
     }
 
     private FlowPane addEmptyLine(int absLineIndex) {
-        FlowPane guiLine = getEmptyLine();
+        FlowPane guiLine = buildEmptyLine();
         grdpnPoem.addRow(absLineIndex, guiLine);
         return guiLine;
     }
 
-    private CheckBox getPoolCheckBox(SuggestionPool pool) {
+    private CheckBox buildSuggestionPoolCheckBox(SuggestionPool pool) {
         CheckBox checkBox = new CheckBox(pool.getLabel());
         checkBox.setOnAction(this::updateSuggestionPool);
         checkBox.setDisable(true);
@@ -177,44 +178,52 @@ public class Controller {
     private void initSuggestionPoolCheckBoxes() {
         int row = 1; // row 0 is the list title
         for (SuggestionPool pool : SuggestionPool.values()) {
-            CheckBox checkBox = getPoolCheckBox(pool);
+            CheckBox checkBox = buildSuggestionPoolCheckBox(pool);
             grdPnSuggestionPools.addRow(row++, checkBox);
             suggestionPoolCheckBoxes.put(pool.getLabel(), checkBox);
         }
     }
 
-    private CheckBox getFilterCheckBox(RhymeType filter) {
-        return getFilterCheckBox(filter.getLabel(), filter.getExplanation());
+    private CheckBox buildRhymeTypeCheckBox(RhymeType rhymeType) {
+        return buildFilterCheckBox(rhymeType.getLabel(), rhymeType.getExplanation());
     }
 
-    private CheckBox getFilterCheckBox(String label, String tooltipText) {
+    private CheckBox buildFilterCheckBox(String label, String tooltipText) {
         CheckBox checkBox = new CheckBox(label);
         Tooltip tooltip = new Tooltip(tooltipText);
         tooltip.setPrefWidth(220);
         tooltip.setWrapText(true);
         checkBox.setTooltip(tooltip);
-        checkBox.setDisable(false);
+        checkBox.setDisable(true);
         return checkBox;
     }
 
     private void initFilterCheckBoxes() {
         int row = 3; // row 0 is the list title, 1 is textfield, 2 is a seperator
+
+        // add rhyme type checkboxes
         for (RhymeType filter : RhymeType.values()) {
-            CheckBox checkBox = getFilterCheckBox(filter);
+            if (filter.equals(RhymeType.FORCED_RHYME)) {
+                continue; // not implemented yet
+            }
+            CheckBox checkBox = buildRhymeTypeCheckBox(filter);
             grdPnFilters.addRow(row++, checkBox);
-            checkBox.setDisable(filter.equals(RhymeType.FORCED_RHYME)); // not implemented yet
             filterCheckBoxes.put(filter, checkBox);
         }
-        grdPnFilters.addRow(row++, new Separator());
-        chbxSyllableCount = getFilterCheckBox("syllable count", "Suggestions must match the word's syllable count.");
+
+        // add separator and syllable count checkbox
+        Separator separator = new Separator();
+        separator.setPadding(new Insets(5, 5, 2, 0));
+        grdPnFilters.addRow(row++, separator);
+        chbxSyllableCount = buildFilterCheckBox("syllable count", "Suggestions must match the word's syllable count.");
         grdPnFilters.addRow(row, chbxSyllableCount);
     }
 
-    /**
-     * Ensures that rhyme schemes are only made up of uppercase latin letters and
-     * hashes.
-     */
-    private TextFormatter<String> getRhymeSchemeFormatter() {
+    private TextFormatter<String> buildRhymeSchemeFormatter() {
+        /*
+         * Ensures that rhyme schemes are only made up of uppercase latin letters and
+         * hashes.
+         */
         TextFormatter<String> formatter = new TextFormatter<>(change -> {
             if (!change.isContentChange()) {
                 return change;
@@ -280,10 +289,6 @@ public class Controller {
         }
     }
 
-    private CheckBox getSuggestionPoolCheckBox(SuggestionPool pool) {
-        return suggestionPoolCheckBoxes.get(pool.getLabel());
-    }
-
     /**
      * Checks backwards from end of a line until a superword is found (so that
      * commas etc. are ignored).
@@ -309,7 +314,7 @@ public class Controller {
         int schemeValue;
 
         if (scheme == null) {
-            Alert alert = getCleanAlert(AlertType.WARNING);
+            Alert alert = buildCleanAlert(AlertType.WARNING);
             alert.setHeaderText("Could not filter suggestions.");
             alert.setContentText("The current stanza does not have a set intended rhyme scheme.");
             alert.show();
@@ -332,12 +337,19 @@ public class Controller {
 
     private FilterParameters getFilterParams() {
         FilterParameters params = new FilterParameters();
+        if (chbxSyllableCount.isDisabled()) {
+            // current focused token has no pronunciation data
+            return params;
+        }
+
         params.setSyllableCountFilter(chbxSyllableCount.isSelected());
 
         List<RhymeType> chosenRhymeTypes = new ArrayList<>();
 
         // iterate over rhyme checkboxes to see which any are ticked
         for (RhymeType rhymeType : RhymeType.values()) {
+            if (rhymeType.equals(RhymeType.FORCED_RHYME))
+                continue; // not implemented yet
             if (filterCheckBoxes.get(rhymeType).isSelected()) {
                 chosenRhymeTypes.add(rhymeType);
             }
@@ -349,7 +361,7 @@ public class Controller {
             if (txtfldRhymeWith.getText().equals("")) {
                 // get rhymes from scheme
                 if (!focusedToken.equals(getLastToken((FlowPane) focusedToken.getParent()))) {
-                    Alert alert = getCleanAlert(AlertType.WARNING);
+                    Alert alert = buildCleanAlert(AlertType.WARNING);
                     alert.setHeaderText("Could not filter suggestions.");
                     alert.setContentText(
                             "Only the last word in a line can be matched against the intended rhyme scheme.");
@@ -386,12 +398,20 @@ public class Controller {
     }
 
     public void getSuggestions() {
-        if (focusedToken.getPos() == null) {
-            Alert alert = getCleanAlert(AlertType.INFORMATION);
+        if (focusedToken == null) {
+            Alert alert = buildCleanAlert(AlertType.INFORMATION);
+            alert.setContentText("Please select a word to get suggestions.");
+            alert.show();
+        } else if (secondFocusedToken != null) {
+            Alert alert = buildCleanAlert(AlertType.INFORMATION);
+            alert.setContentText("Please only select one word to get suggestions.");
+            alert.show();
+        } else if (focusedToken.getPos() == null) {
+            Alert alert = buildCleanAlert(AlertType.INFORMATION);
             alert.setContentText("Please select a part of speech to get suggestions.");
             alert.show();
         } else if (focusedToken.getPoolParams().isEmpty()) {
-            Alert alert = getCleanAlert(AlertType.INFORMATION);
+            Alert alert = buildCleanAlert(AlertType.INFORMATION);
             alert.setContentText("Please select at least one suggestion pool to get suggestions.");
             alert.show();
         } else {
@@ -419,7 +439,7 @@ public class Controller {
     public void enableSuggestionPoolBoxes() {
         SuperWord superword = ((SuperWord) focusedToken.getToken());
         for (SuggestionPool pool : SuggestionPool.values()) {
-            CheckBox checkBox = getSuggestionPoolCheckBox(pool);
+            CheckBox checkBox = suggestionPoolCheckBoxes.get(pool.getLabel());
             if (checkBox != null) {
                 if (focusedToken.getPos() == null || !superword.validPool(pool, focusedToken.getPos())) {
                     focusedToken.getPoolParams().togglePool(pool, false);
@@ -441,6 +461,9 @@ public class Controller {
         focusedToken.getPoolParams().togglePool(pool, source.isSelected());
     }
 
+    /**
+     * Tied to the include unknowns checkbox in the FXML file.
+     */
     public void updateIncludeUnknowns(ActionEvent e) {
         CheckBox source = (CheckBox) e.getSource();
         try {
@@ -449,6 +472,18 @@ public class Controller {
             // checkbox used before poem loaded
             // do nothing
         }
+    }
+
+    private void enableFilterBoxes() {
+        SuperWord superword = ((SuperWord) focusedToken.getToken());
+        boolean disable = superword.getPronunciation() == null;
+        for (RhymeType rhymeType : RhymeType.values()) {
+            if (rhymeType.equals(RhymeType.FORCED_RHYME))
+                continue; // not implemented yet
+            CheckBox checkBox = filterCheckBoxes.get(rhymeType);
+            checkBox.setDisable(disable);
+        }
+        chbxSyllableCount.setDisable(superword.getSyllableCount(null) <= 0);
     }
 
     public void focusOnStanza(int stanzaIndex) {
@@ -479,7 +514,7 @@ public class Controller {
         }
         CheckBox checkBox;
         for (SuggestionPool pool : SuggestionPool.values()) {
-            checkBox = getSuggestionPoolCheckBox(pool);
+            checkBox = suggestionPoolCheckBoxes.get(pool.getLabel());
             if (checkBox != null) {
                 checkBox.setSelected(focusOnToken.getPoolParams().includes(pool));
             }
@@ -488,6 +523,7 @@ public class Controller {
         enableSuggestionPoolBoxes();
         chbxInclUnknown.setSelected(focusOnToken.getInclUnknown());
         btnGetSuggestions.setDisable(!hasSubWords);
+        enableFilterBoxes();
         displaySuggestions();
     }
 
@@ -664,14 +700,14 @@ public class Controller {
             tokenizePoem();
             tgbtnDirectEdit.setDisable(false);
         } catch (IOException e) {
-            Alert alert = getCleanAlert(AlertType.ERROR);
+            Alert alert = buildCleanAlert(AlertType.ERROR);
             alert.setHeaderText("Could not open file.");
             alert.setContentText(String.format("Failed to open %s.\n%s", poemFile.getName(), SEE_LOG));
             LOG.writeTempLog(e.toString() + "\n" + Arrays.toString(e.getStackTrace()));
             alert.show();
         } catch (Exception e) {
             LOG.writeTempLog(e.toString() + "\n" + Arrays.toString(e.getStackTrace()));
-            Alert alert = getCleanAlert(AlertType.ERROR);
+            Alert alert = buildCleanAlert(AlertType.ERROR);
             alert.setHeaderText("An unexpected error occured.");
             alert.setContentText(SEE_LOG);
             alert.show();
@@ -687,7 +723,7 @@ public class Controller {
         try {
             poem.savePoem(poemFile);
         } catch (IOException e) {
-            Alert alert = getCleanAlert(AlertType.ERROR);
+            Alert alert = buildCleanAlert(AlertType.ERROR);
             alert.setHeaderText("Could not save poem.");
             alert.setContentText(String.format("Failed to write to %s.\n%s", poemFile.getName(), SEE_LOG));
             LOG.writeTempLog(e.toString() + "\n" + e.getStackTrace());
@@ -731,7 +767,7 @@ public class Controller {
                     toggleDirectEdit();
                 }
             } catch (IOException e) {
-                Alert alert = getCleanAlert(AlertType.ERROR);
+                Alert alert = buildCleanAlert(AlertType.ERROR);
                 alert.setHeaderText("Could not create blank poem.");
                 alert.setContentText(SEE_LOG);
                 LOG.writeTempLog(e.toString() + "\n" + e.getStackTrace());
@@ -761,7 +797,7 @@ public class Controller {
                 ttlpnSuggestions.setDisable(false);
             } catch (IOException e) {
                 LOG.writeTempLog(e.toString() + "\n" + Arrays.toString(e.getStackTrace()));
-                Alert alert = getCleanAlert(AlertType.ERROR);
+                Alert alert = buildCleanAlert(AlertType.ERROR);
                 alert.setHeaderText("Could not parse directly edited text.");
                 alert.setContentText(String.format(SEE_LOG));
                 alert.show();

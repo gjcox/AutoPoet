@@ -257,21 +257,15 @@ public class Pronunciation {
         }
     }
 
-    private ArrayList<String> plaintextSyllables = new ArrayList<>(); // not in use
-
     private EnumMap<PartOfSpeech, SubPronunciation> subPronunciations = new EnumMap<>(PartOfSpeech.class);
     private SubPronunciation all;
-
-    public ArrayList<String> getPlaintextSyllables() {
-        return plaintextSyllables;
-    }
 
     /**
      * Attempts to determine the syllable count for a word. If null, then just
      * return the first value found.
      * 
      * @param pos the SubPronunciation to query.
-     * @return -1 if no syllable count could be determined, otherwise the number of
+     * @return 0 if no syllable count could be determined, otherwise the number of
      *         syllables in the requested SubPronunciation.
      */
     public int getSyllableCount(PartOfSpeech pos) {
@@ -284,36 +278,9 @@ public class Pronunciation {
         }
         SubPronunciation subP = this.getSubPronunciation(null, pos);
         if (subP == null) {
-            return -1;
+            return 0;
         } else {
             return subP.syllables.size();
-        }
-    }
-
-    /**
-     * 
-     * @param syllablesObject JSONObject of the form {"count":x, "list":[]}
-     */
-    public void setSyllables(String plaintext, JSONObject syllablesObject) {
-        String count = "count";
-        String list = "list";
-        if (syllablesObject.has(count) && syllablesObject.has(list)) {
-            this.plaintextSyllables = new ArrayList<>();
-            JSONArray syllableArray = syllablesObject.getJSONArray(list);
-
-            for (int i = 0; i < syllablesObject.getInt(count); i++) {
-                try {
-                    this.plaintextSyllables.add(syllableArray.getString(i));
-                } catch (JSONException e) {
-                    LOG.writePersistentLog(
-                            String.format("\"%s\"'s syllables count did not match the syllables array: %s",
-                                    plaintext, syllablesObject.toString()));
-                }
-            }
-        } else {
-            LOG.writePersistentLog(
-                    String.format("\"%s\"'s syllables field did not have a count or list field: %s", plaintext,
-                            syllablesObject.toString()));
         }
     }
 
@@ -430,7 +397,6 @@ public class Pronunciation {
         String divider = ", ";
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
-        stringBuilder.append("plaintext-syllables: " + plaintextSyllables.toString());
 
         for (PartOfSpeech pos : PartOfSpeech.values()) {
             if (subPronunciations.containsKey(pos)) {
