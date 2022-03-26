@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Map;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import utils.Pair;
 import utils.ParameterWrappers.FilterParameters.RhymeType;
 
@@ -292,7 +289,7 @@ public class Pronunciation {
      * @param plaintext    used for debugging messages
      * @param rhymesObject from WordsAPI request
      */
-    public void setRhyme(String plaintext, JSONObject rhymesObject) {
+    public boolean setRhyme(String plaintext, JSONObject rhymesObject) {
         JSONObject filteredRhymesObject = new JSONObject();
         boolean empty = true;
 
@@ -314,24 +311,26 @@ public class Pronunciation {
             /* i.e. pronunciation object had no (recognised) keys */
             LOG.writePersistentLog(String.format(
                     "Rhymes of \"%s\" had no recognised keys not found in pronunciation field", plaintext));
+            return false;
         } else {
-            this.setIPA(plaintext, filteredRhymesObject);
+            return this.setIPA(plaintext, filteredRhymesObject);
         }
     }
 
-    public void setRhyme(String plaintext, String rhymesString) {
-        this.setIPA(plaintext, rhymesString.replaceFirst("-", "'"));
+    public boolean setRhyme(String plaintext, String rhymesString) {
+        return this.setIPA(plaintext, rhymesString.replaceFirst("-", "'"));
     }
 
     /**
      * 
+     * @param plaintext
      * @param pronunciationObject JSONObject of the form {<part-of-speech>:<ipa>}
      *                            e.g.
      *                            {"noun":"'kɑntrækt", "verb":"kɑn'trækt"}
      *                            {"all":"'fridəm"}
-     * 
+     * @return true if a subpronunciation could be derived, otherwise false.
      */
-    public void setIPA(String plaintext, JSONObject pronunciationObject) {
+    public boolean setIPA(String plaintext, JSONObject pronunciationObject) {
         Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = null;
         SubPronunciation sub;
 
@@ -339,8 +338,10 @@ public class Pronunciation {
             if (pronunciationObject.has(pos.getApiString())) {
                 String ipa = pronunciationObject.getString(pos.getApiString());
                 syllablesAndEmphasis = IPAHandler.getSyllables(ipa);
-                sub = new SubPronunciation(ipa, syllablesAndEmphasis.one(), syllablesAndEmphasis.two());
-                subPronunciations.put(pos, sub);
+                if (!syllablesAndEmphasis.one().isEmpty()) {
+                    sub = new SubPronunciation(ipa, syllablesAndEmphasis.one(), syllablesAndEmphasis.two());
+                    subPronunciations.put(pos, sub);
+                } // else IPA was unparsable
             }
         }
 
@@ -349,7 +350,9 @@ public class Pronunciation {
             // "verb" and "all": "all" is useful even when other fields are filled
             String ipa = pronunciationObject.getString("all");
             syllablesAndEmphasis = IPAHandler.getSyllables(ipa);
-            this.all = new SubPronunciation(ipa, syllablesAndEmphasis.one(), syllablesAndEmphasis.two());
+            if (!syllablesAndEmphasis.one().isEmpty()) {
+                this.all = new SubPronunciation(ipa, syllablesAndEmphasis.one(), syllablesAndEmphasis.two());
+            } // else IPA was unparsable
         }
 
         if (syllablesAndEmphasis == null) {
@@ -357,14 +360,22 @@ public class Pronunciation {
             LOG.writePersistentLog(String.format("Pronunciation of \"%s\" had no recognised keys: %s", plaintext,
                     pronunciationObject.toString()));
         }
+
+        return !subPronunciations.isEmpty();
     }
 
-    public void setIPA(String plaintext, String allIpa) {
+    public boolean setIPA(String plaintext, String allIpa) {
         if (allIpa.equals("")) {
             LOG.writePersistentLog(String.format("Pronunciation of \"%s\" was an empty string", plaintext));
+            return false;
         } else {
             Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = IPAHandler.getSyllables(allIpa);
-            this.all = new SubPronunciation(allIpa, syllablesAndEmphasis.one(), syllablesAndEmphasis.two());
+            if (!syllablesAndEmphasis.one().isEmpty()) {
+                this.all = new SubPronunciation(allIpa, syllablesAndEmphasis.one(), syllablesAndEmphasis.two());
+                return true;
+            } else {
+                return false; // IPA was unparsable
+            }
         }
     }
 

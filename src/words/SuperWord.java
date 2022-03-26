@@ -97,11 +97,17 @@ public class SuperWord extends Token {
             this.pronunciation = new Pronunciation();
             try {
                 JSONObject pronunciationObject = word.getJSONObject("pronunciation");
-                this.pronunciation.setIPA(this.plaintext, pronunciationObject);
+                if (!this.pronunciation.setIPA(this.plaintext, pronunciationObject)) {
+                    // failed to derive subpronunciation from object
+                    this.pronunciation = null;
+                }
             } catch (JSONException e) {
                 LOG.writePersistentLog(String.format("Pronunciation of \"%s\" was not a JSONObject: \"%s\"", plaintext,
                         word.get("pronunciation").toString()));
-                this.pronunciation.setIPA(this.plaintext, word.getString("pronunciation"));
+                if (!this.pronunciation.setIPA(this.plaintext, word.getString("pronunciation"))) {
+                    // failed to derive subpronunciation from string
+                    this.pronunciation = null;
+                }
             }
         } else {
             LOG.writePersistentLog(String.format("Pronunciation of \"%s\" was missing", plaintext));
@@ -110,13 +116,22 @@ public class SuperWord extends Token {
         if (word.has("rhymes")) {
             LOG.writePersistentLog(
                     String.format("Rhymes of \"%s\" was present: %s", plaintext, word.get("rhymes").toString()));
-            try {
-                JSONObject rhymeObject = word.getJSONObject("rhymes");
-                this.pronunciation.setRhyme(this.plaintext, rhymeObject);
-            } catch (JSONException e) {
-                LOG.writePersistentLog(String.format("Rhymes of \"%s\" was not a JSONObject: \"%s\"", plaintext,
-                        word.get("Rhymes").toString()));
-                this.pronunciation.setRhyme(this.plaintext, word.getString("Rhymes"));
+            if (pronunciation == null) {
+                this.pronunciation = new Pronunciation();
+                try {
+                    JSONObject rhymeObject = word.getJSONObject("rhymes");
+                    if (!this.pronunciation.setRhyme(this.plaintext, rhymeObject)) {
+                        // failed to derive subpronunciation from object
+                        this.pronunciation = null;
+                    }
+                } catch (JSONException e) {
+                    LOG.writePersistentLog(String.format("Rhymes of \"%s\" was not a JSONObject: \"%s\"", plaintext,
+                            word.get("Rhymes").toString()));
+                    if (!this.pronunciation.setRhyme(this.plaintext, word.getString("Rhymes"))) {
+                        // failed to derive subpronunciation from string
+                        this.pronunciation = null;
+                    }
+                }
             }
         }
 
