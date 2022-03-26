@@ -16,8 +16,9 @@ public class IPAHandler extends AbstractIPA {
      * primary stressed syllable (denoted with ') and zero or more secondary
      * stressed syllables (denoted with ,).
      * 
-     * The logic used is based on forum response by Draconis, 19 March 2019 
-     * https://linguistics.stackexchange.com/questions/30933/how-to-split-ipa-spelling-into-syllables, [Accessed 25 October 2021].
+     * The logic used is based on forum response by Draconis, 19 March 2019
+     * https://linguistics.stackexchange.com/questions/30933/how-to-split-ipa-spelling-into-syllables,
+     * [Accessed 25 October 2021].
      * 
      * 
      * @param ipaWord
@@ -38,7 +39,7 @@ public class IPAHandler extends AbstractIPA {
 
         if (ipaWord.equals("")) {
             Configuration.LOG.writeTempLog(
-                    String.format("getSyllables(%s) passed an empty string. Returning empty pair.", ipaWord));
+                    String.format("getSyllables() passed an empty string \"%s\". Returning empty pair.", ipaWord));
             return new Pair<>(syllables, emphasis);
         }
 
@@ -51,6 +52,13 @@ public class IPAHandler extends AbstractIPA {
                 nucleusIndexes.add(i);
                 onsetIndexes.add(-1); // gets list to correct size with placeholder values
             }
+        }
+
+        if (nucleusIndexes.isEmpty()) {
+            Configuration.LOG.writePersistentLog(
+                    String.format("getSyllables() passed a string with no vowels \"%s\". Returning empty pair.",
+                            ipaWord));
+            return new Pair<>(syllables, emphasis);
         }
 
         /* 1.5 check for diphthongs */
