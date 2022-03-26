@@ -7,24 +7,24 @@ import utils.Pair;
 
 public class IPAHandler extends AbstractIPA {
 
-    private static char primaryEmphasis = '\''; 
-    private static char secondaryEmphasis = ',';  
-    private static char space = '_'; 
+    private static char primaryEmphasis = '\'';
+    private static char secondaryEmphasis = ',';
+    private static char space = '_';
 
     /**
      * Compute the syllables of a word based on the IPA. Words can have a single
      * primary stressed syllable (denoted with ') and zero or more secondary
      * stressed syllables (denoted with ,).
      * 
+     * The logic used is based on forum response by Draconis, 19 March 2019 
+     * https://linguistics.stackexchange.com/questions/30933/how-to-split-ipa-spelling-into-syllables, [Accessed 25 October 2021].
+     * 
+     * 
      * @param ipaWord
      * @return a Pair<> of an ArrayList of syllables and the emphases.
      */
     public static Pair<ArrayList<Syllable>, Emphasis> getSyllables(String ipaWord) {
-        /*
-         * logic based on
-         * https://linguistics.stackexchange.com/questions/30933/how-to-split-ipa-
-         * spelling-into-syllables
-         */
+
         ArrayList<Syllable> syllables = new ArrayList<>(); // included in return
         Emphasis emphasis = new Emphasis(); // included in return
 
@@ -157,6 +157,5 @@ public class IPAHandler extends AbstractIPA {
 
         return corrected.toString();
     }
-
 
 }
