@@ -1,6 +1,8 @@
 package utils;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 
 import words.PartOfSpeech;
 import words.SuperWord;
@@ -22,7 +24,7 @@ public interface ParameterWrappers {
             HAS_PARTS("has parts", "hasParts", true),
             ;
 
-            private final String label; // the label for use in a GUI etc 
+            private final String label; // the label for use in a GUI etc
             private final String apiString; // the label used by WordsAPI
             private final boolean apiProperty; // true if the field is an attribute of WordsAPI subwords
 
@@ -106,24 +108,20 @@ public interface ParameterWrappers {
     }
 
     public class FilterParameters {
-        public enum Filter {
-            PERFECT_RHYME("perfect rhyme", "Exact match from stressed syllables, e.g. tragic/magic.", true),
-            SYLLABIC_RHYME("syllabic rhyme", "Exact match on the last syllables, e.g. fiddle/fuddle.", true),
+        public enum RhymeType {
+            PERFECT_RHYME("perfect rhyme", "Exact match from stressed syllables, e.g. tragic/magic."),
+            SYLLABIC_RHYME("syllabic rhyme", "Exact match on the last syllables, e.g. fiddle/fuddle."),
             IMPERFECT_RHYME("imperfect rhyme",
-                    "Exact match from a stressed syllable to an unstressed syllable, or between two secondary stressed syllables, e.g. zombie/bee.",
-                    true),
-            WEAK_RHYME("weak rhyme", "Exact match between unstressed syllables, e.g. dependent/sediment.", true),
-            FORCED_RHYME("forced rhyme", "Inexact match from stressed syllables. Not yet implemented.", true),
-            ;
+                    "Exact match from a stressed syllable to an unstressed syllable, or between two secondary stressed syllables, e.g. zombie/bee."),
+            WEAK_RHYME("weak rhyme", "Exact match between unstressed syllables, e.g. dependent/sediment."),
+            FORCED_RHYME("forced rhyme", "Inexact match from stressed syllables. Not yet implemented.");
 
             private final String label;
             private final String explanation;
-            private final boolean isRhyme;
 
-            private Filter(String label, String explanation, boolean isRhyme) {
+            private RhymeType(String label, String explanation) {
                 this.label = label;
                 this.explanation = explanation;
-                this.isRhyme = isRhyme;
             }
 
             public String getLabel() {
@@ -134,44 +132,45 @@ public interface ParameterWrappers {
                 return explanation;
             }
 
-            public boolean isRhymeType() {
-                return isRhyme;
-            }
         }
 
-        EnumMap<Filter, SuperWord> filters = new EnumMap<>(Filter.class);
-        PartOfSpeech matchPoS = null; // if null, match all PoS
-        boolean inclusiveUnknown = false; // TODO implement effect of this in matchesWith()
+        private EnumMap<RhymeType, List<SuperWord>> rhymeFilters = new EnumMap<>(RhymeType.class);
+        private PartOfSpeech matchPoS = null; // if null, match all PoS
+        private boolean syllableCountFilter = false;
 
-        public void setFilter(Filter filter, SuperWord matchWith) {
-            filters.put(filter, matchWith);
+        public void setRhymeFilter(RhymeType rhymeType, SuperWord matchWith) {
+            rhymeFilters.computeIfAbsent(rhymeType, k -> new ArrayList<SuperWord>()).add(matchWith);
         }
 
         public void setMatchPoS(PartOfSpeech matchPoS) {
             this.matchPoS = matchPoS;
         }
 
-        public void setInclusiveUnknown(boolean inclusiveUnknown) {
-            this.inclusiveUnknown = inclusiveUnknown;
+        public void setSyllableCountFilter(boolean syllableCountFilter) {
+            this.syllableCountFilter = syllableCountFilter;
         }
 
-        public void removeFilter(Filter filter) {
-            filters.remove(filter);
+        public void removeFilter(RhymeType filter) {
+            rhymeFilters.remove(filter);
         }
 
-        public SuperWord getMatchWith(Filter filter) {
-            return filters.get(filter);
+        public List<SuperWord> getMatchWith(RhymeType filter) {
+            return rhymeFilters.get(filter);
         }
 
         public PartOfSpeech getMatchPoS() {
             return matchPoS;
         }
 
+        public boolean syllableCountFilter() {
+            return syllableCountFilter;
+        }
+
         public String toString() {
             StringBuilder builder = new StringBuilder("{");
-            for (Filter filter : Filter.values()) {
-                if (filters.get(filter) != null) {
-                    builder.append(String.format("%s(%s), ", filter.name(), filters.get(filter)));
+            for (RhymeType filter : RhymeType.values()) {
+                if (rhymeFilters.get(filter) != null) {
+                    builder.append(String.format("%s(%s), ", filter.name(), rhymeFilters.get(filter)));
                 }
             }
 

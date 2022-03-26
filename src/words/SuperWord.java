@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import apis.WordsAPI;
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters;
-import utils.ParameterWrappers.FilterParameters.Filter;
+import utils.ParameterWrappers.FilterParameters.RhymeType;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Pronunciation.SubPronunciation;
 
@@ -40,7 +40,8 @@ public class SuperWord extends Token {
 
     private boolean populated = false; // true iff built from a WordsAPI query
     private Pronunciation pronunciation;
-    private EnumMap<PartOfSpeech, ArrayList<SubWord>> partsOfSpeech = new EnumMap<>(PartOfSpeech.class); // SubWords, grouped by part of speech 
+    // SubWords, grouped by part of speech
+    private EnumMap<PartOfSpeech, ArrayList<SubWord>> partsOfSpeech = new EnumMap<>(PartOfSpeech.class);
 
     /**
      * Attempts to get a cached word, before returning a new placeholder.
@@ -143,7 +144,7 @@ public class SuperWord extends Token {
     /**
      * 
      * @param plaintexts generically typed, but must have String elements.
-     * @return 
+     * @return
      */
     public static ArrayList<SuperWord> batchPlaceHolders(List<Object> plaintexts) {
         ArrayList<SuperWord> list = new ArrayList<>();
@@ -180,29 +181,42 @@ public class SuperWord extends Token {
             this.populate();
         }
         if (pos.equals(PartOfSpeech.UNKNOWN) && inclusiveUnknown) {
-            // if inclusively querying subwords with unknown PoS, return all subwords  
+            // if inclusively querying subwords with unknown PoS, return all subwords
             return combineLists(partsOfSpeech.values());
         } else if (inclusiveUnknown) {
             // combine subwords with unknown PoS, and desired PoS
             return combineListsVarags(partsOfSpeech.get(pos), partsOfSpeech.get(PartOfSpeech.UNKNOWN));
         } else {
-            // just return the subwords with desired PoS 
+            // just return the subwords with desired PoS
             return partsOfSpeech.get(pos);
         }
     }
 
     public Pronunciation getPronunciation() {
+        if (!this.populated) {
+            this.populate();
+        }
         return this.pronunciation;
     }
 
     public Pronunciation.SubPronunciation getSubPronunciation(PartOfSpeech partOfSpeech) {
+        if (!this.populated) {
+            this.populate();
+        }
         if (this.pronunciation == null) {
             return null;
         }
         return this.pronunciation.getSubPronunciation(plaintext, partOfSpeech);
     }
 
+    public int getSyllableCount(PartOfSpeech pos) {
+        return this.getPronunciation().getSyllableCount(pos);
+    }
+
     public boolean validPool(SuggestionPool pool, PartOfSpeech pos) {
+        if (!this.populated) {
+            this.populate();
+        }
         switch (pool) {
             case COMMONLY_TYPED:
                 return getSuggestionPool(SuggestionPool.TYPE_OF, pos, false) != null;
@@ -234,11 +248,23 @@ public class SuperWord extends Token {
         return suggestionPool;
     }
 
-    private ArrayList<SuperWord> getAggregatedSuggestions(PartOfSpeech pos, SuggestionPoolParameters params) {
+    private ArrayList<SuperWord> getAggregatedSuggestions(PartOfSpeech thisPos, SuggestionPoolParameters params) {
         ArrayList<ArrayList<SuperWord>> suggestions = new ArrayList<>();
         for (SuggestionPool pool : SuggestionPool.values()) {
             if (params.includes(pool)) {
-                suggestions.add(this.getSuggestionPool(pool, pos, params.hasInclusiveUnknown()));
+                if (!params.hasInclusiveUnknown()) {
+                    // only add the matching PoS suggestions
+                    suggestions.add(this.getSuggestionPool(pool, thisPos, params.hasInclusiveUnknown()));
+                } else if (!thisPos.equals(PartOfSpeech.UNKNOWN)) {
+                    // add the matching PoS suggestions
+                    suggestions.add(this.getSuggestionPool(pool, thisPos, params.hasInclusiveUnknown()));
+                    // ... and the unknown PoS suggestions
+                    suggestions.add(this.getSuggestionPool(pool, PartOfSpeech.UNKNOWN, params.hasInclusiveUnknown()));
+                } else {
+                    // add all suggestions for all PoSs
+                    for (PartOfSpeech pos : PartOfSpeech.values())
+                        suggestions.add(this.getSuggestionPool(pool, pos, params.hasInclusiveUnknown()));
+                }
             }
         }
 
@@ -246,23 +272,14 @@ public class SuperWord extends Token {
         if (combined != null) {
             combined.remove(this); // prevent suggesting the original word
         }
-        LOG.writeTempLog(String.format("Combined suggestions for \"%s\" (%s) including %s: %s", plaintext, pos,
+
+        LOG.writeTempLog(String.format("Combined suggestions for \"%s\" (%s) including %s: %s", plaintext, thisPos,
                 params.toString(), combined));
         return combined;
     }
 
-    /**
-     * 
-     * @param suggestions
-     * @param pos
-     * @param rhyme
-     * @param rhymeWith   can be null if rhyme == false.
-     * @param rhymePos    can be null if rhyme == false.
-     * @return empty list if there are no suggestions, or no suggestions that pass
-     *         at least one of the filters.
-     */
-    private ArrayList<SuperWord> filterSuggestions(ArrayList<SuperWord> suggestions, PartOfSpeech pos,
-            List<FilterParameters> paramsList) {
+    private ArrayList<SuperWord> filterSuggestions(ArrayList<SuperWord> suggestions, PartOfSpeech thisPos,
+            FilterParameters params) {
 
         if (suggestions == null) {
             return new ArrayList<>();
@@ -273,12 +290,15 @@ public class SuperWord extends Token {
         for (SuperWord suggestion : suggestions) {
             boolean matched = false;
             boolean paramsAreEmpty = true;
-            for (FilterParameters params : paramsList) {
-                SuperWord matchWith;
-                for (Filter filter : Filter.values()) {
-                    if ((matchWith = params.getMatchWith(filter)) != null) {
-                        paramsAreEmpty = false;
-                        if (suggestion.rhymesWithWrapper(filter, matchWith, pos, params.getMatchPoS())) {
+
+            // check that at least one rhyme subtype passes
+            // ... for at least one corresponding matchWith
+            for (RhymeType filter : RhymeType.values()) {
+                List<SuperWord> matchWithList;
+                if ((matchWithList = params.getMatchWith(filter)) != null) {
+                    paramsAreEmpty = false;
+                    for (SuperWord matchWith : matchWithList) {
+                        if (suggestion.rhymesWithWrapper(filter, matchWith, thisPos, params.getMatchPoS())) {
                             matched = true;
                             break;
                         }
@@ -287,26 +307,44 @@ public class SuperWord extends Token {
                 if (matched)
                     break;
             }
+
+            // check that syllable count matches (if required)
+            if (params.syllableCountFilter()) {
+                paramsAreEmpty = false;
+                if (getSyllableCount(thisPos) != suggestion.getSyllableCount(null)) {
+                    matched = false;
+                }
+            }
+
             if (!paramsAreEmpty && !matched)
                 filtered.remove(suggestion);
         }
 
-        LOG.writeTempLog(String.format("Filtered suggestions for \"%s\" (%s) including %s: %s", plaintext, pos,
-                paramsList.toString(), filtered));
+        LOG.writeTempLog(String.format("Filtered suggestions for \"%s\" (%s) including %s: %s", plaintext, thisPos,
+                params.toString(), filtered));
         return filtered;
     }
 
     /**
+     * Attempts to generate a collection of suggestions to substitute this word,
+     * based on the passed parameters.
      * 
-     * @param pos
-     * @param suggestionParams
-     * @param filterParams
+     * @param thisPos          the part of speech of this word, which the
+     *                         suggestions should match.
+     * @param suggestionParams which suggestion pools (e.g. synonyms, parts of) to
+     *                         draw from, and if SubWords with unknown PoS should be
+     *                         included.
+     * @param filterParams     the type(s) of desired rhyme and the word(s) to rhyme
+     *                         with, and if syllable count should be maintained.
      * @return a list of filtered suggestions, which can be empty.
      */
-    public ArrayList<SuperWord> getFilteredSuggestions(PartOfSpeech pos, SuggestionPoolParameters suggestionParams,
-            List<FilterParameters> filterParams) {
-        ArrayList<SuperWord> unfiltered = getAggregatedSuggestions(pos, suggestionParams);
-        return filterSuggestions(unfiltered, pos, filterParams);
+    public ArrayList<SuperWord> getFilteredSuggestions(PartOfSpeech thisPos, SuggestionPoolParameters suggestionParams,
+            FilterParameters filterParams) {
+        if (!this.populated) {
+            this.populate();
+        }
+        ArrayList<SuperWord> unfiltered = getAggregatedSuggestions(thisPos, suggestionParams);
+        return filterSuggestions(unfiltered, thisPos, filterParams);
     }
 
     @Override
@@ -374,7 +412,7 @@ public class SuperWord extends Token {
      * @param subPronunciation2
      * @return
      */
-    private static boolean matchesWith(Filter filter,
+    private static boolean matchesWith(RhymeType filter,
             String plaintext1, PartOfSpeech pos1, SubPronunciation subPronunciation1,
             String plaintext2, PartOfSpeech pos2, SubPronunciation subPronunciation2) {
         if (subPronunciation1 == null) {
@@ -401,7 +439,7 @@ public class SuperWord extends Token {
      * @param other  the word to match against.
      * @return true if the two words match for any part of speech pair.
      */
-    public boolean matchesWithWrapper(Filter filter, SuperWord other) {
+    public boolean matchesWithWrapper(RhymeType filter, SuperWord other) {
         if (!this.populated)
             this.populate();
         if (!other.populated)
@@ -435,7 +473,7 @@ public class SuperWord extends Token {
      * @param pos2   part of speech of the other word.
      * @return
      */
-    public boolean rhymesWithWrapper(Filter filter, SuperWord other, PartOfSpeech pos1, PartOfSpeech pos2) {
+    public boolean rhymesWithWrapper(RhymeType filter, SuperWord other, PartOfSpeech pos1, PartOfSpeech pos2) {
         if (!this.populated)
             this.populate();
         if (!other.populated)

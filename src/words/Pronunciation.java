@@ -2,13 +2,14 @@ package words;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import utils.Pair;
-import utils.ParameterWrappers.FilterParameters.Filter;
+import utils.ParameterWrappers.FilterParameters.RhymeType;
 
 import static config.Configuration.LOG;
 
@@ -20,6 +21,13 @@ public class Pronunciation {
         ArrayList<Syllable> primaryRhymeSubstring;
         ArrayList<ArrayList<Syllable>> secondaryRhymeSubstrings;
         Emphasis emphasis;
+
+        public SubPronunciation(String ipa, ArrayList<Syllable> syllables, Emphasis emphasis) {
+            this.ipa = ipa;
+            this.syllables = syllables;
+            this.emphasis = emphasis;
+            this.populateRhymes();
+        }
 
         /**
          * Creates a rhyme-matching list of syllables.
@@ -70,8 +78,8 @@ public class Pronunciation {
             return true;
         }
 
-        public boolean matchesWith(Filter filter, SubPronunciation other) {
-            switch (filter) {
+        public boolean matchesWith(RhymeType rhyme, SubPronunciation other) {
+            switch (rhyme) {
                 case PERFECT_RHYME:
                     return rhymesWith(other);
                 case SYLLABIC_RHYME:
@@ -83,7 +91,7 @@ public class Pronunciation {
                 case WEAK_RHYME:
                     return weakRhymesWith(other);
                 default:
-                    LOG.writeTempLog("Attempted unimplemented matchFilter: " + filter.name());
+                    LOG.writeTempLog("Attempted unimplemented matchFilter: " + rhyme.name());
                     return false;
             }
         }
@@ -249,13 +257,37 @@ public class Pronunciation {
         }
     }
 
-    private ArrayList<String> plaintextSyllables = new ArrayList<>(); // not in use 
+    private ArrayList<String> plaintextSyllables = new ArrayList<>(); // not in use
 
     private EnumMap<PartOfSpeech, SubPronunciation> subPronunciations = new EnumMap<>(PartOfSpeech.class);
     private SubPronunciation all;
 
     public ArrayList<String> getPlaintextSyllables() {
         return plaintextSyllables;
+    }
+
+    /**
+     * Attempts to determine the syllable count for a word. If null, then just
+     * return the first value found.
+     * 
+     * @param pos the SubPronunciation to query.
+     * @return -1 if no syllable count could be determined, otherwise the number of
+     *         syllables in the requested SubPronunciation.
+     */
+    public int getSyllableCount(PartOfSpeech pos) {
+        if (pos == null) {
+            for (Map.Entry<PartOfSpeech, SubPronunciation> entry : subPronunciations.entrySet()) {
+                SubPronunciation subP = entry.getValue();
+                if (subP != null)
+                    return subP.syllables.size();
+            }
+        }
+        SubPronunciation subP = this.getSubPronunciation(null, pos);
+        if (subP == null) {
+            return -1;
+        } else {
+            return subP.syllables.size();
+        }
     }
 
     /**
@@ -334,15 +366,13 @@ public class Pronunciation {
      */
     public void setIPA(String plaintext, JSONObject pronunciationObject) {
         Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = null;
-        SubPronunciation sub = new SubPronunciation();
+        SubPronunciation sub;
 
         for (PartOfSpeech pos : PartOfSpeech.values()) {
             if (pronunciationObject.has(pos.getApiString())) {
-                sub.ipa = pronunciationObject.getString(pos.getApiString());
-                syllablesAndEmphasis = IPAHandler.getSyllables(sub.ipa);
-                sub.syllables = syllablesAndEmphasis.one();
-                sub.emphasis = syllablesAndEmphasis.two();
-                sub.populateRhymes();
+                String ipa = pronunciationObject.getString(pos.getApiString());
+                syllablesAndEmphasis = IPAHandler.getSyllables(ipa);
+                sub = new SubPronunciation(ipa, syllablesAndEmphasis.one(), syllablesAndEmphasis.two());
                 subPronunciations.put(pos, sub);
             }
         }
@@ -350,12 +380,9 @@ public class Pronunciation {
         if (pronunciationObject.has("all")) {
             // "present" is a noun, verb and adjective, with pronunications for "noun",
             // "verb" and "all": "all" is useful even when other fields are filled
-            this.all = new SubPronunciation();
-            this.all.ipa = pronunciationObject.getString("all");
-            syllablesAndEmphasis = IPAHandler.getSyllables(this.all.ipa);
-            this.all.syllables = syllablesAndEmphasis.one();
-            this.all.emphasis = syllablesAndEmphasis.two();
-            this.all.populateRhymes();
+            String ipa = pronunciationObject.getString("all");
+            syllablesAndEmphasis = IPAHandler.getSyllables(ipa);
+            this.all = new SubPronunciation(ipa, syllablesAndEmphasis.one(), syllablesAndEmphasis.two());
         }
 
         if (syllablesAndEmphasis == null) {
@@ -365,22 +392,27 @@ public class Pronunciation {
         }
     }
 
-    public void setIPA(String plaintext, String all) {
-        if (all.equals("")) {
+    public void setIPA(String plaintext, String allIpa) {
+        if (allIpa.equals("")) {
             LOG.writePersistentLog(String.format("Pronunciation of \"%s\" was an empty string", plaintext));
         } else {
-            this.all = new SubPronunciation();
-            this.all.ipa = all;
-            Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = IPAHandler.getSyllables(this.all.ipa);
-            this.all.syllables = syllablesAndEmphasis.one();
-            this.all.emphasis = syllablesAndEmphasis.two();
-            this.all.populateRhymes();
+            Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = IPAHandler.getSyllables(allIpa);
+            this.all = new SubPronunciation(allIpa, syllablesAndEmphasis.one(), syllablesAndEmphasis.two());
         }
     }
 
+    /**
+     * Gets the pronunciation for a word based on the part of speech. Defaults to
+     * the generic pronunciation (all) if no specific entry found.
+     * 
+     * @param plaintext for logging.
+     * @param pos       the desired part of speech.
+     * @return a SubPronunciation object, or null if none could be found for the
+     *         given part of speech.
+     */
     public SubPronunciation getSubPronunciation(String plaintext, PartOfSpeech pos) {
         SubPronunciation requested = null;
-        if (subPronunciations.get(pos) != null) {
+        if (pos != null && subPronunciations.get(pos) != null) {
             requested = subPronunciations.get(pos);
         } else {
             requested = all;

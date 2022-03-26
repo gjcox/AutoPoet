@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import exceptions.RhymingSchemeSizeException;
 import utils.Pair;
-import utils.ParameterWrappers.FilterParameters.Filter;
+import utils.ParameterWrappers.FilterParameters.RhymeType;
 import words.Emphasis;
 import words.IPAHandler;
 import words.RhymingScheme;
@@ -113,63 +113,63 @@ public class UnitTests {
     public void testPerfectRhymeTrue() {
         SuperWord word = SuperWord.getSuperWord("word");
         SuperWord curd = SuperWord.getSuperWord("curd");
-        assertTrue(word.matchesWithWrapper(Filter.PERFECT_RHYME, curd));
+        assertTrue(word.matchesWithWrapper(RhymeType.PERFECT_RHYME, curd));
 
         SuperWord magic = SuperWord.getSuperWord("magic");
         SuperWord tragic = SuperWord.getSuperWord("tragic");
-        assertTrue(magic.matchesWithWrapper(Filter.PERFECT_RHYME, tragic));
+        assertTrue(magic.matchesWithWrapper(RhymeType.PERFECT_RHYME, tragic));
 
         SuperWord abercrombie = SuperWord.getSuperWord("abercrombie");
         SuperWord zombie = SuperWord.getSuperWord("zombie");
-        assertTrue(abercrombie.matchesWithWrapper(Filter.PERFECT_RHYME, zombie));
+        assertTrue(abercrombie.matchesWithWrapper(RhymeType.PERFECT_RHYME, zombie));
     }
 
     @Test
     public void testPerfectRhymeFalse() {
         SuperWord word = SuperWord.getSuperWord("word");
         SuperWord worm = SuperWord.getSuperWord("worm");
-        assertFalse(word.matchesWithWrapper(Filter.PERFECT_RHYME, worm));
+        assertFalse(word.matchesWithWrapper(RhymeType.PERFECT_RHYME, worm));
 
         SuperWord understated = SuperWord.getSuperWord("understated");
         SuperWord overstated = SuperWord.getSuperWord("overstated");
-        assertFalse(understated.matchesWithWrapper(Filter.PERFECT_RHYME, overstated));
+        assertFalse(understated.matchesWithWrapper(RhymeType.PERFECT_RHYME, overstated));
 
         SuperWord bee = SuperWord.getSuperWord("bee");
         SuperWord zombie = SuperWord.getSuperWord("zombie");
-        assertFalse(bee.matchesWithWrapper(Filter.PERFECT_RHYME, zombie));
+        assertFalse(bee.matchesWithWrapper(RhymeType.PERFECT_RHYME, zombie));
     }
 
     @Test
     public void testSyllabicRhymeTrue() {
         SuperWord fuddle = SuperWord.getSuperWord("fuddle");
         SuperWord fiddle = SuperWord.getSuperWord("fiddle");
-        assertTrue(fuddle.matchesWithWrapper(Filter.SYLLABIC_RHYME, fiddle));
+        assertTrue(fuddle.matchesWithWrapper(RhymeType.SYLLABIC_RHYME, fiddle));
 
         SuperWord cleaver = SuperWord.getSuperWord("cleaver");
         SuperWord silver = SuperWord.getSuperWord("silver");
-        assertTrue(cleaver.matchesWithWrapper(Filter.SYLLABIC_RHYME, silver));
+        assertTrue(cleaver.matchesWithWrapper(RhymeType.SYLLABIC_RHYME, silver));
     }
 
     @Test
     public void testImperfectRhymeTrue() {
         SuperWord bee = SuperWord.getSuperWord("bee");
         SuperWord zombie = SuperWord.getSuperWord("zombie");
-        assertTrue(bee.matchesWithWrapper(Filter.IMPERFECT_RHYME, zombie));
+        assertTrue(bee.matchesWithWrapper(RhymeType.IMPERFECT_RHYME, zombie));
 
         SuperWord understated = SuperWord.getSuperWord("understated");
         SuperWord overstated = SuperWord.getSuperWord("overstated");
-        assertTrue(understated.matchesWithWrapper(Filter.IMPERFECT_RHYME, overstated));
+        assertTrue(understated.matchesWithWrapper(RhymeType.IMPERFECT_RHYME, overstated));
     }
 
     @Test
     public void testWeakRhymeTrue() {
         SuperWord hammer = SuperWord.getSuperWord("hammer");
         SuperWord carpenter = SuperWord.getSuperWord("carpenter");
-        assertTrue(hammer.matchesWithWrapper(Filter.WEAK_RHYME, carpenter));
+        assertTrue(hammer.matchesWithWrapper(RhymeType.WEAK_RHYME, carpenter));
 
         SuperWord sediment = SuperWord.getSuperWord("sediment");
         SuperWord dependent = SuperWord.getSuperWord("dependent");
-        assertTrue(sediment.matchesWithWrapper(Filter.WEAK_RHYME, dependent));
+        assertTrue(sediment.matchesWithWrapper(RhymeType.WEAK_RHYME, dependent));
     }
 
     public static void main(String[] args) {

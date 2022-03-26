@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import exceptions.RhymingSchemeSizeException;
-import utils.ParameterWrappers.FilterParameters.Filter;
+import utils.ParameterWrappers.FilterParameters.RhymeType;
 
 import static config.Configuration.LOG;
 
@@ -181,20 +181,17 @@ public class Stanza {
         RhymingScheme scheme = new RhymingScheme(this.lineCount());
         for (int i = 0; i < this.lineCount() - 1; i++) {
             SuperWord word1;
-            if (/*scheme.getValue(i) == 0 && */(word1 = getLastWord(i)) != null) {
+            if (/* scheme.getValue(i) == 0 && */(word1 = getLastWord(i)) != null) {
                 for (int j = i + 1; j < this.lineCount(); j++) {
                     SuperWord word2;
                     if (scheme.getValue(j) == 0 && (word2 = getLastWord(j)) != null
-                            && word1.matchesWithWrapper(Filter.PERFECT_RHYME, word2)) {
-                        switch (scheme.getValue(i)) {
-                            case 0:
-                                int rhymeValue = scheme.getNextValue();
-                                scheme.setValue(i, rhymeValue);
-                                scheme.setValue(j, rhymeValue);
-                                break;
-                            default:
-                                scheme.setValue(j, scheme.getValue(i));
-                                break;
+                            && word1.matchesWithWrapper(RhymeType.PERFECT_RHYME, word2)) {
+                        if (scheme.getValue(i) == 0) {
+                            int rhymeValue = scheme.getNextValue();
+                            scheme.setValue(i, rhymeValue);
+                            scheme.setValue(j, rhymeValue);
+                        } else {
+                            scheme.setValue(j, scheme.getValue(i));
                         }
                     }
                 }

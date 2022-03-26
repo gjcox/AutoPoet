@@ -20,6 +20,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
@@ -38,7 +39,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import utils.ParameterWrappers.FilterParameters;
-import utils.ParameterWrappers.FilterParameters.Filter;
+import utils.ParameterWrappers.FilterParameters.RhymeType;
 import utils.ParameterWrappers.SuggestionPoolParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.PartOfSpeech;
@@ -95,7 +96,8 @@ public class Controller {
     HashMap<String, CheckBox> suggestionPoolCheckBoxes = new HashMap<>();
     @FXML
     GridPane grdPnFilters;
-    EnumMap<Filter, CheckBox> filterCheckBoxes = new EnumMap<>(Filter.class);
+    EnumMap<RhymeType, CheckBox> filterCheckBoxes = new EnumMap<>(RhymeType.class);
+    CheckBox chbxSyllableCount;
     @FXML
     TextField txtfldRhymeWith;
 
@@ -181,9 +183,13 @@ public class Controller {
         }
     }
 
-    private CheckBox getFilterCheckBox(Filter filter) {
-        CheckBox checkBox = new CheckBox(filter.getLabel());
-        Tooltip tooltip = new Tooltip(filter.getExplanation());
+    private CheckBox getFilterCheckBox(RhymeType filter) {
+        return getFilterCheckBox(filter.getLabel(), filter.getExplanation());
+    }
+
+    private CheckBox getFilterCheckBox(String label, String tooltipText) {
+        CheckBox checkBox = new CheckBox(label);
+        Tooltip tooltip = new Tooltip(tooltipText);
         tooltip.setPrefWidth(220);
         tooltip.setWrapText(true);
         checkBox.setTooltip(tooltip);
@@ -193,12 +199,15 @@ public class Controller {
 
     private void initFilterCheckBoxes() {
         int row = 3; // row 0 is the list title, 1 is textfield, 2 is a seperator
-        for (Filter filter : Filter.values()) {
+        for (RhymeType filter : RhymeType.values()) {
             CheckBox checkBox = getFilterCheckBox(filter);
             grdPnFilters.addRow(row++, checkBox);
-            checkBox.setDisable(filter.equals(Filter.FORCED_RHYME)); // not implemented yet
+            checkBox.setDisable(filter.equals(RhymeType.FORCED_RHYME)); // not implemented yet
             filterCheckBoxes.put(filter, checkBox);
         }
+        grdPnFilters.addRow(row++, new Separator());
+        chbxSyllableCount = getFilterCheckBox("syllable count", "Suggestions must match the word's syllable count.");
+        grdPnFilters.addRow(row, chbxSyllableCount);
     }
 
     /**
@@ -300,7 +309,6 @@ public class Controller {
         int schemeValue;
 
         if (scheme == null) {
-            // TODO only show this alert if a poetic device is selected 
             Alert alert = getCleanAlert(AlertType.WARNING);
             alert.setHeaderText("Could not filter suggestions.");
             alert.setContentText("The current stanza does not have a set intended rhyme scheme.");
@@ -322,42 +330,59 @@ public class Controller {
         return rhymes;
     }
 
-    private List<FilterParameters> getFilterParams() {
-        List<FilterParameters> paramsList = new ArrayList<>();
-        if (txtfldRhymeWith.getText().equals("")) {
-            if (!focusedToken.equals(getLastToken((FlowPane) focusedToken.getParent()))) {
-                Alert alert = getCleanAlert(AlertType.WARNING);
-                alert.setHeaderText("Could not filter suggestions.");
-                alert.setContentText("Only the last word in a line can be matched against the intended rhyme scheme.");
-                alert.show();
-                return paramsList;
-            }
+    private FilterParameters getFilterParams() {
+        FilterParameters params = new FilterParameters();
+        params.setSyllableCountFilter(chbxSyllableCount.isSelected());
 
-            for (IndexedTokenLabel matchWith : getRhymesFromScheme()) {
-                FilterParameters params = new FilterParameters();
-                params.setMatchPoS(matchWith.getPos());
-                params.setInclusiveUnknown(chbxInclUnknown.isSelected());
-                for (Filter filter : Filter.values()) {
-                    if (filterCheckBoxes.get(filter).isSelected()) {
-                        params.setFilter(filter, (SuperWord) matchWith.getToken());
-                    }
-                }
-                paramsList.add(params);
+        List<RhymeType> chosenRhymeTypes = new ArrayList<>();
+
+        // iterate over rhyme checkboxes to see which any are ticked
+        for (RhymeType rhymeType : RhymeType.values()) {
+            if (filterCheckBoxes.get(rhymeType).isSelected()) {
+                chosenRhymeTypes.add(rhymeType);
             }
-        } else {
-            FilterParameters params = new FilterParameters();
-            SuperWord matchWith = SuperWord.getSuperWord(txtfldRhymeWith.getText());
-            params.setMatchPoS(null);
-            params.setInclusiveUnknown(chbxInclUnknown.isSelected());
-            for (Filter filter : Filter.values()) {
-                if (filterCheckBoxes.get(filter).isSelected()) {
-                    params.setFilter(filter, matchWith);
-                }
-            }
-            paramsList.add(params);
         }
 
-        return paramsList;
+        if (!chosenRhymeTypes.isEmpty()) {
+            // populate rhyme filters
+
+            if (txtfldRhymeWith.getText().equals("")) {
+                // get rhymes from scheme
+                if (!focusedToken.equals(getLastToken((FlowPane) focusedToken.getParent()))) {
+                    Alert alert = getCleanAlert(AlertType.WARNING);
+                    alert.setHeaderText("Could not filter suggestions.");
+                    alert.setContentText(
+                            "Only the last word in a line can be matched against the intended rhyme scheme.");
+                    alert.show();
+                    return new FilterParameters();
+                }
+
+                // for all words of same value in rhyme scheme (e.g. A or B)
+                for (IndexedTokenLabel matchWith : getRhymesFromScheme()) {
+                    params.setMatchPoS(matchWith.getPos());
+                    // iterate over rhyme checkboxes to see which are ticked
+                    for (RhymeType rhymeType : chosenRhymeTypes) {
+                        // add word from scheme to rhyme filter
+                        params.setRhymeFilter(rhymeType, (SuperWord) matchWith.getToken());
+
+                    }
+                }
+
+            } else {
+                // get rhyme from text field
+                SuperWord matchWith = SuperWord.getSuperWord(txtfldRhymeWith.getText());
+                params.setMatchPoS(null);
+                // iterate over rhyme checkboxes to see which are ticked
+                for (RhymeType filter : RhymeType.values()) {
+                    if (filterCheckBoxes.get(filter).isSelected()) {
+                        // add word from text field to rhyme filter
+                        params.setRhymeFilter(filter, matchWith);
+                    }
+                }
+            }
+        }
+
+        return params;
     }
 
     public void getSuggestions() {
@@ -373,7 +398,7 @@ public class Controller {
             SuperWord superWord = (SuperWord) focusedToken.getToken();
             PartOfSpeech pos = focusedToken.getPos();
             SuggestionPoolParameters suggestionParams = focusedToken.getPoolParams();
-            List<FilterParameters> filterParams = getFilterParams();
+            FilterParameters filterParams = getFilterParams();
 
             focusedToken.setSuggestions(superWord.getFilteredSuggestions(pos, suggestionParams, filterParams));
 
