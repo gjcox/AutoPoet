@@ -10,10 +10,14 @@ import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -38,7 +42,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.FilterParameters.RhymeType;
 import utils.ParameterWrappers.SuggestionPoolParameters;
@@ -143,6 +146,7 @@ public class Controller {
                 alert.show();
             }
         });
+
 
     }
 
@@ -397,7 +401,7 @@ public class Controller {
         return params;
     }
 
-    public void getSuggestions() {
+    public void getSuggestions(ActionEvent e) {
         if (focusedToken == null) {
             Alert alert = buildCleanAlert(AlertType.INFORMATION);
             alert.setContentText("Please select a word to get suggestions.");
@@ -420,9 +424,22 @@ public class Controller {
             SuggestionPoolParameters suggestionParams = focusedToken.getPoolParams();
             FilterParameters filterParams = getFilterParams();
 
-            focusedToken.setSuggestions(superWord.getFilteredSuggestions(pos, suggestionParams, filterParams));
+            Task<ArrayList<SuperWord>> task = new GetSuggestionsTask(superWord, pos, suggestionParams, filterParams);
 
-            displaySuggestions();
+            IndexedTokenLabel currentFocusPointer = focusedToken; 
+
+            task.setOnSucceeded(v -> {
+                currentFocusPointer.setSuggestions(task.getValue());
+                System.out.println("currentFocusPointer: " + currentFocusPointer.getToken().getPlaintext());
+                System.out.println("focusedToken: " + focusedToken.getToken().getPlaintext());
+                if (currentFocusPointer.equals(focusedToken)) displaySuggestions();
+            });
+
+            flwpnSuggestions.getChildren().clear();
+            flwpnSuggestions.getChildren().add(new Label("searching..."));
+            Thread suggestionsThread = new Thread(task);
+            suggestionsThread.setDaemon(true);
+            suggestionsThread.start();
         }
     }
 
@@ -530,7 +547,11 @@ public class Controller {
     // model (i.e. poem) interactions
 
     public void updateIntendedRhymeScheme(ActionEvent e) {
-        if (!poem.getStanzas().get(focusedToken.getStanzaIndex())
+        if (focusedToken == null) {
+            Alert alert = buildCleanAlert(AlertType.INFORMATION);
+            alert.setHeaderText("Could not set intended rhyme scheme.");
+            alert.setContentText("Please select a word (and by extension a stanza) to set the intended rhyme scheme.");
+        } else if (!poem.getStanzas().get(focusedToken.getStanzaIndex())
                 .setDesiredRhymeScheme(((TextField) e.getSource()).getText())) {
             Window window = ((TextField) e.getSource()).getScene().getWindow();
             tltpIntRhymeScheme.show(window);
