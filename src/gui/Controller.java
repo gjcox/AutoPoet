@@ -380,7 +380,7 @@ public class Controller {
                 // get rhyme from text field
                 SuperWord matchWith = SuperWord.getSuperWord(txtfldRhymeWith.getText());
                 matchWith.populate();
-                System.out.println(matchWith); 
+                System.out.println(matchWith);
                 params.setMatchPoS(null);
                 // iterate over rhyme checkboxes to see which are ticked
                 for (RhymeType filter : chosenRhymeTypes) {
@@ -624,9 +624,11 @@ public class Controller {
             IndexedTokenLabel currentFocusPointer = focusedToken;
 
             task.setOnSucceeded(v -> {
-                currentFocusPointer.setSuggestions(task.getValue());
-                if (currentFocusPointer.equals(focusedToken))
-                    displaySuggestions();
+                if (currentFocusPointer != null) {
+                    currentFocusPointer.setSuggestions(task.getValue());
+                    if (currentFocusPointer.equals(focusedToken))
+                        displaySuggestions();
+                }
             });
 
             flwpnSuggestions.getChildren().clear();
