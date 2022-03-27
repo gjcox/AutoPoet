@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import exceptions.RhymingSchemeSizeException;
+import exceptions.RhymeSchemeSizeException;
 import utils.ParameterWrappers.FilterParameters.RhymeType;
 
 import static config.Configuration.LOG;
@@ -17,8 +17,8 @@ public class Stanza {
 
     private final int startLine; // the index of the first line of the stanza
     private ArrayList<ArrayList<Token>> lines = new ArrayList<>();
-    private RhymingScheme desiredScheme;
-    private RhymingScheme actualScheme;
+    private RhymeScheme desiredScheme;
+    private RhymeScheme actualScheme;
 
     // construction methods
 
@@ -74,11 +74,11 @@ public class Stanza {
         return this.lines.size();
     }
 
-    public RhymingScheme getDesiredRhymeScheme() {
+    public RhymeScheme getDesiredRhymeScheme() {
         return this.desiredScheme;
     }
 
-    public RhymingScheme getActualRhymeScheme() {
+    public RhymeScheme getActualRhymeScheme() {
         return this.actualScheme;
     }
 
@@ -101,9 +101,9 @@ public class Stanza {
             return true;
         }
         try {
-            this.desiredScheme = new RhymingScheme(lines.size(), rhymeScheme.toCharArray());
+            this.desiredScheme = new RhymeScheme(lines.size(), rhymeScheme.toCharArray());
             return true;
-        } catch (RhymingSchemeSizeException e) {
+        } catch (RhymeSchemeSizeException e) {
             LOG.writeTempLog(e.toString());
             return false;
         } catch (Exception e) {
@@ -117,7 +117,7 @@ public class Stanza {
      * @param rhymeScheme the poem's default rhyme scheme.
      * @return true if change occured.
      */
-    public boolean setDesiredRhymeSchemeFromDefault(RhymingScheme rhymeScheme) {
+    public boolean setDesiredRhymeSchemeFromDefault(RhymeScheme rhymeScheme) {
         if (desiredScheme == null && rhymeScheme.getLineCount() == lineCount()) {
             desiredScheme = rhymeScheme;
             return true;
@@ -236,11 +236,9 @@ public class Stanza {
 
     /**
      * Determines the current rhyming scheme of the poem, using perfect rhyme.
-     * 
-     * 
      */
     public void evaluateRhymingScheme() {
-        RhymingScheme scheme = new RhymingScheme(this.lineCount());
+        RhymeScheme scheme = new RhymeScheme(this.lineCount());
         for (int i = 0; i < this.lineCount() - 1; i++) {
             SuperWord word1;
             if ((word1 = getLastWord(i)) != null) {

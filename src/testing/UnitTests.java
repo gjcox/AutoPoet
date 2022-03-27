@@ -13,12 +13,12 @@ import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
 
-import exceptions.RhymingSchemeSizeException;
+import exceptions.RhymeSchemeSizeException;
 import utils.Pair;
 import utils.ParameterWrappers.FilterParameters.RhymeType;
 import words.Emphasis;
 import words.IPAHandler;
-import words.RhymingScheme;
+import words.RhymeScheme;
 import words.SuperWord;
 import words.Syllable;
 
@@ -93,17 +93,17 @@ public class UnitTests {
 
     @Test
     public void testRhymingSchemeException() {
-        assertThrows(RhymingSchemeSizeException.class, () -> {
-            new RhymingScheme(1, new int[] { 0, 0 });
+        assertThrows(RhymeSchemeSizeException.class, () -> {
+            new RhymeScheme(1, new int[] { 0, 0 });
         });
     }
 
     @Test
     public void testRhymingSchemeString() {
-        RhymingScheme scheme = new RhymingScheme(0);
+        RhymeScheme scheme = new RhymeScheme(0);
         try {
-            scheme = new RhymingScheme(4, new int[] { 0, 1, 26, 28 });
-        } catch (RhymingSchemeSizeException e) {
+            scheme = new RhymeScheme(4, new int[] { 0, 1, 26, 28 });
+        } catch (RhymeSchemeSizeException e) {
             fail();
         }
         assertEquals("#AZB", scheme.toString());

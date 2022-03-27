@@ -154,7 +154,7 @@ public class Poem {
     }
 
     public void setDefaultRhymeScheme(String rhymeScheme) {
-        RhymingScheme defaultRhymingScheme = new RhymingScheme(rhymeScheme.toCharArray());
+        RhymeScheme defaultRhymingScheme = new RhymeScheme(rhymeScheme.toCharArray());
         for (Stanza stanza : stanzas) {
             stanza.setDesiredRhymeSchemeFromDefault(defaultRhymingScheme);
         }
