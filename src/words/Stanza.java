@@ -236,12 +236,14 @@ public class Stanza {
 
     /**
      * Determines the current rhyming scheme of the poem, using perfect rhyme.
+     * 
+     * 
      */
     public void evaluateRhymingScheme() {
         RhymingScheme scheme = new RhymingScheme(this.lineCount());
         for (int i = 0; i < this.lineCount() - 1; i++) {
             SuperWord word1;
-            if (/* scheme.getValue(i) == 0 && */(word1 = getLastWord(i)) != null) {
+            if ((word1 = getLastWord(i)) != null) {
                 for (int j = i + 1; j < this.lineCount(); j++) {
                     SuperWord word2;
                     if (scheme.getValue(j) == 0 && (word2 = getLastWord(j)) != null
