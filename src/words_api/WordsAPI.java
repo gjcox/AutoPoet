@@ -15,19 +15,25 @@ import org.json.JSONObject;
 import static config.Configuration.LOG;
 
 /**
- * Handles interactions with WordsAPI
+ * Handles interactions with WordsAPI. It contains a cache to prevent duplicate
+ * requests.
+ * 
+ * @author 190021081
  */
 public class WordsAPI {
 
     static HttpClient client = HttpClient.newBuilder().proxy(ProxySelector.getDefault()).build();
     static HashMap<String, JSONObject> cache = new HashMap<>();
 
-    /**
+    /*
      * Attempts to send a request to WordsAPI.
      * 
      * @param uri the request to send, which needs to include an API key.
+     * 
      * @return the body of the response, in the JSON format used by WordsAPI.
-     * @throws IOException          if an I/O error occurs during sending/receiving.
+     * 
+     * @throws IOException if an I/O error occurs during sending/receiving.
+     * 
      * @throws InterruptedException if the operation is interrupted.
      */
     private static JSONObject sendRequest(URI uri) throws IOException, InterruptedException {
@@ -48,11 +54,12 @@ public class WordsAPI {
         }
     }
 
-    /**
+    /*
      * Attaches the appropriate headers to a URI and converts it into an
      * HttpRequest. Called within sendRequest().
      * 
      * @param uri a URI supplied by getUri().
+     * 
      * @return the HttpRequest, complete with API key.
      */
     private static HttpRequest getRequest(URI uri) {
@@ -61,32 +68,27 @@ public class WordsAPI {
                 .method("GET", HttpRequest.BodyPublishers.noBody()).build();
     }
 
-    /**
+    /*
      * Creates a URI for a WordsAPI request.
      * 
-     * @param word  the plaintext of the word to get data about.
+     * @param word the plaintext of the word to get data about.
+     * 
      * @param _info the type of data needed, corresponding to one from the API
-     *              https://rapidapi.com/dpventures/api/wordsapi/.
+     * https://rapidapi.com/dpventures/api/wordsapi/.
+     * 
      * @return a formatted uri, with any spaces in the word replaced with %20 for
-     *         HTTP use.
+     * HTTP use.
      */
     private static URI getUri(String word, String _info) {
         word = word.replace(" ", "%20"); // remove spaces
         return URI.create("https://wordsapiv1.p.rapidapi.com/words/" + word + "/" + _info);
     }
 
-    public static JSONObject getWord(String plaintext, boolean isPlural) {
-        if (isPlural) {
-            return getWord(plaintext.substring(0, plaintext.length() - 1));
-        } else {
-            return getWord(plaintext);
-        }
-    }
-
     /**
+     * Attempts to get a JSONObject word from WordsAPI. 
      * 
      * @param plaintext a plaintext word.
-     * @return the JSONOject returned from WordsAPI, or {word:plaintext} if there
+     * @return the JSONOject returned from WordsAPI, or {@code: {word:<plaintext>}} if there
      *         was no result.
      */
     public static JSONObject getWord(String plaintext) {
