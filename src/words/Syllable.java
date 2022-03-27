@@ -1,19 +1,32 @@
 package words;
 
-import java.util.Map;
-
-import org.json.JSONObject;
-
+/**
+ * This class encodes a syllable, defined as a nucleus (a vowel or diphthong),
+ * and optional onset (the consonants preceding the nucleus) and coda (the
+ * consontants after the nucleus) components.
+ * 
+ * @author 190021081
+ */
 public class Syllable {
 
     private String nucleus; // the vowel sound of a syllable - either a single vowel or a diphthong
     private String onset = ""; // the consonants preceding the vowel within the syllable
     private String coda = ""; // the consonants after the vowel within the syllable
 
+    /**
+     * Single vowel constructor.
+     * 
+     * @param nucleus a vowel.
+     */
     public Syllable(char nucleus) {
         this.nucleus = new String(new char[] { nucleus });
     }
 
+    /**
+     * Diphthong constructor.
+     * 
+     * @param nucleus one or two vowels.
+     */
     public Syllable(String nucleus) {
         this.nucleus = nucleus;
     }
@@ -24,44 +37,20 @@ public class Syllable {
         this.coda = coda;
     }
 
-    /**
-     * For converting from a JSONObject, the the intermediate step of a JSONArray
-     * containing the object being made into a List<Object>, which turns JSONObjects
-     * to Map<String,String>.
-     * 
-     * @param map a JSONObject encoded as a Map<String, String>.
-     * @throws ClassCastException if the Map does not have a "nucleus" key, or has a
-     *                            null value for it.
-     */
-    public Syllable(Map<String, String> map) throws ClassCastException {
-        String o = "onset";
-        String n = "nucleus";
-        String c = "coda";
-
-        String onset_;
-        String nucleus_;
-        String coda_;
-
-        if ((nucleus_ = map.get(n)) == null) {
-            throw new ClassCastException("Syllable must have a nucleus.");
-        } else {
-            this.nucleus = nucleus_;
-        }
-
-        if ((onset_ = map.get(o)) != null) {
-            this.onset = onset_;
-        }
-        if ((coda_ = map.get(c)) != null) {
-            this.coda = coda_;
-        }
-    }
-
-    public void setNucleus(String nucleus) {
-        this.nucleus = nucleus;
-    }
+    // getters
 
     public String getNucleus() {
         return this.nucleus;
+    }
+
+    public String getCoda() {
+        return this.coda;
+    }
+
+    // setters
+
+    public void setNucleus(String nucleus) {
+        this.nucleus = nucleus;
     }
 
     public void setOnset(String onset) {
@@ -72,9 +61,7 @@ public class Syllable {
         this.coda = coda;
     }
 
-    public String getCoda() {
-        return this.coda;
-    }
+    // other
 
     public String toString() {
         return onset + nucleus + coda;
@@ -91,19 +78,4 @@ public class Syllable {
         return this.toString().hashCode();
     }
 
-    /**
-     * 
-     * @return true if the nucleus and coda of two syllables match.
-     */
-    public boolean rhymes(Syllable other) {
-        return this.nucleus.equals(other.nucleus) && this.coda.equals(other.coda);
-    }
-
-    public JSONObject toJsonObject() {
-        JSONObject jo = new JSONObject();
-        jo.put("onset", onset);
-        jo.put("nucleus", nucleus);
-        jo.put("coda", coda);
-        return jo;
-    }
 }

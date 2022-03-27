@@ -1,9 +1,16 @@
 package words;
 
+/**
+ * This class is a wrapper for SuperWords, so that non-word elements of poems
+ * (whitespace, punctuation, etc.) can be included but kept distinct.
+ * 
+ * @author 190021081
+ */
 public class Token {
-    protected String plaintext;
+    protected final String plaintext;
 
     public Token() {
+        this.plaintext = "";
     }
 
     public Token(String string) {
@@ -11,7 +18,7 @@ public class Token {
     }
 
     public String toString() {
-        return this.plaintext; 
+        return this.plaintext;
     }
 
     public String getPlaintext() {

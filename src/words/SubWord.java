@@ -13,6 +13,12 @@ import java.util.Set;
 
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 
+/**
+ * This class encodes a sub word, i.e. a subset of the definition data for a
+ * word, including synonyms etc.
+ * 
+ * @author 190021081
+ */
 public class SubWord {
 
     private static Set<String> knownFields = new HashSet<>(
@@ -21,19 +27,14 @@ public class SubWord {
                     "hasSubstances", "memberOf", "hasMembers", "usageOf", "hasUsages", "inRegion", "regionOf",
                     "similarTo", "attribute", "pertainsTo", "also", "entails", "derivation", "examples", "cause"));
 
-    private SuperWord parent;
-    private String definition;
+    private final SuperWord parent;
+    private String definition; // not in use for GUI
     private PartOfSpeech partOfSpeech = PartOfSpeech.UNKNOWN;
     private EnumMap<SuggestionPool, ArrayList<SuperWord>> suggestionPools = new EnumMap<>(SuggestionPool.class);
 
     private boolean setCommonlyTyped = false;
     private boolean setCommonCategories = false;
 
-    /**
-     * 
-     * @param plaintext    used to make log messages more readable.
-     * @param resultObject
-     */
     @SuppressWarnings("unchecked")
     public SubWord(SuperWord parent, Map<String, Object> resultObject) {
         this.parent = parent;
@@ -63,7 +64,9 @@ public class SubWord {
 
     }
 
-    public void setCommonlyTyped() {
+    // (internal) setters
+
+    private void setCommonlyTyped() {
         if (setCommonlyTyped || suggestionPools.get(SuggestionPool.TYPE_OF) == null)
             return;
 
@@ -76,7 +79,7 @@ public class SubWord {
         setCommonlyTyped = true;
     }
 
-    public void setCommonCategories() {
+    private void setCommonCategories() {
         if (setCommonCategories || suggestionPools.get(SuggestionPool.IN_CATEGORY) == null)
             return;
 
@@ -99,13 +102,14 @@ public class SubWord {
 
     // getters
 
-    public PartOfSpeech partOfSpeech() {
+    public PartOfSpeech getPartOfSpeech() {
         return partOfSpeech;
     }
 
     /**
+     * Returns the unfiltered contents of a given suggestion pool.
      * 
-     * @param pool
+     * @param pool the desired pool.
      * @return the corresponding list. Returns null if the SubWord has no
      *         corresponding list, or if pool is not an expected value.
      */
@@ -126,6 +130,9 @@ public class SubWord {
 
     // other
 
+    /**
+     * {@inheritDoc}
+     */
     public String toString() {
         String divider = "\n\t";
 
