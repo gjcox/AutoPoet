@@ -15,12 +15,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import apis.WordsAPI;
 import utils.ParameterWrappers.FilterParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters;
 import utils.ParameterWrappers.FilterParameters.RhymeType;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.Pronunciation.SubPronunciation;
+import words_api.WordsAPI;
 
 import static utils.NullListOperations.addToNull;
 import static utils.NullListOperations.addAllToNull;

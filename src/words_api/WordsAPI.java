@@ -1,4 +1,4 @@
-package apis;
+package words_api;
 
 import java.io.IOException;
 import java.net.ProxySelector;
