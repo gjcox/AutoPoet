@@ -13,10 +13,10 @@
         },
         {
             "type": "java",
-            "name": "Launch with Arguments Prompt",
+            "name": "Launch demos",
             "request": "launch",
             "mainClass": "testing.Demos",
-            "args": "rhyme keep verb sleep verb"
+            "args": "swp hello"
         },
         {
             "type": "java",
@@ -34,17 +34,17 @@
         },
         {
             "type": "java",
-            "name": "Launch Demos",
-            "request": "launch",
-            "mainClass": "testing.Demos",
-            "projectName": "CS4099_11cc2996"
-        },
-        {
-            "type": "java",
             "name": "Launch UnitTests",
             "request": "launch",
             "mainClass": "testing.UnitTests",
             "projectName": "CS4099_11cc2996"
+        }, 
+        {
+            "type": "java",
+            "name": "Get society syllables",
+            "request": "launch",
+            "mainClass": "testing.Demos",
+            "args": ["syllables", "səsaɪɪti"]
         }
     ]
 }
