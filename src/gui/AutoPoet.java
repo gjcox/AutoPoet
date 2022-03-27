@@ -9,10 +9,19 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * This class acts as the executable for the GUI application.
+ * 
+ * @author 190021081
+ */
 import static config.Configuration.LOG;
 
 public class AutoPoet extends Application {
 
+    
+    /** 
+     * {@inheritDoc}
+     */
     @Override
     public void start(Stage stage) {
         try {
