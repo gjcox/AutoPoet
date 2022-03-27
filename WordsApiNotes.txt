@@ -104,6 +104,22 @@
     "frequency":7.48
 }
 
+# Notable for "pronunciation"."all" being an unparsable IPA string 
+{
+    "word":"reiterate"
+    "results":[1 item
+        0:{...}6 items
+    ]
+    "syllables":{2 items
+        "count":4
+        "list":[...]4 items
+    }
+    "pronunciation":{1 item
+        "all":"rn"
+    }
+    "frequency":2.45
+}
+
 # Notable for having only one result 
 {
     "word":"suet"
