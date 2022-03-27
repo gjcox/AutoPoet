@@ -2,16 +2,19 @@ package words;
 
 import java.util.ArrayList;
 
+/**
+ * This class contains emphasis information for words, as syllable indexes.
+ * 
+ * @author 190021081
+ */
 public class Emphasis {
     private int primary = 0; // default value for monosyllabic words with no marked emphasis
-    private ArrayList<Integer> secondary;
+    private ArrayList<Integer> secondary = null;
+
+    // getters
 
     public int getPrimary() {
         return primary;
-    }
-
-    public void setPrimary(int syllableIndex) {
-        this.primary = syllableIndex;
     }
 
     /**
@@ -21,6 +24,12 @@ public class Emphasis {
         return secondary;
     }
 
+    // setters
+
+    public void setPrimary(int syllableIndex) {
+        this.primary = syllableIndex;
+    }
+
     public void addSecondary(int syllableIndex) {
         if (this.secondary == null) {
             this.secondary = new ArrayList<>();
@@ -28,21 +37,33 @@ public class Emphasis {
         this.secondary.add(syllableIndex);
     }
 
-    public boolean equals(Object other) {
-        if (other == null) return false; 
-        if (other.getClass() != Emphasis.class) return false; 
+    // other
 
-        Emphasis o = (Emphasis) other; 
-        if (primary != o.primary) return false; 
-        if (secondary == null && o.secondary == null) return true; 
-        if (secondary == null || o.secondary == null) return false; 
-        if (secondary.size() != o.secondary.size()) return false; 
+    public boolean equals(Object other) {
+        if (other == null)
+            return false;
+        if (other.getClass() != Emphasis.class)
+            return false;
+
+        Emphasis o = (Emphasis) other;
+        if (primary != o.primary)
+            return false;
+        if (secondary == null && o.secondary == null)
+            return true;
+        if (secondary == null || o.secondary == null)
+            return false;
+        if (secondary.size() != o.secondary.size())
+            return false;
         for (int i = 0; i < secondary.size(); i++) {
-            if (secondary.get(i) != o.secondary.get(i)) return false; 
+            if (secondary.get(i) != o.secondary.get(i))
+                return false;
         }
-        return true; 
+        return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");

@@ -16,6 +16,11 @@ import words.PartOfSpeech;
 import words.SuperWord;
 import words.Token;
 
+/**
+ * A class of (clickable) word tokens for use in the GUI.
+ * 
+ * @author 190021081
+ */
 public class IndexedTokenLabel extends Label {
     private static final String SELECTABLE_CLASS = "selectableToken";
     private static final String SELECTED_CLASS = "selectedToken";
@@ -69,6 +74,9 @@ public class IndexedTokenLabel extends Label {
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public String toString() {
         return this.token.toString();
     }
@@ -105,6 +113,7 @@ public class IndexedTokenLabel extends Label {
     // other
 
     /**
+     * Determines if two tokens are adjacent.
      * 
      * @param other a potential neighbouring word.
      * @return true if two words are adjacent within a line and there is a single

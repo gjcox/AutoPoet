@@ -15,6 +15,12 @@ import java.util.ArrayList;
 
 import static config.Configuration.LOG;
 
+/**
+ * This class contains a poem, defined as a collection of stanzas with a title.
+ * It also handles file I/O for poems.
+ * 
+ * @author 190021081
+ */
 public class Poem {
 
     private int lineCount = 0;
@@ -22,6 +28,48 @@ public class Poem {
     private String title = "poem";
     private BufferedReader fileReader;
 
+    /**
+     * Poem constructor from text file. Uses file name as poem title.
+     * 
+     * @param inputFile path to text file.
+     * @throws IOException
+     */
+    public Poem(Path inputFile) throws IOException {
+        this.title = inputFile.toString();
+        if (title.contains(File.separator)) {
+            title = title.substring(title.lastIndexOf(File.separator) + 1);
+        }
+
+        fileReader = Files.newBufferedReader(inputFile); // relative to where program is executed
+
+        fillPoem();
+    }
+
+    /**
+     * Poem constructor from strings.
+     * 
+     * @param title
+     * @param poemString the body of the poem.
+     * @throws IOException
+     */
+    public Poem(String title, String poemString) throws IOException {
+        this.title = title;
+        if (title.contains(File.separator)) {
+            title = title.substring(title.lastIndexOf(File.separator) + 1);
+        }
+
+        InputStream stream = new ByteArrayInputStream((poemString.trim()).getBytes());
+        fileReader = new BufferedReader(new InputStreamReader(stream));
+
+        fillPoem();
+    }
+
+    /**
+     * Attempts to read the input stream pointed to by {@link words.Poem#fileReader}
+     * and populate this poem with its contents.
+     * 
+     * @throws IOException
+     */
     private void fillPoem() throws IOException {
         stanzas.add(new Stanza(lineCount));
         String line = "";
@@ -40,7 +88,7 @@ public class Poem {
                 in_stanza = false;
                 LOG.writeTempLog(String.format("End of stanza %d reached", stanzas.size()));
                 stanzas.get(stanzas.size() - 1).evaluateRhymingScheme();
-                stanzas.add(new Stanza(lineCount + stanzas.size())); // + stanzas.size for lines between stanzas 
+                stanzas.add(new Stanza(lineCount + stanzas.size())); // + stanzas.size for lines between stanzas
 
             } else {
                 // ignore double empty line
@@ -52,34 +100,19 @@ public class Poem {
         LOG.writeTempLog(String.format("Read poem: %s", this.getString()));
     }
 
-    public Poem(Path inputFile) throws IOException {
-        this.title = inputFile.toString();
-        if (title.contains(File.separator)) {
-            title = title.substring(title.lastIndexOf(File.separator) + 1);
-        }
-
-        fileReader = Files.newBufferedReader(inputFile); // relative to where program is executed
-
-        fillPoem();
-    }
-
-    public Poem(String title, String poemString) throws IOException {
-        this.title = title;
-        if (title.contains(File.separator)) {
-            title = title.substring(title.lastIndexOf(File.separator) + 1);
-        }
-
-        InputStream stream = new ByteArrayInputStream((poemString.trim()).getBytes());
-        fileReader = new BufferedReader(new InputStreamReader(stream));
-
-        fillPoem();
-    }
-
+    /**
+     * Writes this poem to a text file.
+     * 
+     * @param outputFile the desired output file (will overwrite).
+     * @throws IOException
+     */
     public void savePoem(File outputFile) throws IOException {
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(outputFile, StandardCharsets.UTF_8));
         fileWriter.write(this.toString());
         fileWriter.close();
     }
+
+    // getters
 
     public String getTitle() {
         return this.title;
@@ -97,6 +130,8 @@ public class Poem {
         return this.lineCount;
     }
 
+    // model update wrappers
+
     public void substituteWord(int stanzaIndex, int lineIndex, int tokenIndex, SuperWord newWord) {
         stanzas.get(stanzaIndex).substituteWord(lineIndex, tokenIndex, newWord);
     }
@@ -105,9 +140,11 @@ public class Poem {
         return stanzas.get(stanzaIndex).joinWords(lineIndex, tokenIndex1, tokenIndex2);
     }
 
-    public boolean splitWord(int stanzaIndex, int lineIndex, int tokenIndex, String seperator) {
-        return stanzas.get(stanzaIndex).splitWord(lineIndex, tokenIndex, seperator);
+    public boolean splitWord(int stanzaIndex, int lineIndex, int tokenIndex, String separator) {
+        return stanzas.get(stanzaIndex).splitWord(lineIndex, tokenIndex, separator);
     }
+
+    // setters
 
     public void setTitle(String newTitle) {
         title = newTitle;
@@ -117,12 +154,18 @@ public class Poem {
     }
 
     public void setDefaultRhymeScheme(String rhymeScheme) {
-        RhymingScheme defaultRhymingScheme = new RhymingScheme(rhymeScheme.toCharArray()); 
+        RhymingScheme defaultRhymingScheme = new RhymingScheme(rhymeScheme.toCharArray());
         for (Stanza stanza : stanzas) {
             stanza.setDesiredRhymeSchemeFromDefault(defaultRhymingScheme);
         }
     }
 
+    // other
+
+    /**
+     * Distinct from toString() as it includes meta data. Used for
+     * logging/debugging.
+     */
     public String getString() {
         String divider = "\n";
         StringBuilder builder = new StringBuilder();
@@ -141,6 +184,9 @@ public class Poem {
         return builder.toString();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public String toString() {
         String divider = "\n";
         StringBuilder builder = new StringBuilder();

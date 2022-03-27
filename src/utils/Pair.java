@@ -3,6 +3,8 @@ package utils;
 /**
  * This class is primarily to allow me to return two values from one function,
  * and behaves as a heterogenous tuple.
+ * 
+ * @author 190021081
  */
 public class Pair<O, T> {
 
@@ -22,8 +24,11 @@ public class Pair<O, T> {
         return this.two;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public String toString() {
-        return String.format("(%s,%s)", one.toString(), two.toString()); 
+        return String.format("(%s,%s)", one.toString(), two.toString());
     }
 
 }

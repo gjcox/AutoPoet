@@ -2,23 +2,28 @@ package words;
 
 import java.util.Arrays;
 
+/**
+ * This class contains IPA character classifications.
+ * 
+ * @author 190021081
+ */
 public abstract class AbstractIPA {
 
     protected static final Character[] VOWELS = { 'i', 'y', 'ɨ', 'ʉ', 'ɯ', 'u', 'ɪ', 'ʏ', 'ʊ', 'e', 'ø', 'ɘ', 'ɵ', 'ɤ',
-            'o', 'ə', 'ɛ', 'œ', 'ɜ', 'ɞ', 'ʌ', 'ɔ', 'æ', 'ɐ', 'a', 'ɶ', 'ä', 'ɑ',
-            /* others that I think were missing */
-            'ɝ'
+            'o', 'ə', 'ɛ', 'œ', 'ɜ', 'ɞ', 'ʌ', 'ɔ', 'æ', 'ɐ', 'a', 'ɶ', 'ä', 'ɑ', 'ɝ'
             /*
-             * 'e̞', 'ø̞', 'ɤ̞', 'o̞', were considered invalid, but according to Wikipedia
-             * are only found in regional accents of English so they are unlikely to feature
-             * in WordsAPI
+             * 'e̞', 'ø̞', 'ɤ̞', 'o̞', were considered invalid by the IDE, but do not appear
+             * to feature in WordsAPI
              */ };
 
     protected static final String[] U_VARIANTS = { "u", "ʊ" }; // String to account for diphthongs in comparison
-                                                               // might not be an exhaustive list yet
+                                                               // Might not be an exhaustive list yet
 
     protected static final String[] DIPHTHONGS = {
-            /* from https://thesoundofenglish.org/diphthongs/ */
+            /*
+             * from https://thesoundofenglish.org/diphthongs/, Anouka Ltd, 2021 [Accessed 15
+             * October 2021].
+             */
             "ɪə", "ʊə", "eɪ", "əʊ", "ɔɪ", "aʊ", "ʌɪ", /* some charts also include eə */
             /* WordsAPI uses "aɪ" where soundofenglish.org uses "ʌɪ" */
             "aɪ",
@@ -28,10 +33,13 @@ public abstract class AbstractIPA {
     protected static final Character[] CONSONANTS = { 'p', 'b', 't', 'd', 'ʈ', 'ɖ', 'c', 'ɟ', 'k', 'ɡ', 'q', 'ɢ', 'ʔ',
             'm', 'ɱ', 'n', 'ɳ', 'ɲ', 'ŋ', 'ɴ', 'ʙ', 'r', 'ʀ', 'ⱱ', 'ɾ', 'ɽ', 'ɸ', 'β', 'f', 'v', 'θ', 'ð', 's', 'z',
             'ʃ', 'ʒ', 'ʂ', 'ʐ', 'ç', 'ʝ', 'x', 'ɣ', 'χ', 'ʁ', 'ħ', 'ʕ', 'h', 'ɦ', 'ɬ', 'ɮ', 'ʋ', 'ɹ', 'ɻ', 'j', 'ɰ',
-            'l', 'ɭ', 'ʎ', 'ʟ' }; 
+            'l', 'ɭ', 'ʎ', 'ʟ' };
 
     protected static final String[] ONSETS = {
-            /* from https://en.wikipedia.org/wiki/English_phonology#Syllable_structure */
+            /*
+             * from https://en.wikipedia.org/wiki/English_phonology#Syllable_structure,
+             * Wikipedia contributors, 2021 [Accessed 15 October 2021]
+             */
             /* An empty onset */
             "",
             /* All single consonant phonemes except /ŋ/ */

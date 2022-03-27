@@ -10,8 +10,23 @@ import utils.ParameterWrappers.FilterParameters.RhymeType;
 
 import static config.Configuration.LOG;
 
+/**
+ * This class contains pronunciation data divided by part of speech. Has wrapper
+ * functions for rhyme
+ * recognition.
+ * 
+ * @author 190021081
+ */
 public class Pronunciation {
 
+    /**
+     * Contains pronunciation data defined as collections of {@link words.Syllables}
+     * objects.
+     * Also handles rhyme recognition by comparing said collections (and subsets
+     * thereof).
+     * 
+     * @author 190021081
+     */
     public static class SubPronunciation {
         String ipa;
         ArrayList<Syllable> syllables;
@@ -44,7 +59,7 @@ public class Pronunciation {
             return rhyme;
         }
 
-        /**
+        /*
          * Note that this does not create copies of syllables aside from the stressed
          * ones, so changing the syllables later could lead to unexpected behaviour. At
          * present, no such changes occur.
@@ -63,7 +78,7 @@ public class Pronunciation {
 
         }
 
-        private static boolean rhymeMatch(ArrayList<Syllable> rhyme1, ArrayList<Syllable> rhyme2) {
+        private static boolean rhymeSubstringMatch(ArrayList<Syllable> rhyme1, ArrayList<Syllable> rhyme2) {
             if (rhyme1.size() != rhyme2.size()) {
                 return false;
             }
@@ -75,10 +90,17 @@ public class Pronunciation {
             return true;
         }
 
+        /**
+         * Wrapper function for different types of rhyme recognition.
+         * 
+         * @param rhyme the type of rhyme to match.
+         * @param other to match against.
+         * @return true iff the two subpronunciations rhyme.
+         */
         public boolean matchesWith(RhymeType rhyme, SubPronunciation other) {
             switch (rhyme) {
                 case PERFECT_RHYME:
-                    return rhymesWith(other);
+                    return perfectRhymesWith(other);
                 case SYLLABIC_RHYME:
                     return syllablicRhymesWith(other);
                 case FORCED_RHYME:
@@ -88,21 +110,21 @@ public class Pronunciation {
                 case WEAK_RHYME:
                     return weakRhymesWith(other);
                 default:
-                    LOG.writeTempLog("Attempted unimplemented matchFilter: " + rhyme.name());
+                    LOG.writeTempLog("Attempted unimplemented RhymeType: " + rhyme.name());
                     return false;
             }
         }
 
-        private boolean rhymesWith(SubPronunciation other) {
+        private boolean perfectRhymesWith(SubPronunciation other) {
             /* primary to primary */
-            if (rhymeMatch(this.primaryRhymeSubstring, other.primaryRhymeSubstring)) {
+            if (rhymeSubstringMatch(this.primaryRhymeSubstring, other.primaryRhymeSubstring)) {
                 return true;
             }
 
             /* primary to secondary */
             if (other.secondaryRhymeSubstrings != null) {
                 for (ArrayList<Syllable> secondary : other.secondaryRhymeSubstrings) {
-                    if (rhymeMatch(this.primaryRhymeSubstring, secondary)) {
+                    if (rhymeSubstringMatch(this.primaryRhymeSubstring, secondary)) {
                         return true;
                     }
                 }
@@ -111,7 +133,7 @@ public class Pronunciation {
             /* secondary to primary */
             if (this.secondaryRhymeSubstrings != null) {
                 for (ArrayList<Syllable> secondary : this.secondaryRhymeSubstrings) {
-                    if (rhymeMatch(secondary, other.primaryRhymeSubstring)) {
+                    if (rhymeSubstringMatch(secondary, other.primaryRhymeSubstring)) {
                         return true;
                     }
                 }
@@ -120,17 +142,13 @@ public class Pronunciation {
             return false;
         }
 
-        /*
-         * Standard rhyme ignores the inital onset; should that be the case here? I
-         * think no, otherwise there's too much overlap with weak rhyme.
-         */
         private boolean syllablicRhymesWith(SubPronunciation other) {
-            /* last to last */
+            /* last to last; includes onset */
             ArrayList<Syllable> thisLastSyllable = new ArrayList<>(
                     this.syllables.subList(syllables.size() - 1, syllables.size()));
             ArrayList<Syllable> otherLastSyllable = new ArrayList<>(
                     other.syllables.subList(other.syllables.size() - 1, other.syllables.size()));
-            return rhymeMatch(thisLastSyllable, otherLastSyllable);
+            return rhymeSubstringMatch(thisLastSyllable, otherLastSyllable);
         }
 
         private boolean imperfectRhymesWith(SubPronunciation other) {
@@ -145,14 +163,14 @@ public class Pronunciation {
                 ArrayList<Syllable> unstressed = other.getRhymeSubstring(i);
 
                 /* primary to unstressed */
-                if (rhymeMatch(this.primaryRhymeSubstring, unstressed)) {
+                if (rhymeSubstringMatch(this.primaryRhymeSubstring, unstressed)) {
                     return true;
                 }
 
                 /* secondary to unstressed */
                 if (this.secondaryRhymeSubstrings != null) {
                     for (ArrayList<Syllable> secondary : this.secondaryRhymeSubstrings) {
-                        if (rhymeMatch(secondary, unstressed)) {
+                        if (rhymeSubstringMatch(secondary, unstressed)) {
                             return true;
                         }
                     }
@@ -169,14 +187,14 @@ public class Pronunciation {
                 ArrayList<Syllable> unstressed = this.getRhymeSubstring(i);
 
                 /* unstressed to primary */
-                if (rhymeMatch(other.primaryRhymeSubstring, unstressed)) {
+                if (rhymeSubstringMatch(other.primaryRhymeSubstring, unstressed)) {
                     return true;
                 }
 
                 /* unstressed to secondary */
                 if (other.secondaryRhymeSubstrings != null) {
                     for (ArrayList<Syllable> secondary : other.secondaryRhymeSubstrings) {
-                        if (rhymeMatch(secondary, unstressed)) {
+                        if (rhymeSubstringMatch(secondary, unstressed)) {
                             return true;
                         }
                     }
@@ -187,7 +205,7 @@ public class Pronunciation {
             if (this.secondaryRhymeSubstrings != null && other.secondaryRhymeSubstrings != null) {
                 for (ArrayList<Syllable> secondary : this.secondaryRhymeSubstrings) {
                     for (ArrayList<Syllable> otherSecondary : other.secondaryRhymeSubstrings)
-                        if (rhymeMatch(secondary, otherSecondary)) {
+                        if (rhymeSubstringMatch(secondary, otherSecondary)) {
                             return true;
                         }
                 }
@@ -214,7 +232,7 @@ public class Pronunciation {
                     }
                     ArrayList<Syllable> otherUnstressed = other.getRhymeSubstring(j);
 
-                    if (rhymeMatch(thisUnstressed, otherUnstressed)) {
+                    if (rhymeSubstringMatch(thisUnstressed, otherUnstressed)) {
                         return true;
                     }
                 }
@@ -235,6 +253,9 @@ public class Pronunciation {
 
         }
 
+        /**
+         * {@inheritDoc}
+         */
         public String toString() {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("{");
@@ -258,10 +279,10 @@ public class Pronunciation {
     private SubPronunciation all;
 
     /**
-     * Attempts to determine the syllable count for a word. If null, then just
-     * return the first value found.
+     * Attempts to determine the syllable count for a word.
      * 
-     * @param pos the SubPronunciation to query.
+     * @param pos the SubPronunciation to query.If null, then just
+     *            return the first value found.
      * @return 0 if no syllable count could be determined, otherwise the number of
      *         syllables in the requested SubPronunciation.
      */
@@ -282,12 +303,13 @@ public class Pronunciation {
     }
 
     /**
-     * Used to add incomplete IPA data based on the WordsAPI "rhyme" attribute. The
-     * rhyme strings are of form "-aʊtʃ", so the leading hyphen is stripped before
-     * treating the IPA as normal.
+     * Used to add incomplete IPA data based on the WordsAPI "rhyme" attribute (as a
+     * JSONObject). The rhyme strings are of form "-aʊtʃ", so the leading hyphen is
+     * stripped before treating the IPA as normal.
      * 
-     * @param plaintext    used for debugging messages
-     * @param rhymesObject from WordsAPI request
+     * @param plaintext    used for debugging messages.
+     * @param rhymesObject from WordsAPI request.
+     * @return true if a pronunciation could be derived.
      */
     public boolean setRhyme(String plaintext, JSONObject rhymesObject) {
         JSONObject filteredRhymesObject = new JSONObject();
@@ -317,18 +339,30 @@ public class Pronunciation {
         }
     }
 
+    /**
+     * Used to add incomplete IPA data based on the WordsAPI "rhyme" attribute (as
+     * string). The rhyme strings are of form "-aʊtʃ", so the leading hyphen is
+     * stripped before treating the IPA as normal.
+     * 
+     * @param plaintext    used for debugging messages.
+     * @param rhymesObject from WordsAPI request.
+     * @return true if a pronunciation could be derived.
+     */
     public boolean setRhyme(String plaintext, String rhymesString) {
         return this.setIPA(plaintext, rhymesString.replaceFirst("-", "'"));
     }
 
     /**
+     * Attempts to generate the subpronunciations from a JSONObject, based on part
+     * of speech.
      * 
-     * @param plaintext
+     * @param plaintext           the superword plaintext, used for debugging.
      * @param pronunciationObject JSONObject of the form {<part-of-speech>:<ipa>}
      *                            e.g.
      *                            {"noun":"'kɑntrækt", "verb":"kɑn'trækt"}
      *                            {"all":"'fridəm"}
-     * @return true if a subpronunciation could be derived, otherwise false.
+     * @return true if at least one subpronunciation could be derived, otherwise
+     *         false.
      */
     public boolean setIPA(String plaintext, JSONObject pronunciationObject) {
         Pair<ArrayList<Syllable>, Emphasis> syllablesAndEmphasis = null;
@@ -404,6 +438,9 @@ public class Pronunciation {
         return requested;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public String toString() {
         String divider = ", ";
         StringBuilder stringBuilder = new StringBuilder();
@@ -420,7 +457,7 @@ public class Pronunciation {
 
         if (all != null) {
             if (hasPoS)
-                stringBuilder.append(", ");
+                stringBuilder.append(divider);
             stringBuilder.append("all: " + all.toString());
         }
 

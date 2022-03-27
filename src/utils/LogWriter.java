@@ -7,15 +7,22 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
 
+/**
+ * Class for log writers.
+ * 
+ * Does not work correctly within IDEs due to relative file paths.
+ * 
+ * @author 190021081
+ */
 public class LogWriter {
 
     private boolean tempLogging;
     private File tempLog = new File(
-            ".." + File.separator + "docs" + File.separator + "logs" + File.separator + "log.log");
+            ".." + File.separator + "logs" + File.separator + "log.log");
     private FileWriter tempWriter;
 
     private File persistentLog = new File(
-            ".." + File.separator + "docs" + File.separator + "logs" + File.separator + "persistent.log");
+            ".." + File.separator + "logs" + File.separator + "persistent.log");
     private FileWriter persistentWriter;
 
     public LogWriter(boolean tempLogging) {
@@ -35,6 +42,11 @@ public class LogWriter {
         }
     }
 
+    /**
+     * Writes string to per-process log file.
+     * 
+     * @param string line to write.
+     */
     public void writeTempLog(String string) {
         if (tempLogging) {
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -46,6 +58,11 @@ public class LogWriter {
         }
     }
 
+    /**
+     * Writes string to persistent log file.
+     * 
+     * @param string line to write.
+     */
     public void writePersistentLog(String string) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         try {
@@ -56,6 +73,9 @@ public class LogWriter {
 
     }
 
+    /**
+     * Closes log writers.
+     */
     public void closeLogWriters() {
         try {
             persistentWriter.close();
@@ -67,6 +87,11 @@ public class LogWriter {
         }
     }
 
+    /**
+     * For debugging.
+     * 
+     * @param args should be empty.
+     */
     public static void main(String[] args) {
         System.out.println("log.log: " + Paths.get("docs", "logs", "log.log").toFile().exists());
         System.out.println("persistent.log: " + Paths.get("docs", "logs", "persistent.log").toFile().exists());

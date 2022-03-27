@@ -1,5 +1,10 @@
 package words;
 
+/**
+ * This enum allows iteration over the parts of speech included in WordsAPI. 
+ * 
+ * @author 190021081
+ */
 public enum PartOfSpeech {
     NOUN("noun"),
     PRONOUN("pronoun"),

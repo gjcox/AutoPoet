@@ -204,7 +204,7 @@ public class Controller {
     }
 
     private void initFilterCheckBoxes() {
-        int row = 3; // row 0 is the list title, 1 is textfield, 2 is a seperator
+        int row = 3; // row 0 is the list title, 1 is textfield, 2 is a separator
 
         // add rhyme type checkboxes
         for (RhymeType filter : RhymeType.values()) {
@@ -680,7 +680,7 @@ public class Controller {
 
             // replace old tokens in GUI
             guiLine.getChildren().remove(insertionIndex);
-            guiLine.getChildren().remove(insertionIndex); // i.e. seperator
+            guiLine.getChildren().remove(insertionIndex); // i.e. separator
             guiLine.getChildren().remove(insertionIndex); // i.e. secondFocusedToken
             guiLine.getChildren().add(insertionIndex, newToken);
 
@@ -699,21 +699,21 @@ public class Controller {
      * Seperates superword into two, to help users get around WordsAPI's
      * recognition of some short phrases.
      */
-    private boolean splitWord(String seperator) {
+    private boolean splitWord(String separator) {
         if (poem.splitWord(focusedToken.getStanzaIndex(), focusedToken.getLineIndex(),
-                focusedToken.getTokenIndex(), seperator)) {
+                focusedToken.getTokenIndex(), separator)) {
 
             int insertionIndex = focusedToken.getTokenIndex();
 
             String toSplit = focusedToken.getToken().getPlaintext();
-            int seperatorIndex = toSplit.indexOf(seperator); // won't be -1 if poem.splitWord returned true
-            SuperWord subWord1 = SuperWord.getSuperWord(toSplit.substring(0, seperatorIndex));
-            Token separatorToken = new Token(seperator);
-            SuperWord subWord2 = SuperWord.getSuperWord(toSplit.substring(seperatorIndex + 1));
+            int separatorIndex = toSplit.indexOf(separator); // won't be -1 if poem.splitWord returned true
+            SuperWord subWord1 = SuperWord.getSuperWord(toSplit.substring(0, separatorIndex));
+            Token separatorToken = new Token(separator);
+            SuperWord subWord2 = SuperWord.getSuperWord(toSplit.substring(separatorIndex + 1));
 
             IndexedTokenLabel token1 = new IndexedTokenLabel(this, subWord1, focusedToken.getStanzaIndex(),
                     focusedToken.getLineIndex(), insertionIndex, true);
-            IndexedTokenLabel seperatorToken = new IndexedTokenLabel(this, separatorToken,
+            IndexedTokenLabel separatorGuiToken = new IndexedTokenLabel(this, separatorToken,
                     focusedToken.getStanzaIndex(),
                     focusedToken.getLineIndex(), insertionIndex + 1, false);
             IndexedTokenLabel token2 = new IndexedTokenLabel(this, subWord2, focusedToken.getStanzaIndex(),
@@ -723,7 +723,7 @@ public class Controller {
             FlowPane guiLine = (FlowPane) focusedToken.getParent();
             guiLine.getChildren().remove(insertionIndex);
             guiLine.getChildren().add(insertionIndex, token2);
-            guiLine.getChildren().add(insertionIndex, seperatorToken);
+            guiLine.getChildren().add(insertionIndex, separatorGuiToken);
             guiLine.getChildren().add(insertionIndex, token1);
 
             // update tokenIndex of subsequent tokens in line

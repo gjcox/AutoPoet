@@ -7,7 +7,20 @@ import java.util.List;
 import words.PartOfSpeech;
 import words.SuperWord;
 
+/**
+ * This class was to make passing arguments into suggestion getting and
+ * filtering more managable.
+ * 
+ * @author 190021081
+ */
 public interface ParameterWrappers {
+
+    /**
+     * Used to determine which suggestion pools to draw suggestions from, and
+     * whether or not to treat unknowns inclusively.
+     * 
+     * Method comments considered self-explanatory.
+     */
     public class SuggestionPoolParameters {
 
         public enum SuggestionPool {
@@ -89,24 +102,30 @@ public interface ParameterWrappers {
             return true;
         }
 
+        /**
+         * {@inheritDoc}
+         */
         public String toString() {
-            StringBuilder builder = new StringBuilder("[");
+            StringBuilder builder = new StringBuilder("{");
             for (SuggestionPool pool : SuggestionPool.values()) {
                 if (pools.get(pool).booleanValue()) {
                     builder.append(pool.name() + ",");
                 }
             }
 
-            int commaIndex = builder.lastIndexOf(",");
-            if (commaIndex > -1) {
-                builder.deleteCharAt(commaIndex);
-            }
+            builder.append(String.format("inclusiveUnknown: %b", inclusiveUnknown));
 
-            builder.append("]");
+            builder.append("}");
             return builder.toString();
         }
     }
 
+    /**
+     * Used to determine which rhyme types to check for (and against which words and
+     * part of speech), and whether or not to maintain syllable count.
+     * 
+     * Method comments considered self-explanatory.
+     */
     public class FilterParameters {
         public enum RhymeType {
             PERFECT_RHYME("perfect rhyme", "Exact match from stressed syllables, e.g. tragic/magic."),
@@ -135,7 +154,7 @@ public interface ParameterWrappers {
         }
 
         private EnumMap<RhymeType, List<SuperWord>> rhymeFilters = new EnumMap<>(RhymeType.class);
-        private PartOfSpeech matchPoS = null; // if null, match all PoS
+        private PartOfSpeech matchWithPoS = null; // if null, match all PoS
         private boolean syllableCountFilter = false;
 
         public void setRhymeFilter(RhymeType rhymeType, SuperWord matchWith) {
@@ -143,7 +162,7 @@ public interface ParameterWrappers {
         }
 
         public void setMatchPoS(PartOfSpeech matchPoS) {
-            this.matchPoS = matchPoS;
+            this.matchWithPoS = matchPoS;
         }
 
         public void setSyllableCountFilter(boolean syllableCountFilter) {
@@ -159,13 +178,16 @@ public interface ParameterWrappers {
         }
 
         public PartOfSpeech getMatchPoS() {
-            return matchPoS;
+            return matchWithPoS;
         }
 
         public boolean syllableCountFilter() {
             return syllableCountFilter;
         }
 
+        /**
+         * {@inheritDoc}
+         */
         public String toString() {
             StringBuilder builder = new StringBuilder("{");
             for (RhymeType filter : RhymeType.values()) {
@@ -174,10 +196,7 @@ public interface ParameterWrappers {
                 }
             }
 
-            int commaIndex = builder.lastIndexOf(",");
-            if (commaIndex > -1) {
-                builder.deleteCharAt(commaIndex);
-            }
+            builder.append(String.format("syllableCountFilter: %b", syllableCountFilter));
             builder.append("}");
             return builder.toString();
         }

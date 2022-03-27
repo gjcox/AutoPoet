@@ -7,11 +7,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class of static wrapper functions to add to and combine pontentially null
+ * lists.
+ * 
+ * @author 190021081
+ */
 public class NullListOperations {
 
     /**
-     * Instantiates an empty ArrayList<T> iff the passed list is null. Then behaves
-     * as Collection.add().
+     * Instantiates an empty ArrayList<T> iff the passed list is null. Then
+     * behaves as Collection.add().
+     * 
+     * @param <T>     the parameterised type of @param list.
+     * @param list    a potentially null list.
+     * @param element an element to add to the list.
+     * @return the (potentially newly instantiated) list, with the added element.
      */
     public static <T> ArrayList<T> addToNull(ArrayList<T> list, T element) {
         if (list == null) {
@@ -24,6 +35,11 @@ public class NullListOperations {
     /**
      * Instantiates an empty ArrayList<T> iff the passed list is null. Then behaves
      * as Collection.addAll().
+     * 
+     * @param <T>    the parameterised type of @param list.
+     * @param list   a potentially null list.
+     * @param source a collection of element to add to the list.
+     * @return the (potentially newly instantiated) list, with the added elements.
      */
     public static <T> ArrayList<T> addAllToNull(ArrayList<T> list, Collection<T> source) {
         if (source == null) {
@@ -37,23 +53,11 @@ public class NullListOperations {
     }
 
     /**
-     * Instantiates an empty ArrayList<T> iff the passed list is null. Then behaves
-     * as Collection.addAll().
+     * Combines one or more lists into one. Will include duplicates.
+     * 
+     * @param lists lists to combine.
+     * @return null if no lists to combine, otherwise a combined list.
      */
-    public static <T> ArrayList<T> addAllToNullIfMatching(ArrayList<T> list, Collection<T> source, T matching) {
-        if (source == null) {
-            return list;
-        }
-        if (!source.contains(matching)) {
-            return list;
-        }
-        if (list == null) {
-            list = new ArrayList<>();
-        }
-        list.addAll(source);
-        return list;
-    }
-
     @SafeVarargs
     public static <T> ArrayList<T> combineListsVarags(List<T>... lists) {
         ArrayList<T> combined = null;
@@ -63,6 +67,12 @@ public class NullListOperations {
         return combined;
     }
 
+    /**
+     * Combines one or more lists into one. Will include duplicates.
+     * 
+     * @param lists lists to combine.
+     * @return null if no lists to combine, otherwise a combined list.
+     */
     public static <T> ArrayList<T> combineLists(Collection<ArrayList<T>> lists) {
         ArrayList<T> combined = null;
         for (List<T> list : lists) {
@@ -71,7 +81,7 @@ public class NullListOperations {
         return combined;
     }
 
-    static class SortByCount<T> implements Comparator<T> {
+    private static class SortByCount<T> implements Comparator<T> {
 
         private Map<T, Integer> counts;
 
@@ -86,6 +96,13 @@ public class NullListOperations {
 
     }
 
+    /**
+     * Combines one or more lists into one. Orders elements based on number of
+     * repetitions, in descending order of occurrences.
+     * 
+     * @param lists lists to combine.
+     * @return null if no lists to combine, otherwise a combined list as described.
+     */
     public static <T> ArrayList<T> combineListsPrioritiseDuplicates(ArrayList<ArrayList<T>> lists) {
         Map<T, Integer> counts = new HashMap<>();
         ArrayList<T> combined = new ArrayList<>();
@@ -109,18 +126,6 @@ public class NullListOperations {
             combined.sort(new SortByCount<>(counts));
             return combined;
         }
-    }
-
-    /**
-     * Instantiates an empty ArrayList<T> iff the passed list is null. Then casts
-     * contents of source and behaves as Collection.addAll().
-     */
-    @SuppressWarnings("unchecked")
-    public static <T1, T2> boolean castAndAddAllToNull(List<T1> list, Collection<T2> source) {
-        if (list == null) {
-            list = new ArrayList<>();
-        }
-        return list.addAll((Collection<T1>) source);
     }
 
 }

@@ -4,20 +4,25 @@ import java.util.Arrays;
 
 import exceptions.RhymingSchemeSizeException;
 
-/*
- * Whose woods these are I think I know.
+/**
+ * This class encodes a rhyme scheme for a stanza, defined as a line count and an array of
+ * integers. 0 is a special case that denotes no rhyming necessary, displayed as #. 
+ * 
+ * "Whose woods these are I think I know.
  * His house is in the village though;
  * He will not see me stopping here
- * To watch his woods fill up with snow.
+ * To watch his woods fill up with snow.""
+ * R. Frost and J. J. Lankes, New Hampshire, Henry Holt, 1923.
  * 
- * This would be encoded as {lineCount = 4, scheme = [1,1,0,1]}
+ * Would be encoded as {lineCount = 4, scheme = [1,1,0,1]}
  */
-
 public class RhymingScheme {
 
-    private int lineCount = 0; // need at least two lines for rhymes
-    private int[] scheme; // zero is a special case that denotes no rhyming necessary
+    private final int lineCount; // need at least two lines for rhymes
+    private final int[] scheme; // 
     private int nextValue = 1;
+
+    // constructors 
 
     public RhymingScheme(int lineCount) {
         this.lineCount = lineCount;
@@ -33,7 +38,7 @@ public class RhymingScheme {
                     String.format("%s did not match line count %d", Arrays.toString(scheme), lineCount));
         }
         this.lineCount = lineCount;
-        this.scheme = scheme.clone(); // could save me a headache if I change scheme's data type
+        this.scheme = scheme.clone();
     }
 
     public RhymingScheme(int lineCount, char[] scheme) throws RhymingSchemeSizeException {
@@ -50,9 +55,13 @@ public class RhymingScheme {
         this.scheme = convertChars(scheme); // could save me a headache if I change scheme's data type
     }
 
+    // setter
+
     public void setValue(int index, int value) {
         this.scheme[index] = value;
     }
+
+    // getters 
 
     public int getLineCount() {
         return this.lineCount;
@@ -69,6 +78,8 @@ public class RhymingScheme {
     public int getNextValue() {
         return this.nextValue++;
     }
+
+    // other 
 
     private char convertInt(int n) {
         if (n == 0) {
@@ -90,6 +101,9 @@ public class RhymingScheme {
         return ints;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public String toString() {
         StringBuilder builder = new StringBuilder();
         for (int value : scheme) {

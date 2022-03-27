@@ -8,6 +8,12 @@ import utils.ParameterWrappers.SuggestionPoolParameters;
 import words.PartOfSpeech;
 import words.SuperWord;
 
+/**
+ * A Task class to handle suggestion discovery and filtering in a separate
+ * thread.
+ * 
+ * @author 190021081
+ */
 public class GetSuggestionsTask extends Task<ArrayList<SuperWord>> {
 
     private final SuperWord superWord;

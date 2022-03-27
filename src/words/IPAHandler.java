@@ -5,11 +5,16 @@ import java.util.ArrayList;
 import config.Configuration;
 import utils.Pair;
 
+/**
+ * This class parses IPA strings to derive syllable breakdowns and emphases.
+ * 
+ * @author 190021081
+ */
 public class IPAHandler extends AbstractIPA {
 
-    private static char primaryEmphasis = '\'';
-    private static char secondaryEmphasis = ',';
-    private static char space = '_';
+    private static final char P_EMPHASIS = '\'';
+    private static final char S_EMPHASIS = ',';
+    private static final char SPACE = '_';
 
     /**
      * Compute the syllables of a word based on the IPA. Words can have a single
@@ -31,11 +36,17 @@ public class IPAHandler extends AbstractIPA {
 
         ArrayList<Integer> vowelIndexes = new ArrayList<>();
         ArrayList<Integer> nucleusIndexes = new ArrayList<>();
-        ArrayList<Integer> onsetIndexes = new ArrayList<>(); // the start of onsets; onset_indexes[i] should
-                                                             // correspond to nuclei_indexes[i]
+        ArrayList<Integer> onsetIndexes = new ArrayList<>();
+        /*
+         * onsetIndexes[i] should correspond to nucleusIndexes[i], i.e. i is syllable
+         * index
+         */
 
-        ipaWord = addMissingEmphasis(ipaWord); // if the IPA contains multiple words,
-        // add primary emphasis of monosyllabic words that are be missing
+        /*
+         * if the IPA contains multiple words, add primary emphasis markes to
+         * monosyllabic words
+         */
+        ipaWord = addMissingEmphasis(ipaWord);
 
         if (ipaWord.equals("")) {
             Configuration.LOG.writeTempLog(
@@ -97,13 +108,13 @@ public class IPAHandler extends AbstractIPA {
                     onset = trialOnset;
                     onsetIndexes.set(i, onsetStart);
                     onsetStart--;
-                } else if (prevChar == primaryEmphasis && !foundPrimary) {
+                } else if (prevChar == P_EMPHASIS && !foundPrimary) {
                     /* primary stress */
                     foundPrimary = true;
                     emphasis.setPrimary(i);
                     onsetIndexes.set(i, onsetStart); // prevents character being included in a coda
                     trialOnsetIsValid = false;
-                } else if (prevChar == secondaryEmphasis || (prevChar == primaryEmphasis && foundPrimary)) {
+                } else if (prevChar == S_EMPHASIS || (prevChar == P_EMPHASIS && foundPrimary)) {
                     /* secondary stress */
                     emphasis.addSecondary(i);
                     onsetIndexes.set(i, onsetStart); // prevents character being included in a coda
@@ -144,21 +155,22 @@ public class IPAHandler extends AbstractIPA {
     }
 
     /**
+     * Adds primary emphasis markers to monosyllablic words.
      * 
-     * @param ipa
-     * @return
+     * @param ipa the IPA of a short phrase.
+     * @return the IPA cleaned of underscores and with all emphasis markers.
      */
     private static String addMissingEmphasis(String ipa) {
-        if (!ipa.contains(Character.toString(space))) {
+        if (!ipa.contains(Character.toString(SPACE))) {
             return ipa;
         }
-        String[] words = ipa.split(Character.toString(space));
+        String[] words = ipa.split(Character.toString(SPACE));
         StringBuilder corrected = new StringBuilder();
         for (String word : words) {
-            if (!word.contains(Character.toString(primaryEmphasis))) {
+            if (!word.contains(Character.toString(P_EMPHASIS))) {
                 // assume monosyllabic word
                 // add emphasis marker that would be implicit in a single word
-                word = primaryEmphasis + word;
+                word = P_EMPHASIS + word;
             }
             corrected.append(word);
         }
