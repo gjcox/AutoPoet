@@ -6,9 +6,9 @@ package exceptions;
  * 
  * @author 190021081
  */
-public class RhymingSchemeSizeException extends Exception {
+public class RhymeSchemeSizeException extends Exception {
 
-    public RhymingSchemeSizeException(String message) {
+    public RhymeSchemeSizeException(String message) {
         super(message);
     }
 
