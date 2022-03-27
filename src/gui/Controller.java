@@ -45,7 +45,7 @@ import utils.ParameterWrappers.SuggestionPoolParameters;
 import utils.ParameterWrappers.SuggestionPoolParameters.SuggestionPool;
 import words.PartOfSpeech;
 import words.Poem;
-import words.RhymingScheme;
+import words.RhymeScheme;
 import words.Stanza;
 import words.SuperWord;
 import words.Token;
@@ -379,13 +379,13 @@ public class Controller {
             } else {
                 // get rhyme from text field
                 SuperWord matchWith = SuperWord.getSuperWord(txtfldRhymeWith.getText());
+                matchWith.populate();
+                System.out.println(matchWith); 
                 params.setMatchPoS(null);
                 // iterate over rhyme checkboxes to see which are ticked
-                for (RhymeType filter : RhymeType.values()) {
-                    if (rhymeTypeCheckBoxes.get(filter).isSelected()) {
-                        // add word from text field to rhyme filter
-                        params.setRhymeFilter(filter, matchWith);
-                    }
+                for (RhymeType filter : chosenRhymeTypes) {
+                    // add word from text field to rhyme filter
+                    params.setRhymeFilter(filter, matchWith);
                 }
             }
         }
@@ -566,7 +566,7 @@ public class Controller {
     private ArrayList<IndexedTokenLabel> getRhymesFromScheme() {
         ArrayList<IndexedTokenLabel> rhymes = new ArrayList<>();
         Stanza currentStanza = poem.getStanzas().get(focusedToken.getStanzaIndex());
-        RhymingScheme scheme = currentStanza.getDesiredRhymeScheme();
+        RhymeScheme scheme = currentStanza.getDesiredRhymeScheme();
         int schemeValue;
 
         if (scheme == null) {
