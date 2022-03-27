@@ -413,6 +413,7 @@ public class SuperWord extends Token {
             stringBuilder.append(divider);
         }
         stringBuilder.append("populated: " + populated);
+        stringBuilder.append(divider);
         stringBuilder.append("plaintext-syllables: " + plaintextSyllables.toString());
         if (pronunciation != null) {
             stringBuilder.append(divider);
