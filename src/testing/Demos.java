@@ -85,7 +85,7 @@ public class Demos {
         }
     }
 
-    public static void wordConstructor() {
+    public static void subWordConstructor() {
         SuperWord present = SuperWord.getSuperWord("present");
         present.populate();
         System.out.println(present.subWordsString());
@@ -154,7 +154,7 @@ public class Demos {
                     superWordPopulator();
                     break;
                 case "wc":
-                    wordConstructor();
+                    subWordConstructor();
                     break;
                 case "rhyme":
                     demoRhymes();
