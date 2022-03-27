@@ -10,14 +10,11 @@ import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -53,6 +50,11 @@ import words.Stanza;
 import words.SuperWord;
 import words.Token;
 
+/**
+ * This class acts as the (view and) controller for the GUI.
+ * 
+ * @author 190021081
+ */
 public class Controller {
 
     private static final String SUGGESTION_CLASS = "suggestion";
@@ -60,7 +62,7 @@ public class Controller {
 
     private Poem poem;
     private IndexedTokenLabel focusedToken;
-    private IndexedTokenLabel secondFocusedToken; // the word after the focusedToken, or null
+    private IndexedTokenLabel secondFocusedToken; // for joining two token together
     private File poemFile;
 
     // Poem & stanza info
@@ -100,7 +102,7 @@ public class Controller {
     HashMap<String, CheckBox> suggestionPoolCheckBoxes = new HashMap<>();
     @FXML
     GridPane grdPnFilters;
-    EnumMap<RhymeType, CheckBox> filterCheckBoxes = new EnumMap<>(RhymeType.class);
+    EnumMap<RhymeType, CheckBox> rhymeTypeCheckBoxes = new EnumMap<>(RhymeType.class);
     CheckBox chbxSyllableCount;
     @FXML
     TextField txtfldRhymeWith;
@@ -146,7 +148,6 @@ public class Controller {
                 alert.show();
             }
         });
-
 
     }
 
@@ -198,7 +199,7 @@ public class Controller {
         tooltip.setPrefWidth(220);
         tooltip.setWrapText(true);
         checkBox.setTooltip(tooltip);
-        checkBox.setDisable(true);
+        checkBox.setDisable(false);
         return checkBox;
     }
 
@@ -212,7 +213,7 @@ public class Controller {
             }
             CheckBox checkBox = buildRhymeTypeCheckBox(filter);
             grdPnFilters.addRow(row++, checkBox);
-            filterCheckBoxes.put(filter, checkBox);
+            rhymeTypeCheckBoxes.put(filter, checkBox);
         }
 
         // add separator and syllable count checkbox
@@ -220,6 +221,7 @@ public class Controller {
         separator.setPadding(new Insets(5, 5, 2, 0));
         grdPnFilters.addRow(row++, separator);
         chbxSyllableCount = buildFilterCheckBox("syllable count", "Suggestions must match the word's syllable count.");
+        chbxSyllableCount.setDisable(true); // word dependent
         grdPnFilters.addRow(row, chbxSyllableCount);
     }
 
@@ -244,22 +246,42 @@ public class Controller {
         return formatter;
     }
 
-    // getters
+    // getters, public for use by IndexedTokenLabel
 
+    /**
+     * Public for use in {@link gui.IndexedTokenLabel}
+     * 
+     * @return a token selected by the user.
+     */
     public IndexedTokenLabel getFocusedToken() {
         return focusedToken;
     }
 
+    /**
+     * Public for use in {@link gui.IndexedTokenLabel}
+     * 
+     * @return a secondary token selected by the user.
+     */
     public IndexedTokenLabel getSecondFocusedToken() {
         return secondFocusedToken;
     }
 
-    // setters
+    // setters, public for use by IndexedTokenLabel
 
+    /**
+     * Public for use in {@link gui.IndexedTokenLabel}
+     * 
+     * @param token to be focussed on.
+     */
     public void setFocusedToken(IndexedTokenLabel token) {
         this.focusedToken = token;
     }
 
+    /**
+     * Public for use in {@link gui.IndexedTokenLabel}
+     * 
+     * @param token to be focussed on secondarily (for joining operation).
+     */
     public void setSecondFocusedToken(IndexedTokenLabel token) {
         this.secondFocusedToken = token;
     }
@@ -267,6 +289,8 @@ public class Controller {
     // internal getters
 
     private RadioButton getPoSRadioButton(PartOfSpeech pos) {
+        // statically defined in FXML rather than generated in initialisation, hence not
+        // ... using an EnumMap
         switch (pos) {
             case ADJECTIVE:
                 return rdbtnAdjective;
@@ -293,12 +317,9 @@ public class Controller {
         }
     }
 
-    /**
+    /*
      * Checks backwards from end of a line until a superword is found (so that
      * commas etc. are ignored).
-     * 
-     * @param guiLine
-     * @return the last word token in a line.
      */
     private IndexedTokenLabel getLastToken(FlowPane guiLine) {
         int index = guiLine.getChildren().size() - 1;
@@ -311,50 +332,21 @@ public class Controller {
         return superword ? (IndexedTokenLabel) token : null;
     }
 
-    private ArrayList<IndexedTokenLabel> getRhymesFromScheme() {
-        ArrayList<IndexedTokenLabel> rhymes = new ArrayList<>();
-        Stanza currentStanza = poem.getStanzas().get(focusedToken.getStanzaIndex());
-        RhymingScheme scheme = currentStanza.getDesiredRhymeScheme();
-        int schemeValue;
-
-        if (scheme == null) {
-            Alert alert = buildCleanAlert(AlertType.WARNING);
-            alert.setHeaderText("Could not filter suggestions.");
-            alert.setContentText("The current stanza does not have a set intended rhyme scheme.");
-            alert.show();
-            return rhymes;
-        } else if ((schemeValue = scheme.getValue(focusedToken.getLineIndex())) == '#') {
-            return rhymes;
-        } else {
-            for (int i = 0; i < currentStanza.lineCount(); i++) {
-                if (i == focusedToken.getLineIndex() || scheme.getValue(i) != schemeValue) {
-                    // skip current line
-                } else {
-                    FlowPane guiLine = (FlowPane) grdpnPoem.getChildren().get(currentStanza.getStartLine() + i);
-                    rhymes.add(getLastToken(guiLine));
-                }
-            }
-        }
-
-        return rhymes;
-    }
-
+    /*
+     * Constructs the filter parameters from the relevant checkboxes.
+     */
     private FilterParameters getFilterParams() {
         FilterParameters params = new FilterParameters();
-        if (chbxSyllableCount.isDisabled()) {
-            // current focused token has no pronunciation data
-            return params;
-        }
 
-        params.setSyllableCountFilter(chbxSyllableCount.isSelected());
+        params.setSyllableCountFilter(chbxSyllableCount.isSelected() && !chbxSyllableCount.isDisabled());
 
         List<RhymeType> chosenRhymeTypes = new ArrayList<>();
 
-        // iterate over rhyme checkboxes to see which any are ticked
+        // iterate over rhyme checkboxes to see which (if any) are ticked
         for (RhymeType rhymeType : RhymeType.values()) {
             if (rhymeType.equals(RhymeType.FORCED_RHYME))
                 continue; // not implemented yet
-            if (filterCheckBoxes.get(rhymeType).isSelected()) {
+            if (rhymeTypeCheckBoxes.get(rhymeType).isSelected() && !rhymeTypeCheckBoxes.get(rhymeType).isDisabled()) {
                 chosenRhymeTypes.add(rhymeType);
             }
         }
@@ -390,7 +382,7 @@ public class Controller {
                 params.setMatchPoS(null);
                 // iterate over rhyme checkboxes to see which are ticked
                 for (RhymeType filter : RhymeType.values()) {
-                    if (filterCheckBoxes.get(filter).isSelected()) {
+                    if (rhymeTypeCheckBoxes.get(filter).isSelected()) {
                         // add word from text field to rhyme filter
                         params.setRhymeFilter(filter, matchWith);
                     }
@@ -399,48 +391,6 @@ public class Controller {
         }
 
         return params;
-    }
-
-    public void getSuggestions(ActionEvent e) {
-        if (focusedToken == null) {
-            Alert alert = buildCleanAlert(AlertType.INFORMATION);
-            alert.setContentText("Please select a word to get suggestions.");
-            alert.show();
-        } else if (secondFocusedToken != null) {
-            Alert alert = buildCleanAlert(AlertType.INFORMATION);
-            alert.setContentText("Please only select one word to get suggestions.");
-            alert.show();
-        } else if (focusedToken.getPos() == null) {
-            Alert alert = buildCleanAlert(AlertType.INFORMATION);
-            alert.setContentText("Please select a part of speech to get suggestions.");
-            alert.show();
-        } else if (focusedToken.getPoolParams().isEmpty()) {
-            Alert alert = buildCleanAlert(AlertType.INFORMATION);
-            alert.setContentText("Please select at least one suggestion pool to get suggestions.");
-            alert.show();
-        } else {
-            SuperWord superWord = (SuperWord) focusedToken.getToken();
-            PartOfSpeech pos = focusedToken.getPos();
-            SuggestionPoolParameters suggestionParams = focusedToken.getPoolParams();
-            FilterParameters filterParams = getFilterParams();
-
-            Task<ArrayList<SuperWord>> task = new GetSuggestionsTask(superWord, pos, suggestionParams, filterParams);
-
-            IndexedTokenLabel currentFocusPointer = focusedToken; 
-
-            task.setOnSucceeded(v -> {
-                currentFocusPointer.setSuggestions(task.getValue());
-                System.out.println("currentFocusPointer: " + currentFocusPointer.getToken().getPlaintext());
-                System.out.println("focusedToken: " + focusedToken.getToken().getPlaintext());
-                if (currentFocusPointer.equals(focusedToken)) displaySuggestions();
-            });
-
-            flwpnSuggestions.getChildren().clear();
-            flwpnSuggestions.getChildren().add(new Label("searching..."));
-            Thread suggestionsThread = new Thread(task);
-            suggestionsThread.setDaemon(true);
-            suggestionsThread.start();
-        }
     }
 
     // per-token interactions
@@ -453,7 +403,7 @@ public class Controller {
         enableSuggestionPoolBoxes();
     }
 
-    public void enableSuggestionPoolBoxes() {
+    private void enableSuggestionPoolBoxes() {
         SuperWord superword = ((SuperWord) focusedToken.getToken());
         for (SuggestionPool pool : SuggestionPool.values()) {
             CheckBox checkBox = suggestionPoolCheckBoxes.get(pool.getLabel());
@@ -492,17 +442,18 @@ public class Controller {
     }
 
     private void enableFilterBoxes() {
+        // prevents the user from attempting to match syllables against an unknown
         SuperWord superword = ((SuperWord) focusedToken.getToken());
-        boolean disable = superword.getPronunciation() == null;
-        for (RhymeType rhymeType : RhymeType.values()) {
-            if (rhymeType.equals(RhymeType.FORCED_RHYME))
-                continue; // not implemented yet
-            CheckBox checkBox = filterCheckBoxes.get(rhymeType);
-            checkBox.setDisable(disable);
-        }
         chbxSyllableCount.setDisable(superword.getSyllableCount(null) <= 0);
     }
 
+    /**
+     * Updates the stanza information in the right-hand pane.
+     * 
+     * Public for use in {@link gui.IndexedTokenLabel}
+     * 
+     * @param stanzaIndex zero-indexed.
+     */
     public void focusOnStanza(int stanzaIndex) {
         lblStanzaNumber.setText(String.valueOf(stanzaIndex + 1));
         Stanza focusedStanza = poem.getStanzas().get(stanzaIndex);
@@ -515,6 +466,14 @@ public class Controller {
         lblActRhymeScheme.setText(focusedStanza.getActualRhymeScheme().toString());
     }
 
+    /**
+     * Updates the word-level information in the right-hand pane (checkboxes, radio
+     * buttons, suggestions).
+     * 
+     * Public for use in {@link gui.IndexedTokenLabel}
+     * 
+     * @param focusOnToken typically {@link gui.Controller#focusedToken}.
+     */
     public void focusOnWord(IndexedTokenLabel focusOnToken) {
         SuperWord superword = (SuperWord) focusOnToken.getToken();
         RadioButton radioButton;
@@ -546,11 +505,20 @@ public class Controller {
 
     // model (i.e. poem) interactions
 
+    /**
+     * Attempts to set the intended rhyme scheme for the stanza that the focused
+     * token is within.
+     * 
+     * Public for reference within the FXML file.
+     * 
+     * @param e from {@link gui.Controller#txtfldIntRhymeScheme}.
+     */
     public void updateIntendedRhymeScheme(ActionEvent e) {
         if (focusedToken == null) {
             Alert alert = buildCleanAlert(AlertType.INFORMATION);
             alert.setHeaderText("Could not set intended rhyme scheme.");
             alert.setContentText("Please select a word (and by extension a stanza) to set the intended rhyme scheme.");
+            alert.show();
         } else if (!poem.getStanzas().get(focusedToken.getStanzaIndex())
                 .setDesiredRhymeScheme(((TextField) e.getSource()).getText())) {
             Window window = ((TextField) e.getSource()).getScene().getWindow();
@@ -559,20 +527,120 @@ public class Controller {
         }
     }
 
+    /**
+     * Attempts to set the default rhyme scheme for the poem.
+     * 
+     * Public for reference within the FXML file.
+     * 
+     * @param e from {@link gui.Controller#txtfldDefaultRhymeScheme}.
+     */
     public void updateDefaultRhymeScheme(ActionEvent e) {
         updateDefaultRhymeScheme((TextField) e.getSource());
     }
 
-    public void updateDefaultRhymeScheme(TextField field) {
-        poem.setDefaultRhymeScheme(field.getText());
+    /**
+     * Attempts to set the default rhyme scheme for the poem.
+     * 
+     * Public for reference within the FXML file.
+     * 
+     * @param field should be {@link gui.Controller#txtfldDefaultRhymeScheme}.
+     */
+    private void updateDefaultRhymeScheme(TextField field) {
+        if (poem == null) {
+            Alert alert = buildCleanAlert(AlertType.INFORMATION);
+            alert.setHeaderText("Could not set default rhyme scheme.");
+            alert.setContentText("Please load or create poem to set a default rhyme scheme.");
+            alert.show();
+        } else {
+            poem.setDefaultRhymeScheme(field.getText());
 
-        // refocus on current token to update intended rhyme scheme
-        if (focusedToken != null) {
-            Event.fireEvent(focusedToken, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
-                    false, false, false, false, true, false, false, false, false, false, null));
+            // refocus on current token to update intended rhyme scheme
+            if (focusedToken != null) {
+                Event.fireEvent(focusedToken,
+                        new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
+                                false, false, false, false, true, false, false, false, false, false, null));
+            }
         }
     }
 
+    private ArrayList<IndexedTokenLabel> getRhymesFromScheme() {
+        ArrayList<IndexedTokenLabel> rhymes = new ArrayList<>();
+        Stanza currentStanza = poem.getStanzas().get(focusedToken.getStanzaIndex());
+        RhymingScheme scheme = currentStanza.getDesiredRhymeScheme();
+        int schemeValue;
+
+        if (scheme == null) {
+            Alert alert = buildCleanAlert(AlertType.WARNING);
+            alert.setHeaderText("Could not filter suggestions.");
+            alert.setContentText("The current stanza does not have a set intended rhyme scheme.");
+            alert.show();
+            return rhymes;
+        } else if ((schemeValue = scheme.getValue(focusedToken.getLineIndex())) == '#') {
+            return rhymes;
+        } else {
+            for (int i = 0; i < currentStanza.lineCount(); i++) {
+                if (i == focusedToken.getLineIndex() || scheme.getValue(i) != schemeValue) {
+                    // skip current line
+                } else {
+                    FlowPane guiLine = (FlowPane) grdpnPoem.getChildren().get(currentStanza.getStartLine() + i);
+                    rhymes.add(getLastToken(guiLine));
+                }
+            }
+        }
+
+        return rhymes;
+    }
+
+    /**
+     * Gets the suggested substitutions for the focused token based on the search
+     * parameter checkboxes. Suggestion finding is done in a daemon thread, as it
+     * can be slow.
+     */
+    public void getSuggestions() {
+        if (focusedToken == null) {
+            Alert alert = buildCleanAlert(AlertType.INFORMATION);
+            alert.setContentText("Please select a word to get suggestions.");
+            alert.show();
+        } else if (secondFocusedToken != null) {
+            Alert alert = buildCleanAlert(AlertType.INFORMATION);
+            alert.setContentText("Please only select one word to get suggestions.");
+            alert.show();
+        } else if (focusedToken.getPos() == null) {
+            Alert alert = buildCleanAlert(AlertType.INFORMATION);
+            alert.setContentText("Please select a part of speech to get suggestions.");
+            alert.show();
+        } else if (focusedToken.getPoolParams().isEmpty()) {
+            Alert alert = buildCleanAlert(AlertType.INFORMATION);
+            alert.setContentText("Please select at least one suggestion pool to get suggestions.");
+            alert.show();
+        } else {
+            SuperWord superWord = (SuperWord) focusedToken.getToken();
+            PartOfSpeech pos = focusedToken.getPos();
+            SuggestionPoolParameters suggestionParams = focusedToken.getPoolParams();
+            FilterParameters filterParams = getFilterParams();
+
+            Task<ArrayList<SuperWord>> task = new GetSuggestionsTask(superWord, pos, suggestionParams, filterParams);
+
+            IndexedTokenLabel currentFocusPointer = focusedToken;
+
+            task.setOnSucceeded(v -> {
+                currentFocusPointer.setSuggestions(task.getValue());
+                if (currentFocusPointer.equals(focusedToken))
+                    displaySuggestions();
+            });
+
+            flwpnSuggestions.getChildren().clear();
+            flwpnSuggestions.getChildren().add(new Label("Searching and/or filtering..."));
+            Thread suggestionsThread = new Thread(task);
+            suggestionsThread.setDaemon(true);
+            suggestionsThread.start();
+        }
+    }
+
+    /*
+     * Substitutes the currently selected word in the poem model for a new one, and
+     * updates the selected GUI token accordingly.
+     */
     private void makeSubstitution(SuperWord suggestion) {
         poem.substituteWord(focusedToken.getStanzaIndex(), focusedToken.getLineIndex(), focusedToken.getTokenIndex(),
                 suggestion);
@@ -591,6 +659,10 @@ public class Controller {
                 false, false, false, false, true, false, false, false, false, false, null));
     }
 
+    /*
+     * Combines two superwords into one, to help users make use of WordsAPI's
+     * recognition of some short phrases.
+     */
     private void joinWords() {
         if (poem.joinWords(focusedToken.getStanzaIndex(), focusedToken.getLineIndex(),
                 focusedToken.getTokenIndex(), secondFocusedToken.getTokenIndex())) {
@@ -623,6 +695,10 @@ public class Controller {
         }
     }
 
+    /*
+     * Seperates superword into two, to help users get around WordsAPI's
+     * recognition of some short phrases.
+     */
     private boolean splitWord(String seperator) {
         if (poem.splitWord(focusedToken.getStanzaIndex(), focusedToken.getLineIndex(),
                 focusedToken.getTokenIndex(), seperator)) {
@@ -665,6 +741,10 @@ public class Controller {
 
     }
 
+    /**
+     * Generates the GUI version of the poem as a collection of clickable word
+     * tokens.
+     */
     private void tokenizePoem() {
         grdpnPoem.getChildren().clear();
         int absLineIndex = 0; // absolute line index, including empty lines
@@ -699,6 +779,11 @@ public class Controller {
 
     // file IO
 
+    /**
+     * Opens a dialogue for the user to select a source text file, then attempts to
+     * read a poem from said file, generate a poem model from its contents, and
+     * then tokenise said model and update the GUI.
+     */
     public void openPoem() {
         Stage stage = (Stage) anpnRoot.getScene().getWindow();
 
@@ -735,6 +820,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Attempts to write the current poem to a text file.
+     */
     public void savePoem() {
         if (poemFile == null) {
             savePoemAs();
@@ -752,6 +840,10 @@ public class Controller {
         }
     }
 
+    /**
+     * Opens a dialogue for the user to choose the name of the text file to save the
+     * poem under.
+     */
     public void savePoemAs() {
         Stage stage = (Stage) anpnRoot.getScene().getWindow();
 
@@ -770,6 +862,10 @@ public class Controller {
         savePoem();
     }
 
+    /**
+     * Opens a dialogue for a user to choose a title name, and then switches the GUI
+     * to direct edit mode.
+     */
     public void newPoem() {
         TextInputDialog poemTitleDialog = new TextInputDialog();
         poemTitleDialog.setHeaderText(null);
@@ -799,6 +895,9 @@ public class Controller {
 
     // other
 
+    /**
+     * Swaps the left-hand pane between direct edit and token modes.
+     */
     public void toggleDirectEdit() {
         // refresh poem content
         if (!txtarPoem.isVisible()) {
@@ -844,7 +943,7 @@ public class Controller {
         flwpnSuggestions.getParent().setCache(cache);
 
         if (focusedToken.getSuggestions() == null) {
-            Label noSuggestions = new Label("");
+            Label noSuggestions = new Label("Suggestions appear here.");
             noSuggestions.setSnapToPixel(snapToPixel);
             noSuggestions.setCache(cache);
 
