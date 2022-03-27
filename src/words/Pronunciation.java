@@ -361,7 +361,7 @@ public class Pronunciation {
                     pronunciationObject.toString()));
         }
 
-        return !subPronunciations.isEmpty();
+        return !(subPronunciations.isEmpty() && this.all == null);
     }
 
     public boolean setIPA(String plaintext, String allIpa) {
@@ -408,16 +408,19 @@ public class Pronunciation {
         String divider = ", ";
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
+        boolean hasPoS = false;
 
         for (PartOfSpeech pos : PartOfSpeech.values()) {
             if (subPronunciations.containsKey(pos)) {
+                hasPoS = true;
                 stringBuilder.append(divider);
-                stringBuilder.append("noun: " + subPronunciations.get(pos).toString());
+                stringBuilder.append(pos.name() + ": " + subPronunciations.get(pos).toString());
             }
         }
 
         if (all != null) {
-            stringBuilder.append(", ");
+            if (hasPoS)
+                stringBuilder.append(", ");
             stringBuilder.append("all: " + all.toString());
         }
 
