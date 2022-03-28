@@ -11,12 +11,12 @@ To Do list (unordered):
     </li>
     <li>Recognise more poetic devices</li>
         <ul>
-            <li>Half-rhyme</li>
+            <li><s>General rhymes<s></li>
             <li>Alliteration</li>
         </ul>
     <li>Handle compound words better</li>
         <ul>
-            <li>Add emphasis to monosyllabic words</li>
+            <li><s>Add emphasis to monosyllabic words<s></li>
         </ul>
     </li>
     <li>Add special case handling for pronunciation of words ending in s</li>
