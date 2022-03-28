@@ -27,7 +27,7 @@ public class IPAHandler extends AbstractIPA {
      * 
      * 
      * @param ipaWord
-     * @return a Pair<> of an ArrayList of syllables and the emphases.
+     * @return a {@link utils.Pair} of an ArrayList of syllables and the emphases.
      */
     public static Pair<ArrayList<Syllable>, Emphasis> getSyllables(String ipaWord) {
 

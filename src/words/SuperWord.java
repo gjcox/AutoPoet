@@ -236,9 +236,9 @@ public class SuperWord extends Token {
      * Gets the collection of {@link words.SubWord}s for a given part of speech.
      * 
      * If @param inclusiveUnknown is true and @param pos is
-     * {@link words.PartOfSpeech.UNKNOWN}, then all {@link words.SubWord}s are
+     * {@link words.PartOfSpeech#UNKNOWN}, then all {@link words.SubWord}s are
      * returned. If @param inclusiveUnknown is true and @param pos is not
-     * {@link words.PartOfSpeech.UNKNOWN}, then the {@link words.SubWord}s with
+     * {@link words.PartOfSpeech#UNKNOWN}, then the {@link words.SubWord}s with
      * unknown part of speech are added to the resilts.
      * 
      * @param pos              the desired part of speech.

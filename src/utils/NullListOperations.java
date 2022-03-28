@@ -16,7 +16,7 @@ import java.util.Map;
 public class NullListOperations {
 
     /**
-     * Instantiates an empty ArrayList<T> iff the passed list is null. Then
+     * Instantiates an empty ArrayList iff the passed list is null. Then
      * behaves as Collection.add().
      * 
      * @param <T>     the parameterised type of @param list.
@@ -33,7 +33,7 @@ public class NullListOperations {
     }
 
     /**
-     * Instantiates an empty ArrayList<T> iff the passed list is null. Then behaves
+     * Instantiates an empty ArrayList iff the passed list is null. Then behaves
      * as Collection.addAll().
      * 
      * @param <T>    the parameterised type of @param list.
@@ -55,6 +55,7 @@ public class NullListOperations {
     /**
      * Combines one or more lists into one. Will include duplicates.
      * 
+     * @param <T>   the parameterised type of @param lists.
      * @param lists lists to combine.
      * @return null if no lists to combine, otherwise a combined list.
      */
@@ -70,6 +71,7 @@ public class NullListOperations {
     /**
      * Combines one or more lists into one. Will include duplicates.
      * 
+     * @param <T>   the parameterised type of @param lists.
      * @param lists lists to combine.
      * @return null if no lists to combine, otherwise a combined list.
      */
@@ -100,6 +102,7 @@ public class NullListOperations {
      * Combines one or more lists into one. Orders elements based on number of
      * repetitions, in descending order of occurrences.
      * 
+     * @param <T>   the parameterised type of @param lists.
      * @param lists lists to combine.
      * @return null if no lists to combine, otherwise a combined list as described.
      */

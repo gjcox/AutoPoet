@@ -67,7 +67,7 @@ public class Demos {
         }
     }
 
-    public static void superWordConstructor() {
+    private static void superWordConstructor() {
         List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds", "present", "understated");
         for (String word : words) {
             SuperWord wordObject = SuperWord.getSuperWord(word);
@@ -75,7 +75,7 @@ public class Demos {
         }
     }
 
-    public static void superWordPopulator() {
+    private static void superWordPopulator() {
         List<String> words = Arrays.asList("hideous", "monsters", "the", "wind", "winds", "present",
                 "understated");
         for (String word : words) {
@@ -85,13 +85,13 @@ public class Demos {
         }
     }
 
-    public static void subWordConstructor() {
+    private static void subWordConstructor() {
         SuperWord present = SuperWord.getSuperWord("present");
         present.populate();
         System.out.println(present.subWordsString());
     }
 
-    public static void abercrombieZombie() {
+    private static void abercrombieZombie() {
         SuperWord abercrombie = SuperWord.getSuperWord("abercrombie");
         abercrombie.populate();
         System.out.println(abercrombie);
@@ -106,13 +106,13 @@ public class Demos {
                 abercrombie.getPlaintext(), zombie.getPlaintext(), rhymes));
     }
 
-    public static void demoSynonyms() {
+    private static void demoSynonyms() {
         SuperWord present = SuperWord.getSuperWord("present");
         System.out.println(String.format("Synonyms of \"%s\" (NOUN): %s", present.getPlaintext(),
                 present.getSuggestionPool(SuggestionPool.SYNONYMS, PartOfSpeech.NOUN, false)));
     }
 
-    public static void demoPoemConstructor(String poemFile) {
+    private static void demoPoemConstructor(String poemFile) {
         try {
             Path path = FileSystems.getDefault().getPath(poemFile);
             Poem poem = new Poem(path);

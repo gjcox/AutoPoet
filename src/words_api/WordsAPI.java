@@ -88,7 +88,7 @@ public class WordsAPI {
      * Attempts to get a JSONObject word from WordsAPI. 
      * 
      * @param plaintext a plaintext word.
-     * @return the JSONOject returned from WordsAPI, or {@code: {word:<plaintext>}} if there
+     * @return the JSONOject returned from WordsAPI, or {@code {word:<plaintext>}} if there
      *         was no result.
      */
     public static JSONObject getWord(String plaintext) {

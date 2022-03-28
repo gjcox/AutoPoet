@@ -20,7 +20,7 @@ import static config.Configuration.LOG;
 public class Pronunciation {
 
     /**
-     * Contains pronunciation data defined as collections of {@link words.Syllables}
+     * Contains pronunciation data defined as collections of {@link words.Syllable}
      * objects.
      * Also handles rhyme recognition by comparing said collections (and subsets
      * thereof).
@@ -345,7 +345,7 @@ public class Pronunciation {
      * stripped before treating the IPA as normal.
      * 
      * @param plaintext    used for debugging messages.
-     * @param rhymesObject from WordsAPI request.
+     * @param rhymesString from WordsAPI request.
      * @return true if a pronunciation could be derived.
      */
     public boolean setRhyme(String plaintext, String rhymesString) {
@@ -357,10 +357,10 @@ public class Pronunciation {
      * of speech.
      * 
      * @param plaintext           the superword plaintext, used for debugging.
-     * @param pronunciationObject JSONObject of the form {<part-of-speech>:<ipa>}
-     *                            e.g.
+     * @param pronunciationObject JSONObject of the form {@code {<part-of-speech>:<ipa>}}
+     *                            e.g. {@code 
      *                            {"noun":"'kɑntrækt", "verb":"kɑn'trækt"}
-     *                            {"all":"'fridəm"}
+     *                            {"all":"'fridəm"}}
      * @return true if at least one subpronunciation could be derived, otherwise
      *         false.
      */
