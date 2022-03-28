@@ -24,13 +24,13 @@ import words.Syllable;
 
 public class UnitTests {
 
-
     /**
      * Tests that words.IPAHandler.getSyllables() behaves as expected
      */
     @Test
-    public void testGetSyllable() {
-        // plaintext words : "example", "mastery", "testing", "mistake", "sky", "cure", "even so" 
+    public void testGetSyllables() {
+        // plaintext words : "example", "mastery", "testing", "mistake", "sky", "cure",
+        // "even so"
         List<String> ipaWords = Arrays.asList("ɪɡ'zæmpəl", "'mæstəri", "'tɛstɪŋ",
                 "mɪ'steɪk", "skaɪ", "kjʊr", "kəm_ə'lɔŋ");
         Pair<List<Syllable>, Emphasis> example = new Pair<>(new LinkedList<>(), new Emphasis());
@@ -48,7 +48,7 @@ public class UnitTests {
         Pair<List<Syllable>, Emphasis> mistake = new Pair<>(new LinkedList<>(), new Emphasis());
         mistake.one().add(new Syllable("m", "ɪ", ""));
         mistake.one().add(new Syllable("st", "eɪ", "k"));
-        mistake.two().setPrimary(1); 
+        mistake.two().setPrimary(1);
         Pair<List<Syllable>, Emphasis> sky = new Pair<>(new LinkedList<>(), new Emphasis());
         sky.one().add(new Syllable("sk", "aɪ", ""));
         Pair<List<Syllable>, Emphasis> cure = new Pair<>(new LinkedList<>(), new Emphasis());
@@ -67,11 +67,11 @@ public class UnitTests {
         checks.add(sky);
         checks.add(cure);
         checks.add(come_along);
-        
+
         for (int i = 0; i < ipaWords.size(); i++) {
             Pair<ArrayList<Syllable>, Emphasis> output = IPAHandler.getSyllables(ipaWords.get(i));
             Pair<List<Syllable>, Emphasis> check = checks.get(i);
-            assertEquals(check.two(), output.two()); 
+            assertEquals(check.two(), output.two());
             for (int j = 0; j < output.one().size(); j++) {
                 assertEquals(check.one().get(j), output.one().get(j));
             }
