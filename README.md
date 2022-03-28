@@ -11,12 +11,12 @@ To Do list (unordered):
     </li>
     <li>Recognise more poetic devices</li>
         <ul>
-            <li><s>General rhymes<s></li>
+            <li><s>General rhymes</s></li>
             <li>Alliteration</li>
         </ul>
     <li>Handle compound words better</li>
         <ul>
-            <li><s>Add emphasis to monosyllabic words<s></li>
+            <li><s>Add emphasis to monosyllabic words</s></li>
         </ul>
     </li>
     <li>Add special case handling for pronunciation of words ending in s</li>
@@ -24,16 +24,16 @@ To Do list (unordered):
 
 Aspirational/low priority list: 
 <ul>
-    <li>Improve suggestion filtering to do it in batches, so that the least likely suggestions don't waste user time</li>
-    <li>Handle conjugated verbs and pluralised nouns</li>
+    <li><s>Improve suggestion filtering to do it in batches, so that the least likely suggestions don't waste user time</s></li>
+    <li>Handle conjugated verbs</li>
     <li>Add dictionary tab to GUI</li>
 </ul>
 
 # Compilation 
-<s>I continue to use VS Code, but the following compilation instructions have been tested on Linux: 
+I used VS Code for development, but the following compilation instructions have been tested on Linux: 
 
 Navigate to CS4099/ <br>
-Run the command $ javac -cp lib/json-20210307.jar:lib/junit-platform-console.standalone-1.8.1.jar  src/\*/\*.java <br>
+Run the command $ javac -cp lib/json-20210307.jar:lib/junit-platform-console.standalone-1.8.1.jar  src/testing/Demos.java <br>
 
 # Running the program 
 For terminal demos, the command $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc | rhyme \] <br>
