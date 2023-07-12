@@ -2,6 +2,7 @@
 This was my senior honours project in my BSc. It is a poetry writing assistant built on top of a basic text editor both implemented in Java with a JavaFX GUI. It uses [WordsAPI](https://www.wordsapi.com/) to find IPA strings for the words in the poem and then uses the IPA to detect the existing rhyming scheme. The user can specify a desired rhyming scheme and then Auto-Poet can suggest words that would fit that scheme whilst trying to preserve the original meaning of the poem. Various types of rhyme are supported. 
 
 ## To Do list (unordered): 
+I never really intended to do everything on the to do list, they were just possible extensions that my supervisor and I came up with. 
 <ul>
     <li>Improve the GUI
         <ul>
