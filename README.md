@@ -1,5 +1,7 @@
-# Hello 
-To Do list (unordered): 
+# Auto-Poet 
+This was my senior honours project in my BSc. It is a poetry writing assistant built on top of a basic text editor both implemented in Java with a JavaFX GUI. It uses [WordsAPI](https://www.wordsapi.com/) to find IPA strings for the words in the poem and then uses the IPA to detect the existing rhyming scheme. The user can specify a desired rhyming scheme and then Auto-Poet can suggest words that would fit that scheme whilst trying to preserve the original meaning of the poem. Various types of rhyme are supported. 
+
+## To Do list (unordered): 
 <ul>
     <li>Improve the GUI
         <ul>
@@ -29,13 +31,13 @@ Aspirational/low priority list:
     <li>Add dictionary tab to GUI</li>
 </ul>
 
-# Compilation 
+## Compilation 
 I used VS Code for development, but the following compilation instructions have been tested on Linux: 
 
 Navigate to CS4099/ <br>
 Run the command $ javac -cp lib/json-20210307.jar:lib/junit-platform-console.standalone-1.8.1.jar  src/testing/Demos.java <br>
 
-# Running the program 
+## Running the program 
 For terminal demos, the command $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc | rhyme \] <br>
             OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos \[ swc | swp | wc \] *some_word*  <br>
             OR  $ java -cp lib/json-20210307.jar:src/ testing.Demos rhyme *word1* *word2*  <br> 
@@ -50,7 +52,7 @@ For terminal demos, the command $ java -cp lib/json-20210307.jar:src/ testing.De
 
 For the GUI, use the runAutoPoet.sh script from within src/. 
 
-# Logs 
+## Logs 
 lib/logs/log.log is temporary, and reflects the last run of the program (including when SuperWords were retrieved from a cache) so it's in the .gitignore.  
 lib/logs/persistent.log is not temporary, and is for automatically recording unexpected behaviour from WordsAPI (of a type that I have anticipated), such as missing data fields, unexpected data fields and inconsistent plural recognition, so it is not included in the .gitignore. 
 
