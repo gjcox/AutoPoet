@@ -57,6 +57,8 @@ public class WordsAPI {
     /*
      * Attaches the appropriate headers to a URI and converts it into an
      * HttpRequest. Called within sendRequest().
+     *
+     * The account linked to the key will not support exceeding the 2,500 requests per day.
      * 
      * @param uri a URI supplied by getUri().
      * 
